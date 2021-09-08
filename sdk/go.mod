@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-onelogin/sdk
+module github.com/pulumi/pulumi-onelogin/sdk/v1
 
 go 1.14
 
