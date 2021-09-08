@@ -1,3 +1,3 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/pulumi/pulumi-onelogin/examples
 
 go 1.16
