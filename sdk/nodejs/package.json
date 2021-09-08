@@ -7,7 +7,7 @@
         "onelogin"
     ],
     "homepage": "https://pulumi.io",
-    "repository": "https://github.com/pulumi/pulumi-onelogin",
+    "repository": "https://github.com/excavador/pulumi-onelogin",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
