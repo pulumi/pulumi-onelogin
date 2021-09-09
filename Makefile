@@ -38,7 +38,7 @@ prepare::
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup dist
 
 development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -53,6 +53,14 @@ tfgen:: install_plugins
 
 provider:: tfgen install_plugins # build the provider binary
 	(cd provider && go build -a -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
+
+bin/pulumi-resource-onelogin: provider
+
+bin/pulumi-resource-onelogin.tar.gz: bin/pulumi-resource-onelogin
+	rm -f $@
+	tar cz -C $(@D) -f $@ $(<F)
+
+dist: bin/pulumi-resource-onelogin.tar.gz
 
 build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
