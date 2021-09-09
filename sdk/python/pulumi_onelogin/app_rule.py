@@ -10,20 +10,20 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppRulesArgs', 'AppRules']
+__all__ = ['AppRuleArgs', 'AppRule']
 
 @pulumi.input_type
-class AppRulesArgs:
+class AppRuleArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  match: pulumi.Input[str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[int]] = None):
         """
-        The set of arguments for constructing a AppRules resource.
+        The set of arguments for constructing a AppRule resource.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "match", match)
@@ -58,20 +58,20 @@ class AppRulesArgs:
 
     @property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]]:
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]]):
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -103,17 +103,17 @@ class AppRulesArgs:
 
 
 @pulumi.input_type
-class _AppRulesState:
+class _AppRuleState:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[int]] = None):
         """
-        Input properties used for looking up and filtering AppRules resources.
+        Input properties used for looking up and filtering AppRule resources.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -132,11 +132,11 @@ class _AppRulesState:
 
     @property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]]:
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesActionArgs']]]]):
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @property
@@ -150,11 +150,11 @@ class _AppRulesState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRulesConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -194,21 +194,21 @@ class _AppRulesState:
         pulumi.set(self, "position", value)
 
 
-class AppRules(pulumi.CustomResource):
+class AppRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleActionArgs']]]]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleConditionArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a AppRules resource with the given unique name, props, and options.
+        Create a AppRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -216,17 +216,17 @@ class AppRules(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppRulesArgs,
+                 args: AppRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppRules resource with the given unique name, props, and options.
+        Create a AppRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param AppRulesArgs args: The arguments to use to populate this resource's properties.
+        :param AppRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppRulesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -235,9 +235,9 @@ class AppRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleActionArgs']]]]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleConditionArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -252,7 +252,7 @@ class AppRules(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppRulesArgs.__new__(AppRulesArgs)
+            __props__ = AppRuleArgs.__new__(AppRuleArgs)
 
             __props__.__dict__["actions"] = actions
             if app_id is None and not opts.urn:
@@ -265,8 +265,8 @@ class AppRules(pulumi.CustomResource):
             __props__.__dict__["match"] = match
             __props__.__dict__["name"] = name
             __props__.__dict__["position"] = position
-        super(AppRules, __self__).__init__(
-            'onelogin:index/appRules:AppRules',
+        super(AppRule, __self__).__init__(
+            'onelogin:index/appRule:AppRule',
             resource_name,
             __props__,
             opts)
@@ -275,15 +275,15 @@ class AppRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesActionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleActionArgs']]]]] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRulesConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleConditionArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             match: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            position: Optional[pulumi.Input[int]] = None) -> 'AppRules':
+            position: Optional[pulumi.Input[int]] = None) -> 'AppRule':
         """
-        Get an existing AppRules resource's state with the given name, id, and optional extra
+        Get an existing AppRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -292,7 +292,7 @@ class AppRules(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _AppRulesState.__new__(_AppRulesState)
+        __props__ = _AppRuleState.__new__(_AppRuleState)
 
         __props__.__dict__["actions"] = actions
         __props__.__dict__["app_id"] = app_id
@@ -301,11 +301,11 @@ class AppRules(pulumi.CustomResource):
         __props__.__dict__["match"] = match
         __props__.__dict__["name"] = name
         __props__.__dict__["position"] = position
-        return AppRules(resource_name, opts=opts, __props__=__props__)
+        return AppRule(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def actions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRulesAction']]]:
+    def actions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRuleAction']]]:
         return pulumi.get(self, "actions")
 
     @property
@@ -315,7 +315,7 @@ class AppRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRulesCondition']]]:
+    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRuleCondition']]]:
         return pulumi.get(self, "conditions")
 
     @property

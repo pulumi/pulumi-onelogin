@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type Users struct {
+type User struct {
 	pulumi.CustomResourceState
 
 	Comment           pulumi.StringPtrOutput `pulumi:"comment"`
@@ -38,9 +38,9 @@ type Users struct {
 	Userprincipalname pulumi.StringPtrOutput `pulumi:"userprincipalname"`
 }
 
-// NewUsers registers a new resource with the given unique name, arguments, and options.
-func NewUsers(ctx *pulumi.Context,
-	name string, args *UsersArgs, opts ...pulumi.ResourceOption) (*Users, error) {
+// NewUser registers a new resource with the given unique name, arguments, and options.
+func NewUser(ctx *pulumi.Context,
+	name string, args *UserArgs, opts ...pulumi.ResourceOption) (*User, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -51,28 +51,28 @@ func NewUsers(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
-	var resource Users
-	err := ctx.RegisterResource("onelogin:index/users:Users", name, args, &resource, opts...)
+	var resource User
+	err := ctx.RegisterResource("onelogin:index/user:User", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetUsers gets an existing Users resource's state with the given name, ID, and optional
+// GetUser gets an existing User resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetUsers(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *UsersState, opts ...pulumi.ResourceOption) (*Users, error) {
-	var resource Users
-	err := ctx.ReadResource("onelogin:index/users:Users", name, id, state, &resource, opts...)
+func GetUser(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *UserState, opts ...pulumi.ResourceOption) (*User, error) {
+	var resource User
+	err := ctx.ReadResource("onelogin:index/user:User", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering Users resources.
-type usersState struct {
+// Input properties used for looking up and filtering User resources.
+type userState struct {
 	Comment           *string           `pulumi:"comment"`
 	Company           *string           `pulumi:"company"`
 	CustomAttributes  map[string]string `pulumi:"customAttributes"`
@@ -97,7 +97,7 @@ type usersState struct {
 	Userprincipalname *string           `pulumi:"userprincipalname"`
 }
 
-type UsersState struct {
+type UserState struct {
 	Comment           pulumi.StringPtrInput
 	Company           pulumi.StringPtrInput
 	CustomAttributes  pulumi.StringMapInput
@@ -122,11 +122,11 @@ type UsersState struct {
 	Userprincipalname pulumi.StringPtrInput
 }
 
-func (UsersState) ElementType() reflect.Type {
-	return reflect.TypeOf((*usersState)(nil)).Elem()
+func (UserState) ElementType() reflect.Type {
+	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
-type usersArgs struct {
+type userArgs struct {
 	Comment           *string           `pulumi:"comment"`
 	Company           *string           `pulumi:"company"`
 	CustomAttributes  map[string]string `pulumi:"customAttributes"`
@@ -151,8 +151,8 @@ type usersArgs struct {
 	Userprincipalname *string           `pulumi:"userprincipalname"`
 }
 
-// The set of arguments for constructing a Users resource.
-type UsersArgs struct {
+// The set of arguments for constructing a User resource.
+type UserArgs struct {
 	Comment           pulumi.StringPtrInput
 	Company           pulumi.StringPtrInput
 	CustomAttributes  pulumi.StringMapInput
@@ -177,193 +177,193 @@ type UsersArgs struct {
 	Userprincipalname pulumi.StringPtrInput
 }
 
-func (UsersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*usersArgs)(nil)).Elem()
+func (UserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
 
-type UsersInput interface {
+type UserInput interface {
 	pulumi.Input
 
-	ToUsersOutput() UsersOutput
-	ToUsersOutputWithContext(ctx context.Context) UsersOutput
+	ToUserOutput() UserOutput
+	ToUserOutputWithContext(ctx context.Context) UserOutput
 }
 
-func (*Users) ElementType() reflect.Type {
-	return reflect.TypeOf((*Users)(nil))
+func (*User) ElementType() reflect.Type {
+	return reflect.TypeOf((*User)(nil))
 }
 
-func (i *Users) ToUsersOutput() UsersOutput {
-	return i.ToUsersOutputWithContext(context.Background())
+func (i *User) ToUserOutput() UserOutput {
+	return i.ToUserOutputWithContext(context.Background())
 }
 
-func (i *Users) ToUsersOutputWithContext(ctx context.Context) UsersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsersOutput)
+func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
 }
 
-func (i *Users) ToUsersPtrOutput() UsersPtrOutput {
-	return i.ToUsersPtrOutputWithContext(context.Background())
+func (i *User) ToUserPtrOutput() UserPtrOutput {
+	return i.ToUserPtrOutputWithContext(context.Background())
 }
 
-func (i *Users) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsersPtrOutput)
+func (i *User) ToUserPtrOutputWithContext(ctx context.Context) UserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPtrOutput)
 }
 
-type UsersPtrInput interface {
+type UserPtrInput interface {
 	pulumi.Input
 
-	ToUsersPtrOutput() UsersPtrOutput
-	ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput
+	ToUserPtrOutput() UserPtrOutput
+	ToUserPtrOutputWithContext(ctx context.Context) UserPtrOutput
 }
 
-type usersPtrType UsersArgs
+type userPtrType UserArgs
 
-func (*usersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Users)(nil))
+func (*userPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**User)(nil))
 }
 
-func (i *usersPtrType) ToUsersPtrOutput() UsersPtrOutput {
-	return i.ToUsersPtrOutputWithContext(context.Background())
+func (i *userPtrType) ToUserPtrOutput() UserPtrOutput {
+	return i.ToUserPtrOutputWithContext(context.Background())
 }
 
-func (i *usersPtrType) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsersPtrOutput)
+func (i *userPtrType) ToUserPtrOutputWithContext(ctx context.Context) UserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPtrOutput)
 }
 
-// UsersArrayInput is an input type that accepts UsersArray and UsersArrayOutput values.
-// You can construct a concrete instance of `UsersArrayInput` via:
+// UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
+// You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UsersArray{ UsersArgs{...} }
-type UsersArrayInput interface {
+//          UserArray{ UserArgs{...} }
+type UserArrayInput interface {
 	pulumi.Input
 
-	ToUsersArrayOutput() UsersArrayOutput
-	ToUsersArrayOutputWithContext(context.Context) UsersArrayOutput
+	ToUserArrayOutput() UserArrayOutput
+	ToUserArrayOutputWithContext(context.Context) UserArrayOutput
 }
 
-type UsersArray []UsersInput
+type UserArray []UserInput
 
-func (UsersArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Users)(nil))
+func (UserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*User)(nil))
 }
 
-func (i UsersArray) ToUsersArrayOutput() UsersArrayOutput {
-	return i.ToUsersArrayOutputWithContext(context.Background())
+func (i UserArray) ToUserArrayOutput() UserArrayOutput {
+	return i.ToUserArrayOutputWithContext(context.Background())
 }
 
-func (i UsersArray) ToUsersArrayOutputWithContext(ctx context.Context) UsersArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsersArrayOutput)
+func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserArrayOutput)
 }
 
-// UsersMapInput is an input type that accepts UsersMap and UsersMapOutput values.
-// You can construct a concrete instance of `UsersMapInput` via:
+// UserMapInput is an input type that accepts UserMap and UserMapOutput values.
+// You can construct a concrete instance of `UserMapInput` via:
 //
-//          UsersMap{ "key": UsersArgs{...} }
-type UsersMapInput interface {
+//          UserMap{ "key": UserArgs{...} }
+type UserMapInput interface {
 	pulumi.Input
 
-	ToUsersMapOutput() UsersMapOutput
-	ToUsersMapOutputWithContext(context.Context) UsersMapOutput
+	ToUserMapOutput() UserMapOutput
+	ToUserMapOutputWithContext(context.Context) UserMapOutput
 }
 
-type UsersMap map[string]UsersInput
+type UserMap map[string]UserInput
 
-func (UsersMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Users)(nil))
+func (UserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*User)(nil))
 }
 
-func (i UsersMap) ToUsersMapOutput() UsersMapOutput {
-	return i.ToUsersMapOutputWithContext(context.Background())
+func (i UserMap) ToUserMapOutput() UserMapOutput {
+	return i.ToUserMapOutputWithContext(context.Background())
 }
 
-func (i UsersMap) ToUsersMapOutputWithContext(ctx context.Context) UsersMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsersMapOutput)
+func (i UserMap) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMapOutput)
 }
 
-type UsersOutput struct {
+type UserOutput struct {
 	*pulumi.OutputState
 }
 
-func (UsersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Users)(nil))
+func (UserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*User)(nil))
 }
 
-func (o UsersOutput) ToUsersOutput() UsersOutput {
+func (o UserOutput) ToUserOutput() UserOutput {
 	return o
 }
 
-func (o UsersOutput) ToUsersOutputWithContext(ctx context.Context) UsersOutput {
+func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-func (o UsersOutput) ToUsersPtrOutput() UsersPtrOutput {
-	return o.ToUsersPtrOutputWithContext(context.Background())
+func (o UserOutput) ToUserPtrOutput() UserPtrOutput {
+	return o.ToUserPtrOutputWithContext(context.Background())
 }
 
-func (o UsersOutput) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
-	return o.ApplyT(func(v Users) *Users {
+func (o UserOutput) ToUserPtrOutputWithContext(ctx context.Context) UserPtrOutput {
+	return o.ApplyT(func(v User) *User {
 		return &v
-	}).(UsersPtrOutput)
+	}).(UserPtrOutput)
 }
 
-type UsersPtrOutput struct {
+type UserPtrOutput struct {
 	*pulumi.OutputState
 }
 
-func (UsersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Users)(nil))
+func (UserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**User)(nil))
 }
 
-func (o UsersPtrOutput) ToUsersPtrOutput() UsersPtrOutput {
+func (o UserPtrOutput) ToUserPtrOutput() UserPtrOutput {
 	return o
 }
 
-func (o UsersPtrOutput) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
+func (o UserPtrOutput) ToUserPtrOutputWithContext(ctx context.Context) UserPtrOutput {
 	return o
 }
 
-type UsersArrayOutput struct{ *pulumi.OutputState }
+type UserArrayOutput struct{ *pulumi.OutputState }
 
-func (UsersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Users)(nil))
+func (UserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]User)(nil))
 }
 
-func (o UsersArrayOutput) ToUsersArrayOutput() UsersArrayOutput {
+func (o UserArrayOutput) ToUserArrayOutput() UserArrayOutput {
 	return o
 }
 
-func (o UsersArrayOutput) ToUsersArrayOutputWithContext(ctx context.Context) UsersArrayOutput {
+func (o UserArrayOutput) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOutput {
 	return o
 }
 
-func (o UsersArrayOutput) Index(i pulumi.IntInput) UsersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Users {
-		return vs[0].([]Users)[vs[1].(int)]
-	}).(UsersOutput)
+func (o UserArrayOutput) Index(i pulumi.IntInput) UserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) User {
+		return vs[0].([]User)[vs[1].(int)]
+	}).(UserOutput)
 }
 
-type UsersMapOutput struct{ *pulumi.OutputState }
+type UserMapOutput struct{ *pulumi.OutputState }
 
-func (UsersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Users)(nil))
+func (UserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]User)(nil))
 }
 
-func (o UsersMapOutput) ToUsersMapOutput() UsersMapOutput {
+func (o UserMapOutput) ToUserMapOutput() UserMapOutput {
 	return o
 }
 
-func (o UsersMapOutput) ToUsersMapOutputWithContext(ctx context.Context) UsersMapOutput {
+func (o UserMapOutput) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return o
 }
 
-func (o UsersMapOutput) MapIndex(k pulumi.StringInput) UsersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Users {
-		return vs[0].(map[string]Users)[vs[1].(string)]
-	}).(UsersOutput)
+func (o UserMapOutput) MapIndex(k pulumi.StringInput) UserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) User {
+		return vs[0].(map[string]User)[vs[1].(string)]
+	}).(UserOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(UsersOutput{})
-	pulumi.RegisterOutputType(UsersPtrOutput{})
-	pulumi.RegisterOutputType(UsersArrayOutput{})
-	pulumi.RegisterOutputType(UsersMapOutput{})
+	pulumi.RegisterOutputType(UserOutput{})
+	pulumi.RegisterOutputType(UserPtrOutput{})
+	pulumi.RegisterOutputType(UserArrayOutput{})
+	pulumi.RegisterOutputType(UserMapOutput{})
 }

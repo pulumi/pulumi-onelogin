@@ -6,18 +6,18 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./app";
-export * from "./appRoleAttachments";
-export * from "./appRules";
+export * from "./appRoleAttachment";
+export * from "./appRule";
 export * from "./getUser";
 export * from "./getUsers";
-export * from "./oidcApps";
+export * from "./oidcApp";
 export * from "./privileges";
 export * from "./provider";
-export * from "./roles";
-export * from "./samlApps";
-export * from "./smartHooks";
-export * from "./userMappings";
-export * from "./users";
+export * from "./role";
+export * from "./samlApp";
+export * from "./smartHook";
+export * from "./user";
+export * from "./userMapping";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -30,15 +30,15 @@ export {
 
 // Import resources to register:
 import { App } from "./app";
-import { AppRoleAttachments } from "./appRoleAttachments";
-import { AppRules } from "./appRules";
-import { OidcApps } from "./oidcApps";
+import { AppRoleAttachment } from "./appRoleAttachment";
+import { AppRule } from "./appRule";
+import { OidcApp } from "./oidcApp";
 import { Privileges } from "./privileges";
-import { Roles } from "./roles";
-import { SamlApps } from "./samlApps";
-import { SmartHooks } from "./smartHooks";
-import { UserMappings } from "./userMappings";
-import { Users } from "./users";
+import { Role } from "./role";
+import { SamlApp } from "./samlApp";
+import { SmartHook } from "./smartHook";
+import { User } from "./user";
+import { UserMapping } from "./userMapping";
 
 const _module = {
     version: utilities.getVersion(),
@@ -46,39 +46,39 @@ const _module = {
         switch (type) {
             case "onelogin:index/app:App":
                 return new App(name, <any>undefined, { urn })
-            case "onelogin:index/appRoleAttachments:AppRoleAttachments":
-                return new AppRoleAttachments(name, <any>undefined, { urn })
-            case "onelogin:index/appRules:AppRules":
-                return new AppRules(name, <any>undefined, { urn })
-            case "onelogin:index/oidcApps:OidcApps":
-                return new OidcApps(name, <any>undefined, { urn })
+            case "onelogin:index/appRoleAttachment:AppRoleAttachment":
+                return new AppRoleAttachment(name, <any>undefined, { urn })
+            case "onelogin:index/appRule:AppRule":
+                return new AppRule(name, <any>undefined, { urn })
+            case "onelogin:index/oidcApp:OidcApp":
+                return new OidcApp(name, <any>undefined, { urn })
             case "onelogin:index/privileges:Privileges":
                 return new Privileges(name, <any>undefined, { urn })
-            case "onelogin:index/roles:Roles":
-                return new Roles(name, <any>undefined, { urn })
-            case "onelogin:index/samlApps:SamlApps":
-                return new SamlApps(name, <any>undefined, { urn })
-            case "onelogin:index/smartHooks:SmartHooks":
-                return new SmartHooks(name, <any>undefined, { urn })
-            case "onelogin:index/userMappings:UserMappings":
-                return new UserMappings(name, <any>undefined, { urn })
-            case "onelogin:index/users:Users":
-                return new Users(name, <any>undefined, { urn })
+            case "onelogin:index/role:Role":
+                return new Role(name, <any>undefined, { urn })
+            case "onelogin:index/samlApp:SamlApp":
+                return new SamlApp(name, <any>undefined, { urn })
+            case "onelogin:index/smartHook:SmartHook":
+                return new SmartHook(name, <any>undefined, { urn })
+            case "onelogin:index/user:User":
+                return new User(name, <any>undefined, { urn })
+            case "onelogin:index/userMapping:UserMapping":
+                return new UserMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachments", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/appRules", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/oidcApps", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachment", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/appRule", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/oidcApp", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/roles", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/samlApps", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/smartHooks", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/userMappings", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/users", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/samlApp", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/smartHook", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/userMapping", _module)
 
 import { Provider } from "./provider";
 

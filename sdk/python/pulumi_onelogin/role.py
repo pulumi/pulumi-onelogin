@@ -8,17 +8,17 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['RolesArgs', 'Roles']
+__all__ = ['RoleArgs', 'Role']
 
 @pulumi.input_type
-class RolesArgs:
+class RoleArgs:
     def __init__(__self__, *,
                  admins: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
-        The set of arguments for constructing a Roles resource.
+        The set of arguments for constructing a Role resource.
         """
         if admins is not None:
             pulumi.set(__self__, "admins", admins)
@@ -67,14 +67,14 @@ class RolesArgs:
 
 
 @pulumi.input_type
-class _RolesState:
+class _RoleState:
     def __init__(__self__, *,
                  admins: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
-        Input properties used for looking up and filtering Roles resources.
+        Input properties used for looking up and filtering Role resources.
         """
         if admins is not None:
             pulumi.set(__self__, "admins", admins)
@@ -122,7 +122,7 @@ class _RolesState:
         pulumi.set(self, "users", value)
 
 
-class Roles(pulumi.CustomResource):
+class Role(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -133,7 +133,7 @@ class Roles(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        Create a Roles resource with the given unique name, props, and options.
+        Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -141,17 +141,17 @@ class Roles(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RolesArgs] = None,
+                 args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Roles resource with the given unique name, props, and options.
+        Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param RolesArgs args: The arguments to use to populate this resource's properties.
+        :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RolesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RoleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -174,14 +174,14 @@ class Roles(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RolesArgs.__new__(RolesArgs)
+            __props__ = RoleArgs.__new__(RoleArgs)
 
             __props__.__dict__["admins"] = admins
             __props__.__dict__["apps"] = apps
             __props__.__dict__["name"] = name
             __props__.__dict__["users"] = users
-        super(Roles, __self__).__init__(
-            'onelogin:index/roles:Roles',
+        super(Role, __self__).__init__(
+            'onelogin:index/role:Role',
             resource_name,
             __props__,
             opts)
@@ -193,9 +193,9 @@ class Roles(pulumi.CustomResource):
             admins: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'Roles':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'Role':
         """
-        Get an existing Roles resource's state with the given name, id, and optional extra
+        Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -204,13 +204,13 @@ class Roles(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _RolesState.__new__(_RolesState)
+        __props__ = _RoleState.__new__(_RoleState)
 
         __props__.__dict__["admins"] = admins
         __props__.__dict__["apps"] = apps
         __props__.__dict__["name"] = name
         __props__.__dict__["users"] = users
-        return Roles(resource_name, opts=opts, __props__=__props__)
+        return Role(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

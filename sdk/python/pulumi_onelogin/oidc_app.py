@@ -10,10 +10,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SamlAppsArgs', 'SamlApps']
+__all__ = ['OidcAppArgs', 'OidcApp']
 
 @pulumi.input_type
-class SamlAppsArgs:
+class OidcAppArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[int],
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
@@ -22,11 +22,11 @@ class SamlAppsArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]] = None,
                  provisioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  visible: Optional[pulumi.Input[bool]] = None):
         """
-        The set of arguments for constructing a SamlApps resource.
+        The set of arguments for constructing a OidcApp resource.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if allow_assumed_signin is not None:
@@ -113,11 +113,11 @@ class SamlAppsArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]]:
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]]):
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -140,12 +140,11 @@ class SamlAppsArgs:
 
 
 @pulumi.input_type
-class _SamlAppsState:
+class _OidcAppState:
     def __init__(__self__, *,
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[int]] = None,
                  brand_id: Optional[pulumi.Input[int]] = None,
-                 certificate: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -153,7 +152,7 @@ class _SamlAppsState:
                  icon_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
                  provisioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  sso: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -161,7 +160,7 @@ class _SamlAppsState:
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering SamlApps resources.
+        Input properties used for looking up and filtering OidcApp resources.
         """
         if allow_assumed_signin is not None:
             pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
@@ -169,8 +168,6 @@ class _SamlAppsState:
             pulumi.set(__self__, "auth_method", auth_method)
         if brand_id is not None:
             pulumi.set(__self__, "brand_id", brand_id)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if connector_id is not None:
@@ -226,15 +223,6 @@ class _SamlAppsState:
     @brand_id.setter
     def brand_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "brand_id", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "certificate", value)
 
     @property
     @pulumi.getter
@@ -301,11 +289,11 @@ class _SamlAppsState:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]]:
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SamlAppsParameterArgs']]]]):
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OidcAppParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -363,7 +351,7 @@ class _SamlAppsState:
         pulumi.set(self, "visible", value)
 
 
-class SamlApps(pulumi.CustomResource):
+class OidcApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -375,12 +363,12 @@ class SamlApps(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SamlAppsParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OidcAppParameterArgs']]]]] = None,
                  provisioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a SamlApps resource with the given unique name, props, and options.
+        Create a OidcApp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -388,17 +376,17 @@ class SamlApps(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SamlAppsArgs,
+                 args: OidcAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SamlApps resource with the given unique name, props, and options.
+        Create a OidcApp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param SamlAppsArgs args: The arguments to use to populate this resource's properties.
+        :param OidcAppArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SamlAppsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OidcAppArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -414,7 +402,7 @@ class SamlApps(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SamlAppsParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OidcAppParameterArgs']]]]] = None,
                  provisioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -427,7 +415,7 @@ class SamlApps(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SamlAppsArgs.__new__(SamlAppsArgs)
+            __props__ = OidcAppArgs.__new__(OidcAppArgs)
 
             __props__.__dict__["allow_assumed_signin"] = allow_assumed_signin
             __props__.__dict__["brand_id"] = brand_id
@@ -442,15 +430,14 @@ class SamlApps(pulumi.CustomResource):
             __props__.__dict__["provisioning"] = provisioning
             __props__.__dict__["visible"] = visible
             __props__.__dict__["auth_method"] = None
-            __props__.__dict__["certificate"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["icon_url"] = None
             __props__.__dict__["policy_id"] = None
             __props__.__dict__["sso"] = None
             __props__.__dict__["tab_id"] = None
             __props__.__dict__["updated_at"] = None
-        super(SamlApps, __self__).__init__(
-            'onelogin:index/samlApps:SamlApps',
+        super(OidcApp, __self__).__init__(
+            'onelogin:index/oidcApp:OidcApp',
             resource_name,
             __props__,
             opts)
@@ -462,7 +449,6 @@ class SamlApps(pulumi.CustomResource):
             allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
             auth_method: Optional[pulumi.Input[int]] = None,
             brand_id: Optional[pulumi.Input[int]] = None,
-            certificate: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             connector_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
@@ -470,15 +456,15 @@ class SamlApps(pulumi.CustomResource):
             icon_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SamlAppsParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OidcAppParameterArgs']]]]] = None,
             policy_id: Optional[pulumi.Input[int]] = None,
             provisioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
             sso: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tab_id: Optional[pulumi.Input[int]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            visible: Optional[pulumi.Input[bool]] = None) -> 'SamlApps':
+            visible: Optional[pulumi.Input[bool]] = None) -> 'OidcApp':
         """
-        Get an existing SamlApps resource's state with the given name, id, and optional extra
+        Get an existing OidcApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -487,12 +473,11 @@ class SamlApps(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SamlAppsState.__new__(_SamlAppsState)
+        __props__ = _OidcAppState.__new__(_OidcAppState)
 
         __props__.__dict__["allow_assumed_signin"] = allow_assumed_signin
         __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["brand_id"] = brand_id
-        __props__.__dict__["certificate"] = certificate
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["connector_id"] = connector_id
         __props__.__dict__["created_at"] = created_at
@@ -507,7 +492,7 @@ class SamlApps(pulumi.CustomResource):
         __props__.__dict__["tab_id"] = tab_id
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["visible"] = visible
-        return SamlApps(resource_name, opts=opts, __props__=__props__)
+        return OidcApp(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="allowAssumedSignin")
@@ -523,11 +508,6 @@ class SamlApps(pulumi.CustomResource):
     @pulumi.getter(name="brandId")
     def brand_id(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "brand_id")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> pulumi.Output[Mapping[str, str]]:
-        return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
@@ -566,7 +546,7 @@ class SamlApps(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Sequence['outputs.SamlAppsParameter']]:
+    def parameters(self) -> pulumi.Output[Sequence['outputs.OidcAppParameter']]:
         return pulumi.get(self, "parameters")
 
     @property

@@ -19,19 +19,19 @@ export interface AppParameter {
     values?: pulumi.Input<string>;
 }
 
-export interface AppRulesAction {
+export interface AppRuleAction {
     action: pulumi.Input<string>;
     expression?: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface AppRulesCondition {
+export interface AppRuleCondition {
     operator: pulumi.Input<string>;
     source: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
 
-export interface OidcAppsParameter {
+export interface OidcAppParameter {
     attributesTransformations?: pulumi.Input<string>;
     defaultValues?: pulumi.Input<string>;
     includeInSamlAssertion?: pulumi.Input<boolean>;
@@ -57,7 +57,7 @@ export interface PrivilegesPrivilegeStatement {
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface SamlAppsParameter {
+export interface SamlAppParameter {
     attributesTransformations?: pulumi.Input<string>;
     defaultValues?: pulumi.Input<string>;
     includeInSamlAssertion?: pulumi.Input<boolean>;
@@ -72,24 +72,24 @@ export interface SamlAppsParameter {
     values?: pulumi.Input<string>;
 }
 
-export interface SmartHooksCondition {
+export interface SmartHookCondition {
     operator: pulumi.Input<string>;
     source: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
 
-export interface SmartHooksOptions {
+export interface SmartHookOptions {
     locationEnabled?: pulumi.Input<boolean>;
     mfaDeviceInfoEnabled?: pulumi.Input<boolean>;
     riskEnabled?: pulumi.Input<boolean>;
 }
 
-export interface UserMappingsAction {
+export interface UserMappingAction {
     action: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface UserMappingsCondition {
+export interface UserMappingCondition {
     operator: pulumi.Input<string>;
     source: pulumi.Input<string>;
     value: pulumi.Input<string>;

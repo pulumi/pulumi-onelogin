@@ -22,24 +22,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "onelogin:index/app:App":
 		r = &App{}
-	case "onelogin:index/appRoleAttachments:AppRoleAttachments":
-		r = &AppRoleAttachments{}
-	case "onelogin:index/appRules:AppRules":
-		r = &AppRules{}
-	case "onelogin:index/oidcApps:OidcApps":
-		r = &OidcApps{}
+	case "onelogin:index/appRoleAttachment:AppRoleAttachment":
+		r = &AppRoleAttachment{}
+	case "onelogin:index/appRule:AppRule":
+		r = &AppRule{}
+	case "onelogin:index/oidcApp:OidcApp":
+		r = &OidcApp{}
 	case "onelogin:index/privileges:Privileges":
 		r = &Privileges{}
-	case "onelogin:index/roles:Roles":
-		r = &Roles{}
-	case "onelogin:index/samlApps:SamlApps":
-		r = &SamlApps{}
-	case "onelogin:index/smartHooks:SmartHooks":
-		r = &SmartHooks{}
-	case "onelogin:index/userMappings:UserMappings":
-		r = &UserMappings{}
-	case "onelogin:index/users:Users":
-		r = &Users{}
+	case "onelogin:index/role:Role":
+		r = &Role{}
+	case "onelogin:index/samlApp:SamlApp":
+		r = &SamlApp{}
+	case "onelogin:index/smartHook:SmartHook":
+		r = &SmartHook{}
+	case "onelogin:index/user:User":
+		r = &User{}
+	case "onelogin:index/userMapping:UserMapping":
+		r = &UserMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -78,17 +78,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/appRoleAttachments",
+		"index/appRoleAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/appRules",
+		"index/appRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/oidcApps",
+		"index/oidcApp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -98,27 +98,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/roles",
+		"index/role",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/samlApps",
+		"index/samlApp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/smartHooks",
+		"index/smartHook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/userMappings",
+		"index/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/users",
+		"index/userMapping",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

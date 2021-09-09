@@ -19,19 +19,19 @@ export interface AppParameter {
     values: string;
 }
 
-export interface AppRulesAction {
+export interface AppRuleAction {
     action: string;
     expression?: string;
     values: string[];
 }
 
-export interface AppRulesCondition {
+export interface AppRuleCondition {
     operator: string;
     source: string;
     value: string;
 }
 
-export interface OidcAppsParameter {
+export interface OidcAppParameter {
     attributesTransformations: string;
     defaultValues: string;
     includeInSamlAssertion: boolean;
@@ -57,7 +57,7 @@ export interface PrivilegesPrivilegeStatement {
     scopes: string[];
 }
 
-export interface SamlAppsParameter {
+export interface SamlAppParameter {
     attributesTransformations: string;
     defaultValues: string;
     includeInSamlAssertion: boolean;
@@ -72,24 +72,24 @@ export interface SamlAppsParameter {
     values: string;
 }
 
-export interface SmartHooksCondition {
+export interface SmartHookCondition {
     operator: string;
     source: string;
     value: string;
 }
 
-export interface SmartHooksOptions {
+export interface SmartHookOptions {
     locationEnabled?: boolean;
     mfaDeviceInfoEnabled?: boolean;
     riskEnabled?: boolean;
 }
 
-export interface UserMappingsAction {
+export interface UserMappingAction {
     action: string;
     values: string[];
 }
 
-export interface UserMappingsCondition {
+export interface UserMappingCondition {
     operator: string;
     source: string;
     value: string;

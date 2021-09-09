@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-export class SamlApps extends pulumi.CustomResource {
+export class OidcApp extends pulumi.CustomResource {
     /**
-     * Get an existing SamlApps resource's state with the given name, ID, and optional extra
+     * Get an existing OidcApp resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -15,28 +15,27 @@ export class SamlApps extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SamlAppsState, opts?: pulumi.CustomResourceOptions): SamlApps {
-        return new SamlApps(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OidcAppState, opts?: pulumi.CustomResourceOptions): OidcApp {
+        return new OidcApp(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/samlApps:SamlApps';
+    public static readonly __pulumiType = 'onelogin:index/oidcApp:OidcApp';
 
     /**
-     * Returns true if the given object is an instance of SamlApps.  This is designed to work even
+     * Returns true if the given object is an instance of OidcApp.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SamlApps {
+    public static isInstance(obj: any): obj is OidcApp {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SamlApps.__pulumiType;
+        return obj['__pulumiType'] === OidcApp.__pulumiType;
     }
 
     public readonly allowAssumedSignin!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly authMethod!: pulumi.Output<number>;
     public readonly brandId!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly certificate!: pulumi.Output<{[key: string]: string}>;
     public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly connectorId!: pulumi.Output<number>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -44,7 +43,7 @@ export class SamlApps extends pulumi.CustomResource {
     public /*out*/ readonly iconUrl!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly notes!: pulumi.Output<string | undefined>;
-    public readonly parameters!: pulumi.Output<outputs.SamlAppsParameter[]>;
+    public readonly parameters!: pulumi.Output<outputs.OidcAppParameter[]>;
     public /*out*/ readonly policyId!: pulumi.Output<number>;
     public readonly provisioning!: pulumi.Output<{[key: string]: boolean}>;
     public /*out*/ readonly sso!: pulumi.Output<{[key: string]: string}>;
@@ -53,22 +52,21 @@ export class SamlApps extends pulumi.CustomResource {
     public readonly visible!: pulumi.Output<boolean | undefined>;
 
     /**
-     * Create a SamlApps resource with the given unique name, arguments, and options.
+     * Create a OidcApp resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SamlAppsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SamlAppsArgs | SamlAppsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: OidcAppArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: OidcAppArgs | OidcAppState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SamlAppsState | undefined;
+            const state = argsOrState as OidcAppState | undefined;
             inputs["allowAssumedSignin"] = state ? state.allowAssumedSignin : undefined;
             inputs["authMethod"] = state ? state.authMethod : undefined;
             inputs["brandId"] = state ? state.brandId : undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
             inputs["configuration"] = state ? state.configuration : undefined;
             inputs["connectorId"] = state ? state.connectorId : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -84,7 +82,7 @@ export class SamlApps extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
             inputs["visible"] = state ? state.visible : undefined;
         } else {
-            const args = argsOrState as SamlAppsArgs | undefined;
+            const args = argsOrState as OidcAppArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
@@ -99,7 +97,6 @@ export class SamlApps extends pulumi.CustomResource {
             inputs["provisioning"] = args ? args.provisioning : undefined;
             inputs["visible"] = args ? args.visible : undefined;
             inputs["authMethod"] = undefined /*out*/;
-            inputs["certificate"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
             inputs["iconUrl"] = undefined /*out*/;
             inputs["policyId"] = undefined /*out*/;
@@ -110,18 +107,17 @@ export class SamlApps extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SamlApps.__pulumiType, name, inputs, opts);
+        super(OidcApp.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SamlApps resources.
+ * Input properties used for looking up and filtering OidcApp resources.
  */
-export interface SamlAppsState {
+export interface OidcAppState {
     allowAssumedSignin?: pulumi.Input<boolean>;
     authMethod?: pulumi.Input<number>;
     brandId?: pulumi.Input<number>;
-    certificate?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     connectorId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
@@ -129,7 +125,7 @@ export interface SamlAppsState {
     iconUrl?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SamlAppsParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.OidcAppParameter>[]>;
     policyId?: pulumi.Input<number>;
     provisioning?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     sso?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -139,9 +135,9 @@ export interface SamlAppsState {
 }
 
 /**
- * The set of arguments for constructing a SamlApps resource.
+ * The set of arguments for constructing a OidcApp resource.
  */
-export interface SamlAppsArgs {
+export interface OidcAppArgs {
     allowAssumedSignin?: pulumi.Input<boolean>;
     brandId?: pulumi.Input<number>;
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -149,7 +145,7 @@ export interface SamlAppsArgs {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SamlAppsParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.OidcAppParameter>[]>;
     provisioning?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     visible?: pulumi.Input<boolean>;
 }

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-export class UserMappings extends pulumi.CustomResource {
+export class UserMapping extends pulumi.CustomResource {
     /**
-     * Get an existing UserMappings resource's state with the given name, ID, and optional extra
+     * Get an existing UserMapping resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -15,44 +15,44 @@ export class UserMappings extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserMappingsState, opts?: pulumi.CustomResourceOptions): UserMappings {
-        return new UserMappings(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserMappingState, opts?: pulumi.CustomResourceOptions): UserMapping {
+        return new UserMapping(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/userMappings:UserMappings';
+    public static readonly __pulumiType = 'onelogin:index/userMapping:UserMapping';
 
     /**
-     * Returns true if the given object is an instance of UserMappings.  This is designed to work even
+     * Returns true if the given object is an instance of UserMapping.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is UserMappings {
+    public static isInstance(obj: any): obj is UserMapping {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === UserMappings.__pulumiType;
+        return obj['__pulumiType'] === UserMapping.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<outputs.UserMappingsAction[] | undefined>;
-    public readonly conditions!: pulumi.Output<outputs.UserMappingsCondition[] | undefined>;
+    public readonly actions!: pulumi.Output<outputs.UserMappingAction[] | undefined>;
+    public readonly conditions!: pulumi.Output<outputs.UserMappingCondition[] | undefined>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly match!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly position!: pulumi.Output<number>;
 
     /**
-     * Create a UserMappings resource with the given unique name, arguments, and options.
+     * Create a UserMapping resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: UserMappingsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: UserMappingsArgs | UserMappingsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: UserMappingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: UserMappingArgs | UserMappingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as UserMappingsState | undefined;
+            const state = argsOrState as UserMappingState | undefined;
             inputs["actions"] = state ? state.actions : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -60,7 +60,7 @@ export class UserMappings extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["position"] = state ? state.position : undefined;
         } else {
-            const args = argsOrState as UserMappingsArgs | undefined;
+            const args = argsOrState as UserMappingArgs | undefined;
             if ((!args || args.match === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
@@ -77,16 +77,16 @@ export class UserMappings extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(UserMappings.__pulumiType, name, inputs, opts);
+        super(UserMapping.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering UserMappings resources.
+ * Input properties used for looking up and filtering UserMapping resources.
  */
-export interface UserMappingsState {
-    actions?: pulumi.Input<pulumi.Input<inputs.UserMappingsAction>[]>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingsCondition>[]>;
+export interface UserMappingState {
+    actions?: pulumi.Input<pulumi.Input<inputs.UserMappingAction>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -94,11 +94,11 @@ export interface UserMappingsState {
 }
 
 /**
- * The set of arguments for constructing a UserMappings resource.
+ * The set of arguments for constructing a UserMapping resource.
  */
-export interface UserMappingsArgs {
-    actions?: pulumi.Input<pulumi.Input<inputs.UserMappingsAction>[]>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingsCondition>[]>;
+export interface UserMappingArgs {
+    actions?: pulumi.Input<pulumi.Input<inputs.UserMappingAction>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match: pulumi.Input<string>;
     name?: pulumi.Input<string>;

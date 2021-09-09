@@ -7,8 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func LookupUsers(ctx *pulumi.Context, args *LookupUsersArgs, opts ...pulumi.InvokeOption) (*LookupUsersResult, error) {
-	var rv LookupUsersResult
+func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
+	var rv GetUsersResult
 	err := ctx.Invoke("onelogin:index/getUsers:getUsers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -17,7 +17,7 @@ func LookupUsers(ctx *pulumi.Context, args *LookupUsersArgs, opts ...pulumi.Invo
 }
 
 // A collection of arguments for invoking getUsers.
-type LookupUsersArgs struct {
+type GetUsersArgs struct {
 	DirectoryId    *int    `pulumi:"directoryId"`
 	ExternalId     *int    `pulumi:"externalId"`
 	Firstname      *string `pulumi:"firstname"`
@@ -28,7 +28,7 @@ type LookupUsersArgs struct {
 }
 
 // A collection of values returned by getUsers.
-type LookupUsersResult struct {
+type GetUsersResult struct {
 	DirectoryId *int    `pulumi:"directoryId"`
 	ExternalId  *int    `pulumi:"externalId"`
 	Firstname   *string `pulumi:"firstname"`

@@ -10,19 +10,19 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['UserMappingsArgs', 'UserMappings']
+__all__ = ['UserMappingArgs', 'UserMapping']
 
 @pulumi.input_type
-class UserMappingsArgs:
+class UserMappingArgs:
     def __init__(__self__, *,
                  match: pulumi.Input[str],
                  position: pulumi.Input[int],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a UserMappings resource.
+        The set of arguments for constructing a UserMapping resource.
         """
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "position", position)
@@ -55,20 +55,20 @@ class UserMappingsArgs:
 
     @property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]]:
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]]):
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -91,16 +91,16 @@ class UserMappingsArgs:
 
 
 @pulumi.input_type
-class _UserMappingsState:
+class _UserMappingState:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[int]] = None):
         """
-        Input properties used for looking up and filtering UserMappings resources.
+        Input properties used for looking up and filtering UserMapping resources.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -117,20 +117,20 @@ class _UserMappingsState:
 
     @property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]]:
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsActionArgs']]]]):
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingsConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -170,20 +170,20 @@ class _UserMappingsState:
         pulumi.set(self, "position", value)
 
 
-class UserMappings(pulumi.CustomResource):
+class UserMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsActionArgs']]]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsConditionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingActionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingConditionArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a UserMappings resource with the given unique name, props, and options.
+        Create a UserMapping resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -191,17 +191,17 @@ class UserMappings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UserMappingsArgs,
+                 args: UserMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a UserMappings resource with the given unique name, props, and options.
+        Create a UserMapping resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param UserMappingsArgs args: The arguments to use to populate this resource's properties.
+        :param UserMappingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(UserMappingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(UserMappingArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -210,8 +210,8 @@ class UserMappings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsActionArgs']]]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsConditionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingActionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingConditionArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -226,7 +226,7 @@ class UserMappings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = UserMappingsArgs.__new__(UserMappingsArgs)
+            __props__ = UserMappingArgs.__new__(UserMappingArgs)
 
             __props__.__dict__["actions"] = actions
             __props__.__dict__["conditions"] = conditions
@@ -238,8 +238,8 @@ class UserMappings(pulumi.CustomResource):
             if position is None and not opts.urn:
                 raise TypeError("Missing required property 'position'")
             __props__.__dict__["position"] = position
-        super(UserMappings, __self__).__init__(
-            'onelogin:index/userMappings:UserMappings',
+        super(UserMapping, __self__).__init__(
+            'onelogin:index/userMapping:UserMapping',
             resource_name,
             __props__,
             opts)
@@ -248,14 +248,14 @@ class UserMappings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsActionArgs']]]]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingsConditionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingActionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingConditionArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             match: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            position: Optional[pulumi.Input[int]] = None) -> 'UserMappings':
+            position: Optional[pulumi.Input[int]] = None) -> 'UserMapping':
         """
-        Get an existing UserMappings resource's state with the given name, id, and optional extra
+        Get an existing UserMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -264,7 +264,7 @@ class UserMappings(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _UserMappingsState.__new__(_UserMappingsState)
+        __props__ = _UserMappingState.__new__(_UserMappingState)
 
         __props__.__dict__["actions"] = actions
         __props__.__dict__["conditions"] = conditions
@@ -272,16 +272,16 @@ class UserMappings(pulumi.CustomResource):
         __props__.__dict__["match"] = match
         __props__.__dict__["name"] = name
         __props__.__dict__["position"] = position
-        return UserMappings(resource_name, opts=opts, __props__=__props__)
+        return UserMapping(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def actions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingsAction']]]:
+    def actions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingAction']]]:
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingsCondition']]]:
+    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingCondition']]]:
         return pulumi.get(self, "conditions")
 
     @property

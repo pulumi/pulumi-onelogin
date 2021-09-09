@@ -10,16 +10,16 @@ from . import _utilities
 
 __all__ = [
     'AppParameterArgs',
-    'AppRulesActionArgs',
-    'AppRulesConditionArgs',
-    'OidcAppsParameterArgs',
+    'AppRuleActionArgs',
+    'AppRuleConditionArgs',
+    'OidcAppParameterArgs',
     'PrivilegesPrivilegeArgs',
     'PrivilegesPrivilegeStatementArgs',
-    'SamlAppsParameterArgs',
-    'SmartHooksConditionArgs',
-    'SmartHooksOptionsArgs',
-    'UserMappingsActionArgs',
-    'UserMappingsConditionArgs',
+    'SamlAppParameterArgs',
+    'SmartHookConditionArgs',
+    'SmartHookOptionsArgs',
+    'UserMappingActionArgs',
+    'UserMappingConditionArgs',
 ]
 
 @pulumi.input_type
@@ -171,7 +171,7 @@ class AppParameterArgs:
 
 
 @pulumi.input_type
-class AppRulesActionArgs:
+class AppRuleActionArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -210,7 +210,7 @@ class AppRulesActionArgs:
 
 
 @pulumi.input_type
-class AppRulesConditionArgs:
+class AppRuleConditionArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],
@@ -248,7 +248,7 @@ class AppRulesConditionArgs:
 
 
 @pulumi.input_type
-class OidcAppsParameterArgs:
+class OidcAppParameterArgs:
     def __init__(__self__, *,
                  param_key_name: pulumi.Input[str],
                  attributes_transformations: Optional[pulumi.Input[str]] = None,
@@ -462,7 +462,7 @@ class PrivilegesPrivilegeStatementArgs:
 
 
 @pulumi.input_type
-class SamlAppsParameterArgs:
+class SamlAppParameterArgs:
     def __init__(__self__, *,
                  param_key_name: pulumi.Input[str],
                  attributes_transformations: Optional[pulumi.Input[str]] = None,
@@ -610,7 +610,7 @@ class SamlAppsParameterArgs:
 
 
 @pulumi.input_type
-class SmartHooksConditionArgs:
+class SmartHookConditionArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],
@@ -648,7 +648,7 @@ class SmartHooksConditionArgs:
 
 
 @pulumi.input_type
-class SmartHooksOptionsArgs:
+class SmartHookOptionsArgs:
     def __init__(__self__, *,
                  location_enabled: Optional[pulumi.Input[bool]] = None,
                  mfa_device_info_enabled: Optional[pulumi.Input[bool]] = None,
@@ -689,7 +689,7 @@ class SmartHooksOptionsArgs:
 
 
 @pulumi.input_type
-class UserMappingsActionArgs:
+class UserMappingActionArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -716,7 +716,7 @@ class UserMappingsActionArgs:
 
 
 @pulumi.input_type
-class UserMappingsConditionArgs:
+class UserMappingConditionArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],

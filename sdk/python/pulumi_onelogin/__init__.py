@@ -6,18 +6,18 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .app import *
-from .app_role_attachments import *
-from .app_rules import *
+from .app_role_attachment import *
+from .app_rule import *
 from .get_user import *
 from .get_users import *
-from .oidc_apps import *
+from .oidc_app import *
 from .privileges import *
 from .provider import *
-from .roles import *
-from .saml_apps import *
-from .smart_hooks import *
-from .user_mappings import *
-from .users import *
+from .role import *
+from .saml_app import *
+from .smart_hook import *
+from .user import *
+from .user_mapping import *
 from ._inputs import *
 from . import outputs
 
@@ -40,26 +40,26 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/appRoleAttachments",
+  "mod": "index/appRoleAttachment",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/appRoleAttachments:AppRoleAttachments": "AppRoleAttachments"
+   "onelogin:index/appRoleAttachment:AppRoleAttachment": "AppRoleAttachment"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/appRules",
+  "mod": "index/appRule",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/appRules:AppRules": "AppRules"
+   "onelogin:index/appRule:AppRule": "AppRule"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/oidcApps",
+  "mod": "index/oidcApp",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/oidcApps:OidcApps": "OidcApps"
+   "onelogin:index/oidcApp:OidcApp": "OidcApp"
   }
  },
  {
@@ -72,42 +72,42 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/roles",
+  "mod": "index/role",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/roles:Roles": "Roles"
+   "onelogin:index/role:Role": "Role"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/samlApps",
+  "mod": "index/samlApp",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/samlApps:SamlApps": "SamlApps"
+   "onelogin:index/samlApp:SamlApp": "SamlApp"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/smartHooks",
+  "mod": "index/smartHook",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/smartHooks:SmartHooks": "SmartHooks"
+   "onelogin:index/smartHook:SmartHook": "SmartHook"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/userMappings",
+  "mod": "index/user",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/userMappings:UserMappings": "UserMappings"
+   "onelogin:index/user:User": "User"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/users",
+  "mod": "index/userMapping",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/users:Users": "Users"
+   "onelogin:index/userMapping:UserMapping": "UserMapping"
   }
  }
 ]

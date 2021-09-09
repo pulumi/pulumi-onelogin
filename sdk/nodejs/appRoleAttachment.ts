@@ -4,9 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export class AppRoleAttachments extends pulumi.CustomResource {
+export class AppRoleAttachment extends pulumi.CustomResource {
     /**
-     * Get an existing AppRoleAttachments resource's state with the given name, ID, and optional extra
+     * Get an existing AppRoleAttachment resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -14,44 +14,44 @@ export class AppRoleAttachments extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppRoleAttachmentsState, opts?: pulumi.CustomResourceOptions): AppRoleAttachments {
-        return new AppRoleAttachments(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppRoleAttachmentState, opts?: pulumi.CustomResourceOptions): AppRoleAttachment {
+        return new AppRoleAttachment(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/appRoleAttachments:AppRoleAttachments';
+    public static readonly __pulumiType = 'onelogin:index/appRoleAttachment:AppRoleAttachment';
 
     /**
-     * Returns true if the given object is an instance of AppRoleAttachments.  This is designed to work even
+     * Returns true if the given object is an instance of AppRoleAttachment.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AppRoleAttachments {
+    public static isInstance(obj: any): obj is AppRoleAttachment {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AppRoleAttachments.__pulumiType;
+        return obj['__pulumiType'] === AppRoleAttachment.__pulumiType;
     }
 
     public readonly appId!: pulumi.Output<number>;
     public readonly roleId!: pulumi.Output<number>;
 
     /**
-     * Create a AppRoleAttachments resource with the given unique name, arguments, and options.
+     * Create a AppRoleAttachment resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AppRoleAttachmentsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: AppRoleAttachmentsArgs | AppRoleAttachmentsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AppRoleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: AppRoleAttachmentArgs | AppRoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AppRoleAttachmentsState | undefined;
+            const state = argsOrState as AppRoleAttachmentState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
         } else {
-            const args = argsOrState as AppRoleAttachmentsArgs | undefined;
+            const args = argsOrState as AppRoleAttachmentArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
@@ -64,22 +64,22 @@ export class AppRoleAttachments extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AppRoleAttachments.__pulumiType, name, inputs, opts);
+        super(AppRoleAttachment.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering AppRoleAttachments resources.
+ * Input properties used for looking up and filtering AppRoleAttachment resources.
  */
-export interface AppRoleAttachmentsState {
+export interface AppRoleAttachmentState {
     appId?: pulumi.Input<number>;
     roleId?: pulumi.Input<number>;
 }
 
 /**
- * The set of arguments for constructing a AppRoleAttachments resource.
+ * The set of arguments for constructing a AppRoleAttachment resource.
  */
-export interface AppRoleAttachmentsArgs {
+export interface AppRoleAttachmentArgs {
     appId: pulumi.Input<number>;
     roleId: pulumi.Input<number>;
 }

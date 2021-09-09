@@ -155,7 +155,7 @@
                 }
             }
         },
-        "onelogin:index/AppRulesAction:AppRulesAction": {
+        "onelogin:index/AppRuleAction:AppRuleAction": {
             "properties": {
                 "action": {
                     "type": "string",
@@ -191,7 +191,7 @@
                 "values"
             ]
         },
-        "onelogin:index/AppRulesCondition:AppRulesCondition": {
+        "onelogin:index/AppRuleCondition:AppRuleCondition": {
             "properties": {
                 "operator": {
                     "type": "string",
@@ -225,7 +225,7 @@
                 "value"
             ]
         },
-        "onelogin:index/OidcAppsParameter:OidcAppsParameter": {
+        "onelogin:index/OidcAppParameter:OidcAppParameter": {
             "properties": {
                 "attributesTransformations": {
                     "type": "string",
@@ -414,7 +414,7 @@
                 "scopes"
             ]
         },
-        "onelogin:index/SamlAppsParameter:SamlAppsParameter": {
+        "onelogin:index/SamlAppParameter:SamlAppParameter": {
             "properties": {
                 "attributesTransformations": {
                     "type": "string",
@@ -536,7 +536,7 @@
                 }
             }
         },
-        "onelogin:index/SmartHooksCondition:SmartHooksCondition": {
+        "onelogin:index/SmartHookCondition:SmartHookCondition": {
             "properties": {
                 "operator": {
                     "type": "string",
@@ -570,7 +570,7 @@
                 "value"
             ]
         },
-        "onelogin:index/SmartHooksOptions:SmartHooksOptions": {
+        "onelogin:index/SmartHookOptions:SmartHookOptions": {
             "properties": {
                 "locationEnabled": {
                     "type": "boolean"
@@ -584,7 +584,7 @@
             },
             "type": "object"
         },
-        "onelogin:index/UserMappingsAction:UserMappingsAction": {
+        "onelogin:index/UserMappingAction:UserMappingAction": {
             "properties": {
                 "action": {
                     "type": "string",
@@ -612,7 +612,7 @@
                 "values"
             ]
         },
-        "onelogin:index/UserMappingsCondition:UserMappingsCondition": {
+        "onelogin:index/UserMappingCondition:UserMappingCondition": {
             "properties": {
                 "operator": {
                     "type": "string",
@@ -849,7 +849,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/appRoleAttachments:AppRoleAttachments": {
+        "onelogin:index/appRoleAttachment:AppRoleAttachment": {
             "properties": {
                 "appId": {
                     "type": "integer"
@@ -875,7 +875,7 @@
                 "roleId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering AppRoleAttachments resources.\n",
+                "description": "Input properties used for looking up and filtering AppRoleAttachment resources.\n",
                 "properties": {
                     "appId": {
                         "type": "integer"
@@ -887,12 +887,12 @@
                 "type": "object"
             }
         },
-        "onelogin:index/appRules:AppRules": {
+        "onelogin:index/appRule:AppRule": {
             "properties": {
                 "actions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/AppRulesAction:AppRulesAction"
+                        "$ref": "#/types/onelogin:index/AppRuleAction:AppRuleAction"
                     }
                 },
                 "appId": {
@@ -901,7 +901,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/AppRulesCondition:AppRulesCondition"
+                        "$ref": "#/types/onelogin:index/AppRuleCondition:AppRuleCondition"
                     }
                 },
                 "enabled": {
@@ -927,7 +927,7 @@
                 "actions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/AppRulesAction:AppRulesAction"
+                        "$ref": "#/types/onelogin:index/AppRuleAction:AppRuleAction"
                     }
                 },
                 "appId": {
@@ -936,7 +936,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/AppRulesCondition:AppRulesCondition"
+                        "$ref": "#/types/onelogin:index/AppRuleCondition:AppRuleCondition"
                     }
                 },
                 "enabled": {
@@ -957,12 +957,12 @@
                 "match"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering AppRules resources.\n",
+                "description": "Input properties used for looking up and filtering AppRule resources.\n",
                 "properties": {
                     "actions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/AppRulesAction:AppRulesAction"
+                            "$ref": "#/types/onelogin:index/AppRuleAction:AppRuleAction"
                         }
                     },
                     "appId": {
@@ -971,7 +971,7 @@
                     "conditions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/AppRulesCondition:AppRulesCondition"
+                            "$ref": "#/types/onelogin:index/AppRuleCondition:AppRuleCondition"
                         }
                     },
                     "enabled": {
@@ -990,7 +990,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/oidcApps:OidcApps": {
+        "onelogin:index/oidcApp:OidcApp": {
             "properties": {
                 "allowAssumedSignin": {
                     "type": "boolean"
@@ -1028,7 +1028,7 @@
                 "parameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/OidcAppsParameter:OidcAppsParameter"
+                        "$ref": "#/types/onelogin:index/OidcAppParameter:OidcAppParameter"
                     }
                 },
                 "policyId": {
@@ -1097,7 +1097,7 @@
                 "parameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/OidcAppsParameter:OidcAppsParameter"
+                        "$ref": "#/types/onelogin:index/OidcAppParameter:OidcAppParameter"
                     }
                 },
                 "provisioning": {
@@ -1114,7 +1114,7 @@
                 "connectorId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering OidcApps resources.\n",
+                "description": "Input properties used for looking up and filtering OidcApp resources.\n",
                 "properties": {
                     "allowAssumedSignin": {
                         "type": "boolean"
@@ -1152,7 +1152,7 @@
                     "parameters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/OidcAppsParameter:OidcAppsParameter"
+                            "$ref": "#/types/onelogin:index/OidcAppParameter:OidcAppParameter"
                         }
                     },
                     "policyId": {
@@ -1274,7 +1274,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/roles:Roles": {
+        "onelogin:index/role:Role": {
             "properties": {
                 "admins": {
                     "type": "array",
@@ -1325,7 +1325,7 @@
                 }
             },
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Roles resources.\n",
+                "description": "Input properties used for looking up and filtering Role resources.\n",
                 "properties": {
                     "admins": {
                         "type": "array",
@@ -1352,7 +1352,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/samlApps:SamlApps": {
+        "onelogin:index/samlApp:SamlApp": {
             "properties": {
                 "allowAssumedSignin": {
                     "type": "boolean"
@@ -1396,7 +1396,7 @@
                 "parameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SamlAppsParameter:SamlAppsParameter"
+                        "$ref": "#/types/onelogin:index/SamlAppParameter:SamlAppParameter"
                     }
                 },
                 "policyId": {
@@ -1466,7 +1466,7 @@
                 "parameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SamlAppsParameter:SamlAppsParameter"
+                        "$ref": "#/types/onelogin:index/SamlAppParameter:SamlAppParameter"
                     }
                 },
                 "provisioning": {
@@ -1483,7 +1483,7 @@
                 "connectorId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering SamlApps resources.\n",
+                "description": "Input properties used for looking up and filtering SamlApp resources.\n",
                 "properties": {
                     "allowAssumedSignin": {
                         "type": "boolean"
@@ -1527,7 +1527,7 @@
                     "parameters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/SamlAppsParameter:SamlAppsParameter"
+                            "$ref": "#/types/onelogin:index/SamlAppParameter:SamlAppParameter"
                         }
                     },
                     "policyId": {
@@ -1558,12 +1558,12 @@
                 "type": "object"
             }
         },
-        "onelogin:index/smartHooks:SmartHooks": {
+        "onelogin:index/smartHook:SmartHook": {
             "properties": {
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmartHooksCondition:SmartHooksCondition"
+                        "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                     }
                 },
                 "contextVersion": {
@@ -1585,7 +1585,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "$ref": "#/types/onelogin:index/SmartHooksOptions:SmartHooksOptions"
+                    "$ref": "#/types/onelogin:index/SmartHookOptions:SmartHookOptions"
                 },
                 "packages": {
                     "type": "object",
@@ -1630,7 +1630,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmartHooksCondition:SmartHooksCondition"
+                        "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                     }
                 },
                 "contextVersion": {
@@ -1649,7 +1649,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "$ref": "#/types/onelogin:index/SmartHooksOptions:SmartHooksOptions"
+                    "$ref": "#/types/onelogin:index/SmartHookOptions:SmartHookOptions"
                 },
                 "packages": {
                     "type": "object",
@@ -1681,12 +1681,12 @@
                 "type"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering SmartHooks resources.\n",
+                "description": "Input properties used for looking up and filtering SmartHook resources.\n",
                 "properties": {
                     "conditions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/SmartHooksCondition:SmartHooksCondition"
+                            "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                         }
                     },
                     "contextVersion": {
@@ -1708,7 +1708,7 @@
                         "type": "string"
                     },
                     "options": {
-                        "$ref": "#/types/onelogin:index/SmartHooksOptions:SmartHooksOptions"
+                        "$ref": "#/types/onelogin:index/SmartHookOptions:SmartHookOptions"
                     },
                     "packages": {
                         "type": "object",
@@ -1738,100 +1738,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/userMappings:UserMappings": {
-            "properties": {
-                "actions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/onelogin:index/UserMappingsAction:UserMappingsAction"
-                    }
-                },
-                "conditions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/onelogin:index/UserMappingsCondition:UserMappingsCondition"
-                    }
-                },
-                "enabled": {
-                    "type": "boolean"
-                },
-                "match": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "position": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "match",
-                "name",
-                "position"
-            ],
-            "inputProperties": {
-                "actions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/onelogin:index/UserMappingsAction:UserMappingsAction"
-                    }
-                },
-                "conditions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/onelogin:index/UserMappingsCondition:UserMappingsCondition"
-                    }
-                },
-                "enabled": {
-                    "type": "boolean"
-                },
-                "match": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "position": {
-                    "type": "integer"
-                }
-            },
-            "requiredInputs": [
-                "match",
-                "position"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering UserMappings resources.\n",
-                "properties": {
-                    "actions": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/onelogin:index/UserMappingsAction:UserMappingsAction"
-                        }
-                    },
-                    "conditions": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/onelogin:index/UserMappingsCondition:UserMappingsCondition"
-                        }
-                    },
-                    "enabled": {
-                        "type": "boolean"
-                    },
-                    "match": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "position": {
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "onelogin:index/users:Users": {
+        "onelogin:index/user:User": {
             "properties": {
                 "comment": {
                     "type": "string"
@@ -1991,7 +1898,7 @@
                 "username"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Users resources.\n",
+                "description": "Input properties used for looking up and filtering User resources.\n",
                 "properties": {
                     "comment": {
                         "type": "string"
@@ -2061,6 +1968,99 @@
                     },
                     "userprincipalname": {
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "onelogin:index/userMapping:UserMapping": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/UserMappingAction:UserMappingAction"
+                    }
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/UserMappingCondition:UserMappingCondition"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "match": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "match",
+                "name",
+                "position"
+            ],
+            "inputProperties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/UserMappingAction:UserMappingAction"
+                    }
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/UserMappingCondition:UserMappingCondition"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "match": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "match",
+                "position"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserMapping resources.\n",
+                "properties": {
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/UserMappingAction:UserMappingAction"
+                        }
+                    },
+                    "conditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/UserMappingCondition:UserMappingCondition"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "match": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "integer"
                     }
                 },
                 "type": "object"

@@ -8,10 +8,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['UsersArgs', 'Users']
+__all__ = ['UserArgs', 'User']
 
 @pulumi.input_type
-class UsersArgs:
+class UserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
                  username: pulumi.Input[str],
@@ -36,7 +36,7 @@ class UsersArgs:
                  trusted_idp_id: Optional[pulumi.Input[int]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a Users resource.
+        The set of arguments for constructing a User resource.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "username", username)
@@ -281,7 +281,7 @@ class UsersArgs:
 
 
 @pulumi.input_type
-class _UsersState:
+class _UserState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
@@ -306,7 +306,7 @@ class _UsersState:
                  username: Optional[pulumi.Input[str]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Users resources.
+        Input properties used for looking up and filtering User resources.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -552,7 +552,7 @@ class _UsersState:
         pulumi.set(self, "userprincipalname", value)
 
 
-class Users(pulumi.CustomResource):
+class User(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -581,7 +581,7 @@ class Users(pulumi.CustomResource):
                  userprincipalname: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Users resource with the given unique name, props, and options.
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -589,17 +589,17 @@ class Users(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UsersArgs,
+                 args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Users resource with the given unique name, props, and options.
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param UsersArgs args: The arguments to use to populate this resource's properties.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(UsersArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -640,7 +640,7 @@ class Users(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = UsersArgs.__new__(UsersArgs)
+            __props__ = UserArgs.__new__(UserArgs)
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["company"] = company
@@ -668,8 +668,8 @@ class Users(pulumi.CustomResource):
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["userprincipalname"] = userprincipalname
-        super(Users, __self__).__init__(
-            'onelogin:index/users:Users',
+        super(User, __self__).__init__(
+            'onelogin:index/user:User',
             resource_name,
             __props__,
             opts)
@@ -699,9 +699,9 @@ class Users(pulumi.CustomResource):
             title: Optional[pulumi.Input[str]] = None,
             trusted_idp_id: Optional[pulumi.Input[int]] = None,
             username: Optional[pulumi.Input[str]] = None,
-            userprincipalname: Optional[pulumi.Input[str]] = None) -> 'Users':
+            userprincipalname: Optional[pulumi.Input[str]] = None) -> 'User':
         """
-        Get an existing Users resource's state with the given name, id, and optional extra
+        Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -710,7 +710,7 @@ class Users(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _UsersState.__new__(_UsersState)
+        __props__ = _UserState.__new__(_UserState)
 
         __props__.__dict__["comment"] = comment
         __props__.__dict__["company"] = company
@@ -734,7 +734,7 @@ class Users(pulumi.CustomResource):
         __props__.__dict__["trusted_idp_id"] = trusted_idp_id
         __props__.__dict__["username"] = username
         __props__.__dict__["userprincipalname"] = userprincipalname
-        return Users(resource_name, opts=opts, __props__=__props__)
+        return User(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

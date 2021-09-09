@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-export class SmartHooks extends pulumi.CustomResource {
+export class SmartHook extends pulumi.CustomResource {
     /**
-     * Get an existing SmartHooks resource's state with the given name, ID, and optional extra
+     * Get an existing SmartHook resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -15,31 +15,31 @@ export class SmartHooks extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SmartHooksState, opts?: pulumi.CustomResourceOptions): SmartHooks {
-        return new SmartHooks(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SmartHookState, opts?: pulumi.CustomResourceOptions): SmartHook {
+        return new SmartHook(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/smartHooks:SmartHooks';
+    public static readonly __pulumiType = 'onelogin:index/smartHook:SmartHook';
 
     /**
-     * Returns true if the given object is an instance of SmartHooks.  This is designed to work even
+     * Returns true if the given object is an instance of SmartHook.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SmartHooks {
+    public static isInstance(obj: any): obj is SmartHook {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SmartHooks.__pulumiType;
+        return obj['__pulumiType'] === SmartHook.__pulumiType;
     }
 
-    public readonly conditions!: pulumi.Output<outputs.SmartHooksCondition[] | undefined>;
+    public readonly conditions!: pulumi.Output<outputs.SmartHookCondition[] | undefined>;
     public readonly contextVersion!: pulumi.Output<string>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public readonly disabled!: pulumi.Output<boolean>;
     public readonly envVars!: pulumi.Output<string[]>;
     public readonly function!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<outputs.SmartHooksOptions | undefined>;
+    public readonly options!: pulumi.Output<outputs.SmartHookOptions | undefined>;
     public readonly packages!: pulumi.Output<{[key: string]: string}>;
     public readonly retries!: pulumi.Output<number>;
     public readonly runtime!: pulumi.Output<string>;
@@ -49,18 +49,18 @@ export class SmartHooks extends pulumi.CustomResource {
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
-     * Create a SmartHooks resource with the given unique name, arguments, and options.
+     * Create a SmartHook resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SmartHooksArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SmartHooksArgs | SmartHooksState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SmartHookArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SmartHookArgs | SmartHookState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SmartHooksState | undefined;
+            const state = argsOrState as SmartHookState | undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
             inputs["contextVersion"] = state ? state.contextVersion : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -76,7 +76,7 @@ export class SmartHooks extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
-            const args = argsOrState as SmartHooksArgs | undefined;
+            const args = argsOrState as SmartHookArgs | undefined;
             if ((!args || args.disabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disabled'");
             }
@@ -119,21 +119,21 @@ export class SmartHooks extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SmartHooks.__pulumiType, name, inputs, opts);
+        super(SmartHook.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SmartHooks resources.
+ * Input properties used for looking up and filtering SmartHook resources.
  */
-export interface SmartHooksState {
-    conditions?: pulumi.Input<pulumi.Input<inputs.SmartHooksCondition>[]>;
+export interface SmartHookState {
+    conditions?: pulumi.Input<pulumi.Input<inputs.SmartHookCondition>[]>;
     contextVersion?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     disabled?: pulumi.Input<boolean>;
     envVars?: pulumi.Input<pulumi.Input<string>[]>;
     function?: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SmartHooksOptions>;
+    options?: pulumi.Input<inputs.SmartHookOptions>;
     packages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     retries?: pulumi.Input<number>;
     runtime?: pulumi.Input<string>;
@@ -144,15 +144,15 @@ export interface SmartHooksState {
 }
 
 /**
- * The set of arguments for constructing a SmartHooks resource.
+ * The set of arguments for constructing a SmartHook resource.
  */
-export interface SmartHooksArgs {
-    conditions?: pulumi.Input<pulumi.Input<inputs.SmartHooksCondition>[]>;
+export interface SmartHookArgs {
+    conditions?: pulumi.Input<pulumi.Input<inputs.SmartHookCondition>[]>;
     contextVersion?: pulumi.Input<string>;
     disabled: pulumi.Input<boolean>;
     envVars: pulumi.Input<pulumi.Input<string>[]>;
     function: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SmartHooksOptions>;
+    options?: pulumi.Input<inputs.SmartHookOptions>;
     packages: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     retries: pulumi.Input<number>;
     runtime: pulumi.Input<string>;

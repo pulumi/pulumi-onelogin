@@ -60,9 +60,9 @@ bin/pulumi-resource-onelogin.tar.gz: bin/pulumi-resource-onelogin
 	rm -f $@
 	tar cz -C $(@D) -f $@ $(<F)
 
-dist: bin/pulumi-resource-onelogin.tar.gz
+dist: build_sdks bin/pulumi-resource-onelogin.tar.gz
 
-build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet # build all the sdks
+build_sdks:: install_plugins provider build_nodejs build_python build_go #build_dotnet # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs:: install_plugins tfgen # build the node sdk

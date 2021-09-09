@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-export class AppRules extends pulumi.CustomResource {
+export class AppRule extends pulumi.CustomResource {
     /**
-     * Get an existing AppRules resource's state with the given name, ID, and optional extra
+     * Get an existing AppRule resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -15,45 +15,45 @@ export class AppRules extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppRulesState, opts?: pulumi.CustomResourceOptions): AppRules {
-        return new AppRules(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppRuleState, opts?: pulumi.CustomResourceOptions): AppRule {
+        return new AppRule(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/appRules:AppRules';
+    public static readonly __pulumiType = 'onelogin:index/appRule:AppRule';
 
     /**
-     * Returns true if the given object is an instance of AppRules.  This is designed to work even
+     * Returns true if the given object is an instance of AppRule.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AppRules {
+    public static isInstance(obj: any): obj is AppRule {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AppRules.__pulumiType;
+        return obj['__pulumiType'] === AppRule.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<outputs.AppRulesAction[] | undefined>;
+    public readonly actions!: pulumi.Output<outputs.AppRuleAction[] | undefined>;
     public readonly appId!: pulumi.Output<string>;
-    public readonly conditions!: pulumi.Output<outputs.AppRulesCondition[] | undefined>;
+    public readonly conditions!: pulumi.Output<outputs.AppRuleCondition[] | undefined>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly match!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly position!: pulumi.Output<number>;
 
     /**
-     * Create a AppRules resource with the given unique name, arguments, and options.
+     * Create a AppRule resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AppRulesArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: AppRulesArgs | AppRulesState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AppRuleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: AppRuleArgs | AppRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AppRulesState | undefined;
+            const state = argsOrState as AppRuleState | undefined;
             inputs["actions"] = state ? state.actions : undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
@@ -62,7 +62,7 @@ export class AppRules extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["position"] = state ? state.position : undefined;
         } else {
-            const args = argsOrState as AppRulesArgs | undefined;
+            const args = argsOrState as AppRuleArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
@@ -80,17 +80,17 @@ export class AppRules extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AppRules.__pulumiType, name, inputs, opts);
+        super(AppRule.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering AppRules resources.
+ * Input properties used for looking up and filtering AppRule resources.
  */
-export interface AppRulesState {
-    actions?: pulumi.Input<pulumi.Input<inputs.AppRulesAction>[]>;
+export interface AppRuleState {
+    actions?: pulumi.Input<pulumi.Input<inputs.AppRuleAction>[]>;
     appId?: pulumi.Input<string>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.AppRulesCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AppRuleCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -98,12 +98,12 @@ export interface AppRulesState {
 }
 
 /**
- * The set of arguments for constructing a AppRules resource.
+ * The set of arguments for constructing a AppRule resource.
  */
-export interface AppRulesArgs {
-    actions?: pulumi.Input<pulumi.Input<inputs.AppRulesAction>[]>;
+export interface AppRuleArgs {
+    actions?: pulumi.Input<pulumi.Input<inputs.AppRuleAction>[]>;
     appId: pulumi.Input<string>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.AppRulesCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AppRuleCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match: pulumi.Input<string>;
     name?: pulumi.Input<string>;

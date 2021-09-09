@@ -118,34 +118,34 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  makeResource(mainMod, "App"),
 			},
 			"onelogin_app_role_attachments": {
-				Tok:  makeResource(mainMod, "AppRoleAttachments"),
+				Tok:  makeResource(mainMod, "AppRoleAttachment"),
 			},
 			"onelogin_app_rules": {
-				Tok:  makeResource(mainMod, "AppRules"),
+				Tok:  makeResource(mainMod, "AppRule"),
 			},
 			"onelogin_auth_server": {
 				Tok:  makeResource(mainMod, "AuthServer"),
 			},
 			"onelogin_oidc_apps": {
-				Tok:  makeResource(mainMod, "OidcApps"),
+				Tok:  makeResource(mainMod, "OidcApp"),
 			},
 			"onelogin_privileges": {
 				Tok:  makeResource(mainMod, "Privileges"),
 			},
 			"onelogin_roles": {
-				Tok:  makeResource(mainMod, "Roles"),
+				Tok:  makeResource(mainMod, "Role"),
 			},
 			"onelogin_saml_apps": {
-				Tok:  makeResource(mainMod, "SamlApps"),
+				Tok:  makeResource(mainMod, "SamlApp"),
 			},
 			"onelogin_smarthooks": {
-				Tok:  makeResource(mainMod, "SmartHooks"),
+				Tok:  makeResource(mainMod, "SmartHook"),
 			},
 			"onelogin_users": {
-				Tok:  makeResource(mainMod, "Users"),
+				Tok:  makeResource(mainMod, "User"),
 			},
 			"onelogin_user_mappings": {
-				Tok:  makeResource(mainMod, "UserMappings"),
+				Tok:  makeResource(mainMod, "UserMapping"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

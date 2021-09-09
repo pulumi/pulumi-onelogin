@@ -170,219 +170,219 @@ func (o AppParameterArrayOutput) Index(i pulumi.IntInput) AppParameterOutput {
 	}).(AppParameterOutput)
 }
 
-type AppRulesAction struct {
+type AppRuleAction struct {
 	Action     string   `pulumi:"action"`
 	Expression *string  `pulumi:"expression"`
 	Values     []string `pulumi:"values"`
 }
 
-// AppRulesActionInput is an input type that accepts AppRulesActionArgs and AppRulesActionOutput values.
-// You can construct a concrete instance of `AppRulesActionInput` via:
+// AppRuleActionInput is an input type that accepts AppRuleActionArgs and AppRuleActionOutput values.
+// You can construct a concrete instance of `AppRuleActionInput` via:
 //
-//          AppRulesActionArgs{...}
-type AppRulesActionInput interface {
+//          AppRuleActionArgs{...}
+type AppRuleActionInput interface {
 	pulumi.Input
 
-	ToAppRulesActionOutput() AppRulesActionOutput
-	ToAppRulesActionOutputWithContext(context.Context) AppRulesActionOutput
+	ToAppRuleActionOutput() AppRuleActionOutput
+	ToAppRuleActionOutputWithContext(context.Context) AppRuleActionOutput
 }
 
-type AppRulesActionArgs struct {
+type AppRuleActionArgs struct {
 	Action     pulumi.StringInput      `pulumi:"action"`
 	Expression pulumi.StringPtrInput   `pulumi:"expression"`
 	Values     pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (AppRulesActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRulesAction)(nil)).Elem()
+func (AppRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRuleAction)(nil)).Elem()
 }
 
-func (i AppRulesActionArgs) ToAppRulesActionOutput() AppRulesActionOutput {
-	return i.ToAppRulesActionOutputWithContext(context.Background())
+func (i AppRuleActionArgs) ToAppRuleActionOutput() AppRuleActionOutput {
+	return i.ToAppRuleActionOutputWithContext(context.Background())
 }
 
-func (i AppRulesActionArgs) ToAppRulesActionOutputWithContext(ctx context.Context) AppRulesActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRulesActionOutput)
+func (i AppRuleActionArgs) ToAppRuleActionOutputWithContext(ctx context.Context) AppRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRuleActionOutput)
 }
 
-// AppRulesActionArrayInput is an input type that accepts AppRulesActionArray and AppRulesActionArrayOutput values.
-// You can construct a concrete instance of `AppRulesActionArrayInput` via:
+// AppRuleActionArrayInput is an input type that accepts AppRuleActionArray and AppRuleActionArrayOutput values.
+// You can construct a concrete instance of `AppRuleActionArrayInput` via:
 //
-//          AppRulesActionArray{ AppRulesActionArgs{...} }
-type AppRulesActionArrayInput interface {
+//          AppRuleActionArray{ AppRuleActionArgs{...} }
+type AppRuleActionArrayInput interface {
 	pulumi.Input
 
-	ToAppRulesActionArrayOutput() AppRulesActionArrayOutput
-	ToAppRulesActionArrayOutputWithContext(context.Context) AppRulesActionArrayOutput
+	ToAppRuleActionArrayOutput() AppRuleActionArrayOutput
+	ToAppRuleActionArrayOutputWithContext(context.Context) AppRuleActionArrayOutput
 }
 
-type AppRulesActionArray []AppRulesActionInput
+type AppRuleActionArray []AppRuleActionInput
 
-func (AppRulesActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRulesAction)(nil)).Elem()
+func (AppRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRuleAction)(nil)).Elem()
 }
 
-func (i AppRulesActionArray) ToAppRulesActionArrayOutput() AppRulesActionArrayOutput {
-	return i.ToAppRulesActionArrayOutputWithContext(context.Background())
+func (i AppRuleActionArray) ToAppRuleActionArrayOutput() AppRuleActionArrayOutput {
+	return i.ToAppRuleActionArrayOutputWithContext(context.Background())
 }
 
-func (i AppRulesActionArray) ToAppRulesActionArrayOutputWithContext(ctx context.Context) AppRulesActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRulesActionArrayOutput)
+func (i AppRuleActionArray) ToAppRuleActionArrayOutputWithContext(ctx context.Context) AppRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRuleActionArrayOutput)
 }
 
-type AppRulesActionOutput struct{ *pulumi.OutputState }
+type AppRuleActionOutput struct{ *pulumi.OutputState }
 
-func (AppRulesActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRulesAction)(nil)).Elem()
+func (AppRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRuleAction)(nil)).Elem()
 }
 
-func (o AppRulesActionOutput) ToAppRulesActionOutput() AppRulesActionOutput {
+func (o AppRuleActionOutput) ToAppRuleActionOutput() AppRuleActionOutput {
 	return o
 }
 
-func (o AppRulesActionOutput) ToAppRulesActionOutputWithContext(ctx context.Context) AppRulesActionOutput {
+func (o AppRuleActionOutput) ToAppRuleActionOutputWithContext(ctx context.Context) AppRuleActionOutput {
 	return o
 }
 
-func (o AppRulesActionOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRulesAction) string { return v.Action }).(pulumi.StringOutput)
+func (o AppRuleActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRuleAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o AppRulesActionOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppRulesAction) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o AppRuleActionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppRuleAction) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-func (o AppRulesActionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AppRulesAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o AppRuleActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppRuleAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type AppRulesActionArrayOutput struct{ *pulumi.OutputState }
+type AppRuleActionArrayOutput struct{ *pulumi.OutputState }
 
-func (AppRulesActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRulesAction)(nil)).Elem()
+func (AppRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRuleAction)(nil)).Elem()
 }
 
-func (o AppRulesActionArrayOutput) ToAppRulesActionArrayOutput() AppRulesActionArrayOutput {
+func (o AppRuleActionArrayOutput) ToAppRuleActionArrayOutput() AppRuleActionArrayOutput {
 	return o
 }
 
-func (o AppRulesActionArrayOutput) ToAppRulesActionArrayOutputWithContext(ctx context.Context) AppRulesActionArrayOutput {
+func (o AppRuleActionArrayOutput) ToAppRuleActionArrayOutputWithContext(ctx context.Context) AppRuleActionArrayOutput {
 	return o
 }
 
-func (o AppRulesActionArrayOutput) Index(i pulumi.IntInput) AppRulesActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRulesAction {
-		return vs[0].([]AppRulesAction)[vs[1].(int)]
-	}).(AppRulesActionOutput)
+func (o AppRuleActionArrayOutput) Index(i pulumi.IntInput) AppRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRuleAction {
+		return vs[0].([]AppRuleAction)[vs[1].(int)]
+	}).(AppRuleActionOutput)
 }
 
-type AppRulesCondition struct {
+type AppRuleCondition struct {
 	Operator string `pulumi:"operator"`
 	Source   string `pulumi:"source"`
 	Value    string `pulumi:"value"`
 }
 
-// AppRulesConditionInput is an input type that accepts AppRulesConditionArgs and AppRulesConditionOutput values.
-// You can construct a concrete instance of `AppRulesConditionInput` via:
+// AppRuleConditionInput is an input type that accepts AppRuleConditionArgs and AppRuleConditionOutput values.
+// You can construct a concrete instance of `AppRuleConditionInput` via:
 //
-//          AppRulesConditionArgs{...}
-type AppRulesConditionInput interface {
+//          AppRuleConditionArgs{...}
+type AppRuleConditionInput interface {
 	pulumi.Input
 
-	ToAppRulesConditionOutput() AppRulesConditionOutput
-	ToAppRulesConditionOutputWithContext(context.Context) AppRulesConditionOutput
+	ToAppRuleConditionOutput() AppRuleConditionOutput
+	ToAppRuleConditionOutputWithContext(context.Context) AppRuleConditionOutput
 }
 
-type AppRulesConditionArgs struct {
+type AppRuleConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	Source   pulumi.StringInput `pulumi:"source"`
 	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (AppRulesConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRulesCondition)(nil)).Elem()
+func (AppRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRuleCondition)(nil)).Elem()
 }
 
-func (i AppRulesConditionArgs) ToAppRulesConditionOutput() AppRulesConditionOutput {
-	return i.ToAppRulesConditionOutputWithContext(context.Background())
+func (i AppRuleConditionArgs) ToAppRuleConditionOutput() AppRuleConditionOutput {
+	return i.ToAppRuleConditionOutputWithContext(context.Background())
 }
 
-func (i AppRulesConditionArgs) ToAppRulesConditionOutputWithContext(ctx context.Context) AppRulesConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRulesConditionOutput)
+func (i AppRuleConditionArgs) ToAppRuleConditionOutputWithContext(ctx context.Context) AppRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRuleConditionOutput)
 }
 
-// AppRulesConditionArrayInput is an input type that accepts AppRulesConditionArray and AppRulesConditionArrayOutput values.
-// You can construct a concrete instance of `AppRulesConditionArrayInput` via:
+// AppRuleConditionArrayInput is an input type that accepts AppRuleConditionArray and AppRuleConditionArrayOutput values.
+// You can construct a concrete instance of `AppRuleConditionArrayInput` via:
 //
-//          AppRulesConditionArray{ AppRulesConditionArgs{...} }
-type AppRulesConditionArrayInput interface {
+//          AppRuleConditionArray{ AppRuleConditionArgs{...} }
+type AppRuleConditionArrayInput interface {
 	pulumi.Input
 
-	ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput
-	ToAppRulesConditionArrayOutputWithContext(context.Context) AppRulesConditionArrayOutput
+	ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput
+	ToAppRuleConditionArrayOutputWithContext(context.Context) AppRuleConditionArrayOutput
 }
 
-type AppRulesConditionArray []AppRulesConditionInput
+type AppRuleConditionArray []AppRuleConditionInput
 
-func (AppRulesConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRulesCondition)(nil)).Elem()
+func (AppRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRuleCondition)(nil)).Elem()
 }
 
-func (i AppRulesConditionArray) ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput {
-	return i.ToAppRulesConditionArrayOutputWithContext(context.Background())
+func (i AppRuleConditionArray) ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput {
+	return i.ToAppRuleConditionArrayOutputWithContext(context.Background())
 }
 
-func (i AppRulesConditionArray) ToAppRulesConditionArrayOutputWithContext(ctx context.Context) AppRulesConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRulesConditionArrayOutput)
+func (i AppRuleConditionArray) ToAppRuleConditionArrayOutputWithContext(ctx context.Context) AppRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRuleConditionArrayOutput)
 }
 
-type AppRulesConditionOutput struct{ *pulumi.OutputState }
+type AppRuleConditionOutput struct{ *pulumi.OutputState }
 
-func (AppRulesConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRulesCondition)(nil)).Elem()
+func (AppRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRuleCondition)(nil)).Elem()
 }
 
-func (o AppRulesConditionOutput) ToAppRulesConditionOutput() AppRulesConditionOutput {
+func (o AppRuleConditionOutput) ToAppRuleConditionOutput() AppRuleConditionOutput {
 	return o
 }
 
-func (o AppRulesConditionOutput) ToAppRulesConditionOutputWithContext(ctx context.Context) AppRulesConditionOutput {
+func (o AppRuleConditionOutput) ToAppRuleConditionOutputWithContext(ctx context.Context) AppRuleConditionOutput {
 	return o
 }
 
-func (o AppRulesConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRulesCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o AppRuleConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRuleCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o AppRulesConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRulesCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o AppRuleConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRuleCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-func (o AppRulesConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRulesCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o AppRuleConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRuleCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type AppRulesConditionArrayOutput struct{ *pulumi.OutputState }
+type AppRuleConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (AppRulesConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRulesCondition)(nil)).Elem()
+func (AppRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRuleCondition)(nil)).Elem()
 }
 
-func (o AppRulesConditionArrayOutput) ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput {
+func (o AppRuleConditionArrayOutput) ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput {
 	return o
 }
 
-func (o AppRulesConditionArrayOutput) ToAppRulesConditionArrayOutputWithContext(ctx context.Context) AppRulesConditionArrayOutput {
+func (o AppRuleConditionArrayOutput) ToAppRuleConditionArrayOutputWithContext(ctx context.Context) AppRuleConditionArrayOutput {
 	return o
 }
 
-func (o AppRulesConditionArrayOutput) Index(i pulumi.IntInput) AppRulesConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRulesCondition {
-		return vs[0].([]AppRulesCondition)[vs[1].(int)]
-	}).(AppRulesConditionOutput)
+func (o AppRuleConditionArrayOutput) Index(i pulumi.IntInput) AppRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRuleCondition {
+		return vs[0].([]AppRuleCondition)[vs[1].(int)]
+	}).(AppRuleConditionOutput)
 }
 
-type OidcAppsParameter struct {
+type OidcAppParameter struct {
 	AttributesTransformations *string `pulumi:"attributesTransformations"`
 	DefaultValues             *string `pulumi:"defaultValues"`
 	IncludeInSamlAssertion    *bool   `pulumi:"includeInSamlAssertion"`
@@ -397,18 +397,18 @@ type OidcAppsParameter struct {
 	Values                    *string `pulumi:"values"`
 }
 
-// OidcAppsParameterInput is an input type that accepts OidcAppsParameterArgs and OidcAppsParameterOutput values.
-// You can construct a concrete instance of `OidcAppsParameterInput` via:
+// OidcAppParameterInput is an input type that accepts OidcAppParameterArgs and OidcAppParameterOutput values.
+// You can construct a concrete instance of `OidcAppParameterInput` via:
 //
-//          OidcAppsParameterArgs{...}
-type OidcAppsParameterInput interface {
+//          OidcAppParameterArgs{...}
+type OidcAppParameterInput interface {
 	pulumi.Input
 
-	ToOidcAppsParameterOutput() OidcAppsParameterOutput
-	ToOidcAppsParameterOutputWithContext(context.Context) OidcAppsParameterOutput
+	ToOidcAppParameterOutput() OidcAppParameterOutput
+	ToOidcAppParameterOutputWithContext(context.Context) OidcAppParameterOutput
 }
 
-type OidcAppsParameterArgs struct {
+type OidcAppParameterArgs struct {
 	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
 	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
 	IncludeInSamlAssertion    pulumi.BoolPtrInput   `pulumi:"includeInSamlAssertion"`
@@ -423,123 +423,123 @@ type OidcAppsParameterArgs struct {
 	Values                    pulumi.StringPtrInput `pulumi:"values"`
 }
 
-func (OidcAppsParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcAppsParameter)(nil)).Elem()
+func (OidcAppParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcAppParameter)(nil)).Elem()
 }
 
-func (i OidcAppsParameterArgs) ToOidcAppsParameterOutput() OidcAppsParameterOutput {
-	return i.ToOidcAppsParameterOutputWithContext(context.Background())
+func (i OidcAppParameterArgs) ToOidcAppParameterOutput() OidcAppParameterOutput {
+	return i.ToOidcAppParameterOutputWithContext(context.Background())
 }
 
-func (i OidcAppsParameterArgs) ToOidcAppsParameterOutputWithContext(ctx context.Context) OidcAppsParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcAppsParameterOutput)
+func (i OidcAppParameterArgs) ToOidcAppParameterOutputWithContext(ctx context.Context) OidcAppParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcAppParameterOutput)
 }
 
-// OidcAppsParameterArrayInput is an input type that accepts OidcAppsParameterArray and OidcAppsParameterArrayOutput values.
-// You can construct a concrete instance of `OidcAppsParameterArrayInput` via:
+// OidcAppParameterArrayInput is an input type that accepts OidcAppParameterArray and OidcAppParameterArrayOutput values.
+// You can construct a concrete instance of `OidcAppParameterArrayInput` via:
 //
-//          OidcAppsParameterArray{ OidcAppsParameterArgs{...} }
-type OidcAppsParameterArrayInput interface {
+//          OidcAppParameterArray{ OidcAppParameterArgs{...} }
+type OidcAppParameterArrayInput interface {
 	pulumi.Input
 
-	ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput
-	ToOidcAppsParameterArrayOutputWithContext(context.Context) OidcAppsParameterArrayOutput
+	ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput
+	ToOidcAppParameterArrayOutputWithContext(context.Context) OidcAppParameterArrayOutput
 }
 
-type OidcAppsParameterArray []OidcAppsParameterInput
+type OidcAppParameterArray []OidcAppParameterInput
 
-func (OidcAppsParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OidcAppsParameter)(nil)).Elem()
+func (OidcAppParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OidcAppParameter)(nil)).Elem()
 }
 
-func (i OidcAppsParameterArray) ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput {
-	return i.ToOidcAppsParameterArrayOutputWithContext(context.Background())
+func (i OidcAppParameterArray) ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput {
+	return i.ToOidcAppParameterArrayOutputWithContext(context.Background())
 }
 
-func (i OidcAppsParameterArray) ToOidcAppsParameterArrayOutputWithContext(ctx context.Context) OidcAppsParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcAppsParameterArrayOutput)
+func (i OidcAppParameterArray) ToOidcAppParameterArrayOutputWithContext(ctx context.Context) OidcAppParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcAppParameterArrayOutput)
 }
 
-type OidcAppsParameterOutput struct{ *pulumi.OutputState }
+type OidcAppParameterOutput struct{ *pulumi.OutputState }
 
-func (OidcAppsParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcAppsParameter)(nil)).Elem()
+func (OidcAppParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcAppParameter)(nil)).Elem()
 }
 
-func (o OidcAppsParameterOutput) ToOidcAppsParameterOutput() OidcAppsParameterOutput {
+func (o OidcAppParameterOutput) ToOidcAppParameterOutput() OidcAppParameterOutput {
 	return o
 }
 
-func (o OidcAppsParameterOutput) ToOidcAppsParameterOutputWithContext(ctx context.Context) OidcAppsParameterOutput {
+func (o OidcAppParameterOutput) ToOidcAppParameterOutputWithContext(ctx context.Context) OidcAppParameterOutput {
 	return o
 }
 
-func (o OidcAppsParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
+func (o OidcAppParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) ParamId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
+func (o OidcAppParameterOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) ParamKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v OidcAppsParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
+func (o OidcAppParameterOutput) ParamKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v OidcAppParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
 }
 
-func (o OidcAppsParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
+func (o OidcAppParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
+func (o OidcAppParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
+func (o OidcAppParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
 }
 
-func (o OidcAppsParameterOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppsParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
+func (o OidcAppParameterOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
-type OidcAppsParameterArrayOutput struct{ *pulumi.OutputState }
+type OidcAppParameterArrayOutput struct{ *pulumi.OutputState }
 
-func (OidcAppsParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OidcAppsParameter)(nil)).Elem()
+func (OidcAppParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OidcAppParameter)(nil)).Elem()
 }
 
-func (o OidcAppsParameterArrayOutput) ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput {
+func (o OidcAppParameterArrayOutput) ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput {
 	return o
 }
 
-func (o OidcAppsParameterArrayOutput) ToOidcAppsParameterArrayOutputWithContext(ctx context.Context) OidcAppsParameterArrayOutput {
+func (o OidcAppParameterArrayOutput) ToOidcAppParameterArrayOutputWithContext(ctx context.Context) OidcAppParameterArrayOutput {
 	return o
 }
 
-func (o OidcAppsParameterArrayOutput) Index(i pulumi.IntInput) OidcAppsParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OidcAppsParameter {
-		return vs[0].([]OidcAppsParameter)[vs[1].(int)]
-	}).(OidcAppsParameterOutput)
+func (o OidcAppParameterArrayOutput) Index(i pulumi.IntInput) OidcAppParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OidcAppParameter {
+		return vs[0].([]OidcAppParameter)[vs[1].(int)]
+	}).(OidcAppParameterOutput)
 }
 
 type PrivilegesPrivilege struct {
@@ -748,7 +748,7 @@ func (o PrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) Privil
 	}).(PrivilegesPrivilegeStatementOutput)
 }
 
-type SamlAppsParameter struct {
+type SamlAppParameter struct {
 	AttributesTransformations *string `pulumi:"attributesTransformations"`
 	DefaultValues             *string `pulumi:"defaultValues"`
 	IncludeInSamlAssertion    *bool   `pulumi:"includeInSamlAssertion"`
@@ -763,18 +763,18 @@ type SamlAppsParameter struct {
 	Values                    *string `pulumi:"values"`
 }
 
-// SamlAppsParameterInput is an input type that accepts SamlAppsParameterArgs and SamlAppsParameterOutput values.
-// You can construct a concrete instance of `SamlAppsParameterInput` via:
+// SamlAppParameterInput is an input type that accepts SamlAppParameterArgs and SamlAppParameterOutput values.
+// You can construct a concrete instance of `SamlAppParameterInput` via:
 //
-//          SamlAppsParameterArgs{...}
-type SamlAppsParameterInput interface {
+//          SamlAppParameterArgs{...}
+type SamlAppParameterInput interface {
 	pulumi.Input
 
-	ToSamlAppsParameterOutput() SamlAppsParameterOutput
-	ToSamlAppsParameterOutputWithContext(context.Context) SamlAppsParameterOutput
+	ToSamlAppParameterOutput() SamlAppParameterOutput
+	ToSamlAppParameterOutputWithContext(context.Context) SamlAppParameterOutput
 }
 
-type SamlAppsParameterArgs struct {
+type SamlAppParameterArgs struct {
 	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
 	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
 	IncludeInSamlAssertion    pulumi.BoolPtrInput   `pulumi:"includeInSamlAssertion"`
@@ -789,362 +789,362 @@ type SamlAppsParameterArgs struct {
 	Values                    pulumi.StringPtrInput `pulumi:"values"`
 }
 
-func (SamlAppsParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlAppsParameter)(nil)).Elem()
+func (SamlAppParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlAppParameter)(nil)).Elem()
 }
 
-func (i SamlAppsParameterArgs) ToSamlAppsParameterOutput() SamlAppsParameterOutput {
-	return i.ToSamlAppsParameterOutputWithContext(context.Background())
+func (i SamlAppParameterArgs) ToSamlAppParameterOutput() SamlAppParameterOutput {
+	return i.ToSamlAppParameterOutputWithContext(context.Background())
 }
 
-func (i SamlAppsParameterArgs) ToSamlAppsParameterOutputWithContext(ctx context.Context) SamlAppsParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlAppsParameterOutput)
+func (i SamlAppParameterArgs) ToSamlAppParameterOutputWithContext(ctx context.Context) SamlAppParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlAppParameterOutput)
 }
 
-// SamlAppsParameterArrayInput is an input type that accepts SamlAppsParameterArray and SamlAppsParameterArrayOutput values.
-// You can construct a concrete instance of `SamlAppsParameterArrayInput` via:
+// SamlAppParameterArrayInput is an input type that accepts SamlAppParameterArray and SamlAppParameterArrayOutput values.
+// You can construct a concrete instance of `SamlAppParameterArrayInput` via:
 //
-//          SamlAppsParameterArray{ SamlAppsParameterArgs{...} }
-type SamlAppsParameterArrayInput interface {
+//          SamlAppParameterArray{ SamlAppParameterArgs{...} }
+type SamlAppParameterArrayInput interface {
 	pulumi.Input
 
-	ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput
-	ToSamlAppsParameterArrayOutputWithContext(context.Context) SamlAppsParameterArrayOutput
+	ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput
+	ToSamlAppParameterArrayOutputWithContext(context.Context) SamlAppParameterArrayOutput
 }
 
-type SamlAppsParameterArray []SamlAppsParameterInput
+type SamlAppParameterArray []SamlAppParameterInput
 
-func (SamlAppsParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SamlAppsParameter)(nil)).Elem()
+func (SamlAppParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SamlAppParameter)(nil)).Elem()
 }
 
-func (i SamlAppsParameterArray) ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput {
-	return i.ToSamlAppsParameterArrayOutputWithContext(context.Background())
+func (i SamlAppParameterArray) ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput {
+	return i.ToSamlAppParameterArrayOutputWithContext(context.Background())
 }
 
-func (i SamlAppsParameterArray) ToSamlAppsParameterArrayOutputWithContext(ctx context.Context) SamlAppsParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlAppsParameterArrayOutput)
+func (i SamlAppParameterArray) ToSamlAppParameterArrayOutputWithContext(ctx context.Context) SamlAppParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlAppParameterArrayOutput)
 }
 
-type SamlAppsParameterOutput struct{ *pulumi.OutputState }
+type SamlAppParameterOutput struct{ *pulumi.OutputState }
 
-func (SamlAppsParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlAppsParameter)(nil)).Elem()
+func (SamlAppParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlAppParameter)(nil)).Elem()
 }
 
-func (o SamlAppsParameterOutput) ToSamlAppsParameterOutput() SamlAppsParameterOutput {
+func (o SamlAppParameterOutput) ToSamlAppParameterOutput() SamlAppParameterOutput {
 	return o
 }
 
-func (o SamlAppsParameterOutput) ToSamlAppsParameterOutputWithContext(ctx context.Context) SamlAppsParameterOutput {
+func (o SamlAppParameterOutput) ToSamlAppParameterOutputWithContext(ctx context.Context) SamlAppParameterOutput {
 	return o
 }
 
-func (o SamlAppsParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
+func (o SamlAppParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) ParamId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
+func (o SamlAppParameterOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) ParamKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SamlAppsParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
+func (o SamlAppParameterOutput) ParamKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlAppParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
 }
 
-func (o SamlAppsParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
+func (o SamlAppParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
+func (o SamlAppParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
+func (o SamlAppParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
 }
 
-func (o SamlAppsParameterOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppsParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
+func (o SamlAppParameterOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
-type SamlAppsParameterArrayOutput struct{ *pulumi.OutputState }
+type SamlAppParameterArrayOutput struct{ *pulumi.OutputState }
 
-func (SamlAppsParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SamlAppsParameter)(nil)).Elem()
+func (SamlAppParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SamlAppParameter)(nil)).Elem()
 }
 
-func (o SamlAppsParameterArrayOutput) ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput {
+func (o SamlAppParameterArrayOutput) ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput {
 	return o
 }
 
-func (o SamlAppsParameterArrayOutput) ToSamlAppsParameterArrayOutputWithContext(ctx context.Context) SamlAppsParameterArrayOutput {
+func (o SamlAppParameterArrayOutput) ToSamlAppParameterArrayOutputWithContext(ctx context.Context) SamlAppParameterArrayOutput {
 	return o
 }
 
-func (o SamlAppsParameterArrayOutput) Index(i pulumi.IntInput) SamlAppsParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SamlAppsParameter {
-		return vs[0].([]SamlAppsParameter)[vs[1].(int)]
-	}).(SamlAppsParameterOutput)
+func (o SamlAppParameterArrayOutput) Index(i pulumi.IntInput) SamlAppParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SamlAppParameter {
+		return vs[0].([]SamlAppParameter)[vs[1].(int)]
+	}).(SamlAppParameterOutput)
 }
 
-type SmartHooksCondition struct {
+type SmartHookCondition struct {
 	Operator string `pulumi:"operator"`
 	Source   string `pulumi:"source"`
 	Value    string `pulumi:"value"`
 }
 
-// SmartHooksConditionInput is an input type that accepts SmartHooksConditionArgs and SmartHooksConditionOutput values.
-// You can construct a concrete instance of `SmartHooksConditionInput` via:
+// SmartHookConditionInput is an input type that accepts SmartHookConditionArgs and SmartHookConditionOutput values.
+// You can construct a concrete instance of `SmartHookConditionInput` via:
 //
-//          SmartHooksConditionArgs{...}
-type SmartHooksConditionInput interface {
+//          SmartHookConditionArgs{...}
+type SmartHookConditionInput interface {
 	pulumi.Input
 
-	ToSmartHooksConditionOutput() SmartHooksConditionOutput
-	ToSmartHooksConditionOutputWithContext(context.Context) SmartHooksConditionOutput
+	ToSmartHookConditionOutput() SmartHookConditionOutput
+	ToSmartHookConditionOutputWithContext(context.Context) SmartHookConditionOutput
 }
 
-type SmartHooksConditionArgs struct {
+type SmartHookConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	Source   pulumi.StringInput `pulumi:"source"`
 	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (SmartHooksConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHooksCondition)(nil)).Elem()
+func (SmartHookConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
 }
 
-func (i SmartHooksConditionArgs) ToSmartHooksConditionOutput() SmartHooksConditionOutput {
-	return i.ToSmartHooksConditionOutputWithContext(context.Background())
+func (i SmartHookConditionArgs) ToSmartHookConditionOutput() SmartHookConditionOutput {
+	return i.ToSmartHookConditionOutputWithContext(context.Background())
 }
 
-func (i SmartHooksConditionArgs) ToSmartHooksConditionOutputWithContext(ctx context.Context) SmartHooksConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHooksConditionOutput)
+func (i SmartHookConditionArgs) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionOutput)
 }
 
-// SmartHooksConditionArrayInput is an input type that accepts SmartHooksConditionArray and SmartHooksConditionArrayOutput values.
-// You can construct a concrete instance of `SmartHooksConditionArrayInput` via:
+// SmartHookConditionArrayInput is an input type that accepts SmartHookConditionArray and SmartHookConditionArrayOutput values.
+// You can construct a concrete instance of `SmartHookConditionArrayInput` via:
 //
-//          SmartHooksConditionArray{ SmartHooksConditionArgs{...} }
-type SmartHooksConditionArrayInput interface {
+//          SmartHookConditionArray{ SmartHookConditionArgs{...} }
+type SmartHookConditionArrayInput interface {
 	pulumi.Input
 
-	ToSmartHooksConditionArrayOutput() SmartHooksConditionArrayOutput
-	ToSmartHooksConditionArrayOutputWithContext(context.Context) SmartHooksConditionArrayOutput
+	ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput
+	ToSmartHookConditionArrayOutputWithContext(context.Context) SmartHookConditionArrayOutput
 }
 
-type SmartHooksConditionArray []SmartHooksConditionInput
+type SmartHookConditionArray []SmartHookConditionInput
 
-func (SmartHooksConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHooksCondition)(nil)).Elem()
+func (SmartHookConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
 }
 
-func (i SmartHooksConditionArray) ToSmartHooksConditionArrayOutput() SmartHooksConditionArrayOutput {
-	return i.ToSmartHooksConditionArrayOutputWithContext(context.Background())
+func (i SmartHookConditionArray) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
+	return i.ToSmartHookConditionArrayOutputWithContext(context.Background())
 }
 
-func (i SmartHooksConditionArray) ToSmartHooksConditionArrayOutputWithContext(ctx context.Context) SmartHooksConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHooksConditionArrayOutput)
+func (i SmartHookConditionArray) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionArrayOutput)
 }
 
-type SmartHooksConditionOutput struct{ *pulumi.OutputState }
+type SmartHookConditionOutput struct{ *pulumi.OutputState }
 
-func (SmartHooksConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHooksCondition)(nil)).Elem()
+func (SmartHookConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
 }
 
-func (o SmartHooksConditionOutput) ToSmartHooksConditionOutput() SmartHooksConditionOutput {
+func (o SmartHookConditionOutput) ToSmartHookConditionOutput() SmartHookConditionOutput {
 	return o
 }
 
-func (o SmartHooksConditionOutput) ToSmartHooksConditionOutputWithContext(ctx context.Context) SmartHooksConditionOutput {
+func (o SmartHookConditionOutput) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
 	return o
 }
 
-func (o SmartHooksConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHooksCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o SmartHooksConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHooksCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-func (o SmartHooksConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHooksCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type SmartHooksConditionArrayOutput struct{ *pulumi.OutputState }
+type SmartHookConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (SmartHooksConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHooksCondition)(nil)).Elem()
+func (SmartHookConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
 }
 
-func (o SmartHooksConditionArrayOutput) ToSmartHooksConditionArrayOutput() SmartHooksConditionArrayOutput {
+func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
 	return o
 }
 
-func (o SmartHooksConditionArrayOutput) ToSmartHooksConditionArrayOutputWithContext(ctx context.Context) SmartHooksConditionArrayOutput {
+func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
 	return o
 }
 
-func (o SmartHooksConditionArrayOutput) Index(i pulumi.IntInput) SmartHooksConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHooksCondition {
-		return vs[0].([]SmartHooksCondition)[vs[1].(int)]
-	}).(SmartHooksConditionOutput)
+func (o SmartHookConditionArrayOutput) Index(i pulumi.IntInput) SmartHookConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHookCondition {
+		return vs[0].([]SmartHookCondition)[vs[1].(int)]
+	}).(SmartHookConditionOutput)
 }
 
-type SmartHooksOptions struct {
+type SmartHookOptions struct {
 	LocationEnabled      *bool `pulumi:"locationEnabled"`
 	MfaDeviceInfoEnabled *bool `pulumi:"mfaDeviceInfoEnabled"`
 	RiskEnabled          *bool `pulumi:"riskEnabled"`
 }
 
-// SmartHooksOptionsInput is an input type that accepts SmartHooksOptionsArgs and SmartHooksOptionsOutput values.
-// You can construct a concrete instance of `SmartHooksOptionsInput` via:
+// SmartHookOptionsInput is an input type that accepts SmartHookOptionsArgs and SmartHookOptionsOutput values.
+// You can construct a concrete instance of `SmartHookOptionsInput` via:
 //
-//          SmartHooksOptionsArgs{...}
-type SmartHooksOptionsInput interface {
+//          SmartHookOptionsArgs{...}
+type SmartHookOptionsInput interface {
 	pulumi.Input
 
-	ToSmartHooksOptionsOutput() SmartHooksOptionsOutput
-	ToSmartHooksOptionsOutputWithContext(context.Context) SmartHooksOptionsOutput
+	ToSmartHookOptionsOutput() SmartHookOptionsOutput
+	ToSmartHookOptionsOutputWithContext(context.Context) SmartHookOptionsOutput
 }
 
-type SmartHooksOptionsArgs struct {
+type SmartHookOptionsArgs struct {
 	LocationEnabled      pulumi.BoolPtrInput `pulumi:"locationEnabled"`
 	MfaDeviceInfoEnabled pulumi.BoolPtrInput `pulumi:"mfaDeviceInfoEnabled"`
 	RiskEnabled          pulumi.BoolPtrInput `pulumi:"riskEnabled"`
 }
 
-func (SmartHooksOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHooksOptions)(nil)).Elem()
+func (SmartHookOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookOptions)(nil)).Elem()
 }
 
-func (i SmartHooksOptionsArgs) ToSmartHooksOptionsOutput() SmartHooksOptionsOutput {
-	return i.ToSmartHooksOptionsOutputWithContext(context.Background())
+func (i SmartHookOptionsArgs) ToSmartHookOptionsOutput() SmartHookOptionsOutput {
+	return i.ToSmartHookOptionsOutputWithContext(context.Background())
 }
 
-func (i SmartHooksOptionsArgs) ToSmartHooksOptionsOutputWithContext(ctx context.Context) SmartHooksOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHooksOptionsOutput)
+func (i SmartHookOptionsArgs) ToSmartHookOptionsOutputWithContext(ctx context.Context) SmartHookOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionsOutput)
 }
 
-func (i SmartHooksOptionsArgs) ToSmartHooksOptionsPtrOutput() SmartHooksOptionsPtrOutput {
-	return i.ToSmartHooksOptionsPtrOutputWithContext(context.Background())
+func (i SmartHookOptionsArgs) ToSmartHookOptionsPtrOutput() SmartHookOptionsPtrOutput {
+	return i.ToSmartHookOptionsPtrOutputWithContext(context.Background())
 }
 
-func (i SmartHooksOptionsArgs) ToSmartHooksOptionsPtrOutputWithContext(ctx context.Context) SmartHooksOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHooksOptionsOutput).ToSmartHooksOptionsPtrOutputWithContext(ctx)
+func (i SmartHookOptionsArgs) ToSmartHookOptionsPtrOutputWithContext(ctx context.Context) SmartHookOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionsOutput).ToSmartHookOptionsPtrOutputWithContext(ctx)
 }
 
-// SmartHooksOptionsPtrInput is an input type that accepts SmartHooksOptionsArgs, SmartHooksOptionsPtr and SmartHooksOptionsPtrOutput values.
-// You can construct a concrete instance of `SmartHooksOptionsPtrInput` via:
+// SmartHookOptionsPtrInput is an input type that accepts SmartHookOptionsArgs, SmartHookOptionsPtr and SmartHookOptionsPtrOutput values.
+// You can construct a concrete instance of `SmartHookOptionsPtrInput` via:
 //
-//          SmartHooksOptionsArgs{...}
+//          SmartHookOptionsArgs{...}
 //
 //  or:
 //
 //          nil
-type SmartHooksOptionsPtrInput interface {
+type SmartHookOptionsPtrInput interface {
 	pulumi.Input
 
-	ToSmartHooksOptionsPtrOutput() SmartHooksOptionsPtrOutput
-	ToSmartHooksOptionsPtrOutputWithContext(context.Context) SmartHooksOptionsPtrOutput
+	ToSmartHookOptionsPtrOutput() SmartHookOptionsPtrOutput
+	ToSmartHookOptionsPtrOutputWithContext(context.Context) SmartHookOptionsPtrOutput
 }
 
-type smartHooksOptionsPtrType SmartHooksOptionsArgs
+type smartHookOptionsPtrType SmartHookOptionsArgs
 
-func SmartHooksOptionsPtr(v *SmartHooksOptionsArgs) SmartHooksOptionsPtrInput {
-	return (*smartHooksOptionsPtrType)(v)
+func SmartHookOptionsPtr(v *SmartHookOptionsArgs) SmartHookOptionsPtrInput {
+	return (*smartHookOptionsPtrType)(v)
 }
 
-func (*smartHooksOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SmartHooksOptions)(nil)).Elem()
+func (*smartHookOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartHookOptions)(nil)).Elem()
 }
 
-func (i *smartHooksOptionsPtrType) ToSmartHooksOptionsPtrOutput() SmartHooksOptionsPtrOutput {
-	return i.ToSmartHooksOptionsPtrOutputWithContext(context.Background())
+func (i *smartHookOptionsPtrType) ToSmartHookOptionsPtrOutput() SmartHookOptionsPtrOutput {
+	return i.ToSmartHookOptionsPtrOutputWithContext(context.Background())
 }
 
-func (i *smartHooksOptionsPtrType) ToSmartHooksOptionsPtrOutputWithContext(ctx context.Context) SmartHooksOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHooksOptionsPtrOutput)
+func (i *smartHookOptionsPtrType) ToSmartHookOptionsPtrOutputWithContext(ctx context.Context) SmartHookOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionsPtrOutput)
 }
 
-type SmartHooksOptionsOutput struct{ *pulumi.OutputState }
+type SmartHookOptionsOutput struct{ *pulumi.OutputState }
 
-func (SmartHooksOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHooksOptions)(nil)).Elem()
+func (SmartHookOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookOptions)(nil)).Elem()
 }
 
-func (o SmartHooksOptionsOutput) ToSmartHooksOptionsOutput() SmartHooksOptionsOutput {
+func (o SmartHookOptionsOutput) ToSmartHookOptionsOutput() SmartHookOptionsOutput {
 	return o
 }
 
-func (o SmartHooksOptionsOutput) ToSmartHooksOptionsOutputWithContext(ctx context.Context) SmartHooksOptionsOutput {
+func (o SmartHookOptionsOutput) ToSmartHookOptionsOutputWithContext(ctx context.Context) SmartHookOptionsOutput {
 	return o
 }
 
-func (o SmartHooksOptionsOutput) ToSmartHooksOptionsPtrOutput() SmartHooksOptionsPtrOutput {
-	return o.ToSmartHooksOptionsPtrOutputWithContext(context.Background())
+func (o SmartHookOptionsOutput) ToSmartHookOptionsPtrOutput() SmartHookOptionsPtrOutput {
+	return o.ToSmartHookOptionsPtrOutputWithContext(context.Background())
 }
 
-func (o SmartHooksOptionsOutput) ToSmartHooksOptionsPtrOutputWithContext(ctx context.Context) SmartHooksOptionsPtrOutput {
-	return o.ApplyT(func(v SmartHooksOptions) *SmartHooksOptions {
+func (o SmartHookOptionsOutput) ToSmartHookOptionsPtrOutputWithContext(ctx context.Context) SmartHookOptionsPtrOutput {
+	return o.ApplyT(func(v SmartHookOptions) *SmartHookOptions {
 		return &v
-	}).(SmartHooksOptionsPtrOutput)
+	}).(SmartHookOptionsPtrOutput)
 }
-func (o SmartHooksOptionsOutput) LocationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHooksOptions) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o SmartHooksOptionsOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHooksOptions) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
+func (o SmartHookOptionsOutput) LocationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOptions) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o SmartHooksOptionsOutput) RiskEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHooksOptions) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
+func (o SmartHookOptionsOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOptions) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
 }
 
-type SmartHooksOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (SmartHooksOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SmartHooksOptions)(nil)).Elem()
+func (o SmartHookOptionsOutput) RiskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOptions) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o SmartHooksOptionsPtrOutput) ToSmartHooksOptionsPtrOutput() SmartHooksOptionsPtrOutput {
+type SmartHookOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SmartHookOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartHookOptions)(nil)).Elem()
+}
+
+func (o SmartHookOptionsPtrOutput) ToSmartHookOptionsPtrOutput() SmartHookOptionsPtrOutput {
 	return o
 }
 
-func (o SmartHooksOptionsPtrOutput) ToSmartHooksOptionsPtrOutputWithContext(ctx context.Context) SmartHooksOptionsPtrOutput {
+func (o SmartHookOptionsPtrOutput) ToSmartHookOptionsPtrOutputWithContext(ctx context.Context) SmartHookOptionsPtrOutput {
 	return o
 }
 
-func (o SmartHooksOptionsPtrOutput) Elem() SmartHooksOptionsOutput {
-	return o.ApplyT(func(v *SmartHooksOptions) SmartHooksOptions { return *v }).(SmartHooksOptionsOutput)
+func (o SmartHookOptionsPtrOutput) Elem() SmartHookOptionsOutput {
+	return o.ApplyT(func(v *SmartHookOptions) SmartHookOptions { return *v }).(SmartHookOptionsOutput)
 }
 
-func (o SmartHooksOptionsPtrOutput) LocationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SmartHooksOptions) *bool {
+func (o SmartHookOptionsPtrOutput) LocationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SmartHookOptions) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1152,8 +1152,8 @@ func (o SmartHooksOptionsPtrOutput) LocationEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o SmartHooksOptionsPtrOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SmartHooksOptions) *bool {
+func (o SmartHookOptionsPtrOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SmartHookOptions) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1161,8 +1161,8 @@ func (o SmartHooksOptionsPtrOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o SmartHooksOptionsPtrOutput) RiskEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SmartHooksOptions) *bool {
+func (o SmartHookOptionsPtrOutput) RiskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SmartHookOptions) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1170,233 +1170,233 @@ func (o SmartHooksOptionsPtrOutput) RiskEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-type UserMappingsAction struct {
+type UserMappingAction struct {
 	Action string   `pulumi:"action"`
 	Values []string `pulumi:"values"`
 }
 
-// UserMappingsActionInput is an input type that accepts UserMappingsActionArgs and UserMappingsActionOutput values.
-// You can construct a concrete instance of `UserMappingsActionInput` via:
+// UserMappingActionInput is an input type that accepts UserMappingActionArgs and UserMappingActionOutput values.
+// You can construct a concrete instance of `UserMappingActionInput` via:
 //
-//          UserMappingsActionArgs{...}
-type UserMappingsActionInput interface {
+//          UserMappingActionArgs{...}
+type UserMappingActionInput interface {
 	pulumi.Input
 
-	ToUserMappingsActionOutput() UserMappingsActionOutput
-	ToUserMappingsActionOutputWithContext(context.Context) UserMappingsActionOutput
+	ToUserMappingActionOutput() UserMappingActionOutput
+	ToUserMappingActionOutputWithContext(context.Context) UserMappingActionOutput
 }
 
-type UserMappingsActionArgs struct {
+type UserMappingActionArgs struct {
 	Action pulumi.StringInput      `pulumi:"action"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (UserMappingsActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingsAction)(nil)).Elem()
+func (UserMappingActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingAction)(nil)).Elem()
 }
 
-func (i UserMappingsActionArgs) ToUserMappingsActionOutput() UserMappingsActionOutput {
-	return i.ToUserMappingsActionOutputWithContext(context.Background())
+func (i UserMappingActionArgs) ToUserMappingActionOutput() UserMappingActionOutput {
+	return i.ToUserMappingActionOutputWithContext(context.Background())
 }
 
-func (i UserMappingsActionArgs) ToUserMappingsActionOutputWithContext(ctx context.Context) UserMappingsActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsActionOutput)
+func (i UserMappingActionArgs) ToUserMappingActionOutputWithContext(ctx context.Context) UserMappingActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingActionOutput)
 }
 
-// UserMappingsActionArrayInput is an input type that accepts UserMappingsActionArray and UserMappingsActionArrayOutput values.
-// You can construct a concrete instance of `UserMappingsActionArrayInput` via:
+// UserMappingActionArrayInput is an input type that accepts UserMappingActionArray and UserMappingActionArrayOutput values.
+// You can construct a concrete instance of `UserMappingActionArrayInput` via:
 //
-//          UserMappingsActionArray{ UserMappingsActionArgs{...} }
-type UserMappingsActionArrayInput interface {
+//          UserMappingActionArray{ UserMappingActionArgs{...} }
+type UserMappingActionArrayInput interface {
 	pulumi.Input
 
-	ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput
-	ToUserMappingsActionArrayOutputWithContext(context.Context) UserMappingsActionArrayOutput
+	ToUserMappingActionArrayOutput() UserMappingActionArrayOutput
+	ToUserMappingActionArrayOutputWithContext(context.Context) UserMappingActionArrayOutput
 }
 
-type UserMappingsActionArray []UserMappingsActionInput
+type UserMappingActionArray []UserMappingActionInput
 
-func (UserMappingsActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingsAction)(nil)).Elem()
+func (UserMappingActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingAction)(nil)).Elem()
 }
 
-func (i UserMappingsActionArray) ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput {
-	return i.ToUserMappingsActionArrayOutputWithContext(context.Background())
+func (i UserMappingActionArray) ToUserMappingActionArrayOutput() UserMappingActionArrayOutput {
+	return i.ToUserMappingActionArrayOutputWithContext(context.Background())
 }
 
-func (i UserMappingsActionArray) ToUserMappingsActionArrayOutputWithContext(ctx context.Context) UserMappingsActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsActionArrayOutput)
+func (i UserMappingActionArray) ToUserMappingActionArrayOutputWithContext(ctx context.Context) UserMappingActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingActionArrayOutput)
 }
 
-type UserMappingsActionOutput struct{ *pulumi.OutputState }
+type UserMappingActionOutput struct{ *pulumi.OutputState }
 
-func (UserMappingsActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingsAction)(nil)).Elem()
+func (UserMappingActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingAction)(nil)).Elem()
 }
 
-func (o UserMappingsActionOutput) ToUserMappingsActionOutput() UserMappingsActionOutput {
+func (o UserMappingActionOutput) ToUserMappingActionOutput() UserMappingActionOutput {
 	return o
 }
 
-func (o UserMappingsActionOutput) ToUserMappingsActionOutputWithContext(ctx context.Context) UserMappingsActionOutput {
+func (o UserMappingActionOutput) ToUserMappingActionOutputWithContext(ctx context.Context) UserMappingActionOutput {
 	return o
 }
 
-func (o UserMappingsActionOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingsAction) string { return v.Action }).(pulumi.StringOutput)
+func (o UserMappingActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o UserMappingsActionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UserMappingsAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o UserMappingActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserMappingAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type UserMappingsActionArrayOutput struct{ *pulumi.OutputState }
+type UserMappingActionArrayOutput struct{ *pulumi.OutputState }
 
-func (UserMappingsActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingsAction)(nil)).Elem()
+func (UserMappingActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingAction)(nil)).Elem()
 }
 
-func (o UserMappingsActionArrayOutput) ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput {
+func (o UserMappingActionArrayOutput) ToUserMappingActionArrayOutput() UserMappingActionArrayOutput {
 	return o
 }
 
-func (o UserMappingsActionArrayOutput) ToUserMappingsActionArrayOutputWithContext(ctx context.Context) UserMappingsActionArrayOutput {
+func (o UserMappingActionArrayOutput) ToUserMappingActionArrayOutputWithContext(ctx context.Context) UserMappingActionArrayOutput {
 	return o
 }
 
-func (o UserMappingsActionArrayOutput) Index(i pulumi.IntInput) UserMappingsActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingsAction {
-		return vs[0].([]UserMappingsAction)[vs[1].(int)]
-	}).(UserMappingsActionOutput)
+func (o UserMappingActionArrayOutput) Index(i pulumi.IntInput) UserMappingActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingAction {
+		return vs[0].([]UserMappingAction)[vs[1].(int)]
+	}).(UserMappingActionOutput)
 }
 
-type UserMappingsCondition struct {
+type UserMappingCondition struct {
 	Operator string `pulumi:"operator"`
 	Source   string `pulumi:"source"`
 	Value    string `pulumi:"value"`
 }
 
-// UserMappingsConditionInput is an input type that accepts UserMappingsConditionArgs and UserMappingsConditionOutput values.
-// You can construct a concrete instance of `UserMappingsConditionInput` via:
+// UserMappingConditionInput is an input type that accepts UserMappingConditionArgs and UserMappingConditionOutput values.
+// You can construct a concrete instance of `UserMappingConditionInput` via:
 //
-//          UserMappingsConditionArgs{...}
-type UserMappingsConditionInput interface {
+//          UserMappingConditionArgs{...}
+type UserMappingConditionInput interface {
 	pulumi.Input
 
-	ToUserMappingsConditionOutput() UserMappingsConditionOutput
-	ToUserMappingsConditionOutputWithContext(context.Context) UserMappingsConditionOutput
+	ToUserMappingConditionOutput() UserMappingConditionOutput
+	ToUserMappingConditionOutputWithContext(context.Context) UserMappingConditionOutput
 }
 
-type UserMappingsConditionArgs struct {
+type UserMappingConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	Source   pulumi.StringInput `pulumi:"source"`
 	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (UserMappingsConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingsCondition)(nil)).Elem()
+func (UserMappingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingCondition)(nil)).Elem()
 }
 
-func (i UserMappingsConditionArgs) ToUserMappingsConditionOutput() UserMappingsConditionOutput {
-	return i.ToUserMappingsConditionOutputWithContext(context.Background())
+func (i UserMappingConditionArgs) ToUserMappingConditionOutput() UserMappingConditionOutput {
+	return i.ToUserMappingConditionOutputWithContext(context.Background())
 }
 
-func (i UserMappingsConditionArgs) ToUserMappingsConditionOutputWithContext(ctx context.Context) UserMappingsConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsConditionOutput)
+func (i UserMappingConditionArgs) ToUserMappingConditionOutputWithContext(ctx context.Context) UserMappingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingConditionOutput)
 }
 
-// UserMappingsConditionArrayInput is an input type that accepts UserMappingsConditionArray and UserMappingsConditionArrayOutput values.
-// You can construct a concrete instance of `UserMappingsConditionArrayInput` via:
+// UserMappingConditionArrayInput is an input type that accepts UserMappingConditionArray and UserMappingConditionArrayOutput values.
+// You can construct a concrete instance of `UserMappingConditionArrayInput` via:
 //
-//          UserMappingsConditionArray{ UserMappingsConditionArgs{...} }
-type UserMappingsConditionArrayInput interface {
+//          UserMappingConditionArray{ UserMappingConditionArgs{...} }
+type UserMappingConditionArrayInput interface {
 	pulumi.Input
 
-	ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput
-	ToUserMappingsConditionArrayOutputWithContext(context.Context) UserMappingsConditionArrayOutput
+	ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput
+	ToUserMappingConditionArrayOutputWithContext(context.Context) UserMappingConditionArrayOutput
 }
 
-type UserMappingsConditionArray []UserMappingsConditionInput
+type UserMappingConditionArray []UserMappingConditionInput
 
-func (UserMappingsConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingsCondition)(nil)).Elem()
+func (UserMappingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingCondition)(nil)).Elem()
 }
 
-func (i UserMappingsConditionArray) ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput {
-	return i.ToUserMappingsConditionArrayOutputWithContext(context.Background())
+func (i UserMappingConditionArray) ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput {
+	return i.ToUserMappingConditionArrayOutputWithContext(context.Background())
 }
 
-func (i UserMappingsConditionArray) ToUserMappingsConditionArrayOutputWithContext(ctx context.Context) UserMappingsConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsConditionArrayOutput)
+func (i UserMappingConditionArray) ToUserMappingConditionArrayOutputWithContext(ctx context.Context) UserMappingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingConditionArrayOutput)
 }
 
-type UserMappingsConditionOutput struct{ *pulumi.OutputState }
+type UserMappingConditionOutput struct{ *pulumi.OutputState }
 
-func (UserMappingsConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingsCondition)(nil)).Elem()
+func (UserMappingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingCondition)(nil)).Elem()
 }
 
-func (o UserMappingsConditionOutput) ToUserMappingsConditionOutput() UserMappingsConditionOutput {
+func (o UserMappingConditionOutput) ToUserMappingConditionOutput() UserMappingConditionOutput {
 	return o
 }
 
-func (o UserMappingsConditionOutput) ToUserMappingsConditionOutputWithContext(ctx context.Context) UserMappingsConditionOutput {
+func (o UserMappingConditionOutput) ToUserMappingConditionOutputWithContext(ctx context.Context) UserMappingConditionOutput {
 	return o
 }
 
-func (o UserMappingsConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingsCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o UserMappingConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o UserMappingsConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingsCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o UserMappingConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-func (o UserMappingsConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingsCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o UserMappingConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type UserMappingsConditionArrayOutput struct{ *pulumi.OutputState }
+type UserMappingConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (UserMappingsConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingsCondition)(nil)).Elem()
+func (UserMappingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingCondition)(nil)).Elem()
 }
 
-func (o UserMappingsConditionArrayOutput) ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput {
+func (o UserMappingConditionArrayOutput) ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput {
 	return o
 }
 
-func (o UserMappingsConditionArrayOutput) ToUserMappingsConditionArrayOutputWithContext(ctx context.Context) UserMappingsConditionArrayOutput {
+func (o UserMappingConditionArrayOutput) ToUserMappingConditionArrayOutputWithContext(ctx context.Context) UserMappingConditionArrayOutput {
 	return o
 }
 
-func (o UserMappingsConditionArrayOutput) Index(i pulumi.IntInput) UserMappingsConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingsCondition {
-		return vs[0].([]UserMappingsCondition)[vs[1].(int)]
-	}).(UserMappingsConditionOutput)
+func (o UserMappingConditionArrayOutput) Index(i pulumi.IntInput) UserMappingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingCondition {
+		return vs[0].([]UserMappingCondition)[vs[1].(int)]
+	}).(UserMappingConditionOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(AppParameterOutput{})
 	pulumi.RegisterOutputType(AppParameterArrayOutput{})
-	pulumi.RegisterOutputType(AppRulesActionOutput{})
-	pulumi.RegisterOutputType(AppRulesActionArrayOutput{})
-	pulumi.RegisterOutputType(AppRulesConditionOutput{})
-	pulumi.RegisterOutputType(AppRulesConditionArrayOutput{})
-	pulumi.RegisterOutputType(OidcAppsParameterOutput{})
-	pulumi.RegisterOutputType(OidcAppsParameterArrayOutput{})
+	pulumi.RegisterOutputType(AppRuleActionOutput{})
+	pulumi.RegisterOutputType(AppRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(AppRuleConditionOutput{})
+	pulumi.RegisterOutputType(AppRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(OidcAppParameterOutput{})
+	pulumi.RegisterOutputType(OidcAppParameterArrayOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeArrayOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementArrayOutput{})
-	pulumi.RegisterOutputType(SamlAppsParameterOutput{})
-	pulumi.RegisterOutputType(SamlAppsParameterArrayOutput{})
-	pulumi.RegisterOutputType(SmartHooksConditionOutput{})
-	pulumi.RegisterOutputType(SmartHooksConditionArrayOutput{})
-	pulumi.RegisterOutputType(SmartHooksOptionsOutput{})
-	pulumi.RegisterOutputType(SmartHooksOptionsPtrOutput{})
-	pulumi.RegisterOutputType(UserMappingsActionOutput{})
-	pulumi.RegisterOutputType(UserMappingsActionArrayOutput{})
-	pulumi.RegisterOutputType(UserMappingsConditionOutput{})
-	pulumi.RegisterOutputType(UserMappingsConditionArrayOutput{})
+	pulumi.RegisterOutputType(SamlAppParameterOutput{})
+	pulumi.RegisterOutputType(SamlAppParameterArrayOutput{})
+	pulumi.RegisterOutputType(SmartHookConditionOutput{})
+	pulumi.RegisterOutputType(SmartHookConditionArrayOutput{})
+	pulumi.RegisterOutputType(SmartHookOptionsOutput{})
+	pulumi.RegisterOutputType(SmartHookOptionsPtrOutput{})
+	pulumi.RegisterOutputType(UserMappingActionOutput{})
+	pulumi.RegisterOutputType(UserMappingActionArrayOutput{})
+	pulumi.RegisterOutputType(UserMappingConditionOutput{})
+	pulumi.RegisterOutputType(UserMappingConditionArrayOutput{})
 }

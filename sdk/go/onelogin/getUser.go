@@ -7,8 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetUser(ctx *pulumi.Context, args *GetUserArgs, opts ...pulumi.InvokeOption) (*GetUserResult, error) {
-	var rv GetUserResult
+func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
+	var rv LookupUserResult
 	err := ctx.Invoke("onelogin:index/getUser:getUser", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -17,14 +17,14 @@ func GetUser(ctx *pulumi.Context, args *GetUserArgs, opts ...pulumi.InvokeOption
 }
 
 // A collection of arguments for invoking getUser.
-type GetUserArgs struct {
+type LookupUserArgs struct {
 	ExternalId *int    `pulumi:"externalId"`
 	UserId     *string `pulumi:"userId"`
 	Username   *string `pulumi:"username"`
 }
 
 // A collection of values returned by getUser.
-type GetUserResult struct {
+type LookupUserResult struct {
 	Comment           string            `pulumi:"comment"`
 	Company           string            `pulumi:"company"`
 	CustomAttributes  map[string]string `pulumi:"customAttributes"`

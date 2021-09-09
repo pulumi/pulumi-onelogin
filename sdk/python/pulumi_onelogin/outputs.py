@@ -11,16 +11,16 @@ from . import outputs
 
 __all__ = [
     'AppParameter',
-    'AppRulesAction',
-    'AppRulesCondition',
-    'OidcAppsParameter',
+    'AppRuleAction',
+    'AppRuleCondition',
+    'OidcAppParameter',
     'PrivilegesPrivilege',
     'PrivilegesPrivilegeStatement',
-    'SamlAppsParameter',
-    'SmartHooksCondition',
-    'SmartHooksOptions',
-    'UserMappingsAction',
-    'UserMappingsCondition',
+    'SamlAppParameter',
+    'SmartHookCondition',
+    'SmartHookOptions',
+    'UserMappingAction',
+    'UserMappingCondition',
 ]
 
 @pulumi.output_type
@@ -159,7 +159,7 @@ class AppParameter(dict):
 
 
 @pulumi.output_type
-class AppRulesAction(dict):
+class AppRuleAction(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str],
@@ -186,7 +186,7 @@ class AppRulesAction(dict):
 
 
 @pulumi.output_type
-class AppRulesCondition(dict):
+class AppRuleCondition(dict):
     def __init__(__self__, *,
                  operator: str,
                  source: str,
@@ -212,7 +212,7 @@ class AppRulesCondition(dict):
 
 
 @pulumi.output_type
-class OidcAppsParameter(dict):
+class OidcAppParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -238,14 +238,14 @@ class OidcAppsParameter(dict):
             suggest = "user_attribute_mappings"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OidcAppsParameter. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in OidcAppParameter. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        OidcAppsParameter.__key_warning(key)
+        OidcAppParameter.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        OidcAppsParameter.__key_warning(key)
+        OidcAppParameter.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -393,7 +393,7 @@ class PrivilegesPrivilegeStatement(dict):
 
 
 @pulumi.output_type
-class SamlAppsParameter(dict):
+class SamlAppParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -419,14 +419,14 @@ class SamlAppsParameter(dict):
             suggest = "user_attribute_mappings"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SamlAppsParameter. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SamlAppParameter. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SamlAppsParameter.__key_warning(key)
+        SamlAppParameter.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SamlAppsParameter.__key_warning(key)
+        SamlAppParameter.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -528,7 +528,7 @@ class SamlAppsParameter(dict):
 
 
 @pulumi.output_type
-class SmartHooksCondition(dict):
+class SmartHookCondition(dict):
     def __init__(__self__, *,
                  operator: str,
                  source: str,
@@ -554,7 +554,7 @@ class SmartHooksCondition(dict):
 
 
 @pulumi.output_type
-class SmartHooksOptions(dict):
+class SmartHookOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -566,14 +566,14 @@ class SmartHooksOptions(dict):
             suggest = "risk_enabled"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SmartHooksOptions. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SmartHookOptions. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SmartHooksOptions.__key_warning(key)
+        SmartHookOptions.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SmartHooksOptions.__key_warning(key)
+        SmartHookOptions.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -604,7 +604,7 @@ class SmartHooksOptions(dict):
 
 
 @pulumi.output_type
-class UserMappingsAction(dict):
+class UserMappingAction(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
@@ -623,7 +623,7 @@ class UserMappingsAction(dict):
 
 
 @pulumi.output_type
-class UserMappingsCondition(dict):
+class UserMappingCondition(dict):
     def __init__(__self__, *,
                  operator: str,
                  source: str,

@@ -8,15 +8,15 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AppRoleAttachmentsArgs', 'AppRoleAttachments']
+__all__ = ['AppRoleAttachmentArgs', 'AppRoleAttachment']
 
 @pulumi.input_type
-class AppRoleAttachmentsArgs:
+class AppRoleAttachmentArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[int],
                  role_id: pulumi.Input[int]):
         """
-        The set of arguments for constructing a AppRoleAttachments resource.
+        The set of arguments for constructing a AppRoleAttachment resource.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "role_id", role_id)
@@ -41,12 +41,12 @@ class AppRoleAttachmentsArgs:
 
 
 @pulumi.input_type
-class _AppRoleAttachmentsState:
+class _AppRoleAttachmentState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[int]] = None,
                  role_id: Optional[pulumi.Input[int]] = None):
         """
-        Input properties used for looking up and filtering AppRoleAttachments resources.
+        Input properties used for looking up and filtering AppRoleAttachment resources.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -72,7 +72,7 @@ class _AppRoleAttachmentsState:
         pulumi.set(self, "role_id", value)
 
 
-class AppRoleAttachments(pulumi.CustomResource):
+class AppRoleAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -81,7 +81,7 @@ class AppRoleAttachments(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a AppRoleAttachments resource with the given unique name, props, and options.
+        Create a AppRoleAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -89,17 +89,17 @@ class AppRoleAttachments(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppRoleAttachmentsArgs,
+                 args: AppRoleAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppRoleAttachments resource with the given unique name, props, and options.
+        Create a AppRoleAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param AppRoleAttachmentsArgs args: The arguments to use to populate this resource's properties.
+        :param AppRoleAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppRoleAttachmentsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppRoleAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -120,7 +120,7 @@ class AppRoleAttachments(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppRoleAttachmentsArgs.__new__(AppRoleAttachmentsArgs)
+            __props__ = AppRoleAttachmentArgs.__new__(AppRoleAttachmentArgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
@@ -128,8 +128,8 @@ class AppRoleAttachments(pulumi.CustomResource):
             if role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
-        super(AppRoleAttachments, __self__).__init__(
-            'onelogin:index/appRoleAttachments:AppRoleAttachments',
+        super(AppRoleAttachment, __self__).__init__(
+            'onelogin:index/appRoleAttachment:AppRoleAttachment',
             resource_name,
             __props__,
             opts)
@@ -139,9 +139,9 @@ class AppRoleAttachments(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[int]] = None,
-            role_id: Optional[pulumi.Input[int]] = None) -> 'AppRoleAttachments':
+            role_id: Optional[pulumi.Input[int]] = None) -> 'AppRoleAttachment':
         """
-        Get an existing AppRoleAttachments resource's state with the given name, id, and optional extra
+        Get an existing AppRoleAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -150,11 +150,11 @@ class AppRoleAttachments(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _AppRoleAttachmentsState.__new__(_AppRoleAttachmentsState)
+        __props__ = _AppRoleAttachmentState.__new__(_AppRoleAttachmentState)
 
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["role_id"] = role_id
-        return AppRoleAttachments(resource_name, opts=opts, __props__=__props__)
+        return AppRoleAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="appId")
