@@ -19,9 +19,9 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/onelogin/terraform-provider-onelogin/onelogin"
+	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
@@ -113,46 +113,46 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			"onelogin_apps": {
-				Tok:  makeResource(mainMod, "App"),
+				Tok: makeResource(mainMod, "App"),
 			},
 			"onelogin_app_role_attachments": {
-				Tok:  makeResource(mainMod, "AppRoleAttachment"),
+				Tok: makeResource(mainMod, "AppRoleAttachment"),
 			},
 			"onelogin_app_rules": {
-				Tok:  makeResource(mainMod, "AppRule"),
+				Tok: makeResource(mainMod, "AppRule"),
 			},
 			"onelogin_auth_server": {
-				Tok:  makeResource(mainMod, "AuthServer"),
+				Tok: makeResource(mainMod, "AuthServer"),
 			},
 			"onelogin_oidc_apps": {
-				Tok:  makeResource(mainMod, "OidcApp"),
+				Tok: makeResource(mainMod, "OidcApp"),
 			},
 			"onelogin_privileges": {
-				Tok:  makeResource(mainMod, "Privileges"),
+				Tok: makeResource(mainMod, "Privileges"),
 			},
 			"onelogin_roles": {
-				Tok:  makeResource(mainMod, "Role"),
+				Tok: makeResource(mainMod, "Role"),
 			},
 			"onelogin_saml_apps": {
-				Tok:  makeResource(mainMod, "SamlApp"),
+				Tok: makeResource(mainMod, "SamlApp"),
 			},
 			"onelogin_smarthooks": {
-				Tok:  makeResource(mainMod, "SmartHook"),
+				Tok: makeResource(mainMod, "SmartHook"),
 			},
 			"onelogin_users": {
-				Tok:  makeResource(mainMod, "User"),
+				Tok: makeResource(mainMod, "User"),
 			},
 			"onelogin_user_mappings": {
-				Tok:  makeResource(mainMod, "UserMapping"),
+				Tok: makeResource(mainMod, "UserMapping"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
-			"onelogin_user": {Tok: makeDataSource(mainMod, "getUser")},
+			"onelogin_user":  {Tok: makeDataSource(mainMod, "getUser")},
 			"onelogin_users": {Tok: makeDataSource(mainMod, "getUsers")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
