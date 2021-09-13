@@ -1,4 +1,4 @@
-module github.com/excavador/pulumi-onelogin/sdk
+module github.com/pulumi/pulumi-onelogin/sdk
 
 go 1.14
 

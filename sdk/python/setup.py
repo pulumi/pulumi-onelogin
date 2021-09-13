@@ -45,7 +45,7 @@ setup(name='pulumi_onelogin',
       keywords='pulumi onelogin',
       url='https://pulumi.io',
       project_urls={
-          'Repository': 'https://github.com/excavador/pulumi-onelogin'
+          'Repository': 'https://github.com/pulumi/pulumi-onelogin'
       },
       license='Apache-2.0',
       packages=find_packages(),

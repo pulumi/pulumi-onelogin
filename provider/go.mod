@@ -1,4 +1,4 @@
-module github.com/excavador/pulumi-onelogin/provider
+module github.com/pulumi/pulumi-onelogin/provider
 
 go 1.16
 
