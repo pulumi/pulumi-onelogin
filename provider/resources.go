@@ -63,20 +63,6 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
-}
-
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
@@ -84,9 +70,6 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -123,14 +106,14 @@ func Provider() tfbridge.ProviderInfo {
 			"onelogin_app_rules": {
 				Tok: makeResource(mainMod, "AppRule"),
 			},
-			"onelogin_auth_server": {
+			"onelogin_auth_servers": {
 				Tok: makeResource(mainMod, "AuthServer"),
 			},
 			"onelogin_oidc_apps": {
 				Tok: makeResource(mainMod, "OidcApp"),
 			},
 			"onelogin_privileges": {
-				Tok: makeResource(mainMod, "Privileges"),
+				Tok: makeResource(mainMod, "Privilege"),
 			},
 			"onelogin_roles": {
 				Tok: makeResource(mainMod, "Role"),
@@ -140,6 +123,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"onelogin_smarthooks": {
 				Tok: makeResource(mainMod, "SmartHook"),
+			},
+			"onelogin_smarthook_environment_variables": {
+				Tok: makeResource(mainMod, "SmartHookEnvironmentVariable"),
 			},
 			"onelogin_users": {
 				Tok: makeResource(mainMod, "User"),
@@ -187,7 +173,7 @@ func Provider() tfbridge.ProviderInfo {
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
 				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"System.Collections.Immutable": "5.0.0",
 			},
 		},
 	}

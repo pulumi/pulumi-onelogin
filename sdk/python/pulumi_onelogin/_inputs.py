@@ -12,9 +12,10 @@ __all__ = [
     'AppParameterArgs',
     'AppRuleActionArgs',
     'AppRuleConditionArgs',
+    'AuthServerConfigurationArgs',
     'OidcAppParameterArgs',
-    'PrivilegesPrivilegeArgs',
-    'PrivilegesPrivilegeStatementArgs',
+    'PrivilegePrivilegeArgs',
+    'PrivilegePrivilegeStatementArgs',
     'SamlAppParameterArgs',
     'SmartHookConditionArgs',
     'SmartHookOptionsArgs',
@@ -248,6 +249,57 @@ class AppRuleConditionArgs:
 
 
 @pulumi.input_type
+class AuthServerConfigurationArgs:
+    def __init__(__self__, *,
+                 audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resource_identifier: pulumi.Input[str],
+                 access_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
+                 refresh_token_expiration_minutes: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if refresh_token_expiration_minutes is not None:
+            pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "audiences", value)
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_identifier")
+
+    @resource_identifier.setter
+    def resource_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_identifier", value)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @refresh_token_expiration_minutes.setter
+    def refresh_token_expiration_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_token_expiration_minutes", value)
+
+
+@pulumi.input_type
 class OidcAppParameterArgs:
     def __init__(__self__, *,
                  param_key_name: pulumi.Input[str],
@@ -396,9 +448,9 @@ class OidcAppParameterArgs:
 
 
 @pulumi.input_type
-class PrivilegesPrivilegeArgs:
+class PrivilegePrivilegeArgs:
     def __init__(__self__, *,
-                 statements: pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]],
+                 statements: pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]],
                  version: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "statements", statements)
         if version is not None:
@@ -406,11 +458,11 @@ class PrivilegesPrivilegeArgs:
 
     @property
     @pulumi.getter
-    def statements(self) -> pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]]:
+    def statements(self) -> pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]]:
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]]):
+    def statements(self, value: pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]]):
         pulumi.set(self, "statements", value)
 
     @property
@@ -424,7 +476,7 @@ class PrivilegesPrivilegeArgs:
 
 
 @pulumi.input_type
-class PrivilegesPrivilegeStatementArgs:
+class PrivilegePrivilegeStatementArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  effect: pulumi.Input[str],

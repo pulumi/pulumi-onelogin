@@ -8,14 +8,16 @@ import * as utilities from "./utilities";
 export * from "./app";
 export * from "./appRoleAttachment";
 export * from "./appRule";
+export * from "./authServer";
 export * from "./getUser";
 export * from "./getUsers";
 export * from "./oidcApp";
-export * from "./privileges";
+export * from "./privilege";
 export * from "./provider";
 export * from "./role";
 export * from "./samlApp";
 export * from "./smartHook";
+export * from "./smartHookEnvironmentVariable";
 export * from "./user";
 export * from "./userMapping";
 
@@ -32,11 +34,13 @@ export {
 import { App } from "./app";
 import { AppRoleAttachment } from "./appRoleAttachment";
 import { AppRule } from "./appRule";
+import { AuthServer } from "./authServer";
 import { OidcApp } from "./oidcApp";
-import { Privileges } from "./privileges";
+import { Privilege } from "./privilege";
 import { Role } from "./role";
 import { SamlApp } from "./samlApp";
 import { SmartHook } from "./smartHook";
+import { SmartHookEnvironmentVariable } from "./smartHookEnvironmentVariable";
 import { User } from "./user";
 import { UserMapping } from "./userMapping";
 
@@ -50,16 +54,20 @@ const _module = {
                 return new AppRoleAttachment(name, <any>undefined, { urn })
             case "onelogin:index/appRule:AppRule":
                 return new AppRule(name, <any>undefined, { urn })
+            case "onelogin:index/authServer:AuthServer":
+                return new AuthServer(name, <any>undefined, { urn })
             case "onelogin:index/oidcApp:OidcApp":
                 return new OidcApp(name, <any>undefined, { urn })
-            case "onelogin:index/privileges:Privileges":
-                return new Privileges(name, <any>undefined, { urn })
+            case "onelogin:index/privilege:Privilege":
+                return new Privilege(name, <any>undefined, { urn })
             case "onelogin:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "onelogin:index/samlApp:SamlApp":
                 return new SamlApp(name, <any>undefined, { urn })
             case "onelogin:index/smartHook:SmartHook":
                 return new SmartHook(name, <any>undefined, { urn })
+            case "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable":
+                return new SmartHookEnvironmentVariable(name, <any>undefined, { urn })
             case "onelogin:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "onelogin:index/userMapping:UserMapping":
@@ -72,11 +80,13 @@ const _module = {
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachment", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/appRule", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/authServer", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/oidcApp", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/privilege", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/samlApp", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/smartHook", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/smartHookEnvironmentVariable", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/userMapping", _module)
 

@@ -225,6 +225,60 @@
                 "value"
             ]
         },
+        "onelogin:index/AuthServerConfiguration:AuthServerConfiguration": {
+            "properties": {
+                "accessTokenExpirationMinutes": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "audiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "refreshTokenExpirationMinutes": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceIdentifier": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "audiences",
+                "resourceIdentifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessTokenExpirationMinutes",
+                        "audiences",
+                        "refreshTokenExpirationMinutes",
+                        "resourceIdentifier"
+                    ]
+                }
+            }
+        },
         "onelogin:index/OidcAppParameter:OidcAppParameter": {
             "properties": {
                 "attributesTransformations": {
@@ -347,12 +401,12 @@
                 }
             }
         },
-        "onelogin:index/PrivilegesPrivilege:PrivilegesPrivilege": {
+        "onelogin:index/PrivilegePrivilege:PrivilegePrivilege": {
             "properties": {
                 "statements": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/PrivilegesPrivilegeStatement:PrivilegesPrivilegeStatement"
+                        "$ref": "#/types/onelogin:index/PrivilegePrivilegeStatement:PrivilegePrivilegeStatement"
                     },
                     "language": {
                         "python": {
@@ -374,7 +428,7 @@
                 "statements"
             ]
         },
-        "onelogin:index/PrivilegesPrivilegeStatement:PrivilegesPrivilegeStatement": {
+        "onelogin:index/PrivilegePrivilegeStatement:PrivilegePrivilegeStatement": {
             "properties": {
                 "actions": {
                     "type": "array",
@@ -990,6 +1044,54 @@
                 "type": "object"
             }
         },
+        "onelogin:index/authServer:AuthServer": {
+            "properties": {
+                "configuration": {
+                    "$ref": "#/types/onelogin:index/AuthServerConfiguration:AuthServerConfiguration"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "configuration",
+                "description",
+                "name"
+            ],
+            "inputProperties": {
+                "configuration": {
+                    "$ref": "#/types/onelogin:index/AuthServerConfiguration:AuthServerConfiguration"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "configuration",
+                "description"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthServer resources.\n",
+                "properties": {
+                    "configuration": {
+                        "$ref": "#/types/onelogin:index/AuthServerConfiguration:AuthServerConfiguration"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "onelogin:index/oidcApp:OidcApp": {
             "properties": {
                 "allowAssumedSignin": {
@@ -1183,7 +1285,7 @@
                 "type": "object"
             }
         },
-        "onelogin:index/privileges:Privileges": {
+        "onelogin:index/privilege:Privilege": {
             "properties": {
                 "description": {
                     "type": "string"
@@ -1194,7 +1296,7 @@
                 "privileges": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/PrivilegesPrivilege:PrivilegesPrivilege"
+                        "$ref": "#/types/onelogin:index/PrivilegePrivilege:PrivilegePrivilege"
                     }
                 },
                 "roleIds": {
@@ -1224,7 +1326,7 @@
                 "privileges": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/PrivilegesPrivilege:PrivilegesPrivilege"
+                        "$ref": "#/types/onelogin:index/PrivilegePrivilege:PrivilegePrivilege"
                     }
                 },
                 "roleIds": {
@@ -1244,7 +1346,7 @@
                 "privileges"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Privileges resources.\n",
+                "description": "Input properties used for looking up and filtering Privilege resources.\n",
                 "properties": {
                     "description": {
                         "type": "string"
@@ -1255,7 +1357,7 @@
                     "privileges": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/PrivilegesPrivilege:PrivilegesPrivilege"
+                            "$ref": "#/types/onelogin:index/PrivilegePrivilege:PrivilegePrivilege"
                         }
                     },
                     "roleIds": {
@@ -1732,6 +1834,57 @@
                         "type": "string"
                     },
                     "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "updatedAt",
+                "value"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SmartHookEnvironmentVariable resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "value": {
                         "type": "string"
                     }
                 },
@@ -2269,7 +2422,7 @@
             "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "System.Collections.Immutable": "5.0.0"
             }
         },
         "go": {

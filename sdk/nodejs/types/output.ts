@@ -31,6 +31,13 @@ export interface AppRuleCondition {
     value: string;
 }
 
+export interface AuthServerConfiguration {
+    accessTokenExpirationMinutes: number;
+    audiences: string[];
+    refreshTokenExpirationMinutes: number;
+    resourceIdentifier: string;
+}
+
 export interface OidcAppParameter {
     attributesTransformations: string;
     defaultValues: string;
@@ -46,12 +53,12 @@ export interface OidcAppParameter {
     values: string;
 }
 
-export interface PrivilegesPrivilege {
-    statements: outputs.PrivilegesPrivilegeStatement[];
+export interface PrivilegePrivilege {
+    statements: outputs.PrivilegePrivilegeStatement[];
     version?: string;
 }
 
-export interface PrivilegesPrivilegeStatement {
+export interface PrivilegePrivilegeStatement {
     actions: string[];
     effect: string;
     scopes: string[];

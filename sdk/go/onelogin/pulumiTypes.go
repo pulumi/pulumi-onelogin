@@ -382,6 +382,177 @@ func (o AppRuleConditionArrayOutput) Index(i pulumi.IntInput) AppRuleConditionOu
 	}).(AppRuleConditionOutput)
 }
 
+type AuthServerConfiguration struct {
+	AccessTokenExpirationMinutes  *int     `pulumi:"accessTokenExpirationMinutes"`
+	Audiences                     []string `pulumi:"audiences"`
+	RefreshTokenExpirationMinutes *int     `pulumi:"refreshTokenExpirationMinutes"`
+	ResourceIdentifier            string   `pulumi:"resourceIdentifier"`
+}
+
+// AuthServerConfigurationInput is an input type that accepts AuthServerConfigurationArgs and AuthServerConfigurationOutput values.
+// You can construct a concrete instance of `AuthServerConfigurationInput` via:
+//
+//          AuthServerConfigurationArgs{...}
+type AuthServerConfigurationInput interface {
+	pulumi.Input
+
+	ToAuthServerConfigurationOutput() AuthServerConfigurationOutput
+	ToAuthServerConfigurationOutputWithContext(context.Context) AuthServerConfigurationOutput
+}
+
+type AuthServerConfigurationArgs struct {
+	AccessTokenExpirationMinutes  pulumi.IntPtrInput      `pulumi:"accessTokenExpirationMinutes"`
+	Audiences                     pulumi.StringArrayInput `pulumi:"audiences"`
+	RefreshTokenExpirationMinutes pulumi.IntPtrInput      `pulumi:"refreshTokenExpirationMinutes"`
+	ResourceIdentifier            pulumi.StringInput      `pulumi:"resourceIdentifier"`
+}
+
+func (AuthServerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthServerConfiguration)(nil)).Elem()
+}
+
+func (i AuthServerConfigurationArgs) ToAuthServerConfigurationOutput() AuthServerConfigurationOutput {
+	return i.ToAuthServerConfigurationOutputWithContext(context.Background())
+}
+
+func (i AuthServerConfigurationArgs) ToAuthServerConfigurationOutputWithContext(ctx context.Context) AuthServerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationOutput)
+}
+
+func (i AuthServerConfigurationArgs) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
+	return i.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AuthServerConfigurationArgs) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationOutput).ToAuthServerConfigurationPtrOutputWithContext(ctx)
+}
+
+// AuthServerConfigurationPtrInput is an input type that accepts AuthServerConfigurationArgs, AuthServerConfigurationPtr and AuthServerConfigurationPtrOutput values.
+// You can construct a concrete instance of `AuthServerConfigurationPtrInput` via:
+//
+//          AuthServerConfigurationArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthServerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput
+	ToAuthServerConfigurationPtrOutputWithContext(context.Context) AuthServerConfigurationPtrOutput
+}
+
+type authServerConfigurationPtrType AuthServerConfigurationArgs
+
+func AuthServerConfigurationPtr(v *AuthServerConfigurationArgs) AuthServerConfigurationPtrInput {
+	return (*authServerConfigurationPtrType)(v)
+}
+
+func (*authServerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthServerConfiguration)(nil)).Elem()
+}
+
+func (i *authServerConfigurationPtrType) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
+	return i.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *authServerConfigurationPtrType) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationPtrOutput)
+}
+
+type AuthServerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AuthServerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthServerConfiguration)(nil)).Elem()
+}
+
+func (o AuthServerConfigurationOutput) ToAuthServerConfigurationOutput() AuthServerConfigurationOutput {
+	return o
+}
+
+func (o AuthServerConfigurationOutput) ToAuthServerConfigurationOutputWithContext(ctx context.Context) AuthServerConfigurationOutput {
+	return o
+}
+
+func (o AuthServerConfigurationOutput) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
+	return o.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AuthServerConfigurationOutput) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
+	return o.ApplyT(func(v AuthServerConfiguration) *AuthServerConfiguration {
+		return &v
+	}).(AuthServerConfigurationPtrOutput)
+}
+func (o AuthServerConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AuthServerConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
+}
+
+func (o AuthServerConfigurationOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthServerConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+func (o AuthServerConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AuthServerConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
+}
+
+func (o AuthServerConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthServerConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
+}
+
+type AuthServerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthServerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthServerConfiguration)(nil)).Elem()
+}
+
+func (o AuthServerConfigurationPtrOutput) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
+	return o
+}
+
+func (o AuthServerConfigurationPtrOutput) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
+	return o
+}
+
+func (o AuthServerConfigurationPtrOutput) Elem() AuthServerConfigurationOutput {
+	return o.ApplyT(func(v *AuthServerConfiguration) AuthServerConfiguration { return *v }).(AuthServerConfigurationOutput)
+}
+
+func (o AuthServerConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthServerConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokenExpirationMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AuthServerConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthServerConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Audiences
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AuthServerConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AuthServerConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTokenExpirationMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AuthServerConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
 type OidcAppParameter struct {
 	AttributesTransformations *string `pulumi:"attributesTransformations"`
 	DefaultValues             *string `pulumi:"defaultValues"`
@@ -542,210 +713,210 @@ func (o OidcAppParameterArrayOutput) Index(i pulumi.IntInput) OidcAppParameterOu
 	}).(OidcAppParameterOutput)
 }
 
-type PrivilegesPrivilege struct {
-	Statements []PrivilegesPrivilegeStatement `pulumi:"statements"`
-	Version    *string                        `pulumi:"version"`
+type PrivilegePrivilege struct {
+	Statements []PrivilegePrivilegeStatement `pulumi:"statements"`
+	Version    *string                       `pulumi:"version"`
 }
 
-// PrivilegesPrivilegeInput is an input type that accepts PrivilegesPrivilegeArgs and PrivilegesPrivilegeOutput values.
-// You can construct a concrete instance of `PrivilegesPrivilegeInput` via:
+// PrivilegePrivilegeInput is an input type that accepts PrivilegePrivilegeArgs and PrivilegePrivilegeOutput values.
+// You can construct a concrete instance of `PrivilegePrivilegeInput` via:
 //
-//          PrivilegesPrivilegeArgs{...}
-type PrivilegesPrivilegeInput interface {
+//          PrivilegePrivilegeArgs{...}
+type PrivilegePrivilegeInput interface {
 	pulumi.Input
 
-	ToPrivilegesPrivilegeOutput() PrivilegesPrivilegeOutput
-	ToPrivilegesPrivilegeOutputWithContext(context.Context) PrivilegesPrivilegeOutput
+	ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput
+	ToPrivilegePrivilegeOutputWithContext(context.Context) PrivilegePrivilegeOutput
 }
 
-type PrivilegesPrivilegeArgs struct {
-	Statements PrivilegesPrivilegeStatementArrayInput `pulumi:"statements"`
-	Version    pulumi.StringPtrInput                  `pulumi:"version"`
+type PrivilegePrivilegeArgs struct {
+	Statements PrivilegePrivilegeStatementArrayInput `pulumi:"statements"`
+	Version    pulumi.StringPtrInput                 `pulumi:"version"`
 }
 
-func (PrivilegesPrivilegeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegesPrivilege)(nil)).Elem()
+func (PrivilegePrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivilegePrivilege)(nil)).Elem()
 }
 
-func (i PrivilegesPrivilegeArgs) ToPrivilegesPrivilegeOutput() PrivilegesPrivilegeOutput {
-	return i.ToPrivilegesPrivilegeOutputWithContext(context.Background())
+func (i PrivilegePrivilegeArgs) ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput {
+	return i.ToPrivilegePrivilegeOutputWithContext(context.Background())
 }
 
-func (i PrivilegesPrivilegeArgs) ToPrivilegesPrivilegeOutputWithContext(ctx context.Context) PrivilegesPrivilegeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeOutput)
+func (i PrivilegePrivilegeArgs) ToPrivilegePrivilegeOutputWithContext(ctx context.Context) PrivilegePrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeOutput)
 }
 
-// PrivilegesPrivilegeArrayInput is an input type that accepts PrivilegesPrivilegeArray and PrivilegesPrivilegeArrayOutput values.
-// You can construct a concrete instance of `PrivilegesPrivilegeArrayInput` via:
+// PrivilegePrivilegeArrayInput is an input type that accepts PrivilegePrivilegeArray and PrivilegePrivilegeArrayOutput values.
+// You can construct a concrete instance of `PrivilegePrivilegeArrayInput` via:
 //
-//          PrivilegesPrivilegeArray{ PrivilegesPrivilegeArgs{...} }
-type PrivilegesPrivilegeArrayInput interface {
+//          PrivilegePrivilegeArray{ PrivilegePrivilegeArgs{...} }
+type PrivilegePrivilegeArrayInput interface {
 	pulumi.Input
 
-	ToPrivilegesPrivilegeArrayOutput() PrivilegesPrivilegeArrayOutput
-	ToPrivilegesPrivilegeArrayOutputWithContext(context.Context) PrivilegesPrivilegeArrayOutput
+	ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput
+	ToPrivilegePrivilegeArrayOutputWithContext(context.Context) PrivilegePrivilegeArrayOutput
 }
 
-type PrivilegesPrivilegeArray []PrivilegesPrivilegeInput
+type PrivilegePrivilegeArray []PrivilegePrivilegeInput
 
-func (PrivilegesPrivilegeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegesPrivilege)(nil)).Elem()
+func (PrivilegePrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivilegePrivilege)(nil)).Elem()
 }
 
-func (i PrivilegesPrivilegeArray) ToPrivilegesPrivilegeArrayOutput() PrivilegesPrivilegeArrayOutput {
-	return i.ToPrivilegesPrivilegeArrayOutputWithContext(context.Background())
+func (i PrivilegePrivilegeArray) ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput {
+	return i.ToPrivilegePrivilegeArrayOutputWithContext(context.Background())
 }
 
-func (i PrivilegesPrivilegeArray) ToPrivilegesPrivilegeArrayOutputWithContext(ctx context.Context) PrivilegesPrivilegeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeArrayOutput)
+func (i PrivilegePrivilegeArray) ToPrivilegePrivilegeArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeArrayOutput)
 }
 
-type PrivilegesPrivilegeOutput struct{ *pulumi.OutputState }
+type PrivilegePrivilegeOutput struct{ *pulumi.OutputState }
 
-func (PrivilegesPrivilegeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegesPrivilege)(nil)).Elem()
+func (PrivilegePrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivilegePrivilege)(nil)).Elem()
 }
 
-func (o PrivilegesPrivilegeOutput) ToPrivilegesPrivilegeOutput() PrivilegesPrivilegeOutput {
+func (o PrivilegePrivilegeOutput) ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeOutput) ToPrivilegesPrivilegeOutputWithContext(ctx context.Context) PrivilegesPrivilegeOutput {
+func (o PrivilegePrivilegeOutput) ToPrivilegePrivilegeOutputWithContext(ctx context.Context) PrivilegePrivilegeOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeOutput) Statements() PrivilegesPrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v PrivilegesPrivilege) []PrivilegesPrivilegeStatement { return v.Statements }).(PrivilegesPrivilegeStatementArrayOutput)
+func (o PrivilegePrivilegeOutput) Statements() PrivilegePrivilegeStatementArrayOutput {
+	return o.ApplyT(func(v PrivilegePrivilege) []PrivilegePrivilegeStatement { return v.Statements }).(PrivilegePrivilegeStatementArrayOutput)
 }
 
-func (o PrivilegesPrivilegeOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivilegesPrivilege) *string { return v.Version }).(pulumi.StringPtrOutput)
+func (o PrivilegePrivilegeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivilegePrivilege) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type PrivilegesPrivilegeArrayOutput struct{ *pulumi.OutputState }
+type PrivilegePrivilegeArrayOutput struct{ *pulumi.OutputState }
 
-func (PrivilegesPrivilegeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegesPrivilege)(nil)).Elem()
+func (PrivilegePrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivilegePrivilege)(nil)).Elem()
 }
 
-func (o PrivilegesPrivilegeArrayOutput) ToPrivilegesPrivilegeArrayOutput() PrivilegesPrivilegeArrayOutput {
+func (o PrivilegePrivilegeArrayOutput) ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeArrayOutput) ToPrivilegesPrivilegeArrayOutputWithContext(ctx context.Context) PrivilegesPrivilegeArrayOutput {
+func (o PrivilegePrivilegeArrayOutput) ToPrivilegePrivilegeArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeArrayOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeArrayOutput) Index(i pulumi.IntInput) PrivilegesPrivilegeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegesPrivilege {
-		return vs[0].([]PrivilegesPrivilege)[vs[1].(int)]
-	}).(PrivilegesPrivilegeOutput)
+func (o PrivilegePrivilegeArrayOutput) Index(i pulumi.IntInput) PrivilegePrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegePrivilege {
+		return vs[0].([]PrivilegePrivilege)[vs[1].(int)]
+	}).(PrivilegePrivilegeOutput)
 }
 
-type PrivilegesPrivilegeStatement struct {
+type PrivilegePrivilegeStatement struct {
 	Actions []string `pulumi:"actions"`
 	Effect  string   `pulumi:"effect"`
 	Scopes  []string `pulumi:"scopes"`
 }
 
-// PrivilegesPrivilegeStatementInput is an input type that accepts PrivilegesPrivilegeStatementArgs and PrivilegesPrivilegeStatementOutput values.
-// You can construct a concrete instance of `PrivilegesPrivilegeStatementInput` via:
+// PrivilegePrivilegeStatementInput is an input type that accepts PrivilegePrivilegeStatementArgs and PrivilegePrivilegeStatementOutput values.
+// You can construct a concrete instance of `PrivilegePrivilegeStatementInput` via:
 //
-//          PrivilegesPrivilegeStatementArgs{...}
-type PrivilegesPrivilegeStatementInput interface {
+//          PrivilegePrivilegeStatementArgs{...}
+type PrivilegePrivilegeStatementInput interface {
 	pulumi.Input
 
-	ToPrivilegesPrivilegeStatementOutput() PrivilegesPrivilegeStatementOutput
-	ToPrivilegesPrivilegeStatementOutputWithContext(context.Context) PrivilegesPrivilegeStatementOutput
+	ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput
+	ToPrivilegePrivilegeStatementOutputWithContext(context.Context) PrivilegePrivilegeStatementOutput
 }
 
-type PrivilegesPrivilegeStatementArgs struct {
+type PrivilegePrivilegeStatementArgs struct {
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	Effect  pulumi.StringInput      `pulumi:"effect"`
 	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
-func (PrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegesPrivilegeStatement)(nil)).Elem()
+func (PrivilegePrivilegeStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivilegePrivilegeStatement)(nil)).Elem()
 }
 
-func (i PrivilegesPrivilegeStatementArgs) ToPrivilegesPrivilegeStatementOutput() PrivilegesPrivilegeStatementOutput {
-	return i.ToPrivilegesPrivilegeStatementOutputWithContext(context.Background())
+func (i PrivilegePrivilegeStatementArgs) ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput {
+	return i.ToPrivilegePrivilegeStatementOutputWithContext(context.Background())
 }
 
-func (i PrivilegesPrivilegeStatementArgs) ToPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeStatementOutput)
+func (i PrivilegePrivilegeStatementArgs) ToPrivilegePrivilegeStatementOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeStatementOutput)
 }
 
-// PrivilegesPrivilegeStatementArrayInput is an input type that accepts PrivilegesPrivilegeStatementArray and PrivilegesPrivilegeStatementArrayOutput values.
-// You can construct a concrete instance of `PrivilegesPrivilegeStatementArrayInput` via:
+// PrivilegePrivilegeStatementArrayInput is an input type that accepts PrivilegePrivilegeStatementArray and PrivilegePrivilegeStatementArrayOutput values.
+// You can construct a concrete instance of `PrivilegePrivilegeStatementArrayInput` via:
 //
-//          PrivilegesPrivilegeStatementArray{ PrivilegesPrivilegeStatementArgs{...} }
-type PrivilegesPrivilegeStatementArrayInput interface {
+//          PrivilegePrivilegeStatementArray{ PrivilegePrivilegeStatementArgs{...} }
+type PrivilegePrivilegeStatementArrayInput interface {
 	pulumi.Input
 
-	ToPrivilegesPrivilegeStatementArrayOutput() PrivilegesPrivilegeStatementArrayOutput
-	ToPrivilegesPrivilegeStatementArrayOutputWithContext(context.Context) PrivilegesPrivilegeStatementArrayOutput
+	ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput
+	ToPrivilegePrivilegeStatementArrayOutputWithContext(context.Context) PrivilegePrivilegeStatementArrayOutput
 }
 
-type PrivilegesPrivilegeStatementArray []PrivilegesPrivilegeStatementInput
+type PrivilegePrivilegeStatementArray []PrivilegePrivilegeStatementInput
 
-func (PrivilegesPrivilegeStatementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegesPrivilegeStatement)(nil)).Elem()
+func (PrivilegePrivilegeStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivilegePrivilegeStatement)(nil)).Elem()
 }
 
-func (i PrivilegesPrivilegeStatementArray) ToPrivilegesPrivilegeStatementArrayOutput() PrivilegesPrivilegeStatementArrayOutput {
-	return i.ToPrivilegesPrivilegeStatementArrayOutputWithContext(context.Background())
+func (i PrivilegePrivilegeStatementArray) ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput {
+	return i.ToPrivilegePrivilegeStatementArrayOutputWithContext(context.Background())
 }
 
-func (i PrivilegesPrivilegeStatementArray) ToPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeStatementArrayOutput)
+func (i PrivilegePrivilegeStatementArray) ToPrivilegePrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeStatementArrayOutput)
 }
 
-type PrivilegesPrivilegeStatementOutput struct{ *pulumi.OutputState }
+type PrivilegePrivilegeStatementOutput struct{ *pulumi.OutputState }
 
-func (PrivilegesPrivilegeStatementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegesPrivilegeStatement)(nil)).Elem()
+func (PrivilegePrivilegeStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivilegePrivilegeStatement)(nil)).Elem()
 }
 
-func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutput() PrivilegesPrivilegeStatementOutput {
+func (o PrivilegePrivilegeStatementOutput) ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementOutput {
+func (o PrivilegePrivilegeStatementOutput) ToPrivilegePrivilegeStatementOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+func (o PrivilegePrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivilegePrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-func (o PrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
+func (o PrivilegePrivilegeStatementOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivilegePrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-func (o PrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+func (o PrivilegePrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivilegePrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-type PrivilegesPrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
+type PrivilegePrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
 
-func (PrivilegesPrivilegeStatementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegesPrivilegeStatement)(nil)).Elem()
+func (PrivilegePrivilegeStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivilegePrivilegeStatement)(nil)).Elem()
 }
 
-func (o PrivilegesPrivilegeStatementArrayOutput) ToPrivilegesPrivilegeStatementArrayOutput() PrivilegesPrivilegeStatementArrayOutput {
+func (o PrivilegePrivilegeStatementArrayOutput) ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeStatementArrayOutput) ToPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementArrayOutput {
+func (o PrivilegePrivilegeStatementArrayOutput) ToPrivilegePrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementArrayOutput {
 	return o
 }
 
-func (o PrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) PrivilegesPrivilegeStatementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegesPrivilegeStatement {
-		return vs[0].([]PrivilegesPrivilegeStatement)[vs[1].(int)]
-	}).(PrivilegesPrivilegeStatementOutput)
+func (o PrivilegePrivilegeStatementArrayOutput) Index(i pulumi.IntInput) PrivilegePrivilegeStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegePrivilegeStatement {
+		return vs[0].([]PrivilegePrivilegeStatement)[vs[1].(int)]
+	}).(PrivilegePrivilegeStatementOutput)
 }
 
 type SamlAppParameter struct {
@@ -1383,12 +1554,14 @@ func init() {
 	pulumi.RegisterOutputType(AppRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(AppRuleConditionOutput{})
 	pulumi.RegisterOutputType(AppRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(AuthServerConfigurationOutput{})
+	pulumi.RegisterOutputType(AuthServerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OidcAppParameterOutput{})
 	pulumi.RegisterOutputType(OidcAppParameterArrayOutput{})
-	pulumi.RegisterOutputType(PrivilegesPrivilegeOutput{})
-	pulumi.RegisterOutputType(PrivilegesPrivilegeArrayOutput{})
-	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementOutput{})
-	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementArrayOutput{})
+	pulumi.RegisterOutputType(PrivilegePrivilegeOutput{})
+	pulumi.RegisterOutputType(PrivilegePrivilegeArrayOutput{})
+	pulumi.RegisterOutputType(PrivilegePrivilegeStatementOutput{})
+	pulumi.RegisterOutputType(PrivilegePrivilegeStatementArrayOutput{})
 	pulumi.RegisterOutputType(SamlAppParameterOutput{})
 	pulumi.RegisterOutputType(SamlAppParameterArrayOutput{})
 	pulumi.RegisterOutputType(SmartHookConditionOutput{})

@@ -13,9 +13,10 @@ __all__ = [
     'AppParameter',
     'AppRuleAction',
     'AppRuleCondition',
+    'AuthServerConfiguration',
     'OidcAppParameter',
-    'PrivilegesPrivilege',
-    'PrivilegesPrivilegeStatement',
+    'PrivilegePrivilege',
+    'PrivilegePrivilegeStatement',
     'SamlAppParameter',
     'SmartHookCondition',
     'SmartHookOptions',
@@ -212,6 +213,62 @@ class AppRuleCondition(dict):
 
 
 @pulumi.output_type
+class AuthServerConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceIdentifier":
+            suggest = "resource_identifier"
+        elif key == "accessTokenExpirationMinutes":
+            suggest = "access_token_expiration_minutes"
+        elif key == "refreshTokenExpirationMinutes":
+            suggest = "refresh_token_expiration_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthServerConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthServerConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthServerConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audiences: Sequence[str],
+                 resource_identifier: str,
+                 access_token_expiration_minutes: Optional[int] = None,
+                 refresh_token_expiration_minutes: Optional[int] = None):
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if refresh_token_expiration_minutes is not None:
+            pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+
+@pulumi.output_type
 class OidcAppParameter(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -347,9 +404,9 @@ class OidcAppParameter(dict):
 
 
 @pulumi.output_type
-class PrivilegesPrivilege(dict):
+class PrivilegePrivilege(dict):
     def __init__(__self__, *,
-                 statements: Sequence['outputs.PrivilegesPrivilegeStatement'],
+                 statements: Sequence['outputs.PrivilegePrivilegeStatement'],
                  version: Optional[str] = None):
         pulumi.set(__self__, "statements", statements)
         if version is not None:
@@ -357,7 +414,7 @@ class PrivilegesPrivilege(dict):
 
     @property
     @pulumi.getter
-    def statements(self) -> Sequence['outputs.PrivilegesPrivilegeStatement']:
+    def statements(self) -> Sequence['outputs.PrivilegePrivilegeStatement']:
         return pulumi.get(self, "statements")
 
     @property
@@ -367,7 +424,7 @@ class PrivilegesPrivilege(dict):
 
 
 @pulumi.output_type
-class PrivilegesPrivilegeStatement(dict):
+class PrivilegePrivilegeStatement(dict):
     def __init__(__self__, *,
                  actions: Sequence[str],
                  effect: str,

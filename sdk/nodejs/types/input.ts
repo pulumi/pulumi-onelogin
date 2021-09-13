@@ -31,6 +31,13 @@ export interface AppRuleCondition {
     value: pulumi.Input<string>;
 }
 
+export interface AuthServerConfiguration {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    audiences: pulumi.Input<pulumi.Input<string>[]>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    resourceIdentifier: pulumi.Input<string>;
+}
+
 export interface OidcAppParameter {
     attributesTransformations?: pulumi.Input<string>;
     defaultValues?: pulumi.Input<string>;
@@ -46,12 +53,12 @@ export interface OidcAppParameter {
     values?: pulumi.Input<string>;
 }
 
-export interface PrivilegesPrivilege {
-    statements: pulumi.Input<pulumi.Input<inputs.PrivilegesPrivilegeStatement>[]>;
+export interface PrivilegePrivilege {
+    statements: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilegeStatement>[]>;
     version?: pulumi.Input<string>;
 }
 
-export interface PrivilegesPrivilegeStatement {
+export interface PrivilegePrivilegeStatement {
     actions: pulumi.Input<pulumi.Input<string>[]>;
     effect: pulumi.Input<string>;
     scopes: pulumi.Input<pulumi.Input<string>[]>;
