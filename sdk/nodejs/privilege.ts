@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-export class Privileges extends pulumi.CustomResource {
+export class Privilege extends pulumi.CustomResource {
     /**
-     * Get an existing Privileges resource's state with the given name, ID, and optional extra
+     * Get an existing Privilege resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -15,50 +15,50 @@ export class Privileges extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PrivilegesState, opts?: pulumi.CustomResourceOptions): Privileges {
-        return new Privileges(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PrivilegeState, opts?: pulumi.CustomResourceOptions): Privilege {
+        return new Privilege(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/privileges:Privileges';
+    public static readonly __pulumiType = 'onelogin:index/privilege:Privilege';
 
     /**
-     * Returns true if the given object is an instance of Privileges.  This is designed to work even
+     * Returns true if the given object is an instance of Privilege.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Privileges {
+    public static isInstance(obj: any): obj is Privilege {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Privileges.__pulumiType;
+        return obj['__pulumiType'] === Privilege.__pulumiType;
     }
 
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public readonly privileges!: pulumi.Output<outputs.PrivilegesPrivilege[]>;
+    public readonly privileges!: pulumi.Output<outputs.PrivilegePrivilege[]>;
     public readonly roleIds!: pulumi.Output<number[] | undefined>;
     public readonly userIds!: pulumi.Output<number[] | undefined>;
 
     /**
-     * Create a Privileges resource with the given unique name, arguments, and options.
+     * Create a Privilege resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PrivilegesArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: PrivilegesArgs | PrivilegesState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: PrivilegeArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: PrivilegeArgs | PrivilegeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as PrivilegesState | undefined;
+            const state = argsOrState as PrivilegeState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["privileges"] = state ? state.privileges : undefined;
             inputs["roleIds"] = state ? state.roleIds : undefined;
             inputs["userIds"] = state ? state.userIds : undefined;
         } else {
-            const args = argsOrState as PrivilegesArgs | undefined;
+            const args = argsOrState as PrivilegeArgs | undefined;
             if ((!args || args.privileges === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
@@ -71,28 +71,28 @@ export class Privileges extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Privileges.__pulumiType, name, inputs, opts);
+        super(Privilege.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Privileges resources.
+ * Input properties used for looking up and filtering Privilege resources.
  */
-export interface PrivilegesState {
+export interface PrivilegeState {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-    privileges?: pulumi.Input<pulumi.Input<inputs.PrivilegesPrivilege>[]>;
+    privileges?: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilege>[]>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 /**
- * The set of arguments for constructing a Privileges resource.
+ * The set of arguments for constructing a Privilege resource.
  */
-export interface PrivilegesArgs {
+export interface PrivilegeArgs {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-    privileges: pulumi.Input<pulumi.Input<inputs.PrivilegesPrivilege>[]>;
+    privileges: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilege>[]>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

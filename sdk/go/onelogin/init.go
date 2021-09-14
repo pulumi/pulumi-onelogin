@@ -26,16 +26,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppRoleAttachment{}
 	case "onelogin:index/appRule:AppRule":
 		r = &AppRule{}
+	case "onelogin:index/authServer:AuthServer":
+		r = &AuthServer{}
 	case "onelogin:index/oidcApp:OidcApp":
 		r = &OidcApp{}
-	case "onelogin:index/privileges:Privileges":
-		r = &Privileges{}
+	case "onelogin:index/privilege:Privilege":
+		r = &Privilege{}
 	case "onelogin:index/role:Role":
 		r = &Role{}
 	case "onelogin:index/samlApp:SamlApp":
 		r = &SamlApp{}
 	case "onelogin:index/smartHook:SmartHook":
 		r = &SmartHook{}
+	case "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable":
+		r = &SmartHookEnvironmentVariable{}
 	case "onelogin:index/user:User":
 		r = &User{}
 	case "onelogin:index/userMapping:UserMapping":
@@ -88,12 +92,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
+		"index/authServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"onelogin",
 		"index/oidcApp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/privileges",
+		"index/privilege",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -109,6 +118,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"onelogin",
 		"index/smartHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"onelogin",
+		"index/smartHookEnvironmentVariable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -8,14 +8,16 @@ import typing
 from .app import *
 from .app_role_attachment import *
 from .app_rule import *
+from .auth_server import *
 from .get_user import *
 from .get_users import *
 from .oidc_app import *
-from .privileges import *
+from .privilege import *
 from .provider import *
 from .role import *
 from .saml_app import *
 from .smart_hook import *
+from .smart_hook_environment_variable import *
 from .user import *
 from .user_mapping import *
 from ._inputs import *
@@ -56,6 +58,14 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
+  "mod": "index/authServer",
+  "fqn": "pulumi_onelogin",
+  "classes": {
+   "onelogin:index/authServer:AuthServer": "AuthServer"
+  }
+ },
+ {
+  "pkg": "onelogin",
   "mod": "index/oidcApp",
   "fqn": "pulumi_onelogin",
   "classes": {
@@ -64,10 +74,10 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/privileges",
+  "mod": "index/privilege",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/privileges:Privileges": "Privileges"
+   "onelogin:index/privilege:Privilege": "Privilege"
   }
  },
  {
@@ -92,6 +102,14 @@ _utilities.register(
   "fqn": "pulumi_onelogin",
   "classes": {
    "onelogin:index/smartHook:SmartHook": "SmartHook"
+  }
+ },
+ {
+  "pkg": "onelogin",
+  "mod": "index/smartHookEnvironmentVariable",
+  "fqn": "pulumi_onelogin",
+  "classes": {
+   "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable": "SmartHookEnvironmentVariable"
   }
  },
  {
