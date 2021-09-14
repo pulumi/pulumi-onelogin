@@ -9,8 +9,8 @@ r[![Actions Status](https://github.com/pulumi/pulumi-onelogin/workflows/master/b
 # OneLogin Resource Provider
 
 OneLogin Resource Provider for Pulumi lets you manage [OneLogin](https://onelogin.com) resources.
-This provider is bridge to [github.com/onelogin/terraform-provider-onelogin](https://github.com/onelogin/terraform-provider-onelogin).
 To use this package, please [install the Pulumi CLI first](https://pulumi.io/).
+This provider is bridge to [github.com/onelogin/terraform-provider-onelogin](https://github.com/onelogin/terraform-provider-onelogin).
 
 ## Installing
 
