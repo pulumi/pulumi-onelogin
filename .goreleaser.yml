@@ -1,6 +1,6 @@
 archives:
 - id: archive
-  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+  name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
   - make tfgen
@@ -24,12 +24,21 @@ builds:
   - darwin
   - windows
   - linux
+  ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-onelogin/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-onelogin/
 changelog:
-  skip: true
+  filters:
+    exclude:
+    - Merge branch
+    - Merge pull request
+    - \Winternal\W
+    - \Wci\W
+    - \Wchore\W
+  sort: asc
+  use: git
 release:
   disable: false
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT"
