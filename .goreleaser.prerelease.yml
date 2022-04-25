@@ -1,6 +1,6 @@
 archives:
 - id: archive
-  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+  name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
   - make tfgen
@@ -24,6 +24,7 @@ builds:
   - darwin
   - windows
   - linux
+  ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-onelogin/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-onelogin/
@@ -32,4 +33,4 @@ changelog:
 release:
   disable: true
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT"
