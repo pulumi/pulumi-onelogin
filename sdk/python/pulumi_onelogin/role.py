@@ -19,6 +19,10 @@ class RoleArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Role resource.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] admins: A list of IDs of users who administer the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] apps: A list of app IDs for which the role applies.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs for whom the role applies.
         """
         if admins is not None:
             pulumi.set(__self__, "admins", admins)
@@ -32,6 +36,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def admins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of users who administer the role.
+        """
         return pulumi.get(self, "admins")
 
     @admins.setter
@@ -41,6 +48,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of app IDs for which the role applies.
+        """
         return pulumi.get(self, "apps")
 
     @apps.setter
@@ -50,6 +60,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -59,6 +72,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of user IDs for whom the role applies.
+        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -75,6 +91,10 @@ class _RoleState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] admins: A list of IDs of users who administer the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] apps: A list of app IDs for which the role applies.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs for whom the role applies.
         """
         if admins is not None:
             pulumi.set(__self__, "admins", admins)
@@ -88,6 +108,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def admins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of IDs of users who administer the role.
+        """
         return pulumi.get(self, "admins")
 
     @admins.setter
@@ -97,6 +120,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of app IDs for which the role applies.
+        """
         return pulumi.get(self, "apps")
 
     @apps.setter
@@ -106,6 +132,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -115,6 +144,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of user IDs for whom the role applies.
+        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -133,9 +165,45 @@ class Role(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manage Role resources.
+
+        This resource allows you to create and configure Roles.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        executive_admin = onelogin.Role("executiveAdmin",
+            admins=[777],
+            apps=[
+                123,
+                456,
+                787,
+            ],
+            users=[
+                543,
+                213,
+                420,
+            ])
+        ```
+
+        ## Import
+
+        A role can be imported using the OneLogin Role ID.
+
+        ```sh
+         $ pulumi import onelogin:index/role:Role executive_admin <role id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] admins: A list of IDs of users who administer the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] apps: A list of app IDs for which the role applies.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs for whom the role applies.
         """
         ...
     @overload
@@ -144,7 +212,39 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manage Role resources.
+
+        This resource allows you to create and configure Roles.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        executive_admin = onelogin.Role("executiveAdmin",
+            admins=[777],
+            apps=[
+                123,
+                456,
+                787,
+            ],
+            users=[
+                543,
+                213,
+                420,
+            ])
+        ```
+
+        ## Import
+
+        A role can be imported using the OneLogin Role ID.
+
+        ```sh
+         $ pulumi import onelogin:index/role:Role executive_admin <role id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,6 +301,10 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] admins: A list of IDs of users who administer the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] apps: A list of app IDs for which the role applies.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs for whom the role applies.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -215,20 +319,32 @@ class Role(pulumi.CustomResource):
     @property
     @pulumi.getter
     def admins(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of IDs of users who administer the role.
+        """
         return pulumi.get(self, "admins")
 
     @property
     @pulumi.getter
     def apps(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of app IDs for which the role applies.
+        """
         return pulumi.get(self, "apps")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def users(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of user IDs for whom the role applies.
+        """
         return pulumi.get(self, "users")
 

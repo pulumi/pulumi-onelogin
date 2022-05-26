@@ -13,7 +13,13 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class UserMappingAction
     {
+        /// <summary>
+        /// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

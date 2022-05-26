@@ -22,6 +22,11 @@ class PrivilegeArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Privilege resource.
+        :param pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeArgs']]] privileges: A list of statements that describe what the privilege grants access to.
+        :param pulumi.Input[str] description: Description for the Privilege.
+        :param pulumi.Input[str] name: The name of the privilege.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of role IDs for whom the role applies.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of user IDs for whom the privilege applies.
         """
         pulumi.set(__self__, "privileges", privileges)
         if description is not None:
@@ -36,6 +41,9 @@ class PrivilegeArgs:
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeArgs']]]:
+        """
+        A list of statements that describe what the privilege grants access to.
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -45,6 +53,9 @@ class PrivilegeArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the Privilege.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -54,6 +65,9 @@ class PrivilegeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the privilege.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -63,6 +77,9 @@ class PrivilegeArgs:
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of role IDs for whom the role applies.
+        """
         return pulumi.get(self, "role_ids")
 
     @role_ids.setter
@@ -72,6 +89,9 @@ class PrivilegeArgs:
     @property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of user IDs for whom the privilege applies.
+        """
         return pulumi.get(self, "user_ids")
 
     @user_ids.setter
@@ -89,6 +109,11 @@ class _PrivilegeState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering Privilege resources.
+        :param pulumi.Input[str] description: Description for the Privilege.
+        :param pulumi.Input[str] name: The name of the privilege.
+        :param pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeArgs']]] privileges: A list of statements that describe what the privilege grants access to.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of role IDs for whom the role applies.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of user IDs for whom the privilege applies.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -104,6 +129,9 @@ class _PrivilegeState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the Privilege.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -113,6 +141,9 @@ class _PrivilegeState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the privilege.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -122,6 +153,9 @@ class _PrivilegeState:
     @property
     @pulumi.getter
     def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeArgs']]]]:
+        """
+        A list of statements that describe what the privilege grants access to.
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -131,6 +165,9 @@ class _PrivilegeState:
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of role IDs for whom the role applies.
+        """
         return pulumi.get(self, "role_ids")
 
     @role_ids.setter
@@ -140,6 +177,9 @@ class _PrivilegeState:
     @property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of user IDs for whom the privilege applies.
+        """
         return pulumi.get(self, "user_ids")
 
     @user_ids.setter
@@ -159,9 +199,64 @@ class Privilege(pulumi.CustomResource):
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        Create a Privilege resource with the given unique name, props, and options.
+        Manage Privilege resources.
+
+        This resource allows you to create and configure Privilege.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        super_admin = onelogin.Privilege("superAdmin",
+            description="description",
+            privileges=[onelogin.PrivilegePrivilegeArgs(
+                statements=[
+                    onelogin.PrivilegePrivilegeStatementArgs(
+                        action=["apps:List"],
+                        effect="Allow",
+                        scope=["*"],
+                    ),
+                    onelogin.PrivilegePrivilegeStatementArgs(
+                        action=[
+                            "users:List",
+                            "users:Update",
+                        ],
+                        effect="Allow",
+                        scope=[
+                            "users/123",
+                            "users/345",
+                        ],
+                    ),
+                ],
+            )],
+            role_ids=[
+                987,
+                654,
+            ],
+            user_ids=[
+                123,
+                345,
+            ])
+        ```
+
+        ## Import
+
+        A privilege can be imported using the OneLogin Privilege ID.
+
+        ```sh
+         $ pulumi import onelogin:index/privilege:Privilege super_admin <privilege id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: Description for the Privilege.
+        :param pulumi.Input[str] name: The name of the privilege.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivilegePrivilegeArgs']]]] privileges: A list of statements that describe what the privilege grants access to.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of role IDs for whom the role applies.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of user IDs for whom the privilege applies.
         """
         ...
     @overload
@@ -170,7 +265,57 @@ class Privilege(pulumi.CustomResource):
                  args: PrivilegeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Privilege resource with the given unique name, props, and options.
+        Manage Privilege resources.
+
+        This resource allows you to create and configure Privilege.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        super_admin = onelogin.Privilege("superAdmin",
+            description="description",
+            privileges=[onelogin.PrivilegePrivilegeArgs(
+                statements=[
+                    onelogin.PrivilegePrivilegeStatementArgs(
+                        action=["apps:List"],
+                        effect="Allow",
+                        scope=["*"],
+                    ),
+                    onelogin.PrivilegePrivilegeStatementArgs(
+                        action=[
+                            "users:List",
+                            "users:Update",
+                        ],
+                        effect="Allow",
+                        scope=[
+                            "users/123",
+                            "users/345",
+                        ],
+                    ),
+                ],
+            )],
+            role_ids=[
+                987,
+                654,
+            ],
+            user_ids=[
+                123,
+                345,
+            ])
+        ```
+
+        ## Import
+
+        A privilege can be imported using the OneLogin Privilege ID.
+
+        ```sh
+         $ pulumi import onelogin:index/privilege:Privilege super_admin <privilege id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PrivilegeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -232,6 +377,11 @@ class Privilege(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: Description for the Privilege.
+        :param pulumi.Input[str] name: The name of the privilege.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivilegePrivilegeArgs']]]] privileges: A list of statements that describe what the privilege grants access to.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of role IDs for whom the role applies.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of user IDs for whom the privilege applies.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -247,25 +397,40 @@ class Privilege(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description for the Privilege.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the privilege.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence['outputs.PrivilegePrivilege']]:
+        """
+        A list of statements that describe what the privilege grants access to.
+        """
         return pulumi.get(self, "privileges")
 
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of role IDs for whom the role applies.
+        """
         return pulumi.get(self, "role_ids")
 
     @property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of user IDs for whom the privilege applies.
+        """
         return pulumi.get(self, "user_ids")
 

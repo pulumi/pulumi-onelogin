@@ -5,77 +5,227 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface AppParameter {
+    /**
+     * Describes how the app's attributes should be transformed.
+     */
     attributesTransformations: string;
+    /**
+     * Default Parameter values.
+     */
     defaultValues: string;
+    /**
+     * When true, this parameter will be included in a SAML assertion payload.
+     */
     includeInSamlAssertion: boolean;
+    /**
+     * The can only be set when creating a new parameter. It can not be updated.
+     */
     label: string;
+    /**
+     * The parameter ID.
+     */
     paramId: number;
+    /**
+     * Name to represent the parameter in OneLogin.
+     */
     paramKeyName: string;
+    /**
+     * Provisioned access entitlements for the app. Defaults to `false`.
+     */
     provisionedEntitlements: boolean;
+    /**
+     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+     */
     safeEntitlementsEnabled: boolean;
+    /**
+     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+     */
     skipIfBlank: boolean;
+    /**
+     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
+     */
     userAttributeMacros: string;
+    /**
+     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+     */
     userAttributeMappings: string;
+    /**
+     * Parameter values.
+     */
     values: string;
 }
 
 export interface AppRuleAction {
+    /**
+     * The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `setRoleFromExisting` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
+     */
     action: string;
+    /**
+     * A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
+     */
     expression?: string;
+    /**
+     * An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+     */
     values: string[];
 }
 
 export interface AppRuleCondition {
+    /**
+     * A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
+     */
     operator: string;
+    /**
+     * The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
+     */
     source: string;
+    /**
+     * An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+     */
     value: string;
 }
 
 export interface AuthServerConfiguration {
+    /**
+     * The number of minutes until the token expires
+     */
     accessTokenExpirationMinutes: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences: string[];
+    /**
+     * The number of minutes until the token expires
+     */
     refreshTokenExpirationMinutes: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier: string;
 }
 
 export interface OidcAppParameter {
+    /**
+     * Describes how the app's attributes should be transformed.
+     */
     attributesTransformations: string;
+    /**
+     * Default parameter values.
+     */
     defaultValues: string;
+    /**
+     * When true, this parameter will be included in a SAML assertion payload.
+     */
     includeInSamlAssertion: boolean;
+    /**
+     * The can only be set when creating a new parameter. It can not be updated.
+     */
     label: string;
+    /**
+     * The parameter ID.
+     */
     paramId: number;
+    /**
+     * Name to represent the parameter in OneLogin.
+     */
     paramKeyName: string;
+    /**
+     * Provisioned access entitlements for the app. Defaults to `false`.
+     */
     provisionedEntitlements: boolean;
+    /**
+     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+     */
     safeEntitlementsEnabled: boolean;
+    /**
+     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+     */
     skipIfBlank: boolean;
+    /**
+     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
+     */
     userAttributeMacros: string;
+    /**
+     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+     */
     userAttributeMappings: string;
+    /**
+     * Parameter values.
+     */
     values: string;
 }
 
 export interface PrivilegePrivilege {
+    /**
+     * At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
+     */
     statements: outputs.PrivilegePrivilegeStatement[];
     version?: string;
 }
 
 export interface PrivilegePrivilegeStatement {
+    /**
+     * List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
+     */
     actions: string[];
+    /**
+     * The effect the privilege grants for the resource. Must be "Allow".
+     */
     effect: string;
+    /**
+     * Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
+     */
     scopes: string[];
 }
 
 export interface SamlAppParameter {
+    /**
+     * Describes how the app's attributes should be transformed.
+     */
     attributesTransformations: string;
+    /**
+     * Default parameter values.
+     */
     defaultValues: string;
+    /**
+     * When true, this parameter will be included in a SAML assertion payload.
+     */
     includeInSamlAssertion: boolean;
+    /**
+     * The can only be set when creating a new parameter. It can not be updated.
+     */
     label: string;
+    /**
+     * The parameter ID.
+     */
     paramId: number;
+    /**
+     * Name to represent the parameter in OneLogin.
+     */
     paramKeyName: string;
+    /**
+     * Provisioned access entitlements for the app. Defaults to `false`.
+     */
     provisionedEntitlements: boolean;
+    /**
+     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+     */
     safeEntitlementsEnabled: boolean;
+    /**
+     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+     */
     skipIfBlank: boolean;
+    /**
+     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
+     */
     userAttributeMacros: string;
+    /**
+     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+     */
     userAttributeMappings: string;
+    /**
+     * Parameter values.
+     */
     values: string;
 }
 
@@ -85,19 +235,41 @@ export interface SmartHookCondition {
     value: string;
 }
 
-export interface SmartHookOptions {
+export interface SmartHookOption {
+    /**
+     * When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+     */
     locationEnabled?: boolean;
     mfaDeviceInfoEnabled?: boolean;
+    /**
+     * When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+     */
     riskEnabled?: boolean;
 }
 
 export interface UserMappingAction {
+    /**
+     * The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+     */
     action: string;
+    /**
+     * An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+     */
     values: string[];
 }
 
 export interface UserMappingCondition {
+    /**
+     * A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
+     */
     operator: string;
+    /**
+     * The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+     */
     source: string;
+    /**
+     * An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+     */
     value: string;
 }
+

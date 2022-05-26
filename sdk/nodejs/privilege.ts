@@ -5,6 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manage Privilege resources.
+ *
+ * This resource allows you to create and configure Privilege.
+ *
+ * ## Example Usage
+ * ### Strict Ordering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const superAdmin = new onelogin.Privilege("super_admin", {
+ *     description: "description",
+ *     privileges: [{
+ *         statements: [
+ *             {
+ *                 actions: ["apps:List"],
+ *                 effect: "Allow",
+ *                 scopes: ["*"],
+ *             },
+ *             {
+ *                 actions: [
+ *                     "users:List",
+ *                     "users:Update",
+ *                 ],
+ *                 effect: "Allow",
+ *                 scopes: [
+ *                     "users/123",
+ *                     "users/345",
+ *                 ],
+ *             },
+ *         ],
+ *     }],
+ *     roleIds: [
+ *         987,
+ *         654,
+ *     ],
+ *     userIds: [
+ *         123,
+ *         345,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A privilege can be imported using the OneLogin Privilege ID.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/privilege:Privilege super_admin <privilege id>
+ * ```
+ */
 export class Privilege extends pulumi.CustomResource {
     /**
      * Get an existing Privilege resource's state with the given name, ID, and optional extra
@@ -33,10 +86,25 @@ export class Privilege extends pulumi.CustomResource {
         return obj['__pulumiType'] === Privilege.__pulumiType;
     }
 
+    /**
+     * Description for the Privilege.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the privilege.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A list of statements that describe what the privilege grants access to.
+     */
     public readonly privileges!: pulumi.Output<outputs.PrivilegePrivilege[]>;
+    /**
+     * A list of role IDs for whom the role applies.
+     */
     public readonly roleIds!: pulumi.Output<number[] | undefined>;
+    /**
+     * A list of user IDs for whom the privilege applies.
+     */
     public readonly userIds!: pulumi.Output<number[] | undefined>;
 
     /**
@@ -48,30 +116,28 @@ export class Privilege extends pulumi.CustomResource {
      */
     constructor(name: string, args: PrivilegeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PrivilegeArgs | PrivilegeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivilegeState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privileges"] = state ? state.privileges : undefined;
-            inputs["roleIds"] = state ? state.roleIds : undefined;
-            inputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privileges"] = state ? state.privileges : undefined;
+            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as PrivilegeArgs | undefined;
             if ((!args || args.privileges === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privileges"] = args ? args.privileges : undefined;
-            inputs["roleIds"] = args ? args.roleIds : undefined;
-            inputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privileges"] = args ? args.privileges : undefined;
+            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["userIds"] = args ? args.userIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Privilege.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Privilege.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -79,10 +145,25 @@ export class Privilege extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Privilege resources.
  */
 export interface PrivilegeState {
+    /**
+     * Description for the Privilege.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the privilege.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of statements that describe what the privilege grants access to.
+     */
     privileges?: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilege>[]>;
+    /**
+     * A list of role IDs for whom the role applies.
+     */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of user IDs for whom the privilege applies.
+     */
     userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
@@ -90,9 +171,24 @@ export interface PrivilegeState {
  * The set of arguments for constructing a Privilege resource.
  */
 export interface PrivilegeArgs {
+    /**
+     * Description for the Privilege.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the privilege.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of statements that describe what the privilege grants access to.
+     */
     privileges: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilege>[]>;
+    /**
+     * A list of role IDs for whom the role applies.
+     */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of user IDs for whom the privilege applies.
+     */
     userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

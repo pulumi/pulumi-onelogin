@@ -19,12 +19,11 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/onelogin/terraform-provider-onelogin/onelogin"
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
@@ -74,18 +73,20 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(onelogin.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(onelogin.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "onelogin",
-		Description: "A Pulumi package for creating and managing onelogin cloud resources.",
+		Description: "A Pulumi package for creating and managing OneLogin cloud resources.",
 		Keywords:    []string{"pulumi", "onelogin"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-onelogin",
-		Config:      map[string]*tfbridge.SchemaInfo{
+		GitHubOrg:   "onelogin",
+
+		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -99,39 +100,75 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"onelogin_apps": {
 				Tok: makeResource(mainMod, "App"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_app.md",
+				},
 			},
 			"onelogin_app_role_attachments": {
 				Tok: makeResource(mainMod, "AppRoleAttachment"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_app_role_attachment.md",
+				},
 			},
 			"onelogin_app_rules": {
 				Tok: makeResource(mainMod, "AppRule"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_app_rule.md",
+				},
 			},
 			"onelogin_auth_servers": {
 				Tok: makeResource(mainMod, "AuthServer"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_auth_server.md",
+				},
 			},
 			"onelogin_oidc_apps": {
 				Tok: makeResource(mainMod, "OidcApp"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_oidc_app.md",
+				},
 			},
 			"onelogin_privileges": {
 				Tok: makeResource(mainMod, "Privilege"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_privilege.md",
+				},
 			},
 			"onelogin_roles": {
 				Tok: makeResource(mainMod, "Role"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_role.md",
+				},
 			},
 			"onelogin_saml_apps": {
 				Tok: makeResource(mainMod, "SamlApp"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_saml_app.md",
+				},
 			},
 			"onelogin_smarthooks": {
 				Tok: makeResource(mainMod, "SmartHook"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_smarthook.md",
+				},
 			},
 			"onelogin_smarthook_environment_variables": {
 				Tok: makeResource(mainMod, "SmartHookEnvironmentVariable"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
 			},
 			"onelogin_users": {
 				Tok: makeResource(mainMod, "User"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_user.md",
+				},
 			},
 			"onelogin_user_mappings": {
 				Tok: makeResource(mainMod, "UserMapping"),
+				Docs: &tfbridge.DocInfo{
+					Source: "onelogin_user_mapping.md",
+				},
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

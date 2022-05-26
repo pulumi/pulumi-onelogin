@@ -14,17 +14,28 @@ namespace Pulumi.Onelogin.Inputs
     {
         [Input("actions", required: true)]
         private InputList<string>? _actions;
+
+        /// <summary>
+        /// List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
+        /// </summary>
         public InputList<string> Actions
         {
             get => _actions ?? (_actions = new InputList<string>());
             set => _actions = value;
         }
 
+        /// <summary>
+        /// The effect the privilege grants for the resource. Must be "Allow".
+        /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());

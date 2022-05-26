@@ -9,6 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// Manage SmartHook resources.
+    /// 
+    /// This resource allows you to create and configure SmartHooks.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicTest = new Onelogin.SmartHook("basicTest", new Onelogin.SmartHookArgs
+    ///         {
+    ///             Disabled = false,
+    ///             EnvVars = 
+    ///             {
+    ///                 "API_KEY",
+    ///             },
+    ///             Function = "CQlmdW5jdGlvbiBteUZ1bmMoKSB7CgkJCWxldCBhID0gMTsKCQkJbGV0IGIgPSAxOwoJCQlsZXQgYyA9IGEgKyBiOwoJCSAgY29uc29sZS5sb2coIkRpbmcgRG9uZyIsIGEsIGIsIGMpOwoJCX0K",
+    ///             Options = 
+    ///             {
+    ///                 new Onelogin.Inputs.SmartHookOptionArgs
+    ///                 {
+    ///                     LocationEnabled = false,
+    ///                     RiskEnabled = false,
+    ///                 },
+    ///             },
+    ///             Packages = 
+    ///             {
+    ///                 { "mysql", "^2.18.1" },
+    ///             },
+    ///             Retries = 0,
+    ///             Timeout = 2,
+    ///             Type = "pre-authentication",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A SmartHook can be imported via the OneLogin SmartHook.
+    /// 
+    /// ```sh
+    ///  $ pulumi import onelogin:index/smartHook:SmartHook example &lt;smarthook_id&gt;
+    /// ```
+    /// </summary>
     [OneloginResourceType("onelogin:index/smartHook:SmartHook")]
     public partial class SmartHook : Pulumi.CustomResource
     {
@@ -18,39 +70,72 @@ namespace Pulumi.Onelogin
         [Output("contextVersion")]
         public Output<string> ContextVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// Timestamp for smarthook's last update
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates if function is available for execution or not. Default true
+        /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
+        /// <summary>
+        /// An array of predefined environment variables to be supplied to the function at runtime.
+        /// </summary>
         [Output("envVars")]
         public Output<ImmutableArray<string>> EnvVars { get; private set; } = null!;
 
+        /// <summary>
+        /// A base64 encoded blob, or Heredoc string containing the javascript function code.
+        /// </summary>
         [Output("function")]
         public Output<string> Function { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of options for the hook
+        /// </summary>
         [Output("options")]
-        public Output<Outputs.SmartHookOptions?> Options { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SmartHookOption>> Options { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        /// </summary>
         [Output("packages")]
         public Output<ImmutableDictionary<string, string>> Packages { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of retries if execution fails. Default 0, Max 4
+        /// </summary>
         [Output("retries")]
         public Output<int> Retries { get; private set; } = null!;
 
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
 
+        /// <summary>
+        /// The smarthook's status.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        /// </summary>
         [Output("timeout")]
         public Output<int> Timeout { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// Timestamp for smarthook's last update
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
@@ -111,40 +196,72 @@ namespace Pulumi.Onelogin
         [Input("contextVersion")]
         public Input<string>? ContextVersion { get; set; }
 
+        /// <summary>
+        /// Indicates if function is available for execution or not. Default true
+        /// </summary>
         [Input("disabled", required: true)]
         public Input<bool> Disabled { get; set; } = null!;
 
         [Input("envVars", required: true)]
         private InputList<string>? _envVars;
+
+        /// <summary>
+        /// An array of predefined environment variables to be supplied to the function at runtime.
+        /// </summary>
         public InputList<string> EnvVars
         {
             get => _envVars ?? (_envVars = new InputList<string>());
             set => _envVars = value;
         }
 
+        /// <summary>
+        /// A base64 encoded blob, or Heredoc string containing the javascript function code.
+        /// </summary>
         [Input("function", required: true)]
         public Input<string> Function { get; set; } = null!;
 
         [Input("options")]
-        public Input<Inputs.SmartHookOptionsArgs>? Options { get; set; }
+        private InputList<Inputs.SmartHookOptionArgs>? _options;
+
+        /// <summary>
+        /// A list of options for the hook
+        /// </summary>
+        public InputList<Inputs.SmartHookOptionArgs> Options
+        {
+            get => _options ?? (_options = new InputList<Inputs.SmartHookOptionArgs>());
+            set => _options = value;
+        }
 
         [Input("packages", required: true)]
         private InputMap<string>? _packages;
+
+        /// <summary>
+        /// A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        /// </summary>
         public InputMap<string> Packages
         {
             get => _packages ?? (_packages = new InputMap<string>());
             set => _packages = value;
         }
 
+        /// <summary>
+        /// Number of retries if execution fails. Default 0, Max 4
+        /// </summary>
         [Input("retries", required: true)]
         public Input<int> Retries { get; set; } = null!;
 
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
 
+        /// <summary>
+        /// The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        /// </summary>
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -166,49 +283,90 @@ namespace Pulumi.Onelogin
         [Input("contextVersion")]
         public Input<string>? ContextVersion { get; set; }
 
+        /// <summary>
+        /// Timestamp for smarthook's last update
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Indicates if function is available for execution or not. Default true
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         [Input("envVars")]
         private InputList<string>? _envVars;
+
+        /// <summary>
+        /// An array of predefined environment variables to be supplied to the function at runtime.
+        /// </summary>
         public InputList<string> EnvVars
         {
             get => _envVars ?? (_envVars = new InputList<string>());
             set => _envVars = value;
         }
 
+        /// <summary>
+        /// A base64 encoded blob, or Heredoc string containing the javascript function code.
+        /// </summary>
         [Input("function")]
         public Input<string>? Function { get; set; }
 
         [Input("options")]
-        public Input<Inputs.SmartHookOptionsGetArgs>? Options { get; set; }
+        private InputList<Inputs.SmartHookOptionGetArgs>? _options;
+
+        /// <summary>
+        /// A list of options for the hook
+        /// </summary>
+        public InputList<Inputs.SmartHookOptionGetArgs> Options
+        {
+            get => _options ?? (_options = new InputList<Inputs.SmartHookOptionGetArgs>());
+            set => _options = value;
+        }
 
         [Input("packages")]
         private InputMap<string>? _packages;
+
+        /// <summary>
+        /// A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        /// </summary>
         public InputMap<string> Packages
         {
             get => _packages ?? (_packages = new InputMap<string>());
             set => _packages = value;
         }
 
+        /// <summary>
+        /// Number of retries if execution fails. Default 0, Max 4
+        /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
 
+        /// <summary>
+        /// The smarthook's status.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
+        /// <summary>
+        /// The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Timestamp for smarthook's last update
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

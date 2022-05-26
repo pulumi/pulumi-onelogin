@@ -12,6 +12,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -74,6 +75,9 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        List of user's id
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -123,7 +127,24 @@ def get_users(directory_id: Optional[int] = None,
               username: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Use this data source to access information about an existing resource.
+    Returns User IDs matching the given attributes.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_onelogin as onelogin
+
+    example = onelogin.get_users(firstname="tom")
+    ```
+
+
+    :param int directory_id: The user's directory_id
+    :param int external_id: The user's external_id
+    :param str firstname: The user's first name
+    :param str lastname: The user's last name
+    :param str samaccountname: The user's samaccount name
+    :param str username: The user's username.
     """
     __args__ = dict()
     __args__['directoryId'] = directory_id
@@ -149,3 +170,35 @@ def get_users(directory_id: Optional[int] = None,
         samaccountname=__ret__.samaccountname,
         user_id=__ret__.user_id,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(directory_id: Optional[pulumi.Input[Optional[int]]] = None,
+                     external_id: Optional[pulumi.Input[Optional[int]]] = None,
+                     firstname: Optional[pulumi.Input[Optional[str]]] = None,
+                     lastname: Optional[pulumi.Input[Optional[str]]] = None,
+                     samaccountname: Optional[pulumi.Input[Optional[str]]] = None,
+                     user_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     username: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    Returns User IDs matching the given attributes.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_onelogin as onelogin
+
+    example = onelogin.get_users(firstname="tom")
+    ```
+
+
+    :param int directory_id: The user's directory_id
+    :param int external_id: The user's external_id
+    :param str firstname: The user's first name
+    :param str lastname: The user's last name
+    :param str samaccountname: The user's samaccount name
+    :param str username: The user's username.
+    """
+    ...

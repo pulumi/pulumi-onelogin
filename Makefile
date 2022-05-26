@@ -112,7 +112,7 @@ clean::
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 2.2.0
+	pulumi plugin install resource random 4.5.0
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget

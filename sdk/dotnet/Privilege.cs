@@ -9,21 +9,114 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// Manage Privilege resources.
+    /// 
+    /// This resource allows you to create and configure Privilege.
+    /// 
+    /// ## Example Usage
+    /// ### Strict Ordering
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var superAdmin = new Onelogin.Privilege("superAdmin", new Onelogin.PrivilegeArgs
+    ///         {
+    ///             Description = "description",
+    ///             Privileges = 
+    ///             {
+    ///                 new Onelogin.Inputs.PrivilegePrivilegeArgs
+    ///                 {
+    ///                     Statements = 
+    ///                     {
+    ///                         new Onelogin.Inputs.PrivilegePrivilegeStatementArgs
+    ///                         {
+    ///                             Action = 
+    ///                             {
+    ///                                 "apps:List",
+    ///                             },
+    ///                             Effect = "Allow",
+    ///                             Scope = 
+    ///                             {
+    ///                                 "*",
+    ///                             },
+    ///                         },
+    ///                         new Onelogin.Inputs.PrivilegePrivilegeStatementArgs
+    ///                         {
+    ///                             Action = 
+    ///                             {
+    ///                                 "users:List",
+    ///                                 "users:Update",
+    ///                             },
+    ///                             Effect = "Allow",
+    ///                             Scope = 
+    ///                             {
+    ///                                 "users/123",
+    ///                                 "users/345",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             RoleIds = 
+    ///             {
+    ///                 987,
+    ///                 654,
+    ///             },
+    ///             UserIds = 
+    ///             {
+    ///                 123,
+    ///                 345,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A privilege can be imported using the OneLogin Privilege ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import onelogin:index/privilege:Privilege super_admin &lt;privilege id&gt;
+    /// ```
+    /// </summary>
     [OneloginResourceType("onelogin:index/privilege:Privilege")]
     public partial class Privilege : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Description for the Privilege.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the privilege.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of statements that describe what the privilege grants access to.
+        /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<Outputs.PrivilegePrivilege>> Privileges { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of role IDs for whom the role applies.
+        /// </summary>
         [Output("roleIds")]
         public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of user IDs for whom the privilege applies.
+        /// </summary>
         [Output("userIds")]
         public Output<ImmutableArray<int>> UserIds { get; private set; } = null!;
 
@@ -73,14 +166,24 @@ namespace Pulumi.Onelogin
 
     public sealed class PrivilegeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description for the Privilege.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the privilege.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("privileges", required: true)]
         private InputList<Inputs.PrivilegePrivilegeArgs>? _privileges;
+
+        /// <summary>
+        /// A list of statements that describe what the privilege grants access to.
+        /// </summary>
         public InputList<Inputs.PrivilegePrivilegeArgs> Privileges
         {
             get => _privileges ?? (_privileges = new InputList<Inputs.PrivilegePrivilegeArgs>());
@@ -89,6 +192,10 @@ namespace Pulumi.Onelogin
 
         [Input("roleIds")]
         private InputList<int>? _roleIds;
+
+        /// <summary>
+        /// A list of role IDs for whom the role applies.
+        /// </summary>
         public InputList<int> RoleIds
         {
             get => _roleIds ?? (_roleIds = new InputList<int>());
@@ -97,6 +204,10 @@ namespace Pulumi.Onelogin
 
         [Input("userIds")]
         private InputList<int>? _userIds;
+
+        /// <summary>
+        /// A list of user IDs for whom the privilege applies.
+        /// </summary>
         public InputList<int> UserIds
         {
             get => _userIds ?? (_userIds = new InputList<int>());
@@ -110,14 +221,24 @@ namespace Pulumi.Onelogin
 
     public sealed class PrivilegeState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description for the Privilege.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the privilege.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("privileges")]
         private InputList<Inputs.PrivilegePrivilegeGetArgs>? _privileges;
+
+        /// <summary>
+        /// A list of statements that describe what the privilege grants access to.
+        /// </summary>
         public InputList<Inputs.PrivilegePrivilegeGetArgs> Privileges
         {
             get => _privileges ?? (_privileges = new InputList<Inputs.PrivilegePrivilegeGetArgs>());
@@ -126,6 +247,10 @@ namespace Pulumi.Onelogin
 
         [Input("roleIds")]
         private InputList<int>? _roleIds;
+
+        /// <summary>
+        /// A list of role IDs for whom the role applies.
+        /// </summary>
         public InputList<int> RoleIds
         {
             get => _roleIds ?? (_roleIds = new InputList<int>());
@@ -134,6 +259,10 @@ namespace Pulumi.Onelogin
 
         [Input("userIds")]
         private InputList<int>? _userIds;
+
+        /// <summary>
+        /// A list of user IDs for whom the privilege applies.
+        /// </summary>
         public InputList<int> UserIds
         {
             get => _userIds ?? (_userIds = new InputList<int>());

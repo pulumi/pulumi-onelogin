@@ -13,9 +13,21 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class AuthServerConfiguration
     {
+        /// <summary>
+        /// The number of minutes until the token expires
+        /// </summary>
         public readonly int? AccessTokenExpirationMinutes;
+        /// <summary>
+        /// List of API endpoints that will be returned in Access Tokens.
+        /// </summary>
         public readonly ImmutableArray<string> Audiences;
+        /// <summary>
+        /// The number of minutes until the token expires
+        /// </summary>
         public readonly int? RefreshTokenExpirationMinutes;
+        /// <summary>
+        /// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        /// </summary>
         public readonly string ResourceIdentifier;
 
         [OutputConstructor]

@@ -26,6 +26,14 @@ class AppArgs:
                  visible: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a App resource.
+        :param pulumi.Input[int] connector_id: The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        :param pulumi.Input[bool] allow_assumed_signin: Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        :param pulumi.Input[str] description: App description.
+        :param pulumi.Input[str] name: The app's name.
+        :param pulumi.Input[str] notes: Notes about the app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppParameterArgs']]] parameters: a list of custom parameters for this app.
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] provisioning: Settings regarding the app's provisioning ability.
+        :param pulumi.Input[bool] visible: Determine if app should be visible in OneLogin portal. Defaults to `true`.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if allow_assumed_signin is not None:
@@ -48,6 +56,9 @@ class AppArgs:
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[int]:
+        """
+        The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
@@ -57,6 +68,9 @@ class AppArgs:
     @property
     @pulumi.getter(name="allowAssumedSignin")
     def allow_assumed_signin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        """
         return pulumi.get(self, "allow_assumed_signin")
 
     @allow_assumed_signin.setter
@@ -75,6 +89,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        App description.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -84,6 +101,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -93,6 +113,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notes about the app.
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -102,6 +125,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppParameterArgs']]]]:
+        """
+        a list of custom parameters for this app.
+        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -111,6 +137,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def provisioning(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
+        """
+        Settings regarding the app's provisioning ability.
+        """
         return pulumi.get(self, "provisioning")
 
     @provisioning.setter
@@ -120,6 +149,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determine if app should be visible in OneLogin portal. Defaults to `true`.
+        """
         return pulumi.get(self, "visible")
 
     @visible.setter
@@ -147,6 +179,20 @@ class _AppState:
                  visible: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering App resources.
+        :param pulumi.Input[bool] allow_assumed_signin: Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        :param pulumi.Input[int] auth_method: The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        :param pulumi.Input[int] connector_id: The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        :param pulumi.Input[str] created_at: Timestamp for app's creation.
+        :param pulumi.Input[str] description: App description.
+        :param pulumi.Input[str] icon_url: The url for the app's icon.
+        :param pulumi.Input[str] name: The app's name.
+        :param pulumi.Input[str] notes: Notes about the app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppParameterArgs']]] parameters: a list of custom parameters for this app.
+        :param pulumi.Input[int] policy_id: The security policy assigned to the app.
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] provisioning: Settings regarding the app's provisioning ability.
+        :param pulumi.Input[int] tab_id: The tab in which to display in OneLogin portal.
+        :param pulumi.Input[str] updated_at: Timestamp for app's last update.
+        :param pulumi.Input[bool] visible: Determine if app should be visible in OneLogin portal. Defaults to `true`.
         """
         if allow_assumed_signin is not None:
             pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
@@ -182,6 +228,9 @@ class _AppState:
     @property
     @pulumi.getter(name="allowAssumedSignin")
     def allow_assumed_signin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        """
         return pulumi.get(self, "allow_assumed_signin")
 
     @allow_assumed_signin.setter
@@ -191,6 +240,9 @@ class _AppState:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[int]]:
+        """
+        The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -209,6 +261,9 @@ class _AppState:
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
@@ -218,6 +273,9 @@ class _AppState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp for app's creation.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -227,6 +285,9 @@ class _AppState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        App description.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -236,6 +297,9 @@ class _AppState:
     @property
     @pulumi.getter(name="iconUrl")
     def icon_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url for the app's icon.
+        """
         return pulumi.get(self, "icon_url")
 
     @icon_url.setter
@@ -245,6 +309,9 @@ class _AppState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -254,6 +321,9 @@ class _AppState:
     @property
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notes about the app.
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -263,6 +333,9 @@ class _AppState:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppParameterArgs']]]]:
+        """
+        a list of custom parameters for this app.
+        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -272,6 +345,9 @@ class _AppState:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The security policy assigned to the app.
+        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -281,6 +357,9 @@ class _AppState:
     @property
     @pulumi.getter
     def provisioning(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
+        """
+        Settings regarding the app's provisioning ability.
+        """
         return pulumi.get(self, "provisioning")
 
     @provisioning.setter
@@ -290,6 +369,9 @@ class _AppState:
     @property
     @pulumi.getter(name="tabId")
     def tab_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The tab in which to display in OneLogin portal.
+        """
         return pulumi.get(self, "tab_id")
 
     @tab_id.setter
@@ -299,6 +381,9 @@ class _AppState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp for app's last update.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -308,6 +393,9 @@ class _AppState:
     @property
     @pulumi.getter
     def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determine if app should be visible in OneLogin portal. Defaults to `true`.
+        """
         return pulumi.get(self, "visible")
 
     @visible.setter
@@ -331,9 +419,58 @@ class App(pulumi.CustomResource):
                  visible: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a App resource with the given unique name, props, and options.
+        Creates a Basic Application.
+
+        This resource allows you to create and configure a Basic (non-SAML non-OIDC) Application.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        my_app = onelogin.App("myApp",
+            allow_assumed_signin=False,
+            connector_id=12345,
+            description="basic app",
+            notes="basic app",
+            parameters=[onelogin.AppParameterArgs(
+                attributes_transformations="",
+                default_values="",
+                include_in_saml_assertion=False,
+                label="username",
+                param_key_name="user name",
+                provisioned_entitlements=False,
+                safe_entitlements_enabled=False,
+                skip_if_blank=False,
+                user_attribute_macros="",
+                user_attribute_mappings="",
+                values="",
+            )],
+            provisioning={
+                "enabled": False,
+            },
+            visible=True)
+        ```
+
+        ## Import
+
+        An App can be imported via the OneLogin App ID.
+
+        ```sh
+         $ pulumi import onelogin:index/app:App my_app <app id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_assumed_signin: Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        :param pulumi.Input[int] connector_id: The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        :param pulumi.Input[str] description: App description.
+        :param pulumi.Input[str] name: The app's name.
+        :param pulumi.Input[str] notes: Notes about the app.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppParameterArgs']]]] parameters: a list of custom parameters for this app.
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] provisioning: Settings regarding the app's provisioning ability.
+        :param pulumi.Input[bool] visible: Determine if app should be visible in OneLogin portal. Defaults to `true`.
         """
         ...
     @overload
@@ -342,7 +479,48 @@ class App(pulumi.CustomResource):
                  args: AppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a App resource with the given unique name, props, and options.
+        Creates a Basic Application.
+
+        This resource allows you to create and configure a Basic (non-SAML non-OIDC) Application.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        my_app = onelogin.App("myApp",
+            allow_assumed_signin=False,
+            connector_id=12345,
+            description="basic app",
+            notes="basic app",
+            parameters=[onelogin.AppParameterArgs(
+                attributes_transformations="",
+                default_values="",
+                include_in_saml_assertion=False,
+                label="username",
+                param_key_name="user name",
+                provisioned_entitlements=False,
+                safe_entitlements_enabled=False,
+                skip_if_blank=False,
+                user_attribute_macros="",
+                user_attribute_mappings="",
+                values="",
+            )],
+            provisioning={
+                "enabled": False,
+            },
+            visible=True)
+        ```
+
+        ## Import
+
+        An App can be imported via the OneLogin App ID.
+
+        ```sh
+         $ pulumi import onelogin:index/app:App my_app <app id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -428,6 +606,20 @@ class App(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_assumed_signin: Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        :param pulumi.Input[int] auth_method: The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        :param pulumi.Input[int] connector_id: The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        :param pulumi.Input[str] created_at: Timestamp for app's creation.
+        :param pulumi.Input[str] description: App description.
+        :param pulumi.Input[str] icon_url: The url for the app's icon.
+        :param pulumi.Input[str] name: The app's name.
+        :param pulumi.Input[str] notes: Notes about the app.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppParameterArgs']]]] parameters: a list of custom parameters for this app.
+        :param pulumi.Input[int] policy_id: The security policy assigned to the app.
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] provisioning: Settings regarding the app's provisioning ability.
+        :param pulumi.Input[int] tab_id: The tab in which to display in OneLogin portal.
+        :param pulumi.Input[str] updated_at: Timestamp for app's last update.
+        :param pulumi.Input[bool] visible: Determine if app should be visible in OneLogin portal. Defaults to `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -453,11 +645,17 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowAssumedSignin")
     def allow_assumed_signin(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        """
         return pulumi.get(self, "allow_assumed_signin")
 
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[int]:
+        """
+        The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        """
         return pulumi.get(self, "auth_method")
 
     @property
@@ -468,60 +666,96 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[int]:
+        """
+        The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        """
         return pulumi.get(self, "connector_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp for app's creation.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        App description.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="iconUrl")
     def icon_url(self) -> pulumi.Output[str]:
+        """
+        The url for the app's icon.
+        """
         return pulumi.get(self, "icon_url")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The app's name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[str]]:
+        """
+        Notes about the app.
+        """
         return pulumi.get(self, "notes")
 
     @property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.AppParameter']]:
+        """
+        a list of custom parameters for this app.
+        """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[int]:
+        """
+        The security policy assigned to the app.
+        """
         return pulumi.get(self, "policy_id")
 
     @property
     @pulumi.getter
     def provisioning(self) -> pulumi.Output[Mapping[str, bool]]:
+        """
+        Settings regarding the app's provisioning ability.
+        """
         return pulumi.get(self, "provisioning")
 
     @property
     @pulumi.getter(name="tabId")
     def tab_id(self) -> pulumi.Output[int]:
+        """
+        The tab in which to display in OneLogin portal.
+        """
         return pulumi.get(self, "tab_id")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp for app's last update.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def visible(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Determine if app should be visible in OneLogin portal. Defaults to `true`.
+        """
         return pulumi.get(self, "visible")
 

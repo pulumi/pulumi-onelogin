@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Creates an Authentication Server Resource.
+ *
+ * This resource allows you to create and configure an Authentication Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const example = new onelogin.AuthServer("example", {
+ *     configuration: {
+ *         accessTokenExpirationMinutes: 10,
+ *         audiences: ["https://example.com/contacts"],
+ *         refreshTokenExpirationMinutes: 30,
+ *         resourceIdentifier: "https://example.com/contacts",
+ *     },
+ *     description: "This is an api",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An Auth Server can be imported via the OneLogin Auth Server ID.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/authServer:AuthServer example <auth_server_id>
+ * ```
+ */
 export class AuthServer extends pulumi.CustomResource {
     /**
      * Get an existing AuthServer resource's state with the given name, ID, and optional extra
@@ -33,8 +63,17 @@ export class AuthServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthServer.__pulumiType;
     }
 
+    /**
+     * Configuration parameters
+     */
     public readonly configuration!: pulumi.Output<outputs.AuthServerConfiguration>;
+    /**
+     * A brief description about the resource.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The resource's name.
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -46,13 +85,13 @@ export class AuthServer extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthServerArgs | AuthServerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthServerState | undefined;
-            inputs["configuration"] = state ? state.configuration : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["configuration"] = state ? state.configuration : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as AuthServerArgs | undefined;
             if ((!args || args.configuration === undefined) && !opts.urn) {
@@ -61,14 +100,12 @@ export class AuthServer extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            inputs["configuration"] = args ? args.configuration : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["configuration"] = args ? args.configuration : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthServer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthServer.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -76,8 +113,17 @@ export class AuthServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthServer resources.
  */
 export interface AuthServerState {
+    /**
+     * Configuration parameters
+     */
     configuration?: pulumi.Input<inputs.AuthServerConfiguration>;
+    /**
+     * A brief description about the resource.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The resource's name.
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -85,7 +131,16 @@ export interface AuthServerState {
  * The set of arguments for constructing a AuthServer resource.
  */
 export interface AuthServerArgs {
+    /**
+     * Configuration parameters
+     */
     configuration: pulumi.Input<inputs.AuthServerConfiguration>;
+    /**
+     * A brief description about the resource.
+     */
     description: pulumi.Input<string>;
+    /**
+     * The resource's name.
+     */
     name?: pulumi.Input<string>;
 }

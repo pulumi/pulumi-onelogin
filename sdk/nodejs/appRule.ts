@@ -5,6 +5,88 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manage App Rule resources.
+ *
+ * This resource allows you to create and configure App Rules.
+ *
+ * ## Example Usage
+ * ### Strict Ordering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const check = new onelogin.AppRule("check", {
+ *     appId: onelogin_saml_apps.my_saml_app.id,
+ *     position: 1,
+ *     enabled: true,
+ *     match: "all",
+ *     conditions: {
+ *         operator: "ri",
+ *         source: "has_role",
+ *         value: "340475",
+ *     },
+ *     actions: {
+ *         action: "set_amazonusername",
+ *         expression: ".*",
+ *         values: ["member_of"],
+ *     },
+ * });
+ * ```
+ * ### Dependency Based Ordering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const test = new onelogin.AppRule("test", {
+ *     appId: onelogin_saml_apps.my_saml_app.id,
+ *     enabled: true,
+ *     match: "all",
+ *     conditions: {
+ *         operator: "ri",
+ *         source: "has_role",
+ *         value: "340475",
+ *     },
+ *     actions: {
+ *         action: "set_amazonusername",
+ *         expression: ".*",
+ *         values: ["member_of"],
+ *     },
+ * });
+ * const check = new onelogin.AppRule("check", {
+ *     appId: onelogin_saml_apps.my_saml_app.id,
+ *     enabled: true,
+ *     match: "all",
+ *     conditions: {
+ *         operator: "ri",
+ *         source: "has_role",
+ *         value: "340475",
+ *     },
+ *     actions: {
+ *         action: "set_amazonusername",
+ *         expression: ".*",
+ *         values: ["member_of"],
+ *     },
+ * }, {
+ *     dependsOn: [test],
+ * });
+ * ```
+ * ## Important Note Regarding Position
+ *
+ * The position field indicates the order in which rules are applied. They behave like progressive filters and as such, their positioning is strictly enforced. Your options for this field are to either:
+ *
+ * * Accept any ordering - Do not fill out any position field and each rule will be inserted in the order received by the API.
+ *
+ * * Strict Ordering - Enter a position number for each app rule. You'll need to ensure there are no duplicates and no gaps in numbering.
+ *
+ * * Dependency based ordering - Use the `dependsOn` field to specify an app rule's predecessor to ensure rules are received by the API in the order in which they should be applied. e.g. `dependsOn = [onelogin_app_rules.test]`
+ *
+ * ## Import
+ *
+ * An App Rule cannot be imported at this time.
+ */
 export class AppRule extends pulumi.CustomResource {
     /**
      * Get an existing AppRule resource's state with the given name, ID, and optional extra
@@ -33,12 +115,33 @@ export class AppRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppRule.__pulumiType;
     }
 
+    /**
+     * An array of actions that will be applied to the users that are matched by the conditions.
+     */
     public readonly actions!: pulumi.Output<outputs.AppRuleAction[] | undefined>;
+    /**
+     * The id of the App resource to which the rule should belong.
+     */
     public readonly appId!: pulumi.Output<string>;
+    /**
+     * An array of conditions that the user must meet in order for the rule to be applied.
+     */
     public readonly conditions!: pulumi.Output<outputs.AppRuleCondition[] | undefined>;
+    /**
+     * Indicate if the rule should go into effect.
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     public readonly match!: pulumi.Output<string>;
+    /**
+     * The Rule's name
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+     */
     public readonly position!: pulumi.Output<number>;
 
     /**
@@ -50,17 +153,17 @@ export class AppRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppRuleArgs | AppRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppRuleState | undefined;
-            inputs["actions"] = state ? state.actions : undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["match"] = state ? state.match : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["position"] = state ? state.position : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["match"] = state ? state.match : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
         } else {
             const args = argsOrState as AppRuleArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -69,18 +172,16 @@ export class AppRule extends pulumi.CustomResource {
             if ((!args || args.match === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            inputs["actions"] = args ? args.actions : undefined;
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["match"] = args ? args.match : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["position"] = args ? args.position : undefined;
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["match"] = args ? args.match : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -88,12 +189,33 @@ export class AppRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AppRule resources.
  */
 export interface AppRuleState {
+    /**
+     * An array of actions that will be applied to the users that are matched by the conditions.
+     */
     actions?: pulumi.Input<pulumi.Input<inputs.AppRuleAction>[]>;
+    /**
+     * The id of the App resource to which the rule should belong.
+     */
     appId?: pulumi.Input<string>;
+    /**
+     * An array of conditions that the user must meet in order for the rule to be applied.
+     */
     conditions?: pulumi.Input<pulumi.Input<inputs.AppRuleCondition>[]>;
+    /**
+     * Indicate if the rule should go into effect.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     match?: pulumi.Input<string>;
+    /**
+     * The Rule's name
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+     */
     position?: pulumi.Input<number>;
 }
 
@@ -101,11 +223,32 @@ export interface AppRuleState {
  * The set of arguments for constructing a AppRule resource.
  */
 export interface AppRuleArgs {
+    /**
+     * An array of actions that will be applied to the users that are matched by the conditions.
+     */
     actions?: pulumi.Input<pulumi.Input<inputs.AppRuleAction>[]>;
+    /**
+     * The id of the App resource to which the rule should belong.
+     */
     appId: pulumi.Input<string>;
+    /**
+     * An array of conditions that the user must meet in order for the rule to be applied.
+     */
     conditions?: pulumi.Input<pulumi.Input<inputs.AppRuleCondition>[]>;
+    /**
+     * Indicate if the rule should go into effect.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     match: pulumi.Input<string>;
+    /**
+     * The Rule's name
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+     */
     position?: pulumi.Input<number>;
 }

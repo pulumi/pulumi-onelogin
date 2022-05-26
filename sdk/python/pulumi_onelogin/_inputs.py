@@ -18,7 +18,7 @@ __all__ = [
     'PrivilegePrivilegeStatementArgs',
     'SamlAppParameterArgs',
     'SmartHookConditionArgs',
-    'SmartHookOptionsArgs',
+    'SmartHookOptionArgs',
     'UserMappingActionArgs',
     'UserMappingConditionArgs',
 ]
@@ -38,6 +38,20 @@ class AppParameterArgs:
                  user_attribute_macros: Optional[pulumi.Input[str]] = None,
                  user_attribute_mappings: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] param_key_name: Name to represent the parameter in OneLogin.
+        :param pulumi.Input[str] attributes_transformations: Describes how the app's attributes should be transformed.
+        :param pulumi.Input[str] default_values: Default Parameter values.
+        :param pulumi.Input[bool] include_in_saml_assertion: When true, this parameter will be included in a SAML assertion payload.
+        :param pulumi.Input[str] label: The can only be set when creating a new parameter. It can not be updated.
+        :param pulumi.Input[int] param_id: The parameter ID.
+        :param pulumi.Input[bool] provisioned_entitlements: Provisioned access entitlements for the app. Defaults to `false`.
+        :param pulumi.Input[bool] safe_entitlements_enabled: Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        :param pulumi.Input[bool] skip_if_blank: Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        :param pulumi.Input[str] user_attribute_macros: When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        :param pulumi.Input[str] user_attribute_mappings: A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        :param pulumi.Input[str] values: Parameter values.
+        """
         pulumi.set(__self__, "param_key_name", param_key_name)
         if attributes_transformations is not None:
             pulumi.set(__self__, "attributes_transformations", attributes_transformations)
@@ -65,6 +79,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="paramKeyName")
     def param_key_name(self) -> pulumi.Input[str]:
+        """
+        Name to represent the parameter in OneLogin.
+        """
         return pulumi.get(self, "param_key_name")
 
     @param_key_name.setter
@@ -74,6 +91,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="attributesTransformations")
     def attributes_transformations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes how the app's attributes should be transformed.
+        """
         return pulumi.get(self, "attributes_transformations")
 
     @attributes_transformations.setter
@@ -83,6 +103,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="defaultValues")
     def default_values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default Parameter values.
+        """
         return pulumi.get(self, "default_values")
 
     @default_values.setter
@@ -92,6 +115,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="includeInSamlAssertion")
     def include_in_saml_assertion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, this parameter will be included in a SAML assertion payload.
+        """
         return pulumi.get(self, "include_in_saml_assertion")
 
     @include_in_saml_assertion.setter
@@ -101,6 +127,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The can only be set when creating a new parameter. It can not be updated.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -110,6 +139,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="paramId")
     def param_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The parameter ID.
+        """
         return pulumi.get(self, "param_id")
 
     @param_id.setter
@@ -119,6 +151,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="provisionedEntitlements")
     def provisioned_entitlements(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Provisioned access entitlements for the app. Defaults to `false`.
+        """
         return pulumi.get(self, "provisioned_entitlements")
 
     @provisioned_entitlements.setter
@@ -128,6 +163,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="safeEntitlementsEnabled")
     def safe_entitlements_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        """
         return pulumi.get(self, "safe_entitlements_enabled")
 
     @safe_entitlements_enabled.setter
@@ -137,6 +175,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="skipIfBlank")
     def skip_if_blank(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        """
         return pulumi.get(self, "skip_if_blank")
 
     @skip_if_blank.setter
@@ -146,6 +187,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMacros")
     def user_attribute_macros(self) -> Optional[pulumi.Input[str]]:
+        """
+        When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        """
         return pulumi.get(self, "user_attribute_macros")
 
     @user_attribute_macros.setter
@@ -155,6 +199,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMappings")
     def user_attribute_mappings(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        """
         return pulumi.get(self, "user_attribute_mappings")
 
     @user_attribute_mappings.setter
@@ -164,6 +211,9 @@ class AppParameterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter values.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -177,6 +227,11 @@ class AppRuleActionArgs:
                  action: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]],
                  expression: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `set_role_from_existing` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        :param pulumi.Input[str] expression: A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "values", values)
         if expression is not None:
@@ -185,6 +240,9 @@ class AppRuleActionArgs:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
+        """
+        The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `set_role_from_existing` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -194,6 +252,9 @@ class AppRuleActionArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -203,6 +264,9 @@ class AppRuleActionArgs:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -216,6 +280,11 @@ class AppRuleConditionArgs:
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] operator: A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
+        :param pulumi.Input[str] source: The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
+        :param pulumi.Input[str] value: An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "value", value)
@@ -223,6 +292,9 @@ class AppRuleConditionArgs:
     @property
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
+        """
+        A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -232,6 +304,9 @@ class AppRuleConditionArgs:
     @property
     @pulumi.getter
     def source(self) -> pulumi.Input[str]:
+        """
+        The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -241,6 +316,9 @@ class AppRuleConditionArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -255,6 +333,12 @@ class AuthServerConfigurationArgs:
                  resource_identifier: pulumi.Input[str],
                  access_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
                  refresh_token_expiration_minutes: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of API endpoints that will be returned in Access Tokens.
+        :param pulumi.Input[str] resource_identifier: Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        :param pulumi.Input[int] access_token_expiration_minutes: The number of minutes until the token expires
+        :param pulumi.Input[int] refresh_token_expiration_minutes: The number of minutes until the token expires
+        """
         pulumi.set(__self__, "audiences", audiences)
         pulumi.set(__self__, "resource_identifier", resource_identifier)
         if access_token_expiration_minutes is not None:
@@ -265,6 +349,9 @@ class AuthServerConfigurationArgs:
     @property
     @pulumi.getter
     def audiences(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
@@ -274,6 +361,9 @@ class AuthServerConfigurationArgs:
     @property
     @pulumi.getter(name="resourceIdentifier")
     def resource_identifier(self) -> pulumi.Input[str]:
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         return pulumi.get(self, "resource_identifier")
 
     @resource_identifier.setter
@@ -283,6 +373,9 @@ class AuthServerConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of minutes until the token expires
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -292,6 +385,9 @@ class AuthServerConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of minutes until the token expires
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -314,6 +410,20 @@ class OidcAppParameterArgs:
                  user_attribute_macros: Optional[pulumi.Input[str]] = None,
                  user_attribute_mappings: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] param_key_name: Name to represent the parameter in OneLogin.
+        :param pulumi.Input[str] attributes_transformations: Describes how the app's attributes should be transformed.
+        :param pulumi.Input[str] default_values: Default parameter values.
+        :param pulumi.Input[bool] include_in_saml_assertion: When true, this parameter will be included in a SAML assertion payload.
+        :param pulumi.Input[str] label: The can only be set when creating a new parameter. It can not be updated.
+        :param pulumi.Input[int] param_id: The parameter ID.
+        :param pulumi.Input[bool] provisioned_entitlements: Provisioned access entitlements for the app. Defaults to `false`.
+        :param pulumi.Input[bool] safe_entitlements_enabled: Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        :param pulumi.Input[bool] skip_if_blank: Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        :param pulumi.Input[str] user_attribute_macros: When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        :param pulumi.Input[str] user_attribute_mappings: A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        :param pulumi.Input[str] values: Parameter values.
+        """
         pulumi.set(__self__, "param_key_name", param_key_name)
         if attributes_transformations is not None:
             pulumi.set(__self__, "attributes_transformations", attributes_transformations)
@@ -341,6 +451,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="paramKeyName")
     def param_key_name(self) -> pulumi.Input[str]:
+        """
+        Name to represent the parameter in OneLogin.
+        """
         return pulumi.get(self, "param_key_name")
 
     @param_key_name.setter
@@ -350,6 +463,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="attributesTransformations")
     def attributes_transformations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes how the app's attributes should be transformed.
+        """
         return pulumi.get(self, "attributes_transformations")
 
     @attributes_transformations.setter
@@ -359,6 +475,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="defaultValues")
     def default_values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default parameter values.
+        """
         return pulumi.get(self, "default_values")
 
     @default_values.setter
@@ -368,6 +487,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="includeInSamlAssertion")
     def include_in_saml_assertion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, this parameter will be included in a SAML assertion payload.
+        """
         return pulumi.get(self, "include_in_saml_assertion")
 
     @include_in_saml_assertion.setter
@@ -377,6 +499,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The can only be set when creating a new parameter. It can not be updated.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -386,6 +511,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="paramId")
     def param_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The parameter ID.
+        """
         return pulumi.get(self, "param_id")
 
     @param_id.setter
@@ -395,6 +523,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="provisionedEntitlements")
     def provisioned_entitlements(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Provisioned access entitlements for the app. Defaults to `false`.
+        """
         return pulumi.get(self, "provisioned_entitlements")
 
     @provisioned_entitlements.setter
@@ -404,6 +535,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="safeEntitlementsEnabled")
     def safe_entitlements_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        """
         return pulumi.get(self, "safe_entitlements_enabled")
 
     @safe_entitlements_enabled.setter
@@ -413,6 +547,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="skipIfBlank")
     def skip_if_blank(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        """
         return pulumi.get(self, "skip_if_blank")
 
     @skip_if_blank.setter
@@ -422,6 +559,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMacros")
     def user_attribute_macros(self) -> Optional[pulumi.Input[str]]:
+        """
+        When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        """
         return pulumi.get(self, "user_attribute_macros")
 
     @user_attribute_macros.setter
@@ -431,6 +571,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMappings")
     def user_attribute_mappings(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        """
         return pulumi.get(self, "user_attribute_mappings")
 
     @user_attribute_mappings.setter
@@ -440,6 +583,9 @@ class OidcAppParameterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter values.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -452,6 +598,9 @@ class PrivilegePrivilegeArgs:
     def __init__(__self__, *,
                  statements: pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]],
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]] statements: At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
+        """
         pulumi.set(__self__, "statements", statements)
         if version is not None:
             pulumi.set(__self__, "version", version)
@@ -459,6 +608,9 @@ class PrivilegePrivilegeArgs:
     @property
     @pulumi.getter
     def statements(self) -> pulumi.Input[Sequence[pulumi.Input['PrivilegePrivilegeStatementArgs']]]:
+        """
+        At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
+        """
         return pulumi.get(self, "statements")
 
     @statements.setter
@@ -481,6 +633,11 @@ class PrivilegePrivilegeStatementArgs:
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  effect: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
+        :param pulumi.Input[str] effect: The effect the privilege grants for the resource. Must be "Allow".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "scopes", scopes)
@@ -488,6 +645,9 @@ class PrivilegePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -497,6 +657,9 @@ class PrivilegePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
+        """
+        The effect the privilege grants for the resource. Must be "Allow".
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -506,6 +669,9 @@ class PrivilegePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -528,6 +694,20 @@ class SamlAppParameterArgs:
                  user_attribute_macros: Optional[pulumi.Input[str]] = None,
                  user_attribute_mappings: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] param_key_name: Name to represent the parameter in OneLogin.
+        :param pulumi.Input[str] attributes_transformations: Describes how the app's attributes should be transformed.
+        :param pulumi.Input[str] default_values: Default parameter values.
+        :param pulumi.Input[bool] include_in_saml_assertion: When true, this parameter will be included in a SAML assertion payload.
+        :param pulumi.Input[str] label: The can only be set when creating a new parameter. It can not be updated.
+        :param pulumi.Input[int] param_id: The parameter ID.
+        :param pulumi.Input[bool] provisioned_entitlements: Provisioned access entitlements for the app. Defaults to `false`.
+        :param pulumi.Input[bool] safe_entitlements_enabled: Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        :param pulumi.Input[bool] skip_if_blank: Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        :param pulumi.Input[str] user_attribute_macros: When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        :param pulumi.Input[str] user_attribute_mappings: A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        :param pulumi.Input[str] values: Parameter values.
+        """
         pulumi.set(__self__, "param_key_name", param_key_name)
         if attributes_transformations is not None:
             pulumi.set(__self__, "attributes_transformations", attributes_transformations)
@@ -555,6 +735,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="paramKeyName")
     def param_key_name(self) -> pulumi.Input[str]:
+        """
+        Name to represent the parameter in OneLogin.
+        """
         return pulumi.get(self, "param_key_name")
 
     @param_key_name.setter
@@ -564,6 +747,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="attributesTransformations")
     def attributes_transformations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes how the app's attributes should be transformed.
+        """
         return pulumi.get(self, "attributes_transformations")
 
     @attributes_transformations.setter
@@ -573,6 +759,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="defaultValues")
     def default_values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default parameter values.
+        """
         return pulumi.get(self, "default_values")
 
     @default_values.setter
@@ -582,6 +771,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="includeInSamlAssertion")
     def include_in_saml_assertion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, this parameter will be included in a SAML assertion payload.
+        """
         return pulumi.get(self, "include_in_saml_assertion")
 
     @include_in_saml_assertion.setter
@@ -591,6 +783,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The can only be set when creating a new parameter. It can not be updated.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -600,6 +795,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="paramId")
     def param_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The parameter ID.
+        """
         return pulumi.get(self, "param_id")
 
     @param_id.setter
@@ -609,6 +807,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="provisionedEntitlements")
     def provisioned_entitlements(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Provisioned access entitlements for the app. Defaults to `false`.
+        """
         return pulumi.get(self, "provisioned_entitlements")
 
     @provisioned_entitlements.setter
@@ -618,6 +819,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="safeEntitlementsEnabled")
     def safe_entitlements_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
+        """
         return pulumi.get(self, "safe_entitlements_enabled")
 
     @safe_entitlements_enabled.setter
@@ -627,6 +831,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="skipIfBlank")
     def skip_if_blank(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
+        """
         return pulumi.get(self, "skip_if_blank")
 
     @skip_if_blank.setter
@@ -636,6 +843,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMacros")
     def user_attribute_macros(self) -> Optional[pulumi.Input[str]]:
+        """
+        When `user_attribute_mappings` is set to `_macro_` this macro will be used to assign the parameter value.
+        """
         return pulumi.get(self, "user_attribute_macros")
 
     @user_attribute_macros.setter
@@ -645,6 +855,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter(name="userAttributeMappings")
     def user_attribute_mappings(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
+        """
         return pulumi.get(self, "user_attribute_mappings")
 
     @user_attribute_mappings.setter
@@ -654,6 +867,9 @@ class SamlAppParameterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter values.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -700,11 +916,15 @@ class SmartHookConditionArgs:
 
 
 @pulumi.input_type
-class SmartHookOptionsArgs:
+class SmartHookOptionArgs:
     def __init__(__self__, *,
                  location_enabled: Optional[pulumi.Input[bool]] = None,
                  mfa_device_info_enabled: Optional[pulumi.Input[bool]] = None,
                  risk_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] location_enabled: When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        :param pulumi.Input[bool] risk_enabled: When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        """
         if location_enabled is not None:
             pulumi.set(__self__, "location_enabled", location_enabled)
         if mfa_device_info_enabled is not None:
@@ -715,6 +935,9 @@ class SmartHookOptionsArgs:
     @property
     @pulumi.getter(name="locationEnabled")
     def location_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        """
         return pulumi.get(self, "location_enabled")
 
     @location_enabled.setter
@@ -733,6 +956,9 @@ class SmartHookOptionsArgs:
     @property
     @pulumi.getter(name="riskEnabled")
     def risk_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        """
         return pulumi.get(self, "risk_enabled")
 
     @risk_enabled.setter
@@ -745,12 +971,19 @@ class UserMappingActionArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] action: The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
+        """
+        The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -760,6 +993,9 @@ class UserMappingActionArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -773,6 +1009,11 @@ class UserMappingConditionArgs:
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] operator: A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
+        :param pulumi.Input[str] source: The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+        :param pulumi.Input[str] value: An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "value", value)
@@ -780,6 +1021,9 @@ class UserMappingConditionArgs:
     @property
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
+        """
+        A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -789,6 +1033,9 @@ class UserMappingConditionArgs:
     @property
     @pulumi.getter
     def source(self) -> pulumi.Input[str]:
+        """
+        The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -798,6 +1045,9 @@ class UserMappingConditionArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

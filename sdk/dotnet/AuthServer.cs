@@ -9,15 +9,66 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// Creates an Authentication Server Resource.
+    /// 
+    /// This resource allows you to create and configure an Authentication Server.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Onelogin.AuthServer("example", new Onelogin.AuthServerArgs
+    ///         {
+    ///             Configuration = new Onelogin.Inputs.AuthServerConfigurationArgs
+    ///             {
+    ///                 AccessTokenExpirationMinutes = 10,
+    ///                 Audiences = 
+    ///                 {
+    ///                     "https://example.com/contacts",
+    ///                 },
+    ///                 RefreshTokenExpirationMinutes = 30,
+    ///                 ResourceIdentifier = "https://example.com/contacts",
+    ///             },
+    ///             Description = "This is an api",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An Auth Server can be imported via the OneLogin Auth Server ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import onelogin:index/authServer:AuthServer example &lt;auth_server_id&gt;
+    /// ```
+    /// </summary>
     [OneloginResourceType("onelogin:index/authServer:AuthServer")]
     public partial class AuthServer : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration parameters
+        /// </summary>
         [Output("configuration")]
         public Output<Outputs.AuthServerConfiguration> Configuration { get; private set; } = null!;
 
+        /// <summary>
+        /// A brief description about the resource.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource's name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -67,12 +118,21 @@ namespace Pulumi.Onelogin
 
     public sealed class AuthServerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration parameters
+        /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.AuthServerConfigurationArgs> Configuration { get; set; } = null!;
 
+        /// <summary>
+        /// A brief description about the resource.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// The resource's name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -83,12 +143,21 @@ namespace Pulumi.Onelogin
 
     public sealed class AuthServerState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration parameters
+        /// </summary>
         [Input("configuration")]
         public Input<Inputs.AuthServerConfigurationGetArgs>? Configuration { get; set; }
 
+        /// <summary>
+        /// A brief description about the resource.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The resource's name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

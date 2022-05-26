@@ -25,9 +25,17 @@ class SmartHookArgs:
                  type: pulumi.Input[str],
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]] = None,
                  context_version: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input['SmartHookOptionsArgs']] = None):
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]] = None):
         """
         The set of arguments for constructing a SmartHook resource.
+        :param pulumi.Input[bool] disabled: Indicates if function is available for execution or not. Default true
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] env_vars: An array of predefined environment variables to be supplied to the function at runtime.
+        :param pulumi.Input[str] function: A base64 encoded blob, or Heredoc string containing the javascript function code.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] packages: A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        :param pulumi.Input[int] retries: Number of retries if execution fails. Default 0, Max 4
+        :param pulumi.Input[int] timeout: The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        :param pulumi.Input[str] type: The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        :param pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]] options: A list of options for the hook
         """
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "env_vars", env_vars)
@@ -47,6 +55,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def disabled(self) -> pulumi.Input[bool]:
+        """
+        Indicates if function is available for execution or not. Default true
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -56,6 +67,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter(name="envVars")
     def env_vars(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of predefined environment variables to be supplied to the function at runtime.
+        """
         return pulumi.get(self, "env_vars")
 
     @env_vars.setter
@@ -65,6 +79,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def function(self) -> pulumi.Input[str]:
+        """
+        A base64 encoded blob, or Heredoc string containing the javascript function code.
+        """
         return pulumi.get(self, "function")
 
     @function.setter
@@ -74,6 +91,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def packages(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        """
         return pulumi.get(self, "packages")
 
     @packages.setter
@@ -83,6 +103,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def retries(self) -> pulumi.Input[int]:
+        """
+        Number of retries if execution fails. Default 0, Max 4
+        """
         return pulumi.get(self, "retries")
 
     @retries.setter
@@ -101,6 +124,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[int]:
+        """
+        The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -110,6 +136,9 @@ class SmartHookArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -136,11 +165,14 @@ class SmartHookArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['SmartHookOptionsArgs']]:
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]:
+        """
+        A list of options for the hook
+        """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['SmartHookOptionsArgs']]):
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]):
         pulumi.set(self, "options", value)
 
 
@@ -153,7 +185,7 @@ class _SmartHookState:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input['SmartHookOptionsArgs']] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -163,6 +195,17 @@ class _SmartHookState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SmartHook resources.
+        :param pulumi.Input[str] created_at: Timestamp for smarthook's last update
+        :param pulumi.Input[bool] disabled: Indicates if function is available for execution or not. Default true
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] env_vars: An array of predefined environment variables to be supplied to the function at runtime.
+        :param pulumi.Input[str] function: A base64 encoded blob, or Heredoc string containing the javascript function code.
+        :param pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]] options: A list of options for the hook
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] packages: A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        :param pulumi.Input[int] retries: Number of retries if execution fails. Default 0, Max 4
+        :param pulumi.Input[str] status: The smarthook's status.
+        :param pulumi.Input[int] timeout: The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        :param pulumi.Input[str] type: The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        :param pulumi.Input[str] updated_at: Timestamp for smarthook's last update
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -214,6 +257,9 @@ class _SmartHookState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp for smarthook's last update
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -223,6 +269,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if function is available for execution or not. Default true
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -232,6 +281,9 @@ class _SmartHookState:
     @property
     @pulumi.getter(name="envVars")
     def env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of predefined environment variables to be supplied to the function at runtime.
+        """
         return pulumi.get(self, "env_vars")
 
     @env_vars.setter
@@ -241,6 +293,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def function(self) -> Optional[pulumi.Input[str]]:
+        """
+        A base64 encoded blob, or Heredoc string containing the javascript function code.
+        """
         return pulumi.get(self, "function")
 
     @function.setter
@@ -249,16 +304,22 @@ class _SmartHookState:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['SmartHookOptionsArgs']]:
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]:
+        """
+        A list of options for the hook
+        """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['SmartHookOptionsArgs']]):
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]):
         pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
     def packages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        """
         return pulumi.get(self, "packages")
 
     @packages.setter
@@ -268,6 +329,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of retries if execution fails. Default 0, Max 4
+        """
         return pulumi.get(self, "retries")
 
     @retries.setter
@@ -286,6 +350,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The smarthook's status.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -295,6 +362,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -304,6 +374,9 @@ class _SmartHookState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -313,6 +386,9 @@ class _SmartHookState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp for smarthook's last update
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -330,7 +406,7 @@ class SmartHook(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['SmartHookOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SmartHookOptionArgs']]]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -338,9 +414,50 @@ class SmartHook(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SmartHook resource with the given unique name, props, and options.
+        Manage SmartHook resources.
+
+        This resource allows you to create and configure SmartHooks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        basic_test = onelogin.SmartHook("basicTest",
+            disabled=False,
+            env_vars=["API_KEY"],
+            function="CQlmdW5jdGlvbiBteUZ1bmMoKSB7CgkJCWxldCBhID0gMTsKCQkJbGV0IGIgPSAxOwoJCQlsZXQgYyA9IGEgKyBiOwoJCSAgY29uc29sZS5sb2coIkRpbmcgRG9uZyIsIGEsIGIsIGMpOwoJCX0K",
+            options=[onelogin.SmartHookOptionArgs(
+                location_enabled=False,
+                risk_enabled=False,
+            )],
+            packages={
+                "mysql": "^2.18.1",
+            },
+            retries=0,
+            timeout=2,
+            type="pre-authentication")
+        ```
+
+        ## Import
+
+        A SmartHook can be imported via the OneLogin SmartHook.
+
+        ```sh
+         $ pulumi import onelogin:index/smartHook:SmartHook example <smarthook_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] disabled: Indicates if function is available for execution or not. Default true
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] env_vars: An array of predefined environment variables to be supplied to the function at runtime.
+        :param pulumi.Input[str] function: A base64 encoded blob, or Heredoc string containing the javascript function code.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SmartHookOptionArgs']]]] options: A list of options for the hook
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] packages: A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        :param pulumi.Input[int] retries: Number of retries if execution fails. Default 0, Max 4
+        :param pulumi.Input[int] timeout: The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        :param pulumi.Input[str] type: The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
         """
         ...
     @overload
@@ -349,7 +466,40 @@ class SmartHook(pulumi.CustomResource):
                  args: SmartHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SmartHook resource with the given unique name, props, and options.
+        Manage SmartHook resources.
+
+        This resource allows you to create and configure SmartHooks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        basic_test = onelogin.SmartHook("basicTest",
+            disabled=False,
+            env_vars=["API_KEY"],
+            function="CQlmdW5jdGlvbiBteUZ1bmMoKSB7CgkJCWxldCBhID0gMTsKCQkJbGV0IGIgPSAxOwoJCQlsZXQgYyA9IGEgKyBiOwoJCSAgY29uc29sZS5sb2coIkRpbmcgRG9uZyIsIGEsIGIsIGMpOwoJCX0K",
+            options=[onelogin.SmartHookOptionArgs(
+                location_enabled=False,
+                risk_enabled=False,
+            )],
+            packages={
+                "mysql": "^2.18.1",
+            },
+            retries=0,
+            timeout=2,
+            type="pre-authentication")
+        ```
+
+        ## Import
+
+        A SmartHook can be imported via the OneLogin SmartHook.
+
+        ```sh
+         $ pulumi import onelogin:index/smartHook:SmartHook example <smarthook_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param SmartHookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -370,7 +520,7 @@ class SmartHook(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['SmartHookOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SmartHookOptionArgs']]]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -434,7 +584,7 @@ class SmartHook(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             function: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[pulumi.InputType['SmartHookOptionsArgs']]] = None,
+            options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SmartHookOptionArgs']]]]] = None,
             packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retries: Optional[pulumi.Input[int]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
@@ -449,6 +599,17 @@ class SmartHook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created_at: Timestamp for smarthook's last update
+        :param pulumi.Input[bool] disabled: Indicates if function is available for execution or not. Default true
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] env_vars: An array of predefined environment variables to be supplied to the function at runtime.
+        :param pulumi.Input[str] function: A base64 encoded blob, or Heredoc string containing the javascript function code.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SmartHookOptionArgs']]]] options: A list of options for the hook
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] packages: A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        :param pulumi.Input[int] retries: Number of retries if execution fails. Default 0, Max 4
+        :param pulumi.Input[str] status: The smarthook's status.
+        :param pulumi.Input[int] timeout: The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        :param pulumi.Input[str] type: The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        :param pulumi.Input[str] updated_at: Timestamp for smarthook's last update
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,36 +644,57 @@ class SmartHook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp for smarthook's last update
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates if function is available for execution or not. Default true
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="envVars")
     def env_vars(self) -> pulumi.Output[Sequence[str]]:
+        """
+        An array of predefined environment variables to be supplied to the function at runtime.
+        """
         return pulumi.get(self, "env_vars")
 
     @property
     @pulumi.getter
     def function(self) -> pulumi.Output[str]:
+        """
+        A base64 encoded blob, or Heredoc string containing the javascript function code.
+        """
         return pulumi.get(self, "function")
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Optional['outputs.SmartHookOptions']]:
+    def options(self) -> pulumi.Output[Optional[Sequence['outputs.SmartHookOption']]]:
+        """
+        A list of options for the hook
+        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def packages(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+        """
         return pulumi.get(self, "packages")
 
     @property
     @pulumi.getter
     def retries(self) -> pulumi.Output[int]:
+        """
+        Number of retries if execution fails. Default 0, Max 4
+        """
         return pulumi.get(self, "retries")
 
     @property
@@ -523,20 +705,32 @@ class SmartHook(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The smarthook's status.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Output[int]:
+        """
+        The number of milliseconds to allow before timeout. Default 1000, Max 10000
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp for smarthook's last update
+        """
         return pulumi.get(self, "updated_at")
 
