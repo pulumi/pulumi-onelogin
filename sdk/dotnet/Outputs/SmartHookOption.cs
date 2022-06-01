@@ -11,14 +11,20 @@ namespace Pulumi.Onelogin.Outputs
 {
 
     [OutputType]
-    public sealed class SmartHookOptions
+    public sealed class SmartHookOption
     {
+        /// <summary>
+        /// When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        /// </summary>
         public readonly bool? LocationEnabled;
         public readonly bool? MfaDeviceInfoEnabled;
+        /// <summary>
+        /// When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
+        /// </summary>
         public readonly bool? RiskEnabled;
 
         [OutputConstructor]
-        private SmartHookOptions(
+        private SmartHookOption(
             bool? locationEnabled,
 
             bool? mfaDeviceInfoEnabled,

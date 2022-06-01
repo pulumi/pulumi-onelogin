@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manage User resources.
+ *
+ * This resource allows you to create and configure Users.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const example = new onelogin.User("example", {
+ *     email: "timmy.tester@test.com",
+ *     username: "timmy.tester",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A User can be imported via the OneLogin User ID.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/user:User example 12345678
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -32,27 +57,90 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
+    /**
+     * A comment about the user
+     */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * The user's company
+     */
     public readonly company!: pulumi.Output<string | undefined>;
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The user's department
+     */
     public readonly department!: pulumi.Output<string | undefined>;
+    /**
+     * The user's directory_id
+     */
     public readonly directoryId!: pulumi.Output<number>;
+    /**
+     * The user's distinguished name
+     */
     public readonly distinguishedName!: pulumi.Output<string | undefined>;
+    /**
+     * The user's email.
+     */
     public readonly email!: pulumi.Output<string>;
+    /**
+     * The user's external_id
+     */
     public readonly externalId!: pulumi.Output<number>;
+    /**
+     * The user's first name
+     */
     public readonly firstname!: pulumi.Output<string | undefined>;
+    /**
+     * The user's group_id
+     */
     public readonly groupId!: pulumi.Output<number>;
+    /**
+     * The user's last name
+     */
     public readonly lastname!: pulumi.Output<string | undefined>;
+    /**
+     * The user's manager_ad_id
+     */
     public readonly managerAdId!: pulumi.Output<number>;
+    /**
+     * The user's manager_user_id
+     */
     public readonly managerUserId!: pulumi.Output<number>;
+    /**
+     * The user's member_of
+     */
     public readonly memberOf!: pulumi.Output<string | undefined>;
+    /**
+     * The user's phone number
+     */
     public readonly phone!: pulumi.Output<string | undefined>;
+    /**
+     * The user's samaccount name
+     */
     public readonly samaccountname!: pulumi.Output<string | undefined>;
+    /**
+     * The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+     */
     public readonly state!: pulumi.Output<number>;
+    /**
+     * The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+     */
     public readonly status!: pulumi.Output<number>;
+    /**
+     * The user's title
+     */
     public readonly title!: pulumi.Output<string | undefined>;
+    /**
+     * The user's trusted_idp_id
+     */
     public readonly trustedIdpId!: pulumi.Output<number>;
+    /**
+     * The user's username.
+     */
     public readonly username!: pulumi.Output<string>;
+    /**
+     * The user's user principal name
+     */
     public readonly userprincipalname!: pulumi.Output<string | undefined>;
 
     /**
@@ -64,32 +152,32 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["company"] = state ? state.company : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["department"] = state ? state.department : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["distinguishedName"] = state ? state.distinguishedName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["externalId"] = state ? state.externalId : undefined;
-            inputs["firstname"] = state ? state.firstname : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["lastname"] = state ? state.lastname : undefined;
-            inputs["managerAdId"] = state ? state.managerAdId : undefined;
-            inputs["managerUserId"] = state ? state.managerUserId : undefined;
-            inputs["memberOf"] = state ? state.memberOf : undefined;
-            inputs["phone"] = state ? state.phone : undefined;
-            inputs["samaccountname"] = state ? state.samaccountname : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["trustedIdpId"] = state ? state.trustedIdpId : undefined;
-            inputs["username"] = state ? state.username : undefined;
-            inputs["userprincipalname"] = state ? state.userprincipalname : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["company"] = state ? state.company : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["department"] = state ? state.department : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["distinguishedName"] = state ? state.distinguishedName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["firstname"] = state ? state.firstname : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["lastname"] = state ? state.lastname : undefined;
+            resourceInputs["managerAdId"] = state ? state.managerAdId : undefined;
+            resourceInputs["managerUserId"] = state ? state.managerUserId : undefined;
+            resourceInputs["memberOf"] = state ? state.memberOf : undefined;
+            resourceInputs["phone"] = state ? state.phone : undefined;
+            resourceInputs["samaccountname"] = state ? state.samaccountname : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["trustedIdpId"] = state ? state.trustedIdpId : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["userprincipalname"] = state ? state.userprincipalname : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -98,33 +186,31 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["company"] = args ? args.company : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["department"] = args ? args.department : undefined;
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["distinguishedName"] = args ? args.distinguishedName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["firstname"] = args ? args.firstname : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["lastname"] = args ? args.lastname : undefined;
-            inputs["managerAdId"] = args ? args.managerAdId : undefined;
-            inputs["managerUserId"] = args ? args.managerUserId : undefined;
-            inputs["memberOf"] = args ? args.memberOf : undefined;
-            inputs["phone"] = args ? args.phone : undefined;
-            inputs["samaccountname"] = args ? args.samaccountname : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["trustedIdpId"] = args ? args.trustedIdpId : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["userprincipalname"] = args ? args.userprincipalname : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["company"] = args ? args.company : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["department"] = args ? args.department : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["distinguishedName"] = args ? args.distinguishedName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["firstname"] = args ? args.firstname : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["lastname"] = args ? args.lastname : undefined;
+            resourceInputs["managerAdId"] = args ? args.managerAdId : undefined;
+            resourceInputs["managerUserId"] = args ? args.managerUserId : undefined;
+            resourceInputs["memberOf"] = args ? args.memberOf : undefined;
+            resourceInputs["phone"] = args ? args.phone : undefined;
+            resourceInputs["samaccountname"] = args ? args.samaccountname : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["trustedIdpId"] = args ? args.trustedIdpId : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["userprincipalname"] = args ? args.userprincipalname : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -132,27 +218,90 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * A comment about the user
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The user's company
+     */
     company?: pulumi.Input<string>;
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The user's department
+     */
     department?: pulumi.Input<string>;
+    /**
+     * The user's directory_id
+     */
     directoryId?: pulumi.Input<number>;
+    /**
+     * The user's distinguished name
+     */
     distinguishedName?: pulumi.Input<string>;
+    /**
+     * The user's email.
+     */
     email?: pulumi.Input<string>;
+    /**
+     * The user's external_id
+     */
     externalId?: pulumi.Input<number>;
+    /**
+     * The user's first name
+     */
     firstname?: pulumi.Input<string>;
+    /**
+     * The user's group_id
+     */
     groupId?: pulumi.Input<number>;
+    /**
+     * The user's last name
+     */
     lastname?: pulumi.Input<string>;
+    /**
+     * The user's manager_ad_id
+     */
     managerAdId?: pulumi.Input<number>;
+    /**
+     * The user's manager_user_id
+     */
     managerUserId?: pulumi.Input<number>;
+    /**
+     * The user's member_of
+     */
     memberOf?: pulumi.Input<string>;
+    /**
+     * The user's phone number
+     */
     phone?: pulumi.Input<string>;
+    /**
+     * The user's samaccount name
+     */
     samaccountname?: pulumi.Input<string>;
+    /**
+     * The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+     */
     state?: pulumi.Input<number>;
+    /**
+     * The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+     */
     status?: pulumi.Input<number>;
+    /**
+     * The user's title
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The user's trusted_idp_id
+     */
     trustedIdpId?: pulumi.Input<number>;
+    /**
+     * The user's username.
+     */
     username?: pulumi.Input<string>;
+    /**
+     * The user's user principal name
+     */
     userprincipalname?: pulumi.Input<string>;
 }
 
@@ -160,26 +309,89 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * A comment about the user
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The user's company
+     */
     company?: pulumi.Input<string>;
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The user's department
+     */
     department?: pulumi.Input<string>;
+    /**
+     * The user's directory_id
+     */
     directoryId?: pulumi.Input<number>;
+    /**
+     * The user's distinguished name
+     */
     distinguishedName?: pulumi.Input<string>;
+    /**
+     * The user's email.
+     */
     email: pulumi.Input<string>;
+    /**
+     * The user's external_id
+     */
     externalId?: pulumi.Input<number>;
+    /**
+     * The user's first name
+     */
     firstname?: pulumi.Input<string>;
+    /**
+     * The user's group_id
+     */
     groupId?: pulumi.Input<number>;
+    /**
+     * The user's last name
+     */
     lastname?: pulumi.Input<string>;
+    /**
+     * The user's manager_ad_id
+     */
     managerAdId?: pulumi.Input<number>;
+    /**
+     * The user's manager_user_id
+     */
     managerUserId?: pulumi.Input<number>;
+    /**
+     * The user's member_of
+     */
     memberOf?: pulumi.Input<string>;
+    /**
+     * The user's phone number
+     */
     phone?: pulumi.Input<string>;
+    /**
+     * The user's samaccount name
+     */
     samaccountname?: pulumi.Input<string>;
+    /**
+     * The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+     */
     state?: pulumi.Input<number>;
+    /**
+     * The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+     */
     status?: pulumi.Input<number>;
+    /**
+     * The user's title
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The user's trusted_idp_id
+     */
     trustedIdpId?: pulumi.Input<number>;
+    /**
+     * The user's username.
+     */
     username: pulumi.Input<string>;
+    /**
+     * The user's user principal name
+     */
     userprincipalname?: pulumi.Input<string>;
 }

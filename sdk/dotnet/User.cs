@@ -9,72 +9,168 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// Manage User resources.
+    /// 
+    /// This resource allows you to create and configure Users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Onelogin.User("example", new Onelogin.UserArgs
+    ///         {
+    ///             Email = "timmy.tester@test.com",
+    ///             Username = "timmy.tester",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A User can be imported via the OneLogin User ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import onelogin:index/user:User example 12345678
+    /// ```
+    /// </summary>
     [OneloginResourceType("onelogin:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A comment about the user
+        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's company
+        /// </summary>
         [Output("company")]
         public Output<string?> Company { get; private set; } = null!;
 
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's department
+        /// </summary>
         [Output("department")]
         public Output<string?> Department { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's directory_id
+        /// </summary>
         [Output("directoryId")]
         public Output<int> DirectoryId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's distinguished name
+        /// </summary>
         [Output("distinguishedName")]
         public Output<string?> DistinguishedName { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's email.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's external_id
+        /// </summary>
         [Output("externalId")]
         public Output<int> ExternalId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's first name
+        /// </summary>
         [Output("firstname")]
         public Output<string?> Firstname { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's group_id
+        /// </summary>
         [Output("groupId")]
         public Output<int> GroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's last name
+        /// </summary>
         [Output("lastname")]
         public Output<string?> Lastname { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's manager_ad_id
+        /// </summary>
         [Output("managerAdId")]
         public Output<int> ManagerAdId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's manager_user_id
+        /// </summary>
         [Output("managerUserId")]
         public Output<int> ManagerUserId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's member_of
+        /// </summary>
         [Output("memberOf")]
         public Output<string?> MemberOf { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's phone number
+        /// </summary>
         [Output("phone")]
         public Output<string?> Phone { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's samaccount name
+        /// </summary>
         [Output("samaccountname")]
         public Output<string?> Samaccountname { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// </summary>
         [Output("state")]
         public Output<int> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        /// </summary>
         [Output("status")]
         public Output<int> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's title
+        /// </summary>
         [Output("title")]
         public Output<string?> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's trusted_idp_id
+        /// </summary>
         [Output("trustedIdpId")]
         public Output<int> TrustedIdpId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's username.
+        /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's user principal name
+        /// </summary>
         [Output("userprincipalname")]
         public Output<string?> Userprincipalname { get; private set; } = null!;
 
@@ -124,9 +220,15 @@ namespace Pulumi.Onelogin
 
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A comment about the user
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The user's company
+        /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
@@ -138,60 +240,117 @@ namespace Pulumi.Onelogin
             set => _customAttributes = value;
         }
 
+        /// <summary>
+        /// The user's department
+        /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
 
+        /// <summary>
+        /// The user's directory_id
+        /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
+        /// <summary>
+        /// The user's distinguished name
+        /// </summary>
         [Input("distinguishedName")]
         public Input<string>? DistinguishedName { get; set; }
 
+        /// <summary>
+        /// The user's email.
+        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+        /// <summary>
+        /// The user's external_id
+        /// </summary>
         [Input("externalId")]
         public Input<int>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The user's first name
+        /// </summary>
         [Input("firstname")]
         public Input<string>? Firstname { get; set; }
 
+        /// <summary>
+        /// The user's group_id
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        /// <summary>
+        /// The user's last name
+        /// </summary>
         [Input("lastname")]
         public Input<string>? Lastname { get; set; }
 
+        /// <summary>
+        /// The user's manager_ad_id
+        /// </summary>
         [Input("managerAdId")]
         public Input<int>? ManagerAdId { get; set; }
 
+        /// <summary>
+        /// The user's manager_user_id
+        /// </summary>
         [Input("managerUserId")]
         public Input<int>? ManagerUserId { get; set; }
 
+        /// <summary>
+        /// The user's member_of
+        /// </summary>
         [Input("memberOf")]
         public Input<string>? MemberOf { get; set; }
 
+        /// <summary>
+        /// The user's phone number
+        /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
 
+        /// <summary>
+        /// The user's samaccount name
+        /// </summary>
         [Input("samaccountname")]
         public Input<string>? Samaccountname { get; set; }
 
+        /// <summary>
+        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// </summary>
         [Input("state")]
         public Input<int>? State { get; set; }
 
+        /// <summary>
+        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
+        /// <summary>
+        /// The user's title
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// The user's trusted_idp_id
+        /// </summary>
         [Input("trustedIdpId")]
         public Input<int>? TrustedIdpId { get; set; }
 
+        /// <summary>
+        /// The user's username.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
+        /// <summary>
+        /// The user's user principal name
+        /// </summary>
         [Input("userprincipalname")]
         public Input<string>? Userprincipalname { get; set; }
 
@@ -202,9 +361,15 @@ namespace Pulumi.Onelogin
 
     public sealed class UserState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A comment about the user
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The user's company
+        /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
@@ -216,60 +381,117 @@ namespace Pulumi.Onelogin
             set => _customAttributes = value;
         }
 
+        /// <summary>
+        /// The user's department
+        /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
 
+        /// <summary>
+        /// The user's directory_id
+        /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
+        /// <summary>
+        /// The user's distinguished name
+        /// </summary>
         [Input("distinguishedName")]
         public Input<string>? DistinguishedName { get; set; }
 
+        /// <summary>
+        /// The user's email.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// The user's external_id
+        /// </summary>
         [Input("externalId")]
         public Input<int>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The user's first name
+        /// </summary>
         [Input("firstname")]
         public Input<string>? Firstname { get; set; }
 
+        /// <summary>
+        /// The user's group_id
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        /// <summary>
+        /// The user's last name
+        /// </summary>
         [Input("lastname")]
         public Input<string>? Lastname { get; set; }
 
+        /// <summary>
+        /// The user's manager_ad_id
+        /// </summary>
         [Input("managerAdId")]
         public Input<int>? ManagerAdId { get; set; }
 
+        /// <summary>
+        /// The user's manager_user_id
+        /// </summary>
         [Input("managerUserId")]
         public Input<int>? ManagerUserId { get; set; }
 
+        /// <summary>
+        /// The user's member_of
+        /// </summary>
         [Input("memberOf")]
         public Input<string>? MemberOf { get; set; }
 
+        /// <summary>
+        /// The user's phone number
+        /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
 
+        /// <summary>
+        /// The user's samaccount name
+        /// </summary>
         [Input("samaccountname")]
         public Input<string>? Samaccountname { get; set; }
 
+        /// <summary>
+        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// </summary>
         [Input("state")]
         public Input<int>? State { get; set; }
 
+        /// <summary>
+        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
+        /// <summary>
+        /// The user's title
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// The user's trusted_idp_id
+        /// </summary>
         [Input("trustedIdpId")]
         public Input<int>? TrustedIdpId { get; set; }
 
+        /// <summary>
+        /// The user's username.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        /// <summary>
+        /// The user's user principal name
+        /// </summary>
         [Input("userprincipalname")]
         public Input<string>? Userprincipalname { get; set; }
 

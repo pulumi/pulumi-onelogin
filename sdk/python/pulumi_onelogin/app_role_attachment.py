@@ -17,6 +17,8 @@ class AppRoleAttachmentArgs:
                  role_id: pulumi.Input[int]):
         """
         The set of arguments for constructing a AppRoleAttachment resource.
+        :param pulumi.Input[int] app_id: The id of the App resource to which the role should belong.
+        :param pulumi.Input[int] role_id: The id of the Role being attached to the App.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "role_id", role_id)
@@ -24,6 +26,9 @@ class AppRoleAttachmentArgs:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[int]:
+        """
+        The id of the App resource to which the role should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -33,6 +38,9 @@ class AppRoleAttachmentArgs:
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[int]:
+        """
+        The id of the Role being attached to the App.
+        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -47,6 +55,8 @@ class _AppRoleAttachmentState:
                  role_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AppRoleAttachment resources.
+        :param pulumi.Input[int] app_id: The id of the App resource to which the role should belong.
+        :param pulumi.Input[int] role_id: The id of the Role being attached to the App.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -56,6 +66,9 @@ class _AppRoleAttachmentState:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the App resource to which the role should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -65,6 +78,9 @@ class _AppRoleAttachmentState:
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the Role being attached to the App.
+        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -81,9 +97,25 @@ class AppRoleAttachment(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a AppRoleAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.AppRoleAttachment("example",
+            app_id=onelogin_saml_apps["saml"]["id"],
+            role_id=12345)
+        ```
+
+        ## Import
+
+        An App Role Attachment cannot be imported at this time.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] app_id: The id of the App resource to which the role should belong.
+        :param pulumi.Input[int] role_id: The id of the Role being attached to the App.
         """
         ...
     @overload
@@ -92,7 +124,21 @@ class AppRoleAttachment(pulumi.CustomResource):
                  args: AppRoleAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppRoleAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.AppRoleAttachment("example",
+            app_id=onelogin_saml_apps["saml"]["id"],
+            role_id=12345)
+        ```
+
+        ## Import
+
+        An App Role Attachment cannot be imported at this time.
+
         :param str resource_name: The name of the resource.
         :param AppRoleAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,6 +193,8 @@ class AppRoleAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] app_id: The id of the App resource to which the role should belong.
+        :param pulumi.Input[int] role_id: The id of the Role being attached to the App.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,10 +207,16 @@ class AppRoleAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[int]:
+        """
+        The id of the App resource to which the role should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[int]:
+        """
+        The id of the Role being attached to the App.
+        """
         return pulumi.get(self, "role_id")
 

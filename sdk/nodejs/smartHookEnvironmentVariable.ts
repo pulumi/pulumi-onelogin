@@ -46,28 +46,26 @@ export class SmartHookEnvironmentVariable extends pulumi.CustomResource {
      */
     constructor(name: string, args: SmartHookEnvironmentVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SmartHookEnvironmentVariableArgs | SmartHookEnvironmentVariableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmartHookEnvironmentVariableState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as SmartHookEnvironmentVariableArgs | undefined;
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SmartHookEnvironmentVariable.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SmartHookEnvironmentVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

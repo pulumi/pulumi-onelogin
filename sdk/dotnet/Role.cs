@@ -9,18 +9,78 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// Manage Role resources.
+    /// 
+    /// This resource allows you to create and configure Roles.
+    /// 
+    /// ## Example Usage
+    /// ### Strict Ordering
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var executiveAdmin = new Onelogin.Role("executiveAdmin", new Onelogin.RoleArgs
+    ///         {
+    ///             Admins = 
+    ///             {
+    ///                 777,
+    ///             },
+    ///             Apps = 
+    ///             {
+    ///                 123,
+    ///                 456,
+    ///                 787,
+    ///             },
+    ///             Users = 
+    ///             {
+    ///                 543,
+    ///                 213,
+    ///                 420,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A role can be imported using the OneLogin Role ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import onelogin:index/role:Role executive_admin &lt;role id&gt;
+    /// ```
+    /// </summary>
     [OneloginResourceType("onelogin:index/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of IDs of users who administer the role.
+        /// </summary>
         [Output("admins")]
         public Output<ImmutableArray<int>> Admins { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of app IDs for which the role applies.
+        /// </summary>
         [Output("apps")]
         public Output<ImmutableArray<int>> Apps { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of user IDs for whom the role applies.
+        /// </summary>
         [Output("users")]
         public Output<ImmutableArray<int>> Users { get; private set; } = null!;
 
@@ -72,6 +132,10 @@ namespace Pulumi.Onelogin
     {
         [Input("admins")]
         private InputList<int>? _admins;
+
+        /// <summary>
+        /// A list of IDs of users who administer the role.
+        /// </summary>
         public InputList<int> Admins
         {
             get => _admins ?? (_admins = new InputList<int>());
@@ -80,17 +144,28 @@ namespace Pulumi.Onelogin
 
         [Input("apps")]
         private InputList<int>? _apps;
+
+        /// <summary>
+        /// A list of app IDs for which the role applies.
+        /// </summary>
         public InputList<int> Apps
         {
             get => _apps ?? (_apps = new InputList<int>());
             set => _apps = value;
         }
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("users")]
         private InputList<int>? _users;
+
+        /// <summary>
+        /// A list of user IDs for whom the role applies.
+        /// </summary>
         public InputList<int> Users
         {
             get => _users ?? (_users = new InputList<int>());
@@ -106,6 +181,10 @@ namespace Pulumi.Onelogin
     {
         [Input("admins")]
         private InputList<int>? _admins;
+
+        /// <summary>
+        /// A list of IDs of users who administer the role.
+        /// </summary>
         public InputList<int> Admins
         {
             get => _admins ?? (_admins = new InputList<int>());
@@ -114,17 +193,28 @@ namespace Pulumi.Onelogin
 
         [Input("apps")]
         private InputList<int>? _apps;
+
+        /// <summary>
+        /// A list of app IDs for which the role applies.
+        /// </summary>
         public InputList<int> Apps
         {
             get => _apps ?? (_apps = new InputList<int>());
             set => _apps = value;
         }
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("users")]
         private InputList<int>? _users;
+
+        /// <summary>
+        /// A list of user IDs for whom the role applies.
+        /// </summary>
         public InputList<int> Users
         {
             get => _users ?? (_users = new InputList<int>());

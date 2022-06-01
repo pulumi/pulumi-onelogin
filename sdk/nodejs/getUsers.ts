@@ -2,18 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Returns User IDs matching the given attributes.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const example = pulumi.output(onelogin.getUsers({
+ *     firstname: "tom",
+ * }));
+ * ```
+ */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("onelogin:index/getUsers:getUsers", {
         "directoryId": args.directoryId,
         "externalId": args.externalId,
@@ -29,12 +40,30 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The user's directory_id
+     */
     directoryId?: number;
+    /**
+     * The user's external_id
+     */
     externalId?: number;
+    /**
+     * The user's first name
+     */
     firstname?: string;
+    /**
+     * The user's last name
+     */
     lastname?: string;
+    /**
+     * The user's samaccount name
+     */
     samaccountname?: string;
     userId?: string;
+    /**
+     * The user's username.
+     */
     username?: string;
 }
 
@@ -49,9 +78,47 @@ export interface GetUsersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of user's id
+     */
     readonly ids: string[];
     readonly lastname?: string;
     readonly samaccountname?: string;
     readonly userId?: string;
     readonly username?: string;
+}
+
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * The user's directory_id
+     */
+    directoryId?: pulumi.Input<number>;
+    /**
+     * The user's external_id
+     */
+    externalId?: pulumi.Input<number>;
+    /**
+     * The user's first name
+     */
+    firstname?: pulumi.Input<string>;
+    /**
+     * The user's last name
+     */
+    lastname?: pulumi.Input<string>;
+    /**
+     * The user's samaccount name
+     */
+    samaccountname?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
+    /**
+     * The user's username.
+     */
+    username?: pulumi.Input<string>;
 }

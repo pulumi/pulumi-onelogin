@@ -5,6 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manage User Mappings resources.
+ *
+ * This resource allows you to create and configure User Mappings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const example = new onelogin.UserMapping("example", {
+ *     actions: [{
+ *         action: "set_status",
+ *         values: ["1"],
+ *     }],
+ *     conditions: [{
+ *         operator: ">",
+ *         source: "last_login",
+ *         value: "90",
+ *     }],
+ *     enabled: true,
+ *     match: "all",
+ *     position: 1,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A User Mapping can be imported via the OneLogin User Mapping.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/userMapping:UserMapping example <user_mapping_id>
+ * ```
+ */
 export class UserMapping extends pulumi.CustomResource {
     /**
      * Get an existing UserMapping resource's state with the given name, ID, and optional extra
@@ -33,11 +68,29 @@ export class UserMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserMapping.__pulumiType;
     }
 
+    /**
+     * The number of minutes until the token expires
+     */
     public readonly actions!: pulumi.Output<outputs.UserMappingAction[] | undefined>;
+    /**
+     * An array of conditions that the user must meet in order for the mapping to be applied.
+     */
     public readonly conditions!: pulumi.Output<outputs.UserMappingCondition[] | undefined>;
+    /**
+     * Indicates if a mapping is enabled.
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     public readonly match!: pulumi.Output<string>;
+    /**
+     * The resource's name.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+     */
     public readonly position!: pulumi.Output<number>;
 
     /**
@@ -49,35 +102,30 @@ export class UserMapping extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserMappingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserMappingArgs | UserMappingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserMappingState | undefined;
-            inputs["actions"] = state ? state.actions : undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["match"] = state ? state.match : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["position"] = state ? state.position : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["match"] = state ? state.match : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
         } else {
             const args = argsOrState as UserMappingArgs | undefined;
             if ((!args || args.match === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.position === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'position'");
-            }
-            inputs["actions"] = args ? args.actions : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["match"] = args ? args.match : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["position"] = args ? args.position : undefined;
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["match"] = args ? args.match : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserMapping.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserMapping.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -85,11 +133,29 @@ export class UserMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserMapping resources.
  */
 export interface UserMappingState {
+    /**
+     * The number of minutes until the token expires
+     */
     actions?: pulumi.Input<pulumi.Input<inputs.UserMappingAction>[]>;
+    /**
+     * An array of conditions that the user must meet in order for the mapping to be applied.
+     */
     conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingCondition>[]>;
+    /**
+     * Indicates if a mapping is enabled.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     match?: pulumi.Input<string>;
+    /**
+     * The resource's name.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+     */
     position?: pulumi.Input<number>;
 }
 
@@ -97,10 +163,28 @@ export interface UserMappingState {
  * The set of arguments for constructing a UserMapping resource.
  */
 export interface UserMappingArgs {
+    /**
+     * The number of minutes until the token expires
+     */
     actions?: pulumi.Input<pulumi.Input<inputs.UserMappingAction>[]>;
+    /**
+     * An array of conditions that the user must meet in order for the mapping to be applied.
+     */
     conditions?: pulumi.Input<pulumi.Input<inputs.UserMappingCondition>[]>;
+    /**
+     * Indicates if a mapping is enabled.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates how conditions should be matched. Must be one of `all` or `any`.
+     */
     match: pulumi.Input<string>;
+    /**
+     * The resource's name.
+     */
     name?: pulumi.Input<string>;
-    position: pulumi.Input<number>;
+    /**
+     * Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+     */
+    position?: pulumi.Input<number>;
 }

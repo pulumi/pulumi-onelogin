@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manage SmartHook resources.
+ *
+ * This resource allows you to create and configure SmartHooks.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const basicTest = new onelogin.SmartHook("basic_test", {
+ *     disabled: false,
+ *     envVars: ["API_KEY"],
+ *     function: "CQlmdW5jdGlvbiBteUZ1bmMoKSB7CgkJCWxldCBhID0gMTsKCQkJbGV0IGIgPSAxOwoJCQlsZXQgYyA9IGEgKyBiOwoJCSAgY29uc29sZS5sb2coIkRpbmcgRG9uZyIsIGEsIGIsIGMpOwoJCX0K",
+ *     options: [{
+ *         locationEnabled: false,
+ *         riskEnabled: false,
+ *     }],
+ *     packages: {
+ *         mysql: "^2.18.1",
+ *     },
+ *     retries: 0,
+ *     timeout: 2,
+ *     type: "pre-authentication",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A SmartHook can be imported via the OneLogin SmartHook.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/smartHook:SmartHook example <smarthook_id>
+ * ```
+ */
 export class SmartHook extends pulumi.CustomResource {
     /**
      * Get an existing SmartHook resource's state with the given name, ID, and optional extra
@@ -35,17 +71,50 @@ export class SmartHook extends pulumi.CustomResource {
 
     public readonly conditions!: pulumi.Output<outputs.SmartHookCondition[] | undefined>;
     public readonly contextVersion!: pulumi.Output<string>;
+    /**
+     * Timestamp for smarthook's last update
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Indicates if function is available for execution or not. Default true
+     */
     public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * An array of predefined environment variables to be supplied to the function at runtime.
+     */
     public readonly envVars!: pulumi.Output<string[]>;
+    /**
+     * A base64 encoded blob, or Heredoc string containing the javascript function code.
+     */
     public readonly function!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<outputs.SmartHookOptions | undefined>;
+    /**
+     * A list of options for the hook
+     */
+    public readonly options!: pulumi.Output<outputs.SmartHookOption[] | undefined>;
+    /**
+     * A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+     */
     public readonly packages!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Number of retries if execution fails. Default 0, Max 4
+     */
     public readonly retries!: pulumi.Output<number>;
     public readonly runtime!: pulumi.Output<string>;
+    /**
+     * The smarthook's status.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The number of milliseconds to allow before timeout. Default 1000, Max 10000
+     */
     public readonly timeout!: pulumi.Output<number>;
+    /**
+     * The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+     */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * Timestamp for smarthook's last update
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -57,24 +126,24 @@ export class SmartHook extends pulumi.CustomResource {
      */
     constructor(name: string, args: SmartHookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SmartHookArgs | SmartHookState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmartHookState | undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["contextVersion"] = state ? state.contextVersion : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["envVars"] = state ? state.envVars : undefined;
-            inputs["function"] = state ? state.function : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["packages"] = state ? state.packages : undefined;
-            inputs["retries"] = state ? state.retries : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["contextVersion"] = state ? state.contextVersion : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["envVars"] = state ? state.envVars : undefined;
+            resourceInputs["function"] = state ? state.function : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["packages"] = state ? state.packages : undefined;
+            resourceInputs["retries"] = state ? state.retries : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SmartHookArgs | undefined;
             if ((!args || args.disabled === undefined) && !opts.urn) {
@@ -101,25 +170,23 @@ export class SmartHook extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["contextVersion"] = args ? args.contextVersion : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["envVars"] = args ? args.envVars : undefined;
-            inputs["function"] = args ? args.function : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["packages"] = args ? args.packages : undefined;
-            inputs["retries"] = args ? args.retries : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["contextVersion"] = args ? args.contextVersion : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["envVars"] = args ? args.envVars : undefined;
+            resourceInputs["function"] = args ? args.function : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["packages"] = args ? args.packages : undefined;
+            resourceInputs["retries"] = args ? args.retries : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SmartHook.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SmartHook.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -129,17 +196,50 @@ export class SmartHook extends pulumi.CustomResource {
 export interface SmartHookState {
     conditions?: pulumi.Input<pulumi.Input<inputs.SmartHookCondition>[]>;
     contextVersion?: pulumi.Input<string>;
+    /**
+     * Timestamp for smarthook's last update
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Indicates if function is available for execution or not. Default true
+     */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * An array of predefined environment variables to be supplied to the function at runtime.
+     */
     envVars?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A base64 encoded blob, or Heredoc string containing the javascript function code.
+     */
     function?: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SmartHookOptions>;
+    /**
+     * A list of options for the hook
+     */
+    options?: pulumi.Input<pulumi.Input<inputs.SmartHookOption>[]>;
+    /**
+     * A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+     */
     packages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Number of retries if execution fails. Default 0, Max 4
+     */
     retries?: pulumi.Input<number>;
     runtime?: pulumi.Input<string>;
+    /**
+     * The smarthook's status.
+     */
     status?: pulumi.Input<string>;
+    /**
+     * The number of milliseconds to allow before timeout. Default 1000, Max 10000
+     */
     timeout?: pulumi.Input<number>;
+    /**
+     * The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+     */
     type?: pulumi.Input<string>;
+    /**
+     * Timestamp for smarthook's last update
+     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -149,13 +249,37 @@ export interface SmartHookState {
 export interface SmartHookArgs {
     conditions?: pulumi.Input<pulumi.Input<inputs.SmartHookCondition>[]>;
     contextVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if function is available for execution or not. Default true
+     */
     disabled: pulumi.Input<boolean>;
+    /**
+     * An array of predefined environment variables to be supplied to the function at runtime.
+     */
     envVars: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A base64 encoded blob, or Heredoc string containing the javascript function code.
+     */
     function: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SmartHookOptions>;
+    /**
+     * A list of options for the hook
+     */
+    options?: pulumi.Input<pulumi.Input<inputs.SmartHookOption>[]>;
+    /**
+     * A list of public npm packages than will be installed as part of the function build process. These packages names must be on our allowlist. See Node Modules section of this doc. Packages can be any version and support the semantic versioning syntax used by NPM.
+     */
     packages: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Number of retries if execution fails. Default 0, Max 4
+     */
     retries: pulumi.Input<number>;
     runtime: pulumi.Input<string>;
+    /**
+     * The number of milliseconds to allow before timeout. Default 1000, Max 10000
+     */
     timeout: pulumi.Input<number>;
+    /**
+     * The name of the hook. Must be one of: `user-migration` `pre-authentication` `pre-user-create` `post-user-create` `pre-user-update` `post-user-update`
+     */
     type: pulumi.Input<string>;
 }

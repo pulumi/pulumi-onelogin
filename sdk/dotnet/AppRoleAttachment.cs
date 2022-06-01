@@ -9,12 +9,43 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Onelogin = Pulumi.Onelogin;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Onelogin.AppRoleAttachment("example", new Onelogin.AppRoleAttachmentArgs
+    ///         {
+    ///             AppId = onelogin_saml_apps.Saml.Id,
+    ///             RoleId = 12345,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An App Role Attachment cannot be imported at this time.
+    /// </summary>
     [OneloginResourceType("onelogin:index/appRoleAttachment:AppRoleAttachment")]
     public partial class AppRoleAttachment : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The id of the App resource to which the role should belong.
+        /// </summary>
         [Output("appId")]
         public Output<int> AppId { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the Role being attached to the App.
+        /// </summary>
         [Output("roleId")]
         public Output<int> RoleId { get; private set; } = null!;
 
@@ -64,9 +95,15 @@ namespace Pulumi.Onelogin
 
     public sealed class AppRoleAttachmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of the App resource to which the role should belong.
+        /// </summary>
         [Input("appId", required: true)]
         public Input<int> AppId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the Role being attached to the App.
+        /// </summary>
         [Input("roleId", required: true)]
         public Input<int> RoleId { get; set; } = null!;
 
@@ -77,9 +114,15 @@ namespace Pulumi.Onelogin
 
     public sealed class AppRoleAttachmentState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of the App resource to which the role should belong.
+        /// </summary>
         [Input("appId")]
         public Input<int>? AppId { get; set; }
 
+        /// <summary>
+        /// The id of the Role being attached to the App.
+        /// </summary>
         [Input("roleId")]
         public Input<int>? RoleId { get; set; }
 

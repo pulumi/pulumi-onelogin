@@ -12,6 +12,7 @@ __all__ = [
     'GetUserResult',
     'AwaitableGetUserResult',
     'get_user',
+    'get_user_output',
 ]
 
 @pulumi.output_type
@@ -96,11 +97,17 @@ class GetUserResult:
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        A comment about the user
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def company(self) -> str:
+        """
+        The user's company
+        """
         return pulumi.get(self, "company")
 
     @property
@@ -111,36 +118,57 @@ class GetUserResult:
     @property
     @pulumi.getter
     def department(self) -> str:
+        """
+        The user's department
+        """
         return pulumi.get(self, "department")
 
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> int:
+        """
+        The user's directory_id
+        """
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> str:
+        """
+        The user's distinguished name
+        """
         return pulumi.get(self, "distinguished_name")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The user's email.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> int:
+        """
+        The user's external_id
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def firstname(self) -> str:
+        """
+        The user's first name
+        """
         return pulumi.get(self, "firstname")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The user's group_id
+        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -154,51 +182,81 @@ class GetUserResult:
     @property
     @pulumi.getter
     def lastname(self) -> str:
+        """
+        The user's last name
+        """
         return pulumi.get(self, "lastname")
 
     @property
     @pulumi.getter(name="managerAdId")
     def manager_ad_id(self) -> int:
+        """
+        The user's manager_ad_id
+        """
         return pulumi.get(self, "manager_ad_id")
 
     @property
     @pulumi.getter(name="managerUserId")
     def manager_user_id(self) -> int:
+        """
+        The user's manager_user_id
+        """
         return pulumi.get(self, "manager_user_id")
 
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> str:
+        """
+        The user's member_of
+        """
         return pulumi.get(self, "member_of")
 
     @property
     @pulumi.getter
     def phone(self) -> str:
+        """
+        The user's phone number
+        """
         return pulumi.get(self, "phone")
 
     @property
     @pulumi.getter
     def samaccountname(self) -> str:
+        """
+        The user's samaccount name
+        """
         return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter
     def state(self) -> int:
+        """
+        The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> int:
+        """
+        The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The user's title
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> int:
+        """
+        The user's trusted_idp_id
+        """
         return pulumi.get(self, "trusted_idp_id")
 
     @property
@@ -214,6 +272,9 @@ class GetUserResult:
     @property
     @pulumi.getter
     def userprincipalname(self) -> str:
+        """
+        The user's user principal name
+        """
         return pulumi.get(self, "userprincipalname")
 
 
@@ -254,7 +315,21 @@ def get_user(external_id: Optional[int] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    Returns User resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_onelogin as onelogin
+
+    example = onelogin.get_user(username="timmy.tester")
+    ```
+
+
+    :param int external_id: The user's external_id
+    :param str user_id: The user's ID.
+    :param str username: The user's username.
     """
     __args__ = dict()
     __args__['externalId'] = external_id
@@ -291,3 +366,28 @@ def get_user(external_id: Optional[int] = None,
         user_id=__ret__.user_id,
         username=__ret__.username,
         userprincipalname=__ret__.userprincipalname)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_output(external_id: Optional[pulumi.Input[Optional[int]]] = None,
+                    user_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    username: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    """
+    Returns User resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_onelogin as onelogin
+
+    example = onelogin.get_user(username="timmy.tester")
+    ```
+
+
+    :param int external_id: The user's external_id
+    :param str user_id: The user's ID.
+    :param str username: The user's username.
+    """
+    ...

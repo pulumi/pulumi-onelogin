@@ -16,16 +16,21 @@ __all__ = ['UserMappingArgs', 'UserMapping']
 class UserMappingArgs:
     def __init__(__self__, *,
                  match: pulumi.Input[str],
-                 position: pulumi.Input[int],
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a UserMapping resource.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]] actions: The number of minutes until the token expires
+        :param pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]] conditions: An array of conditions that the user must meet in order for the mapping to be applied.
+        :param pulumi.Input[bool] enabled: Indicates if a mapping is enabled.
+        :param pulumi.Input[str] name: The resource's name.
+        :param pulumi.Input[int] position: Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
         """
         pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "position", position)
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
         if conditions is not None:
@@ -34,10 +39,15 @@ class UserMappingArgs:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
 
     @property
     @pulumi.getter
     def match(self) -> pulumi.Input[str]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -46,16 +56,10 @@ class UserMappingArgs:
 
     @property
     @pulumi.getter
-    def position(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: pulumi.Input[int]):
-        pulumi.set(self, "position", value)
-
-    @property
-    @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]:
+        """
+        The number of minutes until the token expires
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -65,6 +69,9 @@ class UserMappingArgs:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]:
+        """
+        An array of conditions that the user must meet in order for the mapping to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -74,6 +81,9 @@ class UserMappingArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if a mapping is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -83,11 +93,26 @@ class UserMappingArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "position", value)
 
 
 @pulumi.input_type
@@ -101,6 +126,12 @@ class _UserMappingState:
                  position: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering UserMapping resources.
+        :param pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]] actions: The number of minutes until the token expires
+        :param pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]] conditions: An array of conditions that the user must meet in order for the mapping to be applied.
+        :param pulumi.Input[bool] enabled: Indicates if a mapping is enabled.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The resource's name.
+        :param pulumi.Input[int] position: Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -118,6 +149,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingActionArgs']]]]:
+        """
+        The number of minutes until the token expires
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -127,6 +161,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMappingConditionArgs']]]]:
+        """
+        An array of conditions that the user must meet in order for the mapping to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -136,6 +173,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if a mapping is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -145,6 +185,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -154,6 +197,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -163,6 +209,9 @@ class _UserMappingState:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -183,9 +232,47 @@ class UserMapping(pulumi.CustomResource):
                  position: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a UserMapping resource with the given unique name, props, and options.
+        Manage User Mappings resources.
+
+        This resource allows you to create and configure User Mappings.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.UserMapping("example",
+            actions=[onelogin.UserMappingActionArgs(
+                action="set_status",
+                values=["1"],
+            )],
+            conditions=[onelogin.UserMappingConditionArgs(
+                operator=">",
+                source="last_login",
+                value="90",
+            )],
+            enabled=True,
+            match="all",
+            position=1)
+        ```
+
+        ## Import
+
+        A User Mapping can be imported via the OneLogin User Mapping.
+
+        ```sh
+         $ pulumi import onelogin:index/userMapping:UserMapping example <user_mapping_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingActionArgs']]]] actions: The number of minutes until the token expires
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the mapping to be applied.
+        :param pulumi.Input[bool] enabled: Indicates if a mapping is enabled.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The resource's name.
+        :param pulumi.Input[int] position: Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
         """
         ...
     @overload
@@ -194,7 +281,39 @@ class UserMapping(pulumi.CustomResource):
                  args: UserMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a UserMapping resource with the given unique name, props, and options.
+        Manage User Mappings resources.
+
+        This resource allows you to create and configure User Mappings.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.UserMapping("example",
+            actions=[onelogin.UserMappingActionArgs(
+                action="set_status",
+                values=["1"],
+            )],
+            conditions=[onelogin.UserMappingConditionArgs(
+                operator=">",
+                source="last_login",
+                value="90",
+            )],
+            enabled=True,
+            match="all",
+            position=1)
+        ```
+
+        ## Import
+
+        A User Mapping can be imported via the OneLogin User Mapping.
+
+        ```sh
+         $ pulumi import onelogin:index/userMapping:UserMapping example <user_mapping_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param UserMappingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -235,8 +354,6 @@ class UserMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match
             __props__.__dict__["name"] = name
-            if position is None and not opts.urn:
-                raise TypeError("Missing required property 'position'")
             __props__.__dict__["position"] = position
         super(UserMapping, __self__).__init__(
             'onelogin:index/userMapping:UserMapping',
@@ -261,6 +378,12 @@ class UserMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingActionArgs']]]] actions: The number of minutes until the token expires
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMappingConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the mapping to be applied.
+        :param pulumi.Input[bool] enabled: Indicates if a mapping is enabled.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The resource's name.
+        :param pulumi.Input[int] position: Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -277,30 +400,48 @@ class UserMapping(pulumi.CustomResource):
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingAction']]]:
+        """
+        The number of minutes until the token expires
+        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.UserMappingCondition']]]:
+        """
+        An array of conditions that the user must meet in order for the mapping to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates if a mapping is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def match(self) -> pulumi.Output[str]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def position(self) -> pulumi.Output[int]:
+        """
+        Indicates the ordering of the mapping. When not supplied the mapping will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this mapping to the end of the list on every update.
+        """
         return pulumi.get(self, "position")
 

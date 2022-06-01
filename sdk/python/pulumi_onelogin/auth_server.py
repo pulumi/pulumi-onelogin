@@ -20,6 +20,9 @@ class AuthServerArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AuthServer resource.
+        :param pulumi.Input['AuthServerConfigurationArgs'] configuration: Configuration parameters
+        :param pulumi.Input[str] description: A brief description about the resource.
+        :param pulumi.Input[str] name: The resource's name.
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "description", description)
@@ -29,6 +32,9 @@ class AuthServerArgs:
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Input['AuthServerConfigurationArgs']:
+        """
+        Configuration parameters
+        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -38,6 +44,9 @@ class AuthServerArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        A brief description about the resource.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -47,6 +56,9 @@ class AuthServerArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -62,6 +74,9 @@ class _AuthServerState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthServer resources.
+        :param pulumi.Input['AuthServerConfigurationArgs'] configuration: Configuration parameters
+        :param pulumi.Input[str] description: A brief description about the resource.
+        :param pulumi.Input[str] name: The resource's name.
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -73,6 +88,9 @@ class _AuthServerState:
     @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['AuthServerConfigurationArgs']]:
+        """
+        Configuration parameters
+        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -82,6 +100,9 @@ class _AuthServerState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description about the resource.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -91,6 +112,9 @@ class _AuthServerState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,9 +132,39 @@ class AuthServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AuthServer resource with the given unique name, props, and options.
+        Creates an Authentication Server Resource.
+
+        This resource allows you to create and configure an Authentication Server.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.AuthServer("example",
+            configuration=onelogin.AuthServerConfigurationArgs(
+                access_token_expiration_minutes=10,
+                audiences=["https://example.com/contacts"],
+                refresh_token_expiration_minutes=30,
+                resource_identifier="https://example.com/contacts",
+            ),
+            description="This is an api")
+        ```
+
+        ## Import
+
+        An Auth Server can be imported via the OneLogin Auth Server ID.
+
+        ```sh
+         $ pulumi import onelogin:index/authServer:AuthServer example <auth_server_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AuthServerConfigurationArgs']] configuration: Configuration parameters
+        :param pulumi.Input[str] description: A brief description about the resource.
+        :param pulumi.Input[str] name: The resource's name.
         """
         ...
     @overload
@@ -119,7 +173,34 @@ class AuthServer(pulumi.CustomResource):
                  args: AuthServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AuthServer resource with the given unique name, props, and options.
+        Creates an Authentication Server Resource.
+
+        This resource allows you to create and configure an Authentication Server.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.AuthServer("example",
+            configuration=onelogin.AuthServerConfigurationArgs(
+                access_token_expiration_minutes=10,
+                audiences=["https://example.com/contacts"],
+                refresh_token_expiration_minutes=30,
+                resource_identifier="https://example.com/contacts",
+            ),
+            description="This is an api")
+        ```
+
+        ## Import
+
+        An Auth Server can be imported via the OneLogin Auth Server ID.
+
+        ```sh
+         $ pulumi import onelogin:index/authServer:AuthServer example <auth_server_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param AuthServerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,6 +258,9 @@ class AuthServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AuthServerConfigurationArgs']] configuration: Configuration parameters
+        :param pulumi.Input[str] description: A brief description about the resource.
+        :param pulumi.Input[str] name: The resource's name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -190,15 +274,24 @@ class AuthServer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.AuthServerConfiguration']:
+        """
+        Configuration parameters
+        """
         return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        A brief description about the resource.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The resource's name.
+        """
         return pulumi.get(self, "name")
 

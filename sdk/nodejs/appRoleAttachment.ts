@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const example = new onelogin.AppRoleAttachment("example", {
+ *     appId: onelogin_saml_apps.saml.id,
+ *     roleId: 12345,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An App Role Attachment cannot be imported at this time.
+ */
 export class AppRoleAttachment extends pulumi.CustomResource {
     /**
      * Get an existing AppRoleAttachment resource's state with the given name, ID, and optional extra
@@ -32,7 +49,13 @@ export class AppRoleAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppRoleAttachment.__pulumiType;
     }
 
+    /**
+     * The id of the App resource to which the role should belong.
+     */
     public readonly appId!: pulumi.Output<number>;
+    /**
+     * The id of the Role being attached to the App.
+     */
     public readonly roleId!: pulumi.Output<number>;
 
     /**
@@ -44,12 +67,12 @@ export class AppRoleAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppRoleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppRoleAttachmentArgs | AppRoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppRoleAttachmentState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
         } else {
             const args = argsOrState as AppRoleAttachmentArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -58,13 +81,11 @@ export class AppRoleAttachment extends pulumi.CustomResource {
             if ((!args || args.roleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppRoleAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppRoleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -72,7 +93,13 @@ export class AppRoleAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AppRoleAttachment resources.
  */
 export interface AppRoleAttachmentState {
+    /**
+     * The id of the App resource to which the role should belong.
+     */
     appId?: pulumi.Input<number>;
+    /**
+     * The id of the Role being attached to the App.
+     */
     roleId?: pulumi.Input<number>;
 }
 
@@ -80,6 +107,12 @@ export interface AppRoleAttachmentState {
  * The set of arguments for constructing a AppRoleAttachment resource.
  */
 export interface AppRoleAttachmentArgs {
+    /**
+     * The id of the App resource to which the role should belong.
+     */
     appId: pulumi.Input<number>;
+    /**
+     * The id of the Role being attached to the App.
+     */
     roleId: pulumi.Input<number>;
 }

@@ -13,8 +13,17 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class AppRuleCondition
     {
+        /// <summary>
+        /// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
+        /// </summary>
         public readonly string Source;
+        /// <summary>
+        /// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

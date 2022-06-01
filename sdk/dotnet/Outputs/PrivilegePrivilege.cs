@@ -13,6 +13,9 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class PrivilegePrivilege
     {
+        /// <summary>
+        /// At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
+        /// </summary>
         public readonly ImmutableArray<Outputs.PrivilegePrivilegeStatement> Statements;
         public readonly string? Version;
 

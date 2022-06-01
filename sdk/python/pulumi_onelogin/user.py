@@ -37,6 +37,27 @@ class UserArgs:
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] email: The user's email.
+        :param pulumi.Input[str] username: The user's username.
+        :param pulumi.Input[str] comment: A comment about the user
+        :param pulumi.Input[str] company: The user's company
+        :param pulumi.Input[str] department: The user's department
+        :param pulumi.Input[int] directory_id: The user's directory_id
+        :param pulumi.Input[str] distinguished_name: The user's distinguished name
+        :param pulumi.Input[int] external_id: The user's external_id
+        :param pulumi.Input[str] firstname: The user's first name
+        :param pulumi.Input[int] group_id: The user's group_id
+        :param pulumi.Input[str] lastname: The user's last name
+        :param pulumi.Input[int] manager_ad_id: The user's manager_ad_id
+        :param pulumi.Input[int] manager_user_id: The user's manager_user_id
+        :param pulumi.Input[str] member_of: The user's member_of
+        :param pulumi.Input[str] phone: The user's phone number
+        :param pulumi.Input[str] samaccountname: The user's samaccount name
+        :param pulumi.Input[int] state: The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        :param pulumi.Input[int] status: The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        :param pulumi.Input[str] title: The user's title
+        :param pulumi.Input[int] trusted_idp_id: The user's trusted_idp_id
+        :param pulumi.Input[str] userprincipalname: The user's user principal name
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "username", username)
@@ -84,6 +105,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
+        """
+        The user's email.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -93,6 +117,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
+        """
+        The user's username.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -102,6 +129,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A comment about the user
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -111,6 +141,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's company
+        """
         return pulumi.get(self, "company")
 
     @company.setter
@@ -129,6 +162,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def department(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's department
+        """
         return pulumi.get(self, "department")
 
     @department.setter
@@ -138,6 +174,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's directory_id
+        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -147,6 +186,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's distinguished name
+        """
         return pulumi.get(self, "distinguished_name")
 
     @distinguished_name.setter
@@ -156,6 +198,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's external_id
+        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -165,6 +210,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def firstname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's first name
+        """
         return pulumi.get(self, "firstname")
 
     @firstname.setter
@@ -174,6 +222,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's group_id
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -183,6 +234,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def lastname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's last name
+        """
         return pulumi.get(self, "lastname")
 
     @lastname.setter
@@ -192,6 +246,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="managerAdId")
     def manager_ad_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's manager_ad_id
+        """
         return pulumi.get(self, "manager_ad_id")
 
     @manager_ad_id.setter
@@ -201,6 +258,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="managerUserId")
     def manager_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's manager_user_id
+        """
         return pulumi.get(self, "manager_user_id")
 
     @manager_user_id.setter
@@ -210,6 +270,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's member_of
+        """
         return pulumi.get(self, "member_of")
 
     @member_of.setter
@@ -219,6 +282,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's phone number
+        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -228,6 +294,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def samaccountname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's samaccount name
+        """
         return pulumi.get(self, "samaccountname")
 
     @samaccountname.setter
@@ -237,6 +306,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -246,6 +318,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -255,6 +330,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's title
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -264,6 +342,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's trusted_idp_id
+        """
         return pulumi.get(self, "trusted_idp_id")
 
     @trusted_idp_id.setter
@@ -273,6 +354,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def userprincipalname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's user principal name
+        """
         return pulumi.get(self, "userprincipalname")
 
     @userprincipalname.setter
@@ -307,6 +391,27 @@ class _UserState:
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[str] comment: A comment about the user
+        :param pulumi.Input[str] company: The user's company
+        :param pulumi.Input[str] department: The user's department
+        :param pulumi.Input[int] directory_id: The user's directory_id
+        :param pulumi.Input[str] distinguished_name: The user's distinguished name
+        :param pulumi.Input[str] email: The user's email.
+        :param pulumi.Input[int] external_id: The user's external_id
+        :param pulumi.Input[str] firstname: The user's first name
+        :param pulumi.Input[int] group_id: The user's group_id
+        :param pulumi.Input[str] lastname: The user's last name
+        :param pulumi.Input[int] manager_ad_id: The user's manager_ad_id
+        :param pulumi.Input[int] manager_user_id: The user's manager_user_id
+        :param pulumi.Input[str] member_of: The user's member_of
+        :param pulumi.Input[str] phone: The user's phone number
+        :param pulumi.Input[str] samaccountname: The user's samaccount name
+        :param pulumi.Input[int] state: The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        :param pulumi.Input[int] status: The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        :param pulumi.Input[str] title: The user's title
+        :param pulumi.Input[int] trusted_idp_id: The user's trusted_idp_id
+        :param pulumi.Input[str] username: The user's username.
+        :param pulumi.Input[str] userprincipalname: The user's user principal name
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -356,6 +461,9 @@ class _UserState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A comment about the user
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -365,6 +473,9 @@ class _UserState:
     @property
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's company
+        """
         return pulumi.get(self, "company")
 
     @company.setter
@@ -383,6 +494,9 @@ class _UserState:
     @property
     @pulumi.getter
     def department(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's department
+        """
         return pulumi.get(self, "department")
 
     @department.setter
@@ -392,6 +506,9 @@ class _UserState:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's directory_id
+        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -401,6 +518,9 @@ class _UserState:
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's distinguished name
+        """
         return pulumi.get(self, "distinguished_name")
 
     @distinguished_name.setter
@@ -410,6 +530,9 @@ class _UserState:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's email.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -419,6 +542,9 @@ class _UserState:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's external_id
+        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -428,6 +554,9 @@ class _UserState:
     @property
     @pulumi.getter
     def firstname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's first name
+        """
         return pulumi.get(self, "firstname")
 
     @firstname.setter
@@ -437,6 +566,9 @@ class _UserState:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's group_id
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -446,6 +578,9 @@ class _UserState:
     @property
     @pulumi.getter
     def lastname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's last name
+        """
         return pulumi.get(self, "lastname")
 
     @lastname.setter
@@ -455,6 +590,9 @@ class _UserState:
     @property
     @pulumi.getter(name="managerAdId")
     def manager_ad_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's manager_ad_id
+        """
         return pulumi.get(self, "manager_ad_id")
 
     @manager_ad_id.setter
@@ -464,6 +602,9 @@ class _UserState:
     @property
     @pulumi.getter(name="managerUserId")
     def manager_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's manager_user_id
+        """
         return pulumi.get(self, "manager_user_id")
 
     @manager_user_id.setter
@@ -473,6 +614,9 @@ class _UserState:
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's member_of
+        """
         return pulumi.get(self, "member_of")
 
     @member_of.setter
@@ -482,6 +626,9 @@ class _UserState:
     @property
     @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's phone number
+        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -491,6 +638,9 @@ class _UserState:
     @property
     @pulumi.getter
     def samaccountname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's samaccount name
+        """
         return pulumi.get(self, "samaccountname")
 
     @samaccountname.setter
@@ -500,6 +650,9 @@ class _UserState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -509,6 +662,9 @@ class _UserState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -518,6 +674,9 @@ class _UserState:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's title
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -527,6 +686,9 @@ class _UserState:
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user's trusted_idp_id
+        """
         return pulumi.get(self, "trusted_idp_id")
 
     @trusted_idp_id.setter
@@ -536,6 +698,9 @@ class _UserState:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's username.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -545,6 +710,9 @@ class _UserState:
     @property
     @pulumi.getter
     def userprincipalname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's user principal name
+        """
         return pulumi.get(self, "userprincipalname")
 
     @userprincipalname.setter
@@ -581,9 +749,52 @@ class User(pulumi.CustomResource):
                  userprincipalname: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a User resource with the given unique name, props, and options.
+        Manage User resources.
+
+        This resource allows you to create and configure Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.User("example",
+            email="timmy.tester@test.com",
+            username="timmy.tester")
+        ```
+
+        ## Import
+
+        A User can be imported via the OneLogin User ID.
+
+        ```sh
+         $ pulumi import onelogin:index/user:User example 12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] comment: A comment about the user
+        :param pulumi.Input[str] company: The user's company
+        :param pulumi.Input[str] department: The user's department
+        :param pulumi.Input[int] directory_id: The user's directory_id
+        :param pulumi.Input[str] distinguished_name: The user's distinguished name
+        :param pulumi.Input[str] email: The user's email.
+        :param pulumi.Input[int] external_id: The user's external_id
+        :param pulumi.Input[str] firstname: The user's first name
+        :param pulumi.Input[int] group_id: The user's group_id
+        :param pulumi.Input[str] lastname: The user's last name
+        :param pulumi.Input[int] manager_ad_id: The user's manager_ad_id
+        :param pulumi.Input[int] manager_user_id: The user's manager_user_id
+        :param pulumi.Input[str] member_of: The user's member_of
+        :param pulumi.Input[str] phone: The user's phone number
+        :param pulumi.Input[str] samaccountname: The user's samaccount name
+        :param pulumi.Input[int] state: The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        :param pulumi.Input[int] status: The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        :param pulumi.Input[str] title: The user's title
+        :param pulumi.Input[int] trusted_idp_id: The user's trusted_idp_id
+        :param pulumi.Input[str] username: The user's username.
+        :param pulumi.Input[str] userprincipalname: The user's user principal name
         """
         ...
     @overload
@@ -592,7 +803,29 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a User resource with the given unique name, props, and options.
+        Manage User resources.
+
+        This resource allows you to create and configure Users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        example = onelogin.User("example",
+            email="timmy.tester@test.com",
+            username="timmy.tester")
+        ```
+
+        ## Import
+
+        A User can be imported via the OneLogin User ID.
+
+        ```sh
+         $ pulumi import onelogin:index/user:User example 12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -707,6 +940,27 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] comment: A comment about the user
+        :param pulumi.Input[str] company: The user's company
+        :param pulumi.Input[str] department: The user's department
+        :param pulumi.Input[int] directory_id: The user's directory_id
+        :param pulumi.Input[str] distinguished_name: The user's distinguished name
+        :param pulumi.Input[str] email: The user's email.
+        :param pulumi.Input[int] external_id: The user's external_id
+        :param pulumi.Input[str] firstname: The user's first name
+        :param pulumi.Input[int] group_id: The user's group_id
+        :param pulumi.Input[str] lastname: The user's last name
+        :param pulumi.Input[int] manager_ad_id: The user's manager_ad_id
+        :param pulumi.Input[int] manager_user_id: The user's manager_user_id
+        :param pulumi.Input[str] member_of: The user's member_of
+        :param pulumi.Input[str] phone: The user's phone number
+        :param pulumi.Input[str] samaccountname: The user's samaccount name
+        :param pulumi.Input[int] state: The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        :param pulumi.Input[int] status: The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        :param pulumi.Input[str] title: The user's title
+        :param pulumi.Input[int] trusted_idp_id: The user's trusted_idp_id
+        :param pulumi.Input[str] username: The user's username.
+        :param pulumi.Input[str] userprincipalname: The user's user principal name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -739,11 +993,17 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        A comment about the user
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def company(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's company
+        """
         return pulumi.get(self, "company")
 
     @property
@@ -754,95 +1014,152 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter
     def department(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's department
+        """
         return pulumi.get(self, "department")
 
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[int]:
+        """
+        The user's directory_id
+        """
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's distinguished name
+        """
         return pulumi.get(self, "distinguished_name")
 
     @property
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
+        """
+        The user's email.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[int]:
+        """
+        The user's external_id
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def firstname(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's first name
+        """
         return pulumi.get(self, "firstname")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[int]:
+        """
+        The user's group_id
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter
     def lastname(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's last name
+        """
         return pulumi.get(self, "lastname")
 
     @property
     @pulumi.getter(name="managerAdId")
     def manager_ad_id(self) -> pulumi.Output[int]:
+        """
+        The user's manager_ad_id
+        """
         return pulumi.get(self, "manager_ad_id")
 
     @property
     @pulumi.getter(name="managerUserId")
     def manager_user_id(self) -> pulumi.Output[int]:
+        """
+        The user's manager_user_id
+        """
         return pulumi.get(self, "manager_user_id")
 
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's member_of
+        """
         return pulumi.get(self, "member_of")
 
     @property
     @pulumi.getter
     def phone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's phone number
+        """
         return pulumi.get(self, "phone")
 
     @property
     @pulumi.getter
     def samaccountname(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's samaccount name
+        """
         return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[int]:
+        """
+        The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
+        """
+        The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's title
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> pulumi.Output[int]:
+        """
+        The user's trusted_idp_id
+        """
         return pulumi.get(self, "trusted_idp_id")
 
     @property
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
+        """
+        The user's username.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def userprincipalname(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user's user principal name
+        """
         return pulumi.get(self, "userprincipalname")
 

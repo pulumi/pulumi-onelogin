@@ -1,3 +1,3 @@
-// A Pulumi package for creating and managing onelogin cloud resources.
+// A Pulumi package for creating and managing OneLogin cloud resources.
 //
 package onelogin

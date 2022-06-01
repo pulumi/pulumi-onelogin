@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manage Role resources.
+ *
+ * This resource allows you to create and configure Roles.
+ *
+ * ## Example Usage
+ * ### Strict Ordering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as onelogin from "@pulumi/onelogin";
+ *
+ * const executiveAdmin = new onelogin.Role("executive_admin", {
+ *     admins: [777],
+ *     apps: [
+ *         123,
+ *         456,
+ *         787,
+ *     ],
+ *     users: [
+ *         543,
+ *         213,
+ *         420,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A role can be imported using the OneLogin Role ID.
+ *
+ * ```sh
+ *  $ pulumi import onelogin:index/role:Role executive_admin <role id>
+ * ```
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra
@@ -32,9 +67,21 @@ export class Role extends pulumi.CustomResource {
         return obj['__pulumiType'] === Role.__pulumiType;
     }
 
+    /**
+     * A list of IDs of users who administer the role.
+     */
     public readonly admins!: pulumi.Output<number[] | undefined>;
+    /**
+     * A list of app IDs for which the role applies.
+     */
     public readonly apps!: pulumi.Output<number[] | undefined>;
+    /**
+     * The name of the role.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A list of user IDs for whom the role applies.
+     */
     public readonly users!: pulumi.Output<number[] | undefined>;
 
     /**
@@ -46,25 +93,23 @@ export class Role extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            inputs["admins"] = state ? state.admins : undefined;
-            inputs["apps"] = state ? state.apps : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["users"] = state ? state.users : undefined;
+            resourceInputs["admins"] = state ? state.admins : undefined;
+            resourceInputs["apps"] = state ? state.apps : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            inputs["admins"] = args ? args.admins : undefined;
-            inputs["apps"] = args ? args.apps : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["users"] = args ? args.users : undefined;
+            resourceInputs["admins"] = args ? args.admins : undefined;
+            resourceInputs["apps"] = args ? args.apps : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Role.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -72,9 +117,21 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
+    /**
+     * A list of IDs of users who administer the role.
+     */
     admins?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of app IDs for which the role applies.
+     */
     apps?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The name of the role.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of user IDs for whom the role applies.
+     */
     users?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
@@ -82,8 +139,20 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
+    /**
+     * A list of IDs of users who administer the role.
+     */
     admins?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * A list of app IDs for which the role applies.
+     */
     apps?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The name of the role.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of user IDs for whom the role applies.
+     */
     users?: pulumi.Input<pulumi.Input<number>[]>;
 }

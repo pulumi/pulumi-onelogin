@@ -24,6 +24,13 @@ class AppRuleArgs:
                  position: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AppRule resource.
+        :param pulumi.Input[str] app_id: The id of the App resource to which the rule should belong.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]] actions: An array of actions that will be applied to the users that are matched by the conditions.
+        :param pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[bool] enabled: Indicate if the rule should go into effect.
+        :param pulumi.Input[str] name: The Rule's name
+        :param pulumi.Input[int] position: Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "match", match)
@@ -41,6 +48,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[str]:
+        """
+        The id of the App resource to which the rule should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -50,6 +60,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def match(self) -> pulumi.Input[str]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -59,6 +72,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]:
+        """
+        An array of actions that will be applied to the users that are matched by the conditions.
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -68,6 +84,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]:
+        """
+        An array of conditions that the user must meet in order for the rule to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -77,6 +96,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicate if the rule should go into effect.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -86,6 +108,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Rule's name
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -95,6 +120,9 @@ class AppRuleArgs:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -114,6 +142,13 @@ class _AppRuleState:
                  position: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AppRule resources.
+        :param pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]] actions: An array of actions that will be applied to the users that are matched by the conditions.
+        :param pulumi.Input[str] app_id: The id of the App resource to which the rule should belong.
+        :param pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[bool] enabled: Indicate if the rule should go into effect.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The Rule's name
+        :param pulumi.Input[int] position: Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -133,6 +168,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleActionArgs']]]]:
+        """
+        An array of actions that will be applied to the users that are matched by the conditions.
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -142,6 +180,9 @@ class _AppRuleState:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the App resource to which the rule should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -151,6 +192,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppRuleConditionArgs']]]]:
+        """
+        An array of conditions that the user must meet in order for the rule to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -160,6 +204,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicate if the rule should go into effect.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -169,6 +216,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -178,6 +228,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Rule's name
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -187,6 +240,9 @@ class _AppRuleState:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -208,9 +264,92 @@ class AppRule(pulumi.CustomResource):
                  position: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a AppRule resource with the given unique name, props, and options.
+        Manage App Rule resources.
+
+        This resource allows you to create and configure App Rules.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        check = onelogin.AppRule("check",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            position=1,
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            })
+        ```
+        ### Dependency Based Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        test = onelogin.AppRule("test",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            })
+        check = onelogin.AppRule("check",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            },
+            opts=pulumi.ResourceOptions(depends_on=[test]))
+        ```
+        ## Important Note Regarding Position
+
+        The position field indicates the order in which rules are applied. They behave like progressive filters and as such, their positioning is strictly enforced. Your options for this field are to either:
+
+        * Accept any ordering - Do not fill out any position field and each rule will be inserted in the order received by the API.
+
+        * Strict Ordering - Enter a position number for each app rule. You'll need to ensure there are no duplicates and no gaps in numbering.
+
+        * Dependency based ordering - Use the `depends_on` field to specify an app rule's predecessor to ensure rules are received by the API in the order in which they should be applied. e.g. `depends_on = [onelogin_app_rules.test]`
+
+        ## Import
+
+        An App Rule cannot be imported at this time.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleActionArgs']]]] actions: An array of actions that will be applied to the users that are matched by the conditions.
+        :param pulumi.Input[str] app_id: The id of the App resource to which the rule should belong.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[bool] enabled: Indicate if the rule should go into effect.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The Rule's name
+        :param pulumi.Input[int] position: Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
         """
         ...
     @overload
@@ -219,7 +358,83 @@ class AppRule(pulumi.CustomResource):
                  args: AppRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppRule resource with the given unique name, props, and options.
+        Manage App Rule resources.
+
+        This resource allows you to create and configure App Rules.
+
+        ## Example Usage
+        ### Strict Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        check = onelogin.AppRule("check",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            position=1,
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            })
+        ```
+        ### Dependency Based Ordering
+
+        ```python
+        import pulumi
+        import pulumi_onelogin as onelogin
+
+        test = onelogin.AppRule("test",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            })
+        check = onelogin.AppRule("check",
+            app_id=onelogin_saml_apps["my_saml_app"]["id"],
+            enabled=True,
+            match="all",
+            conditions={
+                "operator": "ri",
+                "source": "has_role",
+                "value": "340475",
+            },
+            actions={
+                "action": "set_amazonusername",
+                "expression": ".*",
+                "values": ["member_of"],
+            },
+            opts=pulumi.ResourceOptions(depends_on=[test]))
+        ```
+        ## Important Note Regarding Position
+
+        The position field indicates the order in which rules are applied. They behave like progressive filters and as such, their positioning is strictly enforced. Your options for this field are to either:
+
+        * Accept any ordering - Do not fill out any position field and each rule will be inserted in the order received by the API.
+
+        * Strict Ordering - Enter a position number for each app rule. You'll need to ensure there are no duplicates and no gaps in numbering.
+
+        * Dependency based ordering - Use the `depends_on` field to specify an app rule's predecessor to ensure rules are received by the API in the order in which they should be applied. e.g. `depends_on = [onelogin_app_rules.test]`
+
+        ## Import
+
+        An App Rule cannot be imported at this time.
+
         :param str resource_name: The name of the resource.
         :param AppRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,6 +504,13 @@ class AppRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleActionArgs']]]] actions: An array of actions that will be applied to the users that are matched by the conditions.
+        :param pulumi.Input[str] app_id: The id of the App resource to which the rule should belong.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppRuleConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[bool] enabled: Indicate if the rule should go into effect.
+        :param pulumi.Input[str] match: Indicates how conditions should be matched. Must be one of `all` or `any`.
+        :param pulumi.Input[str] name: The Rule's name
+        :param pulumi.Input[int] position: Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -306,35 +528,56 @@ class AppRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRuleAction']]]:
+        """
+        An array of actions that will be applied to the users that are matched by the conditions.
+        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[str]:
+        """
+        The id of the App resource to which the rule should belong.
+        """
         return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.AppRuleCondition']]]:
+        """
+        An array of conditions that the user must meet in order for the rule to be applied.
+        """
         return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicate if the rule should go into effect.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def match(self) -> pulumi.Output[str]:
+        """
+        Indicates how conditions should be matched. Must be one of `all` or `any`.
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The Rule's name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def position(self) -> pulumi.Output[int]:
+        """
+        Indicates the ordering of the rule. When not supplied the rule will be put at the end of the list on create and managed by the provider. '0' can be supplied to consistently push this rule to the end of the list on every update.
+        """
         return pulumi.get(self, "position")
 

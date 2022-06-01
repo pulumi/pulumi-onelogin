@@ -13,8 +13,17 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class AppRuleAction
     {
+        /// <summary>
+        /// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `set_role_from_existing` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
+        /// </summary>
         public readonly string? Expression;
+        /// <summary>
+        /// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

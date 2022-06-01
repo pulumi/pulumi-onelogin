@@ -14,6 +14,10 @@ namespace Pulumi.Onelogin.Inputs
     {
         [Input("statements", required: true)]
         private InputList<Inputs.PrivilegePrivilegeStatementArgs>? _statements;
+
+        /// <summary>
+        /// At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
+        /// </summary>
         public InputList<Inputs.PrivilegePrivilegeStatementArgs> Statements
         {
             get => _statements ?? (_statements = new InputList<Inputs.PrivilegePrivilegeStatementArgs>());
