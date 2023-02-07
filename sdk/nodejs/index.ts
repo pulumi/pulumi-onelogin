@@ -5,44 +5,55 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./app";
-export * from "./appRoleAttachment";
-export * from "./appRule";
-export * from "./authServer";
-export * from "./getUser";
-export * from "./getUsers";
-export * from "./oidcApp";
-export * from "./privilege";
-export * from "./provider";
-export * from "./role";
-export * from "./samlApp";
-export * from "./smartHook";
-export * from "./smartHookEnvironmentVariable";
-export * from "./user";
-export * from "./userMapping";
+export { AppArgs, AppState } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
+
+export { GetMappingsArgs, GetMappingsResult, GetMappingsOutputArgs } from "./getMappings";
+export const getMappings: typeof import("./getMappings").getMappings = null as any;
+export const getMappingsOutput: typeof import("./getMappings").getMappingsOutput = null as any;
+utilities.lazyLoad(exports, ["getMappings","getMappingsOutput"], () => require("./getMappings"));
+
+export { GetPrivilegesArgs, GetPrivilegesResult, GetPrivilegesOutputArgs } from "./getPrivileges";
+export const getPrivileges: typeof import("./getPrivileges").getPrivileges = null as any;
+export const getPrivilegesOutput: typeof import("./getPrivileges").getPrivilegesOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivileges","getPrivilegesOutput"], () => require("./getPrivileges"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 // Export sub-modules:
+import * as api from "./api";
+import * as apps from "./apps";
 import * as config from "./config";
+import * as roles from "./roles";
+import * as rules from "./rules";
 import * as types from "./types";
+import * as users from "./users";
 
 export {
+    api,
+    apps,
     config,
+    roles,
+    rules,
     types,
+    users,
 };
-
-// Import resources to register:
-import { App } from "./app";
-import { AppRoleAttachment } from "./appRoleAttachment";
-import { AppRule } from "./appRule";
-import { AuthServer } from "./authServer";
-import { OidcApp } from "./oidcApp";
-import { Privilege } from "./privilege";
-import { Role } from "./role";
-import { SamlApp } from "./samlApp";
-import { SmartHook } from "./smartHook";
-import { SmartHookEnvironmentVariable } from "./smartHookEnvironmentVariable";
-import { User } from "./user";
-import { UserMapping } from "./userMapping";
 
 const _module = {
     version: utilities.getVersion(),
@@ -50,48 +61,18 @@ const _module = {
         switch (type) {
             case "onelogin:index/app:App":
                 return new App(name, <any>undefined, { urn })
-            case "onelogin:index/appRoleAttachment:AppRoleAttachment":
-                return new AppRoleAttachment(name, <any>undefined, { urn })
-            case "onelogin:index/appRule:AppRule":
-                return new AppRule(name, <any>undefined, { urn })
-            case "onelogin:index/authServer:AuthServer":
-                return new AuthServer(name, <any>undefined, { urn })
-            case "onelogin:index/oidcApp:OidcApp":
-                return new OidcApp(name, <any>undefined, { urn })
-            case "onelogin:index/privilege:Privilege":
-                return new Privilege(name, <any>undefined, { urn })
-            case "onelogin:index/role:Role":
-                return new Role(name, <any>undefined, { urn })
-            case "onelogin:index/samlApp:SamlApp":
-                return new SamlApp(name, <any>undefined, { urn })
-            case "onelogin:index/smartHook:SmartHook":
-                return new SmartHook(name, <any>undefined, { urn })
-            case "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable":
-                return new SmartHookEnvironmentVariable(name, <any>undefined, { urn })
+            case "onelogin:index/rule:Rule":
+                return new Rule(name, <any>undefined, { urn })
             case "onelogin:index/user:User":
                 return new User(name, <any>undefined, { urn })
-            case "onelogin:index/userMapping:UserMapping":
-                return new UserMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachment", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/appRule", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/authServer", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/oidcApp", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/privilege", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/samlApp", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/smartHook", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/smartHookEnvironmentVariable", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/rule", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/userMapping", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("onelogin", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

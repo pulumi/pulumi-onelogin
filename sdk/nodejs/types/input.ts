@@ -2,273 +2,354 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
-export interface AppParameter {
-    /**
-     * Describes how the app's attributes should be transformed.
-     */
-    attributesTransformations?: pulumi.Input<string>;
-    /**
-     * Default Parameter values.
-     */
-    defaultValues?: pulumi.Input<string>;
-    /**
-     * When true, this parameter will be included in a SAML assertion payload.
-     */
-    includeInSamlAssertion?: pulumi.Input<boolean>;
-    /**
-     * The can only be set when creating a new parameter. It can not be updated.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The parameter ID.
-     */
-    paramId?: pulumi.Input<number>;
-    /**
-     * Name to represent the parameter in OneLogin.
-     */
-    paramKeyName: pulumi.Input<string>;
-    /**
-     * Provisioned access entitlements for the app. Defaults to `false`.
-     */
-    provisionedEntitlements?: pulumi.Input<boolean>;
-    /**
-     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-     */
-    safeEntitlementsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-     */
-    skipIfBlank?: pulumi.Input<boolean>;
-    /**
-     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-     */
-    userAttributeMacros?: pulumi.Input<string>;
-    /**
-     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-     */
-    userAttributeMappings?: pulumi.Input<string>;
-    /**
-     * Parameter values.
-     */
-    values?: pulumi.Input<string>;
+export interface AppProvisioning {
+    enabled?: pulumi.Input<boolean>;
 }
 
-export interface AppRuleAction {
-    /**
-     * The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `setRoleFromExisting` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
-     */
-    action: pulumi.Input<string>;
-    /**
-     * A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
-     */
-    expression?: pulumi.Input<string>;
-    /**
-     * An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-     */
+export interface GetMappingsAction {
+    action?: string;
+    values?: string[];
+}
+
+export interface GetMappingsActionArgs {
+    action?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMappingsCondition {
+    operator?: string;
+    source?: string;
+    value?: string;
+}
+
+export interface GetMappingsConditionArgs {
+    operator?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GetMappingsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetMappingsFilterArgs {
+    name: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface AppRuleCondition {
-    /**
-     * A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
-     */
-    source: pulumi.Input<string>;
-    /**
-     * An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-     */
-    value: pulumi.Input<string>;
+export interface GetPrivilegesFilter {
+    name: string;
+    values: string[];
 }
 
-export interface AuthServerConfiguration {
-    /**
-     * The number of minutes until the token expires
-     */
-    accessTokenExpirationMinutes?: pulumi.Input<number>;
-    /**
-     * List of API endpoints that will be returned in Access Tokens.
-     */
-    audiences: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The number of minutes until the token expires
-     */
-    refreshTokenExpirationMinutes?: pulumi.Input<number>;
-    /**
-     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-     */
-    resourceIdentifier: pulumi.Input<string>;
+export interface GetPrivilegesFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface OidcAppParameter {
-    /**
-     * Describes how the app's attributes should be transformed.
-     */
-    attributesTransformations?: pulumi.Input<string>;
-    /**
-     * Default parameter values.
-     */
-    defaultValues?: pulumi.Input<string>;
-    /**
-     * When true, this parameter will be included in a SAML assertion payload.
-     */
-    includeInSamlAssertion?: pulumi.Input<boolean>;
-    /**
-     * The can only be set when creating a new parameter. It can not be updated.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The parameter ID.
-     */
-    paramId?: pulumi.Input<number>;
-    /**
-     * Name to represent the parameter in OneLogin.
-     */
-    paramKeyName: pulumi.Input<string>;
-    /**
-     * Provisioned access entitlements for the app. Defaults to `false`.
-     */
-    provisionedEntitlements?: pulumi.Input<boolean>;
-    /**
-     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-     */
-    safeEntitlementsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-     */
-    skipIfBlank?: pulumi.Input<boolean>;
-    /**
-     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-     */
-    userAttributeMacros?: pulumi.Input<string>;
-    /**
-     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-     */
-    userAttributeMappings?: pulumi.Input<string>;
-    /**
-     * Parameter values.
-     */
-    values?: pulumi.Input<string>;
+export interface GetPrivilegesPrivilege {
+    statements?: inputs.GetPrivilegesPrivilegeStatement[];
+    version?: string;
 }
 
-export interface PrivilegePrivilege {
-    /**
-     * At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
-     */
-    statements: pulumi.Input<pulumi.Input<inputs.PrivilegePrivilegeStatement>[]>;
+export interface GetPrivilegesPrivilegeArgs {
+    statements?: pulumi.Input<pulumi.Input<inputs.GetPrivilegesPrivilegeStatementArgs>[]>;
     version?: pulumi.Input<string>;
 }
 
-export interface PrivilegePrivilegeStatement {
-    /**
-     * List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
-     */
-    actions: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The effect the privilege grants for the resource. Must be "Allow".
-     */
-    effect: pulumi.Input<string>;
-    /**
-     * Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
-     */
-    scopes: pulumi.Input<pulumi.Input<string>[]>;
+export interface GetPrivilegesPrivilegeStatement {
+    actions?: string[];
+    effect?: string;
+    scopes?: string[];
 }
 
-export interface SamlAppParameter {
-    /**
-     * Describes how the app's attributes should be transformed.
-     */
-    attributesTransformations?: pulumi.Input<string>;
-    /**
-     * Default parameter values.
-     */
-    defaultValues?: pulumi.Input<string>;
-    /**
-     * When true, this parameter will be included in a SAML assertion payload.
-     */
-    includeInSamlAssertion?: pulumi.Input<boolean>;
-    /**
-     * The can only be set when creating a new parameter. It can not be updated.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The parameter ID.
-     */
-    paramId?: pulumi.Input<number>;
-    /**
-     * Name to represent the parameter in OneLogin.
-     */
-    paramKeyName: pulumi.Input<string>;
-    /**
-     * Provisioned access entitlements for the app. Defaults to `false`.
-     */
-    provisionedEntitlements?: pulumi.Input<boolean>;
-    /**
-     * Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-     */
-    safeEntitlementsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-     */
-    skipIfBlank?: pulumi.Input<boolean>;
-    /**
-     * When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-     */
-    userAttributeMacros?: pulumi.Input<string>;
-    /**
-     * A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-     */
-    userAttributeMappings?: pulumi.Input<string>;
-    /**
-     * Parameter values.
-     */
-    values?: pulumi.Input<string>;
+export interface GetPrivilegesPrivilegeStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    effect?: pulumi.Input<string>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface SmartHookCondition {
-    operator: pulumi.Input<string>;
-    source: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+export interface ProviderEndpoint {
+    apps?: pulumi.Input<string>;
+    rules?: pulumi.Input<string>;
+    users?: pulumi.Input<string>;
 }
 
-export interface SmartHookOption {
-    /**
-     * When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-     */
-    locationEnabled?: pulumi.Input<boolean>;
-    mfaDeviceInfoEnabled?: pulumi.Input<boolean>;
-    /**
-     * When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-     */
-    riskEnabled?: pulumi.Input<boolean>;
+export interface RuleSource {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+export namespace api {
+    export interface GetAuthorizationsClaimsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAuthorizationsClaimsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetAuthorizationsConfiguration {
+        accessTokenExpirationMinutes?: number;
+        audiences?: string[];
+        refreshTokenExpirationMinutes?: number;
+        resourceIdentifier?: string;
+    }
+
+    export interface GetAuthorizationsConfigurationArgs {
+        accessTokenExpirationMinutes?: pulumi.Input<number>;
+        audiences?: pulumi.Input<pulumi.Input<string>[]>;
+        refreshTokenExpirationMinutes?: pulumi.Input<number>;
+        resourceIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface GetAuthorizationsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAuthorizationsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetAuthorizationsScopesConfiguration {
+        accessTokenExpirationMinutes?: number;
+        audiences?: string[];
+        refreshTokenExpirationMinutes?: number;
+        resourceIdentifier?: string;
+    }
+
+    export interface GetAuthorizationsScopesConfigurationArgs {
+        accessTokenExpirationMinutes?: pulumi.Input<number>;
+        audiences?: pulumi.Input<pulumi.Input<string>[]>;
+        refreshTokenExpirationMinutes?: pulumi.Input<number>;
+        resourceIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface GetAuthorizationsScopesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAuthorizationsScopesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
-export interface UserMappingAction {
-    /**
-     * The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-     */
-    action: pulumi.Input<string>;
-    /**
-     * An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+export namespace apps {
+    export interface GetActionsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetActionsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetActionsValuesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetActionsValuesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetConditionsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetConditionsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetConditionsOperatorsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetConditionsOperatorsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetConditionsValuesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetConditionsValuesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetInstanceProvisioning {
+        enabled?: boolean;
+    }
+
+    export interface GetInstanceProvisioningArgs {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GetRulesAction {
+        action?: string;
+        values?: string[];
+    }
+
+    export interface GetRulesActionArgs {
+        action?: pulumi.Input<string>;
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRulesCondition {
+        operator?: string;
+        source?: string;
+        value?: string;
+    }
+
+    export interface GetRulesConditionArgs {
+        operator?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetRulesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetRulesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetUsersFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
-export interface UserMappingCondition {
-    /**
-     * A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-     */
-    source: pulumi.Input<string>;
-    /**
-     * An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-     */
-    value: pulumi.Input<string>;
+export namespace config {
+}
+
+export namespace roles {
+    export interface GetAdminsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAdminsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetAppsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAppsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRolesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetRolesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetUsersFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
+export namespace rules {
+    export interface GetInstanceSource {
+        id?: string;
+        name?: string;
+    }
+
+    export interface GetInstanceSourceArgs {
+        id?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+    }
+
+    export interface GetRulesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetRulesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRulesSource {
+        id?: string;
+        name?: string;
+    }
+
+    export interface GetRulesSourceArgs {
+        id?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+    }
+}
+
+export namespace users {
+    export interface GetAppsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetAppsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetDevicesFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetDevicesFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetUsersFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }

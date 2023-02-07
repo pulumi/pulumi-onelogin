@@ -9,167 +9,183 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
-    /// <summary>
-    /// Manage User resources.
-    /// 
-    /// This resource allows you to create and configure Users.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Onelogin = Pulumi.Onelogin;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Onelogin.User("example", new Onelogin.UserArgs
-    ///         {
-    ///             Email = "timmy.tester@test.com",
-    ///             Username = "timmy.tester",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// A User can be imported via the OneLogin User ID.
-    /// 
-    /// ```sh
-    ///  $ pulumi import onelogin:index/user:User example 12345678
-    /// ```
-    /// </summary>
     [OneloginResourceType("onelogin:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
+        [Output("activatedAt")]
+        public Output<string?> ActivatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// A comment about the user
+        /// Free text related to the user.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The user's company
+        /// The user's company.
         /// </summary>
         [Output("company")]
         public Output<string?> Company { get; private set; } = null!;
 
-        [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
+        [Output("createdAt")]
+        public Output<string?> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The user's department
+        /// The user's department.
         /// </summary>
         [Output("department")]
         public Output<string?> Department { get; private set; } = null!;
 
         /// <summary>
-        /// The user's directory_id
+        /// The ID of the OneLogin Directory of the user.
         /// </summary>
         [Output("directoryId")]
-        public Output<int> DirectoryId { get; private set; } = null!;
+        public Output<int?> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The user's distinguished name
+        /// The distinguished name of the user.
         /// </summary>
         [Output("distinguishedName")]
         public Output<string?> DistinguishedName { get; private set; } = null!;
 
         /// <summary>
-        /// The user's email.
+        /// A valid email for the user.
         /// </summary>
         [Output("email")]
-        public Output<string> Email { get; private set; } = null!;
+        public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The user's external_id
+        /// The ID of the user in an external directory.
         /// </summary>
         [Output("externalId")]
-        public Output<int> ExternalId { get; private set; } = null!;
+        public Output<string?> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Output("firstname")]
         public Output<string?> Firstname { get; private set; } = null!;
 
         /// <summary>
-        /// The user's group_id
+        /// The ID of the Group in OneLogin that the user is assigned to.
         /// </summary>
         [Output("groupId")]
-        public Output<int> GroupId { get; private set; } = null!;
+        public Output<int?> GroupId { get; private set; } = null!;
+
+        [Output("invalidLoginAttempts")]
+        public Output<int?> InvalidLoginAttempts { get; private set; } = null!;
+
+        [Output("invitationSentAt")]
+        public Output<string?> InvitationSentAt { get; private set; } = null!;
+
+        [Output("lastLogin")]
+        public Output<string?> LastLogin { get; private set; } = null!;
 
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Output("lastname")]
         public Output<string?> Lastname { get; private set; } = null!;
 
+        [Output("lockedUntil")]
+        public Output<string?> LockedUntil { get; private set; } = null!;
+
         /// <summary>
-        /// The user's manager_ad_id
+        /// The ID of the user's manager in Active Directory.
         /// </summary>
         [Output("managerAdId")]
-        public Output<int> ManagerAdId { get; private set; } = null!;
+        public Output<string?> ManagerAdId { get; private set; } = null!;
 
         /// <summary>
-        /// The user's manager_user_id
+        /// The OneLogin User ID for the user's manager.
         /// </summary>
         [Output("managerUserId")]
-        public Output<int> ManagerUserId { get; private set; } = null!;
+        public Output<string?> ManagerUserId { get; private set; } = null!;
 
         /// <summary>
-        /// The user's member_of
+        /// The user's directory membership.
         /// </summary>
         [Output("memberOf")]
         public Output<string?> MemberOf { get; private set; } = null!;
 
         /// <summary>
-        /// The user's phone number
+        /// The password to set for a user.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
+        /// SHA-256-encoding it
+        /// </summary>
+        [Output("passwordAlgorithm")]
+        public Output<string?> PasswordAlgorithm { get; private set; } = null!;
+
+        [Output("passwordChangedAt")]
+        public Output<string?> PasswordChangedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required if the password is being set.
+        /// </summary>
+        [Output("passwordConfirmation")]
+        public Output<string?> PasswordConfirmation { get; private set; } = null!;
+
+        /// <summary>
+        /// The E.164 format phone number for a user.
         /// </summary>
         [Output("phone")]
         public Output<string?> Phone { get; private set; } = null!;
 
-        /// <summary>
-        /// The user's samaccount name
-        /// </summary>
-        [Output("samaccountname")]
-        public Output<string?> Samaccountname { get; private set; } = null!;
+        [Output("preferredLocaleCode")]
+        public Output<string?> PreferredLocaleCode { get; private set; } = null!;
 
         /// <summary>
-        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// A list of OneLogin Role IDs of the user
         /// </summary>
+        [Output("roleIds")]
+        public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The salt value used with the password_algorithm.
+        /// </summary>
+        [Output("salt")]
+        public Output<string?> Salt { get; private set; } = null!;
+
+        /// <summary>
+        /// The user's Active Directory username.
+        /// </summary>
+        [Output("samaccountName")]
+        public Output<string?> SamaccountName { get; private set; } = null!;
+
         [Output("state")]
-        public Output<int> State { get; private set; } = null!;
+        public Output<int?> State { get; private set; } = null!;
 
-        /// <summary>
-        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
-        /// </summary>
         [Output("status")]
-        public Output<int> Status { get; private set; } = null!;
+        public Output<int?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The user's title
+        /// The user's job title.
         /// </summary>
         [Output("title")]
         public Output<string?> Title { get; private set; } = null!;
 
         /// <summary>
-        /// The user's trusted_idp_id
+        /// The ID of the OneLogin Trusted IDP of the user.
         /// </summary>
         [Output("trustedIdpId")]
-        public Output<int> TrustedIdpId { get; private set; } = null!;
+        public Output<int?> TrustedIdpId { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string?> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The user's username.
+        /// A username for the user.
         /// </summary>
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// The user's user principal name
+        /// The principle name of the user.
         /// </summary>
         [Output("userprincipalname")]
         public Output<string?> Userprincipalname { get; private set; } = null!;
@@ -182,7 +198,7 @@ namespace Pulumi.Onelogin
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public User(string name, UserArgs args, CustomResourceOptions? options = null)
+        public User(string name, UserArgs? args = null, CustomResourceOptions? options = null)
             : base("onelogin:index/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -218,138 +234,188 @@ namespace Pulumi.Onelogin
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activatedAt")]
+        public Input<string>? ActivatedAt { get; set; }
+
         /// <summary>
-        /// A comment about the user
+        /// Free text related to the user.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The user's company
+        /// The user's company.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
-        [Input("customAttributes")]
-        private InputMap<string>? _customAttributes;
-        public InputMap<string> CustomAttributes
-        {
-            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
-            set => _customAttributes = value;
-        }
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The user's department
+        /// The user's department.
         /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// The user's directory_id
+        /// The ID of the OneLogin Directory of the user.
         /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The user's distinguished name
+        /// The distinguished name of the user.
         /// </summary>
         [Input("distinguishedName")]
         public Input<string>? DistinguishedName { get; set; }
 
         /// <summary>
-        /// The user's email.
+        /// A valid email for the user.
         /// </summary>
-        [Input("email", required: true)]
-        public Input<string> Email { get; set; } = null!;
+        [Input("email")]
+        public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The user's external_id
+        /// The ID of the user in an external directory.
         /// </summary>
         [Input("externalId")]
-        public Input<int>? ExternalId { get; set; }
+        public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Input("firstname")]
         public Input<string>? Firstname { get; set; }
 
         /// <summary>
-        /// The user's group_id
+        /// The ID of the Group in OneLogin that the user is assigned to.
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        [Input("invalidLoginAttempts")]
+        public Input<int>? InvalidLoginAttempts { get; set; }
+
+        [Input("invitationSentAt")]
+        public Input<string>? InvitationSentAt { get; set; }
+
+        [Input("lastLogin")]
+        public Input<string>? LastLogin { get; set; }
+
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Input("lastname")]
         public Input<string>? Lastname { get; set; }
 
+        [Input("lockedUntil")]
+        public Input<string>? LockedUntil { get; set; }
+
         /// <summary>
-        /// The user's manager_ad_id
+        /// The ID of the user's manager in Active Directory.
         /// </summary>
         [Input("managerAdId")]
-        public Input<int>? ManagerAdId { get; set; }
+        public Input<string>? ManagerAdId { get; set; }
 
         /// <summary>
-        /// The user's manager_user_id
+        /// The OneLogin User ID for the user's manager.
         /// </summary>
         [Input("managerUserId")]
-        public Input<int>? ManagerUserId { get; set; }
+        public Input<string>? ManagerUserId { get; set; }
 
         /// <summary>
-        /// The user's member_of
+        /// The user's directory membership.
         /// </summary>
         [Input("memberOf")]
         public Input<string>? MemberOf { get; set; }
 
         /// <summary>
-        /// The user's phone number
+        /// The password to set for a user.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
+        /// SHA-256-encoding it
+        /// </summary>
+        [Input("passwordAlgorithm")]
+        public Input<string>? PasswordAlgorithm { get; set; }
+
+        [Input("passwordChangedAt")]
+        public Input<string>? PasswordChangedAt { get; set; }
+
+        /// <summary>
+        /// Required if the password is being set.
+        /// </summary>
+        [Input("passwordConfirmation")]
+        public Input<string>? PasswordConfirmation { get; set; }
+
+        /// <summary>
+        /// The E.164 format phone number for a user.
         /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
 
-        /// <summary>
-        /// The user's samaccount name
-        /// </summary>
-        [Input("samaccountname")]
-        public Input<string>? Samaccountname { get; set; }
+        [Input("preferredLocaleCode")]
+        public Input<string>? PreferredLocaleCode { get; set; }
+
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
 
         /// <summary>
-        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// A list of OneLogin Role IDs of the user
         /// </summary>
+        public InputList<int> RoleIds
+        {
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
+        }
+
+        /// <summary>
+        /// The salt value used with the password_algorithm.
+        /// </summary>
+        [Input("salt")]
+        public Input<string>? Salt { get; set; }
+
+        /// <summary>
+        /// The user's Active Directory username.
+        /// </summary>
+        [Input("samaccountName")]
+        public Input<string>? SamaccountName { get; set; }
+
         [Input("state")]
         public Input<int>? State { get; set; }
 
-        /// <summary>
-        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
-        /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The user's title
+        /// The user's job title.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// The user's trusted_idp_id
+        /// The ID of the OneLogin Trusted IDP of the user.
         /// </summary>
         [Input("trustedIdpId")]
         public Input<int>? TrustedIdpId { get; set; }
 
-        /// <summary>
-        /// The user's username.
-        /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The user's user principal name
+        /// A username for the user.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// The principle name of the user.
         /// </summary>
         [Input("userprincipalname")]
         public Input<string>? Userprincipalname { get; set; }
@@ -357,140 +423,191 @@ namespace Pulumi.Onelogin
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
+        [Input("activatedAt")]
+        public Input<string>? ActivatedAt { get; set; }
+
         /// <summary>
-        /// A comment about the user
+        /// Free text related to the user.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The user's company
+        /// The user's company.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
-        [Input("customAttributes")]
-        private InputMap<string>? _customAttributes;
-        public InputMap<string> CustomAttributes
-        {
-            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
-            set => _customAttributes = value;
-        }
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The user's department
+        /// The user's department.
         /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// The user's directory_id
+        /// The ID of the OneLogin Directory of the user.
         /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The user's distinguished name
+        /// The distinguished name of the user.
         /// </summary>
         [Input("distinguishedName")]
         public Input<string>? DistinguishedName { get; set; }
 
         /// <summary>
-        /// The user's email.
+        /// A valid email for the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The user's external_id
+        /// The ID of the user in an external directory.
         /// </summary>
         [Input("externalId")]
-        public Input<int>? ExternalId { get; set; }
+        public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// The user's first name
+        /// The user's first name.
         /// </summary>
         [Input("firstname")]
         public Input<string>? Firstname { get; set; }
 
         /// <summary>
-        /// The user's group_id
+        /// The ID of the Group in OneLogin that the user is assigned to.
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        [Input("invalidLoginAttempts")]
+        public Input<int>? InvalidLoginAttempts { get; set; }
+
+        [Input("invitationSentAt")]
+        public Input<string>? InvitationSentAt { get; set; }
+
+        [Input("lastLogin")]
+        public Input<string>? LastLogin { get; set; }
+
         /// <summary>
-        /// The user's last name
+        /// The user's last name.
         /// </summary>
         [Input("lastname")]
         public Input<string>? Lastname { get; set; }
 
+        [Input("lockedUntil")]
+        public Input<string>? LockedUntil { get; set; }
+
         /// <summary>
-        /// The user's manager_ad_id
+        /// The ID of the user's manager in Active Directory.
         /// </summary>
         [Input("managerAdId")]
-        public Input<int>? ManagerAdId { get; set; }
+        public Input<string>? ManagerAdId { get; set; }
 
         /// <summary>
-        /// The user's manager_user_id
+        /// The OneLogin User ID for the user's manager.
         /// </summary>
         [Input("managerUserId")]
-        public Input<int>? ManagerUserId { get; set; }
+        public Input<string>? ManagerUserId { get; set; }
 
         /// <summary>
-        /// The user's member_of
+        /// The user's directory membership.
         /// </summary>
         [Input("memberOf")]
         public Input<string>? MemberOf { get; set; }
 
         /// <summary>
-        /// The user's phone number
+        /// The password to set for a user.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
+        /// SHA-256-encoding it
+        /// </summary>
+        [Input("passwordAlgorithm")]
+        public Input<string>? PasswordAlgorithm { get; set; }
+
+        [Input("passwordChangedAt")]
+        public Input<string>? PasswordChangedAt { get; set; }
+
+        /// <summary>
+        /// Required if the password is being set.
+        /// </summary>
+        [Input("passwordConfirmation")]
+        public Input<string>? PasswordConfirmation { get; set; }
+
+        /// <summary>
+        /// The E.164 format phone number for a user.
         /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
 
-        /// <summary>
-        /// The user's samaccount name
-        /// </summary>
-        [Input("samaccountname")]
-        public Input<string>? Samaccountname { get; set; }
+        [Input("preferredLocaleCode")]
+        public Input<string>? PreferredLocaleCode { get; set; }
+
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
 
         /// <summary>
-        /// The user's state. Must be one of `0: Unapproved` `1: Approved` `2: Rejected` `3: Unlicensed`
+        /// A list of OneLogin Role IDs of the user
         /// </summary>
+        public InputList<int> RoleIds
+        {
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
+        }
+
+        /// <summary>
+        /// The salt value used with the password_algorithm.
+        /// </summary>
+        [Input("salt")]
+        public Input<string>? Salt { get; set; }
+
+        /// <summary>
+        /// The user's Active Directory username.
+        /// </summary>
+        [Input("samaccountName")]
+        public Input<string>? SamaccountName { get; set; }
+
         [Input("state")]
         public Input<int>? State { get; set; }
 
-        /// <summary>
-        /// The user's status. Must be one of `0: Unactivated` `1: Active` `2: Suspended` `3: Locked` `4: Password expired` `5: Awaiting password reset` `7: Password Pending` `8: Security questions required`
-        /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The user's title
+        /// The user's job title.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// The user's trusted_idp_id
+        /// The ID of the OneLogin Trusted IDP of the user.
         /// </summary>
         [Input("trustedIdpId")]
         public Input<int>? TrustedIdpId { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         /// <summary>
-        /// The user's username.
+        /// A username for the user.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// The user's user principal name
+        /// The principle name of the user.
         /// </summary>
         [Input("userprincipalname")]
         public Input<string>? Userprincipalname { get; set; }
@@ -498,5 +615,6 @@ namespace Pulumi.Onelogin
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

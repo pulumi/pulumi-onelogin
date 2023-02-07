@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,25 +17,18 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	ClientId     pulumi.StringOutput    `pulumi:"clientId"`
-	ClientSecret pulumi.StringOutput    `pulumi:"clientSecret"`
-	Region       pulumi.StringPtrOutput `pulumi:"region"`
-	Url          pulumi.StringPtrOutput `pulumi:"url"`
+	Authorization pulumi.StringPtrOutput `pulumi:"authorization"`
+	BearerAuth    pulumi.StringPtrOutput `pulumi:"bearerAuth"`
+	ContentType   pulumi.StringPtrOutput `pulumi:"contentType"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.ClientId == nil {
-		return nil, errors.New("invalid value for required argument 'ClientId'")
-	}
-	if args.ClientSecret == nil {
-		return nil, errors.New("invalid value for required argument 'ClientSecret'")
-	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:onelogin", name, args, &resource, opts...)
 	if err != nil {
@@ -46,18 +38,18 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ClientId     string  `pulumi:"clientId"`
-	ClientSecret string  `pulumi:"clientSecret"`
-	Region       *string `pulumi:"region"`
-	Url          *string `pulumi:"url"`
+	Authorization *string            `pulumi:"authorization"`
+	BearerAuth    *string            `pulumi:"bearerAuth"`
+	ContentType   *string            `pulumi:"contentType"`
+	Endpoints     []ProviderEndpoint `pulumi:"endpoints"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ClientId     pulumi.StringInput
-	ClientSecret pulumi.StringInput
-	Region       pulumi.StringPtrInput
-	Url          pulumi.StringPtrInput
+	Authorization pulumi.StringPtrInput
+	BearerAuth    pulumi.StringPtrInput
+	ContentType   pulumi.StringPtrInput
+	Endpoints     ProviderEndpointArrayInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -95,6 +87,18 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) Authorization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Authorization }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BearerAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BearerAuth }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

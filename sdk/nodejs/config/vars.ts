@@ -2,39 +2,41 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
 const __config = new pulumi.Config("onelogin");
 
-export declare const clientId: string | undefined;
-Object.defineProperty(exports, "clientId", {
+export declare const authorization: string | undefined;
+Object.defineProperty(exports, "authorization", {
     get() {
-        return __config.get("clientId");
+        return __config.get("authorization");
     },
     enumerable: true,
 });
 
-export declare const clientSecret: string | undefined;
-Object.defineProperty(exports, "clientSecret", {
+export declare const bearerAuth: string | undefined;
+Object.defineProperty(exports, "bearerAuth", {
     get() {
-        return __config.get("clientSecret");
+        return __config.get("bearerAuth");
     },
     enumerable: true,
 });
 
-export declare const region: string | undefined;
-Object.defineProperty(exports, "region", {
+export declare const contentType: string | undefined;
+Object.defineProperty(exports, "contentType", {
     get() {
-        return __config.get("region");
+        return __config.get("contentType");
     },
     enumerable: true,
 });
 
-export declare const url: string | undefined;
-Object.defineProperty(exports, "url", {
+export declare const endpoints: outputs.config.Endpoints[] | undefined;
+Object.defineProperty(exports, "endpoints", {
     get() {
-        return __config.get("url");
+        return __config.getObject<outputs.config.Endpoints[]>("endpoints");
     },
     enumerable: true,
 });

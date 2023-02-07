@@ -6,29 +6,35 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .app import *
-from .app_role_attachment import *
-from .app_rule import *
-from .auth_server import *
-from .get_user import *
-from .get_users import *
-from .oidc_app import *
-from .privilege import *
+from .get_mappings import *
+from .get_privileges import *
 from .provider import *
-from .role import *
-from .saml_app import *
-from .smart_hook import *
-from .smart_hook_environment_variable import *
+from .rule import *
 from .user import *
-from .user_mapping import *
 from ._inputs import *
 from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_onelogin.api as __api
+    api = __api
+    import pulumi_onelogin.apps as __apps
+    apps = __apps
     import pulumi_onelogin.config as __config
     config = __config
+    import pulumi_onelogin.roles as __roles
+    roles = __roles
+    import pulumi_onelogin.rules as __rules
+    rules = __rules
+    import pulumi_onelogin.users as __users
+    users = __users
 else:
+    api = _utilities.lazy_import('pulumi_onelogin.api')
+    apps = _utilities.lazy_import('pulumi_onelogin.apps')
     config = _utilities.lazy_import('pulumi_onelogin.config')
+    roles = _utilities.lazy_import('pulumi_onelogin.roles')
+    rules = _utilities.lazy_import('pulumi_onelogin.rules')
+    users = _utilities.lazy_import('pulumi_onelogin.users')
 
 _utilities.register(
     resource_modules="""
@@ -43,74 +49,10 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/appRoleAttachment",
+  "mod": "index/rule",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/appRoleAttachment:AppRoleAttachment": "AppRoleAttachment"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/appRule",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/appRule:AppRule": "AppRule"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/authServer",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/authServer:AuthServer": "AuthServer"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/oidcApp",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/oidcApp:OidcApp": "OidcApp"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/privilege",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/privilege:Privilege": "Privilege"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/role",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/role:Role": "Role"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/samlApp",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/samlApp:SamlApp": "SamlApp"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/smartHook",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/smartHook:SmartHook": "SmartHook"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/smartHookEnvironmentVariable",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable": "SmartHookEnvironmentVariable"
+   "onelogin:index/rule:Rule": "Rule"
   }
  },
  {
@@ -119,14 +61,6 @@ _utilities.register(
   "fqn": "pulumi_onelogin",
   "classes": {
    "onelogin:index/user:User": "User"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/userMapping",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/userMapping:UserMapping": "UserMapping"
   }
  }
 ]
