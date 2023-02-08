@@ -9,149 +9,92 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
-    /// <summary>
-    /// Creates a Basic Application.
-    /// 
-    /// This resource allows you to create and configure a Basic (non-SAML non-OIDC) Application.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Onelogin = Pulumi.Onelogin;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myApp = new Onelogin.App("myApp", new Onelogin.AppArgs
-    ///         {
-    ///             AllowAssumedSignin = false,
-    ///             ConnectorId = 12345,
-    ///             Description = "basic app",
-    ///             Notes = "basic app",
-    ///             Parameters = 
-    ///             {
-    ///                 new Onelogin.Inputs.AppParameterArgs
-    ///                 {
-    ///                     AttributesTransformations = "",
-    ///                     DefaultValues = "",
-    ///                     IncludeInSamlAssertion = false,
-    ///                     Label = "username",
-    ///                     ParamKeyName = "user name",
-    ///                     ProvisionedEntitlements = false,
-    ///                     SafeEntitlementsEnabled = false,
-    ///                     SkipIfBlank = false,
-    ///                     UserAttributeMacros = "",
-    ///                     UserAttributeMappings = "",
-    ///                     Values = "",
-    ///                 },
-    ///             },
-    ///             Provisioning = 
-    ///             {
-    ///                 { "enabled", false },
-    ///             },
-    ///             Visible = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// An App can be imported via the OneLogin App ID.
-    /// 
-    /// ```sh
-    ///  $ pulumi import onelogin:index/app:App my_app &lt;app id&gt;
-    /// ```
-    /// </summary>
     [OneloginResourceType("onelogin:index/app:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        /// Indicates whether or not administrators can access the app as a user that they have assumed control over.
         /// </summary>
         [Output("allowAssumedSignin")]
         public Output<bool?> AllowAssumedSignin { get; private set; } = null!;
 
         /// <summary>
-        /// The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        /// An ID indicating the type of app.
         /// </summary>
         [Output("authMethod")]
-        public Output<int> AuthMethod { get; private set; } = null!;
+        public Output<int?> AuthMethod { get; private set; } = null!;
 
+        /// <summary>
+        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+        /// </summary>
         [Output("brandId")]
         public Output<int?> BrandId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        /// ID of the apps underlying connector.
         /// </summary>
         [Output("connectorId")]
-        public Output<int> ConnectorId { get; private set; } = null!;
+        public Output<int?> ConnectorId { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp for app's creation.
+        /// The date the app was created.
         /// </summary>
         [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
+        public Output<string?> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// App description.
+        /// Freeform description of the app.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The url for the app's icon.
+        /// A link to the apps icon url.
         /// </summary>
         [Output("iconUrl")]
-        public Output<string> IconUrl { get; private set; } = null!;
+        public Output<string?> IconUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The app's name.
+        /// App name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Notes about the app.
+        /// Freeform notes about the app.
         /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// a list of custom parameters for this app.
-        /// </summary>
-        [Output("parameters")]
-        public Output<ImmutableArray<Outputs.AppParameter>> Parameters { get; private set; } = null!;
-
-        /// <summary>
         /// The security policy assigned to the app.
         /// </summary>
         [Output("policyId")]
-        public Output<int> PolicyId { get; private set; } = null!;
+        public Output<int?> PolicyId { get; private set; } = null!;
 
-        /// <summary>
-        /// Settings regarding the app's provisioning ability.
-        /// </summary>
         [Output("provisioning")]
-        public Output<ImmutableDictionary<string, bool>> Provisioning { get; private set; } = null!;
+        public Output<Outputs.AppProvisioning?> Provisioning { get; private set; } = null!;
 
         /// <summary>
-        /// The tab in which to display in OneLogin portal.
+        /// A list of OneLogin Role IDs of the user
+        /// </summary>
+        [Output("roleIds")]
+        public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the OneLogin portal tab that the app is assigned to.
         /// </summary>
         [Output("tabId")]
-        public Output<int> TabId { get; private set; } = null!;
+        public Output<int?> TabId { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp for app's last update.
+        /// The date the app was last updated.
         /// </summary>
         [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
+        public Output<string?> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+        /// Indicates if the app is visible in the OneLogin portal.
         /// </summary>
         [Output("visible")]
         public Output<bool?> Visible { get; private set; } = null!;
@@ -164,7 +107,7 @@ namespace Pulumi.Onelogin
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public App(string name, AppArgs args, CustomResourceOptions? options = null)
+        public App(string name, AppArgs? args = null, CustomResourceOptions? options = null)
             : base("onelogin:index/app:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -200,140 +143,61 @@ namespace Pulumi.Onelogin
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
-        /// </summary>
-        [Input("allowAssumedSignin")]
-        public Input<bool>? AllowAssumedSignin { get; set; }
-
-        [Input("brandId")]
-        public Input<int>? BrandId { get; set; }
-
-        /// <summary>
-        /// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
-        /// </summary>
-        [Input("connectorId", required: true)]
-        public Input<int> ConnectorId { get; set; } = null!;
-
-        /// <summary>
-        /// App description.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The app's name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Notes about the app.
-        /// </summary>
-        [Input("notes")]
-        public Input<string>? Notes { get; set; }
-
-        [Input("parameters")]
-        private InputList<Inputs.AppParameterArgs>? _parameters;
-
-        /// <summary>
-        /// a list of custom parameters for this app.
-        /// </summary>
-        public InputList<Inputs.AppParameterArgs> Parameters
-        {
-            get => _parameters ?? (_parameters = new InputList<Inputs.AppParameterArgs>());
-            set => _parameters = value;
-        }
-
-        [Input("provisioning")]
-        private InputMap<bool>? _provisioning;
-
-        /// <summary>
-        /// Settings regarding the app's provisioning ability.
-        /// </summary>
-        public InputMap<bool> Provisioning
-        {
-            get => _provisioning ?? (_provisioning = new InputMap<bool>());
-            set => _provisioning = value;
-        }
-
-        /// <summary>
-        /// Determine if app should be visible in OneLogin portal. Defaults to `true`.
-        /// </summary>
-        [Input("visible")]
-        public Input<bool>? Visible { get; set; }
-
-        public AppArgs()
-        {
-        }
-    }
-
-    public sealed class AppState : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+        /// Indicates whether or not administrators can access the app as a user that they have assumed control over.
         /// </summary>
         [Input("allowAssumedSignin")]
         public Input<bool>? AllowAssumedSignin { get; set; }
 
         /// <summary>
-        /// The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+        /// An ID indicating the type of app.
         /// </summary>
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
+        /// <summary>
+        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+        /// </summary>
         [Input("brandId")]
         public Input<int>? BrandId { get; set; }
 
         /// <summary>
-        /// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+        /// ID of the apps underlying connector.
         /// </summary>
         [Input("connectorId")]
         public Input<int>? ConnectorId { get; set; }
 
         /// <summary>
-        /// Timestamp for app's creation.
+        /// The date the app was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// App description.
+        /// Freeform description of the app.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The url for the app's icon.
+        /// A link to the apps icon url.
         /// </summary>
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
         /// <summary>
-        /// The app's name.
+        /// App name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Notes about the app.
+        /// Freeform notes about the app.
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
-
-        [Input("parameters")]
-        private InputList<Inputs.AppParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// a list of custom parameters for this app.
-        /// </summary>
-        public InputList<Inputs.AppParameterGetArgs> Parameters
-        {
-            get => _parameters ?? (_parameters = new InputList<Inputs.AppParameterGetArgs>());
-            set => _parameters = value;
-        }
 
         /// <summary>
         /// The security policy assigned to the app.
@@ -342,31 +206,135 @@ namespace Pulumi.Onelogin
         public Input<int>? PolicyId { get; set; }
 
         [Input("provisioning")]
-        private InputMap<bool>? _provisioning;
+        public Input<Inputs.AppProvisioningArgs>? Provisioning { get; set; }
+
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
 
         /// <summary>
-        /// Settings regarding the app's provisioning ability.
+        /// A list of OneLogin Role IDs of the user
         /// </summary>
-        public InputMap<bool> Provisioning
+        public InputList<int> RoleIds
         {
-            get => _provisioning ?? (_provisioning = new InputMap<bool>());
-            set => _provisioning = value;
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
         }
 
         /// <summary>
-        /// The tab in which to display in OneLogin portal.
+        /// ID of the OneLogin portal tab that the app is assigned to.
         /// </summary>
         [Input("tabId")]
         public Input<int>? TabId { get; set; }
 
         /// <summary>
-        /// Timestamp for app's last update.
+        /// The date the app was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+        /// Indicates if the app is visible in the OneLogin portal.
+        /// </summary>
+        [Input("visible")]
+        public Input<bool>? Visible { get; set; }
+
+        public AppArgs()
+        {
+        }
+        public static new AppArgs Empty => new AppArgs();
+    }
+
+    public sealed class AppState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Indicates whether or not administrators can access the app as a user that they have assumed control over.
+        /// </summary>
+        [Input("allowAssumedSignin")]
+        public Input<bool>? AllowAssumedSignin { get; set; }
+
+        /// <summary>
+        /// An ID indicating the type of app.
+        /// </summary>
+        [Input("authMethod")]
+        public Input<int>? AuthMethod { get; set; }
+
+        /// <summary>
+        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+        /// </summary>
+        [Input("brandId")]
+        public Input<int>? BrandId { get; set; }
+
+        /// <summary>
+        /// ID of the apps underlying connector.
+        /// </summary>
+        [Input("connectorId")]
+        public Input<int>? ConnectorId { get; set; }
+
+        /// <summary>
+        /// The date the app was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Freeform description of the app.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A link to the apps icon url.
+        /// </summary>
+        [Input("iconUrl")]
+        public Input<string>? IconUrl { get; set; }
+
+        /// <summary>
+        /// App name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Freeform notes about the app.
+        /// </summary>
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
+
+        /// <summary>
+        /// The security policy assigned to the app.
+        /// </summary>
+        [Input("policyId")]
+        public Input<int>? PolicyId { get; set; }
+
+        [Input("provisioning")]
+        public Input<Inputs.AppProvisioningGetArgs>? Provisioning { get; set; }
+
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
+
+        /// <summary>
+        /// A list of OneLogin Role IDs of the user
+        /// </summary>
+        public InputList<int> RoleIds
+        {
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
+        }
+
+        /// <summary>
+        /// ID of the OneLogin portal tab that the app is assigned to.
+        /// </summary>
+        [Input("tabId")]
+        public Input<int>? TabId { get; set; }
+
+        /// <summary>
+        /// The date the app was last updated.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Indicates if the app is visible in the OneLogin portal.
         /// </summary>
         [Input("visible")]
         public Input<bool>? Visible { get; set; }
@@ -374,5 +342,6 @@ namespace Pulumi.Onelogin
         public AppState()
         {
         }
+        public static new AppState Empty => new AppState();
     }
 }

@@ -10,1722 +10,1088 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type AppParameter struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations *string `pulumi:"attributesTransformations"`
-	// Default Parameter values.
-	DefaultValues *string `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion *bool `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label *string `pulumi:"label"`
-	// The parameter ID.
-	ParamId *int `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName string `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements *bool `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled *bool `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank *bool `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros *string `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings *string `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values *string `pulumi:"values"`
+type AppProvisioning struct {
+	Enabled *bool `pulumi:"enabled"`
 }
 
-// AppParameterInput is an input type that accepts AppParameterArgs and AppParameterOutput values.
-// You can construct a concrete instance of `AppParameterInput` via:
+// AppProvisioningInput is an input type that accepts AppProvisioningArgs and AppProvisioningOutput values.
+// You can construct a concrete instance of `AppProvisioningInput` via:
 //
-//          AppParameterArgs{...}
-type AppParameterInput interface {
+//	AppProvisioningArgs{...}
+type AppProvisioningInput interface {
 	pulumi.Input
 
-	ToAppParameterOutput() AppParameterOutput
-	ToAppParameterOutputWithContext(context.Context) AppParameterOutput
+	ToAppProvisioningOutput() AppProvisioningOutput
+	ToAppProvisioningOutputWithContext(context.Context) AppProvisioningOutput
 }
 
-type AppParameterArgs struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
-	// Default Parameter values.
-	DefaultValues pulumi.StringPtrInput `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion pulumi.BoolPtrInput `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The parameter ID.
-	ParamId pulumi.IntPtrInput `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName pulumi.StringInput `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements pulumi.BoolPtrInput `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled pulumi.BoolPtrInput `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank pulumi.BoolPtrInput `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values pulumi.StringPtrInput `pulumi:"values"`
+type AppProvisioningArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
-func (AppParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppParameter)(nil)).Elem()
+func (AppProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProvisioning)(nil)).Elem()
 }
 
-func (i AppParameterArgs) ToAppParameterOutput() AppParameterOutput {
-	return i.ToAppParameterOutputWithContext(context.Background())
+func (i AppProvisioningArgs) ToAppProvisioningOutput() AppProvisioningOutput {
+	return i.ToAppProvisioningOutputWithContext(context.Background())
 }
 
-func (i AppParameterArgs) ToAppParameterOutputWithContext(ctx context.Context) AppParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppParameterOutput)
+func (i AppProvisioningArgs) ToAppProvisioningOutputWithContext(ctx context.Context) AppProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningOutput)
 }
 
-// AppParameterArrayInput is an input type that accepts AppParameterArray and AppParameterArrayOutput values.
-// You can construct a concrete instance of `AppParameterArrayInput` via:
+func (i AppProvisioningArgs) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
+	return i.ToAppProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i AppProvisioningArgs) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningOutput).ToAppProvisioningPtrOutputWithContext(ctx)
+}
+
+// AppProvisioningPtrInput is an input type that accepts AppProvisioningArgs, AppProvisioningPtr and AppProvisioningPtrOutput values.
+// You can construct a concrete instance of `AppProvisioningPtrInput` via:
 //
-//          AppParameterArray{ AppParameterArgs{...} }
-type AppParameterArrayInput interface {
+//	        AppProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppProvisioningPtrInput interface {
 	pulumi.Input
 
-	ToAppParameterArrayOutput() AppParameterArrayOutput
-	ToAppParameterArrayOutputWithContext(context.Context) AppParameterArrayOutput
+	ToAppProvisioningPtrOutput() AppProvisioningPtrOutput
+	ToAppProvisioningPtrOutputWithContext(context.Context) AppProvisioningPtrOutput
 }
 
-type AppParameterArray []AppParameterInput
+type appProvisioningPtrType AppProvisioningArgs
 
-func (AppParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppParameter)(nil)).Elem()
+func AppProvisioningPtr(v *AppProvisioningArgs) AppProvisioningPtrInput {
+	return (*appProvisioningPtrType)(v)
 }
 
-func (i AppParameterArray) ToAppParameterArrayOutput() AppParameterArrayOutput {
-	return i.ToAppParameterArrayOutputWithContext(context.Background())
+func (*appProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProvisioning)(nil)).Elem()
 }
 
-func (i AppParameterArray) ToAppParameterArrayOutputWithContext(ctx context.Context) AppParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppParameterArrayOutput)
+func (i *appProvisioningPtrType) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
+	return i.ToAppProvisioningPtrOutputWithContext(context.Background())
 }
 
-type AppParameterOutput struct{ *pulumi.OutputState }
-
-func (AppParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppParameter)(nil)).Elem()
+func (i *appProvisioningPtrType) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningPtrOutput)
 }
 
-func (o AppParameterOutput) ToAppParameterOutput() AppParameterOutput {
+type AppProvisioningOutput struct{ *pulumi.OutputState }
+
+func (AppProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProvisioning)(nil)).Elem()
+}
+
+func (o AppProvisioningOutput) ToAppProvisioningOutput() AppProvisioningOutput {
 	return o
 }
 
-func (o AppParameterOutput) ToAppParameterOutputWithContext(ctx context.Context) AppParameterOutput {
+func (o AppProvisioningOutput) ToAppProvisioningOutputWithContext(ctx context.Context) AppProvisioningOutput {
 	return o
 }
 
-// Describes how the app's attributes should be transformed.
-func (o AppParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+func (o AppProvisioningOutput) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
+	return o.ToAppProvisioningPtrOutputWithContext(context.Background())
 }
 
-// Default Parameter values.
-func (o AppParameterOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
-}
-
-// When true, this parameter will be included in a SAML assertion payload.
-func (o AppParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
-}
-
-// The can only be set when creating a new parameter. It can not be updated.
-func (o AppParameterOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// The parameter ID.
-func (o AppParameterOutput) ParamId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
-}
-
-// Name to represent the parameter in OneLogin.
-func (o AppParameterOutput) ParamKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v AppParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
-}
-
-// Provisioned access entitlements for the app. Defaults to `false`.
-func (o AppParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-func (o AppParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-func (o AppParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
-}
-
-// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-func (o AppParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
-}
-
-// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-func (o AppParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
-}
-
-// Parameter values.
-func (o AppParameterOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
-}
-
-type AppParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (AppParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppParameter)(nil)).Elem()
-}
-
-func (o AppParameterArrayOutput) ToAppParameterArrayOutput() AppParameterArrayOutput {
-	return o
-}
-
-func (o AppParameterArrayOutput) ToAppParameterArrayOutputWithContext(ctx context.Context) AppParameterArrayOutput {
-	return o
-}
-
-func (o AppParameterArrayOutput) Index(i pulumi.IntInput) AppParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppParameter {
-		return vs[0].([]AppParameter)[vs[1].(int)]
-	}).(AppParameterOutput)
-}
-
-type AppRuleAction struct {
-	// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `setRoleFromExisting` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
-	Action string `pulumi:"action"`
-	// A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
-	Expression *string `pulumi:"expression"`
-	// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Values []string `pulumi:"values"`
-}
-
-// AppRuleActionInput is an input type that accepts AppRuleActionArgs and AppRuleActionOutput values.
-// You can construct a concrete instance of `AppRuleActionInput` via:
-//
-//          AppRuleActionArgs{...}
-type AppRuleActionInput interface {
-	pulumi.Input
-
-	ToAppRuleActionOutput() AppRuleActionOutput
-	ToAppRuleActionOutputWithContext(context.Context) AppRuleActionOutput
-}
-
-type AppRuleActionArgs struct {
-	// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `setRoleFromExisting` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
-	Action pulumi.StringInput `pulumi:"action"`
-	// A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (AppRuleActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRuleAction)(nil)).Elem()
-}
-
-func (i AppRuleActionArgs) ToAppRuleActionOutput() AppRuleActionOutput {
-	return i.ToAppRuleActionOutputWithContext(context.Background())
-}
-
-func (i AppRuleActionArgs) ToAppRuleActionOutputWithContext(ctx context.Context) AppRuleActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRuleActionOutput)
-}
-
-// AppRuleActionArrayInput is an input type that accepts AppRuleActionArray and AppRuleActionArrayOutput values.
-// You can construct a concrete instance of `AppRuleActionArrayInput` via:
-//
-//          AppRuleActionArray{ AppRuleActionArgs{...} }
-type AppRuleActionArrayInput interface {
-	pulumi.Input
-
-	ToAppRuleActionArrayOutput() AppRuleActionArrayOutput
-	ToAppRuleActionArrayOutputWithContext(context.Context) AppRuleActionArrayOutput
-}
-
-type AppRuleActionArray []AppRuleActionInput
-
-func (AppRuleActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRuleAction)(nil)).Elem()
-}
-
-func (i AppRuleActionArray) ToAppRuleActionArrayOutput() AppRuleActionArrayOutput {
-	return i.ToAppRuleActionArrayOutputWithContext(context.Background())
-}
-
-func (i AppRuleActionArray) ToAppRuleActionArrayOutputWithContext(ctx context.Context) AppRuleActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRuleActionArrayOutput)
-}
-
-type AppRuleActionOutput struct{ *pulumi.OutputState }
-
-func (AppRuleActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRuleAction)(nil)).Elem()
-}
-
-func (o AppRuleActionOutput) ToAppRuleActionOutput() AppRuleActionOutput {
-	return o
-}
-
-func (o AppRuleActionOutput) ToAppRuleActionOutputWithContext(ctx context.Context) AppRuleActionOutput {
-	return o
-}
-
-// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values. *Note*: The action `setRoleFromExisting` may also be used, however doing so will always clear the `expression` field as it is not accepted when mapping a rule from existing roles.
-func (o AppRuleActionOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRuleAction) string { return v.Action }).(pulumi.StringOutput)
-}
-
-// A regular expression to extract a value. Applies to provisionable, multi-selects, and string actions.
-func (o AppRuleActionOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppRuleAction) *string { return v.Expression }).(pulumi.StringPtrOutput)
-}
-
-// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-func (o AppRuleActionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AppRuleAction) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type AppRuleActionArrayOutput struct{ *pulumi.OutputState }
-
-func (AppRuleActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRuleAction)(nil)).Elem()
-}
-
-func (o AppRuleActionArrayOutput) ToAppRuleActionArrayOutput() AppRuleActionArrayOutput {
-	return o
-}
-
-func (o AppRuleActionArrayOutput) ToAppRuleActionArrayOutputWithContext(ctx context.Context) AppRuleActionArrayOutput {
-	return o
-}
-
-func (o AppRuleActionArrayOutput) Index(i pulumi.IntInput) AppRuleActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRuleAction {
-		return vs[0].([]AppRuleAction)[vs[1].(int)]
-	}).(AppRuleActionOutput)
-}
-
-type AppRuleCondition struct {
-	// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
-	Operator string `pulumi:"operator"`
-	// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
-	Source string `pulumi:"source"`
-	// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Value string `pulumi:"value"`
-}
-
-// AppRuleConditionInput is an input type that accepts AppRuleConditionArgs and AppRuleConditionOutput values.
-// You can construct a concrete instance of `AppRuleConditionInput` via:
-//
-//          AppRuleConditionArgs{...}
-type AppRuleConditionInput interface {
-	pulumi.Input
-
-	ToAppRuleConditionOutput() AppRuleConditionOutput
-	ToAppRuleConditionOutputWithContext(context.Context) AppRuleConditionOutput
-}
-
-type AppRuleConditionArgs struct {
-	// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
-	Source pulumi.StringInput `pulumi:"source"`
-	// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (AppRuleConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRuleCondition)(nil)).Elem()
-}
-
-func (i AppRuleConditionArgs) ToAppRuleConditionOutput() AppRuleConditionOutput {
-	return i.ToAppRuleConditionOutputWithContext(context.Background())
-}
-
-func (i AppRuleConditionArgs) ToAppRuleConditionOutputWithContext(ctx context.Context) AppRuleConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRuleConditionOutput)
-}
-
-// AppRuleConditionArrayInput is an input type that accepts AppRuleConditionArray and AppRuleConditionArrayOutput values.
-// You can construct a concrete instance of `AppRuleConditionArrayInput` via:
-//
-//          AppRuleConditionArray{ AppRuleConditionArgs{...} }
-type AppRuleConditionArrayInput interface {
-	pulumi.Input
-
-	ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput
-	ToAppRuleConditionArrayOutputWithContext(context.Context) AppRuleConditionArrayOutput
-}
-
-type AppRuleConditionArray []AppRuleConditionInput
-
-func (AppRuleConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRuleCondition)(nil)).Elem()
-}
-
-func (i AppRuleConditionArray) ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput {
-	return i.ToAppRuleConditionArrayOutputWithContext(context.Background())
-}
-
-func (i AppRuleConditionArray) ToAppRuleConditionArrayOutputWithContext(ctx context.Context) AppRuleConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRuleConditionArrayOutput)
-}
-
-type AppRuleConditionOutput struct{ *pulumi.OutputState }
-
-func (AppRuleConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRuleCondition)(nil)).Elem()
-}
-
-func (o AppRuleConditionOutput) ToAppRuleConditionOutput() AppRuleConditionOutput {
-	return o
-}
-
-func (o AppRuleConditionOutput) ToAppRuleConditionOutputWithContext(ctx context.Context) AppRuleConditionOutput {
-	return o
-}
-
-// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/app-rules/list-condition-operators) for possible values.
-func (o AppRuleConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRuleCondition) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/app-rules/list-conditions) for possible values.
-func (o AppRuleConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRuleCondition) string { return v.Source }).(pulumi.StringOutput)
-}
-
-// An array of strings. Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/app-rules/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-func (o AppRuleConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v AppRuleCondition) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type AppRuleConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (AppRuleConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRuleCondition)(nil)).Elem()
-}
-
-func (o AppRuleConditionArrayOutput) ToAppRuleConditionArrayOutput() AppRuleConditionArrayOutput {
-	return o
-}
-
-func (o AppRuleConditionArrayOutput) ToAppRuleConditionArrayOutputWithContext(ctx context.Context) AppRuleConditionArrayOutput {
-	return o
-}
-
-func (o AppRuleConditionArrayOutput) Index(i pulumi.IntInput) AppRuleConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRuleCondition {
-		return vs[0].([]AppRuleCondition)[vs[1].(int)]
-	}).(AppRuleConditionOutput)
-}
-
-type AuthServerConfiguration struct {
-	// The number of minutes until the token expires
-	AccessTokenExpirationMinutes *int `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences []string `pulumi:"audiences"`
-	// The number of minutes until the token expires
-	RefreshTokenExpirationMinutes *int `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier string `pulumi:"resourceIdentifier"`
-}
-
-// AuthServerConfigurationInput is an input type that accepts AuthServerConfigurationArgs and AuthServerConfigurationOutput values.
-// You can construct a concrete instance of `AuthServerConfigurationInput` via:
-//
-//          AuthServerConfigurationArgs{...}
-type AuthServerConfigurationInput interface {
-	pulumi.Input
-
-	ToAuthServerConfigurationOutput() AuthServerConfigurationOutput
-	ToAuthServerConfigurationOutputWithContext(context.Context) AuthServerConfigurationOutput
-}
-
-type AuthServerConfigurationArgs struct {
-	// The number of minutes until the token expires
-	AccessTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The number of minutes until the token expires
-	RefreshTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
-}
-
-func (AuthServerConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthServerConfiguration)(nil)).Elem()
-}
-
-func (i AuthServerConfigurationArgs) ToAuthServerConfigurationOutput() AuthServerConfigurationOutput {
-	return i.ToAuthServerConfigurationOutputWithContext(context.Background())
-}
-
-func (i AuthServerConfigurationArgs) ToAuthServerConfigurationOutputWithContext(ctx context.Context) AuthServerConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationOutput)
-}
-
-func (i AuthServerConfigurationArgs) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
-	return i.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i AuthServerConfigurationArgs) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationOutput).ToAuthServerConfigurationPtrOutputWithContext(ctx)
-}
-
-// AuthServerConfigurationPtrInput is an input type that accepts AuthServerConfigurationArgs, AuthServerConfigurationPtr and AuthServerConfigurationPtrOutput values.
-// You can construct a concrete instance of `AuthServerConfigurationPtrInput` via:
-//
-//          AuthServerConfigurationArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthServerConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput
-	ToAuthServerConfigurationPtrOutputWithContext(context.Context) AuthServerConfigurationPtrOutput
-}
-
-type authServerConfigurationPtrType AuthServerConfigurationArgs
-
-func AuthServerConfigurationPtr(v *AuthServerConfigurationArgs) AuthServerConfigurationPtrInput {
-	return (*authServerConfigurationPtrType)(v)
-}
-
-func (*authServerConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthServerConfiguration)(nil)).Elem()
-}
-
-func (i *authServerConfigurationPtrType) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
-	return i.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *authServerConfigurationPtrType) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthServerConfigurationPtrOutput)
-}
-
-type AuthServerConfigurationOutput struct{ *pulumi.OutputState }
-
-func (AuthServerConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthServerConfiguration)(nil)).Elem()
-}
-
-func (o AuthServerConfigurationOutput) ToAuthServerConfigurationOutput() AuthServerConfigurationOutput {
-	return o
-}
-
-func (o AuthServerConfigurationOutput) ToAuthServerConfigurationOutputWithContext(ctx context.Context) AuthServerConfigurationOutput {
-	return o
-}
-
-func (o AuthServerConfigurationOutput) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
-	return o.ToAuthServerConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o AuthServerConfigurationOutput) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthServerConfiguration) *AuthServerConfiguration {
+func (o AppProvisioningOutput) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProvisioning) *AppProvisioning {
 		return &v
-	}).(AuthServerConfigurationPtrOutput)
+	}).(AppProvisioningPtrOutput)
 }
 
-// The number of minutes until the token expires
-func (o AuthServerConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AuthServerConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
+func (o AppProvisioningOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppProvisioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of API endpoints that will be returned in Access Tokens.
-func (o AuthServerConfigurationOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AuthServerConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+type AppProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProvisioning)(nil)).Elem()
 }
 
-// The number of minutes until the token expires
-func (o AuthServerConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AuthServerConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o AuthServerConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v AuthServerConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
-}
-
-type AuthServerConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthServerConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthServerConfiguration)(nil)).Elem()
-}
-
-func (o AuthServerConfigurationPtrOutput) ToAuthServerConfigurationPtrOutput() AuthServerConfigurationPtrOutput {
+func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
 	return o
 }
 
-func (o AuthServerConfigurationPtrOutput) ToAuthServerConfigurationPtrOutputWithContext(ctx context.Context) AuthServerConfigurationPtrOutput {
+func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
 	return o
 }
 
-func (o AuthServerConfigurationPtrOutput) Elem() AuthServerConfigurationOutput {
-	return o.ApplyT(func(v *AuthServerConfiguration) AuthServerConfiguration {
+func (o AppProvisioningPtrOutput) Elem() AppProvisioningOutput {
+	return o.ApplyT(func(v *AppProvisioning) AppProvisioning {
 		if v != nil {
 			return *v
 		}
-		var ret AuthServerConfiguration
+		var ret AppProvisioning
 		return ret
-	}).(AuthServerConfigurationOutput)
+	}).(AppProvisioningOutput)
 }
 
-// The number of minutes until the token expires
-func (o AuthServerConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AuthServerConfiguration) *int {
+func (o AppProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppProvisioning) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AccessTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-// List of API endpoints that will be returned in Access Tokens.
-func (o AuthServerConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AuthServerConfiguration) []string {
+type ProviderEndpoint struct {
+	Apps  *string `pulumi:"apps"`
+	Rules *string `pulumi:"rules"`
+	Users *string `pulumi:"users"`
+}
+
+// ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
+// You can construct a concrete instance of `ProviderEndpointInput` via:
+//
+//	ProviderEndpointArgs{...}
+type ProviderEndpointInput interface {
+	pulumi.Input
+
+	ToProviderEndpointOutput() ProviderEndpointOutput
+	ToProviderEndpointOutputWithContext(context.Context) ProviderEndpointOutput
+}
+
+type ProviderEndpointArgs struct {
+	Apps  pulumi.StringPtrInput `pulumi:"apps"`
+	Rules pulumi.StringPtrInput `pulumi:"rules"`
+	Users pulumi.StringPtrInput `pulumi:"users"`
+}
+
+func (ProviderEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderEndpoint)(nil)).Elem()
+}
+
+func (i ProviderEndpointArgs) ToProviderEndpointOutput() ProviderEndpointOutput {
+	return i.ToProviderEndpointOutputWithContext(context.Background())
+}
+
+func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointOutput)
+}
+
+// ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
+// You can construct a concrete instance of `ProviderEndpointArrayInput` via:
+//
+//	ProviderEndpointArray{ ProviderEndpointArgs{...} }
+type ProviderEndpointArrayInput interface {
+	pulumi.Input
+
+	ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput
+	ToProviderEndpointArrayOutputWithContext(context.Context) ProviderEndpointArrayOutput
+}
+
+type ProviderEndpointArray []ProviderEndpointInput
+
+func (ProviderEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderEndpoint)(nil)).Elem()
+}
+
+func (i ProviderEndpointArray) ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput {
+	return i.ToProviderEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ProviderEndpointArray) ToProviderEndpointArrayOutputWithContext(ctx context.Context) ProviderEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointArrayOutput)
+}
+
+type ProviderEndpointOutput struct{ *pulumi.OutputState }
+
+func (ProviderEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderEndpoint)(nil)).Elem()
+}
+
+func (o ProviderEndpointOutput) ToProviderEndpointOutput() ProviderEndpointOutput {
+	return o
+}
+
+func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
+	return o
+}
+
+func (o ProviderEndpointOutput) Apps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apps }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Rules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Rules }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Users() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Users }).(pulumi.StringPtrOutput)
+}
+
+type ProviderEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ProviderEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderEndpoint)(nil)).Elem()
+}
+
+func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput {
+	return o
+}
+
+func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutputWithContext(ctx context.Context) ProviderEndpointArrayOutput {
+	return o
+}
+
+func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
+		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
+	}).(ProviderEndpointOutput)
+}
+
+type RuleSource struct {
+	Id   *string `pulumi:"id"`
+	Name *string `pulumi:"name"`
+}
+
+// RuleSourceInput is an input type that accepts RuleSourceArgs and RuleSourceOutput values.
+// You can construct a concrete instance of `RuleSourceInput` via:
+//
+//	RuleSourceArgs{...}
+type RuleSourceInput interface {
+	pulumi.Input
+
+	ToRuleSourceOutput() RuleSourceOutput
+	ToRuleSourceOutputWithContext(context.Context) RuleSourceOutput
+}
+
+type RuleSourceArgs struct {
+	Id   pulumi.StringPtrInput `pulumi:"id"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RuleSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleSource)(nil)).Elem()
+}
+
+func (i RuleSourceArgs) ToRuleSourceOutput() RuleSourceOutput {
+	return i.ToRuleSourceOutputWithContext(context.Background())
+}
+
+func (i RuleSourceArgs) ToRuleSourceOutputWithContext(ctx context.Context) RuleSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSourceOutput)
+}
+
+func (i RuleSourceArgs) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
+	return i.ToRuleSourcePtrOutputWithContext(context.Background())
+}
+
+func (i RuleSourceArgs) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSourceOutput).ToRuleSourcePtrOutputWithContext(ctx)
+}
+
+// RuleSourcePtrInput is an input type that accepts RuleSourceArgs, RuleSourcePtr and RuleSourcePtrOutput values.
+// You can construct a concrete instance of `RuleSourcePtrInput` via:
+//
+//	        RuleSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleSourcePtrInput interface {
+	pulumi.Input
+
+	ToRuleSourcePtrOutput() RuleSourcePtrOutput
+	ToRuleSourcePtrOutputWithContext(context.Context) RuleSourcePtrOutput
+}
+
+type ruleSourcePtrType RuleSourceArgs
+
+func RuleSourcePtr(v *RuleSourceArgs) RuleSourcePtrInput {
+	return (*ruleSourcePtrType)(v)
+}
+
+func (*ruleSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleSource)(nil)).Elem()
+}
+
+func (i *ruleSourcePtrType) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
+	return i.ToRuleSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleSourcePtrType) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSourcePtrOutput)
+}
+
+type RuleSourceOutput struct{ *pulumi.OutputState }
+
+func (RuleSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleSource)(nil)).Elem()
+}
+
+func (o RuleSourceOutput) ToRuleSourceOutput() RuleSourceOutput {
+	return o
+}
+
+func (o RuleSourceOutput) ToRuleSourceOutputWithContext(ctx context.Context) RuleSourceOutput {
+	return o
+}
+
+func (o RuleSourceOutput) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
+	return o.ToRuleSourcePtrOutputWithContext(context.Background())
+}
+
+func (o RuleSourceOutput) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleSource) *RuleSource {
+		return &v
+	}).(RuleSourcePtrOutput)
+}
+
+func (o RuleSourceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleSource) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o RuleSourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleSource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RuleSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleSource)(nil)).Elem()
+}
+
+func (o RuleSourcePtrOutput) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
+	return o
+}
+
+func (o RuleSourcePtrOutput) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
+	return o
+}
+
+func (o RuleSourcePtrOutput) Elem() RuleSourceOutput {
+	return o.ApplyT(func(v *RuleSource) RuleSource {
+		if v != nil {
+			return *v
+		}
+		var ret RuleSource
+		return ret
+	}).(RuleSourceOutput)
+}
+
+func (o RuleSourcePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleSource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Audiences
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of minutes until the token expires
-func (o AuthServerConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AuthServerConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o AuthServerConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthServerConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceIdentifier
+		return v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
-type OidcAppParameter struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations *string `pulumi:"attributesTransformations"`
-	// Default parameter values.
-	DefaultValues *string `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion *bool `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label *string `pulumi:"label"`
-	// The parameter ID.
-	ParamId *int `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName string `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements *bool `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled *bool `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank *bool `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros *string `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings *string `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values *string `pulumi:"values"`
+func (o RuleSourcePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
-// OidcAppParameterInput is an input type that accepts OidcAppParameterArgs and OidcAppParameterOutput values.
-// You can construct a concrete instance of `OidcAppParameterInput` via:
+type GetMappingsAction struct {
+	Action string   `pulumi:"action"`
+	Values []string `pulumi:"values"`
+}
+
+// GetMappingsActionInput is an input type that accepts GetMappingsActionArgs and GetMappingsActionOutput values.
+// You can construct a concrete instance of `GetMappingsActionInput` via:
 //
-//          OidcAppParameterArgs{...}
-type OidcAppParameterInput interface {
+//	GetMappingsActionArgs{...}
+type GetMappingsActionInput interface {
 	pulumi.Input
 
-	ToOidcAppParameterOutput() OidcAppParameterOutput
-	ToOidcAppParameterOutputWithContext(context.Context) OidcAppParameterOutput
+	ToGetMappingsActionOutput() GetMappingsActionOutput
+	ToGetMappingsActionOutputWithContext(context.Context) GetMappingsActionOutput
 }
 
-type OidcAppParameterArgs struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
-	// Default parameter values.
-	DefaultValues pulumi.StringPtrInput `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion pulumi.BoolPtrInput `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The parameter ID.
-	ParamId pulumi.IntPtrInput `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName pulumi.StringInput `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements pulumi.BoolPtrInput `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled pulumi.BoolPtrInput `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank pulumi.BoolPtrInput `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values pulumi.StringPtrInput `pulumi:"values"`
+type GetMappingsActionArgs struct {
+	Action pulumi.StringInput      `pulumi:"action"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (OidcAppParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcAppParameter)(nil)).Elem()
+func (GetMappingsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsAction)(nil)).Elem()
 }
 
-func (i OidcAppParameterArgs) ToOidcAppParameterOutput() OidcAppParameterOutput {
-	return i.ToOidcAppParameterOutputWithContext(context.Background())
+func (i GetMappingsActionArgs) ToGetMappingsActionOutput() GetMappingsActionOutput {
+	return i.ToGetMappingsActionOutputWithContext(context.Background())
 }
 
-func (i OidcAppParameterArgs) ToOidcAppParameterOutputWithContext(ctx context.Context) OidcAppParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcAppParameterOutput)
+func (i GetMappingsActionArgs) ToGetMappingsActionOutputWithContext(ctx context.Context) GetMappingsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionOutput)
 }
 
-// OidcAppParameterArrayInput is an input type that accepts OidcAppParameterArray and OidcAppParameterArrayOutput values.
-// You can construct a concrete instance of `OidcAppParameterArrayInput` via:
+// GetMappingsActionArrayInput is an input type that accepts GetMappingsActionArray and GetMappingsActionArrayOutput values.
+// You can construct a concrete instance of `GetMappingsActionArrayInput` via:
 //
-//          OidcAppParameterArray{ OidcAppParameterArgs{...} }
-type OidcAppParameterArrayInput interface {
+//	GetMappingsActionArray{ GetMappingsActionArgs{...} }
+type GetMappingsActionArrayInput interface {
 	pulumi.Input
 
-	ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput
-	ToOidcAppParameterArrayOutputWithContext(context.Context) OidcAppParameterArrayOutput
+	ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput
+	ToGetMappingsActionArrayOutputWithContext(context.Context) GetMappingsActionArrayOutput
 }
 
-type OidcAppParameterArray []OidcAppParameterInput
+type GetMappingsActionArray []GetMappingsActionInput
 
-func (OidcAppParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OidcAppParameter)(nil)).Elem()
+func (GetMappingsActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsAction)(nil)).Elem()
 }
 
-func (i OidcAppParameterArray) ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput {
-	return i.ToOidcAppParameterArrayOutputWithContext(context.Background())
+func (i GetMappingsActionArray) ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput {
+	return i.ToGetMappingsActionArrayOutputWithContext(context.Background())
 }
 
-func (i OidcAppParameterArray) ToOidcAppParameterArrayOutputWithContext(ctx context.Context) OidcAppParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcAppParameterArrayOutput)
+func (i GetMappingsActionArray) ToGetMappingsActionArrayOutputWithContext(ctx context.Context) GetMappingsActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionArrayOutput)
 }
 
-type OidcAppParameterOutput struct{ *pulumi.OutputState }
+type GetMappingsActionOutput struct{ *pulumi.OutputState }
 
-func (OidcAppParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcAppParameter)(nil)).Elem()
+func (GetMappingsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsAction)(nil)).Elem()
 }
 
-func (o OidcAppParameterOutput) ToOidcAppParameterOutput() OidcAppParameterOutput {
+func (o GetMappingsActionOutput) ToGetMappingsActionOutput() GetMappingsActionOutput {
 	return o
 }
 
-func (o OidcAppParameterOutput) ToOidcAppParameterOutputWithContext(ctx context.Context) OidcAppParameterOutput {
+func (o GetMappingsActionOutput) ToGetMappingsActionOutputWithContext(ctx context.Context) GetMappingsActionOutput {
 	return o
 }
 
-// Describes how the app's attributes should be transformed.
-func (o OidcAppParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+func (o GetMappingsActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// Default parameter values.
-func (o OidcAppParameterOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
+func (o GetMappingsActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMappingsAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// When true, this parameter will be included in a SAML assertion payload.
-func (o OidcAppParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
+type GetMappingsActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMappingsActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsAction)(nil)).Elem()
 }
 
-// The can only be set when creating a new parameter. It can not be updated.
-func (o OidcAppParameterOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// The parameter ID.
-func (o OidcAppParameterOutput) ParamId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
-}
-
-// Name to represent the parameter in OneLogin.
-func (o OidcAppParameterOutput) ParamKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v OidcAppParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
-}
-
-// Provisioned access entitlements for the app. Defaults to `false`.
-func (o OidcAppParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-func (o OidcAppParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-func (o OidcAppParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
-}
-
-// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-func (o OidcAppParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
-}
-
-// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-func (o OidcAppParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
-}
-
-// Parameter values.
-func (o OidcAppParameterOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OidcAppParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
-}
-
-type OidcAppParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (OidcAppParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OidcAppParameter)(nil)).Elem()
-}
-
-func (o OidcAppParameterArrayOutput) ToOidcAppParameterArrayOutput() OidcAppParameterArrayOutput {
+func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput {
 	return o
 }
 
-func (o OidcAppParameterArrayOutput) ToOidcAppParameterArrayOutputWithContext(ctx context.Context) OidcAppParameterArrayOutput {
+func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutputWithContext(ctx context.Context) GetMappingsActionArrayOutput {
 	return o
 }
 
-func (o OidcAppParameterArrayOutput) Index(i pulumi.IntInput) OidcAppParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OidcAppParameter {
-		return vs[0].([]OidcAppParameter)[vs[1].(int)]
-	}).(OidcAppParameterOutput)
+func (o GetMappingsActionArrayOutput) Index(i pulumi.IntInput) GetMappingsActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsAction {
+		return vs[0].([]GetMappingsAction)[vs[1].(int)]
+	}).(GetMappingsActionOutput)
 }
 
-type PrivilegePrivilege struct {
-	// At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
-	Statements []PrivilegePrivilegeStatement `pulumi:"statements"`
-	Version    *string                       `pulumi:"version"`
-}
-
-// PrivilegePrivilegeInput is an input type that accepts PrivilegePrivilegeArgs and PrivilegePrivilegeOutput values.
-// You can construct a concrete instance of `PrivilegePrivilegeInput` via:
-//
-//          PrivilegePrivilegeArgs{...}
-type PrivilegePrivilegeInput interface {
-	pulumi.Input
-
-	ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput
-	ToPrivilegePrivilegeOutputWithContext(context.Context) PrivilegePrivilegeOutput
-}
-
-type PrivilegePrivilegeArgs struct {
-	// At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
-	Statements PrivilegePrivilegeStatementArrayInput `pulumi:"statements"`
-	Version    pulumi.StringPtrInput                 `pulumi:"version"`
-}
-
-func (PrivilegePrivilegeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegePrivilege)(nil)).Elem()
-}
-
-func (i PrivilegePrivilegeArgs) ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput {
-	return i.ToPrivilegePrivilegeOutputWithContext(context.Background())
-}
-
-func (i PrivilegePrivilegeArgs) ToPrivilegePrivilegeOutputWithContext(ctx context.Context) PrivilegePrivilegeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeOutput)
-}
-
-// PrivilegePrivilegeArrayInput is an input type that accepts PrivilegePrivilegeArray and PrivilegePrivilegeArrayOutput values.
-// You can construct a concrete instance of `PrivilegePrivilegeArrayInput` via:
-//
-//          PrivilegePrivilegeArray{ PrivilegePrivilegeArgs{...} }
-type PrivilegePrivilegeArrayInput interface {
-	pulumi.Input
-
-	ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput
-	ToPrivilegePrivilegeArrayOutputWithContext(context.Context) PrivilegePrivilegeArrayOutput
-}
-
-type PrivilegePrivilegeArray []PrivilegePrivilegeInput
-
-func (PrivilegePrivilegeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegePrivilege)(nil)).Elem()
-}
-
-func (i PrivilegePrivilegeArray) ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput {
-	return i.ToPrivilegePrivilegeArrayOutputWithContext(context.Background())
-}
-
-func (i PrivilegePrivilegeArray) ToPrivilegePrivilegeArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeArrayOutput)
-}
-
-type PrivilegePrivilegeOutput struct{ *pulumi.OutputState }
-
-func (PrivilegePrivilegeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegePrivilege)(nil)).Elem()
-}
-
-func (o PrivilegePrivilegeOutput) ToPrivilegePrivilegeOutput() PrivilegePrivilegeOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeOutput) ToPrivilegePrivilegeOutputWithContext(ctx context.Context) PrivilegePrivilegeOutput {
-	return o
-}
-
-// At least one `statement` is required. Statements describe the effect granted to a resource type. In this case it allow's the privilege holder to lisst apps and users.
-func (o PrivilegePrivilegeOutput) Statements() PrivilegePrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v PrivilegePrivilege) []PrivilegePrivilegeStatement { return v.Statements }).(PrivilegePrivilegeStatementArrayOutput)
-}
-
-func (o PrivilegePrivilegeOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivilegePrivilege) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type PrivilegePrivilegeArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivilegePrivilegeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegePrivilege)(nil)).Elem()
-}
-
-func (o PrivilegePrivilegeArrayOutput) ToPrivilegePrivilegeArrayOutput() PrivilegePrivilegeArrayOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeArrayOutput) ToPrivilegePrivilegeArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeArrayOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeArrayOutput) Index(i pulumi.IntInput) PrivilegePrivilegeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegePrivilege {
-		return vs[0].([]PrivilegePrivilege)[vs[1].(int)]
-	}).(PrivilegePrivilegeOutput)
-}
-
-type PrivilegePrivilegeStatement struct {
-	// List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
-	Actions []string `pulumi:"actions"`
-	// The effect the privilege grants for the resource. Must be "Allow".
-	Effect string `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
-	Scopes []string `pulumi:"scopes"`
-}
-
-// PrivilegePrivilegeStatementInput is an input type that accepts PrivilegePrivilegeStatementArgs and PrivilegePrivilegeStatementOutput values.
-// You can construct a concrete instance of `PrivilegePrivilegeStatementInput` via:
-//
-//          PrivilegePrivilegeStatementArgs{...}
-type PrivilegePrivilegeStatementInput interface {
-	pulumi.Input
-
-	ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput
-	ToPrivilegePrivilegeStatementOutputWithContext(context.Context) PrivilegePrivilegeStatementOutput
-}
-
-type PrivilegePrivilegeStatementArgs struct {
-	// List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// The effect the privilege grants for the resource. Must be "Allow".
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (PrivilegePrivilegeStatementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegePrivilegeStatement)(nil)).Elem()
-}
-
-func (i PrivilegePrivilegeStatementArgs) ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput {
-	return i.ToPrivilegePrivilegeStatementOutputWithContext(context.Background())
-}
-
-func (i PrivilegePrivilegeStatementArgs) ToPrivilegePrivilegeStatementOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeStatementOutput)
-}
-
-// PrivilegePrivilegeStatementArrayInput is an input type that accepts PrivilegePrivilegeStatementArray and PrivilegePrivilegeStatementArrayOutput values.
-// You can construct a concrete instance of `PrivilegePrivilegeStatementArrayInput` via:
-//
-//          PrivilegePrivilegeStatementArray{ PrivilegePrivilegeStatementArgs{...} }
-type PrivilegePrivilegeStatementArrayInput interface {
-	pulumi.Input
-
-	ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput
-	ToPrivilegePrivilegeStatementArrayOutputWithContext(context.Context) PrivilegePrivilegeStatementArrayOutput
-}
-
-type PrivilegePrivilegeStatementArray []PrivilegePrivilegeStatementInput
-
-func (PrivilegePrivilegeStatementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegePrivilegeStatement)(nil)).Elem()
-}
-
-func (i PrivilegePrivilegeStatementArray) ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput {
-	return i.ToPrivilegePrivilegeStatementArrayOutputWithContext(context.Background())
-}
-
-func (i PrivilegePrivilegeStatementArray) ToPrivilegePrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivilegePrivilegeStatementArrayOutput)
-}
-
-type PrivilegePrivilegeStatementOutput struct{ *pulumi.OutputState }
-
-func (PrivilegePrivilegeStatementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivilegePrivilegeStatement)(nil)).Elem()
-}
-
-func (o PrivilegePrivilegeStatementOutput) ToPrivilegePrivilegeStatementOutput() PrivilegePrivilegeStatementOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeStatementOutput) ToPrivilegePrivilegeStatementOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementOutput {
-	return o
-}
-
-// List of actions the privilege holder can do. Must be one of those [listed in the docs](https://developers.onelogin.com/api-docs/1/privileges/create-privilege)
-func (o PrivilegePrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivilegePrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-// The effect the privilege grants for the resource. Must be "Allow".
-func (o PrivilegePrivilegeStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivilegePrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
-}
-
-// Target the privileged action against specific resources with the scope. In this case, the privilege only grants update access to users 123 and 345.
-func (o PrivilegePrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivilegePrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
-}
-
-type PrivilegePrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivilegePrivilegeStatementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivilegePrivilegeStatement)(nil)).Elem()
-}
-
-func (o PrivilegePrivilegeStatementArrayOutput) ToPrivilegePrivilegeStatementArrayOutput() PrivilegePrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeStatementArrayOutput) ToPrivilegePrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegePrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o PrivilegePrivilegeStatementArrayOutput) Index(i pulumi.IntInput) PrivilegePrivilegeStatementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivilegePrivilegeStatement {
-		return vs[0].([]PrivilegePrivilegeStatement)[vs[1].(int)]
-	}).(PrivilegePrivilegeStatementOutput)
-}
-
-type SamlAppParameter struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations *string `pulumi:"attributesTransformations"`
-	// Default parameter values.
-	DefaultValues *string `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion *bool `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label *string `pulumi:"label"`
-	// The parameter ID.
-	ParamId *int `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName string `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements *bool `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled *bool `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank *bool `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros *string `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings *string `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values *string `pulumi:"values"`
-}
-
-// SamlAppParameterInput is an input type that accepts SamlAppParameterArgs and SamlAppParameterOutput values.
-// You can construct a concrete instance of `SamlAppParameterInput` via:
-//
-//          SamlAppParameterArgs{...}
-type SamlAppParameterInput interface {
-	pulumi.Input
-
-	ToSamlAppParameterOutput() SamlAppParameterOutput
-	ToSamlAppParameterOutputWithContext(context.Context) SamlAppParameterOutput
-}
-
-type SamlAppParameterArgs struct {
-	// Describes how the app's attributes should be transformed.
-	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
-	// Default parameter values.
-	DefaultValues pulumi.StringPtrInput `pulumi:"defaultValues"`
-	// When true, this parameter will be included in a SAML assertion payload.
-	IncludeInSamlAssertion pulumi.BoolPtrInput `pulumi:"includeInSamlAssertion"`
-	// The can only be set when creating a new parameter. It can not be updated.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The parameter ID.
-	ParamId pulumi.IntPtrInput `pulumi:"paramId"`
-	// Name to represent the parameter in OneLogin.
-	ParamKeyName pulumi.StringInput `pulumi:"paramKeyName"`
-	// Provisioned access entitlements for the app. Defaults to `false`.
-	ProvisionedEntitlements pulumi.BoolPtrInput `pulumi:"provisionedEntitlements"`
-	// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-	SafeEntitlementsEnabled pulumi.BoolPtrInput `pulumi:"safeEntitlementsEnabled"`
-	// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-	SkipIfBlank pulumi.BoolPtrInput `pulumi:"skipIfBlank"`
-	// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-	UserAttributeMacros pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
-	// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-	UserAttributeMappings pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
-	// Parameter values.
-	Values pulumi.StringPtrInput `pulumi:"values"`
-}
-
-func (SamlAppParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlAppParameter)(nil)).Elem()
-}
-
-func (i SamlAppParameterArgs) ToSamlAppParameterOutput() SamlAppParameterOutput {
-	return i.ToSamlAppParameterOutputWithContext(context.Background())
-}
-
-func (i SamlAppParameterArgs) ToSamlAppParameterOutputWithContext(ctx context.Context) SamlAppParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlAppParameterOutput)
-}
-
-// SamlAppParameterArrayInput is an input type that accepts SamlAppParameterArray and SamlAppParameterArrayOutput values.
-// You can construct a concrete instance of `SamlAppParameterArrayInput` via:
-//
-//          SamlAppParameterArray{ SamlAppParameterArgs{...} }
-type SamlAppParameterArrayInput interface {
-	pulumi.Input
-
-	ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput
-	ToSamlAppParameterArrayOutputWithContext(context.Context) SamlAppParameterArrayOutput
-}
-
-type SamlAppParameterArray []SamlAppParameterInput
-
-func (SamlAppParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SamlAppParameter)(nil)).Elem()
-}
-
-func (i SamlAppParameterArray) ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput {
-	return i.ToSamlAppParameterArrayOutputWithContext(context.Background())
-}
-
-func (i SamlAppParameterArray) ToSamlAppParameterArrayOutputWithContext(ctx context.Context) SamlAppParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlAppParameterArrayOutput)
-}
-
-type SamlAppParameterOutput struct{ *pulumi.OutputState }
-
-func (SamlAppParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlAppParameter)(nil)).Elem()
-}
-
-func (o SamlAppParameterOutput) ToSamlAppParameterOutput() SamlAppParameterOutput {
-	return o
-}
-
-func (o SamlAppParameterOutput) ToSamlAppParameterOutputWithContext(ctx context.Context) SamlAppParameterOutput {
-	return o
-}
-
-// Describes how the app's attributes should be transformed.
-func (o SamlAppParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
-}
-
-// Default parameter values.
-func (o SamlAppParameterOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
-}
-
-// When true, this parameter will be included in a SAML assertion payload.
-func (o SamlAppParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
-}
-
-// The can only be set when creating a new parameter. It can not be updated.
-func (o SamlAppParameterOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// The parameter ID.
-func (o SamlAppParameterOutput) ParamId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
-}
-
-// Name to represent the parameter in OneLogin.
-func (o SamlAppParameterOutput) ParamKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SamlAppParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
-}
-
-// Provisioned access entitlements for the app. Defaults to `false`.
-func (o SamlAppParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates that the parameter is used to support creating entitlements using OneLogin Mappings. Defaults to `false`.
-func (o SamlAppParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to let the SCIM provisioner know not include this value if it's blank. Defaults to `false`.
-func (o SamlAppParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
-}
-
-// When `userAttributeMappings` is set to `_macro_` this macro will be used to assign the parameter value.
-func (o SamlAppParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
-}
-
-// A user attribute to map values from. For custom attributes prefix the name of the attribute with `custom_attribute_`.
-func (o SamlAppParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
-}
-
-// Parameter values.
-func (o SamlAppParameterOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SamlAppParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
-}
-
-type SamlAppParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (SamlAppParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SamlAppParameter)(nil)).Elem()
-}
-
-func (o SamlAppParameterArrayOutput) ToSamlAppParameterArrayOutput() SamlAppParameterArrayOutput {
-	return o
-}
-
-func (o SamlAppParameterArrayOutput) ToSamlAppParameterArrayOutputWithContext(ctx context.Context) SamlAppParameterArrayOutput {
-	return o
-}
-
-func (o SamlAppParameterArrayOutput) Index(i pulumi.IntInput) SamlAppParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SamlAppParameter {
-		return vs[0].([]SamlAppParameter)[vs[1].(int)]
-	}).(SamlAppParameterOutput)
-}
-
-type SmartHookCondition struct {
+type GetMappingsCondition struct {
 	Operator string `pulumi:"operator"`
 	Source   string `pulumi:"source"`
 	Value    string `pulumi:"value"`
 }
 
-// SmartHookConditionInput is an input type that accepts SmartHookConditionArgs and SmartHookConditionOutput values.
-// You can construct a concrete instance of `SmartHookConditionInput` via:
+// GetMappingsConditionInput is an input type that accepts GetMappingsConditionArgs and GetMappingsConditionOutput values.
+// You can construct a concrete instance of `GetMappingsConditionInput` via:
 //
-//          SmartHookConditionArgs{...}
-type SmartHookConditionInput interface {
+//	GetMappingsConditionArgs{...}
+type GetMappingsConditionInput interface {
 	pulumi.Input
 
-	ToSmartHookConditionOutput() SmartHookConditionOutput
-	ToSmartHookConditionOutputWithContext(context.Context) SmartHookConditionOutput
+	ToGetMappingsConditionOutput() GetMappingsConditionOutput
+	ToGetMappingsConditionOutputWithContext(context.Context) GetMappingsConditionOutput
 }
 
-type SmartHookConditionArgs struct {
+type GetMappingsConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	Source   pulumi.StringInput `pulumi:"source"`
 	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (SmartHookConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
+func (GetMappingsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsCondition)(nil)).Elem()
 }
 
-func (i SmartHookConditionArgs) ToSmartHookConditionOutput() SmartHookConditionOutput {
-	return i.ToSmartHookConditionOutputWithContext(context.Background())
+func (i GetMappingsConditionArgs) ToGetMappingsConditionOutput() GetMappingsConditionOutput {
+	return i.ToGetMappingsConditionOutputWithContext(context.Background())
 }
 
-func (i SmartHookConditionArgs) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionOutput)
+func (i GetMappingsConditionArgs) ToGetMappingsConditionOutputWithContext(ctx context.Context) GetMappingsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionOutput)
 }
 
-// SmartHookConditionArrayInput is an input type that accepts SmartHookConditionArray and SmartHookConditionArrayOutput values.
-// You can construct a concrete instance of `SmartHookConditionArrayInput` via:
+// GetMappingsConditionArrayInput is an input type that accepts GetMappingsConditionArray and GetMappingsConditionArrayOutput values.
+// You can construct a concrete instance of `GetMappingsConditionArrayInput` via:
 //
-//          SmartHookConditionArray{ SmartHookConditionArgs{...} }
-type SmartHookConditionArrayInput interface {
+//	GetMappingsConditionArray{ GetMappingsConditionArgs{...} }
+type GetMappingsConditionArrayInput interface {
 	pulumi.Input
 
-	ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput
-	ToSmartHookConditionArrayOutputWithContext(context.Context) SmartHookConditionArrayOutput
+	ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput
+	ToGetMappingsConditionArrayOutputWithContext(context.Context) GetMappingsConditionArrayOutput
 }
 
-type SmartHookConditionArray []SmartHookConditionInput
+type GetMappingsConditionArray []GetMappingsConditionInput
 
-func (SmartHookConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
+func (GetMappingsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsCondition)(nil)).Elem()
 }
 
-func (i SmartHookConditionArray) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
-	return i.ToSmartHookConditionArrayOutputWithContext(context.Background())
+func (i GetMappingsConditionArray) ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput {
+	return i.ToGetMappingsConditionArrayOutputWithContext(context.Background())
 }
 
-func (i SmartHookConditionArray) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionArrayOutput)
+func (i GetMappingsConditionArray) ToGetMappingsConditionArrayOutputWithContext(ctx context.Context) GetMappingsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionArrayOutput)
 }
 
-type SmartHookConditionOutput struct{ *pulumi.OutputState }
+type GetMappingsConditionOutput struct{ *pulumi.OutputState }
 
-func (SmartHookConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
+func (GetMappingsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsCondition)(nil)).Elem()
 }
 
-func (o SmartHookConditionOutput) ToSmartHookConditionOutput() SmartHookConditionOutput {
+func (o GetMappingsConditionOutput) ToGetMappingsConditionOutput() GetMappingsConditionOutput {
 	return o
 }
 
-func (o SmartHookConditionOutput) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
+func (o GetMappingsConditionOutput) ToGetMappingsConditionOutputWithContext(ctx context.Context) GetMappingsConditionOutput {
 	return o
 }
 
-func (o SmartHookConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHookCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o GetMappingsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o SmartHookConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHookCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o GetMappingsConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-func (o SmartHookConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SmartHookCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o GetMappingsConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type SmartHookConditionArrayOutput struct{ *pulumi.OutputState }
+type GetMappingsConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (SmartHookConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
+func (GetMappingsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsCondition)(nil)).Elem()
 }
 
-func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
+func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput {
 	return o
 }
 
-func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
+func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutputWithContext(ctx context.Context) GetMappingsConditionArrayOutput {
 	return o
 }
 
-func (o SmartHookConditionArrayOutput) Index(i pulumi.IntInput) SmartHookConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHookCondition {
-		return vs[0].([]SmartHookCondition)[vs[1].(int)]
-	}).(SmartHookConditionOutput)
+func (o GetMappingsConditionArrayOutput) Index(i pulumi.IntInput) GetMappingsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsCondition {
+		return vs[0].([]GetMappingsCondition)[vs[1].(int)]
+	}).(GetMappingsConditionOutput)
 }
 
-type SmartHookOption struct {
-	// When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-	LocationEnabled      *bool `pulumi:"locationEnabled"`
-	MfaDeviceInfoEnabled *bool `pulumi:"mfaDeviceInfoEnabled"`
-	// When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-	RiskEnabled *bool `pulumi:"riskEnabled"`
-}
-
-// SmartHookOptionInput is an input type that accepts SmartHookOptionArgs and SmartHookOptionOutput values.
-// You can construct a concrete instance of `SmartHookOptionInput` via:
-//
-//          SmartHookOptionArgs{...}
-type SmartHookOptionInput interface {
-	pulumi.Input
-
-	ToSmartHookOptionOutput() SmartHookOptionOutput
-	ToSmartHookOptionOutputWithContext(context.Context) SmartHookOptionOutput
-}
-
-type SmartHookOptionArgs struct {
-	// When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-	LocationEnabled      pulumi.BoolPtrInput `pulumi:"locationEnabled"`
-	MfaDeviceInfoEnabled pulumi.BoolPtrInput `pulumi:"mfaDeviceInfoEnabled"`
-	// When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-	RiskEnabled pulumi.BoolPtrInput `pulumi:"riskEnabled"`
-}
-
-func (SmartHookOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHookOption)(nil)).Elem()
-}
-
-func (i SmartHookOptionArgs) ToSmartHookOptionOutput() SmartHookOptionOutput {
-	return i.ToSmartHookOptionOutputWithContext(context.Background())
-}
-
-func (i SmartHookOptionArgs) ToSmartHookOptionOutputWithContext(ctx context.Context) SmartHookOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionOutput)
-}
-
-// SmartHookOptionArrayInput is an input type that accepts SmartHookOptionArray and SmartHookOptionArrayOutput values.
-// You can construct a concrete instance of `SmartHookOptionArrayInput` via:
-//
-//          SmartHookOptionArray{ SmartHookOptionArgs{...} }
-type SmartHookOptionArrayInput interface {
-	pulumi.Input
-
-	ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput
-	ToSmartHookOptionArrayOutputWithContext(context.Context) SmartHookOptionArrayOutput
-}
-
-type SmartHookOptionArray []SmartHookOptionInput
-
-func (SmartHookOptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHookOption)(nil)).Elem()
-}
-
-func (i SmartHookOptionArray) ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput {
-	return i.ToSmartHookOptionArrayOutputWithContext(context.Background())
-}
-
-func (i SmartHookOptionArray) ToSmartHookOptionArrayOutputWithContext(ctx context.Context) SmartHookOptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionArrayOutput)
-}
-
-type SmartHookOptionOutput struct{ *pulumi.OutputState }
-
-func (SmartHookOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartHookOption)(nil)).Elem()
-}
-
-func (o SmartHookOptionOutput) ToSmartHookOptionOutput() SmartHookOptionOutput {
-	return o
-}
-
-func (o SmartHookOptionOutput) ToSmartHookOptionOutputWithContext(ctx context.Context) SmartHookOptionOutput {
-	return o
-}
-
-// When true an ip to location lookup is done and the location info is passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-func (o SmartHookOptionOutput) LocationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHookOption) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o SmartHookOptionOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHookOption) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// When true a risk score and risk reasons will be passed in the context. Only applies authentication time hooks. E.g. pre-authentication, user-migration. Default false
-func (o SmartHookOptionOutput) RiskEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmartHookOption) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type SmartHookOptionArrayOutput struct{ *pulumi.OutputState }
-
-func (SmartHookOptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartHookOption)(nil)).Elem()
-}
-
-func (o SmartHookOptionArrayOutput) ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput {
-	return o
-}
-
-func (o SmartHookOptionArrayOutput) ToSmartHookOptionArrayOutputWithContext(ctx context.Context) SmartHookOptionArrayOutput {
-	return o
-}
-
-func (o SmartHookOptionArrayOutput) Index(i pulumi.IntInput) SmartHookOptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHookOption {
-		return vs[0].([]SmartHookOption)[vs[1].(int)]
-	}).(SmartHookOptionOutput)
-}
-
-type UserMappingAction struct {
-	// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-	Action string `pulumi:"action"`
-	// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+type GetMappingsFilter struct {
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
-// UserMappingActionInput is an input type that accepts UserMappingActionArgs and UserMappingActionOutput values.
-// You can construct a concrete instance of `UserMappingActionInput` via:
+// GetMappingsFilterInput is an input type that accepts GetMappingsFilterArgs and GetMappingsFilterOutput values.
+// You can construct a concrete instance of `GetMappingsFilterInput` via:
 //
-//          UserMappingActionArgs{...}
-type UserMappingActionInput interface {
+//	GetMappingsFilterArgs{...}
+type GetMappingsFilterInput interface {
 	pulumi.Input
 
-	ToUserMappingActionOutput() UserMappingActionOutput
-	ToUserMappingActionOutputWithContext(context.Context) UserMappingActionOutput
+	ToGetMappingsFilterOutput() GetMappingsFilterOutput
+	ToGetMappingsFilterOutputWithContext(context.Context) GetMappingsFilterOutput
 }
 
-type UserMappingActionArgs struct {
-	// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-	Action pulumi.StringInput `pulumi:"action"`
-	// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
+type GetMappingsFilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (UserMappingActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingAction)(nil)).Elem()
+func (GetMappingsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsFilter)(nil)).Elem()
 }
 
-func (i UserMappingActionArgs) ToUserMappingActionOutput() UserMappingActionOutput {
-	return i.ToUserMappingActionOutputWithContext(context.Background())
+func (i GetMappingsFilterArgs) ToGetMappingsFilterOutput() GetMappingsFilterOutput {
+	return i.ToGetMappingsFilterOutputWithContext(context.Background())
 }
 
-func (i UserMappingActionArgs) ToUserMappingActionOutputWithContext(ctx context.Context) UserMappingActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingActionOutput)
+func (i GetMappingsFilterArgs) ToGetMappingsFilterOutputWithContext(ctx context.Context) GetMappingsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterOutput)
 }
 
-// UserMappingActionArrayInput is an input type that accepts UserMappingActionArray and UserMappingActionArrayOutput values.
-// You can construct a concrete instance of `UserMappingActionArrayInput` via:
+// GetMappingsFilterArrayInput is an input type that accepts GetMappingsFilterArray and GetMappingsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMappingsFilterArrayInput` via:
 //
-//          UserMappingActionArray{ UserMappingActionArgs{...} }
-type UserMappingActionArrayInput interface {
+//	GetMappingsFilterArray{ GetMappingsFilterArgs{...} }
+type GetMappingsFilterArrayInput interface {
 	pulumi.Input
 
-	ToUserMappingActionArrayOutput() UserMappingActionArrayOutput
-	ToUserMappingActionArrayOutputWithContext(context.Context) UserMappingActionArrayOutput
+	ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput
+	ToGetMappingsFilterArrayOutputWithContext(context.Context) GetMappingsFilterArrayOutput
 }
 
-type UserMappingActionArray []UserMappingActionInput
+type GetMappingsFilterArray []GetMappingsFilterInput
 
-func (UserMappingActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingAction)(nil)).Elem()
+func (GetMappingsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsFilter)(nil)).Elem()
 }
 
-func (i UserMappingActionArray) ToUserMappingActionArrayOutput() UserMappingActionArrayOutput {
-	return i.ToUserMappingActionArrayOutputWithContext(context.Background())
+func (i GetMappingsFilterArray) ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput {
+	return i.ToGetMappingsFilterArrayOutputWithContext(context.Background())
 }
 
-func (i UserMappingActionArray) ToUserMappingActionArrayOutputWithContext(ctx context.Context) UserMappingActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingActionArrayOutput)
+func (i GetMappingsFilterArray) ToGetMappingsFilterArrayOutputWithContext(ctx context.Context) GetMappingsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterArrayOutput)
 }
 
-type UserMappingActionOutput struct{ *pulumi.OutputState }
+type GetMappingsFilterOutput struct{ *pulumi.OutputState }
 
-func (UserMappingActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingAction)(nil)).Elem()
+func (GetMappingsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsFilter)(nil)).Elem()
 }
 
-func (o UserMappingActionOutput) ToUserMappingActionOutput() UserMappingActionOutput {
+func (o GetMappingsFilterOutput) ToGetMappingsFilterOutput() GetMappingsFilterOutput {
 	return o
 }
 
-func (o UserMappingActionOutput) ToUserMappingActionOutputWithContext(ctx context.Context) UserMappingActionOutput {
+func (o GetMappingsFilterOutput) ToGetMappingsFilterOutputWithContext(ctx context.Context) GetMappingsFilterOutput {
 	return o
 }
 
-// The action to apply. See [List Actions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-func (o UserMappingActionOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingAction) string { return v.Action }).(pulumi.StringOutput)
+func (o GetMappingsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-func (o UserMappingActionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UserMappingAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o GetMappingsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMappingsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type UserMappingActionArrayOutput struct{ *pulumi.OutputState }
+type GetMappingsFilterArrayOutput struct{ *pulumi.OutputState }
 
-func (UserMappingActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingAction)(nil)).Elem()
+func (GetMappingsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsFilter)(nil)).Elem()
 }
 
-func (o UserMappingActionArrayOutput) ToUserMappingActionArrayOutput() UserMappingActionArrayOutput {
+func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput {
 	return o
 }
 
-func (o UserMappingActionArrayOutput) ToUserMappingActionArrayOutputWithContext(ctx context.Context) UserMappingActionArrayOutput {
+func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutputWithContext(ctx context.Context) GetMappingsFilterArrayOutput {
 	return o
 }
 
-func (o UserMappingActionArrayOutput) Index(i pulumi.IntInput) UserMappingActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingAction {
-		return vs[0].([]UserMappingAction)[vs[1].(int)]
-	}).(UserMappingActionOutput)
+func (o GetMappingsFilterArrayOutput) Index(i pulumi.IntInput) GetMappingsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsFilter {
+		return vs[0].([]GetMappingsFilter)[vs[1].(int)]
+	}).(GetMappingsFilterOutput)
 }
 
-type UserMappingCondition struct {
-	// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
-	Operator string `pulumi:"operator"`
-	// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-	Source string `pulumi:"source"`
-	// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Value string `pulumi:"value"`
+type GetPrivilegesFilter struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
 }
 
-// UserMappingConditionInput is an input type that accepts UserMappingConditionArgs and UserMappingConditionOutput values.
-// You can construct a concrete instance of `UserMappingConditionInput` via:
+// GetPrivilegesFilterInput is an input type that accepts GetPrivilegesFilterArgs and GetPrivilegesFilterOutput values.
+// You can construct a concrete instance of `GetPrivilegesFilterInput` via:
 //
-//          UserMappingConditionArgs{...}
-type UserMappingConditionInput interface {
+//	GetPrivilegesFilterArgs{...}
+type GetPrivilegesFilterInput interface {
 	pulumi.Input
 
-	ToUserMappingConditionOutput() UserMappingConditionOutput
-	ToUserMappingConditionOutputWithContext(context.Context) UserMappingConditionOutput
+	ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput
+	ToGetPrivilegesFilterOutputWithContext(context.Context) GetPrivilegesFilterOutput
 }
 
-type UserMappingConditionArgs struct {
-	// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-	Source pulumi.StringInput `pulumi:"source"`
-	// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-	Value pulumi.StringInput `pulumi:"value"`
+type GetPrivilegesFilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (UserMappingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingCondition)(nil)).Elem()
+func (GetPrivilegesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesFilter)(nil)).Elem()
 }
 
-func (i UserMappingConditionArgs) ToUserMappingConditionOutput() UserMappingConditionOutput {
-	return i.ToUserMappingConditionOutputWithContext(context.Background())
+func (i GetPrivilegesFilterArgs) ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput {
+	return i.ToGetPrivilegesFilterOutputWithContext(context.Background())
 }
 
-func (i UserMappingConditionArgs) ToUserMappingConditionOutputWithContext(ctx context.Context) UserMappingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingConditionOutput)
+func (i GetPrivilegesFilterArgs) ToGetPrivilegesFilterOutputWithContext(ctx context.Context) GetPrivilegesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterOutput)
 }
 
-// UserMappingConditionArrayInput is an input type that accepts UserMappingConditionArray and UserMappingConditionArrayOutput values.
-// You can construct a concrete instance of `UserMappingConditionArrayInput` via:
+// GetPrivilegesFilterArrayInput is an input type that accepts GetPrivilegesFilterArray and GetPrivilegesFilterArrayOutput values.
+// You can construct a concrete instance of `GetPrivilegesFilterArrayInput` via:
 //
-//          UserMappingConditionArray{ UserMappingConditionArgs{...} }
-type UserMappingConditionArrayInput interface {
+//	GetPrivilegesFilterArray{ GetPrivilegesFilterArgs{...} }
+type GetPrivilegesFilterArrayInput interface {
 	pulumi.Input
 
-	ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput
-	ToUserMappingConditionArrayOutputWithContext(context.Context) UserMappingConditionArrayOutput
+	ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput
+	ToGetPrivilegesFilterArrayOutputWithContext(context.Context) GetPrivilegesFilterArrayOutput
 }
 
-type UserMappingConditionArray []UserMappingConditionInput
+type GetPrivilegesFilterArray []GetPrivilegesFilterInput
 
-func (UserMappingConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingCondition)(nil)).Elem()
+func (GetPrivilegesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivilegesFilter)(nil)).Elem()
 }
 
-func (i UserMappingConditionArray) ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput {
-	return i.ToUserMappingConditionArrayOutputWithContext(context.Background())
+func (i GetPrivilegesFilterArray) ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput {
+	return i.ToGetPrivilegesFilterArrayOutputWithContext(context.Background())
 }
 
-func (i UserMappingConditionArray) ToUserMappingConditionArrayOutputWithContext(ctx context.Context) UserMappingConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserMappingConditionArrayOutput)
+func (i GetPrivilegesFilterArray) ToGetPrivilegesFilterArrayOutputWithContext(ctx context.Context) GetPrivilegesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterArrayOutput)
 }
 
-type UserMappingConditionOutput struct{ *pulumi.OutputState }
+type GetPrivilegesFilterOutput struct{ *pulumi.OutputState }
 
-func (UserMappingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserMappingCondition)(nil)).Elem()
+func (GetPrivilegesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesFilter)(nil)).Elem()
 }
 
-func (o UserMappingConditionOutput) ToUserMappingConditionOutput() UserMappingConditionOutput {
+func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput {
 	return o
 }
 
-func (o UserMappingConditionOutput) ToUserMappingConditionOutputWithContext(ctx context.Context) UserMappingConditionOutput {
+func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutputWithContext(ctx context.Context) GetPrivilegesFilterOutput {
 	return o
 }
 
-// A valid operator for the selected condition source. See [List Condition Operators](https://developers.onelogin.com/api-docs/2/user-mappings/list-condition-operators) for possible values.
-func (o UserMappingConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o GetPrivilegesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivilegesFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The source field to check. See [List Conditions](https://developers.onelogin.com/api-docs/2/user-mappings/list-conditions) for possible values.
-func (o UserMappingConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o GetPrivilegesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPrivilegesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// An array of strings. Items in the array will be a plain text string or valid value for the selected action. See [List Action Values](https://developers.onelogin.com/api-docs/2/user-mappings/list-action-values) for possible values. In most cases only a single item will be accepted in the array.
-func (o UserMappingConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v UserMappingCondition) string { return v.Value }).(pulumi.StringOutput)
+type GetPrivilegesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivilegesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivilegesFilter)(nil)).Elem()
 }
 
-type UserMappingConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (UserMappingConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserMappingCondition)(nil)).Elem()
-}
-
-func (o UserMappingConditionArrayOutput) ToUserMappingConditionArrayOutput() UserMappingConditionArrayOutput {
+func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput {
 	return o
 }
 
-func (o UserMappingConditionArrayOutput) ToUserMappingConditionArrayOutputWithContext(ctx context.Context) UserMappingConditionArrayOutput {
+func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutputWithContext(ctx context.Context) GetPrivilegesFilterArrayOutput {
 	return o
 }
 
-func (o UserMappingConditionArrayOutput) Index(i pulumi.IntInput) UserMappingConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingCondition {
-		return vs[0].([]UserMappingCondition)[vs[1].(int)]
-	}).(UserMappingConditionOutput)
+func (o GetPrivilegesFilterArrayOutput) Index(i pulumi.IntInput) GetPrivilegesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivilegesFilter {
+		return vs[0].([]GetPrivilegesFilter)[vs[1].(int)]
+	}).(GetPrivilegesFilterOutput)
+}
+
+type GetPrivilegesPrivilege struct {
+	Statements []GetPrivilegesPrivilegeStatement `pulumi:"statements"`
+	Version    string                            `pulumi:"version"`
+}
+
+// GetPrivilegesPrivilegeInput is an input type that accepts GetPrivilegesPrivilegeArgs and GetPrivilegesPrivilegeOutput values.
+// You can construct a concrete instance of `GetPrivilegesPrivilegeInput` via:
+//
+//	GetPrivilegesPrivilegeArgs{...}
+type GetPrivilegesPrivilegeInput interface {
+	pulumi.Input
+
+	ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput
+	ToGetPrivilegesPrivilegeOutputWithContext(context.Context) GetPrivilegesPrivilegeOutput
+}
+
+type GetPrivilegesPrivilegeArgs struct {
+	Statements GetPrivilegesPrivilegeStatementArrayInput `pulumi:"statements"`
+	Version    pulumi.StringInput                        `pulumi:"version"`
+}
+
+func (GetPrivilegesPrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesPrivilege)(nil)).Elem()
+}
+
+func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput {
+	return i.ToGetPrivilegesPrivilegeOutputWithContext(context.Background())
+}
+
+func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeOutput)
+}
+
+func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
+	return i.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeOutput).ToGetPrivilegesPrivilegePtrOutputWithContext(ctx)
+}
+
+// GetPrivilegesPrivilegePtrInput is an input type that accepts GetPrivilegesPrivilegeArgs, GetPrivilegesPrivilegePtr and GetPrivilegesPrivilegePtrOutput values.
+// You can construct a concrete instance of `GetPrivilegesPrivilegePtrInput` via:
+//
+//	        GetPrivilegesPrivilegeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrivilegesPrivilegePtrInput interface {
+	pulumi.Input
+
+	ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput
+	ToGetPrivilegesPrivilegePtrOutputWithContext(context.Context) GetPrivilegesPrivilegePtrOutput
+}
+
+type getPrivilegesPrivilegePtrType GetPrivilegesPrivilegeArgs
+
+func GetPrivilegesPrivilegePtr(v *GetPrivilegesPrivilegeArgs) GetPrivilegesPrivilegePtrInput {
+	return (*getPrivilegesPrivilegePtrType)(v)
+}
+
+func (*getPrivilegesPrivilegePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrivilegesPrivilege)(nil)).Elem()
+}
+
+func (i *getPrivilegesPrivilegePtrType) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
+	return i.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (i *getPrivilegesPrivilegePtrType) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegePtrOutput)
+}
+
+type GetPrivilegesPrivilegeOutput struct{ *pulumi.OutputState }
+
+func (GetPrivilegesPrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesPrivilege)(nil)).Elem()
+}
+
+func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegeOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
+	return o.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrivilegesPrivilege) *GetPrivilegesPrivilege {
+		return &v
+	}).(GetPrivilegesPrivilegePtrOutput)
+}
+
+func (o GetPrivilegesPrivilegeOutput) Statements() GetPrivilegesPrivilegeStatementArrayOutput {
+	return o.ApplyT(func(v GetPrivilegesPrivilege) []GetPrivilegesPrivilegeStatement { return v.Statements }).(GetPrivilegesPrivilegeStatementArrayOutput)
+}
+
+func (o GetPrivilegesPrivilegeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivilegesPrivilege) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPrivilegesPrivilegePtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrivilegesPrivilegePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrivilegesPrivilege)(nil)).Elem()
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) Elem() GetPrivilegesPrivilegeOutput {
+	return o.ApplyT(func(v *GetPrivilegesPrivilege) GetPrivilegesPrivilege {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrivilegesPrivilege
+		return ret
+	}).(GetPrivilegesPrivilegeOutput)
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) Statements() GetPrivilegesPrivilegeStatementArrayOutput {
+	return o.ApplyT(func(v *GetPrivilegesPrivilege) []GetPrivilegesPrivilegeStatement {
+		if v == nil {
+			return nil
+		}
+		return v.Statements
+	}).(GetPrivilegesPrivilegeStatementArrayOutput)
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrivilegesPrivilege) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPrivilegesPrivilegeStatement struct {
+	Actions []string `pulumi:"actions"`
+	Effect  string   `pulumi:"effect"`
+	Scopes  []string `pulumi:"scopes"`
+}
+
+// GetPrivilegesPrivilegeStatementInput is an input type that accepts GetPrivilegesPrivilegeStatementArgs and GetPrivilegesPrivilegeStatementOutput values.
+// You can construct a concrete instance of `GetPrivilegesPrivilegeStatementInput` via:
+//
+//	GetPrivilegesPrivilegeStatementArgs{...}
+type GetPrivilegesPrivilegeStatementInput interface {
+	pulumi.Input
+
+	ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput
+	ToGetPrivilegesPrivilegeStatementOutputWithContext(context.Context) GetPrivilegesPrivilegeStatementOutput
+}
+
+type GetPrivilegesPrivilegeStatementArgs struct {
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	Effect  pulumi.StringInput      `pulumi:"effect"`
+	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetPrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesPrivilegeStatement)(nil)).Elem()
+}
+
+func (i GetPrivilegesPrivilegeStatementArgs) ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput {
+	return i.ToGetPrivilegesPrivilegeStatementOutputWithContext(context.Background())
+}
+
+func (i GetPrivilegesPrivilegeStatementArgs) ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementOutput)
+}
+
+// GetPrivilegesPrivilegeStatementArrayInput is an input type that accepts GetPrivilegesPrivilegeStatementArray and GetPrivilegesPrivilegeStatementArrayOutput values.
+// You can construct a concrete instance of `GetPrivilegesPrivilegeStatementArrayInput` via:
+//
+//	GetPrivilegesPrivilegeStatementArray{ GetPrivilegesPrivilegeStatementArgs{...} }
+type GetPrivilegesPrivilegeStatementArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput
+	ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(context.Context) GetPrivilegesPrivilegeStatementArrayOutput
+}
+
+type GetPrivilegesPrivilegeStatementArray []GetPrivilegesPrivilegeStatementInput
+
+func (GetPrivilegesPrivilegeStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivilegesPrivilegeStatement)(nil)).Elem()
+}
+
+func (i GetPrivilegesPrivilegeStatementArray) ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput {
+	return i.ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivilegesPrivilegeStatementArray) ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementArrayOutput)
+}
+
+type GetPrivilegesPrivilegeStatementOutput struct{ *pulumi.OutputState }
+
+func (GetPrivilegesPrivilegeStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivilegesPrivilegeStatement)(nil)).Elem()
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetPrivilegesPrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivilegesPrivilegeStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivilegesPrivilegeStatement)(nil)).Elem()
+}
+
+func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementArrayOutput {
+	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) GetPrivilegesPrivilegeStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivilegesPrivilegeStatement {
+		return vs[0].([]GetPrivilegesPrivilegeStatement)[vs[1].(int)]
+	}).(GetPrivilegesPrivilegeStatementOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AppParameterInput)(nil)).Elem(), AppParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppParameterArrayInput)(nil)).Elem(), AppParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppRuleActionInput)(nil)).Elem(), AppRuleActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppRuleActionArrayInput)(nil)).Elem(), AppRuleActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppRuleConditionInput)(nil)).Elem(), AppRuleConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppRuleConditionArrayInput)(nil)).Elem(), AppRuleConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthServerConfigurationInput)(nil)).Elem(), AuthServerConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthServerConfigurationPtrInput)(nil)).Elem(), AuthServerConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcAppParameterInput)(nil)).Elem(), OidcAppParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcAppParameterArrayInput)(nil)).Elem(), OidcAppParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegePrivilegeInput)(nil)).Elem(), PrivilegePrivilegeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegePrivilegeArrayInput)(nil)).Elem(), PrivilegePrivilegeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegePrivilegeStatementInput)(nil)).Elem(), PrivilegePrivilegeStatementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegePrivilegeStatementArrayInput)(nil)).Elem(), PrivilegePrivilegeStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppParameterInput)(nil)).Elem(), SamlAppParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppParameterArrayInput)(nil)).Elem(), SamlAppParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookConditionInput)(nil)).Elem(), SmartHookConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookConditionArrayInput)(nil)).Elem(), SmartHookConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookOptionInput)(nil)).Elem(), SmartHookOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookOptionArrayInput)(nil)).Elem(), SmartHookOptionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingActionInput)(nil)).Elem(), UserMappingActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingActionArrayInput)(nil)).Elem(), UserMappingActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingConditionInput)(nil)).Elem(), UserMappingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingConditionArrayInput)(nil)).Elem(), UserMappingConditionArray{})
-	pulumi.RegisterOutputType(AppParameterOutput{})
-	pulumi.RegisterOutputType(AppParameterArrayOutput{})
-	pulumi.RegisterOutputType(AppRuleActionOutput{})
-	pulumi.RegisterOutputType(AppRuleActionArrayOutput{})
-	pulumi.RegisterOutputType(AppRuleConditionOutput{})
-	pulumi.RegisterOutputType(AppRuleConditionArrayOutput{})
-	pulumi.RegisterOutputType(AuthServerConfigurationOutput{})
-	pulumi.RegisterOutputType(AuthServerConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(OidcAppParameterOutput{})
-	pulumi.RegisterOutputType(OidcAppParameterArrayOutput{})
-	pulumi.RegisterOutputType(PrivilegePrivilegeOutput{})
-	pulumi.RegisterOutputType(PrivilegePrivilegeArrayOutput{})
-	pulumi.RegisterOutputType(PrivilegePrivilegeStatementOutput{})
-	pulumi.RegisterOutputType(PrivilegePrivilegeStatementArrayOutput{})
-	pulumi.RegisterOutputType(SamlAppParameterOutput{})
-	pulumi.RegisterOutputType(SamlAppParameterArrayOutput{})
-	pulumi.RegisterOutputType(SmartHookConditionOutput{})
-	pulumi.RegisterOutputType(SmartHookConditionArrayOutput{})
-	pulumi.RegisterOutputType(SmartHookOptionOutput{})
-	pulumi.RegisterOutputType(SmartHookOptionArrayOutput{})
-	pulumi.RegisterOutputType(UserMappingActionOutput{})
-	pulumi.RegisterOutputType(UserMappingActionArrayOutput{})
-	pulumi.RegisterOutputType(UserMappingConditionOutput{})
-	pulumi.RegisterOutputType(UserMappingConditionArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProvisioningInput)(nil)).Elem(), AppProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProvisioningPtrInput)(nil)).Elem(), AppProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleSourceInput)(nil)).Elem(), RuleSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleSourcePtrInput)(nil)).Elem(), RuleSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsActionInput)(nil)).Elem(), GetMappingsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsActionArrayInput)(nil)).Elem(), GetMappingsActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsConditionInput)(nil)).Elem(), GetMappingsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsConditionArrayInput)(nil)).Elem(), GetMappingsConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsFilterInput)(nil)).Elem(), GetMappingsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsFilterArrayInput)(nil)).Elem(), GetMappingsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesFilterInput)(nil)).Elem(), GetPrivilegesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesFilterArrayInput)(nil)).Elem(), GetPrivilegesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeInput)(nil)).Elem(), GetPrivilegesPrivilegeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegePtrInput)(nil)).Elem(), GetPrivilegesPrivilegeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeStatementInput)(nil)).Elem(), GetPrivilegesPrivilegeStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeStatementArrayInput)(nil)).Elem(), GetPrivilegesPrivilegeStatementArray{})
+	pulumi.RegisterOutputType(AppProvisioningOutput{})
+	pulumi.RegisterOutputType(AppProvisioningPtrOutput{})
+	pulumi.RegisterOutputType(ProviderEndpointOutput{})
+	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
+	pulumi.RegisterOutputType(RuleSourceOutput{})
+	pulumi.RegisterOutputType(RuleSourcePtrOutput{})
+	pulumi.RegisterOutputType(GetMappingsActionOutput{})
+	pulumi.RegisterOutputType(GetMappingsActionArrayOutput{})
+	pulumi.RegisterOutputType(GetMappingsConditionOutput{})
+	pulumi.RegisterOutputType(GetMappingsConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetMappingsFilterOutput{})
+	pulumi.RegisterOutputType(GetMappingsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesFilterOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesPrivilegeOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesPrivilegePtrOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesPrivilegeStatementOutput{})
+	pulumi.RegisterOutputType(GetPrivilegesPrivilegeStatementArrayOutput{})
 }

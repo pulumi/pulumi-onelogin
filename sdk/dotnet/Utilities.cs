@@ -74,7 +74,7 @@ namespace Pulumi.Onelogin
         }
     }
 
-    internal sealed class OneloginResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class OneloginResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public OneloginResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

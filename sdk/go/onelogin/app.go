@@ -7,97 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a Basic Application.
-//
-// This resource allows you to create and configure a Basic (non-SAML non-OIDC) Application.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := onelogin.NewApp(ctx, "myApp", &onelogin.AppArgs{
-// 			AllowAssumedSignin: pulumi.Bool(false),
-// 			ConnectorId:        pulumi.Int(12345),
-// 			Description:        pulumi.String("basic app"),
-// 			Notes:              pulumi.String("basic app"),
-// 			Parameters: AppParameterArray{
-// 				&AppParameterArgs{
-// 					AttributesTransformations: pulumi.String(""),
-// 					DefaultValues:             pulumi.String(""),
-// 					IncludeInSamlAssertion:    pulumi.Bool(false),
-// 					Label:                     pulumi.String("username"),
-// 					ParamKeyName:              pulumi.String("user name"),
-// 					ProvisionedEntitlements:   pulumi.Bool(false),
-// 					SafeEntitlementsEnabled:   pulumi.Bool(false),
-// 					SkipIfBlank:               pulumi.Bool(false),
-// 					UserAttributeMacros:       pulumi.String(""),
-// 					UserAttributeMappings:     pulumi.String(""),
-// 					Values:                    pulumi.String(""),
-// 				},
-// 			},
-// 			Provisioning: pulumi.BoolMap{
-// 				"enabled": pulumi.Bool(false),
-// 			},
-// 			Visible: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// An App can be imported via the OneLogin App ID.
-//
-// ```sh
-//  $ pulumi import onelogin:index/app:App my_app <app id>
-// ```
 type App struct {
 	pulumi.CustomResourceState
 
-	// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+	// Indicates whether or not administrators can access the app as a user that they have assumed control over.
 	AllowAssumedSignin pulumi.BoolPtrOutput `pulumi:"allowAssumedSignin"`
-	// The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
-	AuthMethod pulumi.IntOutput    `pulumi:"authMethod"`
-	BrandId    pulumi.IntPtrOutput `pulumi:"brandId"`
-	// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
-	ConnectorId pulumi.IntOutput `pulumi:"connectorId"`
-	// Timestamp for app's creation.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// App description.
+	// An ID indicating the type of app.
+	AuthMethod pulumi.IntPtrOutput `pulumi:"authMethod"`
+	// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+	BrandId pulumi.IntPtrOutput `pulumi:"brandId"`
+	// ID of the apps underlying connector.
+	ConnectorId pulumi.IntPtrOutput `pulumi:"connectorId"`
+	// The date the app was created.
+	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
+	// Freeform description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The url for the app's icon.
-	IconUrl pulumi.StringOutput `pulumi:"iconUrl"`
-	// The app's name.
+	// A link to the apps icon url.
+	IconUrl pulumi.StringPtrOutput `pulumi:"iconUrl"`
+	// App name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Notes about the app.
+	// Freeform notes about the app.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// a list of custom parameters for this app.
-	Parameters AppParameterArrayOutput `pulumi:"parameters"`
 	// The security policy assigned to the app.
-	PolicyId pulumi.IntOutput `pulumi:"policyId"`
-	// Settings regarding the app's provisioning ability.
-	Provisioning pulumi.BoolMapOutput `pulumi:"provisioning"`
-	// The tab in which to display in OneLogin portal.
-	TabId pulumi.IntOutput `pulumi:"tabId"`
-	// Timestamp for app's last update.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+	PolicyId     pulumi.IntPtrOutput      `pulumi:"policyId"`
+	Provisioning AppProvisioningPtrOutput `pulumi:"provisioning"`
+	// A list of OneLogin Role IDs of the user
+	RoleIds pulumi.IntArrayOutput `pulumi:"roleIds"`
+	// ID of the OneLogin portal tab that the app is assigned to.
+	TabId pulumi.IntPtrOutput `pulumi:"tabId"`
+	// The date the app was last updated.
+	UpdatedAt pulumi.StringPtrOutput `pulumi:"updatedAt"`
+	// Indicates if the app is visible in the OneLogin portal.
 	Visible pulumi.BoolPtrOutput `pulumi:"visible"`
 }
 
@@ -105,12 +48,9 @@ type App struct {
 func NewApp(ctx *pulumi.Context,
 	name string, args *AppArgs, opts ...pulumi.ResourceOption) (*App, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AppArgs{}
 	}
 
-	if args.ConnectorId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectorId'")
-	}
 	var resource App
 	err := ctx.RegisterResource("onelogin:index/app:App", name, args, &resource, opts...)
 	if err != nil {
@@ -133,66 +73,66 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
-	// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+	// Indicates whether or not administrators can access the app as a user that they have assumed control over.
 	AllowAssumedSignin *bool `pulumi:"allowAssumedSignin"`
-	// The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+	// An ID indicating the type of app.
 	AuthMethod *int `pulumi:"authMethod"`
-	BrandId    *int `pulumi:"brandId"`
-	// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+	// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+	BrandId *int `pulumi:"brandId"`
+	// ID of the apps underlying connector.
 	ConnectorId *int `pulumi:"connectorId"`
-	// Timestamp for app's creation.
+	// The date the app was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// App description.
+	// Freeform description of the app.
 	Description *string `pulumi:"description"`
-	// The url for the app's icon.
+	// A link to the apps icon url.
 	IconUrl *string `pulumi:"iconUrl"`
-	// The app's name.
+	// App name.
 	Name *string `pulumi:"name"`
-	// Notes about the app.
+	// Freeform notes about the app.
 	Notes *string `pulumi:"notes"`
-	// a list of custom parameters for this app.
-	Parameters []AppParameter `pulumi:"parameters"`
 	// The security policy assigned to the app.
-	PolicyId *int `pulumi:"policyId"`
-	// Settings regarding the app's provisioning ability.
-	Provisioning map[string]bool `pulumi:"provisioning"`
-	// The tab in which to display in OneLogin portal.
+	PolicyId     *int             `pulumi:"policyId"`
+	Provisioning *AppProvisioning `pulumi:"provisioning"`
+	// A list of OneLogin Role IDs of the user
+	RoleIds []int `pulumi:"roleIds"`
+	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId *int `pulumi:"tabId"`
-	// Timestamp for app's last update.
+	// The date the app was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+	// Indicates if the app is visible in the OneLogin portal.
 	Visible *bool `pulumi:"visible"`
 }
 
 type AppState struct {
-	// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+	// Indicates whether or not administrators can access the app as a user that they have assumed control over.
 	AllowAssumedSignin pulumi.BoolPtrInput
-	// The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+	// An ID indicating the type of app.
 	AuthMethod pulumi.IntPtrInput
-	BrandId    pulumi.IntPtrInput
-	// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+	// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+	BrandId pulumi.IntPtrInput
+	// ID of the apps underlying connector.
 	ConnectorId pulumi.IntPtrInput
-	// Timestamp for app's creation.
+	// The date the app was created.
 	CreatedAt pulumi.StringPtrInput
-	// App description.
+	// Freeform description of the app.
 	Description pulumi.StringPtrInput
-	// The url for the app's icon.
+	// A link to the apps icon url.
 	IconUrl pulumi.StringPtrInput
-	// The app's name.
+	// App name.
 	Name pulumi.StringPtrInput
-	// Notes about the app.
+	// Freeform notes about the app.
 	Notes pulumi.StringPtrInput
-	// a list of custom parameters for this app.
-	Parameters AppParameterArrayInput
 	// The security policy assigned to the app.
-	PolicyId pulumi.IntPtrInput
-	// Settings regarding the app's provisioning ability.
-	Provisioning pulumi.BoolMapInput
-	// The tab in which to display in OneLogin portal.
+	PolicyId     pulumi.IntPtrInput
+	Provisioning AppProvisioningPtrInput
+	// A list of OneLogin Role IDs of the user
+	RoleIds pulumi.IntArrayInput
+	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId pulumi.IntPtrInput
-	// Timestamp for app's last update.
+	// The date the app was last updated.
 	UpdatedAt pulumi.StringPtrInput
-	// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+	// Indicates if the app is visible in the OneLogin portal.
 	Visible pulumi.BoolPtrInput
 }
 
@@ -201,43 +141,67 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+	// Indicates whether or not administrators can access the app as a user that they have assumed control over.
 	AllowAssumedSignin *bool `pulumi:"allowAssumedSignin"`
-	BrandId            *int  `pulumi:"brandId"`
-	// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
-	ConnectorId int `pulumi:"connectorId"`
-	// App description.
+	// An ID indicating the type of app.
+	AuthMethod *int `pulumi:"authMethod"`
+	// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+	BrandId *int `pulumi:"brandId"`
+	// ID of the apps underlying connector.
+	ConnectorId *int `pulumi:"connectorId"`
+	// The date the app was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Freeform description of the app.
 	Description *string `pulumi:"description"`
-	// The app's name.
+	// A link to the apps icon url.
+	IconUrl *string `pulumi:"iconUrl"`
+	// App name.
 	Name *string `pulumi:"name"`
-	// Notes about the app.
+	// Freeform notes about the app.
 	Notes *string `pulumi:"notes"`
-	// a list of custom parameters for this app.
-	Parameters []AppParameter `pulumi:"parameters"`
-	// Settings regarding the app's provisioning ability.
-	Provisioning map[string]bool `pulumi:"provisioning"`
-	// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+	// The security policy assigned to the app.
+	PolicyId     *int             `pulumi:"policyId"`
+	Provisioning *AppProvisioning `pulumi:"provisioning"`
+	// A list of OneLogin Role IDs of the user
+	RoleIds []int `pulumi:"roleIds"`
+	// ID of the OneLogin portal tab that the app is assigned to.
+	TabId *int `pulumi:"tabId"`
+	// The date the app was last updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Indicates if the app is visible in the OneLogin portal.
 	Visible *bool `pulumi:"visible"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
-	// Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+	// Indicates whether or not administrators can access the app as a user that they have assumed control over.
 	AllowAssumedSignin pulumi.BoolPtrInput
-	BrandId            pulumi.IntPtrInput
-	// The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
-	ConnectorId pulumi.IntInput
-	// App description.
+	// An ID indicating the type of app.
+	AuthMethod pulumi.IntPtrInput
+	// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+	BrandId pulumi.IntPtrInput
+	// ID of the apps underlying connector.
+	ConnectorId pulumi.IntPtrInput
+	// The date the app was created.
+	CreatedAt pulumi.StringPtrInput
+	// Freeform description of the app.
 	Description pulumi.StringPtrInput
-	// The app's name.
+	// A link to the apps icon url.
+	IconUrl pulumi.StringPtrInput
+	// App name.
 	Name pulumi.StringPtrInput
-	// Notes about the app.
+	// Freeform notes about the app.
 	Notes pulumi.StringPtrInput
-	// a list of custom parameters for this app.
-	Parameters AppParameterArrayInput
-	// Settings regarding the app's provisioning ability.
-	Provisioning pulumi.BoolMapInput
-	// Determine if app should be visible in OneLogin portal. Defaults to `true`.
+	// The security policy assigned to the app.
+	PolicyId     pulumi.IntPtrInput
+	Provisioning AppProvisioningPtrInput
+	// A list of OneLogin Role IDs of the user
+	RoleIds pulumi.IntArrayInput
+	// ID of the OneLogin portal tab that the app is assigned to.
+	TabId pulumi.IntPtrInput
+	// The date the app was last updated.
+	UpdatedAt pulumi.StringPtrInput
+	// Indicates if the app is visible in the OneLogin portal.
 	Visible pulumi.BoolPtrInput
 }
 
@@ -267,7 +231,7 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
 // You can construct a concrete instance of `AppArrayInput` via:
 //
-//          AppArray{ AppArgs{...} }
+//	AppArray{ AppArgs{...} }
 type AppArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +256,7 @@ func (i AppArray) ToAppArrayOutputWithContext(ctx context.Context) AppArrayOutpu
 // AppMapInput is an input type that accepts AppMap and AppMapOutput values.
 // You can construct a concrete instance of `AppMapInput` via:
 //
-//          AppMap{ "key": AppArgs{...} }
+//	AppMap{ "key": AppArgs{...} }
 type AppMapInput interface {
 	pulumi.Input
 
@@ -326,6 +290,80 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
+}
+
+// Indicates whether or not administrators can access the app as a user that they have assumed control over.
+func (o AppOutput) AllowAssumedSignin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.AllowAssumedSignin }).(pulumi.BoolPtrOutput)
+}
+
+// An ID indicating the type of app.
+func (o AppOutput) AuthMethod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.AuthMethod }).(pulumi.IntPtrOutput)
+}
+
+// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+func (o AppOutput) BrandId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.BrandId }).(pulumi.IntPtrOutput)
+}
+
+// ID of the apps underlying connector.
+func (o AppOutput) ConnectorId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ConnectorId }).(pulumi.IntPtrOutput)
+}
+
+// The date the app was created.
+func (o AppOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Freeform description of the app.
+func (o AppOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A link to the apps icon url.
+func (o AppOutput) IconUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.IconUrl }).(pulumi.StringPtrOutput)
+}
+
+// App name.
+func (o AppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Freeform notes about the app.
+func (o AppOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// The security policy assigned to the app.
+func (o AppOutput) PolicyId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.PolicyId }).(pulumi.IntPtrOutput)
+}
+
+func (o AppOutput) Provisioning() AppProvisioningPtrOutput {
+	return o.ApplyT(func(v *App) AppProvisioningPtrOutput { return v.Provisioning }).(AppProvisioningPtrOutput)
+}
+
+// A list of OneLogin Role IDs of the user
+func (o AppOutput) RoleIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *App) pulumi.IntArrayOutput { return v.RoleIds }).(pulumi.IntArrayOutput)
+}
+
+// ID of the OneLogin portal tab that the app is assigned to.
+func (o AppOutput) TabId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.TabId }).(pulumi.IntPtrOutput)
+}
+
+// The date the app was last updated.
+func (o AppOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the app is visible in the OneLogin portal.
+func (o AppOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

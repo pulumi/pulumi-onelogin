@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,10 +27,9 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    public readonly clientId!: pulumi.Output<string>;
-    public readonly clientSecret!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string | undefined>;
-    public readonly url!: pulumi.Output<string | undefined>;
+    public readonly authorization!: pulumi.Output<string | undefined>;
+    public readonly bearerAuth!: pulumi.Output<string | undefined>;
+    public readonly contentType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -37,20 +38,14 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.clientId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clientId'");
-            }
-            if ((!args || args.clientSecret === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clientSecret'");
-            }
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["authorization"] = args ? args.authorization : undefined;
+            resourceInputs["bearerAuth"] = args ? args.bearerAuth : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -61,8 +56,8 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    clientId: pulumi.Input<string>;
-    clientSecret: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    url?: pulumi.Input<string>;
+    authorization?: pulumi.Input<string>;
+    bearerAuth?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
 }

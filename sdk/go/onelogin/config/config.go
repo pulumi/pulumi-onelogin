@@ -8,15 +8,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-func GetClientId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:clientId")
+func GetAuthorization(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:authorization")
 }
-func GetClientSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:clientSecret")
+func GetBearerAuth(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:bearerAuth")
 }
-func GetRegion(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:region")
+func GetContentType(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:contentType")
 }
-func GetUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:url")
+func GetEndpoints(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:endpoints")
 }

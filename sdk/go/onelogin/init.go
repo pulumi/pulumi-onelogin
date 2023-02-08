@@ -22,28 +22,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "onelogin:index/app:App":
 		r = &App{}
-	case "onelogin:index/appRoleAttachment:AppRoleAttachment":
-		r = &AppRoleAttachment{}
-	case "onelogin:index/appRule:AppRule":
-		r = &AppRule{}
-	case "onelogin:index/authServer:AuthServer":
-		r = &AuthServer{}
-	case "onelogin:index/oidcApp:OidcApp":
-		r = &OidcApp{}
-	case "onelogin:index/privilege:Privilege":
-		r = &Privilege{}
-	case "onelogin:index/role:Role":
-		r = &Role{}
-	case "onelogin:index/samlApp:SamlApp":
-		r = &SamlApp{}
-	case "onelogin:index/smartHook:SmartHook":
-		r = &SmartHook{}
-	case "onelogin:index/smartHookEnvironmentVariable:SmartHookEnvironmentVariable":
-		r = &SmartHookEnvironmentVariable{}
+	case "onelogin:index/rule:Rule":
+		r = &Rule{}
 	case "onelogin:index/user:User":
 		r = &User{}
-	case "onelogin:index/userMapping:UserMapping":
-		r = &UserMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -79,57 +61,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/appRoleAttachment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/appRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/authServer",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/oidcApp",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/privilege",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/role",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/samlApp",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/smartHook",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/smartHookEnvironmentVariable",
+		"index/rule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
 		"index/user",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/userMapping",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

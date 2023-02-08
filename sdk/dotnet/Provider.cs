@@ -16,19 +16,16 @@ namespace Pulumi.Onelogin
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [OneloginResourceType("pulumi:providers:onelogin")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
-        [Output("clientId")]
-        public Output<string> ClientId { get; private set; } = null!;
+        [Output("authorization")]
+        public Output<string?> Authorization { get; private set; } = null!;
 
-        [Output("clientSecret")]
-        public Output<string> ClientSecret { get; private set; } = null!;
+        [Output("bearerAuth")]
+        public Output<string?> BearerAuth { get; private set; } = null!;
 
-        [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
-
-        [Output("url")]
-        public Output<string?> Url { get; private set; } = null!;
+        [Output("contentType")]
+        public Output<string?> ContentType { get; private set; } = null!;
 
 
         /// <summary>
@@ -38,7 +35,7 @@ namespace Pulumi.Onelogin
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("onelogin", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -56,22 +53,28 @@ namespace Pulumi.Onelogin
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        [Input("authorization")]
+        public Input<string>? Authorization { get; set; }
 
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        [Input("bearerAuth")]
+        public Input<string>? BearerAuth { get; set; }
 
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("endpoints", json: true)]
+        private InputList<Inputs.ProviderEndpointArgs>? _endpoints;
+        public InputList<Inputs.ProviderEndpointArgs> Endpoints
+        {
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.ProviderEndpointArgs>());
+            set => _endpoints = value;
+        }
 
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

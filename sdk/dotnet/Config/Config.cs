@@ -30,35 +30,45 @@ namespace Pulumi.Onelogin
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("onelogin");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("onelogin");
 
-        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
-        public static string? ClientId
+        private static readonly __Value<string?> _authorization = new __Value<string?>(() => __config.Get("authorization"));
+        public static string? Authorization
         {
-            get => _clientId.Get();
-            set => _clientId.Set(value);
+            get => _authorization.Get();
+            set => _authorization.Set(value);
         }
 
-        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
-        public static string? ClientSecret
+        private static readonly __Value<string?> _bearerAuth = new __Value<string?>(() => __config.Get("bearerAuth"));
+        public static string? BearerAuth
         {
-            get => _clientSecret.Get();
-            set => _clientSecret.Set(value);
+            get => _bearerAuth.Get();
+            set => _bearerAuth.Set(value);
         }
 
-        private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region"));
-        public static string? Region
+        private static readonly __Value<string?> _contentType = new __Value<string?>(() => __config.Get("contentType"));
+        public static string? ContentType
         {
-            get => _region.Get();
-            set => _region.Set(value);
+            get => _contentType.Get();
+            set => _contentType.Set(value);
         }
 
-        private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url"));
-        public static string? Url
+        private static readonly __Value<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>> _endpoints = new __Value<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>>(() => __config.GetObject<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>>("endpoints"));
+        public static ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints> Endpoints
         {
-            get => _url.Get();
-            set => _url.Set(value);
+            get => _endpoints.Get();
+            set => _endpoints.Set(value);
         }
 
+        public static class Types
+        {
+
+             public class Endpoints
+             {
+                public string? Apps { get; set; } = null!;
+                public string? Rules { get; set; } = null!;
+                public string? Users { get; set; } = null!;
+            }
+        }
     }
 }

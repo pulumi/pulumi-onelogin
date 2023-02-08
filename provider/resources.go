@@ -19,13 +19,15 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/onelogin/terraform-provider-onelogin/onelogin"
+	"github.com/dikhan/terraform-provider-openapi/v3/openapi"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -70,10 +72,28 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+// Create the provider, since the upstream provider uses an helper instead of manually
+// exporting the provider.
+func provider() *schema.Provider {
+	// The content of this file is copied from the beginning of the main.go file in
+	// "onelogin/terraform-provider-onelogin/toosl/main.go".
+	var providerName = "onelogin"
+	var providerOpenAPIURL = "https://raw.githubusercontent.com/onelogin/terraform-provider-onelogin/openapi/swag-api.yml"
+
+	p := openapi.ProviderOpenAPI{ProviderName: providerName}
+	serviceProviderConfig := &openapi.ServiceConfigV1{
+		SwaggerURL: providerOpenAPIURL,
+	}
+
+	provider, err := p.CreateSchemaProviderFromServiceConfiguration(serviceProviderConfig)
+	contract.AssertNoError(err)
+	return provider
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(onelogin.Provider())
+	p := shimv2.NewProvider(provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -104,79 +124,22 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "onelogin_app.md",
 				},
 			},
-			"onelogin_app_role_attachments": {
-				Tok: makeResource(mainMod, "AppRoleAttachment"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_app_role_attachment.md",
-				},
-			},
-			"onelogin_app_rules": {
-				Tok: makeResource(mainMod, "AppRule"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_app_rule.md",
-				},
-			},
-			"onelogin_auth_servers": {
-				Tok: makeResource(mainMod, "AuthServer"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_auth_server.md",
-				},
-			},
-			"onelogin_oidc_apps": {
-				Tok: makeResource(mainMod, "OidcApp"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_oidc_app.md",
-				},
-			},
-			"onelogin_privileges": {
-				Tok: makeResource(mainMod, "Privilege"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_privilege.md",
-				},
-			},
-			"onelogin_roles": {
-				Tok: makeResource(mainMod, "Role"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_role.md",
-				},
-			},
-			"onelogin_saml_apps": {
-				Tok: makeResource(mainMod, "SamlApp"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_saml_app.md",
-				},
-			},
-			"onelogin_smarthooks": {
-				Tok: makeResource(mainMod, "SmartHook"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_smarthook.md",
-				},
-			},
-			"onelogin_smarthook_environment_variables": {
-				Tok: makeResource(mainMod, "SmartHookEnvironmentVariable"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
 			"onelogin_users": {
 				Tok: makeResource(mainMod, "User"),
 				Docs: &tfbridge.DocInfo{
 					Source: "onelogin_user.md",
 				},
 			},
-			"onelogin_user_mappings": {
-				Tok: makeResource(mainMod, "UserMapping"),
-				Docs: &tfbridge.DocInfo{
-					Source: "onelogin_user_mapping.md",
-				},
+			"onelogin_rules": {
+				Tok: makeResource(mainMod, "Rule"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
-			"onelogin_user":  {Tok: makeDataSource(mainMod, "getUser")},
-			"onelogin_users": {Tok: makeDataSource(mainMod, "getUsers")},
+			"onelogin_mappings":   {Tok: makeDataSource(mainMod, "getMappings")},
+			"onelogin_privileges": {Tok: makeDataSource(mainMod, "getPrivileges")},
+			"onelogin_roles":      {Tok: makeDataSource("roles", "getRoles")},
+			"onelogin_rules":      {Tok: makeDataSource("rules", "getRules")},
+			"onelogin_users":      {Tok: makeDataSource("users", "getUsers")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -214,6 +177,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	defaults := tfbridge.TokensKnownModules("onelogin_", "", []string{
+		"api_",
+		"apps_",
+		"roles_",
+		"rules_",
+		"users_",
+	}, tfbridge.MakeStandardToken("onelogin"))
+	defaults.Resource = nil
+	err := prov.ComputeDefaults(defaults)
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 

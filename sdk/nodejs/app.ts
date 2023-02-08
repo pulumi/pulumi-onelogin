@@ -2,53 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Creates a Basic Application.
- *
- * This resource allows you to create and configure a Basic (non-SAML non-OIDC) Application.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as onelogin from "@pulumi/onelogin";
- *
- * const myApp = new onelogin.App("my_app", {
- *     allowAssumedSignin: false,
- *     connectorId: 12345,
- *     description: "basic app",
- *     notes: "basic app",
- *     parameters: [{
- *         attributesTransformations: "",
- *         defaultValues: "",
- *         includeInSamlAssertion: false,
- *         label: "username",
- *         paramKeyName: "user name",
- *         provisionedEntitlements: false,
- *         safeEntitlementsEnabled: false,
- *         skipIfBlank: false,
- *         userAttributeMacros: "",
- *         userAttributeMappings: "",
- *         values: "",
- *     }],
- *     provisioning: {
- *         enabled: false,
- *     },
- *     visible: true,
- * });
- * ```
- *
- * ## Import
- *
- * An App can be imported via the OneLogin App ID.
- *
- * ```sh
- *  $ pulumi import onelogin:index/app:App my_app <app id>
- * ```
- */
 export class App extends pulumi.CustomResource {
     /**
      * Get an existing App resource's state with the given name, ID, and optional extra
@@ -78,60 +35,60 @@ export class App extends pulumi.CustomResource {
     }
 
     /**
-     * Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+     * Indicates whether or not administrators can access the app as a user that they have assumed control over.
      */
     public readonly allowAssumedSignin!: pulumi.Output<boolean | undefined>;
     /**
-     * The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+     * An ID indicating the type of app.
      */
-    public /*out*/ readonly authMethod!: pulumi.Output<number>;
+    public readonly authMethod!: pulumi.Output<number | undefined>;
+    /**
+     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+     */
     public readonly brandId!: pulumi.Output<number | undefined>;
     /**
-     * The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+     * ID of the apps underlying connector.
      */
-    public readonly connectorId!: pulumi.Output<number>;
+    public readonly connectorId!: pulumi.Output<number | undefined>;
     /**
-     * Timestamp for app's creation.
+     * The date the app was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly createdAt!: pulumi.Output<string | undefined>;
     /**
-     * App description.
+     * Freeform description of the app.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The url for the app's icon.
+     * A link to the apps icon url.
      */
-    public /*out*/ readonly iconUrl!: pulumi.Output<string>;
+    public readonly iconUrl!: pulumi.Output<string | undefined>;
     /**
-     * The app's name.
+     * App name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Notes about the app.
+     * Freeform notes about the app.
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * a list of custom parameters for this app.
-     */
-    public readonly parameters!: pulumi.Output<outputs.AppParameter[]>;
-    /**
      * The security policy assigned to the app.
      */
-    public /*out*/ readonly policyId!: pulumi.Output<number>;
+    public readonly policyId!: pulumi.Output<number | undefined>;
+    public readonly provisioning!: pulumi.Output<outputs.AppProvisioning | undefined>;
     /**
-     * Settings regarding the app's provisioning ability.
+     * A list of OneLogin Role IDs of the user
      */
-    public readonly provisioning!: pulumi.Output<{[key: string]: boolean}>;
+    public readonly roleIds!: pulumi.Output<number[] | undefined>;
     /**
-     * The tab in which to display in OneLogin portal.
+     * ID of the OneLogin portal tab that the app is assigned to.
      */
-    public /*out*/ readonly tabId!: pulumi.Output<number>;
+    public readonly tabId!: pulumi.Output<number | undefined>;
     /**
-     * Timestamp for app's last update.
+     * The date the app was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public readonly updatedAt!: pulumi.Output<string | undefined>;
     /**
-     * Determine if app should be visible in OneLogin portal. Defaults to `true`.
+     * Indicates if the app is visible in the OneLogin portal.
      */
     public readonly visible!: pulumi.Output<boolean | undefined>;
 
@@ -142,7 +99,7 @@ export class App extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -157,32 +114,29 @@ export class App extends pulumi.CustomResource {
             resourceInputs["iconUrl"] = state ? state.iconUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["provisioning"] = state ? state.provisioning : undefined;
+            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
             resourceInputs["tabId"] = state ? state.tabId : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["visible"] = state ? state.visible : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectorId'");
-            }
             resourceInputs["allowAssumedSignin"] = args ? args.allowAssumedSignin : undefined;
+            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
             resourceInputs["brandId"] = args ? args.brandId : undefined;
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["iconUrl"] = args ? args.iconUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
             resourceInputs["provisioning"] = args ? args.provisioning : undefined;
+            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["tabId"] = args ? args.tabId : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["visible"] = args ? args.visible : undefined;
-            resourceInputs["authMethod"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["iconUrl"] = undefined /*out*/;
-            resourceInputs["policyId"] = undefined /*out*/;
-            resourceInputs["tabId"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(App.__pulumiType, name, resourceInputs, opts);
@@ -194,60 +148,60 @@ export class App extends pulumi.CustomResource {
  */
 export interface AppState {
     /**
-     * Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+     * Indicates whether or not administrators can access the app as a user that they have assumed control over.
      */
     allowAssumedSignin?: pulumi.Input<boolean>;
     /**
-     * The apps auth method. Refer to the [OneLogin Apps Documentation](https://developers.onelogin.com/api-docs/2/apps/app-resource) for a comprehensive list of available auth methods.
+     * An ID indicating the type of app.
      */
     authMethod?: pulumi.Input<number>;
+    /**
+     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+     */
     brandId?: pulumi.Input<number>;
     /**
-     * The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+     * ID of the apps underlying connector.
      */
     connectorId?: pulumi.Input<number>;
     /**
-     * Timestamp for app's creation.
+     * The date the app was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * App description.
+     * Freeform description of the app.
      */
     description?: pulumi.Input<string>;
     /**
-     * The url for the app's icon.
+     * A link to the apps icon url.
      */
     iconUrl?: pulumi.Input<string>;
     /**
-     * The app's name.
+     * App name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Notes about the app.
+     * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
-    /**
-     * a list of custom parameters for this app.
-     */
-    parameters?: pulumi.Input<pulumi.Input<inputs.AppParameter>[]>;
     /**
      * The security policy assigned to the app.
      */
     policyId?: pulumi.Input<number>;
+    provisioning?: pulumi.Input<inputs.AppProvisioning>;
     /**
-     * Settings regarding the app's provisioning ability.
+     * A list of OneLogin Role IDs of the user
      */
-    provisioning?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The tab in which to display in OneLogin portal.
+     * ID of the OneLogin portal tab that the app is assigned to.
      */
     tabId?: pulumi.Input<number>;
     /**
-     * Timestamp for app's last update.
+     * The date the app was last updated.
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Determine if app should be visible in OneLogin portal. Defaults to `true`.
+     * Indicates if the app is visible in the OneLogin portal.
      */
     visible?: pulumi.Input<boolean>;
 }
@@ -257,36 +211,60 @@ export interface AppState {
  */
 export interface AppArgs {
     /**
-     * Enable sign in when user has been assumed by the account owner. Defaults to `false`.
+     * Indicates whether or not administrators can access the app as a user that they have assumed control over.
      */
     allowAssumedSignin?: pulumi.Input<boolean>;
+    /**
+     * An ID indicating the type of app.
+     */
+    authMethod?: pulumi.Input<number>;
+    /**
+     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
+     */
     brandId?: pulumi.Input<number>;
     /**
-     * The ID for the app connector, dictates the type of app (e.g. AWS Multi-Role App).
+     * ID of the apps underlying connector.
      */
-    connectorId: pulumi.Input<number>;
+    connectorId?: pulumi.Input<number>;
     /**
-     * App description.
+     * The date the app was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Freeform description of the app.
      */
     description?: pulumi.Input<string>;
     /**
-     * The app's name.
+     * A link to the apps icon url.
+     */
+    iconUrl?: pulumi.Input<string>;
+    /**
+     * App name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Notes about the app.
+     * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
     /**
-     * a list of custom parameters for this app.
+     * The security policy assigned to the app.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.AppParameter>[]>;
+    policyId?: pulumi.Input<number>;
+    provisioning?: pulumi.Input<inputs.AppProvisioning>;
     /**
-     * Settings regarding the app's provisioning ability.
+     * A list of OneLogin Role IDs of the user
      */
-    provisioning?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * Determine if app should be visible in OneLogin portal. Defaults to `true`.
+     * ID of the OneLogin portal tab that the app is assigned to.
+     */
+    tabId?: pulumi.Input<number>;
+    /**
+     * The date the app was last updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the app is visible in the OneLogin portal.
      */
     visible?: pulumi.Input<boolean>;
 }
