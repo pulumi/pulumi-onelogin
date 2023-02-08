@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-onelogin/provider
 
-go 1.17
+go 1.19
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.39.3
