@@ -12,3 +12,5 @@ sdk/dotnet/version.txt
 *.iml
 
 yarn.lock
+sdk/java/.gradle
+sdk/java/build
