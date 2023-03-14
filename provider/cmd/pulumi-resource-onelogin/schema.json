@@ -51,12 +51,6 @@
     },
     "config": {
         "variables": {
-            "authorization": {
-                "type": "string"
-            },
-            "bearerAuth": {
-                "type": "string"
-            },
             "contentType": {
                 "type": "string"
             },
@@ -395,6 +389,303 @@
                 "values"
             ]
         },
+        "onelogin:apps/getInstanceEnforcementPoint:getInstanceEnforcementPoint": {
+            "properties": {
+                "caseSensitive": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contextRoot": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "landingPage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireSitewideAuthentication": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointResource:getInstanceEnforcementPointResource"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryFixed": {
+                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryFixed:getInstanceEnforcementPointSessionExpiryFixed",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryInactivity": {
+                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryInactivity:getInstanceEnforcementPointSessionExpiryInactivity",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "target": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "useTargetHostHeader": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vhost": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "caseSensitive",
+                "conditions",
+                "contextRoot",
+                "landingPage",
+                "permissions",
+                "requireSitewideAuthentication",
+                "resources",
+                "sessionExpiryFixed",
+                "sessionExpiryInactivity",
+                "target",
+                "token",
+                "useTargetHostHeader",
+                "vhost"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceEnforcementPointResource:getInstanceEnforcementPointResource": {
+            "properties": {
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isPathRegex": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireAuth": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "conditions",
+                "isPathRegex",
+                "path",
+                "permission",
+                "requireAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceEnforcementPointSessionExpiryFixed:getInstanceEnforcementPointSessionExpiryFixed": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceEnforcementPointSessionExpiryInactivity:getInstanceEnforcementPointSessionExpiryInactivity": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceParameters:getInstanceParameters": {
+            "properties": {
+                "includeInSamlAssertion": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMacros": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMappings": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "includeInSamlAssertion",
+                "label",
+                "userAttributeMacros",
+                "userAttributeMappings"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "onelogin:apps/getInstanceProvisioning:getInstanceProvisioning": {
             "properties": {
                 "enabled": {
@@ -516,34 +807,6 @@
                 "values"
             ]
         },
-        "onelogin:apps/getUsersFilter:getUsersFilter": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "values": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "values"
-            ]
-        },
         "onelogin:config/endpoints:endpoints": {
             "properties": {
                 "apps": {
@@ -554,6 +817,249 @@
                 },
                 "users": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "onelogin:index/AppEnforcementPoint:AppEnforcementPoint": {
+            "properties": {
+                "caseSensitive": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contextRoot": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "landingPage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireSitewideAuthentication": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/AppEnforcementPointResource:AppEnforcementPointResource"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryFixed": {
+                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryFixed:AppEnforcementPointSessionExpiryFixed",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryInactivity": {
+                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryInactivity:AppEnforcementPointSessionExpiryInactivity",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "target": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "useTargetHostHeader": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vhost": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "token"
+                    ]
+                }
+            }
+        },
+        "onelogin:index/AppEnforcementPointResource:AppEnforcementPointResource": {
+            "properties": {
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isPathRegex": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireAuth": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "onelogin:index/AppEnforcementPointSessionExpiryFixed:AppEnforcementPointSessionExpiryFixed": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "onelogin:index/AppEnforcementPointSessionExpiryInactivity:AppEnforcementPointSessionExpiryInactivity": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "onelogin:index/AppParameters:AppParameters": {
+            "properties": {
+                "includeInSamlAssertion": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMacros": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMappings": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -620,6 +1126,436 @@
                 }
             },
             "type": "object"
+        },
+        "onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint": {
+            "properties": {
+                "caseSensitive": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contextRoot": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "landingPage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireSitewideAuthentication": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:index/getAppsEnforcementPointResource:getAppsEnforcementPointResource"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryFixed": {
+                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryFixed:getAppsEnforcementPointSessionExpiryFixed",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionExpiryInactivity": {
+                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryInactivity:getAppsEnforcementPointSessionExpiryInactivity",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "target": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "token": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "useTargetHostHeader": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vhost": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "caseSensitive",
+                "conditions",
+                "contextRoot",
+                "landingPage",
+                "permissions",
+                "requireSitewideAuthentication",
+                "resources",
+                "sessionExpiryFixed",
+                "sessionExpiryInactivity",
+                "target",
+                "token",
+                "useTargetHostHeader",
+                "vhost"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsEnforcementPointResource:getAppsEnforcementPointResource": {
+            "properties": {
+                "conditions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isPathRegex": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requireAuth": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "conditions",
+                "isPathRegex",
+                "path",
+                "permission",
+                "requireAuth"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsEnforcementPointSessionExpiryFixed:getAppsEnforcementPointSessionExpiryFixed": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsEnforcementPointSessionExpiryInactivity:getAppsEnforcementPointSessionExpiryInactivity": {
+            "properties": {
+                "unit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsFilter:getAppsFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "onelogin:index/getAppsParameters:getAppsParameters": {
+            "properties": {
+                "includeInSamlAssertion": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "label": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMacros": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userAttributeMappings": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "includeInSamlAssertion",
+                "label",
+                "userAttributeMacros",
+                "userAttributeMappings"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsProvisioning:getAppsProvisioning": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getBrandsAppsFilter:getBrandsAppsFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "onelogin:index/getBrandsFilter:getBrandsFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "onelogin:index/getBrandsTemplatesFilter:getBrandsTemplatesFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
         },
         "onelogin:index/getMappingsAction:getMappingsAction": {
             "properties": {
@@ -1115,12 +2051,6 @@
     "provider": {
         "description": "The provider type for the onelogin package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
-            "authorization": {
-                "type": "string"
-            },
-            "bearerAuth": {
-                "type": "string"
-            },
             "contentType": {
                 "type": "string"
             },
@@ -1132,12 +2062,6 @@
             }
         },
         "inputProperties": {
-            "authorization": {
-                "type": "string"
-            },
-            "bearerAuth": {
-                "type": "string"
-            },
             "contentType": {
                 "type": "string"
             },
@@ -1158,49 +2082,54 @@
                 },
                 "authMethod": {
                     "type": "integer",
-                    "description": "An ID indicating the type of app.\n"
-                },
-                "brandId": {
-                    "type": "integer",
-                    "description": "The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.\n"
+                    "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                 },
                 "connectorId": {
                     "type": "integer",
-                    "description": "ID of the apps underlying connector.\n"
+                    "description": "ID of the connector to base the app from.\n"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "The date the app was created.\n"
+                    "description": "the date the app was created\n"
                 },
                 "description": {
                     "type": "string",
                     "description": "Freeform description of the app.\n"
                 },
+                "enforcementPoint": {
+                    "$ref": "#/types/onelogin:index/AppEnforcementPoint:AppEnforcementPoint",
+                    "description": "For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included\nwith the app payload.\n"
+                },
                 "iconUrl": {
                     "type": "string",
-                    "description": "A link to the apps icon url.\n"
+                    "description": "A link to the apps icon url\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "App name.\n"
+                    "description": "The name of the app.\n"
                 },
                 "notes": {
                     "type": "string",
                     "description": "Freeform notes about the app.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/onelogin:index/AppParameters:AppParameters",
+                    "description": "The parameters section contains parameterized attributes that have defined at the connector level as well as custom\nattributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the\nfollowing attributes. Each parameter is an object with the key for the object being set as the parameters short name.\n"
                 },
                 "policyId": {
                     "type": "integer",
                     "description": "The security policy assigned to the app.\n"
                 },
                 "provisioning": {
-                    "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning"
+                    "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning",
+                    "description": "Indicates if provisioning is enabled for this app.\n"
                 },
                 "roleIds": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "A list of OneLogin Role IDs of the user\n"
+                    "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
                 },
                 "tabId": {
                     "type": "integer",
@@ -1208,7 +2137,7 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "The date the app was last updated.\n"
+                    "description": "the date the app was last updated\n"
                 },
                 "visible": {
                     "type": "boolean",
@@ -1225,49 +2154,54 @@
                 },
                 "authMethod": {
                     "type": "integer",
-                    "description": "An ID indicating the type of app.\n"
-                },
-                "brandId": {
-                    "type": "integer",
-                    "description": "The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.\n"
+                    "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                 },
                 "connectorId": {
                     "type": "integer",
-                    "description": "ID of the apps underlying connector.\n"
+                    "description": "ID of the connector to base the app from.\n"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "The date the app was created.\n"
+                    "description": "the date the app was created\n"
                 },
                 "description": {
                     "type": "string",
                     "description": "Freeform description of the app.\n"
                 },
+                "enforcementPoint": {
+                    "$ref": "#/types/onelogin:index/AppEnforcementPoint:AppEnforcementPoint",
+                    "description": "For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included\nwith the app payload.\n"
+                },
                 "iconUrl": {
                     "type": "string",
-                    "description": "A link to the apps icon url.\n"
+                    "description": "A link to the apps icon url\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "App name.\n"
+                    "description": "The name of the app.\n"
                 },
                 "notes": {
                     "type": "string",
                     "description": "Freeform notes about the app.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/onelogin:index/AppParameters:AppParameters",
+                    "description": "The parameters section contains parameterized attributes that have defined at the connector level as well as custom\nattributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the\nfollowing attributes. Each parameter is an object with the key for the object being set as the parameters short name.\n"
                 },
                 "policyId": {
                     "type": "integer",
                     "description": "The security policy assigned to the app.\n"
                 },
                 "provisioning": {
-                    "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning"
+                    "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning",
+                    "description": "Indicates if provisioning is enabled for this app.\n"
                 },
                 "roleIds": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "A list of OneLogin Role IDs of the user\n"
+                    "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
                 },
                 "tabId": {
                     "type": "integer",
@@ -1275,7 +2209,7 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "The date the app was last updated.\n"
+                    "description": "the date the app was last updated\n"
                 },
                 "visible": {
                     "type": "boolean",
@@ -1291,49 +2225,54 @@
                     },
                     "authMethod": {
                         "type": "integer",
-                        "description": "An ID indicating the type of app.\n"
-                    },
-                    "brandId": {
-                        "type": "integer",
-                        "description": "The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.\n"
+                        "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                     },
                     "connectorId": {
                         "type": "integer",
-                        "description": "ID of the apps underlying connector.\n"
+                        "description": "ID of the connector to base the app from.\n"
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "The date the app was created.\n"
+                        "description": "the date the app was created\n"
                     },
                     "description": {
                         "type": "string",
                         "description": "Freeform description of the app.\n"
                     },
+                    "enforcementPoint": {
+                        "$ref": "#/types/onelogin:index/AppEnforcementPoint:AppEnforcementPoint",
+                        "description": "For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included\nwith the app payload.\n"
+                    },
                     "iconUrl": {
                         "type": "string",
-                        "description": "A link to the apps icon url.\n"
+                        "description": "A link to the apps icon url\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "App name.\n"
+                        "description": "The name of the app.\n"
                     },
                     "notes": {
                         "type": "string",
                         "description": "Freeform notes about the app.\n"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/AppParameters:AppParameters",
+                        "description": "The parameters section contains parameterized attributes that have defined at the connector level as well as custom\nattributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the\nfollowing attributes. Each parameter is an object with the key for the object being set as the parameters short name.\n"
                     },
                     "policyId": {
                         "type": "integer",
                         "description": "The security policy assigned to the app.\n"
                     },
                     "provisioning": {
-                        "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning"
+                        "$ref": "#/types/onelogin:index/AppProvisioning:AppProvisioning",
+                        "description": "Indicates if provisioning is enabled for this app.\n"
                     },
                     "roleIds": {
                         "type": "array",
                         "items": {
                             "type": "integer"
                         },
-                        "description": "A list of OneLogin Role IDs of the user\n"
+                        "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
                     },
                     "tabId": {
                         "type": "integer",
@@ -1341,7 +2280,7 @@
                     },
                     "updatedAt": {
                         "type": "string",
-                        "description": "The date the app was last updated.\n"
+                        "description": "the date the app was last updated\n"
                     },
                     "visible": {
                         "type": "boolean",
@@ -2404,9 +3343,6 @@
                     "authMethod": {
                         "type": "integer"
                     },
-                    "brandId": {
-                        "type": "integer"
-                    },
                     "connectorId": {
                         "type": "integer"
                     },
@@ -2415,6 +3351,9 @@
                     },
                     "description": {
                         "type": "string"
+                    },
+                    "enforcementPoint": {
+                        "$ref": "#/types/onelogin:apps/getInstanceEnforcementPoint:getInstanceEnforcementPoint"
                     },
                     "iconUrl": {
                         "type": "string"
@@ -2427,6 +3366,9 @@
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:apps/getInstanceParameters:getInstanceParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -2464,9 +3406,6 @@
                     "authMethod": {
                         "type": "integer"
                     },
-                    "brandId": {
-                        "type": "integer"
-                    },
                     "connectorId": {
                         "type": "integer"
                     },
@@ -2475,6 +3414,9 @@
                     },
                     "description": {
                         "type": "string"
+                    },
+                    "enforcementPoint": {
+                        "$ref": "#/types/onelogin:apps/getInstanceEnforcementPoint:getInstanceEnforcementPoint"
                     },
                     "iconUrl": {
                         "type": "string"
@@ -2487,6 +3429,9 @@
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:apps/getInstanceParameters:getInstanceParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -2514,14 +3459,15 @@
                 "required": [
                     "allowAssumedSignin",
                     "authMethod",
-                    "brandId",
                     "connectorId",
                     "createdAt",
                     "description",
+                    "enforcementPoint",
                     "iconUrl",
                     "id",
                     "name",
                     "notes",
+                    "parameters",
                     "policyId",
                     "provisioning",
                     "roleIds",
@@ -2629,94 +3575,52 @@
                 ]
             }
         },
-        "onelogin:apps/getUsers:getUsers": {
+        "onelogin:index/getApps:getApps": {
             "inputs": {
-                "description": "A collection of arguments for invoking getUsers.\n",
+                "description": "A collection of arguments for invoking getApps.\n",
                 "properties": {
-                    "activatedAt": {
-                        "type": "string"
+                    "allowAssumedSignin": {
+                        "type": "boolean"
                     },
-                    "appsId": {
-                        "type": "string"
+                    "authMethod": {
+                        "type": "integer"
                     },
-                    "comment": {
-                        "type": "string"
-                    },
-                    "company": {
-                        "type": "string"
+                    "connectorId": {
+                        "type": "integer"
                     },
                     "createdAt": {
                         "type": "string"
                     },
-                    "department": {
+                    "description": {
                         "type": "string"
                     },
-                    "directoryId": {
-                        "type": "integer"
-                    },
-                    "distinguishedName": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "externalId": {
-                        "type": "string"
+                    "enforcementPoint": {
+                        "$ref": "#/types/onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint"
                     },
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:apps/getUsersFilter:getUsersFilter"
+                            "$ref": "#/types/onelogin:index/getAppsFilter:getAppsFilter"
                         },
                         "willReplaceOnChanges": true
                     },
-                    "firstname": {
+                    "iconUrl": {
                         "type": "string"
                     },
-                    "groupId": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/getAppsParameters:getAppsParameters"
+                    },
+                    "policyId": {
                         "type": "integer"
                     },
-                    "invalidLoginAttempts": {
-                        "type": "integer"
-                    },
-                    "invitationSentAt": {
-                        "type": "string"
-                    },
-                    "lastLogin": {
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "type": "string"
-                    },
-                    "lockedUntil": {
-                        "type": "string"
-                    },
-                    "managerAdId": {
-                        "type": "string"
-                    },
-                    "managerUserId": {
-                        "type": "string"
-                    },
-                    "memberOf": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    },
-                    "passwordAlgorithm": {
-                        "type": "string"
-                    },
-                    "passwordChangedAt": {
-                        "type": "string"
-                    },
-                    "passwordConfirmation": {
-                        "type": "string"
-                    },
-                    "phone": {
-                        "type": "string"
-                    },
-                    "preferredLocaleCode": {
-                        "type": "string"
+                    "provisioning": {
+                        "$ref": "#/types/onelogin:index/getAppsProvisioning:getAppsProvisioning"
                     },
                     "roleIds": {
                         "type": "array",
@@ -2724,129 +3628,66 @@
                             "type": "integer"
                         }
                     },
-                    "salt": {
-                        "type": "string"
-                    },
-                    "samaccountName": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "integer"
-                    },
-                    "status": {
-                        "type": "integer"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "trustedIdpId": {
+                    "tabId": {
                         "type": "integer"
                     },
                     "updatedAt": {
                         "type": "string"
                     },
-                    "username": {
-                        "type": "string"
-                    },
-                    "userprincipalname": {
-                        "type": "string"
+                    "visible": {
+                        "type": "boolean"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "appsId"
-                ]
+                "type": "object"
             },
             "outputs": {
-                "description": "A collection of values returned by getUsers.\n",
+                "description": "A collection of values returned by getApps.\n",
                 "properties": {
-                    "activatedAt": {
-                        "type": "string"
+                    "allowAssumedSignin": {
+                        "type": "boolean"
                     },
-                    "appsId": {
-                        "type": "string"
+                    "authMethod": {
+                        "type": "integer"
                     },
-                    "comment": {
-                        "type": "string"
-                    },
-                    "company": {
-                        "type": "string"
+                    "connectorId": {
+                        "type": "integer"
                     },
                     "createdAt": {
                         "type": "string"
                     },
-                    "department": {
+                    "description": {
                         "type": "string"
                     },
-                    "directoryId": {
-                        "type": "integer"
-                    },
-                    "distinguishedName": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string"
-                    },
-                    "externalId": {
-                        "type": "string"
+                    "enforcementPoint": {
+                        "$ref": "#/types/onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint"
                     },
                     "filters": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:apps/getUsersFilter:getUsersFilter"
+                            "$ref": "#/types/onelogin:index/getAppsFilter:getAppsFilter"
                         }
                     },
-                    "firstname": {
+                    "iconUrl": {
                         "type": "string"
-                    },
-                    "groupId": {
-                        "type": "integer"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "invalidLoginAttempts": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/getAppsParameters:getAppsParameters"
+                    },
+                    "policyId": {
                         "type": "integer"
                     },
-                    "invitationSentAt": {
-                        "type": "string"
-                    },
-                    "lastLogin": {
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "type": "string"
-                    },
-                    "lockedUntil": {
-                        "type": "string"
-                    },
-                    "managerAdId": {
-                        "type": "string"
-                    },
-                    "managerUserId": {
-                        "type": "string"
-                    },
-                    "memberOf": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    },
-                    "passwordAlgorithm": {
-                        "type": "string"
-                    },
-                    "passwordChangedAt": {
-                        "type": "string"
-                    },
-                    "passwordConfirmation": {
-                        "type": "string"
-                    },
-                    "phone": {
-                        "type": "string"
-                    },
-                    "preferredLocaleCode": {
-                        "type": "string"
+                    "provisioning": {
+                        "$ref": "#/types/onelogin:index/getAppsProvisioning:getAppsProvisioning"
                     },
                     "roleIds": {
                         "type": "array",
@@ -2854,72 +3695,240 @@
                             "type": "integer"
                         }
                     },
-                    "salt": {
-                        "type": "string"
-                    },
-                    "samaccountName": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "integer"
-                    },
-                    "status": {
-                        "type": "integer"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "trustedIdpId": {
+                    "tabId": {
                         "type": "integer"
                     },
                     "updatedAt": {
                         "type": "string"
                     },
-                    "username": {
-                        "type": "string"
+                    "visible": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "allowAssumedSignin",
+                    "authMethod",
+                    "connectorId",
+                    "createdAt",
+                    "description",
+                    "enforcementPoint",
+                    "iconUrl",
+                    "name",
+                    "notes",
+                    "parameters",
+                    "policyId",
+                    "provisioning",
+                    "roleIds",
+                    "tabId",
+                    "updatedAt",
+                    "visible",
+                    "id"
+                ]
+            }
+        },
+        "onelogin:index/getBrands:getBrands": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getBrands.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
                     },
-                    "userprincipalname": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsFilter:getBrandsFilter"
+                        },
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBrands.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsFilter:getBrandsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
                         "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "activatedAt",
-                    "appsId",
-                    "comment",
-                    "company",
+                    "enabled",
+                    "name",
+                    "id"
+                ]
+            }
+        },
+        "onelogin:index/getBrandsApps:getBrandsApps": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getBrandsApps.\n",
+                "properties": {
+                    "authMethod": {
+                        "type": "integer"
+                    },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandsId": {
+                        "type": "string"
+                    },
+                    "connectorId": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsAppsFilter:getBrandsAppsFilter"
+                        },
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "visible": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "brandsId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBrandsApps.\n",
+                "properties": {
+                    "authMethod": {
+                        "type": "integer"
+                    },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandsId": {
+                        "type": "string"
+                    },
+                    "connectorId": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsAppsFilter:getBrandsAppsFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "visible": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "authMethod",
+                    "authMethodDescription",
+                    "brandsId",
+                    "connectorId",
                     "createdAt",
-                    "department",
-                    "directoryId",
-                    "distinguishedName",
-                    "email",
-                    "externalId",
-                    "firstname",
-                    "groupId",
-                    "invalidLoginAttempts",
-                    "invitationSentAt",
-                    "lastLogin",
-                    "lastname",
-                    "lockedUntil",
-                    "managerAdId",
-                    "managerUserId",
-                    "memberOf",
-                    "password",
-                    "passwordAlgorithm",
-                    "passwordChangedAt",
-                    "passwordConfirmation",
-                    "phone",
-                    "preferredLocaleCode",
-                    "roleIds",
-                    "salt",
-                    "samaccountName",
-                    "state",
-                    "status",
-                    "title",
-                    "trustedIdpId",
+                    "description",
+                    "name",
                     "updatedAt",
-                    "username",
-                    "userprincipalname",
+                    "visible",
+                    "id"
+                ]
+            }
+        },
+        "onelogin:index/getBrandsTemplates:getBrandsTemplates": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getBrandsTemplates.\n",
+                "properties": {
+                    "brandsId": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsTemplatesFilter:getBrandsTemplatesFilter"
+                        },
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "brandsId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBrandsTemplates.\n",
+                "properties": {
+                    "brandsId": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:index/getBrandsTemplatesFilter:getBrandsTemplatesFilter"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "brandsId",
+                    "enabled",
+                    "name",
                     "id"
                 ]
             }
