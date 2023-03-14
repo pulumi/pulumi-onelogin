@@ -23,6 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -178,18 +179,29 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	defaults := tfbridge.TokensKnownModules("onelogin_", "", []string{
+	defaults := x.TokensKnownModules("onelogin_", mainMod, []string{
 		"api_",
 		"apps_",
 		"roles_",
 		"rules_",
 		"users_",
-	}, tfbridge.MakeStandardToken("onelogin"))
+	}, x.MakeStandardToken(mainPkg))
 	defaults.Resource = nil
-	err := prov.ComputeDefaults(defaults)
+	err := x.ComputeDefaults(&prov, defaults)
 	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
+
+	for _, r := range prov.Resources {
+		r.Docs = &tfbridge.DocInfo{
+			Markdown: []byte(" "),
+		}
+	}
+	for _, d := range prov.DataSources {
+		d.Docs = &tfbridge.DocInfo{
+			Markdown: []byte(" "),
+		}
+	}
 
 	return prov
 }
