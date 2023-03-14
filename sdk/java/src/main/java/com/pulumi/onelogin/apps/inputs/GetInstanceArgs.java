@@ -5,6 +5,8 @@ package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.apps.inputs.GetInstanceEnforcementPointArgs;
+import com.pulumi.onelogin.apps.inputs.GetInstanceParametersArgs;
 import com.pulumi.onelogin.apps.inputs.GetInstanceProvisioningArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -33,13 +35,6 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.authMethod);
     }
 
-    @Import(name="brandId")
-    private @Nullable Output<Integer> brandId;
-
-    public Optional<Output<Integer>> brandId() {
-        return Optional.ofNullable(this.brandId);
-    }
-
     @Import(name="connectorId")
     private @Nullable Output<Integer> connectorId;
 
@@ -59,6 +54,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="enforcementPoint")
+    private @Nullable Output<GetInstanceEnforcementPointArgs> enforcementPoint;
+
+    public Optional<Output<GetInstanceEnforcementPointArgs>> enforcementPoint() {
+        return Optional.ofNullable(this.enforcementPoint);
     }
 
     @Import(name="iconUrl")
@@ -87,6 +89,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
+    }
+
+    @Import(name="parameters")
+    private @Nullable Output<GetInstanceParametersArgs> parameters;
+
+    public Optional<Output<GetInstanceParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     @Import(name="policyId")
@@ -136,14 +145,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     private GetInstanceArgs(GetInstanceArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
-        this.brandId = $.brandId;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.enforcementPoint = $.enforcementPoint;
         this.iconUrl = $.iconUrl;
         this.id = $.id;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -188,15 +198,6 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
             return authMethod(Output.of(authMethod));
         }
 
-        public Builder brandId(@Nullable Output<Integer> brandId) {
-            $.brandId = brandId;
-            return this;
-        }
-
-        public Builder brandId(Integer brandId) {
-            return brandId(Output.of(brandId));
-        }
-
         public Builder connectorId(@Nullable Output<Integer> connectorId) {
             $.connectorId = connectorId;
             return this;
@@ -222,6 +223,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder enforcementPoint(@Nullable Output<GetInstanceEnforcementPointArgs> enforcementPoint) {
+            $.enforcementPoint = enforcementPoint;
+            return this;
+        }
+
+        public Builder enforcementPoint(GetInstanceEnforcementPointArgs enforcementPoint) {
+            return enforcementPoint(Output.of(enforcementPoint));
         }
 
         public Builder iconUrl(@Nullable Output<String> iconUrl) {
@@ -258,6 +268,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder notes(String notes) {
             return notes(Output.of(notes));
+        }
+
+        public Builder parameters(@Nullable Output<GetInstanceParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(GetInstanceParametersArgs parameters) {
+            return parameters(Output.of(parameters));
         }
 
         public Builder policyId(@Nullable Output<Integer> policyId) {

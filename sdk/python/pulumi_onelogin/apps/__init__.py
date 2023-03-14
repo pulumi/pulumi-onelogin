@@ -12,6 +12,5 @@ from .get_conditions_operators import *
 from .get_conditions_values import *
 from .get_instance import *
 from .get_rules import *
-from .get_users import *
 from ._inputs import *
 from . import outputs

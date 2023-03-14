@@ -5,6 +5,8 @@ package com.pulumi.onelogin;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.inputs.AppEnforcementPointArgs;
+import com.pulumi.onelogin.inputs.AppParametersArgs;
 import com.pulumi.onelogin.inputs.AppProvisioningArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -35,14 +37,16 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An ID indicating the type of app.
+     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      * 
      */
     @Import(name="authMethod")
     private @Nullable Output<Integer> authMethod;
 
     /**
-     * @return An ID indicating the type of app.
+     * @return An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      * 
      */
     public Optional<Output<Integer>> authMethod() {
@@ -50,29 +54,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     * 
-     */
-    @Import(name="brandId")
-    private @Nullable Output<Integer> brandId;
-
-    /**
-     * @return The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     * 
-     */
-    public Optional<Output<Integer>> brandId() {
-        return Optional.ofNullable(this.brandId);
-    }
-
-    /**
-     * ID of the apps underlying connector.
+     * ID of the connector to base the app from.
      * 
      */
     @Import(name="connectorId")
     private @Nullable Output<Integer> connectorId;
 
     /**
-     * @return ID of the apps underlying connector.
+     * @return ID of the connector to base the app from.
      * 
      */
     public Optional<Output<Integer>> connectorId() {
@@ -80,14 +69,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the app was created.
+     * the date the app was created
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The date the app was created.
+     * @return the date the app was created
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -110,14 +99,31 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A link to the apps icon url.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     * 
+     */
+    @Import(name="enforcementPoint")
+    private @Nullable Output<AppEnforcementPointArgs> enforcementPoint;
+
+    /**
+     * @return For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     * 
+     */
+    public Optional<Output<AppEnforcementPointArgs>> enforcementPoint() {
+        return Optional.ofNullable(this.enforcementPoint);
+    }
+
+    /**
+     * A link to the apps icon url
      * 
      */
     @Import(name="iconUrl")
     private @Nullable Output<String> iconUrl;
 
     /**
-     * @return A link to the apps icon url.
+     * @return A link to the apps icon url
      * 
      */
     public Optional<Output<String>> iconUrl() {
@@ -125,14 +131,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * App name.
+     * The name of the app.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return App name.
+     * @return The name of the app.
      * 
      */
     public Optional<Output<String>> name() {
@@ -155,6 +161,25 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<AppParametersArgs> parameters;
+
+    /**
+     * @return The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     * 
+     */
+    public Optional<Output<AppParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * The security policy assigned to the app.
      * 
      */
@@ -169,22 +194,32 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.policyId);
     }
 
+    /**
+     * Indicates if provisioning is enabled for this app.
+     * 
+     */
     @Import(name="provisioning")
     private @Nullable Output<AppProvisioningArgs> provisioning;
 
+    /**
+     * @return Indicates if provisioning is enabled for this app.
+     * 
+     */
     public Optional<Output<AppProvisioningArgs>> provisioning() {
         return Optional.ofNullable(this.provisioning);
     }
 
     /**
-     * A list of OneLogin Role IDs of the user
+     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      * 
      */
     @Import(name="roleIds")
     private @Nullable Output<List<Integer>> roleIds;
 
     /**
-     * @return A list of OneLogin Role IDs of the user
+     * @return List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      * 
      */
     public Optional<Output<List<Integer>>> roleIds() {
@@ -207,14 +242,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the app was last updated.
+     * the date the app was last updated
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The date the app was last updated.
+     * @return the date the app was last updated
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -241,13 +276,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     private AppArgs(AppArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
-        this.brandId = $.brandId;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.enforcementPoint = $.enforcementPoint;
         this.iconUrl = $.iconUrl;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -296,7 +332,8 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod An ID indicating the type of app.
+         * @param authMethod An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+         * WSFED - 8: OpenId Connect
          * 
          * @return builder
          * 
@@ -307,7 +344,8 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod An ID indicating the type of app.
+         * @param authMethod An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+         * WSFED - 8: OpenId Connect
          * 
          * @return builder
          * 
@@ -317,28 +355,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param brandId The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder brandId(@Nullable Output<Integer> brandId) {
-            $.brandId = brandId;
-            return this;
-        }
-
-        /**
-         * @param brandId The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder brandId(Integer brandId) {
-            return brandId(Output.of(brandId));
-        }
-
-        /**
-         * @param connectorId ID of the apps underlying connector.
+         * @param connectorId ID of the connector to base the app from.
          * 
          * @return builder
          * 
@@ -349,7 +366,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorId ID of the apps underlying connector.
+         * @param connectorId ID of the connector to base the app from.
          * 
          * @return builder
          * 
@@ -359,7 +376,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the app was created.
+         * @param createdAt the date the app was created
          * 
          * @return builder
          * 
@@ -370,7 +387,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the app was created.
+         * @param createdAt the date the app was created
          * 
          * @return builder
          * 
@@ -401,7 +418,30 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iconUrl A link to the apps icon url.
+         * @param enforcementPoint For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+         * with the app payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforcementPoint(@Nullable Output<AppEnforcementPointArgs> enforcementPoint) {
+            $.enforcementPoint = enforcementPoint;
+            return this;
+        }
+
+        /**
+         * @param enforcementPoint For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+         * with the app payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforcementPoint(AppEnforcementPointArgs enforcementPoint) {
+            return enforcementPoint(Output.of(enforcementPoint));
+        }
+
+        /**
+         * @param iconUrl A link to the apps icon url
          * 
          * @return builder
          * 
@@ -412,7 +452,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iconUrl A link to the apps icon url.
+         * @param iconUrl A link to the apps icon url
          * 
          * @return builder
          * 
@@ -422,7 +462,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name App name.
+         * @param name The name of the app.
          * 
          * @return builder
          * 
@@ -433,7 +473,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name App name.
+         * @param name The name of the app.
          * 
          * @return builder
          * 
@@ -464,6 +504,31 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param parameters The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+         * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+         * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<AppParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+         * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+         * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(AppParametersArgs parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
          * @param policyId The security policy assigned to the app.
          * 
          * @return builder
@@ -484,17 +549,30 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return policyId(Output.of(policyId));
         }
 
+        /**
+         * @param provisioning Indicates if provisioning is enabled for this app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioning(@Nullable Output<AppProvisioningArgs> provisioning) {
             $.provisioning = provisioning;
             return this;
         }
 
+        /**
+         * @param provisioning Indicates if provisioning is enabled for this app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioning(AppProvisioningArgs provisioning) {
             return provisioning(Output.of(provisioning));
         }
 
         /**
-         * @param roleIds A list of OneLogin Role IDs of the user
+         * @param roleIds List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+         * provided.
          * 
          * @return builder
          * 
@@ -505,7 +583,8 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleIds A list of OneLogin Role IDs of the user
+         * @param roleIds List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+         * provided.
          * 
          * @return builder
          * 
@@ -515,7 +594,8 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleIds A list of OneLogin Role IDs of the user
+         * @param roleIds List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+         * provided.
          * 
          * @return builder
          * 
@@ -546,7 +626,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the app was last updated.
+         * @param updatedAt the date the app was last updated
          * 
          * @return builder
          * 
@@ -557,7 +637,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the app was last updated.
+         * @param updatedAt the date the app was last updated
          * 
          * @return builder
          * 

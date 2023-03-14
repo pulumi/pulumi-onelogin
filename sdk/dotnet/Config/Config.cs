@@ -32,20 +32,6 @@ namespace Pulumi.Onelogin
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("onelogin");
 
-        private static readonly __Value<string?> _authorization = new __Value<string?>(() => __config.Get("authorization"));
-        public static string? Authorization
-        {
-            get => _authorization.Get();
-            set => _authorization.Set(value);
-        }
-
-        private static readonly __Value<string?> _bearerAuth = new __Value<string?>(() => __config.Get("bearerAuth"));
-        public static string? BearerAuth
-        {
-            get => _bearerAuth.Get();
-            set => _bearerAuth.Set(value);
-        }
-
         private static readonly __Value<string?> _contentType = new __Value<string?>(() => __config.Get("contentType"));
         public static string? ContentType
         {

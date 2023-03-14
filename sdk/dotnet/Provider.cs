@@ -18,12 +18,6 @@ namespace Pulumi.Onelogin
     [OneloginResourceType("pulumi:providers:onelogin")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
-        [Output("authorization")]
-        public Output<string?> Authorization { get; private set; } = null!;
-
-        [Output("bearerAuth")]
-        public Output<string?> BearerAuth { get; private set; } = null!;
-
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
 
@@ -55,12 +49,6 @@ namespace Pulumi.Onelogin
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authorization")]
-        public Input<string>? Authorization { get; set; }
-
-        [Input("bearerAuth")]
-        public Input<string>? BearerAuth { get; set; }
-
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 

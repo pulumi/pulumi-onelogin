@@ -39,8 +39,3 @@ export const getRules: typeof import("./getRules").getRules = null as any;
 export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
 
-export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
-export const getUsers: typeof import("./getUsers").getUsers = null as any;
-export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
-utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
-

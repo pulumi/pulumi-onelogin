@@ -5,8 +5,114 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AppEnforcementPoint {
+    caseSensitive?: boolean;
+    conditions?: string;
+    contextRoot?: string;
+    landingPage?: string;
+    permissions?: string;
+    requireSitewideAuthentication?: boolean;
+    resources?: outputs.AppEnforcementPointResource[];
+    sessionExpiryFixed?: outputs.AppEnforcementPointSessionExpiryFixed;
+    sessionExpiryInactivity?: outputs.AppEnforcementPointSessionExpiryInactivity;
+    target?: string;
+    token: string;
+    useTargetHostHeader?: boolean;
+    vhost?: string;
+}
+
+export interface AppEnforcementPointResource {
+    conditions?: string;
+    isPathRegex?: boolean;
+    path?: string;
+    permission?: string;
+    requireAuth?: boolean;
+}
+
+export interface AppEnforcementPointSessionExpiryFixed {
+    unit?: number;
+    value?: number;
+}
+
+export interface AppEnforcementPointSessionExpiryInactivity {
+    unit?: number;
+    value?: number;
+}
+
+export interface AppParameters {
+    includeInSamlAssertion?: boolean;
+    label?: string;
+    userAttributeMacros?: string;
+    userAttributeMappings?: string;
+}
+
 export interface AppProvisioning {
     enabled?: boolean;
+}
+
+export interface GetAppsEnforcementPoint {
+    caseSensitive: boolean;
+    conditions: string;
+    contextRoot: string;
+    landingPage: string;
+    permissions: string;
+    requireSitewideAuthentication: boolean;
+    resources: outputs.GetAppsEnforcementPointResource[];
+    sessionExpiryFixed: outputs.GetAppsEnforcementPointSessionExpiryFixed;
+    sessionExpiryInactivity: outputs.GetAppsEnforcementPointSessionExpiryInactivity;
+    target: string;
+    token: string;
+    useTargetHostHeader: boolean;
+    vhost: string;
+}
+
+export interface GetAppsEnforcementPointResource {
+    conditions: string;
+    isPathRegex: boolean;
+    path: string;
+    permission: string;
+    requireAuth: boolean;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryFixed {
+    unit: number;
+    value: number;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryInactivity {
+    unit: number;
+    value: number;
+}
+
+export interface GetAppsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetAppsParameters {
+    includeInSamlAssertion: boolean;
+    label: string;
+    userAttributeMacros: string;
+    userAttributeMappings: string;
+}
+
+export interface GetAppsProvisioning {
+    enabled: boolean;
+}
+
+export interface GetBrandsAppsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetBrandsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetBrandsTemplatesFilter {
+    name: string;
+    values: string[];
 }
 
 export interface GetMappingsAction {
@@ -104,6 +210,47 @@ export namespace apps {
         values: string[];
     }
 
+    export interface GetInstanceEnforcementPoint {
+        caseSensitive: boolean;
+        conditions: string;
+        contextRoot: string;
+        landingPage: string;
+        permissions: string;
+        requireSitewideAuthentication: boolean;
+        resources: outputs.apps.GetInstanceEnforcementPointResource[];
+        sessionExpiryFixed: outputs.apps.GetInstanceEnforcementPointSessionExpiryFixed;
+        sessionExpiryInactivity: outputs.apps.GetInstanceEnforcementPointSessionExpiryInactivity;
+        target: string;
+        token: string;
+        useTargetHostHeader: boolean;
+        vhost: string;
+    }
+
+    export interface GetInstanceEnforcementPointResource {
+        conditions: string;
+        isPathRegex: boolean;
+        path: string;
+        permission: string;
+        requireAuth: boolean;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryFixed {
+        unit: number;
+        value: number;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryInactivity {
+        unit: number;
+        value: number;
+    }
+
+    export interface GetInstanceParameters {
+        includeInSamlAssertion: boolean;
+        label: string;
+        userAttributeMacros: string;
+        userAttributeMappings: string;
+    }
+
     export interface GetInstanceProvisioning {
         enabled: boolean;
     }
@@ -120,11 +267,6 @@ export namespace apps {
     }
 
     export interface GetRulesFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetUsersFilter {
         name: string;
         values: string[];
     }

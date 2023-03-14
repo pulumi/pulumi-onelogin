@@ -8,15 +8,87 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.onelogin.Utilities;
+import com.pulumi.onelogin.inputs.GetAppsArgs;
+import com.pulumi.onelogin.inputs.GetAppsPlainArgs;
+import com.pulumi.onelogin.inputs.GetBrandsAppsArgs;
+import com.pulumi.onelogin.inputs.GetBrandsAppsPlainArgs;
+import com.pulumi.onelogin.inputs.GetBrandsArgs;
+import com.pulumi.onelogin.inputs.GetBrandsPlainArgs;
+import com.pulumi.onelogin.inputs.GetBrandsTemplatesArgs;
+import com.pulumi.onelogin.inputs.GetBrandsTemplatesPlainArgs;
 import com.pulumi.onelogin.inputs.GetMappingsArgs;
 import com.pulumi.onelogin.inputs.GetMappingsPlainArgs;
 import com.pulumi.onelogin.inputs.GetPrivilegesArgs;
 import com.pulumi.onelogin.inputs.GetPrivilegesPlainArgs;
+import com.pulumi.onelogin.outputs.GetAppsResult;
+import com.pulumi.onelogin.outputs.GetBrandsAppsResult;
+import com.pulumi.onelogin.outputs.GetBrandsResult;
+import com.pulumi.onelogin.outputs.GetBrandsTemplatesResult;
 import com.pulumi.onelogin.outputs.GetMappingsResult;
 import com.pulumi.onelogin.outputs.GetPrivilegesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class OneloginFunctions {
+    public static Output<GetAppsResult> getApps() {
+        return getApps(GetAppsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAppsResult> getAppsPlain() {
+        return getAppsPlain(GetAppsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetAppsResult> getApps(GetAppsArgs args) {
+        return getApps(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args) {
+        return getAppsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetBrandsResult> getBrands() {
+        return getBrands(GetBrandsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBrandsResult> getBrandsPlain() {
+        return getBrandsPlain(GetBrandsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetBrandsResult> getBrands(GetBrandsArgs args) {
+        return getBrands(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBrandsResult> getBrandsPlain(GetBrandsPlainArgs args) {
+        return getBrandsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBrandsResult> getBrands(GetBrandsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getBrands:getBrands", TypeShape.of(GetBrandsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBrandsResult> getBrandsPlain(GetBrandsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:index/getBrands:getBrands", TypeShape.of(GetBrandsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetBrandsAppsResult> getBrandsApps(GetBrandsAppsArgs args) {
+        return getBrandsApps(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBrandsAppsResult> getBrandsAppsPlain(GetBrandsAppsPlainArgs args) {
+        return getBrandsAppsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBrandsAppsResult> getBrandsApps(GetBrandsAppsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getBrandsApps:getBrandsApps", TypeShape.of(GetBrandsAppsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBrandsAppsResult> getBrandsAppsPlain(GetBrandsAppsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:index/getBrandsApps:getBrandsApps", TypeShape.of(GetBrandsAppsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetBrandsTemplatesResult> getBrandsTemplates(GetBrandsTemplatesArgs args) {
+        return getBrandsTemplates(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBrandsTemplatesResult> getBrandsTemplatesPlain(GetBrandsTemplatesPlainArgs args) {
+        return getBrandsTemplatesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBrandsTemplatesResult> getBrandsTemplates(GetBrandsTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getBrandsTemplates:getBrandsTemplates", TypeShape.of(GetBrandsTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBrandsTemplatesResult> getBrandsTemplatesPlain(GetBrandsTemplatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:index/getBrandsTemplates:getBrandsTemplates", TypeShape.of(GetBrandsTemplatesResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetMappingsResult> getMappings() {
         return getMappings(GetMappingsArgs.Empty, InvokeOptions.Empty);
     }

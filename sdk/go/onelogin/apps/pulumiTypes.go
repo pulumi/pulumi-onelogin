@@ -510,6 +510,915 @@ func (o GetConditionsValuesFilterArrayOutput) Index(i pulumi.IntInput) GetCondit
 	}).(GetConditionsValuesFilterOutput)
 }
 
+type GetInstanceEnforcementPoint struct {
+	CaseSensitive                 bool                                               `pulumi:"caseSensitive"`
+	Conditions                    string                                             `pulumi:"conditions"`
+	ContextRoot                   string                                             `pulumi:"contextRoot"`
+	LandingPage                   string                                             `pulumi:"landingPage"`
+	Permissions                   string                                             `pulumi:"permissions"`
+	RequireSitewideAuthentication bool                                               `pulumi:"requireSitewideAuthentication"`
+	Resources                     []GetInstanceEnforcementPointResource              `pulumi:"resources"`
+	SessionExpiryFixed            GetInstanceEnforcementPointSessionExpiryFixed      `pulumi:"sessionExpiryFixed"`
+	SessionExpiryInactivity       GetInstanceEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
+	Target                        string                                             `pulumi:"target"`
+	Token                         string                                             `pulumi:"token"`
+	UseTargetHostHeader           bool                                               `pulumi:"useTargetHostHeader"`
+	Vhost                         string                                             `pulumi:"vhost"`
+}
+
+// GetInstanceEnforcementPointInput is an input type that accepts GetInstanceEnforcementPointArgs and GetInstanceEnforcementPointOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointInput` via:
+//
+//	GetInstanceEnforcementPointArgs{...}
+type GetInstanceEnforcementPointInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointOutput() GetInstanceEnforcementPointOutput
+	ToGetInstanceEnforcementPointOutputWithContext(context.Context) GetInstanceEnforcementPointOutput
+}
+
+type GetInstanceEnforcementPointArgs struct {
+	CaseSensitive                 pulumi.BoolInput                                        `pulumi:"caseSensitive"`
+	Conditions                    pulumi.StringInput                                      `pulumi:"conditions"`
+	ContextRoot                   pulumi.StringInput                                      `pulumi:"contextRoot"`
+	LandingPage                   pulumi.StringInput                                      `pulumi:"landingPage"`
+	Permissions                   pulumi.StringInput                                      `pulumi:"permissions"`
+	RequireSitewideAuthentication pulumi.BoolInput                                        `pulumi:"requireSitewideAuthentication"`
+	Resources                     GetInstanceEnforcementPointResourceArrayInput           `pulumi:"resources"`
+	SessionExpiryFixed            GetInstanceEnforcementPointSessionExpiryFixedInput      `pulumi:"sessionExpiryFixed"`
+	SessionExpiryInactivity       GetInstanceEnforcementPointSessionExpiryInactivityInput `pulumi:"sessionExpiryInactivity"`
+	Target                        pulumi.StringInput                                      `pulumi:"target"`
+	Token                         pulumi.StringInput                                      `pulumi:"token"`
+	UseTargetHostHeader           pulumi.BoolInput                                        `pulumi:"useTargetHostHeader"`
+	Vhost                         pulumi.StringInput                                      `pulumi:"vhost"`
+}
+
+func (GetInstanceEnforcementPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPoint)(nil)).Elem()
+}
+
+func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointOutput() GetInstanceEnforcementPointOutput {
+	return i.ToGetInstanceEnforcementPointOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointOutputWithContext(ctx context.Context) GetInstanceEnforcementPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointOutput)
+}
+
+func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput {
+	return i.ToGetInstanceEnforcementPointPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointOutput).ToGetInstanceEnforcementPointPtrOutputWithContext(ctx)
+}
+
+// GetInstanceEnforcementPointPtrInput is an input type that accepts GetInstanceEnforcementPointArgs, GetInstanceEnforcementPointPtr and GetInstanceEnforcementPointPtrOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointPtrInput` via:
+//
+//	        GetInstanceEnforcementPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstanceEnforcementPointPtrInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput
+	ToGetInstanceEnforcementPointPtrOutputWithContext(context.Context) GetInstanceEnforcementPointPtrOutput
+}
+
+type getInstanceEnforcementPointPtrType GetInstanceEnforcementPointArgs
+
+func GetInstanceEnforcementPointPtr(v *GetInstanceEnforcementPointArgs) GetInstanceEnforcementPointPtrInput {
+	return (*getInstanceEnforcementPointPtrType)(v)
+}
+
+func (*getInstanceEnforcementPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPoint)(nil)).Elem()
+}
+
+func (i *getInstanceEnforcementPointPtrType) ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput {
+	return i.ToGetInstanceEnforcementPointPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstanceEnforcementPointPtrType) ToGetInstanceEnforcementPointPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointPtrOutput)
+}
+
+type GetInstanceEnforcementPointOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPoint)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointOutput) ToGetInstanceEnforcementPointOutput() GetInstanceEnforcementPointOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointOutput) ToGetInstanceEnforcementPointOutputWithContext(ctx context.Context) GetInstanceEnforcementPointOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointOutput) ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput {
+	return o.ToGetInstanceEnforcementPointPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstanceEnforcementPointOutput) ToGetInstanceEnforcementPointPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceEnforcementPoint) *GetInstanceEnforcementPoint {
+		return &v
+	}).(GetInstanceEnforcementPointPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Conditions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.Conditions }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) ContextRoot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.ContextRoot }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) LandingPage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.LandingPage }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) RequireSitewideAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) bool { return v.RequireSitewideAuthentication }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Resources() GetInstanceEnforcementPointResourceArrayOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) []GetInstanceEnforcementPointResource { return v.Resources }).(GetInstanceEnforcementPointResourceArrayOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) SessionExpiryFixed() GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) GetInstanceEnforcementPointSessionExpiryFixed {
+		return v.SessionExpiryFixed
+	}).(GetInstanceEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) SessionExpiryInactivity() GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) GetInstanceEnforcementPointSessionExpiryInactivity {
+		return v.SessionExpiryInactivity
+	}).(GetInstanceEnforcementPointSessionExpiryInactivityOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.Token }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) UseTargetHostHeader() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) bool { return v.UseTargetHostHeader }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) Vhost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPoint) string { return v.Vhost }).(pulumi.StringOutput)
+}
+
+type GetInstanceEnforcementPointPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPoint)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) ToGetInstanceEnforcementPointPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Elem() GetInstanceEnforcementPointOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) GetInstanceEnforcementPoint {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstanceEnforcementPoint
+		return ret
+	}).(GetInstanceEnforcementPointOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Conditions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContextRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LandingPage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RequireSitewideAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Resources() GetInstanceEnforcementPointResourceArrayOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) []GetInstanceEnforcementPointResource {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(GetInstanceEnforcementPointResourceArrayOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) SessionExpiryFixed() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *GetInstanceEnforcementPointSessionExpiryFixed {
+		if v == nil {
+			return nil
+		}
+		return &v.SessionExpiryFixed
+	}).(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) SessionExpiryInactivity() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *GetInstanceEnforcementPointSessionExpiryInactivity {
+		if v == nil {
+			return nil
+		}
+		return &v.SessionExpiryInactivity
+	}).(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseTargetHostHeader
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Vhost
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstanceEnforcementPointResource struct {
+	Conditions  string `pulumi:"conditions"`
+	IsPathRegex bool   `pulumi:"isPathRegex"`
+	Path        string `pulumi:"path"`
+	Permission  string `pulumi:"permission"`
+	RequireAuth bool   `pulumi:"requireAuth"`
+}
+
+// GetInstanceEnforcementPointResourceInput is an input type that accepts GetInstanceEnforcementPointResourceArgs and GetInstanceEnforcementPointResourceOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointResourceInput` via:
+//
+//	GetInstanceEnforcementPointResourceArgs{...}
+type GetInstanceEnforcementPointResourceInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointResourceOutput() GetInstanceEnforcementPointResourceOutput
+	ToGetInstanceEnforcementPointResourceOutputWithContext(context.Context) GetInstanceEnforcementPointResourceOutput
+}
+
+type GetInstanceEnforcementPointResourceArgs struct {
+	Conditions  pulumi.StringInput `pulumi:"conditions"`
+	IsPathRegex pulumi.BoolInput   `pulumi:"isPathRegex"`
+	Path        pulumi.StringInput `pulumi:"path"`
+	Permission  pulumi.StringInput `pulumi:"permission"`
+	RequireAuth pulumi.BoolInput   `pulumi:"requireAuth"`
+}
+
+func (GetInstanceEnforcementPointResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointResource)(nil)).Elem()
+}
+
+func (i GetInstanceEnforcementPointResourceArgs) ToGetInstanceEnforcementPointResourceOutput() GetInstanceEnforcementPointResourceOutput {
+	return i.ToGetInstanceEnforcementPointResourceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointResourceArgs) ToGetInstanceEnforcementPointResourceOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointResourceOutput)
+}
+
+// GetInstanceEnforcementPointResourceArrayInput is an input type that accepts GetInstanceEnforcementPointResourceArray and GetInstanceEnforcementPointResourceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointResourceArrayInput` via:
+//
+//	GetInstanceEnforcementPointResourceArray{ GetInstanceEnforcementPointResourceArgs{...} }
+type GetInstanceEnforcementPointResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointResourceArrayOutput() GetInstanceEnforcementPointResourceArrayOutput
+	ToGetInstanceEnforcementPointResourceArrayOutputWithContext(context.Context) GetInstanceEnforcementPointResourceArrayOutput
+}
+
+type GetInstanceEnforcementPointResourceArray []GetInstanceEnforcementPointResourceInput
+
+func (GetInstanceEnforcementPointResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEnforcementPointResource)(nil)).Elem()
+}
+
+func (i GetInstanceEnforcementPointResourceArray) ToGetInstanceEnforcementPointResourceArrayOutput() GetInstanceEnforcementPointResourceArrayOutput {
+	return i.ToGetInstanceEnforcementPointResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointResourceArray) ToGetInstanceEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointResourceArrayOutput)
+}
+
+type GetInstanceEnforcementPointResourceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointResource)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) ToGetInstanceEnforcementPointResourceOutput() GetInstanceEnforcementPointResourceOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) ToGetInstanceEnforcementPointResourceOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) Conditions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointResource) string { return v.Conditions }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) IsPathRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointResource) bool { return v.IsPathRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointResource) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointResource) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) RequireAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointResource) bool { return v.RequireAuth }).(pulumi.BoolOutput)
+}
+
+type GetInstanceEnforcementPointResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceEnforcementPointResource)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointResourceArrayOutput) ToGetInstanceEnforcementPointResourceArrayOutput() GetInstanceEnforcementPointResourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointResourceArrayOutput) ToGetInstanceEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) GetInstanceEnforcementPointResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEnforcementPointResource {
+		return vs[0].([]GetInstanceEnforcementPointResource)[vs[1].(int)]
+	}).(GetInstanceEnforcementPointResourceOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryFixed struct {
+	Unit  int `pulumi:"unit"`
+	Value int `pulumi:"value"`
+}
+
+// GetInstanceEnforcementPointSessionExpiryFixedInput is an input type that accepts GetInstanceEnforcementPointSessionExpiryFixedArgs and GetInstanceEnforcementPointSessionExpiryFixedOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointSessionExpiryFixedInput` via:
+//
+//	GetInstanceEnforcementPointSessionExpiryFixedArgs{...}
+type GetInstanceEnforcementPointSessionExpiryFixedInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointSessionExpiryFixedOutput() GetInstanceEnforcementPointSessionExpiryFixedOutput
+	ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(context.Context) GetInstanceEnforcementPointSessionExpiryFixedOutput
+}
+
+type GetInstanceEnforcementPointSessionExpiryFixedArgs struct {
+	Unit  pulumi.IntInput `pulumi:"unit"`
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (GetInstanceEnforcementPointSessionExpiryFixedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryFixed)(nil)).Elem()
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedOutput() GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryFixedOutput).ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx)
+}
+
+// GetInstanceEnforcementPointSessionExpiryFixedPtrInput is an input type that accepts GetInstanceEnforcementPointSessionExpiryFixedArgs, GetInstanceEnforcementPointSessionExpiryFixedPtr and GetInstanceEnforcementPointSessionExpiryFixedPtrOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointSessionExpiryFixedPtrInput` via:
+//
+//	        GetInstanceEnforcementPointSessionExpiryFixedArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstanceEnforcementPointSessionExpiryFixedPtrInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput
+	ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput
+}
+
+type getInstanceEnforcementPointSessionExpiryFixedPtrType GetInstanceEnforcementPointSessionExpiryFixedArgs
+
+func GetInstanceEnforcementPointSessionExpiryFixedPtr(v *GetInstanceEnforcementPointSessionExpiryFixedArgs) GetInstanceEnforcementPointSessionExpiryFixedPtrInput {
+	return (*getInstanceEnforcementPointSessionExpiryFixedPtrType)(v)
+}
+
+func (*getInstanceEnforcementPointSessionExpiryFixedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPointSessionExpiryFixed)(nil)).Elem()
+}
+
+func (i *getInstanceEnforcementPointSessionExpiryFixedPtrType) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstanceEnforcementPointSessionExpiryFixedPtrType) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryFixed)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToGetInstanceEnforcementPointSessionExpiryFixedOutput() GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return o.ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceEnforcementPointSessionExpiryFixed) *GetInstanceEnforcementPointSessionExpiryFixed {
+		return &v
+	}).(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryFixed) int { return v.Unit }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryFixed) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryFixedPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPointSessionExpiryFixed)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) Elem() GetInstanceEnforcementPointSessionExpiryFixedOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryFixed) GetInstanceEnforcementPointSessionExpiryFixed {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstanceEnforcementPointSessionExpiryFixed
+		return ret
+	}).(GetInstanceEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) Unit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryFixed) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryFixed) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryInactivity struct {
+	Unit  int `pulumi:"unit"`
+	Value int `pulumi:"value"`
+}
+
+// GetInstanceEnforcementPointSessionExpiryInactivityInput is an input type that accepts GetInstanceEnforcementPointSessionExpiryInactivityArgs and GetInstanceEnforcementPointSessionExpiryInactivityOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointSessionExpiryInactivityInput` via:
+//
+//	GetInstanceEnforcementPointSessionExpiryInactivityArgs{...}
+type GetInstanceEnforcementPointSessionExpiryInactivityInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointSessionExpiryInactivityOutput() GetInstanceEnforcementPointSessionExpiryInactivityOutput
+	ToGetInstanceEnforcementPointSessionExpiryInactivityOutputWithContext(context.Context) GetInstanceEnforcementPointSessionExpiryInactivityOutput
+}
+
+type GetInstanceEnforcementPointSessionExpiryInactivityArgs struct {
+	Unit  pulumi.IntInput `pulumi:"unit"`
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (GetInstanceEnforcementPointSessionExpiryInactivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivity)(nil)).Elem()
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnforcementPointSessionExpiryInactivityOutput() GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryInactivityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryInactivityOutput)
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryInactivityOutput).ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx)
+}
+
+// GetInstanceEnforcementPointSessionExpiryInactivityPtrInput is an input type that accepts GetInstanceEnforcementPointSessionExpiryInactivityArgs, GetInstanceEnforcementPointSessionExpiryInactivityPtr and GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput values.
+// You can construct a concrete instance of `GetInstanceEnforcementPointSessionExpiryInactivityPtrInput` via:
+//
+//	        GetInstanceEnforcementPointSessionExpiryInactivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstanceEnforcementPointSessionExpiryInactivityPtrInput interface {
+	pulumi.Input
+
+	ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput
+	ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput
+}
+
+type getInstanceEnforcementPointSessionExpiryInactivityPtrType GetInstanceEnforcementPointSessionExpiryInactivityArgs
+
+func GetInstanceEnforcementPointSessionExpiryInactivityPtr(v *GetInstanceEnforcementPointSessionExpiryInactivityArgs) GetInstanceEnforcementPointSessionExpiryInactivityPtrInput {
+	return (*getInstanceEnforcementPointSessionExpiryInactivityPtrType)(v)
+}
+
+func (*getInstanceEnforcementPointSessionExpiryInactivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPointSessionExpiryInactivity)(nil)).Elem()
+}
+
+func (i *getInstanceEnforcementPointSessionExpiryInactivityPtrType) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return i.ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstanceEnforcementPointSessionExpiryInactivityPtrType) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivity)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityOutput() GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return o.ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceEnforcementPointSessionExpiryInactivity) *GetInstanceEnforcementPointSessionExpiryInactivity {
+		return &v
+	}).(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryInactivity) int { return v.Unit }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryInactivity) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceEnforcementPointSessionExpiryInactivity)(nil)).Elem()
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
+	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) Elem() GetInstanceEnforcementPointSessionExpiryInactivityOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryInactivity) GetInstanceEnforcementPointSessionExpiryInactivity {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstanceEnforcementPointSessionExpiryInactivity
+		return ret
+	}).(GetInstanceEnforcementPointSessionExpiryInactivityOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) Unit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryInactivity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceEnforcementPointSessionExpiryInactivity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetInstanceParameters struct {
+	IncludeInSamlAssertion bool   `pulumi:"includeInSamlAssertion"`
+	Label                  string `pulumi:"label"`
+	UserAttributeMacros    string `pulumi:"userAttributeMacros"`
+	UserAttributeMappings  string `pulumi:"userAttributeMappings"`
+}
+
+// GetInstanceParametersInput is an input type that accepts GetInstanceParametersArgs and GetInstanceParametersOutput values.
+// You can construct a concrete instance of `GetInstanceParametersInput` via:
+//
+//	GetInstanceParametersArgs{...}
+type GetInstanceParametersInput interface {
+	pulumi.Input
+
+	ToGetInstanceParametersOutput() GetInstanceParametersOutput
+	ToGetInstanceParametersOutputWithContext(context.Context) GetInstanceParametersOutput
+}
+
+type GetInstanceParametersArgs struct {
+	IncludeInSamlAssertion pulumi.BoolInput   `pulumi:"includeInSamlAssertion"`
+	Label                  pulumi.StringInput `pulumi:"label"`
+	UserAttributeMacros    pulumi.StringInput `pulumi:"userAttributeMacros"`
+	UserAttributeMappings  pulumi.StringInput `pulumi:"userAttributeMappings"`
+}
+
+func (GetInstanceParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceParameters)(nil)).Elem()
+}
+
+func (i GetInstanceParametersArgs) ToGetInstanceParametersOutput() GetInstanceParametersOutput {
+	return i.ToGetInstanceParametersOutputWithContext(context.Background())
+}
+
+func (i GetInstanceParametersArgs) ToGetInstanceParametersOutputWithContext(ctx context.Context) GetInstanceParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersOutput)
+}
+
+func (i GetInstanceParametersArgs) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
+	return i.ToGetInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstanceParametersArgs) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersOutput).ToGetInstanceParametersPtrOutputWithContext(ctx)
+}
+
+// GetInstanceParametersPtrInput is an input type that accepts GetInstanceParametersArgs, GetInstanceParametersPtr and GetInstanceParametersPtrOutput values.
+// You can construct a concrete instance of `GetInstanceParametersPtrInput` via:
+//
+//	        GetInstanceParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstanceParametersPtrInput interface {
+	pulumi.Input
+
+	ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput
+	ToGetInstanceParametersPtrOutputWithContext(context.Context) GetInstanceParametersPtrOutput
+}
+
+type getInstanceParametersPtrType GetInstanceParametersArgs
+
+func GetInstanceParametersPtr(v *GetInstanceParametersArgs) GetInstanceParametersPtrInput {
+	return (*getInstanceParametersPtrType)(v)
+}
+
+func (*getInstanceParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceParameters)(nil)).Elem()
+}
+
+func (i *getInstanceParametersPtrType) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
+	return i.ToGetInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *getInstanceParametersPtrType) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersPtrOutput)
+}
+
+type GetInstanceParametersOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceParameters)(nil)).Elem()
+}
+
+func (o GetInstanceParametersOutput) ToGetInstanceParametersOutput() GetInstanceParametersOutput {
+	return o
+}
+
+func (o GetInstanceParametersOutput) ToGetInstanceParametersOutputWithContext(ctx context.Context) GetInstanceParametersOutput {
+	return o
+}
+
+func (o GetInstanceParametersOutput) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
+	return o.ToGetInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (o GetInstanceParametersOutput) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceParameters) *GetInstanceParameters {
+		return &v
+	}).(GetInstanceParametersPtrOutput)
+}
+
+func (o GetInstanceParametersOutput) IncludeInSamlAssertion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceParameters) bool { return v.IncludeInSamlAssertion }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceParametersOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceParameters) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceParametersOutput) UserAttributeMacros() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceParameters) string { return v.UserAttributeMacros }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceParametersOutput) UserAttributeMappings() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceParameters) string { return v.UserAttributeMappings }).(pulumi.StringOutput)
+}
+
+type GetInstanceParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceParameters)(nil)).Elem()
+}
+
+func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
+	return o
+}
+
+func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
+	return o
+}
+
+func (o GetInstanceParametersPtrOutput) Elem() GetInstanceParametersOutput {
+	return o.ApplyT(func(v *GetInstanceParameters) GetInstanceParameters {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstanceParameters
+		return ret
+	}).(GetInstanceParametersOutput)
+}
+
+func (o GetInstanceParametersPtrOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetInstanceParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncludeInSamlAssertion
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstanceParametersPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceParametersPtrOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserAttributeMacros
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceParametersPtrOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserAttributeMappings
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetInstanceProvisioning struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -949,106 +1858,6 @@ func (o GetRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRulesFilterOutput
 	}).(GetRulesFilterOutput)
 }
 
-type GetUsersFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetUsersFilterInput is an input type that accepts GetUsersFilterArgs and GetUsersFilterOutput values.
-// You can construct a concrete instance of `GetUsersFilterInput` via:
-//
-//	GetUsersFilterArgs{...}
-type GetUsersFilterInput interface {
-	pulumi.Input
-
-	ToGetUsersFilterOutput() GetUsersFilterOutput
-	ToGetUsersFilterOutputWithContext(context.Context) GetUsersFilterOutput
-}
-
-type GetUsersFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetUsersFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
-}
-
-func (i GetUsersFilterArgs) ToGetUsersFilterOutput() GetUsersFilterOutput {
-	return i.ToGetUsersFilterOutputWithContext(context.Background())
-}
-
-func (i GetUsersFilterArgs) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterOutput)
-}
-
-// GetUsersFilterArrayInput is an input type that accepts GetUsersFilterArray and GetUsersFilterArrayOutput values.
-// You can construct a concrete instance of `GetUsersFilterArrayInput` via:
-//
-//	GetUsersFilterArray{ GetUsersFilterArgs{...} }
-type GetUsersFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput
-	ToGetUsersFilterArrayOutputWithContext(context.Context) GetUsersFilterArrayOutput
-}
-
-type GetUsersFilterArray []GetUsersFilterInput
-
-func (GetUsersFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
-}
-
-func (i GetUsersFilterArray) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
-	return i.ToGetUsersFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetUsersFilterArray) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterArrayOutput)
-}
-
-type GetUsersFilterOutput struct{ *pulumi.OutputState }
-
-func (GetUsersFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
-}
-
-func (o GetUsersFilterOutput) ToGetUsersFilterOutput() GetUsersFilterOutput {
-	return o
-}
-
-func (o GetUsersFilterOutput) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
-	return o
-}
-
-func (o GetUsersFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetUsersFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetUsersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetUsersFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUsersFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
-}
-
-func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
-	return o
-}
-
-func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
-	return o
-}
-
-func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersFilter {
-		return vs[0].([]GetUsersFilter)[vs[1].(int)]
-	}).(GetUsersFilterOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionsFilterInput)(nil)).Elem(), GetActionsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionsFilterArrayInput)(nil)).Elem(), GetActionsFilterArray{})
@@ -1060,6 +1869,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsOperatorsFilterArrayInput)(nil)).Elem(), GetConditionsOperatorsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsValuesFilterInput)(nil)).Elem(), GetConditionsValuesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsValuesFilterArrayInput)(nil)).Elem(), GetConditionsValuesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointInput)(nil)).Elem(), GetInstanceEnforcementPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointPtrInput)(nil)).Elem(), GetInstanceEnforcementPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointResourceInput)(nil)).Elem(), GetInstanceEnforcementPointResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointResourceArrayInput)(nil)).Elem(), GetInstanceEnforcementPointResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryFixedInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryFixedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryFixedPtrInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryFixedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivityInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryInactivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivityPtrInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryInactivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParametersInput)(nil)).Elem(), GetInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParametersPtrInput)(nil)).Elem(), GetInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProvisioningInput)(nil)).Elem(), GetInstanceProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProvisioningPtrInput)(nil)).Elem(), GetInstanceProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesActionInput)(nil)).Elem(), GetRulesActionArgs{})
@@ -1068,8 +1887,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesConditionArrayInput)(nil)).Elem(), GetRulesConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesFilterInput)(nil)).Elem(), GetRulesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesFilterArrayInput)(nil)).Elem(), GetRulesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterInput)(nil)).Elem(), GetUsersFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterArrayInput)(nil)).Elem(), GetUsersFilterArray{})
 	pulumi.RegisterOutputType(GetActionsFilterOutput{})
 	pulumi.RegisterOutputType(GetActionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetActionsValuesFilterOutput{})
@@ -1080,6 +1897,16 @@ func init() {
 	pulumi.RegisterOutputType(GetConditionsOperatorsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetConditionsValuesFilterOutput{})
 	pulumi.RegisterOutputType(GetConditionsValuesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointResourceOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryFixedOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryInactivityOutput{})
+	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceParametersOutput{})
+	pulumi.RegisterOutputType(GetInstanceParametersPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceProvisioningOutput{})
 	pulumi.RegisterOutputType(GetInstanceProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesActionOutput{})
@@ -1088,6 +1915,4 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesFilterOutput{})
 	pulumi.RegisterOutputType(GetRulesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetUsersFilterOutput{})
-	pulumi.RegisterOutputType(GetUsersFilterArrayOutput{})
 }

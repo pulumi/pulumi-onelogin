@@ -27,8 +27,6 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    public readonly authorization!: pulumi.Output<string | undefined>;
-    public readonly bearerAuth!: pulumi.Output<string | undefined>;
     public readonly contentType!: pulumi.Output<string | undefined>;
 
     /**
@@ -42,8 +40,6 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["bearerAuth"] = args ? args.bearerAuth : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
         }
@@ -56,8 +52,6 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    authorization?: pulumi.Input<string>;
-    bearerAuth?: pulumi.Input<string>;
     contentType?: pulumi.Input<string>;
     endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
 }
