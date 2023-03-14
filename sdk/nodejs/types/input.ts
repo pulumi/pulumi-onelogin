@@ -5,8 +5,179 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AppEnforcementPoint {
+    caseSensitive?: pulumi.Input<boolean>;
+    conditions?: pulumi.Input<string>;
+    contextRoot?: pulumi.Input<string>;
+    landingPage?: pulumi.Input<string>;
+    permissions?: pulumi.Input<string>;
+    requireSitewideAuthentication?: pulumi.Input<boolean>;
+    resources?: pulumi.Input<pulumi.Input<inputs.AppEnforcementPointResource>[]>;
+    sessionExpiryFixed?: pulumi.Input<inputs.AppEnforcementPointSessionExpiryFixed>;
+    sessionExpiryInactivity?: pulumi.Input<inputs.AppEnforcementPointSessionExpiryInactivity>;
+    target?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
+    useTargetHostHeader?: pulumi.Input<boolean>;
+    vhost?: pulumi.Input<string>;
+}
+
+export interface AppEnforcementPointResource {
+    conditions?: pulumi.Input<string>;
+    isPathRegex?: pulumi.Input<boolean>;
+    path?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
+    requireAuth?: pulumi.Input<boolean>;
+}
+
+export interface AppEnforcementPointSessionExpiryFixed {
+    unit?: pulumi.Input<number>;
+    value?: pulumi.Input<number>;
+}
+
+export interface AppEnforcementPointSessionExpiryInactivity {
+    unit?: pulumi.Input<number>;
+    value?: pulumi.Input<number>;
+}
+
+export interface AppParameters {
+    includeInSamlAssertion?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    userAttributeMacros?: pulumi.Input<string>;
+    userAttributeMappings?: pulumi.Input<string>;
+}
+
 export interface AppProvisioning {
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetAppsEnforcementPoint {
+    caseSensitive?: boolean;
+    conditions?: string;
+    contextRoot?: string;
+    landingPage?: string;
+    permissions?: string;
+    requireSitewideAuthentication?: boolean;
+    resources?: inputs.GetAppsEnforcementPointResource[];
+    sessionExpiryFixed?: inputs.GetAppsEnforcementPointSessionExpiryFixed;
+    sessionExpiryInactivity?: inputs.GetAppsEnforcementPointSessionExpiryInactivity;
+    target?: string;
+    token?: string;
+    useTargetHostHeader?: boolean;
+    vhost?: string;
+}
+
+export interface GetAppsEnforcementPointArgs {
+    caseSensitive?: pulumi.Input<boolean>;
+    conditions?: pulumi.Input<string>;
+    contextRoot?: pulumi.Input<string>;
+    landingPage?: pulumi.Input<string>;
+    permissions?: pulumi.Input<string>;
+    requireSitewideAuthentication?: pulumi.Input<boolean>;
+    resources?: pulumi.Input<pulumi.Input<inputs.GetAppsEnforcementPointResourceArgs>[]>;
+    sessionExpiryFixed?: pulumi.Input<inputs.GetAppsEnforcementPointSessionExpiryFixedArgs>;
+    sessionExpiryInactivity?: pulumi.Input<inputs.GetAppsEnforcementPointSessionExpiryInactivityArgs>;
+    target?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
+    useTargetHostHeader?: pulumi.Input<boolean>;
+    vhost?: pulumi.Input<string>;
+}
+
+export interface GetAppsEnforcementPointResource {
+    conditions?: string;
+    isPathRegex?: boolean;
+    path?: string;
+    permission?: string;
+    requireAuth?: boolean;
+}
+
+export interface GetAppsEnforcementPointResourceArgs {
+    conditions?: pulumi.Input<string>;
+    isPathRegex?: pulumi.Input<boolean>;
+    path?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
+    requireAuth?: pulumi.Input<boolean>;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryFixed {
+    unit?: number;
+    value?: number;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryFixedArgs {
+    unit?: pulumi.Input<number>;
+    value?: pulumi.Input<number>;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryInactivity {
+    unit?: number;
+    value?: number;
+}
+
+export interface GetAppsEnforcementPointSessionExpiryInactivityArgs {
+    unit?: pulumi.Input<number>;
+    value?: pulumi.Input<number>;
+}
+
+export interface GetAppsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetAppsFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetAppsParameters {
+    includeInSamlAssertion?: boolean;
+    label?: string;
+    userAttributeMacros?: string;
+    userAttributeMappings?: string;
+}
+
+export interface GetAppsParametersArgs {
+    includeInSamlAssertion?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    userAttributeMacros?: pulumi.Input<string>;
+    userAttributeMappings?: pulumi.Input<string>;
+}
+
+export interface GetAppsProvisioning {
+    enabled?: boolean;
+}
+
+export interface GetAppsProvisioningArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetBrandsAppsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetBrandsAppsFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetBrandsFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetBrandsFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetBrandsTemplatesFilter {
+    name: string;
+    values: string[];
+}
+
+export interface GetBrandsTemplatesFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetMappingsAction {
@@ -194,6 +365,88 @@ export namespace apps {
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface GetInstanceEnforcementPoint {
+        caseSensitive?: boolean;
+        conditions?: string;
+        contextRoot?: string;
+        landingPage?: string;
+        permissions?: string;
+        requireSitewideAuthentication?: boolean;
+        resources?: inputs.apps.GetInstanceEnforcementPointResource[];
+        sessionExpiryFixed?: inputs.apps.GetInstanceEnforcementPointSessionExpiryFixed;
+        sessionExpiryInactivity?: inputs.apps.GetInstanceEnforcementPointSessionExpiryInactivity;
+        target?: string;
+        token?: string;
+        useTargetHostHeader?: boolean;
+        vhost?: string;
+    }
+
+    export interface GetInstanceEnforcementPointArgs {
+        caseSensitive?: pulumi.Input<boolean>;
+        conditions?: pulumi.Input<string>;
+        contextRoot?: pulumi.Input<string>;
+        landingPage?: pulumi.Input<string>;
+        permissions?: pulumi.Input<string>;
+        requireSitewideAuthentication?: pulumi.Input<boolean>;
+        resources?: pulumi.Input<pulumi.Input<inputs.apps.GetInstanceEnforcementPointResourceArgs>[]>;
+        sessionExpiryFixed?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointSessionExpiryFixedArgs>;
+        sessionExpiryInactivity?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointSessionExpiryInactivityArgs>;
+        target?: pulumi.Input<string>;
+        token?: pulumi.Input<string>;
+        useTargetHostHeader?: pulumi.Input<boolean>;
+        vhost?: pulumi.Input<string>;
+    }
+
+    export interface GetInstanceEnforcementPointResource {
+        conditions?: string;
+        isPathRegex?: boolean;
+        path?: string;
+        permission?: string;
+        requireAuth?: boolean;
+    }
+
+    export interface GetInstanceEnforcementPointResourceArgs {
+        conditions?: pulumi.Input<string>;
+        isPathRegex?: pulumi.Input<boolean>;
+        path?: pulumi.Input<string>;
+        permission?: pulumi.Input<string>;
+        requireAuth?: pulumi.Input<boolean>;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryFixed {
+        unit?: number;
+        value?: number;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryFixedArgs {
+        unit?: pulumi.Input<number>;
+        value?: pulumi.Input<number>;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryInactivity {
+        unit?: number;
+        value?: number;
+    }
+
+    export interface GetInstanceEnforcementPointSessionExpiryInactivityArgs {
+        unit?: pulumi.Input<number>;
+        value?: pulumi.Input<number>;
+    }
+
+    export interface GetInstanceParameters {
+        includeInSamlAssertion?: boolean;
+        label?: string;
+        userAttributeMacros?: string;
+        userAttributeMappings?: string;
+    }
+
+    export interface GetInstanceParametersArgs {
+        includeInSamlAssertion?: pulumi.Input<boolean>;
+        label?: pulumi.Input<string>;
+        userAttributeMacros?: pulumi.Input<string>;
+        userAttributeMappings?: pulumi.Input<string>;
+    }
+
     export interface GetInstanceProvisioning {
         enabled?: boolean;
     }
@@ -230,16 +483,6 @@ export namespace apps {
     }
 
     export interface GetRulesFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetUsersFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetUsersFilterArgs {
         name: pulumi.Input<string>;
         values: pulumi.Input<pulumi.Input<string>[]>;
     }

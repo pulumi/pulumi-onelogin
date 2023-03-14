@@ -21,42 +21,44 @@ func GetInstance(ctx *pulumi.Context, args *GetInstanceArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getInstance.
 type GetInstanceArgs struct {
-	AllowAssumedSignin *bool                    `pulumi:"allowAssumedSignin"`
-	AuthMethod         *int                     `pulumi:"authMethod"`
-	BrandId            *int                     `pulumi:"brandId"`
-	ConnectorId        *int                     `pulumi:"connectorId"`
-	CreatedAt          *string                  `pulumi:"createdAt"`
-	Description        *string                  `pulumi:"description"`
-	IconUrl            *string                  `pulumi:"iconUrl"`
-	Id                 string                   `pulumi:"id"`
-	Name               *string                  `pulumi:"name"`
-	Notes              *string                  `pulumi:"notes"`
-	PolicyId           *int                     `pulumi:"policyId"`
-	Provisioning       *GetInstanceProvisioning `pulumi:"provisioning"`
-	RoleIds            []int                    `pulumi:"roleIds"`
-	TabId              *int                     `pulumi:"tabId"`
-	UpdatedAt          *string                  `pulumi:"updatedAt"`
-	Visible            *bool                    `pulumi:"visible"`
+	AllowAssumedSignin *bool                        `pulumi:"allowAssumedSignin"`
+	AuthMethod         *int                         `pulumi:"authMethod"`
+	ConnectorId        *int                         `pulumi:"connectorId"`
+	CreatedAt          *string                      `pulumi:"createdAt"`
+	Description        *string                      `pulumi:"description"`
+	EnforcementPoint   *GetInstanceEnforcementPoint `pulumi:"enforcementPoint"`
+	IconUrl            *string                      `pulumi:"iconUrl"`
+	Id                 string                       `pulumi:"id"`
+	Name               *string                      `pulumi:"name"`
+	Notes              *string                      `pulumi:"notes"`
+	Parameters         *GetInstanceParameters       `pulumi:"parameters"`
+	PolicyId           *int                         `pulumi:"policyId"`
+	Provisioning       *GetInstanceProvisioning     `pulumi:"provisioning"`
+	RoleIds            []int                        `pulumi:"roleIds"`
+	TabId              *int                         `pulumi:"tabId"`
+	UpdatedAt          *string                      `pulumi:"updatedAt"`
+	Visible            *bool                        `pulumi:"visible"`
 }
 
 // A collection of values returned by getInstance.
 type GetInstanceResult struct {
-	AllowAssumedSignin bool                    `pulumi:"allowAssumedSignin"`
-	AuthMethod         int                     `pulumi:"authMethod"`
-	BrandId            int                     `pulumi:"brandId"`
-	ConnectorId        int                     `pulumi:"connectorId"`
-	CreatedAt          string                  `pulumi:"createdAt"`
-	Description        string                  `pulumi:"description"`
-	IconUrl            string                  `pulumi:"iconUrl"`
-	Id                 string                  `pulumi:"id"`
-	Name               string                  `pulumi:"name"`
-	Notes              string                  `pulumi:"notes"`
-	PolicyId           int                     `pulumi:"policyId"`
-	Provisioning       GetInstanceProvisioning `pulumi:"provisioning"`
-	RoleIds            []int                   `pulumi:"roleIds"`
-	TabId              int                     `pulumi:"tabId"`
-	UpdatedAt          string                  `pulumi:"updatedAt"`
-	Visible            bool                    `pulumi:"visible"`
+	AllowAssumedSignin bool                        `pulumi:"allowAssumedSignin"`
+	AuthMethod         int                         `pulumi:"authMethod"`
+	ConnectorId        int                         `pulumi:"connectorId"`
+	CreatedAt          string                      `pulumi:"createdAt"`
+	Description        string                      `pulumi:"description"`
+	EnforcementPoint   GetInstanceEnforcementPoint `pulumi:"enforcementPoint"`
+	IconUrl            string                      `pulumi:"iconUrl"`
+	Id                 string                      `pulumi:"id"`
+	Name               string                      `pulumi:"name"`
+	Notes              string                      `pulumi:"notes"`
+	Parameters         GetInstanceParameters       `pulumi:"parameters"`
+	PolicyId           int                         `pulumi:"policyId"`
+	Provisioning       GetInstanceProvisioning     `pulumi:"provisioning"`
+	RoleIds            []int                       `pulumi:"roleIds"`
+	TabId              int                         `pulumi:"tabId"`
+	UpdatedAt          string                      `pulumi:"updatedAt"`
+	Visible            bool                        `pulumi:"visible"`
 }
 
 func GetInstanceOutput(ctx *pulumi.Context, args GetInstanceOutputArgs, opts ...pulumi.InvokeOption) GetInstanceResultOutput {
@@ -74,22 +76,23 @@ func GetInstanceOutput(ctx *pulumi.Context, args GetInstanceOutputArgs, opts ...
 
 // A collection of arguments for invoking getInstance.
 type GetInstanceOutputArgs struct {
-	AllowAssumedSignin pulumi.BoolPtrInput             `pulumi:"allowAssumedSignin"`
-	AuthMethod         pulumi.IntPtrInput              `pulumi:"authMethod"`
-	BrandId            pulumi.IntPtrInput              `pulumi:"brandId"`
-	ConnectorId        pulumi.IntPtrInput              `pulumi:"connectorId"`
-	CreatedAt          pulumi.StringPtrInput           `pulumi:"createdAt"`
-	Description        pulumi.StringPtrInput           `pulumi:"description"`
-	IconUrl            pulumi.StringPtrInput           `pulumi:"iconUrl"`
-	Id                 pulumi.StringInput              `pulumi:"id"`
-	Name               pulumi.StringPtrInput           `pulumi:"name"`
-	Notes              pulumi.StringPtrInput           `pulumi:"notes"`
-	PolicyId           pulumi.IntPtrInput              `pulumi:"policyId"`
-	Provisioning       GetInstanceProvisioningPtrInput `pulumi:"provisioning"`
-	RoleIds            pulumi.IntArrayInput            `pulumi:"roleIds"`
-	TabId              pulumi.IntPtrInput              `pulumi:"tabId"`
-	UpdatedAt          pulumi.StringPtrInput           `pulumi:"updatedAt"`
-	Visible            pulumi.BoolPtrInput             `pulumi:"visible"`
+	AllowAssumedSignin pulumi.BoolPtrInput                 `pulumi:"allowAssumedSignin"`
+	AuthMethod         pulumi.IntPtrInput                  `pulumi:"authMethod"`
+	ConnectorId        pulumi.IntPtrInput                  `pulumi:"connectorId"`
+	CreatedAt          pulumi.StringPtrInput               `pulumi:"createdAt"`
+	Description        pulumi.StringPtrInput               `pulumi:"description"`
+	EnforcementPoint   GetInstanceEnforcementPointPtrInput `pulumi:"enforcementPoint"`
+	IconUrl            pulumi.StringPtrInput               `pulumi:"iconUrl"`
+	Id                 pulumi.StringInput                  `pulumi:"id"`
+	Name               pulumi.StringPtrInput               `pulumi:"name"`
+	Notes              pulumi.StringPtrInput               `pulumi:"notes"`
+	Parameters         GetInstanceParametersPtrInput       `pulumi:"parameters"`
+	PolicyId           pulumi.IntPtrInput                  `pulumi:"policyId"`
+	Provisioning       GetInstanceProvisioningPtrInput     `pulumi:"provisioning"`
+	RoleIds            pulumi.IntArrayInput                `pulumi:"roleIds"`
+	TabId              pulumi.IntPtrInput                  `pulumi:"tabId"`
+	UpdatedAt          pulumi.StringPtrInput               `pulumi:"updatedAt"`
+	Visible            pulumi.BoolPtrInput                 `pulumi:"visible"`
 }
 
 func (GetInstanceOutputArgs) ElementType() reflect.Type {
@@ -119,10 +122,6 @@ func (o GetInstanceResultOutput) AuthMethod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceResult) int { return v.AuthMethod }).(pulumi.IntOutput)
 }
 
-func (o GetInstanceResultOutput) BrandId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstanceResult) int { return v.BrandId }).(pulumi.IntOutput)
-}
-
 func (o GetInstanceResultOutput) ConnectorId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceResult) int { return v.ConnectorId }).(pulumi.IntOutput)
 }
@@ -133,6 +132,10 @@ func (o GetInstanceResultOutput) CreatedAt() pulumi.StringOutput {
 
 func (o GetInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceResultOutput) EnforcementPoint() GetInstanceEnforcementPointOutput {
+	return o.ApplyT(func(v GetInstanceResult) GetInstanceEnforcementPoint { return v.EnforcementPoint }).(GetInstanceEnforcementPointOutput)
 }
 
 func (o GetInstanceResultOutput) IconUrl() pulumi.StringOutput {
@@ -149,6 +152,10 @@ func (o GetInstanceResultOutput) Name() pulumi.StringOutput {
 
 func (o GetInstanceResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceResultOutput) Parameters() GetInstanceParametersOutput {
+	return o.ApplyT(func(v GetInstanceResult) GetInstanceParameters { return v.Parameters }).(GetInstanceParametersOutput)
 }
 
 func (o GetInstanceResultOutput) PolicyId() pulumi.IntOutput {

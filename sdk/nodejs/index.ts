@@ -10,6 +10,26 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
+export const getApps: typeof import("./getApps").getApps = null as any;
+export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
+utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
+
+export { GetBrandsArgs, GetBrandsResult, GetBrandsOutputArgs } from "./getBrands";
+export const getBrands: typeof import("./getBrands").getBrands = null as any;
+export const getBrandsOutput: typeof import("./getBrands").getBrandsOutput = null as any;
+utilities.lazyLoad(exports, ["getBrands","getBrandsOutput"], () => require("./getBrands"));
+
+export { GetBrandsAppsArgs, GetBrandsAppsResult, GetBrandsAppsOutputArgs } from "./getBrandsApps";
+export const getBrandsApps: typeof import("./getBrandsApps").getBrandsApps = null as any;
+export const getBrandsAppsOutput: typeof import("./getBrandsApps").getBrandsAppsOutput = null as any;
+utilities.lazyLoad(exports, ["getBrandsApps","getBrandsAppsOutput"], () => require("./getBrandsApps"));
+
+export { GetBrandsTemplatesArgs, GetBrandsTemplatesResult, GetBrandsTemplatesOutputArgs } from "./getBrandsTemplates";
+export const getBrandsTemplates: typeof import("./getBrandsTemplates").getBrandsTemplates = null as any;
+export const getBrandsTemplatesOutput: typeof import("./getBrandsTemplates").getBrandsTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getBrandsTemplates","getBrandsTemplatesOutput"], () => require("./getBrandsTemplates"));
+
 export { GetMappingsArgs, GetMappingsResult, GetMappingsOutputArgs } from "./getMappings";
 export const getMappings: typeof import("./getMappings").getMappings = null as any;
 export const getMappingsOutput: typeof import("./getMappings").getMappingsOutput = null as any;

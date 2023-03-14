@@ -4,6 +4,8 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.apps.inputs.GetInstanceEnforcementPoint;
+import com.pulumi.onelogin.apps.inputs.GetInstanceParameters;
 import com.pulumi.onelogin.apps.inputs.GetInstanceProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -32,13 +34,6 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.authMethod);
     }
 
-    @Import(name="brandId")
-    private @Nullable Integer brandId;
-
-    public Optional<Integer> brandId() {
-        return Optional.ofNullable(this.brandId);
-    }
-
     @Import(name="connectorId")
     private @Nullable Integer connectorId;
 
@@ -58,6 +53,13 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="enforcementPoint")
+    private @Nullable GetInstanceEnforcementPoint enforcementPoint;
+
+    public Optional<GetInstanceEnforcementPoint> enforcementPoint() {
+        return Optional.ofNullable(this.enforcementPoint);
     }
 
     @Import(name="iconUrl")
@@ -86,6 +88,13 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public Optional<String> notes() {
         return Optional.ofNullable(this.notes);
+    }
+
+    @Import(name="parameters")
+    private @Nullable GetInstanceParameters parameters;
+
+    public Optional<GetInstanceParameters> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     @Import(name="policyId")
@@ -135,14 +144,15 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetInstancePlainArgs(GetInstancePlainArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
-        this.brandId = $.brandId;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.enforcementPoint = $.enforcementPoint;
         this.iconUrl = $.iconUrl;
         this.id = $.id;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -179,11 +189,6 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
-        public Builder brandId(@Nullable Integer brandId) {
-            $.brandId = brandId;
-            return this;
-        }
-
         public Builder connectorId(@Nullable Integer connectorId) {
             $.connectorId = connectorId;
             return this;
@@ -196,6 +201,11 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder description(@Nullable String description) {
             $.description = description;
+            return this;
+        }
+
+        public Builder enforcementPoint(@Nullable GetInstanceEnforcementPoint enforcementPoint) {
+            $.enforcementPoint = enforcementPoint;
             return this;
         }
 
@@ -216,6 +226,11 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder notes(@Nullable String notes) {
             $.notes = notes;
+            return this;
+        }
+
+        public Builder parameters(@Nullable GetInstanceParameters parameters) {
+            $.parameters = parameters;
             return this;
         }
 

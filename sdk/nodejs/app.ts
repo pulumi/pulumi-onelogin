@@ -39,19 +39,16 @@ export class App extends pulumi.CustomResource {
      */
     public readonly allowAssumedSignin!: pulumi.Output<boolean | undefined>;
     /**
-     * An ID indicating the type of app.
+     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      */
     public readonly authMethod!: pulumi.Output<number | undefined>;
     /**
-     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     */
-    public readonly brandId!: pulumi.Output<number | undefined>;
-    /**
-     * ID of the apps underlying connector.
+     * ID of the connector to base the app from.
      */
     public readonly connectorId!: pulumi.Output<number | undefined>;
     /**
-     * The date the app was created.
+     * the date the app was created
      */
     public readonly createdAt!: pulumi.Output<string | undefined>;
     /**
@@ -59,11 +56,16 @@ export class App extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A link to the apps icon url.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     */
+    public readonly enforcementPoint!: pulumi.Output<outputs.AppEnforcementPoint | undefined>;
+    /**
+     * A link to the apps icon url
      */
     public readonly iconUrl!: pulumi.Output<string | undefined>;
     /**
-     * App name.
+     * The name of the app.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -71,12 +73,22 @@ export class App extends pulumi.CustomResource {
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
+     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     */
+    public readonly parameters!: pulumi.Output<outputs.AppParameters | undefined>;
+    /**
      * The security policy assigned to the app.
      */
     public readonly policyId!: pulumi.Output<number | undefined>;
+    /**
+     * Indicates if provisioning is enabled for this app.
+     */
     public readonly provisioning!: pulumi.Output<outputs.AppProvisioning | undefined>;
     /**
-     * A list of OneLogin Role IDs of the user
+     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      */
     public readonly roleIds!: pulumi.Output<number[] | undefined>;
     /**
@@ -84,7 +96,7 @@ export class App extends pulumi.CustomResource {
      */
     public readonly tabId!: pulumi.Output<number | undefined>;
     /**
-     * The date the app was last updated.
+     * the date the app was last updated
      */
     public readonly updatedAt!: pulumi.Output<string | undefined>;
     /**
@@ -107,13 +119,14 @@ export class App extends pulumi.CustomResource {
             const state = argsOrState as AppState | undefined;
             resourceInputs["allowAssumedSignin"] = state ? state.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["brandId"] = state ? state.brandId : undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enforcementPoint"] = state ? state.enforcementPoint : undefined;
             resourceInputs["iconUrl"] = state ? state.iconUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["provisioning"] = state ? state.provisioning : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
@@ -124,13 +137,14 @@ export class App extends pulumi.CustomResource {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["allowAssumedSignin"] = args ? args.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = args ? args.authMethod : undefined;
-            resourceInputs["brandId"] = args ? args.brandId : undefined;
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enforcementPoint"] = args ? args.enforcementPoint : undefined;
             resourceInputs["iconUrl"] = args ? args.iconUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
             resourceInputs["provisioning"] = args ? args.provisioning : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
@@ -152,19 +166,16 @@ export interface AppState {
      */
     allowAssumedSignin?: pulumi.Input<boolean>;
     /**
-     * An ID indicating the type of app.
+     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      */
     authMethod?: pulumi.Input<number>;
     /**
-     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     */
-    brandId?: pulumi.Input<number>;
-    /**
-     * ID of the apps underlying connector.
+     * ID of the connector to base the app from.
      */
     connectorId?: pulumi.Input<number>;
     /**
-     * The date the app was created.
+     * the date the app was created
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -172,11 +183,16 @@ export interface AppState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A link to the apps icon url.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     */
+    enforcementPoint?: pulumi.Input<inputs.AppEnforcementPoint>;
+    /**
+     * A link to the apps icon url
      */
     iconUrl?: pulumi.Input<string>;
     /**
-     * App name.
+     * The name of the app.
      */
     name?: pulumi.Input<string>;
     /**
@@ -184,12 +200,22 @@ export interface AppState {
      */
     notes?: pulumi.Input<string>;
     /**
+     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     */
+    parameters?: pulumi.Input<inputs.AppParameters>;
+    /**
      * The security policy assigned to the app.
      */
     policyId?: pulumi.Input<number>;
+    /**
+     * Indicates if provisioning is enabled for this app.
+     */
     provisioning?: pulumi.Input<inputs.AppProvisioning>;
     /**
-     * A list of OneLogin Role IDs of the user
+     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -197,7 +223,7 @@ export interface AppState {
      */
     tabId?: pulumi.Input<number>;
     /**
-     * The date the app was last updated.
+     * the date the app was last updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -215,19 +241,16 @@ export interface AppArgs {
      */
     allowAssumedSignin?: pulumi.Input<boolean>;
     /**
-     * An ID indicating the type of app.
+     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      */
     authMethod?: pulumi.Input<number>;
     /**
-     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     */
-    brandId?: pulumi.Input<number>;
-    /**
-     * ID of the apps underlying connector.
+     * ID of the connector to base the app from.
      */
     connectorId?: pulumi.Input<number>;
     /**
-     * The date the app was created.
+     * the date the app was created
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -235,11 +258,16 @@ export interface AppArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A link to the apps icon url.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     */
+    enforcementPoint?: pulumi.Input<inputs.AppEnforcementPoint>;
+    /**
+     * A link to the apps icon url
      */
     iconUrl?: pulumi.Input<string>;
     /**
-     * App name.
+     * The name of the app.
      */
     name?: pulumi.Input<string>;
     /**
@@ -247,12 +275,22 @@ export interface AppArgs {
      */
     notes?: pulumi.Input<string>;
     /**
+     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     */
+    parameters?: pulumi.Input<inputs.AppParameters>;
+    /**
      * The security policy assigned to the app.
      */
     policyId?: pulumi.Input<number>;
+    /**
+     * Indicates if provisioning is enabled for this app.
+     */
     provisioning?: pulumi.Input<inputs.AppProvisioning>;
     /**
-     * A list of OneLogin Role IDs of the user
+     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -260,7 +298,7 @@ export interface AppArgs {
      */
     tabId?: pulumi.Input<number>;
     /**
-     * The date the app was last updated.
+     * the date the app was last updated
      */
     updatedAt?: pulumi.Input<string>;
     /**

@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.onelogin.AppArgs;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.AppState;
+import com.pulumi.onelogin.outputs.AppEnforcementPoint;
+import com.pulumi.onelogin.outputs.AppParameters;
 import com.pulumi.onelogin.outputs.AppProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -35,56 +37,44 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowAssumedSignin);
     }
     /**
-     * An ID indicating the type of app.
+     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      * 
      */
     @Export(name="authMethod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> authMethod;
 
     /**
-     * @return An ID indicating the type of app.
+     * @return An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+     * WSFED - 8: OpenId Connect
      * 
      */
     public Output<Optional<Integer>> authMethod() {
         return Codegen.optional(this.authMethod);
     }
     /**
-     * The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     * 
-     */
-    @Export(name="brandId", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> brandId;
-
-    /**
-     * @return The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-     * 
-     */
-    public Output<Optional<Integer>> brandId() {
-        return Codegen.optional(this.brandId);
-    }
-    /**
-     * ID of the apps underlying connector.
+     * ID of the connector to base the app from.
      * 
      */
     @Export(name="connectorId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> connectorId;
 
     /**
-     * @return ID of the apps underlying connector.
+     * @return ID of the connector to base the app from.
      * 
      */
     public Output<Optional<Integer>> connectorId() {
         return Codegen.optional(this.connectorId);
     }
     /**
-     * The date the app was created.
+     * the date the app was created
      * 
      */
     @Export(name="createdAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> createdAt;
 
     /**
-     * @return The date the app was created.
+     * @return the date the app was created
      * 
      */
     public Output<Optional<String>> createdAt() {
@@ -105,28 +95,44 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A link to the apps icon url.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     * 
+     */
+    @Export(name="enforcementPoint", type=AppEnforcementPoint.class, parameters={})
+    private Output</* @Nullable */ AppEnforcementPoint> enforcementPoint;
+
+    /**
+     * @return For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+     * with the app payload.
+     * 
+     */
+    public Output<Optional<AppEnforcementPoint>> enforcementPoint() {
+        return Codegen.optional(this.enforcementPoint);
+    }
+    /**
+     * A link to the apps icon url
      * 
      */
     @Export(name="iconUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> iconUrl;
 
     /**
-     * @return A link to the apps icon url.
+     * @return A link to the apps icon url
      * 
      */
     public Output<Optional<String>> iconUrl() {
         return Codegen.optional(this.iconUrl);
     }
     /**
-     * App name.
+     * The name of the app.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return App name.
+     * @return The name of the app.
      * 
      */
     public Output<String> name() {
@@ -147,6 +153,24 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notes);
     }
     /**
+     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     * 
+     */
+    @Export(name="parameters", type=AppParameters.class, parameters={})
+    private Output</* @Nullable */ AppParameters> parameters;
+
+    /**
+     * @return The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+     * 
+     */
+    public Output<Optional<AppParameters>> parameters() {
+        return Codegen.optional(this.parameters);
+    }
+    /**
      * The security policy assigned to the app.
      * 
      */
@@ -160,21 +184,31 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> policyId() {
         return Codegen.optional(this.policyId);
     }
+    /**
+     * Indicates if provisioning is enabled for this app.
+     * 
+     */
     @Export(name="provisioning", type=AppProvisioning.class, parameters={})
     private Output</* @Nullable */ AppProvisioning> provisioning;
 
+    /**
+     * @return Indicates if provisioning is enabled for this app.
+     * 
+     */
     public Output<Optional<AppProvisioning>> provisioning() {
         return Codegen.optional(this.provisioning);
     }
     /**
-     * A list of OneLogin Role IDs of the user
+     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      * 
      */
     @Export(name="roleIds", type=List.class, parameters={Integer.class})
     private Output</* @Nullable */ List<Integer>> roleIds;
 
     /**
-     * @return A list of OneLogin Role IDs of the user
+     * @return List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+     * provided.
      * 
      */
     public Output<Optional<List<Integer>>> roleIds() {
@@ -195,14 +229,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tabId);
     }
     /**
-     * The date the app was last updated.
+     * the date the app was last updated
      * 
      */
     @Export(name="updatedAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> updatedAt;
 
     /**
-     * @return The date the app was last updated.
+     * @return the date the app was last updated
      * 
      */
     public Output<Optional<String>> updatedAt() {

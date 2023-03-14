@@ -12,14 +12,15 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("onelogin:apps/getInstance:getInstance", {
         "allowAssumedSignin": args.allowAssumedSignin,
         "authMethod": args.authMethod,
-        "brandId": args.brandId,
         "connectorId": args.connectorId,
         "createdAt": args.createdAt,
         "description": args.description,
+        "enforcementPoint": args.enforcementPoint,
         "iconUrl": args.iconUrl,
         "id": args.id,
         "name": args.name,
         "notes": args.notes,
+        "parameters": args.parameters,
         "policyId": args.policyId,
         "provisioning": args.provisioning,
         "roleIds": args.roleIds,
@@ -35,14 +36,15 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     allowAssumedSignin?: boolean;
     authMethod?: number;
-    brandId?: number;
     connectorId?: number;
     createdAt?: string;
     description?: string;
+    enforcementPoint?: inputs.apps.GetInstanceEnforcementPoint;
     iconUrl?: string;
     id: string;
     name?: string;
     notes?: string;
+    parameters?: inputs.apps.GetInstanceParameters;
     policyId?: number;
     provisioning?: inputs.apps.GetInstanceProvisioning;
     roleIds?: number[];
@@ -57,14 +59,15 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly allowAssumedSignin: boolean;
     readonly authMethod: number;
-    readonly brandId: number;
     readonly connectorId: number;
     readonly createdAt: string;
     readonly description: string;
+    readonly enforcementPoint: outputs.apps.GetInstanceEnforcementPoint;
     readonly iconUrl: string;
     readonly id: string;
     readonly name: string;
     readonly notes: string;
+    readonly parameters: outputs.apps.GetInstanceParameters;
     readonly policyId: number;
     readonly provisioning: outputs.apps.GetInstanceProvisioning;
     readonly roleIds: number[];
@@ -82,14 +85,15 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
 export interface GetInstanceOutputArgs {
     allowAssumedSignin?: pulumi.Input<boolean>;
     authMethod?: pulumi.Input<number>;
-    brandId?: pulumi.Input<number>;
     connectorId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    enforcementPoint?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointArgs>;
     iconUrl?: pulumi.Input<string>;
     id: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.apps.GetInstanceParametersArgs>;
     policyId?: pulumi.Input<number>;
     provisioning?: pulumi.Input<inputs.apps.GetInstanceProvisioningArgs>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;

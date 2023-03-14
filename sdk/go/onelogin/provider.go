@@ -17,9 +17,7 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	Authorization pulumi.StringPtrOutput `pulumi:"authorization"`
-	BearerAuth    pulumi.StringPtrOutput `pulumi:"bearerAuth"`
-	ContentType   pulumi.StringPtrOutput `pulumi:"contentType"`
+	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -38,18 +36,14 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	Authorization *string            `pulumi:"authorization"`
-	BearerAuth    *string            `pulumi:"bearerAuth"`
-	ContentType   *string            `pulumi:"contentType"`
-	Endpoints     []ProviderEndpoint `pulumi:"endpoints"`
+	ContentType *string            `pulumi:"contentType"`
+	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	Authorization pulumi.StringPtrInput
-	BearerAuth    pulumi.StringPtrInput
-	ContentType   pulumi.StringPtrInput
-	Endpoints     ProviderEndpointArrayInput
+	ContentType pulumi.StringPtrInput
+	Endpoints   ProviderEndpointArrayInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -87,14 +81,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-func (o ProviderOutput) Authorization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Authorization }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) BearerAuth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BearerAuth }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ContentType() pulumi.StringPtrOutput {

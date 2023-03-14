@@ -9,22 +9,6 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("onelogin");
 
-export declare const authorization: string | undefined;
-Object.defineProperty(exports, "authorization", {
-    get() {
-        return __config.get("authorization");
-    },
-    enumerable: true,
-});
-
-export declare const bearerAuth: string | undefined;
-Object.defineProperty(exports, "bearerAuth", {
-    get() {
-        return __config.get("bearerAuth");
-    },
-    enumerable: true,
-});
-
 export declare const contentType: string | undefined;
 Object.defineProperty(exports, "contentType", {
     get() {

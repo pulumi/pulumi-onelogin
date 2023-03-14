@@ -13,12 +13,6 @@ import java.util.Optional;
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("onelogin");
-    public Optional<String> authorization() {
-        return Codegen.stringProp("authorization").config(config).get();
-    }
-    public Optional<String> bearerAuth() {
-        return Codegen.stringProp("bearerAuth").config(config).get();
-    }
     public Optional<String> contentType() {
         return Codegen.stringProp("contentType").config(config).get();
     }

@@ -8,12 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-func GetAuthorization(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:authorization")
-}
-func GetBearerAuth(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:bearerAuth")
-}
 func GetContentType(ctx *pulumi.Context) string {
 	return config.Get(ctx, "onelogin:contentType")
 }

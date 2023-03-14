@@ -17,20 +17,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
 
-    @Import(name="authorization")
-    private @Nullable Output<String> authorization;
-
-    public Optional<Output<String>> authorization() {
-        return Optional.ofNullable(this.authorization);
-    }
-
-    @Import(name="bearerAuth")
-    private @Nullable Output<String> bearerAuth;
-
-    public Optional<Output<String>> bearerAuth() {
-        return Optional.ofNullable(this.bearerAuth);
-    }
-
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
@@ -48,8 +34,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
-        this.authorization = $.authorization;
-        this.bearerAuth = $.bearerAuth;
         this.contentType = $.contentType;
         this.endpoints = $.endpoints;
     }
@@ -70,24 +54,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder authorization(@Nullable Output<String> authorization) {
-            $.authorization = authorization;
-            return this;
-        }
-
-        public Builder authorization(String authorization) {
-            return authorization(Output.of(authorization));
-        }
-
-        public Builder bearerAuth(@Nullable Output<String> bearerAuth) {
-            $.bearerAuth = bearerAuth;
-            return this;
-        }
-
-        public Builder bearerAuth(String bearerAuth) {
-            return bearerAuth(Output.of(bearerAuth));
         }
 
         public Builder contentType(@Nullable Output<String> contentType) {

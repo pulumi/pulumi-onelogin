@@ -11,8 +11,23 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AppEnforcementPoint',
+    'AppEnforcementPointResource',
+    'AppEnforcementPointSessionExpiryFixed',
+    'AppEnforcementPointSessionExpiryInactivity',
+    'AppParameters',
     'AppProvisioning',
     'RuleSource',
+    'GetAppsEnforcementPointResult',
+    'GetAppsEnforcementPointResourceResult',
+    'GetAppsEnforcementPointSessionExpiryFixedResult',
+    'GetAppsEnforcementPointSessionExpiryInactivityResult',
+    'GetAppsFilterResult',
+    'GetAppsParametersResult',
+    'GetAppsProvisioningResult',
+    'GetBrandsAppsFilterResult',
+    'GetBrandsFilterResult',
+    'GetBrandsTemplatesFilterResult',
     'GetMappingsActionResult',
     'GetMappingsConditionResult',
     'GetMappingsFilterResult',
@@ -20,6 +35,308 @@ __all__ = [
     'GetPrivilegesPrivilegeResult',
     'GetPrivilegesPrivilegeStatementResult',
 ]
+
+@pulumi.output_type
+class AppEnforcementPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caseSensitive":
+            suggest = "case_sensitive"
+        elif key == "contextRoot":
+            suggest = "context_root"
+        elif key == "landingPage":
+            suggest = "landing_page"
+        elif key == "requireSitewideAuthentication":
+            suggest = "require_sitewide_authentication"
+        elif key == "sessionExpiryFixed":
+            suggest = "session_expiry_fixed"
+        elif key == "sessionExpiryInactivity":
+            suggest = "session_expiry_inactivity"
+        elif key == "useTargetHostHeader":
+            suggest = "use_target_host_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEnforcementPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEnforcementPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEnforcementPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 case_sensitive: Optional[bool] = None,
+                 conditions: Optional[str] = None,
+                 context_root: Optional[str] = None,
+                 landing_page: Optional[str] = None,
+                 permissions: Optional[str] = None,
+                 require_sitewide_authentication: Optional[bool] = None,
+                 resources: Optional[Sequence['outputs.AppEnforcementPointResource']] = None,
+                 session_expiry_fixed: Optional['outputs.AppEnforcementPointSessionExpiryFixed'] = None,
+                 session_expiry_inactivity: Optional['outputs.AppEnforcementPointSessionExpiryInactivity'] = None,
+                 target: Optional[str] = None,
+                 token: Optional[str] = None,
+                 use_target_host_header: Optional[bool] = None,
+                 vhost: Optional[str] = None):
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if context_root is not None:
+            pulumi.set(__self__, "context_root", context_root)
+        if landing_page is not None:
+            pulumi.set(__self__, "landing_page", landing_page)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if require_sitewide_authentication is not None:
+            pulumi.set(__self__, "require_sitewide_authentication", require_sitewide_authentication)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if session_expiry_fixed is not None:
+            pulumi.set(__self__, "session_expiry_fixed", session_expiry_fixed)
+        if session_expiry_inactivity is not None:
+            pulumi.set(__self__, "session_expiry_inactivity", session_expiry_inactivity)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if use_target_host_header is not None:
+            pulumi.set(__self__, "use_target_host_header", use_target_host_header)
+        if vhost is not None:
+            pulumi.set(__self__, "vhost", vhost)
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[bool]:
+        return pulumi.get(self, "case_sensitive")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[str]:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="contextRoot")
+    def context_root(self) -> Optional[str]:
+        return pulumi.get(self, "context_root")
+
+    @property
+    @pulumi.getter(name="landingPage")
+    def landing_page(self) -> Optional[str]:
+        return pulumi.get(self, "landing_page")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter(name="requireSitewideAuthentication")
+    def require_sitewide_authentication(self) -> Optional[bool]:
+        return pulumi.get(self, "require_sitewide_authentication")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence['outputs.AppEnforcementPointResource']]:
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="sessionExpiryFixed")
+    def session_expiry_fixed(self) -> Optional['outputs.AppEnforcementPointSessionExpiryFixed']:
+        return pulumi.get(self, "session_expiry_fixed")
+
+    @property
+    @pulumi.getter(name="sessionExpiryInactivity")
+    def session_expiry_inactivity(self) -> Optional['outputs.AppEnforcementPointSessionExpiryInactivity']:
+        return pulumi.get(self, "session_expiry_inactivity")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="useTargetHostHeader")
+    def use_target_host_header(self) -> Optional[bool]:
+        return pulumi.get(self, "use_target_host_header")
+
+    @property
+    @pulumi.getter
+    def vhost(self) -> Optional[str]:
+        return pulumi.get(self, "vhost")
+
+
+@pulumi.output_type
+class AppEnforcementPointResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPathRegex":
+            suggest = "is_path_regex"
+        elif key == "requireAuth":
+            suggest = "require_auth"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEnforcementPointResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEnforcementPointResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEnforcementPointResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Optional[str] = None,
+                 is_path_regex: Optional[bool] = None,
+                 path: Optional[str] = None,
+                 permission: Optional[str] = None,
+                 require_auth: Optional[bool] = None):
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if is_path_regex is not None:
+            pulumi.set(__self__, "is_path_regex", is_path_regex)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+        if require_auth is not None:
+            pulumi.set(__self__, "require_auth", require_auth)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[str]:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="isPathRegex")
+    def is_path_regex(self) -> Optional[bool]:
+        return pulumi.get(self, "is_path_regex")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[str]:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="requireAuth")
+    def require_auth(self) -> Optional[bool]:
+        return pulumi.get(self, "require_auth")
+
+
+@pulumi.output_type
+class AppEnforcementPointSessionExpiryFixed(dict):
+    def __init__(__self__, *,
+                 unit: Optional[int] = None,
+                 value: Optional[int] = None):
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[int]:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[int]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AppEnforcementPointSessionExpiryInactivity(dict):
+    def __init__(__self__, *,
+                 unit: Optional[int] = None,
+                 value: Optional[int] = None):
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[int]:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[int]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AppParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeInSamlAssertion":
+            suggest = "include_in_saml_assertion"
+        elif key == "userAttributeMacros":
+            suggest = "user_attribute_macros"
+        elif key == "userAttributeMappings":
+            suggest = "user_attribute_mappings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 include_in_saml_assertion: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 user_attribute_macros: Optional[str] = None,
+                 user_attribute_mappings: Optional[str] = None):
+        if include_in_saml_assertion is not None:
+            pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if user_attribute_macros is not None:
+            pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
+        if user_attribute_mappings is not None:
+            pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
+
+    @property
+    @pulumi.getter(name="includeInSamlAssertion")
+    def include_in_saml_assertion(self) -> Optional[bool]:
+        return pulumi.get(self, "include_in_saml_assertion")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="userAttributeMacros")
+    def user_attribute_macros(self) -> Optional[str]:
+        return pulumi.get(self, "user_attribute_macros")
+
+    @property
+    @pulumi.getter(name="userAttributeMappings")
+    def user_attribute_mappings(self) -> Optional[str]:
+        return pulumi.get(self, "user_attribute_mappings")
+
 
 @pulumi.output_type
 class AppProvisioning(dict):
@@ -53,6 +370,301 @@ class RuleSource(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAppsEnforcementPointResult(dict):
+    def __init__(__self__, *,
+                 case_sensitive: bool,
+                 conditions: str,
+                 context_root: str,
+                 landing_page: str,
+                 permissions: str,
+                 require_sitewide_authentication: bool,
+                 resources: Sequence['outputs.GetAppsEnforcementPointResourceResult'],
+                 session_expiry_fixed: 'outputs.GetAppsEnforcementPointSessionExpiryFixedResult',
+                 session_expiry_inactivity: 'outputs.GetAppsEnforcementPointSessionExpiryInactivityResult',
+                 target: str,
+                 token: str,
+                 use_target_host_header: bool,
+                 vhost: str):
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "context_root", context_root)
+        pulumi.set(__self__, "landing_page", landing_page)
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "require_sitewide_authentication", require_sitewide_authentication)
+        pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "session_expiry_fixed", session_expiry_fixed)
+        pulumi.set(__self__, "session_expiry_inactivity", session_expiry_inactivity)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "token", token)
+        pulumi.set(__self__, "use_target_host_header", use_target_host_header)
+        pulumi.set(__self__, "vhost", vhost)
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> bool:
+        return pulumi.get(self, "case_sensitive")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> str:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="contextRoot")
+    def context_root(self) -> str:
+        return pulumi.get(self, "context_root")
+
+    @property
+    @pulumi.getter(name="landingPage")
+    def landing_page(self) -> str:
+        return pulumi.get(self, "landing_page")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> str:
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter(name="requireSitewideAuthentication")
+    def require_sitewide_authentication(self) -> bool:
+        return pulumi.get(self, "require_sitewide_authentication")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence['outputs.GetAppsEnforcementPointResourceResult']:
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="sessionExpiryFixed")
+    def session_expiry_fixed(self) -> 'outputs.GetAppsEnforcementPointSessionExpiryFixedResult':
+        return pulumi.get(self, "session_expiry_fixed")
+
+    @property
+    @pulumi.getter(name="sessionExpiryInactivity")
+    def session_expiry_inactivity(self) -> 'outputs.GetAppsEnforcementPointSessionExpiryInactivityResult':
+        return pulumi.get(self, "session_expiry_inactivity")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="useTargetHostHeader")
+    def use_target_host_header(self) -> bool:
+        return pulumi.get(self, "use_target_host_header")
+
+    @property
+    @pulumi.getter
+    def vhost(self) -> str:
+        return pulumi.get(self, "vhost")
+
+
+@pulumi.output_type
+class GetAppsEnforcementPointResourceResult(dict):
+    def __init__(__self__, *,
+                 conditions: str,
+                 is_path_regex: bool,
+                 path: str,
+                 permission: str,
+                 require_auth: bool):
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "is_path_regex", is_path_regex)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "require_auth", require_auth)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> str:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="isPathRegex")
+    def is_path_regex(self) -> bool:
+        return pulumi.get(self, "is_path_regex")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="requireAuth")
+    def require_auth(self) -> bool:
+        return pulumi.get(self, "require_auth")
+
+
+@pulumi.output_type
+class GetAppsEnforcementPointSessionExpiryFixedResult(dict):
+    def __init__(__self__, *,
+                 unit: int,
+                 value: int):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> int:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> int:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAppsEnforcementPointSessionExpiryInactivityResult(dict):
+    def __init__(__self__, *,
+                 unit: int,
+                 value: int):
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> int:
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> int:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAppsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetAppsParametersResult(dict):
+    def __init__(__self__, *,
+                 include_in_saml_assertion: bool,
+                 label: str,
+                 user_attribute_macros: str,
+                 user_attribute_mappings: str):
+        pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
+        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
+
+    @property
+    @pulumi.getter(name="includeInSamlAssertion")
+    def include_in_saml_assertion(self) -> bool:
+        return pulumi.get(self, "include_in_saml_assertion")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="userAttributeMacros")
+    def user_attribute_macros(self) -> str:
+        return pulumi.get(self, "user_attribute_macros")
+
+    @property
+    @pulumi.getter(name="userAttributeMappings")
+    def user_attribute_mappings(self) -> str:
+        return pulumi.get(self, "user_attribute_mappings")
+
+
+@pulumi.output_type
+class GetAppsProvisioningResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetBrandsAppsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetBrandsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetBrandsTemplatesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

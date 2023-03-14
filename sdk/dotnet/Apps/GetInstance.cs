@@ -27,9 +27,6 @@ namespace Pulumi.Onelogin.Apps
         [Input("authMethod")]
         public int? AuthMethod { get; set; }
 
-        [Input("brandId")]
-        public int? BrandId { get; set; }
-
         [Input("connectorId")]
         public int? ConnectorId { get; set; }
 
@@ -38,6 +35,9 @@ namespace Pulumi.Onelogin.Apps
 
         [Input("description")]
         public string? Description { get; set; }
+
+        [Input("enforcementPoint")]
+        public Inputs.GetInstanceEnforcementPointArgs? EnforcementPoint { get; set; }
 
         [Input("iconUrl")]
         public string? IconUrl { get; set; }
@@ -50,6 +50,9 @@ namespace Pulumi.Onelogin.Apps
 
         [Input("notes")]
         public string? Notes { get; set; }
+
+        [Input("parameters")]
+        public Inputs.GetInstanceParametersArgs? Parameters { get; set; }
 
         [Input("policyId")]
         public int? PolicyId { get; set; }
@@ -88,9 +91,6 @@ namespace Pulumi.Onelogin.Apps
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
-        [Input("brandId")]
-        public Input<int>? BrandId { get; set; }
-
         [Input("connectorId")]
         public Input<int>? ConnectorId { get; set; }
 
@@ -99,6 +99,9 @@ namespace Pulumi.Onelogin.Apps
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enforcementPoint")]
+        public Input<Inputs.GetInstanceEnforcementPointInputArgs>? EnforcementPoint { get; set; }
 
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
@@ -111,6 +114,9 @@ namespace Pulumi.Onelogin.Apps
 
         [Input("notes")]
         public Input<string>? Notes { get; set; }
+
+        [Input("parameters")]
+        public Input<Inputs.GetInstanceParametersInputArgs>? Parameters { get; set; }
 
         [Input("policyId")]
         public Input<int>? PolicyId { get; set; }
@@ -147,14 +153,15 @@ namespace Pulumi.Onelogin.Apps
     {
         public readonly bool AllowAssumedSignin;
         public readonly int AuthMethod;
-        public readonly int BrandId;
         public readonly int ConnectorId;
         public readonly string CreatedAt;
         public readonly string Description;
+        public readonly Outputs.GetInstanceEnforcementPointResult EnforcementPoint;
         public readonly string IconUrl;
         public readonly string Id;
         public readonly string Name;
         public readonly string Notes;
+        public readonly Outputs.GetInstanceParametersResult Parameters;
         public readonly int PolicyId;
         public readonly Outputs.GetInstanceProvisioningResult Provisioning;
         public readonly ImmutableArray<int> RoleIds;
@@ -168,13 +175,13 @@ namespace Pulumi.Onelogin.Apps
 
             int authMethod,
 
-            int brandId,
-
             int connectorId,
 
             string createdAt,
 
             string description,
+
+            Outputs.GetInstanceEnforcementPointResult enforcementPoint,
 
             string iconUrl,
 
@@ -183,6 +190,8 @@ namespace Pulumi.Onelogin.Apps
             string name,
 
             string notes,
+
+            Outputs.GetInstanceParametersResult parameters,
 
             int policyId,
 
@@ -198,14 +207,15 @@ namespace Pulumi.Onelogin.Apps
         {
             AllowAssumedSignin = allowAssumedSignin;
             AuthMethod = authMethod;
-            BrandId = brandId;
             ConnectorId = connectorId;
             CreatedAt = createdAt;
             Description = description;
+            EnforcementPoint = enforcementPoint;
             IconUrl = iconUrl;
             Id = id;
             Name = name;
             Notes = notes;
+            Parameters = parameters;
             PolicyId = policyId;
             Provisioning = provisioning;
             RoleIds = roleIds;

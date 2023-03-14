@@ -19,25 +19,20 @@ namespace Pulumi.Onelogin
         public Output<bool?> AllowAssumedSignin { get; private set; } = null!;
 
         /// <summary>
-        /// An ID indicating the type of app.
+        /// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+        /// WSFED - 8: OpenId Connect
         /// </summary>
         [Output("authMethod")]
         public Output<int?> AuthMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-        /// </summary>
-        [Output("brandId")]
-        public Output<int?> BrandId { get; private set; } = null!;
-
-        /// <summary>
-        /// ID of the apps underlying connector.
+        /// ID of the connector to base the app from.
         /// </summary>
         [Output("connectorId")]
         public Output<int?> ConnectorId { get; private set; } = null!;
 
         /// <summary>
-        /// The date the app was created.
+        /// the date the app was created
         /// </summary>
         [Output("createdAt")]
         public Output<string?> CreatedAt { get; private set; } = null!;
@@ -49,13 +44,20 @@ namespace Pulumi.Onelogin
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A link to the apps icon url.
+        /// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+        /// with the app payload.
+        /// </summary>
+        [Output("enforcementPoint")]
+        public Output<Outputs.AppEnforcementPoint?> EnforcementPoint { get; private set; } = null!;
+
+        /// <summary>
+        /// A link to the apps icon url
         /// </summary>
         [Output("iconUrl")]
         public Output<string?> IconUrl { get; private set; } = null!;
 
         /// <summary>
-        /// App name.
+        /// The name of the app.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -67,16 +69,28 @@ namespace Pulumi.Onelogin
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
+        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+        /// </summary>
+        [Output("parameters")]
+        public Output<Outputs.AppParameters?> Parameters { get; private set; } = null!;
+
+        /// <summary>
         /// The security policy assigned to the app.
         /// </summary>
         [Output("policyId")]
         public Output<int?> PolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates if provisioning is enabled for this app.
+        /// </summary>
         [Output("provisioning")]
         public Output<Outputs.AppProvisioning?> Provisioning { get; private set; } = null!;
 
         /// <summary>
-        /// A list of OneLogin Role IDs of the user
+        /// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+        /// provided.
         /// </summary>
         [Output("roleIds")]
         public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
@@ -88,7 +102,7 @@ namespace Pulumi.Onelogin
         public Output<int?> TabId { get; private set; } = null!;
 
         /// <summary>
-        /// The date the app was last updated.
+        /// the date the app was last updated
         /// </summary>
         [Output("updatedAt")]
         public Output<string?> UpdatedAt { get; private set; } = null!;
@@ -152,25 +166,20 @@ namespace Pulumi.Onelogin
         public Input<bool>? AllowAssumedSignin { get; set; }
 
         /// <summary>
-        /// An ID indicating the type of app.
+        /// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+        /// WSFED - 8: OpenId Connect
         /// </summary>
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
         /// <summary>
-        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-        /// </summary>
-        [Input("brandId")]
-        public Input<int>? BrandId { get; set; }
-
-        /// <summary>
-        /// ID of the apps underlying connector.
+        /// ID of the connector to base the app from.
         /// </summary>
         [Input("connectorId")]
         public Input<int>? ConnectorId { get; set; }
 
         /// <summary>
-        /// The date the app was created.
+        /// the date the app was created
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -182,13 +191,20 @@ namespace Pulumi.Onelogin
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A link to the apps icon url.
+        /// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+        /// with the app payload.
+        /// </summary>
+        [Input("enforcementPoint")]
+        public Input<Inputs.AppEnforcementPointArgs>? EnforcementPoint { get; set; }
+
+        /// <summary>
+        /// A link to the apps icon url
         /// </summary>
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
         /// <summary>
-        /// App name.
+        /// The name of the app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -200,11 +216,22 @@ namespace Pulumi.Onelogin
         public Input<string>? Notes { get; set; }
 
         /// <summary>
+        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+        /// </summary>
+        [Input("parameters")]
+        public Input<Inputs.AppParametersArgs>? Parameters { get; set; }
+
+        /// <summary>
         /// The security policy assigned to the app.
         /// </summary>
         [Input("policyId")]
         public Input<int>? PolicyId { get; set; }
 
+        /// <summary>
+        /// Indicates if provisioning is enabled for this app.
+        /// </summary>
         [Input("provisioning")]
         public Input<Inputs.AppProvisioningArgs>? Provisioning { get; set; }
 
@@ -212,7 +239,8 @@ namespace Pulumi.Onelogin
         private InputList<int>? _roleIds;
 
         /// <summary>
-        /// A list of OneLogin Role IDs of the user
+        /// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+        /// provided.
         /// </summary>
         public InputList<int> RoleIds
         {
@@ -227,7 +255,7 @@ namespace Pulumi.Onelogin
         public Input<int>? TabId { get; set; }
 
         /// <summary>
-        /// The date the app was last updated.
+        /// the date the app was last updated
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
@@ -253,25 +281,20 @@ namespace Pulumi.Onelogin
         public Input<bool>? AllowAssumedSignin { get; set; }
 
         /// <summary>
-        /// An ID indicating the type of app.
+        /// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
+        /// WSFED - 8: OpenId Connect
         /// </summary>
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
         /// <summary>
-        /// The custom login page branding to use for this app. Applies to app initiated logins via OIDC or SAML.
-        /// </summary>
-        [Input("brandId")]
-        public Input<int>? BrandId { get; set; }
-
-        /// <summary>
-        /// ID of the apps underlying connector.
+        /// ID of the connector to base the app from.
         /// </summary>
         [Input("connectorId")]
         public Input<int>? ConnectorId { get; set; }
 
         /// <summary>
-        /// The date the app was created.
+        /// the date the app was created
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -283,13 +306,20 @@ namespace Pulumi.Onelogin
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A link to the apps icon url.
+        /// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+        /// with the app payload.
+        /// </summary>
+        [Input("enforcementPoint")]
+        public Input<Inputs.AppEnforcementPointGetArgs>? EnforcementPoint { get; set; }
+
+        /// <summary>
+        /// A link to the apps icon url
         /// </summary>
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
         /// <summary>
-        /// App name.
+        /// The name of the app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -301,11 +331,22 @@ namespace Pulumi.Onelogin
         public Input<string>? Notes { get; set; }
 
         /// <summary>
+        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
+        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
+        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
+        /// </summary>
+        [Input("parameters")]
+        public Input<Inputs.AppParametersGetArgs>? Parameters { get; set; }
+
+        /// <summary>
         /// The security policy assigned to the app.
         /// </summary>
         [Input("policyId")]
         public Input<int>? PolicyId { get; set; }
 
+        /// <summary>
+        /// Indicates if provisioning is enabled for this app.
+        /// </summary>
         [Input("provisioning")]
         public Input<Inputs.AppProvisioningGetArgs>? Provisioning { get; set; }
 
@@ -313,7 +354,8 @@ namespace Pulumi.Onelogin
         private InputList<int>? _roleIds;
 
         /// <summary>
-        /// A list of OneLogin Role IDs of the user
+        /// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
+        /// provided.
         /// </summary>
         public InputList<int> RoleIds
         {
@@ -328,7 +370,7 @@ namespace Pulumi.Onelogin
         public Input<int>? TabId { get; set; }
 
         /// <summary>
-        /// The date the app was last updated.
+        /// the date the app was last updated
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

@@ -17,14 +17,6 @@ __config__ = pulumi.Config('onelogin')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def authorization(self) -> Optional[str]:
-        return __config__.get('authorization')
-
-    @property
-    def bearer_auth(self) -> Optional[str]:
-        return __config__.get('bearerAuth')
-
-    @property
     def content_type(self) -> Optional[str]:
         return __config__.get('contentType')
 

@@ -10,10 +10,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
-authorization: Optional[str]
-
-bearerAuth: Optional[str]
-
 contentType: Optional[str]
 
 endpoints: Optional[str]

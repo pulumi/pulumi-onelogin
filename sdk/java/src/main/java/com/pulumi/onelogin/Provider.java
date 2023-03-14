@@ -22,18 +22,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:onelogin")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="authorization", type=String.class, parameters={})
-    private Output</* @Nullable */ String> authorization;
-
-    public Output<Optional<String>> authorization() {
-        return Codegen.optional(this.authorization);
-    }
-    @Export(name="bearerAuth", type=String.class, parameters={})
-    private Output</* @Nullable */ String> bearerAuth;
-
-    public Output<Optional<String>> bearerAuth() {
-        return Codegen.optional(this.bearerAuth);
-    }
     @Export(name="contentType", type=String.class, parameters={})
     private Output</* @Nullable */ String> contentType;
 

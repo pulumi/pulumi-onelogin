@@ -4,6 +4,8 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPoint;
+import com.pulumi.onelogin.apps.outputs.GetInstanceParameters;
 import com.pulumi.onelogin.apps.outputs.GetInstanceProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -15,14 +17,15 @@ import java.util.Objects;
 public final class GetInstanceResult {
     private Boolean allowAssumedSignin;
     private Integer authMethod;
-    private Integer brandId;
     private Integer connectorId;
     private String createdAt;
     private String description;
+    private GetInstanceEnforcementPoint enforcementPoint;
     private String iconUrl;
     private String id;
     private String name;
     private String notes;
+    private GetInstanceParameters parameters;
     private Integer policyId;
     private GetInstanceProvisioning provisioning;
     private List<Integer> roleIds;
@@ -37,9 +40,6 @@ public final class GetInstanceResult {
     public Integer authMethod() {
         return this.authMethod;
     }
-    public Integer brandId() {
-        return this.brandId;
-    }
     public Integer connectorId() {
         return this.connectorId;
     }
@@ -48,6 +48,9 @@ public final class GetInstanceResult {
     }
     public String description() {
         return this.description;
+    }
+    public GetInstanceEnforcementPoint enforcementPoint() {
+        return this.enforcementPoint;
     }
     public String iconUrl() {
         return this.iconUrl;
@@ -60,6 +63,9 @@ public final class GetInstanceResult {
     }
     public String notes() {
         return this.notes;
+    }
+    public GetInstanceParameters parameters() {
+        return this.parameters;
     }
     public Integer policyId() {
         return this.policyId;
@@ -91,14 +97,15 @@ public final class GetInstanceResult {
     public static final class Builder {
         private Boolean allowAssumedSignin;
         private Integer authMethod;
-        private Integer brandId;
         private Integer connectorId;
         private String createdAt;
         private String description;
+        private GetInstanceEnforcementPoint enforcementPoint;
         private String iconUrl;
         private String id;
         private String name;
         private String notes;
+        private GetInstanceParameters parameters;
         private Integer policyId;
         private GetInstanceProvisioning provisioning;
         private List<Integer> roleIds;
@@ -110,14 +117,15 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowAssumedSignin = defaults.allowAssumedSignin;
     	      this.authMethod = defaults.authMethod;
-    	      this.brandId = defaults.brandId;
     	      this.connectorId = defaults.connectorId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.enforcementPoint = defaults.enforcementPoint;
     	      this.iconUrl = defaults.iconUrl;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
+    	      this.parameters = defaults.parameters;
     	      this.policyId = defaults.policyId;
     	      this.provisioning = defaults.provisioning;
     	      this.roleIds = defaults.roleIds;
@@ -137,11 +145,6 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder brandId(Integer brandId) {
-            this.brandId = Objects.requireNonNull(brandId);
-            return this;
-        }
-        @CustomType.Setter
         public Builder connectorId(Integer connectorId) {
             this.connectorId = Objects.requireNonNull(connectorId);
             return this;
@@ -154,6 +157,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforcementPoint(GetInstanceEnforcementPoint enforcementPoint) {
+            this.enforcementPoint = Objects.requireNonNull(enforcementPoint);
             return this;
         }
         @CustomType.Setter
@@ -174,6 +182,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder notes(String notes) {
             this.notes = Objects.requireNonNull(notes);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parameters(GetInstanceParameters parameters) {
+            this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
         @CustomType.Setter
@@ -213,14 +226,15 @@ public final class GetInstanceResult {
             final var o = new GetInstanceResult();
             o.allowAssumedSignin = allowAssumedSignin;
             o.authMethod = authMethod;
-            o.brandId = brandId;
             o.connectorId = connectorId;
             o.createdAt = createdAt;
             o.description = description;
+            o.enforcementPoint = enforcementPoint;
             o.iconUrl = iconUrl;
             o.id = id;
             o.name = name;
             o.notes = notes;
+            o.parameters = parameters;
             o.policyId = policyId;
             o.provisioning = provisioning;
             o.roleIds = roleIds;
