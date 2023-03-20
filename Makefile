@@ -96,8 +96,8 @@ install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_plugins:
-	[ -x "$(shell command -v pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 4.12.0
+	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
+	pulumi plugin install resource random 2.2.0
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
