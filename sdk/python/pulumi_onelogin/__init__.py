@@ -6,43 +6,52 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .app import *
+from .auth_servers import *
 from .get_apps import *
-from .get_brands import *
-from .get_brands_apps import *
-from .get_brands_templates import *
+from .get_auth_servers import *
+from .get_auth_servers_claims import *
+from .get_auth_servers_instance import *
+from .get_auth_servers_scopes import *
 from .get_mappings import *
 from .get_privileges import *
+from .get_privileges_instance import *
+from .get_risk_rules import *
+from .get_risk_rules_instance import *
+from .privileges import *
 from .provider import *
-from .rule import *
+from .risk_rules import *
+from .role import *
 from .user import *
 from ._inputs import *
 from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_onelogin.api as __api
-    api = __api
     import pulumi_onelogin.apps as __apps
     apps = __apps
     import pulumi_onelogin.config as __config
     config = __config
     import pulumi_onelogin.roles as __roles
     roles = __roles
-    import pulumi_onelogin.rules as __rules
-    rules = __rules
     import pulumi_onelogin.users as __users
     users = __users
 else:
-    api = _utilities.lazy_import('pulumi_onelogin.api')
     apps = _utilities.lazy_import('pulumi_onelogin.apps')
     config = _utilities.lazy_import('pulumi_onelogin.config')
     roles = _utilities.lazy_import('pulumi_onelogin.roles')
-    rules = _utilities.lazy_import('pulumi_onelogin.rules')
     users = _utilities.lazy_import('pulumi_onelogin.users')
 
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "onelogin",
+  "mod": "apps/rules",
+  "fqn": "pulumi_onelogin.apps",
+  "classes": {
+   "onelogin:apps/rules:Rules": "Rules"
+  }
+ },
  {
   "pkg": "onelogin",
   "mod": "index/app",
@@ -53,10 +62,34 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/rule",
+  "mod": "index/authServers",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/rule:Rule": "Rule"
+   "onelogin:index/authServers:AuthServers": "AuthServers"
+  }
+ },
+ {
+  "pkg": "onelogin",
+  "mod": "index/privileges",
+  "fqn": "pulumi_onelogin",
+  "classes": {
+   "onelogin:index/privileges:Privileges": "Privileges"
+  }
+ },
+ {
+  "pkg": "onelogin",
+  "mod": "index/riskRules",
+  "fqn": "pulumi_onelogin",
+  "classes": {
+   "onelogin:index/riskRules:RiskRules": "RiskRules"
+  }
+ },
+ {
+  "pkg": "onelogin",
+  "mod": "index/role",
+  "fqn": "pulumi_onelogin",
+  "classes": {
+   "onelogin:index/role:Role": "Role"
   }
  },
  {
@@ -65,6 +98,14 @@ _utilities.register(
   "fqn": "pulumi_onelogin",
   "classes": {
    "onelogin:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "onelogin",
+  "mod": "users/v1",
+  "fqn": "pulumi_onelogin.users",
+  "classes": {
+   "onelogin:users/v1:V1": "V1"
   }
  }
 ]

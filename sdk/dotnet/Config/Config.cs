@@ -32,6 +32,13 @@ namespace Pulumi.Onelogin
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("onelogin");
 
+        private static readonly __Value<string?> _apikeyAuth = new __Value<string?>(() => __config.Get("apikeyAuth"));
+        public static string? ApikeyAuth
+        {
+            get => _apikeyAuth.Get();
+            set => _apikeyAuth.Set(value);
+        }
+
         private static readonly __Value<string?> _contentType = new __Value<string?>(() => __config.Get("contentType"));
         public static string? ContentType
         {
@@ -52,8 +59,13 @@ namespace Pulumi.Onelogin
              public class Endpoints
              {
                 public string? Apps { get; set; } = null!;
-                public string? Rules { get; set; } = null!;
+                public string? AppsRules { get; set; } = null!;
+                public string? AuthServers { get; set; } = null!;
+                public string? Privileges { get; set; } = null!;
+                public string? RiskRules { get; set; } = null!;
+                public string? Roles { get; set; } = null!;
                 public string? Users { get; set; } = null!;
+                public string? UsersV1 { get; set; } = null!;
             }
         }
     }

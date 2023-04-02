@@ -41,7 +41,7 @@ class UserArgs:
                  preferred_locale_code: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  salt: Optional[pulumi.Input[str]] = None,
-                 samaccount_name: Optional[pulumi.Input[str]] = None,
+                 samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -71,7 +71,7 @@ class UserArgs:
         :param pulumi.Input[str] phone: The E.164 format phone number for a user.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
         :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccount_name: The user's Active Directory username.
+        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
         :param pulumi.Input[str] title: The user's job title.
         :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
         :param pulumi.Input[str] username: A username for the user.
@@ -131,8 +131,8 @@ class UserArgs:
             pulumi.set(__self__, "role_ids", role_ids)
         if salt is not None:
             pulumi.set(__self__, "salt", salt)
-        if samaccount_name is not None:
-            pulumi.set(__self__, "samaccount_name", samaccount_name)
+        if samaccountname is not None:
+            pulumi.set(__self__, "samaccountname", samaccountname)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if status is not None:
@@ -450,16 +450,16 @@ class UserArgs:
         pulumi.set(self, "salt", value)
 
     @property
-    @pulumi.getter(name="samaccountName")
-    def samaccount_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def samaccountname(self) -> Optional[pulumi.Input[str]]:
         """
         The user's Active Directory username.
         """
-        return pulumi.get(self, "samaccount_name")
+        return pulumi.get(self, "samaccountname")
 
-    @samaccount_name.setter
-    def samaccount_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "samaccount_name", value)
+    @samaccountname.setter
+    def samaccountname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "samaccountname", value)
 
     @property
     @pulumi.getter
@@ -567,7 +567,7 @@ class _UserState:
                  preferred_locale_code: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  salt: Optional[pulumi.Input[str]] = None,
-                 samaccount_name: Optional[pulumi.Input[str]] = None,
+                 samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -597,7 +597,7 @@ class _UserState:
         :param pulumi.Input[str] phone: The E.164 format phone number for a user.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
         :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccount_name: The user's Active Directory username.
+        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
         :param pulumi.Input[str] title: The user's job title.
         :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
         :param pulumi.Input[str] username: A username for the user.
@@ -657,8 +657,8 @@ class _UserState:
             pulumi.set(__self__, "role_ids", role_ids)
         if salt is not None:
             pulumi.set(__self__, "salt", salt)
-        if samaccount_name is not None:
-            pulumi.set(__self__, "samaccount_name", samaccount_name)
+        if samaccountname is not None:
+            pulumi.set(__self__, "samaccountname", samaccountname)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if status is not None:
@@ -976,16 +976,16 @@ class _UserState:
         pulumi.set(self, "salt", value)
 
     @property
-    @pulumi.getter(name="samaccountName")
-    def samaccount_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def samaccountname(self) -> Optional[pulumi.Input[str]]:
         """
         The user's Active Directory username.
         """
-        return pulumi.get(self, "samaccount_name")
+        return pulumi.get(self, "samaccountname")
 
-    @samaccount_name.setter
-    def samaccount_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "samaccount_name", value)
+    @samaccountname.setter
+    def samaccountname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "samaccountname", value)
 
     @property
     @pulumi.getter
@@ -1095,7 +1095,7 @@ class User(pulumi.CustomResource):
                  preferred_locale_code: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  salt: Optional[pulumi.Input[str]] = None,
-                 samaccount_name: Optional[pulumi.Input[str]] = None,
+                 samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -1128,7 +1128,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] phone: The E.164 format phone number for a user.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
         :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccount_name: The user's Active Directory username.
+        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
         :param pulumi.Input[str] title: The user's job title.
         :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
         :param pulumi.Input[str] username: A username for the user.
@@ -1184,7 +1184,7 @@ class User(pulumi.CustomResource):
                  preferred_locale_code: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  salt: Optional[pulumi.Input[str]] = None,
-                 samaccount_name: Optional[pulumi.Input[str]] = None,
+                 samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -1228,7 +1228,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["preferred_locale_code"] = preferred_locale_code
             __props__.__dict__["role_ids"] = role_ids
             __props__.__dict__["salt"] = salt
-            __props__.__dict__["samaccount_name"] = samaccount_name
+            __props__.__dict__["samaccountname"] = samaccountname
             __props__.__dict__["state"] = state
             __props__.__dict__["status"] = status
             __props__.__dict__["title"] = title
@@ -1273,7 +1273,7 @@ class User(pulumi.CustomResource):
             preferred_locale_code: Optional[pulumi.Input[str]] = None,
             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             salt: Optional[pulumi.Input[str]] = None,
-            samaccount_name: Optional[pulumi.Input[str]] = None,
+            samaccountname: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[int]] = None,
             title: Optional[pulumi.Input[str]] = None,
@@ -1308,7 +1308,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] phone: The E.164 format phone number for a user.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
         :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccount_name: The user's Active Directory username.
+        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
         :param pulumi.Input[str] title: The user's job title.
         :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
         :param pulumi.Input[str] username: A username for the user.
@@ -1345,7 +1345,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["preferred_locale_code"] = preferred_locale_code
         __props__.__dict__["role_ids"] = role_ids
         __props__.__dict__["salt"] = salt
-        __props__.__dict__["samaccount_name"] = samaccount_name
+        __props__.__dict__["samaccountname"] = samaccountname
         __props__.__dict__["state"] = state
         __props__.__dict__["status"] = status
         __props__.__dict__["title"] = title
@@ -1549,12 +1549,12 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "salt")
 
     @property
-    @pulumi.getter(name="samaccountName")
-    def samaccount_name(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter
+    def samaccountname(self) -> pulumi.Output[Optional[str]]:
         """
         The user's Active Directory username.
         """
-        return pulumi.get(self, "samaccount_name")
+        return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter

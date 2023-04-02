@@ -338,15 +338,15 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user&#39;s Active Directory username.
      * 
      */
-    @Export(name="samaccountName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> samaccountName;
+    @Export(name="samaccountname", type=String.class, parameters={})
+    private Output</* @Nullable */ String> samaccountname;
 
     /**
      * @return The user&#39;s Active Directory username.
      * 
      */
-    public Output<Optional<String>> samaccountName() {
-        return Codegen.optional(this.samaccountName);
+    public Output<Optional<String>> samaccountname() {
+        return Codegen.optional(this.samaccountname);
     }
     @Export(name="state", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> state;

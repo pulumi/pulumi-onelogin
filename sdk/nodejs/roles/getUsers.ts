@@ -39,7 +39,7 @@ export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promi
         "roleIds": args.roleIds,
         "rolesId": args.rolesId,
         "salt": args.salt,
-        "samaccountName": args.samaccountName,
+        "samaccountname": args.samaccountname,
         "state": args.state,
         "status": args.status,
         "title": args.title,
@@ -83,7 +83,7 @@ export interface GetUsersArgs {
     roleIds?: number[];
     rolesId: string;
     salt?: string;
-    samaccountName?: string;
+    samaccountname?: string;
     state?: number;
     status?: number;
     title?: string;
@@ -130,7 +130,7 @@ export interface GetUsersResult {
     readonly roleIds: number[];
     readonly rolesId: string;
     readonly salt: string;
-    readonly samaccountName: string;
+    readonly samaccountname: string;
     readonly state: number;
     readonly status: number;
     readonly title: string;
@@ -176,7 +176,7 @@ export interface GetUsersOutputArgs {
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     rolesId: pulumi.Input<string>;
     salt?: pulumi.Input<string>;
-    samaccountName?: pulumi.Input<string>;
+    samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
     title?: pulumi.Input<string>;

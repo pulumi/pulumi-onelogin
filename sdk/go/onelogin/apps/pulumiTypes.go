@@ -10,6 +10,212 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type RulesAction struct {
+	Action *string  `pulumi:"action"`
+	Values []string `pulumi:"values"`
+}
+
+// RulesActionInput is an input type that accepts RulesActionArgs and RulesActionOutput values.
+// You can construct a concrete instance of `RulesActionInput` via:
+//
+//	RulesActionArgs{...}
+type RulesActionInput interface {
+	pulumi.Input
+
+	ToRulesActionOutput() RulesActionOutput
+	ToRulesActionOutputWithContext(context.Context) RulesActionOutput
+}
+
+type RulesActionArgs struct {
+	Action pulumi.StringPtrInput   `pulumi:"action"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RulesActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesAction)(nil)).Elem()
+}
+
+func (i RulesActionArgs) ToRulesActionOutput() RulesActionOutput {
+	return i.ToRulesActionOutputWithContext(context.Background())
+}
+
+func (i RulesActionArgs) ToRulesActionOutputWithContext(ctx context.Context) RulesActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesActionOutput)
+}
+
+// RulesActionArrayInput is an input type that accepts RulesActionArray and RulesActionArrayOutput values.
+// You can construct a concrete instance of `RulesActionArrayInput` via:
+//
+//	RulesActionArray{ RulesActionArgs{...} }
+type RulesActionArrayInput interface {
+	pulumi.Input
+
+	ToRulesActionArrayOutput() RulesActionArrayOutput
+	ToRulesActionArrayOutputWithContext(context.Context) RulesActionArrayOutput
+}
+
+type RulesActionArray []RulesActionInput
+
+func (RulesActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesAction)(nil)).Elem()
+}
+
+func (i RulesActionArray) ToRulesActionArrayOutput() RulesActionArrayOutput {
+	return i.ToRulesActionArrayOutputWithContext(context.Background())
+}
+
+func (i RulesActionArray) ToRulesActionArrayOutputWithContext(ctx context.Context) RulesActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesActionArrayOutput)
+}
+
+type RulesActionOutput struct{ *pulumi.OutputState }
+
+func (RulesActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesAction)(nil)).Elem()
+}
+
+func (o RulesActionOutput) ToRulesActionOutput() RulesActionOutput {
+	return o
+}
+
+func (o RulesActionOutput) ToRulesActionOutputWithContext(ctx context.Context) RulesActionOutput {
+	return o
+}
+
+func (o RulesActionOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesAction) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RulesActionArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesAction)(nil)).Elem()
+}
+
+func (o RulesActionArrayOutput) ToRulesActionArrayOutput() RulesActionArrayOutput {
+	return o
+}
+
+func (o RulesActionArrayOutput) ToRulesActionArrayOutputWithContext(ctx context.Context) RulesActionArrayOutput {
+	return o
+}
+
+func (o RulesActionArrayOutput) Index(i pulumi.IntInput) RulesActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesAction {
+		return vs[0].([]RulesAction)[vs[1].(int)]
+	}).(RulesActionOutput)
+}
+
+type RulesCondition struct {
+	Operator *string `pulumi:"operator"`
+	Source   *string `pulumi:"source"`
+	Value    *string `pulumi:"value"`
+}
+
+// RulesConditionInput is an input type that accepts RulesConditionArgs and RulesConditionOutput values.
+// You can construct a concrete instance of `RulesConditionInput` via:
+//
+//	RulesConditionArgs{...}
+type RulesConditionInput interface {
+	pulumi.Input
+
+	ToRulesConditionOutput() RulesConditionOutput
+	ToRulesConditionOutputWithContext(context.Context) RulesConditionOutput
+}
+
+type RulesConditionArgs struct {
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	Source   pulumi.StringPtrInput `pulumi:"source"`
+	Value    pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RulesConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesCondition)(nil)).Elem()
+}
+
+func (i RulesConditionArgs) ToRulesConditionOutput() RulesConditionOutput {
+	return i.ToRulesConditionOutputWithContext(context.Background())
+}
+
+func (i RulesConditionArgs) ToRulesConditionOutputWithContext(ctx context.Context) RulesConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesConditionOutput)
+}
+
+// RulesConditionArrayInput is an input type that accepts RulesConditionArray and RulesConditionArrayOutput values.
+// You can construct a concrete instance of `RulesConditionArrayInput` via:
+//
+//	RulesConditionArray{ RulesConditionArgs{...} }
+type RulesConditionArrayInput interface {
+	pulumi.Input
+
+	ToRulesConditionArrayOutput() RulesConditionArrayOutput
+	ToRulesConditionArrayOutputWithContext(context.Context) RulesConditionArrayOutput
+}
+
+type RulesConditionArray []RulesConditionInput
+
+func (RulesConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesCondition)(nil)).Elem()
+}
+
+func (i RulesConditionArray) ToRulesConditionArrayOutput() RulesConditionArrayOutput {
+	return i.ToRulesConditionArrayOutputWithContext(context.Background())
+}
+
+func (i RulesConditionArray) ToRulesConditionArrayOutputWithContext(ctx context.Context) RulesConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesConditionArrayOutput)
+}
+
+type RulesConditionOutput struct{ *pulumi.OutputState }
+
+func (RulesConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesCondition)(nil)).Elem()
+}
+
+func (o RulesConditionOutput) ToRulesConditionOutput() RulesConditionOutput {
+	return o
+}
+
+func (o RulesConditionOutput) ToRulesConditionOutputWithContext(ctx context.Context) RulesConditionOutput {
+	return o
+}
+
+func (o RulesConditionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesConditionOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesCondition) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RulesConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesCondition)(nil)).Elem()
+}
+
+func (o RulesConditionArrayOutput) ToRulesConditionArrayOutput() RulesConditionArrayOutput {
+	return o
+}
+
+func (o RulesConditionArrayOutput) ToRulesConditionArrayOutputWithContext(ctx context.Context) RulesConditionArrayOutput {
+	return o
+}
+
+func (o RulesConditionArrayOutput) Index(i pulumi.IntInput) RulesConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesCondition {
+		return vs[0].([]RulesCondition)[vs[1].(int)]
+	}).(RulesConditionOutput)
+}
+
 type GetActionsFilter struct {
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
@@ -410,104 +616,197 @@ func (o GetConditionsOperatorsFilterArrayOutput) Index(i pulumi.IntInput) GetCon
 	}).(GetConditionsOperatorsFilterOutput)
 }
 
-type GetConditionsValuesFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
+type GetInstanceConfiguration struct {
+	AccessTokenExpirationMinutes int    `pulumi:"accessTokenExpirationMinutes"`
+	LoginUrl                     string `pulumi:"loginUrl"`
+	OidcApplicationType          int    `pulumi:"oidcApplicationType"`
+	RedirectUri                  string `pulumi:"redirectUri"`
+	TokenEndpointAuthMethod      int    `pulumi:"tokenEndpointAuthMethod"`
 }
 
-// GetConditionsValuesFilterInput is an input type that accepts GetConditionsValuesFilterArgs and GetConditionsValuesFilterOutput values.
-// You can construct a concrete instance of `GetConditionsValuesFilterInput` via:
+// GetInstanceConfigurationInput is an input type that accepts GetInstanceConfigurationArgs and GetInstanceConfigurationOutput values.
+// You can construct a concrete instance of `GetInstanceConfigurationInput` via:
 //
-//	GetConditionsValuesFilterArgs{...}
-type GetConditionsValuesFilterInput interface {
+//	GetInstanceConfigurationArgs{...}
+type GetInstanceConfigurationInput interface {
 	pulumi.Input
 
-	ToGetConditionsValuesFilterOutput() GetConditionsValuesFilterOutput
-	ToGetConditionsValuesFilterOutputWithContext(context.Context) GetConditionsValuesFilterOutput
+	ToGetInstanceConfigurationOutput() GetInstanceConfigurationOutput
+	ToGetInstanceConfigurationOutputWithContext(context.Context) GetInstanceConfigurationOutput
 }
 
-type GetConditionsValuesFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
+type GetInstanceConfigurationArgs struct {
+	AccessTokenExpirationMinutes pulumi.IntInput    `pulumi:"accessTokenExpirationMinutes"`
+	LoginUrl                     pulumi.StringInput `pulumi:"loginUrl"`
+	OidcApplicationType          pulumi.IntInput    `pulumi:"oidcApplicationType"`
+	RedirectUri                  pulumi.StringInput `pulumi:"redirectUri"`
+	TokenEndpointAuthMethod      pulumi.IntInput    `pulumi:"tokenEndpointAuthMethod"`
 }
 
-func (GetConditionsValuesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConditionsValuesFilter)(nil)).Elem()
+func (GetInstanceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfiguration)(nil)).Elem()
 }
 
-func (i GetConditionsValuesFilterArgs) ToGetConditionsValuesFilterOutput() GetConditionsValuesFilterOutput {
-	return i.ToGetConditionsValuesFilterOutputWithContext(context.Background())
+func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationOutput() GetInstanceConfigurationOutput {
+	return i.ToGetInstanceConfigurationOutputWithContext(context.Background())
 }
 
-func (i GetConditionsValuesFilterArgs) ToGetConditionsValuesFilterOutputWithContext(ctx context.Context) GetConditionsValuesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsValuesFilterOutput)
+func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationOutputWithContext(ctx context.Context) GetInstanceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfigurationOutput)
 }
 
-// GetConditionsValuesFilterArrayInput is an input type that accepts GetConditionsValuesFilterArray and GetConditionsValuesFilterArrayOutput values.
-// You can construct a concrete instance of `GetConditionsValuesFilterArrayInput` via:
+func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput {
+	return i.ToGetInstanceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetInstanceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfigurationOutput).ToGetInstanceConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetInstanceConfigurationPtrInput is an input type that accepts GetInstanceConfigurationArgs, GetInstanceConfigurationPtr and GetInstanceConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetInstanceConfigurationPtrInput` via:
 //
-//	GetConditionsValuesFilterArray{ GetConditionsValuesFilterArgs{...} }
-type GetConditionsValuesFilterArrayInput interface {
+//	        GetInstanceConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInstanceConfigurationPtrInput interface {
 	pulumi.Input
 
-	ToGetConditionsValuesFilterArrayOutput() GetConditionsValuesFilterArrayOutput
-	ToGetConditionsValuesFilterArrayOutputWithContext(context.Context) GetConditionsValuesFilterArrayOutput
+	ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput
+	ToGetInstanceConfigurationPtrOutputWithContext(context.Context) GetInstanceConfigurationPtrOutput
 }
 
-type GetConditionsValuesFilterArray []GetConditionsValuesFilterInput
+type getInstanceConfigurationPtrType GetInstanceConfigurationArgs
 
-func (GetConditionsValuesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConditionsValuesFilter)(nil)).Elem()
+func GetInstanceConfigurationPtr(v *GetInstanceConfigurationArgs) GetInstanceConfigurationPtrInput {
+	return (*getInstanceConfigurationPtrType)(v)
 }
 
-func (i GetConditionsValuesFilterArray) ToGetConditionsValuesFilterArrayOutput() GetConditionsValuesFilterArrayOutput {
-	return i.ToGetConditionsValuesFilterArrayOutputWithContext(context.Background())
+func (*getInstanceConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceConfiguration)(nil)).Elem()
 }
 
-func (i GetConditionsValuesFilterArray) ToGetConditionsValuesFilterArrayOutputWithContext(ctx context.Context) GetConditionsValuesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsValuesFilterArrayOutput)
+func (i *getInstanceConfigurationPtrType) ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput {
+	return i.ToGetInstanceConfigurationPtrOutputWithContext(context.Background())
 }
 
-type GetConditionsValuesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetConditionsValuesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConditionsValuesFilter)(nil)).Elem()
+func (i *getInstanceConfigurationPtrType) ToGetInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetInstanceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfigurationPtrOutput)
 }
 
-func (o GetConditionsValuesFilterOutput) ToGetConditionsValuesFilterOutput() GetConditionsValuesFilterOutput {
+type GetInstanceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfiguration)(nil)).Elem()
+}
+
+func (o GetInstanceConfigurationOutput) ToGetInstanceConfigurationOutput() GetInstanceConfigurationOutput {
 	return o
 }
 
-func (o GetConditionsValuesFilterOutput) ToGetConditionsValuesFilterOutputWithContext(ctx context.Context) GetConditionsValuesFilterOutput {
+func (o GetInstanceConfigurationOutput) ToGetInstanceConfigurationOutputWithContext(ctx context.Context) GetInstanceConfigurationOutput {
 	return o
 }
 
-func (o GetConditionsValuesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConditionsValuesFilter) string { return v.Name }).(pulumi.StringOutput)
+func (o GetInstanceConfigurationOutput) ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput {
+	return o.ToGetInstanceConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (o GetConditionsValuesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetConditionsValuesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o GetInstanceConfigurationOutput) ToGetInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetInstanceConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceConfiguration) *GetInstanceConfiguration {
+		return &v
+	}).(GetInstanceConfigurationPtrOutput)
 }
 
-type GetConditionsValuesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConditionsValuesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConditionsValuesFilter)(nil)).Elem()
+func (o GetInstanceConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
-func (o GetConditionsValuesFilterArrayOutput) ToGetConditionsValuesFilterArrayOutput() GetConditionsValuesFilterArrayOutput {
+func (o GetInstanceConfigurationOutput) LoginUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceConfiguration) string { return v.LoginUrl }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceConfigurationOutput) OidcApplicationType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceConfiguration) int { return v.OidcApplicationType }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceConfigurationOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceConfiguration) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceConfigurationOutput) TokenEndpointAuthMethod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceConfiguration) int { return v.TokenEndpointAuthMethod }).(pulumi.IntOutput)
+}
+
+type GetInstanceConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInstanceConfiguration)(nil)).Elem()
+}
+
+func (o GetInstanceConfigurationPtrOutput) ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput {
 	return o
 }
 
-func (o GetConditionsValuesFilterArrayOutput) ToGetConditionsValuesFilterArrayOutputWithContext(ctx context.Context) GetConditionsValuesFilterArrayOutput {
+func (o GetInstanceConfigurationPtrOutput) ToGetInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetInstanceConfigurationPtrOutput {
 	return o
 }
 
-func (o GetConditionsValuesFilterArrayOutput) Index(i pulumi.IntInput) GetConditionsValuesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConditionsValuesFilter {
-		return vs[0].([]GetConditionsValuesFilter)[vs[1].(int)]
-	}).(GetConditionsValuesFilterOutput)
+func (o GetInstanceConfigurationPtrOutput) Elem() GetInstanceConfigurationOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) GetInstanceConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetInstanceConfiguration
+		return ret
+	}).(GetInstanceConfigurationOutput)
+}
+
+func (o GetInstanceConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessTokenExpirationMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoginUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.OidcApplicationType
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstanceConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpointAuthMethod
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetInstanceEnforcementPoint struct {
@@ -1241,184 +1540,6 @@ func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) Value() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-type GetInstanceParameters struct {
-	IncludeInSamlAssertion bool   `pulumi:"includeInSamlAssertion"`
-	Label                  string `pulumi:"label"`
-	UserAttributeMacros    string `pulumi:"userAttributeMacros"`
-	UserAttributeMappings  string `pulumi:"userAttributeMappings"`
-}
-
-// GetInstanceParametersInput is an input type that accepts GetInstanceParametersArgs and GetInstanceParametersOutput values.
-// You can construct a concrete instance of `GetInstanceParametersInput` via:
-//
-//	GetInstanceParametersArgs{...}
-type GetInstanceParametersInput interface {
-	pulumi.Input
-
-	ToGetInstanceParametersOutput() GetInstanceParametersOutput
-	ToGetInstanceParametersOutputWithContext(context.Context) GetInstanceParametersOutput
-}
-
-type GetInstanceParametersArgs struct {
-	IncludeInSamlAssertion pulumi.BoolInput   `pulumi:"includeInSamlAssertion"`
-	Label                  pulumi.StringInput `pulumi:"label"`
-	UserAttributeMacros    pulumi.StringInput `pulumi:"userAttributeMacros"`
-	UserAttributeMappings  pulumi.StringInput `pulumi:"userAttributeMappings"`
-}
-
-func (GetInstanceParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceParameters)(nil)).Elem()
-}
-
-func (i GetInstanceParametersArgs) ToGetInstanceParametersOutput() GetInstanceParametersOutput {
-	return i.ToGetInstanceParametersOutputWithContext(context.Background())
-}
-
-func (i GetInstanceParametersArgs) ToGetInstanceParametersOutputWithContext(ctx context.Context) GetInstanceParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersOutput)
-}
-
-func (i GetInstanceParametersArgs) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
-	return i.ToGetInstanceParametersPtrOutputWithContext(context.Background())
-}
-
-func (i GetInstanceParametersArgs) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersOutput).ToGetInstanceParametersPtrOutputWithContext(ctx)
-}
-
-// GetInstanceParametersPtrInput is an input type that accepts GetInstanceParametersArgs, GetInstanceParametersPtr and GetInstanceParametersPtrOutput values.
-// You can construct a concrete instance of `GetInstanceParametersPtrInput` via:
-//
-//	        GetInstanceParametersArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetInstanceParametersPtrInput interface {
-	pulumi.Input
-
-	ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput
-	ToGetInstanceParametersPtrOutputWithContext(context.Context) GetInstanceParametersPtrOutput
-}
-
-type getInstanceParametersPtrType GetInstanceParametersArgs
-
-func GetInstanceParametersPtr(v *GetInstanceParametersArgs) GetInstanceParametersPtrInput {
-	return (*getInstanceParametersPtrType)(v)
-}
-
-func (*getInstanceParametersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetInstanceParameters)(nil)).Elem()
-}
-
-func (i *getInstanceParametersPtrType) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
-	return i.ToGetInstanceParametersPtrOutputWithContext(context.Background())
-}
-
-func (i *getInstanceParametersPtrType) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersPtrOutput)
-}
-
-type GetInstanceParametersOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceParameters)(nil)).Elem()
-}
-
-func (o GetInstanceParametersOutput) ToGetInstanceParametersOutput() GetInstanceParametersOutput {
-	return o
-}
-
-func (o GetInstanceParametersOutput) ToGetInstanceParametersOutputWithContext(ctx context.Context) GetInstanceParametersOutput {
-	return o
-}
-
-func (o GetInstanceParametersOutput) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
-	return o.ToGetInstanceParametersPtrOutputWithContext(context.Background())
-}
-
-func (o GetInstanceParametersOutput) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceParameters) *GetInstanceParameters {
-		return &v
-	}).(GetInstanceParametersPtrOutput)
-}
-
-func (o GetInstanceParametersOutput) IncludeInSamlAssertion() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInstanceParameters) bool { return v.IncludeInSamlAssertion }).(pulumi.BoolOutput)
-}
-
-func (o GetInstanceParametersOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceParameters) string { return v.Label }).(pulumi.StringOutput)
-}
-
-func (o GetInstanceParametersOutput) UserAttributeMacros() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceParameters) string { return v.UserAttributeMacros }).(pulumi.StringOutput)
-}
-
-func (o GetInstanceParametersOutput) UserAttributeMappings() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceParameters) string { return v.UserAttributeMappings }).(pulumi.StringOutput)
-}
-
-type GetInstanceParametersPtrOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceParametersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetInstanceParameters)(nil)).Elem()
-}
-
-func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
-	return o
-}
-
-func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
-	return o
-}
-
-func (o GetInstanceParametersPtrOutput) Elem() GetInstanceParametersOutput {
-	return o.ApplyT(func(v *GetInstanceParameters) GetInstanceParameters {
-		if v != nil {
-			return *v
-		}
-		var ret GetInstanceParameters
-		return ret
-	}).(GetInstanceParametersOutput)
-}
-
-func (o GetInstanceParametersPtrOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetInstanceParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IncludeInSamlAssertion
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetInstanceParametersPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetInstanceParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Label
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstanceParametersPtrOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetInstanceParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserAttributeMacros
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstanceParametersPtrOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetInstanceParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserAttributeMappings
-	}).(pulumi.StringPtrOutput)
-}
-
 type GetInstanceProvisioning struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -1858,7 +1979,317 @@ func (o GetRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRulesFilterOutput
 	}).(GetRulesFilterOutput)
 }
 
+type GetRulesInstanceAction struct {
+	Action string   `pulumi:"action"`
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesInstanceActionInput is an input type that accepts GetRulesInstanceActionArgs and GetRulesInstanceActionOutput values.
+// You can construct a concrete instance of `GetRulesInstanceActionInput` via:
+//
+//	GetRulesInstanceActionArgs{...}
+type GetRulesInstanceActionInput interface {
+	pulumi.Input
+
+	ToGetRulesInstanceActionOutput() GetRulesInstanceActionOutput
+	ToGetRulesInstanceActionOutputWithContext(context.Context) GetRulesInstanceActionOutput
+}
+
+type GetRulesInstanceActionArgs struct {
+	Action pulumi.StringInput      `pulumi:"action"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesInstanceAction)(nil)).Elem()
+}
+
+func (i GetRulesInstanceActionArgs) ToGetRulesInstanceActionOutput() GetRulesInstanceActionOutput {
+	return i.ToGetRulesInstanceActionOutputWithContext(context.Background())
+}
+
+func (i GetRulesInstanceActionArgs) ToGetRulesInstanceActionOutputWithContext(ctx context.Context) GetRulesInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceActionOutput)
+}
+
+// GetRulesInstanceActionArrayInput is an input type that accepts GetRulesInstanceActionArray and GetRulesInstanceActionArrayOutput values.
+// You can construct a concrete instance of `GetRulesInstanceActionArrayInput` via:
+//
+//	GetRulesInstanceActionArray{ GetRulesInstanceActionArgs{...} }
+type GetRulesInstanceActionArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesInstanceActionArrayOutput() GetRulesInstanceActionArrayOutput
+	ToGetRulesInstanceActionArrayOutputWithContext(context.Context) GetRulesInstanceActionArrayOutput
+}
+
+type GetRulesInstanceActionArray []GetRulesInstanceActionInput
+
+func (GetRulesInstanceActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesInstanceAction)(nil)).Elem()
+}
+
+func (i GetRulesInstanceActionArray) ToGetRulesInstanceActionArrayOutput() GetRulesInstanceActionArrayOutput {
+	return i.ToGetRulesInstanceActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesInstanceActionArray) ToGetRulesInstanceActionArrayOutputWithContext(ctx context.Context) GetRulesInstanceActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceActionArrayOutput)
+}
+
+type GetRulesInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (GetRulesInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesInstanceAction)(nil)).Elem()
+}
+
+func (o GetRulesInstanceActionOutput) ToGetRulesInstanceActionOutput() GetRulesInstanceActionOutput {
+	return o
+}
+
+func (o GetRulesInstanceActionOutput) ToGetRulesInstanceActionOutputWithContext(ctx context.Context) GetRulesInstanceActionOutput {
+	return o
+}
+
+func (o GetRulesInstanceActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesInstanceAction) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetRulesInstanceActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesInstanceAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesInstanceActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesInstanceActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesInstanceAction)(nil)).Elem()
+}
+
+func (o GetRulesInstanceActionArrayOutput) ToGetRulesInstanceActionArrayOutput() GetRulesInstanceActionArrayOutput {
+	return o
+}
+
+func (o GetRulesInstanceActionArrayOutput) ToGetRulesInstanceActionArrayOutputWithContext(ctx context.Context) GetRulesInstanceActionArrayOutput {
+	return o
+}
+
+func (o GetRulesInstanceActionArrayOutput) Index(i pulumi.IntInput) GetRulesInstanceActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesInstanceAction {
+		return vs[0].([]GetRulesInstanceAction)[vs[1].(int)]
+	}).(GetRulesInstanceActionOutput)
+}
+
+type GetRulesInstanceCondition struct {
+	Operator string `pulumi:"operator"`
+	Source   string `pulumi:"source"`
+	Value    string `pulumi:"value"`
+}
+
+// GetRulesInstanceConditionInput is an input type that accepts GetRulesInstanceConditionArgs and GetRulesInstanceConditionOutput values.
+// You can construct a concrete instance of `GetRulesInstanceConditionInput` via:
+//
+//	GetRulesInstanceConditionArgs{...}
+type GetRulesInstanceConditionInput interface {
+	pulumi.Input
+
+	ToGetRulesInstanceConditionOutput() GetRulesInstanceConditionOutput
+	ToGetRulesInstanceConditionOutputWithContext(context.Context) GetRulesInstanceConditionOutput
+}
+
+type GetRulesInstanceConditionArgs struct {
+	Operator pulumi.StringInput `pulumi:"operator"`
+	Source   pulumi.StringInput `pulumi:"source"`
+	Value    pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRulesInstanceConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesInstanceCondition)(nil)).Elem()
+}
+
+func (i GetRulesInstanceConditionArgs) ToGetRulesInstanceConditionOutput() GetRulesInstanceConditionOutput {
+	return i.ToGetRulesInstanceConditionOutputWithContext(context.Background())
+}
+
+func (i GetRulesInstanceConditionArgs) ToGetRulesInstanceConditionOutputWithContext(ctx context.Context) GetRulesInstanceConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceConditionOutput)
+}
+
+// GetRulesInstanceConditionArrayInput is an input type that accepts GetRulesInstanceConditionArray and GetRulesInstanceConditionArrayOutput values.
+// You can construct a concrete instance of `GetRulesInstanceConditionArrayInput` via:
+//
+//	GetRulesInstanceConditionArray{ GetRulesInstanceConditionArgs{...} }
+type GetRulesInstanceConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesInstanceConditionArrayOutput() GetRulesInstanceConditionArrayOutput
+	ToGetRulesInstanceConditionArrayOutputWithContext(context.Context) GetRulesInstanceConditionArrayOutput
+}
+
+type GetRulesInstanceConditionArray []GetRulesInstanceConditionInput
+
+func (GetRulesInstanceConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesInstanceCondition)(nil)).Elem()
+}
+
+func (i GetRulesInstanceConditionArray) ToGetRulesInstanceConditionArrayOutput() GetRulesInstanceConditionArrayOutput {
+	return i.ToGetRulesInstanceConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesInstanceConditionArray) ToGetRulesInstanceConditionArrayOutputWithContext(ctx context.Context) GetRulesInstanceConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceConditionArrayOutput)
+}
+
+type GetRulesInstanceConditionOutput struct{ *pulumi.OutputState }
+
+func (GetRulesInstanceConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesInstanceCondition)(nil)).Elem()
+}
+
+func (o GetRulesInstanceConditionOutput) ToGetRulesInstanceConditionOutput() GetRulesInstanceConditionOutput {
+	return o
+}
+
+func (o GetRulesInstanceConditionOutput) ToGetRulesInstanceConditionOutputWithContext(ctx context.Context) GetRulesInstanceConditionOutput {
+	return o
+}
+
+func (o GetRulesInstanceConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesInstanceCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetRulesInstanceConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesInstanceCondition) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o GetRulesInstanceConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesInstanceCondition) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRulesInstanceConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesInstanceConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesInstanceCondition)(nil)).Elem()
+}
+
+func (o GetRulesInstanceConditionArrayOutput) ToGetRulesInstanceConditionArrayOutput() GetRulesInstanceConditionArrayOutput {
+	return o
+}
+
+func (o GetRulesInstanceConditionArrayOutput) ToGetRulesInstanceConditionArrayOutputWithContext(ctx context.Context) GetRulesInstanceConditionArrayOutput {
+	return o
+}
+
+func (o GetRulesInstanceConditionArrayOutput) Index(i pulumi.IntInput) GetRulesInstanceConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesInstanceCondition {
+		return vs[0].([]GetRulesInstanceCondition)[vs[1].(int)]
+	}).(GetRulesInstanceConditionOutput)
+}
+
+type GetUsersFilter struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+// GetUsersFilterInput is an input type that accepts GetUsersFilterArgs and GetUsersFilterOutput values.
+// You can construct a concrete instance of `GetUsersFilterInput` via:
+//
+//	GetUsersFilterArgs{...}
+type GetUsersFilterInput interface {
+	pulumi.Input
+
+	ToGetUsersFilterOutput() GetUsersFilterOutput
+	ToGetUsersFilterOutputWithContext(context.Context) GetUsersFilterOutput
+}
+
+type GetUsersFilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetUsersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
+}
+
+func (i GetUsersFilterArgs) ToGetUsersFilterOutput() GetUsersFilterOutput {
+	return i.ToGetUsersFilterOutputWithContext(context.Background())
+}
+
+func (i GetUsersFilterArgs) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterOutput)
+}
+
+// GetUsersFilterArrayInput is an input type that accepts GetUsersFilterArray and GetUsersFilterArrayOutput values.
+// You can construct a concrete instance of `GetUsersFilterArrayInput` via:
+//
+//	GetUsersFilterArray{ GetUsersFilterArgs{...} }
+type GetUsersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput
+	ToGetUsersFilterArrayOutputWithContext(context.Context) GetUsersFilterArrayOutput
+}
+
+type GetUsersFilterArray []GetUsersFilterInput
+
+func (GetUsersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
+}
+
+func (i GetUsersFilterArray) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
+	return i.ToGetUsersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersFilterArray) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterArrayOutput)
+}
+
+type GetUsersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetUsersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
+}
+
+func (o GetUsersFilterOutput) ToGetUsersFilterOutput() GetUsersFilterOutput {
+	return o
+}
+
+func (o GetUsersFilterOutput) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
+	return o
+}
+
+func (o GetUsersFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetUsersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetUsersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
+}
+
+func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
+	return o
+}
+
+func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
+	return o
+}
+
+func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersFilter {
+		return vs[0].([]GetUsersFilter)[vs[1].(int)]
+	}).(GetUsersFilterOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesActionInput)(nil)).Elem(), RulesActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesActionArrayInput)(nil)).Elem(), RulesActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesConditionInput)(nil)).Elem(), RulesConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesConditionArrayInput)(nil)).Elem(), RulesConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionsFilterInput)(nil)).Elem(), GetActionsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionsFilterArrayInput)(nil)).Elem(), GetActionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionsValuesFilterInput)(nil)).Elem(), GetActionsValuesFilterArgs{})
@@ -1867,8 +2298,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsFilterArrayInput)(nil)).Elem(), GetConditionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsOperatorsFilterInput)(nil)).Elem(), GetConditionsOperatorsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsOperatorsFilterArrayInput)(nil)).Elem(), GetConditionsOperatorsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsValuesFilterInput)(nil)).Elem(), GetConditionsValuesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConditionsValuesFilterArrayInput)(nil)).Elem(), GetConditionsValuesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfigurationInput)(nil)).Elem(), GetInstanceConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfigurationPtrInput)(nil)).Elem(), GetInstanceConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointInput)(nil)).Elem(), GetInstanceEnforcementPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointPtrInput)(nil)).Elem(), GetInstanceEnforcementPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointResourceInput)(nil)).Elem(), GetInstanceEnforcementPointResourceArgs{})
@@ -1877,8 +2308,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryFixedPtrInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryFixedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivityInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnforcementPointSessionExpiryInactivityPtrInput)(nil)).Elem(), GetInstanceEnforcementPointSessionExpiryInactivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParametersInput)(nil)).Elem(), GetInstanceParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParametersPtrInput)(nil)).Elem(), GetInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProvisioningInput)(nil)).Elem(), GetInstanceProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProvisioningPtrInput)(nil)).Elem(), GetInstanceProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesActionInput)(nil)).Elem(), GetRulesActionArgs{})
@@ -1887,6 +2316,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesConditionArrayInput)(nil)).Elem(), GetRulesConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesFilterInput)(nil)).Elem(), GetRulesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesFilterArrayInput)(nil)).Elem(), GetRulesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesInstanceActionInput)(nil)).Elem(), GetRulesInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesInstanceActionArrayInput)(nil)).Elem(), GetRulesInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesInstanceConditionInput)(nil)).Elem(), GetRulesInstanceConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesInstanceConditionArrayInput)(nil)).Elem(), GetRulesInstanceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterInput)(nil)).Elem(), GetUsersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterArrayInput)(nil)).Elem(), GetUsersFilterArray{})
+	pulumi.RegisterOutputType(RulesActionOutput{})
+	pulumi.RegisterOutputType(RulesActionArrayOutput{})
+	pulumi.RegisterOutputType(RulesConditionOutput{})
+	pulumi.RegisterOutputType(RulesConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetActionsFilterOutput{})
 	pulumi.RegisterOutputType(GetActionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetActionsValuesFilterOutput{})
@@ -1895,8 +2334,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConditionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetConditionsOperatorsFilterOutput{})
 	pulumi.RegisterOutputType(GetConditionsOperatorsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetConditionsValuesFilterOutput{})
-	pulumi.RegisterOutputType(GetConditionsValuesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfigurationOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointResourceOutput{})
@@ -1905,8 +2344,6 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryInactivityOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput{})
-	pulumi.RegisterOutputType(GetInstanceParametersOutput{})
-	pulumi.RegisterOutputType(GetInstanceParametersPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceProvisioningOutput{})
 	pulumi.RegisterOutputType(GetInstanceProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesActionOutput{})
@@ -1915,4 +2352,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesFilterOutput{})
 	pulumi.RegisterOutputType(GetRulesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesInstanceActionOutput{})
+	pulumi.RegisterOutputType(GetRulesInstanceActionArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesInstanceConditionOutput{})
+	pulumi.RegisterOutputType(GetRulesInstanceConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersFilterOutput{})
+	pulumi.RegisterOutputType(GetUsersFilterArrayOutput{})
 }

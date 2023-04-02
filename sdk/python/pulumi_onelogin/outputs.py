@@ -11,30 +11,110 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AppConfiguration',
     'AppEnforcementPoint',
     'AppEnforcementPointResource',
     'AppEnforcementPointSessionExpiryFixed',
     'AppEnforcementPointSessionExpiryInactivity',
-    'AppParameters',
     'AppProvisioning',
-    'RuleSource',
+    'AuthServersConfiguration',
+    'PrivilegesPrivilege',
+    'PrivilegesPrivilegeStatement',
+    'RiskRulesSource',
+    'GetAppsConfigurationResult',
     'GetAppsEnforcementPointResult',
     'GetAppsEnforcementPointResourceResult',
     'GetAppsEnforcementPointSessionExpiryFixedResult',
     'GetAppsEnforcementPointSessionExpiryInactivityResult',
     'GetAppsFilterResult',
-    'GetAppsParametersResult',
     'GetAppsProvisioningResult',
-    'GetBrandsAppsFilterResult',
-    'GetBrandsFilterResult',
-    'GetBrandsTemplatesFilterResult',
+    'GetAuthServersClaimsFilterResult',
+    'GetAuthServersConfigurationResult',
+    'GetAuthServersFilterResult',
+    'GetAuthServersInstanceConfigurationResult',
+    'GetAuthServersScopesFilterResult',
     'GetMappingsActionResult',
     'GetMappingsConditionResult',
     'GetMappingsFilterResult',
     'GetPrivilegesFilterResult',
+    'GetPrivilegesInstancePrivilegeResult',
+    'GetPrivilegesInstancePrivilegeStatementResult',
     'GetPrivilegesPrivilegeResult',
     'GetPrivilegesPrivilegeStatementResult',
+    'GetRiskRulesFilterResult',
+    'GetRiskRulesInstanceSourceResult',
+    'GetRiskRulesSourceResult',
 ]
+
+@pulumi.output_type
+class AppConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessTokenExpirationMinutes":
+            suggest = "access_token_expiration_minutes"
+        elif key == "loginUrl":
+            suggest = "login_url"
+        elif key == "oidcApplicationType":
+            suggest = "oidc_application_type"
+        elif key == "redirectUri":
+            suggest = "redirect_uri"
+        elif key == "tokenEndpointAuthMethod":
+            suggest = "token_endpoint_auth_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: Optional[int] = None,
+                 login_url: Optional[str] = None,
+                 oidc_application_type: Optional[int] = None,
+                 redirect_uri: Optional[str] = None,
+                 token_endpoint_auth_method: Optional[int] = None):
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if login_url is not None:
+            pulumi.set(__self__, "login_url", login_url)
+        if oidc_application_type is not None:
+            pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+        if token_endpoint_auth_method is not None:
+            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> Optional[str]:
+        return pulumi.get(self, "login_url")
+
+    @property
+    @pulumi.getter(name="oidcApplicationType")
+    def oidc_application_type(self) -> Optional[int]:
+        return pulumi.get(self, "oidc_application_type")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[str]:
+        return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> Optional[int]:
+        return pulumi.get(self, "token_endpoint_auth_method")
+
 
 @pulumi.output_type
 class AppEnforcementPoint(dict):
@@ -281,64 +361,6 @@ class AppEnforcementPointSessionExpiryInactivity(dict):
 
 
 @pulumi.output_type
-class AppParameters(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "includeInSamlAssertion":
-            suggest = "include_in_saml_assertion"
-        elif key == "userAttributeMacros":
-            suggest = "user_attribute_macros"
-        elif key == "userAttributeMappings":
-            suggest = "user_attribute_mappings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AppParameters. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AppParameters.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AppParameters.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 include_in_saml_assertion: Optional[bool] = None,
-                 label: Optional[str] = None,
-                 user_attribute_macros: Optional[str] = None,
-                 user_attribute_mappings: Optional[str] = None):
-        if include_in_saml_assertion is not None:
-            pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if user_attribute_macros is not None:
-            pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        if user_attribute_mappings is not None:
-            pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-
-    @property
-    @pulumi.getter(name="includeInSamlAssertion")
-    def include_in_saml_assertion(self) -> Optional[bool]:
-        return pulumi.get(self, "include_in_saml_assertion")
-
-    @property
-    @pulumi.getter
-    def label(self) -> Optional[str]:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter(name="userAttributeMacros")
-    def user_attribute_macros(self) -> Optional[str]:
-        return pulumi.get(self, "user_attribute_macros")
-
-    @property
-    @pulumi.getter(name="userAttributeMappings")
-    def user_attribute_mappings(self) -> Optional[str]:
-        return pulumi.get(self, "user_attribute_mappings")
-
-
-@pulumi.output_type
 class AppProvisioning(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
@@ -352,7 +374,110 @@ class AppProvisioning(dict):
 
 
 @pulumi.output_type
-class RuleSource(dict):
+class AuthServersConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceIdentifier":
+            suggest = "resource_identifier"
+        elif key == "accessTokenExpirationMinutes":
+            suggest = "access_token_expiration_minutes"
+        elif key == "refreshTokenExpirationMinutes":
+            suggest = "refresh_token_expiration_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthServersConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthServersConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthServersConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audiences: Sequence[str],
+                 resource_identifier: str,
+                 access_token_expiration_minutes: Optional[int] = None,
+                 refresh_token_expiration_minutes: Optional[int] = None):
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if refresh_token_expiration_minutes is not None:
+            pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+
+@pulumi.output_type
+class PrivilegesPrivilege(dict):
+    def __init__(__self__, *,
+                 statements: Optional[Sequence['outputs.PrivilegesPrivilegeStatement']] = None,
+                 version: Optional[str] = None):
+        if statements is not None:
+            pulumi.set(__self__, "statements", statements)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def statements(self) -> Optional[Sequence['outputs.PrivilegesPrivilegeStatement']]:
+        return pulumi.get(self, "statements")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PrivilegesPrivilegeStatement(dict):
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 effect: str,
+                 scopes: Sequence[str]):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class RiskRulesSource(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  name: Optional[str] = None):
@@ -370,6 +495,46 @@ class RuleSource(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAppsConfigurationResult(dict):
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 login_url: str,
+                 oidc_application_type: int,
+                 redirect_uri: str,
+                 token_endpoint_auth_method: int):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> str:
+        return pulumi.get(self, "login_url")
+
+    @property
+    @pulumi.getter(name="oidcApplicationType")
+    def oidc_application_type(self) -> int:
+        return pulumi.get(self, "oidc_application_type")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> str:
+        return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> int:
+        return pulumi.get(self, "token_endpoint_auth_method")
 
 
 @pulumi.output_type
@@ -566,39 +731,6 @@ class GetAppsFilterResult(dict):
 
 
 @pulumi.output_type
-class GetAppsParametersResult(dict):
-    def __init__(__self__, *,
-                 include_in_saml_assertion: bool,
-                 label: str,
-                 user_attribute_macros: str,
-                 user_attribute_mappings: str):
-        pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-
-    @property
-    @pulumi.getter(name="includeInSamlAssertion")
-    def include_in_saml_assertion(self) -> bool:
-        return pulumi.get(self, "include_in_saml_assertion")
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter(name="userAttributeMacros")
-    def user_attribute_macros(self) -> str:
-        return pulumi.get(self, "user_attribute_macros")
-
-    @property
-    @pulumi.getter(name="userAttributeMappings")
-    def user_attribute_mappings(self) -> str:
-        return pulumi.get(self, "user_attribute_mappings")
-
-
-@pulumi.output_type
 class GetAppsProvisioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -611,7 +743,7 @@ class GetAppsProvisioningResult(dict):
 
 
 @pulumi.output_type
-class GetBrandsAppsFilterResult(dict):
+class GetAuthServersClaimsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -630,7 +762,40 @@ class GetBrandsAppsFilterResult(dict):
 
 
 @pulumi.output_type
-class GetBrandsFilterResult(dict):
+class GetAuthServersConfigurationResult(dict):
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 audiences: Sequence[str],
+                 refresh_token_expiration_minutes: int,
+                 resource_identifier: str):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+
+@pulumi.output_type
+class GetAuthServersFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -649,7 +814,40 @@ class GetBrandsFilterResult(dict):
 
 
 @pulumi.output_type
-class GetBrandsTemplatesFilterResult(dict):
+class GetAuthServersInstanceConfigurationResult(dict):
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 audiences: Sequence[str],
+                 refresh_token_expiration_minutes: int,
+                 resource_identifier: str):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+
+@pulumi.output_type
+class GetAuthServersScopesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -751,6 +949,51 @@ class GetPrivilegesFilterResult(dict):
 
 
 @pulumi.output_type
+class GetPrivilegesInstancePrivilegeResult(dict):
+    def __init__(__self__, *,
+                 statements: Sequence['outputs.GetPrivilegesInstancePrivilegeStatementResult'],
+                 version: str):
+        pulumi.set(__self__, "statements", statements)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def statements(self) -> Sequence['outputs.GetPrivilegesInstancePrivilegeStatementResult']:
+        return pulumi.get(self, "statements")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPrivilegesInstancePrivilegeStatementResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 effect: str,
+                 scopes: Sequence[str]):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
 class GetPrivilegesPrivilegeResult(dict):
     def __init__(__self__, *,
                  statements: Sequence['outputs.GetPrivilegesPrivilegeStatementResult'],
@@ -793,5 +1036,62 @@ class GetPrivilegesPrivilegeStatementResult(dict):
     @pulumi.getter
     def scopes(self) -> Sequence[str]:
         return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetRiskRulesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRiskRulesInstanceSourceResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRiskRulesSourceResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 

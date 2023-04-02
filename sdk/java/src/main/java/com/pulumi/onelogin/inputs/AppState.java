@@ -5,8 +5,8 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.inputs.AppConfigurationArgs;
 import com.pulumi.onelogin.inputs.AppEnforcementPointArgs;
-import com.pulumi.onelogin.inputs.AppParametersArgs;
 import com.pulumi.onelogin.inputs.AppProvisioningArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -51,6 +51,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> authMethod() {
         return Optional.ofNullable(this.authMethod);
+    }
+
+    /**
+     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * 
+     */
+    @Import(name="configuration")
+    private @Nullable Output<AppConfigurationArgs> configuration;
+
+    /**
+     * @return Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * 
+     */
+    public Optional<Output<AppConfigurationArgs>> configuration() {
+        return Optional.ofNullable(this.configuration);
     }
 
     /**
@@ -161,25 +176,6 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     * 
-     */
-    @Import(name="parameters")
-    private @Nullable Output<AppParametersArgs> parameters;
-
-    /**
-     * @return The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     * 
-     */
-    public Optional<Output<AppParametersArgs>> parameters() {
-        return Optional.ofNullable(this.parameters);
-    }
-
-    /**
      * The security policy assigned to the app.
      * 
      */
@@ -276,6 +272,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     private AppState(AppState $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
@@ -283,7 +280,6 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.iconUrl = $.iconUrl;
         this.name = $.name;
         this.notes = $.notes;
-        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -352,6 +348,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authMethod(Integer authMethod) {
             return authMethod(Output.of(authMethod));
+        }
+
+        /**
+         * @param configuration Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuration(@Nullable Output<AppConfigurationArgs> configuration) {
+            $.configuration = configuration;
+            return this;
+        }
+
+        /**
+         * @param configuration Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuration(AppConfigurationArgs configuration) {
+            return configuration(Output.of(configuration));
         }
 
         /**
@@ -501,31 +518,6 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
-        }
-
-        /**
-         * @param parameters The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-         * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-         * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder parameters(@Nullable Output<AppParametersArgs> parameters) {
-            $.parameters = parameters;
-            return this;
-        }
-
-        /**
-         * @param parameters The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-         * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-         * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder parameters(AppParametersArgs parameters) {
-            return parameters(Output.of(parameters));
         }
 
         /**

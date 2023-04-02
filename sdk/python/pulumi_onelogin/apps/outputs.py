@@ -11,21 +11,75 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RulesAction',
+    'RulesCondition',
     'GetActionsFilterResult',
     'GetActionsValuesFilterResult',
     'GetConditionsFilterResult',
     'GetConditionsOperatorsFilterResult',
-    'GetConditionsValuesFilterResult',
+    'GetInstanceConfigurationResult',
     'GetInstanceEnforcementPointResult',
     'GetInstanceEnforcementPointResourceResult',
     'GetInstanceEnforcementPointSessionExpiryFixedResult',
     'GetInstanceEnforcementPointSessionExpiryInactivityResult',
-    'GetInstanceParametersResult',
     'GetInstanceProvisioningResult',
     'GetRulesActionResult',
     'GetRulesConditionResult',
     'GetRulesFilterResult',
+    'GetRulesInstanceActionResult',
+    'GetRulesInstanceConditionResult',
+    'GetUsersFilterResult',
 ]
+
+@pulumi.output_type
+class RulesAction(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RulesCondition(dict):
+    def __init__(__self__, *,
+                 operator: Optional[str] = None,
+                 source: Optional[str] = None,
+                 value: Optional[str] = None):
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class GetActionsFilterResult(dict):
@@ -104,22 +158,43 @@ class GetConditionsOperatorsFilterResult(dict):
 
 
 @pulumi.output_type
-class GetConditionsValuesFilterResult(dict):
+class GetInstanceConfigurationResult(dict):
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+                 access_token_expiration_minutes: int,
+                 login_url: str,
+                 oidc_application_type: int,
+                 redirect_uri: str,
+                 token_endpoint_auth_method: int):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
 
     @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
 
     @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> str:
+        return pulumi.get(self, "login_url")
+
+    @property
+    @pulumi.getter(name="oidcApplicationType")
+    def oidc_application_type(self) -> int:
+        return pulumi.get(self, "oidc_application_type")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> str:
+        return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> int:
+        return pulumi.get(self, "token_endpoint_auth_method")
 
 
 @pulumi.output_type
@@ -297,39 +372,6 @@ class GetInstanceEnforcementPointSessionExpiryInactivityResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceParametersResult(dict):
-    def __init__(__self__, *,
-                 include_in_saml_assertion: bool,
-                 label: str,
-                 user_attribute_macros: str,
-                 user_attribute_mappings: str):
-        pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-
-    @property
-    @pulumi.getter(name="includeInSamlAssertion")
-    def include_in_saml_assertion(self) -> bool:
-        return pulumi.get(self, "include_in_saml_assertion")
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter(name="userAttributeMacros")
-    def user_attribute_macros(self) -> str:
-        return pulumi.get(self, "user_attribute_macros")
-
-    @property
-    @pulumi.getter(name="userAttributeMappings")
-    def user_attribute_mappings(self) -> str:
-        return pulumi.get(self, "user_attribute_mappings")
-
-
-@pulumi.output_type
 class GetInstanceProvisioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -388,6 +430,70 @@ class GetRulesConditionResult(dict):
 
 @pulumi.output_type
 class GetRulesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRulesInstanceActionResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRulesInstanceConditionResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 source: str,
+                 value: str):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetUsersFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):

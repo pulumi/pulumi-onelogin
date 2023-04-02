@@ -364,15 +364,15 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * The user&#39;s Active Directory username.
      * 
      */
-    @Import(name="samaccountName")
-    private @Nullable Output<String> samaccountName;
+    @Import(name="samaccountname")
+    private @Nullable Output<String> samaccountname;
 
     /**
      * @return The user&#39;s Active Directory username.
      * 
      */
-    public Optional<Output<String>> samaccountName() {
-        return Optional.ofNullable(this.samaccountName);
+    public Optional<Output<String>> samaccountname() {
+        return Optional.ofNullable(this.samaccountname);
     }
 
     @Import(name="state")
@@ -486,7 +486,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.preferredLocaleCode = $.preferredLocaleCode;
         this.roleIds = $.roleIds;
         this.salt = $.salt;
-        this.samaccountName = $.samaccountName;
+        this.samaccountname = $.samaccountname;
         this.state = $.state;
         this.status = $.status;
         this.title = $.title;
@@ -998,24 +998,24 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samaccountName The user&#39;s Active Directory username.
+         * @param samaccountname The user&#39;s Active Directory username.
          * 
          * @return builder
          * 
          */
-        public Builder samaccountName(@Nullable Output<String> samaccountName) {
-            $.samaccountName = samaccountName;
+        public Builder samaccountname(@Nullable Output<String> samaccountname) {
+            $.samaccountname = samaccountname;
             return this;
         }
 
         /**
-         * @param samaccountName The user&#39;s Active Directory username.
+         * @param samaccountname The user&#39;s Active Directory username.
          * 
          * @return builder
          * 
          */
-        public Builder samaccountName(String samaccountName) {
-            return samaccountName(Output.of(samaccountName));
+        public Builder samaccountname(String samaccountname) {
+            return samaccountname(Output.of(samaccountname));
         }
 
         public Builder state(@Nullable Output<Integer> state) {

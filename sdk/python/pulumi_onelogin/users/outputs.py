@@ -13,6 +13,8 @@ __all__ = [
     'GetAppsFilterResult',
     'GetDevicesFilterResult',
     'GetUsersFilterResult',
+    'GetV1AppsFilterResult',
+    'GetV1FilterResult',
 ]
 
 @pulumi.output_type
@@ -55,6 +57,44 @@ class GetDevicesFilterResult(dict):
 
 @pulumi.output_type
 class GetUsersFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetV1AppsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetV1FilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):

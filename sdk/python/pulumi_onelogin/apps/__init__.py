@@ -9,8 +9,10 @@ from .get_actions import *
 from .get_actions_values import *
 from .get_conditions import *
 from .get_conditions_operators import *
-from .get_conditions_values import *
 from .get_instance import *
 from .get_rules import *
+from .get_rules_instance import *
+from .get_users import *
+from .rules import *
 from ._inputs import *
 from . import outputs

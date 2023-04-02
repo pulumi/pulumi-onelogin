@@ -118,8 +118,8 @@ namespace Pulumi.Onelogin.Roles
         [Input("salt")]
         public string? Salt { get; set; }
 
-        [Input("samaccountName")]
-        public string? SamaccountName { get; set; }
+        [Input("samaccountname")]
+        public string? Samaccountname { get; set; }
 
         [Input("state")]
         public int? State { get; set; }
@@ -247,8 +247,8 @@ namespace Pulumi.Onelogin.Roles
         [Input("salt")]
         public Input<string>? Salt { get; set; }
 
-        [Input("samaccountName")]
-        public Input<string>? SamaccountName { get; set; }
+        [Input("samaccountname")]
+        public Input<string>? Samaccountname { get; set; }
 
         [Input("state")]
         public Input<int>? State { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Onelogin.Roles
         public readonly ImmutableArray<int> RoleIds;
         public readonly string RolesId;
         public readonly string Salt;
-        public readonly string SamaccountName;
+        public readonly string Samaccountname;
         public readonly int State;
         public readonly int Status;
         public readonly string Title;
@@ -385,7 +385,7 @@ namespace Pulumi.Onelogin.Roles
 
             string salt,
 
-            string samaccountName,
+            string samaccountname,
 
             int state,
 
@@ -431,7 +431,7 @@ namespace Pulumi.Onelogin.Roles
             RoleIds = roleIds;
             RolesId = rolesId;
             Salt = salt;
-            SamaccountName = samaccountName;
+            Samaccountname = samaccountname;
             State = state;
             Status = status;
             Title = title;

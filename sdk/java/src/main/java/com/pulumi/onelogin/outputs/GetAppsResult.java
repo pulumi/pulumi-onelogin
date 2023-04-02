@@ -4,9 +4,9 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.onelogin.outputs.GetAppsConfiguration;
 import com.pulumi.onelogin.outputs.GetAppsEnforcementPoint;
 import com.pulumi.onelogin.outputs.GetAppsFilter;
-import com.pulumi.onelogin.outputs.GetAppsParameters;
 import com.pulumi.onelogin.outputs.GetAppsProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetAppsResult {
     private Boolean allowAssumedSignin;
     private Integer authMethod;
+    private GetAppsConfiguration configuration;
     private Integer connectorId;
     private String createdAt;
     private String description;
@@ -32,7 +33,6 @@ public final class GetAppsResult {
     private String id;
     private String name;
     private String notes;
-    private GetAppsParameters parameters;
     private Integer policyId;
     private GetAppsProvisioning provisioning;
     private List<Integer> roleIds;
@@ -46,6 +46,9 @@ public final class GetAppsResult {
     }
     public Integer authMethod() {
         return this.authMethod;
+    }
+    public GetAppsConfiguration configuration() {
+        return this.configuration;
     }
     public Integer connectorId() {
         return this.connectorId;
@@ -78,9 +81,6 @@ public final class GetAppsResult {
     public String notes() {
         return this.notes;
     }
-    public GetAppsParameters parameters() {
-        return this.parameters;
-    }
     public Integer policyId() {
         return this.policyId;
     }
@@ -111,6 +111,7 @@ public final class GetAppsResult {
     public static final class Builder {
         private Boolean allowAssumedSignin;
         private Integer authMethod;
+        private GetAppsConfiguration configuration;
         private Integer connectorId;
         private String createdAt;
         private String description;
@@ -120,7 +121,6 @@ public final class GetAppsResult {
         private String id;
         private String name;
         private String notes;
-        private GetAppsParameters parameters;
         private Integer policyId;
         private GetAppsProvisioning provisioning;
         private List<Integer> roleIds;
@@ -132,6 +132,7 @@ public final class GetAppsResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowAssumedSignin = defaults.allowAssumedSignin;
     	      this.authMethod = defaults.authMethod;
+    	      this.configuration = defaults.configuration;
     	      this.connectorId = defaults.connectorId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -141,7 +142,6 @@ public final class GetAppsResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
-    	      this.parameters = defaults.parameters;
     	      this.policyId = defaults.policyId;
     	      this.provisioning = defaults.provisioning;
     	      this.roleIds = defaults.roleIds;
@@ -158,6 +158,11 @@ public final class GetAppsResult {
         @CustomType.Setter
         public Builder authMethod(Integer authMethod) {
             this.authMethod = Objects.requireNonNull(authMethod);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configuration(GetAppsConfiguration configuration) {
+            this.configuration = Objects.requireNonNull(configuration);
             return this;
         }
         @CustomType.Setter
@@ -209,11 +214,6 @@ public final class GetAppsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(GetAppsParameters parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
-            return this;
-        }
-        @CustomType.Setter
         public Builder policyId(Integer policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
@@ -250,6 +250,7 @@ public final class GetAppsResult {
             final var o = new GetAppsResult();
             o.allowAssumedSignin = allowAssumedSignin;
             o.authMethod = authMethod;
+            o.configuration = configuration;
             o.connectorId = connectorId;
             o.createdAt = createdAt;
             o.description = description;
@@ -259,7 +260,6 @@ public final class GetAppsResult {
             o.id = id;
             o.name = name;
             o.notes = notes;
-            o.parameters = parameters;
             o.policyId = policyId;
             o.provisioning = provisioning;
             o.roleIds = roleIds;

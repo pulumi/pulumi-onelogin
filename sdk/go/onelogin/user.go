@@ -61,7 +61,7 @@ type User struct {
 	// The salt value used with the password_algorithm.
 	Salt pulumi.StringPtrOutput `pulumi:"salt"`
 	// The user's Active Directory username.
-	SamaccountName pulumi.StringPtrOutput `pulumi:"samaccountName"`
+	Samaccountname pulumi.StringPtrOutput `pulumi:"samaccountname"`
 	State          pulumi.IntPtrOutput    `pulumi:"state"`
 	Status         pulumi.IntPtrOutput    `pulumi:"status"`
 	// The user's job title.
@@ -152,7 +152,7 @@ type userState struct {
 	// The salt value used with the password_algorithm.
 	Salt *string `pulumi:"salt"`
 	// The user's Active Directory username.
-	SamaccountName *string `pulumi:"samaccountName"`
+	Samaccountname *string `pulumi:"samaccountname"`
 	State          *int    `pulumi:"state"`
 	Status         *int    `pulumi:"status"`
 	// The user's job title.
@@ -215,7 +215,7 @@ type UserState struct {
 	// The salt value used with the password_algorithm.
 	Salt pulumi.StringPtrInput
 	// The user's Active Directory username.
-	SamaccountName pulumi.StringPtrInput
+	Samaccountname pulumi.StringPtrInput
 	State          pulumi.IntPtrInput
 	Status         pulumi.IntPtrInput
 	// The user's job title.
@@ -282,7 +282,7 @@ type userArgs struct {
 	// The salt value used with the password_algorithm.
 	Salt *string `pulumi:"salt"`
 	// The user's Active Directory username.
-	SamaccountName *string `pulumi:"samaccountName"`
+	Samaccountname *string `pulumi:"samaccountname"`
 	State          *int    `pulumi:"state"`
 	Status         *int    `pulumi:"status"`
 	// The user's job title.
@@ -346,7 +346,7 @@ type UserArgs struct {
 	// The salt value used with the password_algorithm.
 	Salt pulumi.StringPtrInput
 	// The user's Active Directory username.
-	SamaccountName pulumi.StringPtrInput
+	Samaccountname pulumi.StringPtrInput
 	State          pulumi.IntPtrInput
 	Status         pulumi.IntPtrInput
 	// The user's job title.
@@ -576,8 +576,8 @@ func (o UserOutput) Salt() pulumi.StringPtrOutput {
 }
 
 // The user's Active Directory username.
-func (o UserOutput) SamaccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.SamaccountName }).(pulumi.StringPtrOutput)
+func (o UserOutput) Samaccountname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Samaccountname }).(pulumi.StringPtrOutput)
 }
 
 func (o UserOutput) State() pulumi.IntPtrOutput {

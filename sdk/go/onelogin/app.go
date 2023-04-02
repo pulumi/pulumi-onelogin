@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,10 +19,12 @@ type App struct {
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
 	AuthMethod pulumi.IntPtrOutput `pulumi:"authMethod"`
+	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	Configuration AppConfigurationPtrOutput `pulumi:"configuration"`
 	// ID of the connector to base the app from.
-	ConnectorId pulumi.IntPtrOutput `pulumi:"connectorId"`
+	ConnectorId pulumi.IntOutput `pulumi:"connectorId"`
 	// the date the app was created
-	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Freeform description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
@@ -33,10 +36,6 @@ type App struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Freeform notes about the app.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-	// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-	// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-	Parameters AppParametersPtrOutput `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrOutput `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -47,7 +46,7 @@ type App struct {
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId pulumi.IntPtrOutput `pulumi:"tabId"`
 	// the date the app was last updated
-	UpdatedAt pulumi.StringPtrOutput `pulumi:"updatedAt"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Indicates if the app is visible in the OneLogin portal.
 	Visible pulumi.BoolPtrOutput `pulumi:"visible"`
 }
@@ -56,9 +55,12 @@ type App struct {
 func NewApp(ctx *pulumi.Context,
 	name string, args *AppArgs, opts ...pulumi.ResourceOption) (*App, error) {
 	if args == nil {
-		args = &AppArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConnectorId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectorId'")
+	}
 	var resource App
 	err := ctx.RegisterResource("onelogin:index/app:App", name, args, &resource, opts...)
 	if err != nil {
@@ -86,6 +88,8 @@ type appState struct {
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
 	AuthMethod *int `pulumi:"authMethod"`
+	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	Configuration *AppConfiguration `pulumi:"configuration"`
 	// ID of the connector to base the app from.
 	ConnectorId *int `pulumi:"connectorId"`
 	// the date the app was created
@@ -101,10 +105,6 @@ type appState struct {
 	Name *string `pulumi:"name"`
 	// Freeform notes about the app.
 	Notes *string `pulumi:"notes"`
-	// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-	// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-	// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-	Parameters *AppParameters `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId *int `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -126,6 +126,8 @@ type AppState struct {
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
 	AuthMethod pulumi.IntPtrInput
+	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	Configuration AppConfigurationPtrInput
 	// ID of the connector to base the app from.
 	ConnectorId pulumi.IntPtrInput
 	// the date the app was created
@@ -141,10 +143,6 @@ type AppState struct {
 	Name pulumi.StringPtrInput
 	// Freeform notes about the app.
 	Notes pulumi.StringPtrInput
-	// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-	// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-	// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-	Parameters AppParametersPtrInput
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrInput
 	// Indicates if provisioning is enabled for this app.
@@ -170,8 +168,10 @@ type appArgs struct {
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
 	AuthMethod *int `pulumi:"authMethod"`
+	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	Configuration *AppConfiguration `pulumi:"configuration"`
 	// ID of the connector to base the app from.
-	ConnectorId *int `pulumi:"connectorId"`
+	ConnectorId int `pulumi:"connectorId"`
 	// the date the app was created
 	CreatedAt *string `pulumi:"createdAt"`
 	// Freeform description of the app.
@@ -185,10 +185,6 @@ type appArgs struct {
 	Name *string `pulumi:"name"`
 	// Freeform notes about the app.
 	Notes *string `pulumi:"notes"`
-	// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-	// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-	// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-	Parameters *AppParameters `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId *int `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -211,8 +207,10 @@ type AppArgs struct {
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
 	AuthMethod pulumi.IntPtrInput
+	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	Configuration AppConfigurationPtrInput
 	// ID of the connector to base the app from.
-	ConnectorId pulumi.IntPtrInput
+	ConnectorId pulumi.IntInput
 	// the date the app was created
 	CreatedAt pulumi.StringPtrInput
 	// Freeform description of the app.
@@ -226,10 +224,6 @@ type AppArgs struct {
 	Name pulumi.StringPtrInput
 	// Freeform notes about the app.
 	Notes pulumi.StringPtrInput
-	// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-	// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-	// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-	Parameters AppParametersPtrInput
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrInput
 	// Indicates if provisioning is enabled for this app.
@@ -343,14 +337,19 @@ func (o AppOutput) AuthMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.AuthMethod }).(pulumi.IntPtrOutput)
 }
 
+// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+func (o AppOutput) Configuration() AppConfigurationPtrOutput {
+	return o.ApplyT(func(v *App) AppConfigurationPtrOutput { return v.Configuration }).(AppConfigurationPtrOutput)
+}
+
 // ID of the connector to base the app from.
-func (o AppOutput) ConnectorId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ConnectorId }).(pulumi.IntPtrOutput)
+func (o AppOutput) ConnectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *App) pulumi.IntOutput { return v.ConnectorId }).(pulumi.IntOutput)
 }
 
 // the date the app was created
-func (o AppOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
+func (o AppOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Freeform description of the app.
@@ -379,13 +378,6 @@ func (o AppOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-func (o AppOutput) Parameters() AppParametersPtrOutput {
-	return o.ApplyT(func(v *App) AppParametersPtrOutput { return v.Parameters }).(AppParametersPtrOutput)
-}
-
 // The security policy assigned to the app.
 func (o AppOutput) PolicyId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.PolicyId }).(pulumi.IntPtrOutput)
@@ -408,8 +400,8 @@ func (o AppOutput) TabId() pulumi.IntPtrOutput {
 }
 
 // the date the app was last updated
-func (o AppOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+func (o AppOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // Indicates if the app is visible in the OneLogin portal.

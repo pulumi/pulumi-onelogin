@@ -27,6 +27,7 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly apikeyAuth!: pulumi.Output<string>;
     public readonly contentType!: pulumi.Output<string | undefined>;
 
     /**
@@ -36,10 +37,14 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            if ((!args || args.apikeyAuth === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apikeyAuth'");
+            }
+            resourceInputs["apikeyAuth"] = args ? args.apikeyAuth : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
         }
@@ -52,6 +57,7 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    apikeyAuth: pulumi.Input<string>;
     contentType?: pulumi.Input<string>;
     endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
 }

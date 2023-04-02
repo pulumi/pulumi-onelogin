@@ -18,6 +18,9 @@ namespace Pulumi.Onelogin
     [OneloginResourceType("pulumi:providers:onelogin")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
+        [Output("apikeyAuth")]
+        public Output<string> ApikeyAuth { get; private set; } = null!;
+
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
 
@@ -29,7 +32,7 @@ namespace Pulumi.Onelogin
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("onelogin", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -49,6 +52,9 @@ namespace Pulumi.Onelogin
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apikeyAuth", required: true)]
+        public Input<string> ApikeyAuth { get; set; } = null!;
+
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 

@@ -22,8 +22,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "onelogin:index/app:App":
 		r = &App{}
-	case "onelogin:index/rule:Rule":
-		r = &Rule{}
+	case "onelogin:index/authServers:AuthServers":
+		r = &AuthServers{}
+	case "onelogin:index/privileges:Privileges":
+		r = &Privileges{}
+	case "onelogin:index/riskRules:RiskRules":
+		r = &RiskRules{}
+	case "onelogin:index/role:Role":
+		r = &Role{}
 	case "onelogin:index/user:User":
 		r = &User{}
 	default:
@@ -61,7 +67,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/rule",
+		"index/authServers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"onelogin",
+		"index/privileges",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"onelogin",
+		"index/riskRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"onelogin",
+		"index/role",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

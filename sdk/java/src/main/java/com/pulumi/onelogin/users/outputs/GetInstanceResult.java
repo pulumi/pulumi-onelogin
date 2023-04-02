@@ -39,7 +39,7 @@ public final class GetInstanceResult {
     private String preferredLocaleCode;
     private List<Integer> roleIds;
     private String salt;
-    private String samaccountName;
+    private String samaccountname;
     private Integer state;
     private Integer status;
     private String title;
@@ -133,8 +133,8 @@ public final class GetInstanceResult {
     public String salt() {
         return this.salt;
     }
-    public String samaccountName() {
-        return this.samaccountName;
+    public String samaccountname() {
+        return this.samaccountname;
     }
     public Integer state() {
         return this.state;
@@ -195,7 +195,7 @@ public final class GetInstanceResult {
         private String preferredLocaleCode;
         private List<Integer> roleIds;
         private String salt;
-        private String samaccountName;
+        private String samaccountname;
         private Integer state;
         private Integer status;
         private String title;
@@ -234,7 +234,7 @@ public final class GetInstanceResult {
     	      this.preferredLocaleCode = defaults.preferredLocaleCode;
     	      this.roleIds = defaults.roleIds;
     	      this.salt = defaults.salt;
-    	      this.samaccountName = defaults.samaccountName;
+    	      this.samaccountname = defaults.samaccountname;
     	      this.state = defaults.state;
     	      this.status = defaults.status;
     	      this.title = defaults.title;
@@ -388,8 +388,8 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder samaccountName(String samaccountName) {
-            this.samaccountName = Objects.requireNonNull(samaccountName);
+        public Builder samaccountname(String samaccountname) {
+            this.samaccountname = Objects.requireNonNull(samaccountname);
             return this;
         }
         @CustomType.Setter
@@ -457,7 +457,7 @@ public final class GetInstanceResult {
             o.preferredLocaleCode = preferredLocaleCode;
             o.roleIds = roleIds;
             o.salt = salt;
-            o.samaccountName = samaccountName;
+            o.samaccountname = samaccountname;
             o.state = state;
             o.status = status;
             o.title = title;

@@ -17,6 +17,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
 
+    @Import(name="apikeyAuth", required=true)
+    private Output<String> apikeyAuth;
+
+    public Output<String> apikeyAuth() {
+        return this.apikeyAuth;
+    }
+
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
@@ -34,6 +41,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.apikeyAuth = $.apikeyAuth;
         this.contentType = $.contentType;
         this.endpoints = $.endpoints;
     }
@@ -54,6 +62,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder apikeyAuth(Output<String> apikeyAuth) {
+            $.apikeyAuth = apikeyAuth;
+            return this;
+        }
+
+        public Builder apikeyAuth(String apikeyAuth) {
+            return apikeyAuth(Output.of(apikeyAuth));
         }
 
         public Builder contentType(@Nullable Output<String> contentType) {
@@ -79,6 +96,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
+            $.apikeyAuth = Objects.requireNonNull($.apikeyAuth, "expected parameter 'apikeyAuth' to be non-null");
             return $;
         }
     }

@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AppConfiguration {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    loginUrl?: pulumi.Input<string>;
+    oidcApplicationType?: pulumi.Input<number>;
+    redirectUri?: pulumi.Input<string>;
+    tokenEndpointAuthMethod?: pulumi.Input<number>;
+}
+
 export interface AppEnforcementPoint {
     caseSensitive?: pulumi.Input<boolean>;
     conditions?: pulumi.Input<string>;
@@ -39,15 +47,31 @@ export interface AppEnforcementPointSessionExpiryInactivity {
     value?: pulumi.Input<number>;
 }
 
-export interface AppParameters {
-    includeInSamlAssertion?: pulumi.Input<boolean>;
-    label?: pulumi.Input<string>;
-    userAttributeMacros?: pulumi.Input<string>;
-    userAttributeMappings?: pulumi.Input<string>;
-}
-
 export interface AppProvisioning {
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface AuthServersConfiguration {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    audiences: pulumi.Input<pulumi.Input<string>[]>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    resourceIdentifier: pulumi.Input<string>;
+}
+
+export interface GetAppsConfiguration {
+    accessTokenExpirationMinutes?: number;
+    loginUrl?: string;
+    oidcApplicationType?: number;
+    redirectUri?: string;
+    tokenEndpointAuthMethod?: number;
+}
+
+export interface GetAppsConfigurationArgs {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    loginUrl?: pulumi.Input<string>;
+    oidcApplicationType?: pulumi.Input<number>;
+    redirectUri?: pulumi.Input<string>;
+    tokenEndpointAuthMethod?: pulumi.Input<number>;
 }
 
 export interface GetAppsEnforcementPoint {
@@ -128,20 +152,6 @@ export interface GetAppsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetAppsParameters {
-    includeInSamlAssertion?: boolean;
-    label?: string;
-    userAttributeMacros?: string;
-    userAttributeMappings?: string;
-}
-
-export interface GetAppsParametersArgs {
-    includeInSamlAssertion?: pulumi.Input<boolean>;
-    label?: pulumi.Input<string>;
-    userAttributeMacros?: pulumi.Input<string>;
-    userAttributeMappings?: pulumi.Input<string>;
-}
-
 export interface GetAppsProvisioning {
     enabled?: boolean;
 }
@@ -150,32 +160,60 @@ export interface GetAppsProvisioningArgs {
     enabled?: pulumi.Input<boolean>;
 }
 
-export interface GetBrandsAppsFilter {
+export interface GetAuthServersClaimsFilter {
     name: string;
     values: string[];
 }
 
-export interface GetBrandsAppsFilterArgs {
+export interface GetAuthServersClaimsFilterArgs {
     name: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetBrandsFilter {
+export interface GetAuthServersConfiguration {
+    accessTokenExpirationMinutes?: number;
+    audiences?: string[];
+    refreshTokenExpirationMinutes?: number;
+    resourceIdentifier?: string;
+}
+
+export interface GetAuthServersConfigurationArgs {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    resourceIdentifier?: pulumi.Input<string>;
+}
+
+export interface GetAuthServersFilter {
     name: string;
     values: string[];
 }
 
-export interface GetBrandsFilterArgs {
+export interface GetAuthServersFilterArgs {
     name: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetBrandsTemplatesFilter {
+export interface GetAuthServersInstanceConfiguration {
+    accessTokenExpirationMinutes?: number;
+    audiences?: string[];
+    refreshTokenExpirationMinutes?: number;
+    resourceIdentifier?: string;
+}
+
+export interface GetAuthServersInstanceConfigurationArgs {
+    accessTokenExpirationMinutes?: pulumi.Input<number>;
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    resourceIdentifier?: pulumi.Input<string>;
+}
+
+export interface GetAuthServersScopesFilter {
     name: string;
     values: string[];
 }
 
-export interface GetBrandsTemplatesFilterArgs {
+export interface GetAuthServersScopesFilterArgs {
     name: pulumi.Input<string>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -222,6 +260,28 @@ export interface GetPrivilegesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetPrivilegesInstancePrivilege {
+    statements?: inputs.GetPrivilegesInstancePrivilegeStatement[];
+    version?: string;
+}
+
+export interface GetPrivilegesInstancePrivilegeArgs {
+    statements?: pulumi.Input<pulumi.Input<inputs.GetPrivilegesInstancePrivilegeStatementArgs>[]>;
+    version?: pulumi.Input<string>;
+}
+
+export interface GetPrivilegesInstancePrivilegeStatement {
+    actions?: string[];
+    effect?: string;
+    scopes?: string[];
+}
+
+export interface GetPrivilegesInstancePrivilegeStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    effect?: pulumi.Input<string>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetPrivilegesPrivilege {
     statements?: inputs.GetPrivilegesPrivilegeStatement[];
     version?: string;
@@ -244,76 +304,62 @@ export interface GetPrivilegesPrivilegeStatementArgs {
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface ProviderEndpoint {
-    apps?: pulumi.Input<string>;
-    rules?: pulumi.Input<string>;
-    users?: pulumi.Input<string>;
+export interface GetRiskRulesFilter {
+    name: string;
+    values: string[];
 }
 
-export interface RuleSource {
+export interface GetRiskRulesFilterArgs {
+    name: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetRiskRulesInstanceSource {
+    id?: string;
+    name?: string;
+}
+
+export interface GetRiskRulesInstanceSourceArgs {
     id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
 }
-export namespace api {
-    export interface GetAuthorizationsClaimsFilter {
-        name: string;
-        values: string[];
-    }
 
-    export interface GetAuthorizationsClaimsFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetAuthorizationsConfiguration {
-        accessTokenExpirationMinutes?: number;
-        audiences?: string[];
-        refreshTokenExpirationMinutes?: number;
-        resourceIdentifier?: string;
-    }
-
-    export interface GetAuthorizationsConfigurationArgs {
-        accessTokenExpirationMinutes?: pulumi.Input<number>;
-        audiences?: pulumi.Input<pulumi.Input<string>[]>;
-        refreshTokenExpirationMinutes?: pulumi.Input<number>;
-        resourceIdentifier?: pulumi.Input<string>;
-    }
-
-    export interface GetAuthorizationsFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetAuthorizationsFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetAuthorizationsScopesConfiguration {
-        accessTokenExpirationMinutes?: number;
-        audiences?: string[];
-        refreshTokenExpirationMinutes?: number;
-        resourceIdentifier?: string;
-    }
-
-    export interface GetAuthorizationsScopesConfigurationArgs {
-        accessTokenExpirationMinutes?: pulumi.Input<number>;
-        audiences?: pulumi.Input<pulumi.Input<string>[]>;
-        refreshTokenExpirationMinutes?: pulumi.Input<number>;
-        resourceIdentifier?: pulumi.Input<string>;
-    }
-
-    export interface GetAuthorizationsScopesFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetAuthorizationsScopesFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
+export interface GetRiskRulesSource {
+    id?: string;
+    name?: string;
 }
 
+export interface GetRiskRulesSourceArgs {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface PrivilegesPrivilege {
+    statements?: pulumi.Input<pulumi.Input<inputs.PrivilegesPrivilegeStatement>[]>;
+    version?: pulumi.Input<string>;
+}
+
+export interface PrivilegesPrivilegeStatement {
+    actions: pulumi.Input<pulumi.Input<string>[]>;
+    effect: pulumi.Input<string>;
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ProviderEndpoint {
+    apps?: pulumi.Input<string>;
+    appsRules?: pulumi.Input<string>;
+    authServers?: pulumi.Input<string>;
+    privileges?: pulumi.Input<string>;
+    riskRules?: pulumi.Input<string>;
+    roles?: pulumi.Input<string>;
+    users?: pulumi.Input<string>;
+    usersV1?: pulumi.Input<string>;
+}
+
+export interface RiskRulesSource {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
 export namespace apps {
     export interface GetActionsFilter {
         name: string;
@@ -355,14 +401,20 @@ export namespace apps {
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface GetConditionsValuesFilter {
-        name: string;
-        values: string[];
+    export interface GetInstanceConfiguration {
+        accessTokenExpirationMinutes?: number;
+        loginUrl?: string;
+        oidcApplicationType?: number;
+        redirectUri?: string;
+        tokenEndpointAuthMethod?: number;
     }
 
-    export interface GetConditionsValuesFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
+    export interface GetInstanceConfigurationArgs {
+        accessTokenExpirationMinutes?: pulumi.Input<number>;
+        loginUrl?: pulumi.Input<string>;
+        oidcApplicationType?: pulumi.Input<number>;
+        redirectUri?: pulumi.Input<string>;
+        tokenEndpointAuthMethod?: pulumi.Input<number>;
     }
 
     export interface GetInstanceEnforcementPoint {
@@ -433,20 +485,6 @@ export namespace apps {
         value?: pulumi.Input<number>;
     }
 
-    export interface GetInstanceParameters {
-        includeInSamlAssertion?: boolean;
-        label?: string;
-        userAttributeMacros?: string;
-        userAttributeMappings?: string;
-    }
-
-    export interface GetInstanceParametersArgs {
-        includeInSamlAssertion?: pulumi.Input<boolean>;
-        label?: pulumi.Input<string>;
-        userAttributeMacros?: pulumi.Input<string>;
-        userAttributeMappings?: pulumi.Input<string>;
-    }
-
     export interface GetInstanceProvisioning {
         enabled?: boolean;
     }
@@ -485,6 +523,49 @@ export namespace apps {
     export interface GetRulesFilterArgs {
         name: pulumi.Input<string>;
         values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRulesInstanceAction {
+        action?: string;
+        values?: string[];
+    }
+
+    export interface GetRulesInstanceActionArgs {
+        action?: pulumi.Input<string>;
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRulesInstanceCondition {
+        operator?: string;
+        source?: string;
+        value?: string;
+    }
+
+    export interface GetRulesInstanceConditionArgs {
+        operator?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetUsersFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RulesAction {
+        action?: pulumi.Input<string>;
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RulesCondition {
+        operator?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 }
 
@@ -533,38 +614,6 @@ export namespace roles {
     }
 }
 
-export namespace rules {
-    export interface GetInstanceSource {
-        id?: string;
-        name?: string;
-    }
-
-    export interface GetInstanceSourceArgs {
-        id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-    }
-
-    export interface GetRulesFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetRulesFilterArgs {
-        name: pulumi.Input<string>;
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetRulesSource {
-        id?: string;
-        name?: string;
-    }
-
-    export interface GetRulesSourceArgs {
-        id?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-    }
-}
-
 export namespace users {
     export interface GetAppsFilter {
         name: string;
@@ -592,6 +641,26 @@ export namespace users {
     }
 
     export interface GetUsersFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetV1AppsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetV1AppsFilterArgs {
+        name: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetV1Filter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetV1FilterArgs {
         name: pulumi.Input<string>;
         values: pulumi.Input<pulumi.Input<string>[]>;
     }

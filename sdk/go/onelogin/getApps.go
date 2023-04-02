@@ -23,6 +23,7 @@ func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption
 type GetAppsArgs struct {
 	AllowAssumedSignin *bool                    `pulumi:"allowAssumedSignin"`
 	AuthMethod         *int                     `pulumi:"authMethod"`
+	Configuration      *GetAppsConfiguration    `pulumi:"configuration"`
 	ConnectorId        *int                     `pulumi:"connectorId"`
 	CreatedAt          *string                  `pulumi:"createdAt"`
 	Description        *string                  `pulumi:"description"`
@@ -31,7 +32,6 @@ type GetAppsArgs struct {
 	IconUrl            *string                  `pulumi:"iconUrl"`
 	Name               *string                  `pulumi:"name"`
 	Notes              *string                  `pulumi:"notes"`
-	Parameters         *GetAppsParameters       `pulumi:"parameters"`
 	PolicyId           *int                     `pulumi:"policyId"`
 	Provisioning       *GetAppsProvisioning     `pulumi:"provisioning"`
 	RoleIds            []int                    `pulumi:"roleIds"`
@@ -44,6 +44,7 @@ type GetAppsArgs struct {
 type GetAppsResult struct {
 	AllowAssumedSignin bool                    `pulumi:"allowAssumedSignin"`
 	AuthMethod         int                     `pulumi:"authMethod"`
+	Configuration      GetAppsConfiguration    `pulumi:"configuration"`
 	ConnectorId        int                     `pulumi:"connectorId"`
 	CreatedAt          string                  `pulumi:"createdAt"`
 	Description        string                  `pulumi:"description"`
@@ -54,7 +55,6 @@ type GetAppsResult struct {
 	Id           string              `pulumi:"id"`
 	Name         string              `pulumi:"name"`
 	Notes        string              `pulumi:"notes"`
-	Parameters   GetAppsParameters   `pulumi:"parameters"`
 	PolicyId     int                 `pulumi:"policyId"`
 	Provisioning GetAppsProvisioning `pulumi:"provisioning"`
 	RoleIds      []int               `pulumi:"roleIds"`
@@ -80,6 +80,7 @@ func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.I
 type GetAppsOutputArgs struct {
 	AllowAssumedSignin pulumi.BoolPtrInput             `pulumi:"allowAssumedSignin"`
 	AuthMethod         pulumi.IntPtrInput              `pulumi:"authMethod"`
+	Configuration      GetAppsConfigurationPtrInput    `pulumi:"configuration"`
 	ConnectorId        pulumi.IntPtrInput              `pulumi:"connectorId"`
 	CreatedAt          pulumi.StringPtrInput           `pulumi:"createdAt"`
 	Description        pulumi.StringPtrInput           `pulumi:"description"`
@@ -88,7 +89,6 @@ type GetAppsOutputArgs struct {
 	IconUrl            pulumi.StringPtrInput           `pulumi:"iconUrl"`
 	Name               pulumi.StringPtrInput           `pulumi:"name"`
 	Notes              pulumi.StringPtrInput           `pulumi:"notes"`
-	Parameters         GetAppsParametersPtrInput       `pulumi:"parameters"`
 	PolicyId           pulumi.IntPtrInput              `pulumi:"policyId"`
 	Provisioning       GetAppsProvisioningPtrInput     `pulumi:"provisioning"`
 	RoleIds            pulumi.IntArrayInput            `pulumi:"roleIds"`
@@ -122,6 +122,10 @@ func (o GetAppsResultOutput) AllowAssumedSignin() pulumi.BoolOutput {
 
 func (o GetAppsResultOutput) AuthMethod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsResult) int { return v.AuthMethod }).(pulumi.IntOutput)
+}
+
+func (o GetAppsResultOutput) Configuration() GetAppsConfigurationOutput {
+	return o.ApplyT(func(v GetAppsResult) GetAppsConfiguration { return v.Configuration }).(GetAppsConfigurationOutput)
 }
 
 func (o GetAppsResultOutput) ConnectorId() pulumi.IntOutput {
@@ -159,10 +163,6 @@ func (o GetAppsResultOutput) Name() pulumi.StringOutput {
 
 func (o GetAppsResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.Notes }).(pulumi.StringOutput)
-}
-
-func (o GetAppsResultOutput) Parameters() GetAppsParametersOutput {
-	return o.ApplyT(func(v GetAppsResult) GetAppsParameters { return v.Parameters }).(GetAppsParametersOutput)
 }
 
 func (o GetAppsResultOutput) PolicyId() pulumi.IntOutput {

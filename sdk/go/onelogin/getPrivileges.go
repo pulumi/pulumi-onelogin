@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetPrivileges(ctx *pulumi.Context, args *GetPrivilegesArgs, opts ...pulumi.InvokeOption) (*GetPrivilegesResult, error) {
-	var rv GetPrivilegesResult
+func LookupPrivileges(ctx *pulumi.Context, args *LookupPrivilegesArgs, opts ...pulumi.InvokeOption) (*LookupPrivilegesResult, error) {
+	var rv LookupPrivilegesResult
 	err := ctx.Invoke("onelogin:index/getPrivileges:getPrivileges", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -20,7 +20,7 @@ func GetPrivileges(ctx *pulumi.Context, args *GetPrivilegesArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getPrivileges.
-type GetPrivilegesArgs struct {
+type LookupPrivilegesArgs struct {
 	Description *string                 `pulumi:"description"`
 	Filters     []GetPrivilegesFilter   `pulumi:"filters"`
 	Name        *string                 `pulumi:"name"`
@@ -28,7 +28,7 @@ type GetPrivilegesArgs struct {
 }
 
 // A collection of values returned by getPrivileges.
-type GetPrivilegesResult struct {
+type LookupPrivilegesResult struct {
 	Description string                `pulumi:"description"`
 	Filters     []GetPrivilegesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -37,67 +37,67 @@ type GetPrivilegesResult struct {
 	Privilege GetPrivilegesPrivilege `pulumi:"privilege"`
 }
 
-func GetPrivilegesOutput(ctx *pulumi.Context, args GetPrivilegesOutputArgs, opts ...pulumi.InvokeOption) GetPrivilegesResultOutput {
+func LookupPrivilegesOutput(ctx *pulumi.Context, args LookupPrivilegesOutputArgs, opts ...pulumi.InvokeOption) LookupPrivilegesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPrivilegesResult, error) {
-			args := v.(GetPrivilegesArgs)
-			r, err := GetPrivileges(ctx, &args, opts...)
-			var s GetPrivilegesResult
+		ApplyT(func(v interface{}) (LookupPrivilegesResult, error) {
+			args := v.(LookupPrivilegesArgs)
+			r, err := LookupPrivileges(ctx, &args, opts...)
+			var s LookupPrivilegesResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetPrivilegesResultOutput)
+		}).(LookupPrivilegesResultOutput)
 }
 
 // A collection of arguments for invoking getPrivileges.
-type GetPrivilegesOutputArgs struct {
+type LookupPrivilegesOutputArgs struct {
 	Description pulumi.StringPtrInput          `pulumi:"description"`
 	Filters     GetPrivilegesFilterArrayInput  `pulumi:"filters"`
 	Name        pulumi.StringPtrInput          `pulumi:"name"`
 	Privilege   GetPrivilegesPrivilegePtrInput `pulumi:"privilege"`
 }
 
-func (GetPrivilegesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesArgs)(nil)).Elem()
+func (LookupPrivilegesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPrivilegesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getPrivileges.
-type GetPrivilegesResultOutput struct{ *pulumi.OutputState }
+type LookupPrivilegesResultOutput struct{ *pulumi.OutputState }
 
-func (GetPrivilegesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesResult)(nil)).Elem()
+func (LookupPrivilegesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPrivilegesResult)(nil)).Elem()
 }
 
-func (o GetPrivilegesResultOutput) ToGetPrivilegesResultOutput() GetPrivilegesResultOutput {
+func (o LookupPrivilegesResultOutput) ToLookupPrivilegesResultOutput() LookupPrivilegesResultOutput {
 	return o
 }
 
-func (o GetPrivilegesResultOutput) ToGetPrivilegesResultOutputWithContext(ctx context.Context) GetPrivilegesResultOutput {
+func (o LookupPrivilegesResultOutput) ToLookupPrivilegesResultOutputWithContext(ctx context.Context) LookupPrivilegesResultOutput {
 	return o
 }
 
-func (o GetPrivilegesResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupPrivilegesResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivilegesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetPrivilegesResultOutput) Filters() GetPrivilegesFilterArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesResult) []GetPrivilegesFilter { return v.Filters }).(GetPrivilegesFilterArrayOutput)
+func (o LookupPrivilegesResultOutput) Filters() GetPrivilegesFilterArrayOutput {
+	return o.ApplyT(func(v LookupPrivilegesResult) []GetPrivilegesFilter { return v.Filters }).(GetPrivilegesFilterArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetPrivilegesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupPrivilegesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivilegesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetPrivilegesResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupPrivilegesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivilegesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetPrivilegesResultOutput) Privilege() GetPrivilegesPrivilegeOutput {
-	return o.ApplyT(func(v GetPrivilegesResult) GetPrivilegesPrivilege { return v.Privilege }).(GetPrivilegesPrivilegeOutput)
+func (o LookupPrivilegesResultOutput) Privilege() GetPrivilegesPrivilegeOutput {
+	return o.ApplyT(func(v LookupPrivilegesResult) GetPrivilegesPrivilege { return v.Privilege }).(GetPrivilegesPrivilegeOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetPrivilegesResultOutput{})
+	pulumi.RegisterOutputType(LookupPrivilegesResultOutput{})
 }

@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
+apikeyAuth: Optional[str]
+
 contentType: Optional[str]
 
 endpoints: Optional[str]

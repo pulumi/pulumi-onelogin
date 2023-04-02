@@ -10,25 +10,35 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { AuthServersArgs, AuthServersState } from "./authServers";
+export type AuthServers = import("./authServers").AuthServers;
+export const AuthServers: typeof import("./authServers").AuthServers = null as any;
+utilities.lazyLoad(exports, ["AuthServers"], () => require("./authServers"));
+
 export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
 export const getApps: typeof import("./getApps").getApps = null as any;
 export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
 utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
 
-export { GetBrandsArgs, GetBrandsResult, GetBrandsOutputArgs } from "./getBrands";
-export const getBrands: typeof import("./getBrands").getBrands = null as any;
-export const getBrandsOutput: typeof import("./getBrands").getBrandsOutput = null as any;
-utilities.lazyLoad(exports, ["getBrands","getBrandsOutput"], () => require("./getBrands"));
+export { GetAuthServersArgs, GetAuthServersResult, GetAuthServersOutputArgs } from "./getAuthServers";
+export const getAuthServers: typeof import("./getAuthServers").getAuthServers = null as any;
+export const getAuthServersOutput: typeof import("./getAuthServers").getAuthServersOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthServers","getAuthServersOutput"], () => require("./getAuthServers"));
 
-export { GetBrandsAppsArgs, GetBrandsAppsResult, GetBrandsAppsOutputArgs } from "./getBrandsApps";
-export const getBrandsApps: typeof import("./getBrandsApps").getBrandsApps = null as any;
-export const getBrandsAppsOutput: typeof import("./getBrandsApps").getBrandsAppsOutput = null as any;
-utilities.lazyLoad(exports, ["getBrandsApps","getBrandsAppsOutput"], () => require("./getBrandsApps"));
+export { GetAuthServersClaimsArgs, GetAuthServersClaimsResult, GetAuthServersClaimsOutputArgs } from "./getAuthServersClaims";
+export const getAuthServersClaims: typeof import("./getAuthServersClaims").getAuthServersClaims = null as any;
+export const getAuthServersClaimsOutput: typeof import("./getAuthServersClaims").getAuthServersClaimsOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthServersClaims","getAuthServersClaimsOutput"], () => require("./getAuthServersClaims"));
 
-export { GetBrandsTemplatesArgs, GetBrandsTemplatesResult, GetBrandsTemplatesOutputArgs } from "./getBrandsTemplates";
-export const getBrandsTemplates: typeof import("./getBrandsTemplates").getBrandsTemplates = null as any;
-export const getBrandsTemplatesOutput: typeof import("./getBrandsTemplates").getBrandsTemplatesOutput = null as any;
-utilities.lazyLoad(exports, ["getBrandsTemplates","getBrandsTemplatesOutput"], () => require("./getBrandsTemplates"));
+export { GetAuthServersInstanceArgs, GetAuthServersInstanceResult, GetAuthServersInstanceOutputArgs } from "./getAuthServersInstance";
+export const getAuthServersInstance: typeof import("./getAuthServersInstance").getAuthServersInstance = null as any;
+export const getAuthServersInstanceOutput: typeof import("./getAuthServersInstance").getAuthServersInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthServersInstance","getAuthServersInstanceOutput"], () => require("./getAuthServersInstance"));
+
+export { GetAuthServersScopesArgs, GetAuthServersScopesResult, GetAuthServersScopesOutputArgs } from "./getAuthServersScopes";
+export const getAuthServersScopes: typeof import("./getAuthServersScopes").getAuthServersScopes = null as any;
+export const getAuthServersScopesOutput: typeof import("./getAuthServersScopes").getAuthServersScopesOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthServersScopes","getAuthServersScopesOutput"], () => require("./getAuthServersScopes"));
 
 export { GetMappingsArgs, GetMappingsResult, GetMappingsOutputArgs } from "./getMappings";
 export const getMappings: typeof import("./getMappings").getMappings = null as any;
@@ -40,15 +50,40 @@ export const getPrivileges: typeof import("./getPrivileges").getPrivileges = nul
 export const getPrivilegesOutput: typeof import("./getPrivileges").getPrivilegesOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivileges","getPrivilegesOutput"], () => require("./getPrivileges"));
 
+export { GetPrivilegesInstanceArgs, GetPrivilegesInstanceResult, GetPrivilegesInstanceOutputArgs } from "./getPrivilegesInstance";
+export const getPrivilegesInstance: typeof import("./getPrivilegesInstance").getPrivilegesInstance = null as any;
+export const getPrivilegesInstanceOutput: typeof import("./getPrivilegesInstance").getPrivilegesInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivilegesInstance","getPrivilegesInstanceOutput"], () => require("./getPrivilegesInstance"));
+
+export { GetRiskRulesArgs, GetRiskRulesResult, GetRiskRulesOutputArgs } from "./getRiskRules";
+export const getRiskRules: typeof import("./getRiskRules").getRiskRules = null as any;
+export const getRiskRulesOutput: typeof import("./getRiskRules").getRiskRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRiskRules","getRiskRulesOutput"], () => require("./getRiskRules"));
+
+export { GetRiskRulesInstanceArgs, GetRiskRulesInstanceResult, GetRiskRulesInstanceOutputArgs } from "./getRiskRulesInstance";
+export const getRiskRulesInstance: typeof import("./getRiskRulesInstance").getRiskRulesInstance = null as any;
+export const getRiskRulesInstanceOutput: typeof import("./getRiskRulesInstance").getRiskRulesInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getRiskRulesInstance","getRiskRulesInstanceOutput"], () => require("./getRiskRulesInstance"));
+
+export { PrivilegesArgs, PrivilegesState } from "./privileges";
+export type Privileges = import("./privileges").Privileges;
+export const Privileges: typeof import("./privileges").Privileges = null as any;
+utilities.lazyLoad(exports, ["Privileges"], () => require("./privileges"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { RuleArgs, RuleState } from "./rule";
-export type Rule = import("./rule").Rule;
-export const Rule: typeof import("./rule").Rule = null as any;
-utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+export { RiskRulesArgs, RiskRulesState } from "./riskRules";
+export type RiskRules = import("./riskRules").RiskRules;
+export const RiskRules: typeof import("./riskRules").RiskRules = null as any;
+utilities.lazyLoad(exports, ["RiskRules"], () => require("./riskRules"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
@@ -57,20 +92,16 @@ utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 
 // Export sub-modules:
-import * as api from "./api";
 import * as apps from "./apps";
 import * as config from "./config";
 import * as roles from "./roles";
-import * as rules from "./rules";
 import * as types from "./types";
 import * as users from "./users";
 
 export {
-    api,
     apps,
     config,
     roles,
-    rules,
     types,
     users,
 };
@@ -81,8 +112,14 @@ const _module = {
         switch (type) {
             case "onelogin:index/app:App":
                 return new App(name, <any>undefined, { urn })
-            case "onelogin:index/rule:Rule":
-                return new Rule(name, <any>undefined, { urn })
+            case "onelogin:index/authServers:AuthServers":
+                return new AuthServers(name, <any>undefined, { urn })
+            case "onelogin:index/privileges:Privileges":
+                return new Privileges(name, <any>undefined, { urn })
+            case "onelogin:index/riskRules:RiskRules":
+                return new RiskRules(name, <any>undefined, { urn })
+            case "onelogin:index/role:Role":
+                return new Role(name, <any>undefined, { urn })
             case "onelogin:index/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -91,7 +128,10 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/rule", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/authServers", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/riskRules", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
 pulumi.runtime.registerResourcePackage("onelogin", {
     version: utilities.getVersion(),

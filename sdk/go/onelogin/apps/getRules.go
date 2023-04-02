@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
-	var rv GetRulesResult
+func LookupRules(ctx *pulumi.Context, args *LookupRulesArgs, opts ...pulumi.InvokeOption) (*LookupRulesResult, error) {
+	var rv LookupRulesResult
 	err := ctx.Invoke("onelogin:apps/getRules:getRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -20,7 +20,7 @@ func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOpti
 }
 
 // A collection of arguments for invoking getRules.
-type GetRulesArgs struct {
+type LookupRulesArgs struct {
 	Actions    []GetRulesAction    `pulumi:"actions"`
 	AppsId     string              `pulumi:"appsId"`
 	Conditions []GetRulesCondition `pulumi:"conditions"`
@@ -32,7 +32,7 @@ type GetRulesArgs struct {
 }
 
 // A collection of values returned by getRules.
-type GetRulesResult struct {
+type LookupRulesResult struct {
 	Actions    []GetRulesAction    `pulumi:"actions"`
 	AppsId     string              `pulumi:"appsId"`
 	Conditions []GetRulesCondition `pulumi:"conditions"`
@@ -45,21 +45,21 @@ type GetRulesResult struct {
 	Position int    `pulumi:"position"`
 }
 
-func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
+func LookupRulesOutput(ctx *pulumi.Context, args LookupRulesOutputArgs, opts ...pulumi.InvokeOption) LookupRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRulesResult, error) {
-			args := v.(GetRulesArgs)
-			r, err := GetRules(ctx, &args, opts...)
-			var s GetRulesResult
+		ApplyT(func(v interface{}) (LookupRulesResult, error) {
+			args := v.(LookupRulesArgs)
+			r, err := LookupRules(ctx, &args, opts...)
+			var s LookupRulesResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetRulesResultOutput)
+		}).(LookupRulesResultOutput)
 }
 
 // A collection of arguments for invoking getRules.
-type GetRulesOutputArgs struct {
+type LookupRulesOutputArgs struct {
 	Actions    GetRulesActionArrayInput    `pulumi:"actions"`
 	AppsId     pulumi.StringInput          `pulumi:"appsId"`
 	Conditions GetRulesConditionArrayInput `pulumi:"conditions"`
@@ -70,62 +70,62 @@ type GetRulesOutputArgs struct {
 	Position   pulumi.IntPtrInput          `pulumi:"position"`
 }
 
-func (GetRulesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesArgs)(nil)).Elem()
+func (LookupRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRulesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getRules.
-type GetRulesResultOutput struct{ *pulumi.OutputState }
+type LookupRulesResultOutput struct{ *pulumi.OutputState }
 
-func (GetRulesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesResult)(nil)).Elem()
+func (LookupRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRulesResult)(nil)).Elem()
 }
 
-func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
+func (o LookupRulesResultOutput) ToLookupRulesResultOutput() LookupRulesResultOutput {
 	return o
 }
 
-func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
+func (o LookupRulesResultOutput) ToLookupRulesResultOutputWithContext(ctx context.Context) LookupRulesResultOutput {
 	return o
 }
 
-func (o GetRulesResultOutput) Actions() GetRulesActionArrayOutput {
-	return o.ApplyT(func(v GetRulesResult) []GetRulesAction { return v.Actions }).(GetRulesActionArrayOutput)
+func (o LookupRulesResultOutput) Actions() GetRulesActionArrayOutput {
+	return o.ApplyT(func(v LookupRulesResult) []GetRulesAction { return v.Actions }).(GetRulesActionArrayOutput)
 }
 
-func (o GetRulesResultOutput) AppsId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesResult) string { return v.AppsId }).(pulumi.StringOutput)
+func (o LookupRulesResultOutput) AppsId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesResult) string { return v.AppsId }).(pulumi.StringOutput)
 }
 
-func (o GetRulesResultOutput) Conditions() GetRulesConditionArrayOutput {
-	return o.ApplyT(func(v GetRulesResult) []GetRulesCondition { return v.Conditions }).(GetRulesConditionArrayOutput)
+func (o LookupRulesResultOutput) Conditions() GetRulesConditionArrayOutput {
+	return o.ApplyT(func(v LookupRulesResult) []GetRulesCondition { return v.Conditions }).(GetRulesConditionArrayOutput)
 }
 
-func (o GetRulesResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o LookupRulesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRulesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o GetRulesResultOutput) Filters() GetRulesFilterArrayOutput {
-	return o.ApplyT(func(v GetRulesResult) []GetRulesFilter { return v.Filters }).(GetRulesFilterArrayOutput)
+func (o LookupRulesResultOutput) Filters() GetRulesFilterArrayOutput {
+	return o.ApplyT(func(v LookupRulesResult) []GetRulesFilter { return v.Filters }).(GetRulesFilterArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetRulesResultOutput) Match() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesResult) string { return v.Match }).(pulumi.StringOutput)
+func (o LookupRulesResultOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesResult) string { return v.Match }).(pulumi.StringOutput)
 }
 
-func (o GetRulesResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupRulesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetRulesResultOutput) Position() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesResult) int { return v.Position }).(pulumi.IntOutput)
+func (o LookupRulesResultOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRulesResult) int { return v.Position }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetRulesResultOutput{})
+	pulumi.RegisterOutputType(LookupRulesResultOutput{})
 }

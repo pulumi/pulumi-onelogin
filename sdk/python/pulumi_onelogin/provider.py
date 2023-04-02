@@ -15,15 +15,26 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 apikey_auth: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
+        pulumi.set(__self__, "apikey_auth", apikey_auth)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
+
+    @property
+    @pulumi.getter(name="apikeyAuth")
+    def apikey_auth(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "apikey_auth")
+
+    @apikey_auth.setter
+    def apikey_auth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "apikey_auth", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -49,6 +60,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apikey_auth: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  __props__=None):
@@ -65,7 +77,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ProviderArgs] = None,
+                 args: ProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the onelogin package. By default, resources use package-wide configuration
@@ -88,6 +100,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apikey_auth: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  __props__=None):
@@ -99,6 +112,9 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if apikey_auth is None and not opts.urn:
+                raise TypeError("Missing required property 'apikey_auth'")
+            __props__.__dict__["apikey_auth"] = apikey_auth
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
         super(Provider, __self__).__init__(
@@ -106,6 +122,11 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="apikeyAuth")
+    def apikey_auth(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "apikey_auth")
 
     @property
     @pulumi.getter(name="contentType")

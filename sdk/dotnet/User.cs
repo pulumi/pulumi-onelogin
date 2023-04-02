@@ -154,8 +154,8 @@ namespace Pulumi.Onelogin
         /// <summary>
         /// The user's Active Directory username.
         /// </summary>
-        [Output("samaccountName")]
-        public Output<string?> SamaccountName { get; private set; } = null!;
+        [Output("samaccountname")]
+        public Output<string?> Samaccountname { get; private set; } = null!;
 
         [Output("state")]
         public Output<int?> State { get; private set; } = null!;
@@ -384,8 +384,8 @@ namespace Pulumi.Onelogin
         /// <summary>
         /// The user's Active Directory username.
         /// </summary>
-        [Input("samaccountName")]
-        public Input<string>? SamaccountName { get; set; }
+        [Input("samaccountname")]
+        public Input<string>? Samaccountname { get; set; }
 
         [Input("state")]
         public Input<int>? State { get; set; }
@@ -576,8 +576,8 @@ namespace Pulumi.Onelogin
         /// <summary>
         /// The user's Active Directory username.
         /// </summary>
-        [Input("samaccountName")]
-        public Input<string>? SamaccountName { get; set; }
+        [Input("samaccountname")]
+        public Input<string>? Samaccountname { get; set; }
 
         [Input("state")]
         public Input<int>? State { get; set; }
