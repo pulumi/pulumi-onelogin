@@ -72,22 +72,12 @@
         "onelogin:apps/RulesAction:RulesAction": {
             "properties": {
                 "action": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -96,28 +86,13 @@
         "onelogin:apps/RulesCondition:RulesCondition": {
             "properties": {
                 "operator": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "source": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -125,22 +100,12 @@
         "onelogin:apps/getActionsFilter:getActionsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -153,22 +118,12 @@
         "onelogin:apps/getActionsValuesFilter:getActionsValuesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -181,22 +136,12 @@
         "onelogin:apps/getConditionsFilter:getConditionsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -209,22 +154,12 @@
         "onelogin:apps/getConditionsOperatorsFilter:getConditionsOperatorsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -237,44 +172,19 @@
         "onelogin:apps/getInstanceConfiguration:getInstanceConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "loginUrl": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "oidcApplicationType": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "redirectUri": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "tokenEndpointAuthMethod": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -294,111 +204,46 @@
         "onelogin:apps/getInstanceEnforcementPoint:getInstanceEnforcementPoint": {
             "properties": {
                 "caseSensitive": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "contextRoot": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "landingPage": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permissions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireSitewideAuthentication": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "resources": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointResource:getInstanceEnforcementPointResource"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "sessionExpiryFixed": {
-                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryFixed:getInstanceEnforcementPointSessionExpiryFixed",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryFixed:getInstanceEnforcementPointSessionExpiryFixed"
                 },
                 "sessionExpiryInactivity": {
-                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryInactivity:getInstanceEnforcementPointSessionExpiryInactivity",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:apps/getInstanceEnforcementPointSessionExpiryInactivity:getInstanceEnforcementPointSessionExpiryInactivity"
                 },
                 "target": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "token": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "useTargetHostHeader": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "vhost": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -426,44 +271,19 @@
         "onelogin:apps/getInstanceEnforcementPointResource:getInstanceEnforcementPointResource": {
             "properties": {
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "isPathRegex": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "path": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permission": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireAuth": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -483,20 +303,10 @@
         "onelogin:apps/getInstanceEnforcementPointSessionExpiryFixed:getInstanceEnforcementPointSessionExpiryFixed": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -513,20 +323,10 @@
         "onelogin:apps/getInstanceEnforcementPointSessionExpiryInactivity:getInstanceEnforcementPointSessionExpiryInactivity": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -543,12 +343,7 @@
         "onelogin:apps/getInstanceProvisioning:getInstanceProvisioning": {
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -564,22 +359,12 @@
         "onelogin:apps/getRulesAction:getRulesAction": {
             "properties": {
                 "action": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -597,28 +382,13 @@
         "onelogin:apps/getRulesCondition:getRulesCondition": {
             "properties": {
                 "operator": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "source": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -636,22 +406,12 @@
         "onelogin:apps/getRulesFilter:getRulesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -664,22 +424,12 @@
         "onelogin:apps/getRulesInstanceAction:getRulesInstanceAction": {
             "properties": {
                 "action": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -697,28 +447,13 @@
         "onelogin:apps/getRulesInstanceCondition:getRulesInstanceCondition": {
             "properties": {
                 "operator": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "source": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -736,22 +471,12 @@
         "onelogin:apps/getUsersFilter:getUsersFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -793,44 +518,19 @@
         "onelogin:index/AppConfiguration:AppConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "loginUrl": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "oidcApplicationType": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "redirectUri": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "tokenEndpointAuthMethod": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -838,111 +538,46 @@
         "onelogin:index/AppEnforcementPoint:AppEnforcementPoint": {
             "properties": {
                 "caseSensitive": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "contextRoot": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "landingPage": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permissions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireSitewideAuthentication": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "resources": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:index/AppEnforcementPointResource:AppEnforcementPointResource"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "sessionExpiryFixed": {
-                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryFixed:AppEnforcementPointSessionExpiryFixed",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryFixed:AppEnforcementPointSessionExpiryFixed"
                 },
                 "sessionExpiryInactivity": {
-                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryInactivity:AppEnforcementPointSessionExpiryInactivity",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:index/AppEnforcementPointSessionExpiryInactivity:AppEnforcementPointSessionExpiryInactivity"
                 },
                 "target": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "token": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "useTargetHostHeader": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "vhost": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -957,44 +592,19 @@
         "onelogin:index/AppEnforcementPointResource:AppEnforcementPointResource": {
             "properties": {
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "isPathRegex": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "path": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permission": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireAuth": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1002,20 +612,10 @@
         "onelogin:index/AppEnforcementPointSessionExpiryFixed:AppEnforcementPointSessionExpiryFixed": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1023,20 +623,10 @@
         "onelogin:index/AppEnforcementPointSessionExpiryInactivity:AppEnforcementPointSessionExpiryInactivity": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1044,12 +634,7 @@
         "onelogin:index/AppProvisioning:AppProvisioning": {
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1057,39 +642,19 @@
         "onelogin:index/AuthServersConfiguration:AuthServersConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "audiences": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "refreshTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "resourceIdentifier": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1104,20 +669,10 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:index/PrivilegesPrivilegeStatement:PrivilegesPrivilegeStatement"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "version": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1128,30 +683,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "effect": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1165,68 +705,28 @@
         "onelogin:index/ProviderEndpoint:ProviderEndpoint": {
             "properties": {
                 "apps": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "appsRules": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "authServers": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "privileges": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "riskRules": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "roles": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "users": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "usersV1": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1234,20 +734,10 @@
         "onelogin:index/RiskRulesSource:RiskRulesSource": {
             "properties": {
                 "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1255,44 +745,19 @@
         "onelogin:index/getAppsConfiguration:getAppsConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "loginUrl": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "oidcApplicationType": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "redirectUri": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "tokenEndpointAuthMethod": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -1312,111 +777,46 @@
         "onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint": {
             "properties": {
                 "caseSensitive": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "contextRoot": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "landingPage": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permissions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireSitewideAuthentication": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "resources": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:index/getAppsEnforcementPointResource:getAppsEnforcementPointResource"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "sessionExpiryFixed": {
-                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryFixed:getAppsEnforcementPointSessionExpiryFixed",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryFixed:getAppsEnforcementPointSessionExpiryFixed"
                 },
                 "sessionExpiryInactivity": {
-                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryInactivity:getAppsEnforcementPointSessionExpiryInactivity",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "$ref": "#/types/onelogin:index/getAppsEnforcementPointSessionExpiryInactivity:getAppsEnforcementPointSessionExpiryInactivity"
                 },
                 "target": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "token": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "useTargetHostHeader": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "vhost": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1444,44 +844,19 @@
         "onelogin:index/getAppsEnforcementPointResource:getAppsEnforcementPointResource": {
             "properties": {
                 "conditions": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "isPathRegex": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 },
                 "path": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "permission": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "requireAuth": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -1501,20 +876,10 @@
         "onelogin:index/getAppsEnforcementPointSessionExpiryFixed:getAppsEnforcementPointSessionExpiryFixed": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -1531,20 +896,10 @@
         "onelogin:index/getAppsEnforcementPointSessionExpiryInactivity:getAppsEnforcementPointSessionExpiryInactivity": {
             "properties": {
                 "unit": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "value": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -1561,22 +916,12 @@
         "onelogin:index/getAppsFilter:getAppsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1589,12 +934,7 @@
         "onelogin:index/getAppsProvisioning:getAppsProvisioning": {
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -1610,22 +950,12 @@
         "onelogin:index/getAuthServersClaimsFilter:getAuthServersClaimsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1638,39 +968,19 @@
         "onelogin:index/getAuthServersConfiguration:getAuthServersConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "audiences": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "refreshTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "resourceIdentifier": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1689,22 +999,12 @@
         "onelogin:index/getAuthServersFilter:getAuthServersFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1717,39 +1017,19 @@
         "onelogin:index/getAuthServersInstanceConfiguration:getAuthServersInstanceConfiguration": {
             "properties": {
                 "accessTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "audiences": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "refreshTokenExpirationMinutes": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "integer"
                 },
                 "resourceIdentifier": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1768,22 +1048,12 @@
         "onelogin:index/getAuthServersScopesFilter:getAuthServersScopesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1796,22 +1066,12 @@
         "onelogin:index/getMappingsAction:getMappingsAction": {
             "properties": {
                 "action": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1829,28 +1089,13 @@
         "onelogin:index/getMappingsCondition:getMappingsCondition": {
             "properties": {
                 "operator": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "source": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1868,22 +1113,12 @@
         "onelogin:index/getMappingsFilter:getMappingsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1896,22 +1131,12 @@
         "onelogin:index/getPrivilegesFilter:getPrivilegesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -1927,20 +1152,10 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:index/getPrivilegesInstancePrivilegeStatement:getPrivilegesInstancePrivilegeStatement"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "version": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1960,30 +1175,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "effect": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2005,20 +1205,10 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/onelogin:index/getPrivilegesPrivilegeStatement:getPrivilegesPrivilegeStatement"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "version": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2038,30 +1228,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 },
                 "effect": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2080,22 +1255,12 @@
         "onelogin:index/getRiskRulesFilter:getRiskRulesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2108,20 +1273,10 @@
         "onelogin:index/getRiskRulesInstanceSource:getRiskRulesInstanceSource": {
             "properties": {
                 "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2138,20 +1293,10 @@
         "onelogin:index/getRiskRulesSource:getRiskRulesSource": {
             "properties": {
                 "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2168,22 +1313,12 @@
         "onelogin:roles/getAdminsFilter:getAdminsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2196,22 +1331,12 @@
         "onelogin:roles/getAppsFilter:getAppsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2224,22 +1349,12 @@
         "onelogin:roles/getRolesFilter:getRolesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2252,22 +1367,12 @@
         "onelogin:roles/getUsersFilter:getUsersFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2280,22 +1385,12 @@
         "onelogin:users/getAppsFilter:getAppsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2308,22 +1403,12 @@
         "onelogin:users/getDevicesFilter:getDevicesFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2336,22 +1421,12 @@
         "onelogin:users/getUsersFilter:getUsersFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2364,22 +1439,12 @@
         "onelogin:users/getV1AppsFilter:getV1AppsFilter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
@@ -2392,22 +1457,12 @@
         "onelogin:users/getV1Filter:getV1Filter": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
                     }
                 }
             },
