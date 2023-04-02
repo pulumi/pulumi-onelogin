@@ -1,0 +1,39 @@
+From 950967ccb2561b4f002ef7be572fa98a3255c066 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Sat, 1 Apr 2023 18:09:15 -0700
+Subject: [PATCH] expose provider function
+
+---
+ shim/shim.go | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+ create mode 100644 shim/shim.go
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 0000000..2d7a3dc
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,20 @@
++package shim
++
++import (
++	"github.com/dikhan/terraform-provider-openapi/v3/openapi"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++// Create the provider, since the upstream provider uses an helper instead of manually
++// exporting the provider.
++func Provider() (*schema.Provider, error) {
++	providerName := "onelogin"
++	providerOpenAPIURL := "https://raw.githubusercontent.com/onelogin/terraform-provider-onelogin/tpoas/swag-api.yml"
++
++	p := openapi.ProviderOpenAPI{ProviderName: providerName}
++	serviceProviderConfig := &openapi.ServiceConfigV1{
++		SwaggerURL: providerOpenAPIURL,
++	}
++
++	return p.CreateSchemaProviderFromServiceConfiguration(serviceProviderConfig)
++}
+-- 
+2.39.1
+

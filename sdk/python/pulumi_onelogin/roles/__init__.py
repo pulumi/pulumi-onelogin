@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_admins import *
 from .get_apps import *
+from .get_instance import *
 from .get_roles import *
 from .get_users import *
 from ._inputs import *

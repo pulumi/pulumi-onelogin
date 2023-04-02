@@ -22,6 +22,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:onelogin")
 public class Provider extends com.pulumi.resources.ProviderResource {
+    @Export(name="apikeyAuth", type=String.class, parameters={})
+    private Output<String> apikeyAuth;
+
+    public Output<String> apikeyAuth() {
+        return this.apikeyAuth;
+    }
     @Export(name="contentType", type=String.class, parameters={})
     private Output</* @Nullable */ String> contentType;
 
@@ -41,7 +47,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, @Nullable ProviderArgs args) {
+    public Provider(String name, ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -50,7 +56,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("onelogin", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

@@ -26,16 +26,22 @@ namespace Pulumi.Onelogin
         public Output<int?> AuthMethod { get; private set; } = null!;
 
         /// <summary>
+        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// </summary>
+        [Output("configuration")]
+        public Output<Outputs.AppConfiguration?> Configuration { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the connector to base the app from.
         /// </summary>
         [Output("connectorId")]
-        public Output<int?> ConnectorId { get; private set; } = null!;
+        public Output<int> ConnectorId { get; private set; } = null!;
 
         /// <summary>
         /// the date the app was created
         /// </summary>
         [Output("createdAt")]
-        public Output<string?> CreatedAt { get; private set; } = null!;
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
         /// Freeform description of the app.
@@ -69,14 +75,6 @@ namespace Pulumi.Onelogin
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-        /// </summary>
-        [Output("parameters")]
-        public Output<Outputs.AppParameters?> Parameters { get; private set; } = null!;
-
-        /// <summary>
         /// The security policy assigned to the app.
         /// </summary>
         [Output("policyId")]
@@ -105,7 +103,7 @@ namespace Pulumi.Onelogin
         /// the date the app was last updated
         /// </summary>
         [Output("updatedAt")]
-        public Output<string?> UpdatedAt { get; private set; } = null!;
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if the app is visible in the OneLogin portal.
@@ -121,7 +119,7 @@ namespace Pulumi.Onelogin
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public App(string name, AppArgs? args = null, CustomResourceOptions? options = null)
+        public App(string name, AppArgs args, CustomResourceOptions? options = null)
             : base("onelogin:index/app:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -173,10 +171,16 @@ namespace Pulumi.Onelogin
         public Input<int>? AuthMethod { get; set; }
 
         /// <summary>
+        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// </summary>
+        [Input("configuration")]
+        public Input<Inputs.AppConfigurationArgs>? Configuration { get; set; }
+
+        /// <summary>
         /// ID of the connector to base the app from.
         /// </summary>
-        [Input("connectorId")]
-        public Input<int>? ConnectorId { get; set; }
+        [Input("connectorId", required: true)]
+        public Input<int> ConnectorId { get; set; } = null!;
 
         /// <summary>
         /// the date the app was created
@@ -214,14 +218,6 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
-
-        /// <summary>
-        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-        /// </summary>
-        [Input("parameters")]
-        public Input<Inputs.AppParametersArgs>? Parameters { get; set; }
 
         /// <summary>
         /// The security policy assigned to the app.
@@ -288,6 +284,12 @@ namespace Pulumi.Onelogin
         public Input<int>? AuthMethod { get; set; }
 
         /// <summary>
+        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// </summary>
+        [Input("configuration")]
+        public Input<Inputs.AppConfigurationGetArgs>? Configuration { get; set; }
+
+        /// <summary>
         /// ID of the connector to base the app from.
         /// </summary>
         [Input("connectorId")]
@@ -329,14 +331,6 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
-
-        /// <summary>
-        /// The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-        /// attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-        /// following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-        /// </summary>
-        [Input("parameters")]
-        public Input<Inputs.AppParametersGetArgs>? Parameters { get; set; }
 
         /// <summary>
         /// The security policy assigned to the app.

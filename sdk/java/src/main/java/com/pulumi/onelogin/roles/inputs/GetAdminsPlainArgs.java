@@ -220,11 +220,11 @@ public final class GetAdminsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.salt);
     }
 
-    @Import(name="samaccountName")
-    private @Nullable String samaccountName;
+    @Import(name="samaccountname")
+    private @Nullable String samaccountname;
 
-    public Optional<String> samaccountName() {
-        return Optional.ofNullable(this.samaccountName);
+    public Optional<String> samaccountname() {
+        return Optional.ofNullable(this.samaccountname);
     }
 
     @Import(name="state")
@@ -308,7 +308,7 @@ public final class GetAdminsPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.roleIds = $.roleIds;
         this.rolesId = $.rolesId;
         this.salt = $.salt;
-        this.samaccountName = $.samaccountName;
+        this.samaccountname = $.samaccountname;
         this.state = $.state;
         this.status = $.status;
         this.title = $.title;
@@ -489,8 +489,8 @@ public final class GetAdminsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        public Builder samaccountName(@Nullable String samaccountName) {
-            $.samaccountName = samaccountName;
+        public Builder samaccountname(@Nullable String samaccountname) {
+            $.samaccountname = samaccountname;
             return this;
         }
 

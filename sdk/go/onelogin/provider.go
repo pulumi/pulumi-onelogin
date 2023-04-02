@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,6 +18,7 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	ApikeyAuth  pulumi.StringOutput    `pulumi:"apikeyAuth"`
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 }
 
@@ -24,9 +26,12 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		args = &ProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApikeyAuth == nil {
+		return nil, errors.New("invalid value for required argument 'ApikeyAuth'")
+	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:onelogin", name, args, &resource, opts...)
 	if err != nil {
@@ -36,12 +41,14 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	ApikeyAuth  string             `pulumi:"apikeyAuth"`
 	ContentType *string            `pulumi:"contentType"`
 	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	ApikeyAuth  pulumi.StringInput
 	ContentType pulumi.StringPtrInput
 	Endpoints   ProviderEndpointArrayInput
 }
@@ -81,6 +88,10 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) ApikeyAuth() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApikeyAuth }).(pulumi.StringOutput)
 }
 
 func (o ProviderOutput) ContentType() pulumi.StringPtrOutput {

@@ -17,6 +17,10 @@ __config__ = pulumi.Config('onelogin')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def apikey_auth(self) -> Optional[str]:
+        return __config__.get('apikeyAuth')
+
+    @property
     def content_type(self) -> Optional[str]:
         return __config__.get('contentType')
 

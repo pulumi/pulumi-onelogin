@@ -22,11 +22,39 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.apps);
     }
 
-    @Import(name="rules")
-    private @Nullable Output<String> rules;
+    @Import(name="appsRules")
+    private @Nullable Output<String> appsRules;
 
-    public Optional<Output<String>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Optional<Output<String>> appsRules() {
+        return Optional.ofNullable(this.appsRules);
+    }
+
+    @Import(name="authServers")
+    private @Nullable Output<String> authServers;
+
+    public Optional<Output<String>> authServers() {
+        return Optional.ofNullable(this.authServers);
+    }
+
+    @Import(name="privileges")
+    private @Nullable Output<String> privileges;
+
+    public Optional<Output<String>> privileges() {
+        return Optional.ofNullable(this.privileges);
+    }
+
+    @Import(name="riskRules")
+    private @Nullable Output<String> riskRules;
+
+    public Optional<Output<String>> riskRules() {
+        return Optional.ofNullable(this.riskRules);
+    }
+
+    @Import(name="roles")
+    private @Nullable Output<String> roles;
+
+    public Optional<Output<String>> roles() {
+        return Optional.ofNullable(this.roles);
     }
 
     @Import(name="users")
@@ -36,12 +64,24 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.users);
     }
 
+    @Import(name="usersV1")
+    private @Nullable Output<String> usersV1;
+
+    public Optional<Output<String>> usersV1() {
+        return Optional.ofNullable(this.usersV1);
+    }
+
     private ProviderEndpointArgs() {}
 
     private ProviderEndpointArgs(ProviderEndpointArgs $) {
         this.apps = $.apps;
-        this.rules = $.rules;
+        this.appsRules = $.appsRules;
+        this.authServers = $.authServers;
+        this.privileges = $.privileges;
+        this.riskRules = $.riskRules;
+        this.roles = $.roles;
         this.users = $.users;
+        this.usersV1 = $.usersV1;
     }
 
     public static Builder builder() {
@@ -71,13 +111,49 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return apps(Output.of(apps));
         }
 
-        public Builder rules(@Nullable Output<String> rules) {
-            $.rules = rules;
+        public Builder appsRules(@Nullable Output<String> appsRules) {
+            $.appsRules = appsRules;
             return this;
         }
 
-        public Builder rules(String rules) {
-            return rules(Output.of(rules));
+        public Builder appsRules(String appsRules) {
+            return appsRules(Output.of(appsRules));
+        }
+
+        public Builder authServers(@Nullable Output<String> authServers) {
+            $.authServers = authServers;
+            return this;
+        }
+
+        public Builder authServers(String authServers) {
+            return authServers(Output.of(authServers));
+        }
+
+        public Builder privileges(@Nullable Output<String> privileges) {
+            $.privileges = privileges;
+            return this;
+        }
+
+        public Builder privileges(String privileges) {
+            return privileges(Output.of(privileges));
+        }
+
+        public Builder riskRules(@Nullable Output<String> riskRules) {
+            $.riskRules = riskRules;
+            return this;
+        }
+
+        public Builder riskRules(String riskRules) {
+            return riskRules(Output.of(riskRules));
+        }
+
+        public Builder roles(@Nullable Output<String> roles) {
+            $.roles = roles;
+            return this;
+        }
+
+        public Builder roles(String roles) {
+            return roles(Output.of(roles));
         }
 
         public Builder users(@Nullable Output<String> users) {
@@ -87,6 +163,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder users(String users) {
             return users(Output.of(users));
+        }
+
+        public Builder usersV1(@Nullable Output<String> usersV1) {
+            $.usersV1 = usersV1;
+            return this;
+        }
+
+        public Builder usersV1(String usersV1) {
+            return usersV1(Output.of(usersV1));
         }
 
         public ProviderEndpointArgs build() {

@@ -12,18 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class Endpoints {
     private @Nullable String apps;
-    private @Nullable String rules;
+    private @Nullable String appsRules;
+    private @Nullable String authServers;
+    private @Nullable String privileges;
+    private @Nullable String riskRules;
+    private @Nullable String roles;
     private @Nullable String users;
+    private @Nullable String usersV1;
 
     private Endpoints() {}
     public Optional<String> apps() {
         return Optional.ofNullable(this.apps);
     }
-    public Optional<String> rules() {
-        return Optional.ofNullable(this.rules);
+    public Optional<String> appsRules() {
+        return Optional.ofNullable(this.appsRules);
+    }
+    public Optional<String> authServers() {
+        return Optional.ofNullable(this.authServers);
+    }
+    public Optional<String> privileges() {
+        return Optional.ofNullable(this.privileges);
+    }
+    public Optional<String> riskRules() {
+        return Optional.ofNullable(this.riskRules);
+    }
+    public Optional<String> roles() {
+        return Optional.ofNullable(this.roles);
     }
     public Optional<String> users() {
         return Optional.ofNullable(this.users);
+    }
+    public Optional<String> usersV1() {
+        return Optional.ofNullable(this.usersV1);
     }
 
     public static Builder builder() {
@@ -36,14 +56,24 @@ public final class Endpoints {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String apps;
-        private @Nullable String rules;
+        private @Nullable String appsRules;
+        private @Nullable String authServers;
+        private @Nullable String privileges;
+        private @Nullable String riskRules;
+        private @Nullable String roles;
         private @Nullable String users;
+        private @Nullable String usersV1;
         public Builder() {}
         public Builder(Endpoints defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apps = defaults.apps;
-    	      this.rules = defaults.rules;
+    	      this.appsRules = defaults.appsRules;
+    	      this.authServers = defaults.authServers;
+    	      this.privileges = defaults.privileges;
+    	      this.riskRules = defaults.riskRules;
+    	      this.roles = defaults.roles;
     	      this.users = defaults.users;
+    	      this.usersV1 = defaults.usersV1;
         }
 
         @CustomType.Setter
@@ -52,8 +82,28 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
-        public Builder rules(@Nullable String rules) {
-            this.rules = rules;
+        public Builder appsRules(@Nullable String appsRules) {
+            this.appsRules = appsRules;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authServers(@Nullable String authServers) {
+            this.authServers = authServers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privileges(@Nullable String privileges) {
+            this.privileges = privileges;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder riskRules(@Nullable String riskRules) {
+            this.riskRules = riskRules;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder roles(@Nullable String roles) {
+            this.roles = roles;
             return this;
         }
         @CustomType.Setter
@@ -61,11 +111,21 @@ public final class Endpoints {
             this.users = users;
             return this;
         }
+        @CustomType.Setter
+        public Builder usersV1(@Nullable String usersV1) {
+            this.usersV1 = usersV1;
+            return this;
+        }
         public Endpoints build() {
             final var o = new Endpoints();
             o.apps = apps;
-            o.rules = rules;
+            o.appsRules = appsRules;
+            o.authServers = authServers;
+            o.privileges = privileges;
+            o.riskRules = riskRules;
+            o.roles = roles;
             o.users = users;
+            o.usersV1 = usersV1;
             return o;
         }
     }

@@ -13,6 +13,9 @@ import java.util.Optional;
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("onelogin");
+    public String apikeyAuth() {
+        return Codegen.stringProp("apikeyAuth").config(config).require();
+    }
     public Optional<String> contentType() {
         return Codegen.stringProp("contentType").config(config).get();
     }

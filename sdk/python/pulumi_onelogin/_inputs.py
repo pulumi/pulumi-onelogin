@@ -10,31 +10,106 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'AppConfigurationArgs',
     'AppEnforcementPointArgs',
     'AppEnforcementPointResourceArgs',
     'AppEnforcementPointSessionExpiryFixedArgs',
     'AppEnforcementPointSessionExpiryInactivityArgs',
-    'AppParametersArgs',
     'AppProvisioningArgs',
+    'AuthServersConfigurationArgs',
+    'PrivilegesPrivilegeArgs',
+    'PrivilegesPrivilegeStatementArgs',
     'ProviderEndpointArgs',
-    'RuleSourceArgs',
+    'RiskRulesSourceArgs',
+    'GetAppsConfigurationArgs',
     'GetAppsEnforcementPointArgs',
     'GetAppsEnforcementPointResourceArgs',
     'GetAppsEnforcementPointSessionExpiryFixedArgs',
     'GetAppsEnforcementPointSessionExpiryInactivityArgs',
     'GetAppsFilterArgs',
-    'GetAppsParametersArgs',
     'GetAppsProvisioningArgs',
-    'GetBrandsAppsFilterArgs',
-    'GetBrandsFilterArgs',
-    'GetBrandsTemplatesFilterArgs',
+    'GetAuthServersClaimsFilterArgs',
+    'GetAuthServersConfigurationArgs',
+    'GetAuthServersFilterArgs',
+    'GetAuthServersInstanceConfigurationArgs',
+    'GetAuthServersScopesFilterArgs',
     'GetMappingsActionArgs',
     'GetMappingsConditionArgs',
     'GetMappingsFilterArgs',
     'GetPrivilegesFilterArgs',
+    'GetPrivilegesInstancePrivilegeArgs',
+    'GetPrivilegesInstancePrivilegeStatementArgs',
     'GetPrivilegesPrivilegeArgs',
     'GetPrivilegesPrivilegeStatementArgs',
+    'GetRiskRulesFilterArgs',
+    'GetRiskRulesInstanceSourceArgs',
+    'GetRiskRulesSourceArgs',
 ]
+
+@pulumi.input_type
+class AppConfigurationArgs:
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
+                 login_url: Optional[pulumi.Input[str]] = None,
+                 oidc_application_type: Optional[pulumi.Input[int]] = None,
+                 redirect_uri: Optional[pulumi.Input[str]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[int]] = None):
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if login_url is not None:
+            pulumi.set(__self__, "login_url", login_url)
+        if oidc_application_type is not None:
+            pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+        if token_endpoint_auth_method is not None:
+            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "login_url")
+
+    @login_url.setter
+    def login_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "login_url", value)
+
+    @property
+    @pulumi.getter(name="oidcApplicationType")
+    def oidc_application_type(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "oidc_application_type")
+
+    @oidc_application_type.setter
+    def oidc_application_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "oidc_application_type", value)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_uri", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @token_endpoint_auth_method.setter
+    def token_endpoint_auth_method(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "token_endpoint_auth_method", value)
+
 
 @pulumi.input_type
 class AppEnforcementPointArgs:
@@ -321,59 +396,6 @@ class AppEnforcementPointSessionExpiryInactivityArgs:
 
 
 @pulumi.input_type
-class AppParametersArgs:
-    def __init__(__self__, *,
-                 include_in_saml_assertion: Optional[pulumi.Input[bool]] = None,
-                 label: Optional[pulumi.Input[str]] = None,
-                 user_attribute_macros: Optional[pulumi.Input[str]] = None,
-                 user_attribute_mappings: Optional[pulumi.Input[str]] = None):
-        if include_in_saml_assertion is not None:
-            pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if user_attribute_macros is not None:
-            pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        if user_attribute_mappings is not None:
-            pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-
-    @property
-    @pulumi.getter(name="includeInSamlAssertion")
-    def include_in_saml_assertion(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "include_in_saml_assertion")
-
-    @include_in_saml_assertion.setter
-    def include_in_saml_assertion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "include_in_saml_assertion", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "label")
-
-    @label.setter
-    def label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "label", value)
-
-    @property
-    @pulumi.getter(name="userAttributeMacros")
-    def user_attribute_macros(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "user_attribute_macros")
-
-    @user_attribute_macros.setter
-    def user_attribute_macros(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_attribute_macros", value)
-
-    @property
-    @pulumi.getter(name="userAttributeMappings")
-    def user_attribute_mappings(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "user_attribute_mappings")
-
-    @user_attribute_mappings.setter
-    def user_attribute_mappings(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_attribute_mappings", value)
-
-
-@pulumi.input_type
 class AppProvisioningArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -391,17 +413,150 @@ class AppProvisioningArgs:
 
 
 @pulumi.input_type
+class AuthServersConfigurationArgs:
+    def __init__(__self__, *,
+                 audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resource_identifier: pulumi.Input[str],
+                 access_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
+                 refresh_token_expiration_minutes: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+        if access_token_expiration_minutes is not None:
+            pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        if refresh_token_expiration_minutes is not None:
+            pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "audiences", value)
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_identifier")
+
+    @resource_identifier.setter
+    def resource_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_identifier", value)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @refresh_token_expiration_minutes.setter
+    def refresh_token_expiration_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_token_expiration_minutes", value)
+
+
+@pulumi.input_type
+class PrivilegesPrivilegeArgs:
+    def __init__(__self__, *,
+                 statements: Optional[pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        if statements is not None:
+            pulumi.set(__self__, "statements", statements)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]]]:
+        return pulumi.get(self, "statements")
+
+    @statements.setter
+    def statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgs']]]]):
+        pulumi.set(self, "statements", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class PrivilegesPrivilegeStatementArgs:
+    def __init__(__self__, *,
+                 actions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 effect: pulumi.Input[str],
+                 scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "scopes", value)
+
+
+@pulumi.input_type
 class ProviderEndpointArgs:
     def __init__(__self__, *,
                  apps: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[str]] = None):
+                 apps_rules: Optional[pulumi.Input[str]] = None,
+                 auth_servers: Optional[pulumi.Input[str]] = None,
+                 privileges: Optional[pulumi.Input[str]] = None,
+                 risk_rules: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[str]] = None,
+                 users: Optional[pulumi.Input[str]] = None,
+                 users_v1: Optional[pulumi.Input[str]] = None):
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+        if apps_rules is not None:
+            pulumi.set(__self__, "apps_rules", apps_rules)
+        if auth_servers is not None:
+            pulumi.set(__self__, "auth_servers", auth_servers)
+        if privileges is not None:
+            pulumi.set(__self__, "privileges", privileges)
+        if risk_rules is not None:
+            pulumi.set(__self__, "risk_rules", risk_rules)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
         if users is not None:
             pulumi.set(__self__, "users", users)
+        if users_v1 is not None:
+            pulumi.set(__self__, "users_v1", users_v1)
 
     @property
     @pulumi.getter
@@ -413,13 +568,49 @@ class ProviderEndpointArgs:
         pulumi.set(self, "apps", value)
 
     @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "rules")
+    @pulumi.getter(name="appsRules")
+    def apps_rules(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "apps_rules")
 
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rules", value)
+    @apps_rules.setter
+    def apps_rules(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apps_rules", value)
+
+    @property
+    @pulumi.getter(name="authServers")
+    def auth_servers(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_servers")
+
+    @auth_servers.setter
+    def auth_servers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_servers", value)
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "privileges")
+
+    @privileges.setter
+    def privileges(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privileges", value)
+
+    @property
+    @pulumi.getter(name="riskRules")
+    def risk_rules(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "risk_rules")
+
+    @risk_rules.setter
+    def risk_rules(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "risk_rules", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "roles", value)
 
     @property
     @pulumi.getter
@@ -430,9 +621,18 @@ class ProviderEndpointArgs:
     def users(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "users", value)
 
+    @property
+    @pulumi.getter(name="usersV1")
+    def users_v1(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "users_v1")
+
+    @users_v1.setter
+    def users_v1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "users_v1", value)
+
 
 @pulumi.input_type
-class RuleSourceArgs:
+class RiskRulesSourceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -458,6 +658,66 @@ class RuleSourceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetAppsConfigurationArgs:
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 login_url: str,
+                 oidc_application_type: int,
+                 redirect_uri: str,
+                 token_endpoint_auth_method: int):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: int):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> str:
+        return pulumi.get(self, "login_url")
+
+    @login_url.setter
+    def login_url(self, value: str):
+        pulumi.set(self, "login_url", value)
+
+    @property
+    @pulumi.getter(name="oidcApplicationType")
+    def oidc_application_type(self) -> int:
+        return pulumi.get(self, "oidc_application_type")
+
+    @oidc_application_type.setter
+    def oidc_application_type(self, value: int):
+        pulumi.set(self, "oidc_application_type", value)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> str:
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: str):
+        pulumi.set(self, "redirect_uri", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> int:
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @token_endpoint_auth_method.setter
+    def token_endpoint_auth_method(self, value: int):
+        pulumi.set(self, "token_endpoint_auth_method", value)
 
 
 @pulumi.input_type
@@ -750,55 +1010,6 @@ class GetAppsFilterArgs:
 
 
 @pulumi.input_type
-class GetAppsParametersArgs:
-    def __init__(__self__, *,
-                 include_in_saml_assertion: bool,
-                 label: str,
-                 user_attribute_macros: str,
-                 user_attribute_mappings: str):
-        pulumi.set(__self__, "include_in_saml_assertion", include_in_saml_assertion)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-
-    @property
-    @pulumi.getter(name="includeInSamlAssertion")
-    def include_in_saml_assertion(self) -> bool:
-        return pulumi.get(self, "include_in_saml_assertion")
-
-    @include_in_saml_assertion.setter
-    def include_in_saml_assertion(self, value: bool):
-        pulumi.set(self, "include_in_saml_assertion", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @label.setter
-    def label(self, value: str):
-        pulumi.set(self, "label", value)
-
-    @property
-    @pulumi.getter(name="userAttributeMacros")
-    def user_attribute_macros(self) -> str:
-        return pulumi.get(self, "user_attribute_macros")
-
-    @user_attribute_macros.setter
-    def user_attribute_macros(self, value: str):
-        pulumi.set(self, "user_attribute_macros", value)
-
-    @property
-    @pulumi.getter(name="userAttributeMappings")
-    def user_attribute_mappings(self) -> str:
-        return pulumi.get(self, "user_attribute_mappings")
-
-    @user_attribute_mappings.setter
-    def user_attribute_mappings(self, value: str):
-        pulumi.set(self, "user_attribute_mappings", value)
-
-
-@pulumi.input_type
 class GetAppsProvisioningArgs:
     def __init__(__self__, *,
                  enabled: bool):
@@ -815,7 +1026,7 @@ class GetAppsProvisioningArgs:
 
 
 @pulumi.input_type
-class GetBrandsAppsFilterArgs:
+class GetAuthServersClaimsFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -842,7 +1053,56 @@ class GetBrandsAppsFilterArgs:
 
 
 @pulumi.input_type
-class GetBrandsFilterArgs:
+class GetAuthServersConfigurationArgs:
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 audiences: Sequence[str],
+                 refresh_token_expiration_minutes: int,
+                 resource_identifier: str):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: int):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: Sequence[str]):
+        pulumi.set(self, "audiences", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @refresh_token_expiration_minutes.setter
+    def refresh_token_expiration_minutes(self, value: int):
+        pulumi.set(self, "refresh_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+    @resource_identifier.setter
+    def resource_identifier(self, value: str):
+        pulumi.set(self, "resource_identifier", value)
+
+
+@pulumi.input_type
+class GetAuthServersFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -869,7 +1129,56 @@ class GetBrandsFilterArgs:
 
 
 @pulumi.input_type
-class GetBrandsTemplatesFilterArgs:
+class GetAuthServersInstanceConfigurationArgs:
+    def __init__(__self__, *,
+                 access_token_expiration_minutes: int,
+                 audiences: Sequence[str],
+                 refresh_token_expiration_minutes: int,
+                 resource_identifier: str):
+        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+        pulumi.set(__self__, "resource_identifier", resource_identifier)
+
+    @property
+    @pulumi.getter(name="accessTokenExpirationMinutes")
+    def access_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "access_token_expiration_minutes")
+
+    @access_token_expiration_minutes.setter
+    def access_token_expiration_minutes(self, value: int):
+        pulumi.set(self, "access_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: Sequence[str]):
+        pulumi.set(self, "audiences", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
+
+    @refresh_token_expiration_minutes.setter
+    def refresh_token_expiration_minutes(self, value: int):
+        pulumi.set(self, "refresh_token_expiration_minutes", value)
+
+    @property
+    @pulumi.getter(name="resourceIdentifier")
+    def resource_identifier(self) -> str:
+        return pulumi.get(self, "resource_identifier")
+
+    @resource_identifier.setter
+    def resource_identifier(self, value: str):
+        pulumi.set(self, "resource_identifier", value)
+
+
+@pulumi.input_type
+class GetAuthServersScopesFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
@@ -1015,6 +1324,71 @@ class GetPrivilegesFilterArgs:
 
 
 @pulumi.input_type
+class GetPrivilegesInstancePrivilegeArgs:
+    def __init__(__self__, *,
+                 statements: Sequence['GetPrivilegesInstancePrivilegeStatementArgs'],
+                 version: str):
+        pulumi.set(__self__, "statements", statements)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def statements(self) -> Sequence['GetPrivilegesInstancePrivilegeStatementArgs']:
+        return pulumi.get(self, "statements")
+
+    @statements.setter
+    def statements(self, value: Sequence['GetPrivilegesInstancePrivilegeStatementArgs']):
+        pulumi.set(self, "statements", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: str):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GetPrivilegesInstancePrivilegeStatementArgs:
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 effect: str,
+                 scopes: Sequence[str]):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Sequence[str]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: str):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Sequence[str]):
+        pulumi.set(self, "scopes", value)
+
+
+@pulumi.input_type
 class GetPrivilegesPrivilegeArgs:
     def __init__(__self__, *,
                  statements: Sequence['GetPrivilegesPrivilegeStatementArgs'],
@@ -1077,5 +1451,86 @@ class GetPrivilegesPrivilegeStatementArgs:
     @scopes.setter
     def scopes(self, value: Sequence[str]):
         pulumi.set(self, "scopes", value)
+
+
+@pulumi.input_type
+class GetRiskRulesFilterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetRiskRulesInstanceSourceArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetRiskRulesSourceArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
 
 

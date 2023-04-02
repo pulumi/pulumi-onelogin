@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AppConfiguration {
+    accessTokenExpirationMinutes?: number;
+    loginUrl?: string;
+    oidcApplicationType?: number;
+    redirectUri?: string;
+    tokenEndpointAuthMethod?: number;
+}
+
 export interface AppEnforcementPoint {
     caseSensitive?: boolean;
     conditions?: string;
@@ -39,15 +47,23 @@ export interface AppEnforcementPointSessionExpiryInactivity {
     value?: number;
 }
 
-export interface AppParameters {
-    includeInSamlAssertion?: boolean;
-    label?: string;
-    userAttributeMacros?: string;
-    userAttributeMappings?: string;
-}
-
 export interface AppProvisioning {
     enabled?: boolean;
+}
+
+export interface AuthServersConfiguration {
+    accessTokenExpirationMinutes?: number;
+    audiences: string[];
+    refreshTokenExpirationMinutes?: number;
+    resourceIdentifier: string;
+}
+
+export interface GetAppsConfiguration {
+    accessTokenExpirationMinutes: number;
+    loginUrl: string;
+    oidcApplicationType: number;
+    redirectUri: string;
+    tokenEndpointAuthMethod: number;
 }
 
 export interface GetAppsEnforcementPoint {
@@ -89,28 +105,35 @@ export interface GetAppsFilter {
     values: string[];
 }
 
-export interface GetAppsParameters {
-    includeInSamlAssertion: boolean;
-    label: string;
-    userAttributeMacros: string;
-    userAttributeMappings: string;
-}
-
 export interface GetAppsProvisioning {
     enabled: boolean;
 }
 
-export interface GetBrandsAppsFilter {
+export interface GetAuthServersClaimsFilter {
     name: string;
     values: string[];
 }
 
-export interface GetBrandsFilter {
+export interface GetAuthServersConfiguration {
+    accessTokenExpirationMinutes: number;
+    audiences: string[];
+    refreshTokenExpirationMinutes: number;
+    resourceIdentifier: string;
+}
+
+export interface GetAuthServersFilter {
     name: string;
     values: string[];
 }
 
-export interface GetBrandsTemplatesFilter {
+export interface GetAuthServersInstanceConfiguration {
+    accessTokenExpirationMinutes: number;
+    audiences: string[];
+    refreshTokenExpirationMinutes: number;
+    resourceIdentifier: string;
+}
+
+export interface GetAuthServersScopesFilter {
     name: string;
     values: string[];
 }
@@ -136,6 +159,17 @@ export interface GetPrivilegesFilter {
     values: string[];
 }
 
+export interface GetPrivilegesInstancePrivilege {
+    statements: outputs.GetPrivilegesInstancePrivilegeStatement[];
+    version: string;
+}
+
+export interface GetPrivilegesInstancePrivilegeStatement {
+    actions: string[];
+    effect: string;
+    scopes: string[];
+}
+
 export interface GetPrivilegesPrivilege {
     statements: outputs.GetPrivilegesPrivilegeStatement[];
     version: string;
@@ -147,41 +181,35 @@ export interface GetPrivilegesPrivilegeStatement {
     scopes: string[];
 }
 
-export interface RuleSource {
-    id?: string;
-    name?: string;
+export interface GetRiskRulesFilter {
+    name: string;
+    values: string[];
 }
 
-export namespace api {
-    export interface GetAuthorizationsClaimsFilter {
-        name: string;
-        values: string[];
-    }
+export interface GetRiskRulesInstanceSource {
+    id: string;
+    name: string;
+}
 
-    export interface GetAuthorizationsConfiguration {
-        accessTokenExpirationMinutes: number;
-        audiences: string[];
-        refreshTokenExpirationMinutes: number;
-        resourceIdentifier: string;
-    }
+export interface GetRiskRulesSource {
+    id: string;
+    name: string;
+}
 
-    export interface GetAuthorizationsFilter {
-        name: string;
-        values: string[];
-    }
+export interface PrivilegesPrivilege {
+    statements?: outputs.PrivilegesPrivilegeStatement[];
+    version?: string;
+}
 
-    export interface GetAuthorizationsScopesConfiguration {
-        accessTokenExpirationMinutes: number;
-        audiences: string[];
-        refreshTokenExpirationMinutes: number;
-        resourceIdentifier: string;
-    }
+export interface PrivilegesPrivilegeStatement {
+    actions: string[];
+    effect: string;
+    scopes: string[];
+}
 
-    export interface GetAuthorizationsScopesFilter {
-        name: string;
-        values: string[];
-    }
-
+export interface RiskRulesSource {
+    id?: string;
+    name?: string;
 }
 
 export namespace apps {
@@ -205,9 +233,12 @@ export namespace apps {
         values: string[];
     }
 
-    export interface GetConditionsValuesFilter {
-        name: string;
-        values: string[];
+    export interface GetInstanceConfiguration {
+        accessTokenExpirationMinutes: number;
+        loginUrl: string;
+        oidcApplicationType: number;
+        redirectUri: string;
+        tokenEndpointAuthMethod: number;
     }
 
     export interface GetInstanceEnforcementPoint {
@@ -244,13 +275,6 @@ export namespace apps {
         value: number;
     }
 
-    export interface GetInstanceParameters {
-        includeInSamlAssertion: boolean;
-        label: string;
-        userAttributeMacros: string;
-        userAttributeMappings: string;
-    }
-
     export interface GetInstanceProvisioning {
         enabled: boolean;
     }
@@ -271,13 +295,45 @@ export namespace apps {
         values: string[];
     }
 
+    export interface GetRulesInstanceAction {
+        action: string;
+        values: string[];
+    }
+
+    export interface GetRulesInstanceCondition {
+        operator: string;
+        source: string;
+        value: string;
+    }
+
+    export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface RulesAction {
+        action?: string;
+        values?: string[];
+    }
+
+    export interface RulesCondition {
+        operator?: string;
+        source?: string;
+        value?: string;
+    }
+
 }
 
 export namespace config {
     export interface Endpoints {
         apps?: string;
-        rules?: string;
+        appsRules?: string;
+        authServers?: string;
+        privileges?: string;
+        riskRules?: string;
+        roles?: string;
         users?: string;
+        usersV1?: string;
     }
 
 }
@@ -305,24 +361,6 @@ export namespace roles {
 
 }
 
-export namespace rules {
-    export interface GetInstanceSource {
-        id: string;
-        name: string;
-    }
-
-    export interface GetRulesFilter {
-        name: string;
-        values: string[];
-    }
-
-    export interface GetRulesSource {
-        id: string;
-        name: string;
-    }
-
-}
-
 export namespace users {
     export interface GetAppsFilter {
         name: string;
@@ -335,6 +373,16 @@ export namespace users {
     }
 
     export interface GetUsersFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetV1AppsFilter {
+        name: string;
+        values: string[];
+    }
+
+    export interface GetV1Filter {
         name: string;
         values: string[];
     }

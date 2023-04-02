@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+func GetApikeyAuth(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:apikeyAuth")
+}
 func GetContentType(ctx *pulumi.Context) string {
 	return config.Get(ctx, "onelogin:contentType")
 }

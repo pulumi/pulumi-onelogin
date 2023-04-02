@@ -49,7 +49,7 @@ type GetUsersArgs struct {
 	PreferredLocaleCode  *string          `pulumi:"preferredLocaleCode"`
 	RoleIds              []int            `pulumi:"roleIds"`
 	Salt                 *string          `pulumi:"salt"`
-	SamaccountName       *string          `pulumi:"samaccountName"`
+	Samaccountname       *string          `pulumi:"samaccountname"`
 	State                *int             `pulumi:"state"`
 	Status               *int             `pulumi:"status"`
 	Title                *string          `pulumi:"title"`
@@ -91,7 +91,7 @@ type GetUsersResult struct {
 	PreferredLocaleCode  string `pulumi:"preferredLocaleCode"`
 	RoleIds              []int  `pulumi:"roleIds"`
 	Salt                 string `pulumi:"salt"`
-	SamaccountName       string `pulumi:"samaccountName"`
+	Samaccountname       string `pulumi:"samaccountname"`
 	State                int    `pulumi:"state"`
 	Status               int    `pulumi:"status"`
 	Title                string `pulumi:"title"`
@@ -144,7 +144,7 @@ type GetUsersOutputArgs struct {
 	PreferredLocaleCode  pulumi.StringPtrInput    `pulumi:"preferredLocaleCode"`
 	RoleIds              pulumi.IntArrayInput     `pulumi:"roleIds"`
 	Salt                 pulumi.StringPtrInput    `pulumi:"salt"`
-	SamaccountName       pulumi.StringPtrInput    `pulumi:"samaccountName"`
+	Samaccountname       pulumi.StringPtrInput    `pulumi:"samaccountname"`
 	State                pulumi.IntPtrInput       `pulumi:"state"`
 	Status               pulumi.IntPtrInput       `pulumi:"status"`
 	Title                pulumi.StringPtrInput    `pulumi:"title"`
@@ -290,8 +290,8 @@ func (o GetUsersResultOutput) Salt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.Salt }).(pulumi.StringOutput)
 }
 
-func (o GetUsersResultOutput) SamaccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersResult) string { return v.SamaccountName }).(pulumi.StringOutput)
+func (o GetUsersResultOutput) Samaccountname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Samaccountname }).(pulumi.StringOutput)
 }
 
 func (o GetUsersResultOutput) State() pulumi.IntOutput {

@@ -39,7 +39,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "preferredLocaleCode": args.preferredLocaleCode,
         "roleIds": args.roleIds,
         "salt": args.salt,
-        "samaccountName": args.samaccountName,
+        "samaccountname": args.samaccountname,
         "state": args.state,
         "status": args.status,
         "title": args.title,
@@ -82,7 +82,7 @@ export interface GetUsersArgs {
     preferredLocaleCode?: string;
     roleIds?: number[];
     salt?: string;
-    samaccountName?: string;
+    samaccountname?: string;
     state?: number;
     status?: number;
     title?: string;
@@ -128,7 +128,7 @@ export interface GetUsersResult {
     readonly preferredLocaleCode: string;
     readonly roleIds: number[];
     readonly salt: string;
-    readonly samaccountName: string;
+    readonly samaccountname: string;
     readonly state: number;
     readonly status: number;
     readonly title: string;
@@ -173,7 +173,7 @@ export interface GetUsersOutputArgs {
     preferredLocaleCode?: pulumi.Input<string>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
     salt?: pulumi.Input<string>;
-    samaccountName?: pulumi.Input<string>;
+    samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
     title?: pulumi.Input<string>;

@@ -50,7 +50,7 @@ type GetAdminsArgs struct {
 	RoleIds              []int             `pulumi:"roleIds"`
 	RolesId              string            `pulumi:"rolesId"`
 	Salt                 *string           `pulumi:"salt"`
-	SamaccountName       *string           `pulumi:"samaccountName"`
+	Samaccountname       *string           `pulumi:"samaccountname"`
 	State                *int              `pulumi:"state"`
 	Status               *int              `pulumi:"status"`
 	Title                *string           `pulumi:"title"`
@@ -93,7 +93,7 @@ type GetAdminsResult struct {
 	RoleIds              []int  `pulumi:"roleIds"`
 	RolesId              string `pulumi:"rolesId"`
 	Salt                 string `pulumi:"salt"`
-	SamaccountName       string `pulumi:"samaccountName"`
+	Samaccountname       string `pulumi:"samaccountname"`
 	State                int    `pulumi:"state"`
 	Status               int    `pulumi:"status"`
 	Title                string `pulumi:"title"`
@@ -147,7 +147,7 @@ type GetAdminsOutputArgs struct {
 	RoleIds              pulumi.IntArrayInput      `pulumi:"roleIds"`
 	RolesId              pulumi.StringInput        `pulumi:"rolesId"`
 	Salt                 pulumi.StringPtrInput     `pulumi:"salt"`
-	SamaccountName       pulumi.StringPtrInput     `pulumi:"samaccountName"`
+	Samaccountname       pulumi.StringPtrInput     `pulumi:"samaccountname"`
 	State                pulumi.IntPtrInput        `pulumi:"state"`
 	Status               pulumi.IntPtrInput        `pulumi:"status"`
 	Title                pulumi.StringPtrInput     `pulumi:"title"`
@@ -297,8 +297,8 @@ func (o GetAdminsResultOutput) Salt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdminsResult) string { return v.Salt }).(pulumi.StringOutput)
 }
 
-func (o GetAdminsResultOutput) SamaccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAdminsResult) string { return v.SamaccountName }).(pulumi.StringOutput)
+func (o GetAdminsResultOutput) Samaccountname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdminsResult) string { return v.Samaccountname }).(pulumi.StringOutput)
 }
 
 func (o GetAdminsResultOutput) State() pulumi.IntOutput {

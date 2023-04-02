@@ -213,11 +213,11 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.salt);
     }
 
-    @Import(name="samaccountName")
-    private @Nullable Output<String> samaccountName;
+    @Import(name="samaccountname")
+    private @Nullable Output<String> samaccountname;
 
-    public Optional<Output<String>> samaccountName() {
-        return Optional.ofNullable(this.samaccountName);
+    public Optional<Output<String>> samaccountname() {
+        return Optional.ofNullable(this.samaccountname);
     }
 
     @Import(name="state")
@@ -300,7 +300,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         this.preferredLocaleCode = $.preferredLocaleCode;
         this.roleIds = $.roleIds;
         this.salt = $.salt;
-        this.samaccountName = $.samaccountName;
+        this.samaccountname = $.samaccountname;
         this.state = $.state;
         this.status = $.status;
         this.title = $.title;
@@ -584,13 +584,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
             return salt(Output.of(salt));
         }
 
-        public Builder samaccountName(@Nullable Output<String> samaccountName) {
-            $.samaccountName = samaccountName;
+        public Builder samaccountname(@Nullable Output<String> samaccountname) {
+            $.samaccountname = samaccountname;
             return this;
         }
 
-        public Builder samaccountName(String samaccountName) {
-            return samaccountName(Output.of(samaccountName));
+        public Builder samaccountname(String samaccountname) {
+            return samaccountname(Output.of(samaccountname));
         }
 
         public Builder state(@Nullable Output<Integer> state) {

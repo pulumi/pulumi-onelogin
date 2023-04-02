@@ -12,12 +12,15 @@ import com.pulumi.onelogin.roles.inputs.GetAdminsArgs;
 import com.pulumi.onelogin.roles.inputs.GetAdminsPlainArgs;
 import com.pulumi.onelogin.roles.inputs.GetAppsArgs;
 import com.pulumi.onelogin.roles.inputs.GetAppsPlainArgs;
+import com.pulumi.onelogin.roles.inputs.GetInstanceArgs;
+import com.pulumi.onelogin.roles.inputs.GetInstancePlainArgs;
 import com.pulumi.onelogin.roles.inputs.GetRolesArgs;
 import com.pulumi.onelogin.roles.inputs.GetRolesPlainArgs;
 import com.pulumi.onelogin.roles.inputs.GetUsersArgs;
 import com.pulumi.onelogin.roles.inputs.GetUsersPlainArgs;
 import com.pulumi.onelogin.roles.outputs.GetAdminsResult;
 import com.pulumi.onelogin.roles.outputs.GetAppsResult;
+import com.pulumi.onelogin.roles.outputs.GetInstanceResult;
 import com.pulumi.onelogin.roles.outputs.GetRolesResult;
 import com.pulumi.onelogin.roles.outputs.GetUsersResult;
 import java.util.concurrent.CompletableFuture;
@@ -46,6 +49,18 @@ public final class RolesFunctions {
     }
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:roles/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
+        return getInstance(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
+        return getInstancePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:roles/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetRolesResult> getRoles() {
         return getRoles(GetRolesArgs.Empty, InvokeOptions.Empty);

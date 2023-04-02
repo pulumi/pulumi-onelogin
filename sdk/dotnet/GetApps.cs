@@ -27,6 +27,9 @@ namespace Pulumi.Onelogin
         [Input("authMethod")]
         public int? AuthMethod { get; set; }
 
+        [Input("configuration")]
+        public Inputs.GetAppsConfigurationArgs? Configuration { get; set; }
+
         [Input("connectorId")]
         public int? ConnectorId { get; set; }
 
@@ -55,9 +58,6 @@ namespace Pulumi.Onelogin
 
         [Input("notes")]
         public string? Notes { get; set; }
-
-        [Input("parameters")]
-        public Inputs.GetAppsParametersArgs? Parameters { get; set; }
 
         [Input("policyId")]
         public int? PolicyId { get; set; }
@@ -96,6 +96,9 @@ namespace Pulumi.Onelogin
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
+        [Input("configuration")]
+        public Input<Inputs.GetAppsConfigurationInputArgs>? Configuration { get; set; }
+
         [Input("connectorId")]
         public Input<int>? ConnectorId { get; set; }
 
@@ -124,9 +127,6 @@ namespace Pulumi.Onelogin
 
         [Input("notes")]
         public Input<string>? Notes { get; set; }
-
-        [Input("parameters")]
-        public Input<Inputs.GetAppsParametersInputArgs>? Parameters { get; set; }
 
         [Input("policyId")]
         public Input<int>? PolicyId { get; set; }
@@ -163,6 +163,7 @@ namespace Pulumi.Onelogin
     {
         public readonly bool AllowAssumedSignin;
         public readonly int AuthMethod;
+        public readonly Outputs.GetAppsConfigurationResult Configuration;
         public readonly int ConnectorId;
         public readonly string CreatedAt;
         public readonly string Description;
@@ -175,7 +176,6 @@ namespace Pulumi.Onelogin
         public readonly string Id;
         public readonly string Name;
         public readonly string Notes;
-        public readonly Outputs.GetAppsParametersResult Parameters;
         public readonly int PolicyId;
         public readonly Outputs.GetAppsProvisioningResult Provisioning;
         public readonly ImmutableArray<int> RoleIds;
@@ -188,6 +188,8 @@ namespace Pulumi.Onelogin
             bool allowAssumedSignin,
 
             int authMethod,
+
+            Outputs.GetAppsConfigurationResult configuration,
 
             int connectorId,
 
@@ -207,8 +209,6 @@ namespace Pulumi.Onelogin
 
             string notes,
 
-            Outputs.GetAppsParametersResult parameters,
-
             int policyId,
 
             Outputs.GetAppsProvisioningResult provisioning,
@@ -223,6 +223,7 @@ namespace Pulumi.Onelogin
         {
             AllowAssumedSignin = allowAssumedSignin;
             AuthMethod = authMethod;
+            Configuration = configuration;
             ConnectorId = connectorId;
             CreatedAt = createdAt;
             Description = description;
@@ -232,7 +233,6 @@ namespace Pulumi.Onelogin
             Id = id;
             Name = name;
             Notes = notes;
-            Parameters = parameters;
             PolicyId = policyId;
             Provisioning = provisioning;
             RoleIds = roleIds;

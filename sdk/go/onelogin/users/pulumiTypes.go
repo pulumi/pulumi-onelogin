@@ -310,6 +310,206 @@ func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput
 	}).(GetUsersFilterOutput)
 }
 
+type GetV1AppsFilter struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+// GetV1AppsFilterInput is an input type that accepts GetV1AppsFilterArgs and GetV1AppsFilterOutput values.
+// You can construct a concrete instance of `GetV1AppsFilterInput` via:
+//
+//	GetV1AppsFilterArgs{...}
+type GetV1AppsFilterInput interface {
+	pulumi.Input
+
+	ToGetV1AppsFilterOutput() GetV1AppsFilterOutput
+	ToGetV1AppsFilterOutputWithContext(context.Context) GetV1AppsFilterOutput
+}
+
+type GetV1AppsFilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetV1AppsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV1AppsFilter)(nil)).Elem()
+}
+
+func (i GetV1AppsFilterArgs) ToGetV1AppsFilterOutput() GetV1AppsFilterOutput {
+	return i.ToGetV1AppsFilterOutputWithContext(context.Background())
+}
+
+func (i GetV1AppsFilterArgs) ToGetV1AppsFilterOutputWithContext(ctx context.Context) GetV1AppsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV1AppsFilterOutput)
+}
+
+// GetV1AppsFilterArrayInput is an input type that accepts GetV1AppsFilterArray and GetV1AppsFilterArrayOutput values.
+// You can construct a concrete instance of `GetV1AppsFilterArrayInput` via:
+//
+//	GetV1AppsFilterArray{ GetV1AppsFilterArgs{...} }
+type GetV1AppsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput
+	ToGetV1AppsFilterArrayOutputWithContext(context.Context) GetV1AppsFilterArrayOutput
+}
+
+type GetV1AppsFilterArray []GetV1AppsFilterInput
+
+func (GetV1AppsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV1AppsFilter)(nil)).Elem()
+}
+
+func (i GetV1AppsFilterArray) ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput {
+	return i.ToGetV1AppsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetV1AppsFilterArray) ToGetV1AppsFilterArrayOutputWithContext(ctx context.Context) GetV1AppsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV1AppsFilterArrayOutput)
+}
+
+type GetV1AppsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetV1AppsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV1AppsFilter)(nil)).Elem()
+}
+
+func (o GetV1AppsFilterOutput) ToGetV1AppsFilterOutput() GetV1AppsFilterOutput {
+	return o
+}
+
+func (o GetV1AppsFilterOutput) ToGetV1AppsFilterOutputWithContext(ctx context.Context) GetV1AppsFilterOutput {
+	return o
+}
+
+func (o GetV1AppsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV1AppsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetV1AppsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetV1AppsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetV1AppsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV1AppsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV1AppsFilter)(nil)).Elem()
+}
+
+func (o GetV1AppsFilterArrayOutput) ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput {
+	return o
+}
+
+func (o GetV1AppsFilterArrayOutput) ToGetV1AppsFilterArrayOutputWithContext(ctx context.Context) GetV1AppsFilterArrayOutput {
+	return o
+}
+
+func (o GetV1AppsFilterArrayOutput) Index(i pulumi.IntInput) GetV1AppsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV1AppsFilter {
+		return vs[0].([]GetV1AppsFilter)[vs[1].(int)]
+	}).(GetV1AppsFilterOutput)
+}
+
+type GetV1Filter struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+// GetV1FilterInput is an input type that accepts GetV1FilterArgs and GetV1FilterOutput values.
+// You can construct a concrete instance of `GetV1FilterInput` via:
+//
+//	GetV1FilterArgs{...}
+type GetV1FilterInput interface {
+	pulumi.Input
+
+	ToGetV1FilterOutput() GetV1FilterOutput
+	ToGetV1FilterOutputWithContext(context.Context) GetV1FilterOutput
+}
+
+type GetV1FilterArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetV1FilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV1Filter)(nil)).Elem()
+}
+
+func (i GetV1FilterArgs) ToGetV1FilterOutput() GetV1FilterOutput {
+	return i.ToGetV1FilterOutputWithContext(context.Background())
+}
+
+func (i GetV1FilterArgs) ToGetV1FilterOutputWithContext(ctx context.Context) GetV1FilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV1FilterOutput)
+}
+
+// GetV1FilterArrayInput is an input type that accepts GetV1FilterArray and GetV1FilterArrayOutput values.
+// You can construct a concrete instance of `GetV1FilterArrayInput` via:
+//
+//	GetV1FilterArray{ GetV1FilterArgs{...} }
+type GetV1FilterArrayInput interface {
+	pulumi.Input
+
+	ToGetV1FilterArrayOutput() GetV1FilterArrayOutput
+	ToGetV1FilterArrayOutputWithContext(context.Context) GetV1FilterArrayOutput
+}
+
+type GetV1FilterArray []GetV1FilterInput
+
+func (GetV1FilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV1Filter)(nil)).Elem()
+}
+
+func (i GetV1FilterArray) ToGetV1FilterArrayOutput() GetV1FilterArrayOutput {
+	return i.ToGetV1FilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetV1FilterArray) ToGetV1FilterArrayOutputWithContext(ctx context.Context) GetV1FilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV1FilterArrayOutput)
+}
+
+type GetV1FilterOutput struct{ *pulumi.OutputState }
+
+func (GetV1FilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV1Filter)(nil)).Elem()
+}
+
+func (o GetV1FilterOutput) ToGetV1FilterOutput() GetV1FilterOutput {
+	return o
+}
+
+func (o GetV1FilterOutput) ToGetV1FilterOutputWithContext(ctx context.Context) GetV1FilterOutput {
+	return o
+}
+
+func (o GetV1FilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV1Filter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetV1FilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetV1Filter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetV1FilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV1FilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV1Filter)(nil)).Elem()
+}
+
+func (o GetV1FilterArrayOutput) ToGetV1FilterArrayOutput() GetV1FilterArrayOutput {
+	return o
+}
+
+func (o GetV1FilterArrayOutput) ToGetV1FilterArrayOutputWithContext(ctx context.Context) GetV1FilterArrayOutput {
+	return o
+}
+
+func (o GetV1FilterArrayOutput) Index(i pulumi.IntInput) GetV1FilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV1Filter {
+		return vs[0].([]GetV1Filter)[vs[1].(int)]
+	}).(GetV1FilterOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterInput)(nil)).Elem(), GetAppsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterArrayInput)(nil)).Elem(), GetAppsFilterArray{})
@@ -317,10 +517,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesFilterArrayInput)(nil)).Elem(), GetDevicesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterInput)(nil)).Elem(), GetUsersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterArrayInput)(nil)).Elem(), GetUsersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV1AppsFilterInput)(nil)).Elem(), GetV1AppsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV1AppsFilterArrayInput)(nil)).Elem(), GetV1AppsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV1FilterInput)(nil)).Elem(), GetV1FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV1FilterArrayInput)(nil)).Elem(), GetV1FilterArray{})
 	pulumi.RegisterOutputType(GetAppsFilterOutput{})
 	pulumi.RegisterOutputType(GetAppsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesFilterOutput{})
 	pulumi.RegisterOutputType(GetDevicesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersFilterOutput{})
 	pulumi.RegisterOutputType(GetUsersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetV1AppsFilterOutput{})
+	pulumi.RegisterOutputType(GetV1AppsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetV1FilterOutput{})
+	pulumi.RegisterOutputType(GetV1FilterArrayOutput{})
 }

@@ -4,8 +4,8 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.onelogin.apps.outputs.GetInstanceConfiguration;
 import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPoint;
-import com.pulumi.onelogin.apps.outputs.GetInstanceParameters;
 import com.pulumi.onelogin.apps.outputs.GetInstanceProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,6 +17,7 @@ import java.util.Objects;
 public final class GetInstanceResult {
     private Boolean allowAssumedSignin;
     private Integer authMethod;
+    private GetInstanceConfiguration configuration;
     private Integer connectorId;
     private String createdAt;
     private String description;
@@ -25,7 +26,6 @@ public final class GetInstanceResult {
     private String id;
     private String name;
     private String notes;
-    private GetInstanceParameters parameters;
     private Integer policyId;
     private GetInstanceProvisioning provisioning;
     private List<Integer> roleIds;
@@ -39,6 +39,9 @@ public final class GetInstanceResult {
     }
     public Integer authMethod() {
         return this.authMethod;
+    }
+    public GetInstanceConfiguration configuration() {
+        return this.configuration;
     }
     public Integer connectorId() {
         return this.connectorId;
@@ -63,9 +66,6 @@ public final class GetInstanceResult {
     }
     public String notes() {
         return this.notes;
-    }
-    public GetInstanceParameters parameters() {
-        return this.parameters;
     }
     public Integer policyId() {
         return this.policyId;
@@ -97,6 +97,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private Boolean allowAssumedSignin;
         private Integer authMethod;
+        private GetInstanceConfiguration configuration;
         private Integer connectorId;
         private String createdAt;
         private String description;
@@ -105,7 +106,6 @@ public final class GetInstanceResult {
         private String id;
         private String name;
         private String notes;
-        private GetInstanceParameters parameters;
         private Integer policyId;
         private GetInstanceProvisioning provisioning;
         private List<Integer> roleIds;
@@ -117,6 +117,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowAssumedSignin = defaults.allowAssumedSignin;
     	      this.authMethod = defaults.authMethod;
+    	      this.configuration = defaults.configuration;
     	      this.connectorId = defaults.connectorId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -125,7 +126,6 @@ public final class GetInstanceResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
-    	      this.parameters = defaults.parameters;
     	      this.policyId = defaults.policyId;
     	      this.provisioning = defaults.provisioning;
     	      this.roleIds = defaults.roleIds;
@@ -142,6 +142,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder authMethod(Integer authMethod) {
             this.authMethod = Objects.requireNonNull(authMethod);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configuration(GetInstanceConfiguration configuration) {
+            this.configuration = Objects.requireNonNull(configuration);
             return this;
         }
         @CustomType.Setter
@@ -185,11 +190,6 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(GetInstanceParameters parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
-            return this;
-        }
-        @CustomType.Setter
         public Builder policyId(Integer policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
@@ -226,6 +226,7 @@ public final class GetInstanceResult {
             final var o = new GetInstanceResult();
             o.allowAssumedSignin = allowAssumedSignin;
             o.authMethod = authMethod;
+            o.configuration = configuration;
             o.connectorId = connectorId;
             o.createdAt = createdAt;
             o.description = description;
@@ -234,7 +235,6 @@ public final class GetInstanceResult {
             o.id = id;
             o.name = name;
             o.notes = notes;
-            o.parameters = parameters;
             o.policyId = policyId;
             o.provisioning = provisioning;
             o.roleIds = roleIds;

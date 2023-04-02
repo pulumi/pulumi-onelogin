@@ -15,11 +15,26 @@ namespace Pulumi.Onelogin.Inputs
         [Input("apps")]
         public Input<string>? Apps { get; set; }
 
-        [Input("rules")]
-        public Input<string>? Rules { get; set; }
+        [Input("appsRules")]
+        public Input<string>? AppsRules { get; set; }
+
+        [Input("authServers")]
+        public Input<string>? AuthServers { get; set; }
+
+        [Input("privileges")]
+        public Input<string>? Privileges { get; set; }
+
+        [Input("riskRules")]
+        public Input<string>? RiskRules { get; set; }
+
+        [Input("roles")]
+        public Input<string>? Roles { get; set; }
 
         [Input("users")]
         public Input<string>? Users { get; set; }
+
+        [Input("usersV1")]
+        public Input<string>? UsersV1 { get; set; }
 
         public ProviderEndpointArgs()
         {

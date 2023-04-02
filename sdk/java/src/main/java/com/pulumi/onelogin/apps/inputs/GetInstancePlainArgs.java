@@ -4,8 +4,8 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.apps.inputs.GetInstanceConfiguration;
 import com.pulumi.onelogin.apps.inputs.GetInstanceEnforcementPoint;
-import com.pulumi.onelogin.apps.inputs.GetInstanceParameters;
 import com.pulumi.onelogin.apps.inputs.GetInstanceProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -32,6 +32,13 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public Optional<Integer> authMethod() {
         return Optional.ofNullable(this.authMethod);
+    }
+
+    @Import(name="configuration")
+    private @Nullable GetInstanceConfiguration configuration;
+
+    public Optional<GetInstanceConfiguration> configuration() {
+        return Optional.ofNullable(this.configuration);
     }
 
     @Import(name="connectorId")
@@ -90,13 +97,6 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.notes);
     }
 
-    @Import(name="parameters")
-    private @Nullable GetInstanceParameters parameters;
-
-    public Optional<GetInstanceParameters> parameters() {
-        return Optional.ofNullable(this.parameters);
-    }
-
     @Import(name="policyId")
     private @Nullable Integer policyId;
 
@@ -144,6 +144,7 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetInstancePlainArgs(GetInstancePlainArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
@@ -152,7 +153,6 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
         this.id = $.id;
         this.name = $.name;
         this.notes = $.notes;
-        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -186,6 +186,11 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder authMethod(@Nullable Integer authMethod) {
             $.authMethod = authMethod;
+            return this;
+        }
+
+        public Builder configuration(@Nullable GetInstanceConfiguration configuration) {
+            $.configuration = configuration;
             return this;
         }
 
@@ -226,11 +231,6 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder notes(@Nullable String notes) {
             $.notes = notes;
-            return this;
-        }
-
-        public Builder parameters(@Nullable GetInstanceParameters parameters) {
-            $.parameters = parameters;
             return this;
         }
 

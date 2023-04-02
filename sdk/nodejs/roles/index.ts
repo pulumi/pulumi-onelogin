@@ -14,6 +14,11 @@ export const getApps: typeof import("./getApps").getApps = null as any;
 export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
 utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
 
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+
 export { GetRolesArgs, GetRolesResult, GetRolesOutputArgs } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
 export const getRolesOutput: typeof import("./getRoles").getRolesOutput = null as any;

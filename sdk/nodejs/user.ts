@@ -120,7 +120,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The user's Active Directory username.
      */
-    public readonly samaccountName!: pulumi.Output<string | undefined>;
+    public readonly samaccountname!: pulumi.Output<string | undefined>;
     public readonly state!: pulumi.Output<number | undefined>;
     public readonly status!: pulumi.Output<number | undefined>;
     /**
@@ -181,7 +181,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["preferredLocaleCode"] = state ? state.preferredLocaleCode : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
             resourceInputs["salt"] = state ? state.salt : undefined;
-            resourceInputs["samaccountName"] = state ? state.samaccountName : undefined;
+            resourceInputs["samaccountname"] = state ? state.samaccountname : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -218,7 +218,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["preferredLocaleCode"] = args ? args.preferredLocaleCode : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
             resourceInputs["salt"] = args ? args.salt : undefined;
-            resourceInputs["samaccountName"] = args ? args.samaccountName : undefined;
+            resourceInputs["samaccountname"] = args ? args.samaccountname : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -324,7 +324,7 @@ export interface UserState {
     /**
      * The user's Active Directory username.
      */
-    samaccountName?: pulumi.Input<string>;
+    samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
     /**
@@ -438,7 +438,7 @@ export interface UserArgs {
     /**
      * The user's Active Directory username.
      */
-    samaccountName?: pulumi.Input<string>;
+    samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
     /**

@@ -10,8 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.onelogin.AppArgs;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.AppState;
+import com.pulumi.onelogin.outputs.AppConfiguration;
 import com.pulumi.onelogin.outputs.AppEnforcementPoint;
-import com.pulumi.onelogin.outputs.AppParameters;
 import com.pulumi.onelogin.outputs.AppProvisioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -53,32 +53,46 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authMethod);
     }
     /**
+     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * 
+     */
+    @Export(name="configuration", type=AppConfiguration.class, parameters={})
+    private Output</* @Nullable */ AppConfiguration> configuration;
+
+    /**
+     * @return Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * 
+     */
+    public Output<Optional<AppConfiguration>> configuration() {
+        return Codegen.optional(this.configuration);
+    }
+    /**
      * ID of the connector to base the app from.
      * 
      */
     @Export(name="connectorId", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> connectorId;
+    private Output<Integer> connectorId;
 
     /**
      * @return ID of the connector to base the app from.
      * 
      */
-    public Output<Optional<Integer>> connectorId() {
-        return Codegen.optional(this.connectorId);
+    public Output<Integer> connectorId() {
+        return this.connectorId;
     }
     /**
      * the date the app was created
      * 
      */
     @Export(name="createdAt", type=String.class, parameters={})
-    private Output</* @Nullable */ String> createdAt;
+    private Output<String> createdAt;
 
     /**
      * @return the date the app was created
      * 
      */
-    public Output<Optional<String>> createdAt() {
-        return Codegen.optional(this.createdAt);
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
      * Freeform description of the app.
@@ -153,24 +167,6 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notes);
     }
     /**
-     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     * 
-     */
-    @Export(name="parameters", type=AppParameters.class, parameters={})
-    private Output</* @Nullable */ AppParameters> parameters;
-
-    /**
-     * @return The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     * 
-     */
-    public Output<Optional<AppParameters>> parameters() {
-        return Codegen.optional(this.parameters);
-    }
-    /**
      * The security policy assigned to the app.
      * 
      */
@@ -233,14 +229,14 @@ public class App extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="updatedAt", type=String.class, parameters={})
-    private Output</* @Nullable */ String> updatedAt;
+    private Output<String> updatedAt;
 
     /**
      * @return the date the app was last updated
      * 
      */
-    public Output<Optional<String>> updatedAt() {
-        return Codegen.optional(this.updatedAt);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
     /**
      * Indicates if the app is visible in the OneLogin portal.
@@ -269,7 +265,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public App(String name, @Nullable AppArgs args) {
+    public App(String name, AppArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,7 +274,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public App(String name, @Nullable AppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public App(String name, AppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("onelogin:index/app:App", name, args == null ? AppArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

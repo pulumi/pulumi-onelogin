@@ -5,9 +5,9 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.onelogin.inputs.GetAppsConfigurationArgs;
 import com.pulumi.onelogin.inputs.GetAppsEnforcementPointArgs;
 import com.pulumi.onelogin.inputs.GetAppsFilterArgs;
-import com.pulumi.onelogin.inputs.GetAppsParametersArgs;
 import com.pulumi.onelogin.inputs.GetAppsProvisioningArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -34,6 +34,13 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<Integer>> authMethod() {
         return Optional.ofNullable(this.authMethod);
+    }
+
+    @Import(name="configuration")
+    private @Nullable Output<GetAppsConfigurationArgs> configuration;
+
+    public Optional<Output<GetAppsConfigurationArgs>> configuration() {
+        return Optional.ofNullable(this.configuration);
     }
 
     @Import(name="connectorId")
@@ -92,13 +99,6 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.notes);
     }
 
-    @Import(name="parameters")
-    private @Nullable Output<GetAppsParametersArgs> parameters;
-
-    public Optional<Output<GetAppsParametersArgs>> parameters() {
-        return Optional.ofNullable(this.parameters);
-    }
-
     @Import(name="policyId")
     private @Nullable Output<Integer> policyId;
 
@@ -146,6 +146,7 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
     private GetAppsArgs(GetAppsArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
@@ -154,7 +155,6 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
         this.iconUrl = $.iconUrl;
         this.name = $.name;
         this.notes = $.notes;
-        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
@@ -197,6 +197,15 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder authMethod(Integer authMethod) {
             return authMethod(Output.of(authMethod));
+        }
+
+        public Builder configuration(@Nullable Output<GetAppsConfigurationArgs> configuration) {
+            $.configuration = configuration;
+            return this;
+        }
+
+        public Builder configuration(GetAppsConfigurationArgs configuration) {
+            return configuration(Output.of(configuration));
         }
 
         public Builder connectorId(@Nullable Output<Integer> connectorId) {
@@ -273,15 +282,6 @@ public final class GetAppsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder notes(String notes) {
             return notes(Output.of(notes));
-        }
-
-        public Builder parameters(@Nullable Output<GetAppsParametersArgs> parameters) {
-            $.parameters = parameters;
-            return this;
-        }
-
-        public Builder parameters(GetAppsParametersArgs parameters) {
-            return parameters(Output.of(parameters));
         }
 
         public Builder policyId(@Nullable Output<Integer> policyId) {

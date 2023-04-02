@@ -19,8 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/dikhan/terraform-provider-openapi/v3/openapi"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	onelogin "github.com/onelogin/terraform-provider-onelogin/shim"
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
@@ -73,39 +72,25 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
-// Create the provider, since the upstream provider uses an helper instead of manually
-// exporting the provider.
-func provider() *schema.Provider {
-	// The content of this file is copied from the beginning of the main.go file in
-	// "onelogin/terraform-provider-onelogin/toosl/main.go".
-	var providerName = "onelogin"
-	var providerOpenAPIURL = "https://raw.githubusercontent.com/onelogin/terraform-provider-onelogin/openapi/swag-api.yml"
-
-	p := openapi.ProviderOpenAPI{ProviderName: providerName}
-	serviceProviderConfig := &openapi.ServiceConfigV1{
-		SwaggerURL: providerOpenAPIURL,
-	}
-
-	provider, err := p.CreateSchemaProviderFromServiceConfiguration(serviceProviderConfig)
-	contract.AssertNoError(err)
-	return provider
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(provider())
+
+	provider, err := onelogin.Provider()
+	contract.AssertNoError(err)
+	p := shimv2.NewProvider(provider)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "onelogin",
-		Description: "A Pulumi package for creating and managing OneLogin cloud resources.",
-		Keywords:    []string{"pulumi", "onelogin"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-onelogin",
-		GitHubOrg:   "onelogin",
+		P:                p,
+		Name:             "onelogin",
+		Description:      "A Pulumi package for creating and managing OneLogin cloud resources.",
+		Keywords:         []string{"pulumi", "onelogin"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-onelogin",
+		GitHubOrg:        "onelogin",
+		UpstreamRepoPath: "../upstream",
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
@@ -131,8 +116,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "onelogin_user.md",
 				},
 			},
-			"onelogin_rules": {
-				Tok: makeResource(mainMod, "Rule"),
+			"onelogin_roles": {
+				Tok: makeResource(mainMod, "Role"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
@@ -179,15 +164,14 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	defaults := x.TokensKnownModules("onelogin_", mainMod, []string{
-		"api_",
-		"apps_",
-		"roles_",
-		"rules_",
-		"users_",
-	}, x.MakeStandardToken(mainPkg))
-	defaults.Resource = nil
-	err := x.ComputeDefaults(&prov, defaults)
+	err = x.ComputeDefaults(&prov, x.TokensKnownModules("onelogin_",
+		mainMod, []string{
+			"api_",
+			"apps_",
+			"roles_",
+			"rules_",
+			"users_",
+		}, x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")

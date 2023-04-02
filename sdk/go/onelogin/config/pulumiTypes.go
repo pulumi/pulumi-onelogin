@@ -11,9 +11,14 @@ import (
 )
 
 type Endpoints struct {
-	Apps  *string `pulumi:"apps"`
-	Rules *string `pulumi:"rules"`
-	Users *string `pulumi:"users"`
+	Apps        *string `pulumi:"apps"`
+	AppsRules   *string `pulumi:"appsRules"`
+	AuthServers *string `pulumi:"authServers"`
+	Privileges  *string `pulumi:"privileges"`
+	RiskRules   *string `pulumi:"riskRules"`
+	Roles       *string `pulumi:"roles"`
+	Users       *string `pulumi:"users"`
+	UsersV1     *string `pulumi:"usersV1"`
 }
 
 // EndpointsInput is an input type that accepts EndpointsArgs and EndpointsOutput values.
@@ -28,9 +33,14 @@ type EndpointsInput interface {
 }
 
 type EndpointsArgs struct {
-	Apps  pulumi.StringPtrInput `pulumi:"apps"`
-	Rules pulumi.StringPtrInput `pulumi:"rules"`
-	Users pulumi.StringPtrInput `pulumi:"users"`
+	Apps        pulumi.StringPtrInput `pulumi:"apps"`
+	AppsRules   pulumi.StringPtrInput `pulumi:"appsRules"`
+	AuthServers pulumi.StringPtrInput `pulumi:"authServers"`
+	Privileges  pulumi.StringPtrInput `pulumi:"privileges"`
+	RiskRules   pulumi.StringPtrInput `pulumi:"riskRules"`
+	Roles       pulumi.StringPtrInput `pulumi:"roles"`
+	Users       pulumi.StringPtrInput `pulumi:"users"`
+	UsersV1     pulumi.StringPtrInput `pulumi:"usersV1"`
 }
 
 func (EndpointsArgs) ElementType() reflect.Type {
@@ -88,12 +98,32 @@ func (o EndpointsOutput) Apps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Apps }).(pulumi.StringPtrOutput)
 }
 
-func (o EndpointsOutput) Rules() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Endpoints) *string { return v.Rules }).(pulumi.StringPtrOutput)
+func (o EndpointsOutput) AppsRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.AppsRules }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) AuthServers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.AuthServers }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Privileges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Privileges }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) RiskRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.RiskRules }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Roles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Roles }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Users() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Users }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) UsersV1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.UsersV1 }).(pulumi.StringPtrOutput)
 }
 
 type EndpointsArrayOutput struct{ *pulumi.OutputState }

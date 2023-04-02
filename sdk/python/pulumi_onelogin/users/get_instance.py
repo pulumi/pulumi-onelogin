@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, activated_at=None, comment=None, company=None, created_at=None, department=None, directory_id=None, distinguished_name=None, email=None, external_id=None, firstname=None, group_id=None, id=None, invalid_login_attempts=None, invitation_sent_at=None, last_login=None, lastname=None, locked_until=None, manager_ad_id=None, manager_user_id=None, member_of=None, password=None, password_algorithm=None, password_changed_at=None, password_confirmation=None, phone=None, preferred_locale_code=None, role_ids=None, salt=None, samaccount_name=None, state=None, status=None, title=None, trusted_idp_id=None, updated_at=None, username=None, userprincipalname=None):
+    def __init__(__self__, activated_at=None, comment=None, company=None, created_at=None, department=None, directory_id=None, distinguished_name=None, email=None, external_id=None, firstname=None, group_id=None, id=None, invalid_login_attempts=None, invitation_sent_at=None, last_login=None, lastname=None, locked_until=None, manager_ad_id=None, manager_user_id=None, member_of=None, password=None, password_algorithm=None, password_changed_at=None, password_confirmation=None, phone=None, preferred_locale_code=None, role_ids=None, salt=None, samaccountname=None, state=None, status=None, title=None, trusted_idp_id=None, updated_at=None, username=None, userprincipalname=None):
         if activated_at and not isinstance(activated_at, str):
             raise TypeError("Expected argument 'activated_at' to be a str")
         pulumi.set(__self__, "activated_at", activated_at)
@@ -106,9 +106,9 @@ class GetInstanceResult:
         if salt and not isinstance(salt, str):
             raise TypeError("Expected argument 'salt' to be a str")
         pulumi.set(__self__, "salt", salt)
-        if samaccount_name and not isinstance(samaccount_name, str):
-            raise TypeError("Expected argument 'samaccount_name' to be a str")
-        pulumi.set(__self__, "samaccount_name", samaccount_name)
+        if samaccountname and not isinstance(samaccountname, str):
+            raise TypeError("Expected argument 'samaccountname' to be a str")
+        pulumi.set(__self__, "samaccountname", samaccountname)
         if state and not isinstance(state, int):
             raise TypeError("Expected argument 'state' to be a int")
         pulumi.set(__self__, "state", state)
@@ -272,9 +272,9 @@ class GetInstanceResult:
         return pulumi.get(self, "salt")
 
     @property
-    @pulumi.getter(name="samaccountName")
-    def samaccount_name(self) -> str:
-        return pulumi.get(self, "samaccount_name")
+    @pulumi.getter
+    def samaccountname(self) -> str:
+        return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter
@@ -346,7 +346,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             preferred_locale_code=self.preferred_locale_code,
             role_ids=self.role_ids,
             salt=self.salt,
-            samaccount_name=self.samaccount_name,
+            samaccountname=self.samaccountname,
             state=self.state,
             status=self.status,
             title=self.title,
@@ -384,7 +384,7 @@ def get_instance(activated_at: Optional[str] = None,
                  preferred_locale_code: Optional[str] = None,
                  role_ids: Optional[Sequence[int]] = None,
                  salt: Optional[str] = None,
-                 samaccount_name: Optional[str] = None,
+                 samaccountname: Optional[str] = None,
                  state: Optional[int] = None,
                  status: Optional[int] = None,
                  title: Optional[str] = None,
@@ -425,7 +425,7 @@ def get_instance(activated_at: Optional[str] = None,
     __args__['preferredLocaleCode'] = preferred_locale_code
     __args__['roleIds'] = role_ids
     __args__['salt'] = salt
-    __args__['samaccountName'] = samaccount_name
+    __args__['samaccountname'] = samaccountname
     __args__['state'] = state
     __args__['status'] = status
     __args__['title'] = title
@@ -465,7 +465,7 @@ def get_instance(activated_at: Optional[str] = None,
         preferred_locale_code=__ret__.preferred_locale_code,
         role_ids=__ret__.role_ids,
         salt=__ret__.salt,
-        samaccount_name=__ret__.samaccount_name,
+        samaccountname=__ret__.samaccountname,
         state=__ret__.state,
         status=__ret__.status,
         title=__ret__.title,
@@ -504,7 +504,7 @@ def get_instance_output(activated_at: Optional[pulumi.Input[Optional[str]]] = No
                         preferred_locale_code: Optional[pulumi.Input[Optional[str]]] = None,
                         role_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                         salt: Optional[pulumi.Input[Optional[str]]] = None,
-                        samaccount_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        samaccountname: Optional[pulumi.Input[Optional[str]]] = None,
                         state: Optional[pulumi.Input[Optional[int]]] = None,
                         status: Optional[pulumi.Input[Optional[int]]] = None,
                         title: Optional[pulumi.Input[Optional[str]]] = None,

@@ -9,6 +9,14 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("onelogin");
 
+export declare const apikeyAuth: string | undefined;
+Object.defineProperty(exports, "apikeyAuth", {
+    get() {
+        return __config.get("apikeyAuth");
+    },
+    enumerable: true,
+});
+
 export declare const contentType: string | undefined;
 Object.defineProperty(exports, "contentType", {
     get() {

@@ -44,13 +44,17 @@ export class App extends pulumi.CustomResource {
      */
     public readonly authMethod!: pulumi.Output<number | undefined>;
     /**
+     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     */
+    public readonly configuration!: pulumi.Output<outputs.AppConfiguration | undefined>;
+    /**
      * ID of the connector to base the app from.
      */
-    public readonly connectorId!: pulumi.Output<number | undefined>;
+    public readonly connectorId!: pulumi.Output<number>;
     /**
      * the date the app was created
      */
-    public readonly createdAt!: pulumi.Output<string | undefined>;
+    public readonly createdAt!: pulumi.Output<string>;
     /**
      * Freeform description of the app.
      */
@@ -73,12 +77,6 @@ export class App extends pulumi.CustomResource {
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     */
-    public readonly parameters!: pulumi.Output<outputs.AppParameters | undefined>;
-    /**
      * The security policy assigned to the app.
      */
     public readonly policyId!: pulumi.Output<number | undefined>;
@@ -98,7 +96,7 @@ export class App extends pulumi.CustomResource {
     /**
      * the date the app was last updated
      */
-    public readonly updatedAt!: pulumi.Output<string | undefined>;
+    public readonly updatedAt!: pulumi.Output<string>;
     /**
      * Indicates if the app is visible in the OneLogin portal.
      */
@@ -111,7 +109,7 @@ export class App extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -119,6 +117,7 @@ export class App extends pulumi.CustomResource {
             const state = argsOrState as AppState | undefined;
             resourceInputs["allowAssumedSignin"] = state ? state.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = state ? state.authMethod : undefined;
+            resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -126,7 +125,6 @@ export class App extends pulumi.CustomResource {
             resourceInputs["iconUrl"] = state ? state.iconUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["provisioning"] = state ? state.provisioning : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
@@ -135,8 +133,12 @@ export class App extends pulumi.CustomResource {
             resourceInputs["visible"] = state ? state.visible : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
+            if ((!args || args.connectorId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectorId'");
+            }
             resourceInputs["allowAssumedSignin"] = args ? args.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = args ? args.authMethod : undefined;
+            resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -144,7 +146,6 @@ export class App extends pulumi.CustomResource {
             resourceInputs["iconUrl"] = args ? args.iconUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
             resourceInputs["provisioning"] = args ? args.provisioning : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
@@ -170,6 +171,10 @@ export interface AppState {
      * WSFED - 8: OpenId Connect
      */
     authMethod?: pulumi.Input<number>;
+    /**
+     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     */
+    configuration?: pulumi.Input<inputs.AppConfiguration>;
     /**
      * ID of the connector to base the app from.
      */
@@ -199,12 +204,6 @@ export interface AppState {
      * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
-    /**
-     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     */
-    parameters?: pulumi.Input<inputs.AppParameters>;
     /**
      * The security policy assigned to the app.
      */
@@ -246,9 +245,13 @@ export interface AppArgs {
      */
     authMethod?: pulumi.Input<number>;
     /**
+     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     */
+    configuration?: pulumi.Input<inputs.AppConfiguration>;
+    /**
      * ID of the connector to base the app from.
      */
-    connectorId?: pulumi.Input<number>;
+    connectorId: pulumi.Input<number>;
     /**
      * the date the app was created
      */
@@ -274,12 +277,6 @@ export interface AppArgs {
      * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
-    /**
-     * The parameters section contains parameterized attributes that have defined at the connector level as well as custom
-     * attributes that have been defined specifically for this app. Regardless of how they are defined, all parameters have the
-     * following attributes. Each parameter is an object with the key for the object being set as the parameters short name.
-     */
-    parameters?: pulumi.Input<inputs.AppParameters>;
     /**
      * The security policy assigned to the app.
      */
