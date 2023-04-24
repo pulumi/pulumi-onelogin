@@ -79,7 +79,7 @@ func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 
 	provider, err := onelogin.Provider()
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "Failed to create provider")
 	p := shimv2.NewProvider(provider)
 
 	// Create a Pulumi provider mapping
@@ -93,6 +93,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-onelogin",
 		GitHubOrg:        "onelogin",
 		UpstreamRepoPath: "../upstream",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
@@ -163,7 +164,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "5.0.0",
 			},
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
 
 	err = x.ComputeDefaults(&prov, x.TokensKnownModules("onelogin_",
@@ -174,7 +175,7 @@ func Provider() tfbridge.ProviderInfo {
 			"rules_",
 			"users_",
 		}, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to compute default mappings")
 	err = x.AutoAliasing(&prov, prov.GetMetadata())
 	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
