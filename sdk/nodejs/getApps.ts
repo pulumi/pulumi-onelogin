@@ -13,6 +13,8 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
     return pulumi.runtime.invoke("onelogin:index/getApps:getApps", {
         "allowAssumedSignin": args.allowAssumedSignin,
         "authMethod": args.authMethod,
+        "authMethodDescription": args.authMethodDescription,
+        "brandId": args.brandId,
         "configuration": args.configuration,
         "connectorId": args.connectorId,
         "createdAt": args.createdAt,
@@ -20,11 +22,14 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
         "enforcementPoint": args.enforcementPoint,
         "filters": args.filters,
         "iconUrl": args.iconUrl,
+        "loginConfig": args.loginConfig,
         "name": args.name,
         "notes": args.notes,
+        "parameters": args.parameters,
         "policyId": args.policyId,
         "provisioning": args.provisioning,
         "roleIds": args.roleIds,
+        "sso": args.sso,
         "tabId": args.tabId,
         "updatedAt": args.updatedAt,
         "visible": args.visible,
@@ -37,6 +42,8 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
 export interface GetAppsArgs {
     allowAssumedSignin?: boolean;
     authMethod?: number;
+    authMethodDescription?: string;
+    brandId?: number;
     configuration?: inputs.GetAppsConfiguration;
     connectorId?: number;
     createdAt?: string;
@@ -44,11 +51,14 @@ export interface GetAppsArgs {
     enforcementPoint?: inputs.GetAppsEnforcementPoint;
     filters?: inputs.GetAppsFilter[];
     iconUrl?: string;
+    loginConfig?: number;
     name?: string;
     notes?: string;
+    parameters?: inputs.GetAppsParameters;
     policyId?: number;
     provisioning?: inputs.GetAppsProvisioning;
     roleIds?: number[];
+    sso?: inputs.GetAppsSso;
     tabId?: number;
     updatedAt?: string;
     visible?: boolean;
@@ -60,6 +70,8 @@ export interface GetAppsArgs {
 export interface GetAppsResult {
     readonly allowAssumedSignin: boolean;
     readonly authMethod: number;
+    readonly authMethodDescription: string;
+    readonly brandId: number;
     readonly configuration: outputs.GetAppsConfiguration;
     readonly connectorId: number;
     readonly createdAt: string;
@@ -71,11 +83,14 @@ export interface GetAppsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly loginConfig: number;
     readonly name: string;
     readonly notes: string;
+    readonly parameters: outputs.GetAppsParameters;
     readonly policyId: number;
     readonly provisioning: outputs.GetAppsProvisioning;
     readonly roleIds: number[];
+    readonly sso: outputs.GetAppsSso;
     readonly tabId: number;
     readonly updatedAt: string;
     readonly visible: boolean;
@@ -90,6 +105,8 @@ export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOpti
 export interface GetAppsOutputArgs {
     allowAssumedSignin?: pulumi.Input<boolean>;
     authMethod?: pulumi.Input<number>;
+    authMethodDescription?: pulumi.Input<string>;
+    brandId?: pulumi.Input<number>;
     configuration?: pulumi.Input<inputs.GetAppsConfigurationArgs>;
     connectorId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
@@ -97,11 +114,14 @@ export interface GetAppsOutputArgs {
     enforcementPoint?: pulumi.Input<inputs.GetAppsEnforcementPointArgs>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetAppsFilterArgs>[]>;
     iconUrl?: pulumi.Input<string>;
+    loginConfig?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.GetAppsParametersArgs>;
     policyId?: pulumi.Input<number>;
     provisioning?: pulumi.Input<inputs.GetAppsProvisioningArgs>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    sso?: pulumi.Input<inputs.GetAppsSsoArgs>;
     tabId?: pulumi.Input<number>;
     updatedAt?: pulumi.Input<string>;
     visible?: pulumi.Input<boolean>;

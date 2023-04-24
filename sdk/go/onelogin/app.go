@@ -18,9 +18,11 @@ type App struct {
 	AllowAssumedSignin pulumi.BoolPtrOutput `pulumi:"allowAssumedSignin"`
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
-	AuthMethod pulumi.IntPtrOutput `pulumi:"authMethod"`
-	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
-	Configuration AppConfigurationPtrOutput `pulumi:"configuration"`
+	AuthMethod            pulumi.IntPtrOutput `pulumi:"authMethod"`
+	AuthMethodDescription pulumi.StringOutput `pulumi:"authMethodDescription"`
+	BrandId               pulumi.IntPtrOutput `pulumi:"brandId"`
+	// Only apply configurations that are applicable to the type of app
+	Configuration AppConfigurationOutput `pulumi:"configuration"`
 	// ID of the connector to base the app from.
 	ConnectorId pulumi.IntOutput `pulumi:"connectorId"`
 	// the date the app was created
@@ -31,11 +33,13 @@ type App struct {
 	// with the app payload.
 	EnforcementPoint AppEnforcementPointPtrOutput `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
-	IconUrl pulumi.StringPtrOutput `pulumi:"iconUrl"`
+	IconUrl     pulumi.StringPtrOutput `pulumi:"iconUrl"`
+	LoginConfig pulumi.IntOutput       `pulumi:"loginConfig"`
 	// The name of the app.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Freeform notes about the app.
-	Notes pulumi.StringPtrOutput `pulumi:"notes"`
+	Notes      pulumi.StringPtrOutput `pulumi:"notes"`
+	Parameters AppParametersOutput    `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrOutput `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -43,6 +47,9 @@ type App struct {
 	// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
 	// provided.
 	RoleIds pulumi.IntArrayOutput `pulumi:"roleIds"`
+	// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+	// are read only.
+	Sso AppSsoOutput `pulumi:"sso"`
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId pulumi.IntPtrOutput `pulumi:"tabId"`
 	// the date the app was last updated
@@ -87,8 +94,10 @@ type appState struct {
 	AllowAssumedSignin *bool `pulumi:"allowAssumedSignin"`
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
-	AuthMethod *int `pulumi:"authMethod"`
-	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	AuthMethod            *int    `pulumi:"authMethod"`
+	AuthMethodDescription *string `pulumi:"authMethodDescription"`
+	BrandId               *int    `pulumi:"brandId"`
+	// Only apply configurations that are applicable to the type of app
 	Configuration *AppConfiguration `pulumi:"configuration"`
 	// ID of the connector to base the app from.
 	ConnectorId *int `pulumi:"connectorId"`
@@ -100,11 +109,13 @@ type appState struct {
 	// with the app payload.
 	EnforcementPoint *AppEnforcementPoint `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
-	IconUrl *string `pulumi:"iconUrl"`
+	IconUrl     *string `pulumi:"iconUrl"`
+	LoginConfig *int    `pulumi:"loginConfig"`
 	// The name of the app.
 	Name *string `pulumi:"name"`
 	// Freeform notes about the app.
-	Notes *string `pulumi:"notes"`
+	Notes      *string        `pulumi:"notes"`
+	Parameters *AppParameters `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId *int `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -112,6 +123,9 @@ type appState struct {
 	// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
 	// provided.
 	RoleIds []int `pulumi:"roleIds"`
+	// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+	// are read only.
+	Sso *AppSso `pulumi:"sso"`
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId *int `pulumi:"tabId"`
 	// the date the app was last updated
@@ -125,8 +139,10 @@ type AppState struct {
 	AllowAssumedSignin pulumi.BoolPtrInput
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
-	AuthMethod pulumi.IntPtrInput
-	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	AuthMethod            pulumi.IntPtrInput
+	AuthMethodDescription pulumi.StringPtrInput
+	BrandId               pulumi.IntPtrInput
+	// Only apply configurations that are applicable to the type of app
 	Configuration AppConfigurationPtrInput
 	// ID of the connector to base the app from.
 	ConnectorId pulumi.IntPtrInput
@@ -138,11 +154,13 @@ type AppState struct {
 	// with the app payload.
 	EnforcementPoint AppEnforcementPointPtrInput
 	// A link to the apps icon url
-	IconUrl pulumi.StringPtrInput
+	IconUrl     pulumi.StringPtrInput
+	LoginConfig pulumi.IntPtrInput
 	// The name of the app.
 	Name pulumi.StringPtrInput
 	// Freeform notes about the app.
-	Notes pulumi.StringPtrInput
+	Notes      pulumi.StringPtrInput
+	Parameters AppParametersPtrInput
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrInput
 	// Indicates if provisioning is enabled for this app.
@@ -150,6 +168,9 @@ type AppState struct {
 	// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
 	// provided.
 	RoleIds pulumi.IntArrayInput
+	// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+	// are read only.
+	Sso AppSsoPtrInput
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId pulumi.IntPtrInput
 	// the date the app was last updated
@@ -167,8 +188,10 @@ type appArgs struct {
 	AllowAssumedSignin *bool `pulumi:"allowAssumedSignin"`
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
-	AuthMethod *int `pulumi:"authMethod"`
-	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	AuthMethod            *int    `pulumi:"authMethod"`
+	AuthMethodDescription *string `pulumi:"authMethodDescription"`
+	BrandId               *int    `pulumi:"brandId"`
+	// Only apply configurations that are applicable to the type of app
 	Configuration *AppConfiguration `pulumi:"configuration"`
 	// ID of the connector to base the app from.
 	ConnectorId int `pulumi:"connectorId"`
@@ -180,11 +203,13 @@ type appArgs struct {
 	// with the app payload.
 	EnforcementPoint *AppEnforcementPoint `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
-	IconUrl *string `pulumi:"iconUrl"`
+	IconUrl     *string `pulumi:"iconUrl"`
+	LoginConfig *int    `pulumi:"loginConfig"`
 	// The name of the app.
 	Name *string `pulumi:"name"`
 	// Freeform notes about the app.
-	Notes *string `pulumi:"notes"`
+	Notes      *string        `pulumi:"notes"`
+	Parameters *AppParameters `pulumi:"parameters"`
 	// The security policy assigned to the app.
 	PolicyId *int `pulumi:"policyId"`
 	// Indicates if provisioning is enabled for this app.
@@ -192,6 +217,9 @@ type appArgs struct {
 	// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
 	// provided.
 	RoleIds []int `pulumi:"roleIds"`
+	// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+	// are read only.
+	Sso *AppSso `pulumi:"sso"`
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId *int `pulumi:"tabId"`
 	// the date the app was last updated
@@ -206,8 +234,10 @@ type AppArgs struct {
 	AllowAssumedSignin pulumi.BoolPtrInput
 	// An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
 	// WSFED - 8: OpenId Connect
-	AuthMethod pulumi.IntPtrInput
-	// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+	AuthMethod            pulumi.IntPtrInput
+	AuthMethodDescription pulumi.StringPtrInput
+	BrandId               pulumi.IntPtrInput
+	// Only apply configurations that are applicable to the type of app
 	Configuration AppConfigurationPtrInput
 	// ID of the connector to base the app from.
 	ConnectorId pulumi.IntInput
@@ -219,11 +249,13 @@ type AppArgs struct {
 	// with the app payload.
 	EnforcementPoint AppEnforcementPointPtrInput
 	// A link to the apps icon url
-	IconUrl pulumi.StringPtrInput
+	IconUrl     pulumi.StringPtrInput
+	LoginConfig pulumi.IntPtrInput
 	// The name of the app.
 	Name pulumi.StringPtrInput
 	// Freeform notes about the app.
-	Notes pulumi.StringPtrInput
+	Notes      pulumi.StringPtrInput
+	Parameters AppParametersPtrInput
 	// The security policy assigned to the app.
 	PolicyId pulumi.IntPtrInput
 	// Indicates if provisioning is enabled for this app.
@@ -231,6 +263,9 @@ type AppArgs struct {
 	// List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
 	// provided.
 	RoleIds pulumi.IntArrayInput
+	// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+	// are read only.
+	Sso AppSsoPtrInput
 	// ID of the OneLogin portal tab that the app is assigned to.
 	TabId pulumi.IntPtrInput
 	// the date the app was last updated
@@ -337,9 +372,17 @@ func (o AppOutput) AuthMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.AuthMethod }).(pulumi.IntPtrOutput)
 }
 
-// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
-func (o AppOutput) Configuration() AppConfigurationPtrOutput {
-	return o.ApplyT(func(v *App) AppConfigurationPtrOutput { return v.Configuration }).(AppConfigurationPtrOutput)
+func (o AppOutput) AuthMethodDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AuthMethodDescription }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) BrandId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.BrandId }).(pulumi.IntPtrOutput)
+}
+
+// Only apply configurations that are applicable to the type of app
+func (o AppOutput) Configuration() AppConfigurationOutput {
+	return o.ApplyT(func(v *App) AppConfigurationOutput { return v.Configuration }).(AppConfigurationOutput)
 }
 
 // ID of the connector to base the app from.
@@ -368,6 +411,10 @@ func (o AppOutput) IconUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.IconUrl }).(pulumi.StringPtrOutput)
 }
 
+func (o AppOutput) LoginConfig() pulumi.IntOutput {
+	return o.ApplyT(func(v *App) pulumi.IntOutput { return v.LoginConfig }).(pulumi.IntOutput)
+}
+
 // The name of the app.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -376,6 +423,10 @@ func (o AppOutput) Name() pulumi.StringOutput {
 // Freeform notes about the app.
 func (o AppOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+func (o AppOutput) Parameters() AppParametersOutput {
+	return o.ApplyT(func(v *App) AppParametersOutput { return v.Parameters }).(AppParametersOutput)
 }
 
 // The security policy assigned to the app.
@@ -392,6 +443,12 @@ func (o AppOutput) Provisioning() AppProvisioningPtrOutput {
 // provided.
 func (o AppOutput) RoleIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.IntArrayOutput { return v.RoleIds }).(pulumi.IntArrayOutput)
+}
+
+// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+// are read only.
+func (o AppOutput) Sso() AppSsoOutput {
+	return o.ApplyT(func(v *App) AppSsoOutput { return v.Sso }).(AppSsoOutput)
 }
 
 // ID of the OneLogin portal tab that the app is assigned to.

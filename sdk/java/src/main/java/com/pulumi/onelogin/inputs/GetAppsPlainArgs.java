@@ -7,7 +7,9 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.onelogin.inputs.GetAppsConfiguration;
 import com.pulumi.onelogin.inputs.GetAppsEnforcementPoint;
 import com.pulumi.onelogin.inputs.GetAppsFilter;
+import com.pulumi.onelogin.inputs.GetAppsParameters;
 import com.pulumi.onelogin.inputs.GetAppsProvisioning;
+import com.pulumi.onelogin.inputs.GetAppsSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -33,6 +35,20 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Integer> authMethod() {
         return Optional.ofNullable(this.authMethod);
+    }
+
+    @Import(name="authMethodDescription")
+    private @Nullable String authMethodDescription;
+
+    public Optional<String> authMethodDescription() {
+        return Optional.ofNullable(this.authMethodDescription);
+    }
+
+    @Import(name="brandId")
+    private @Nullable Integer brandId;
+
+    public Optional<Integer> brandId() {
+        return Optional.ofNullable(this.brandId);
     }
 
     @Import(name="configuration")
@@ -84,6 +100,13 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.iconUrl);
     }
 
+    @Import(name="loginConfig")
+    private @Nullable Integer loginConfig;
+
+    public Optional<Integer> loginConfig() {
+        return Optional.ofNullable(this.loginConfig);
+    }
+
     @Import(name="name")
     private @Nullable String name;
 
@@ -96,6 +119,13 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<String> notes() {
         return Optional.ofNullable(this.notes);
+    }
+
+    @Import(name="parameters")
+    private @Nullable GetAppsParameters parameters;
+
+    public Optional<GetAppsParameters> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     @Import(name="policyId")
@@ -117,6 +147,13 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<List<Integer>> roleIds() {
         return Optional.ofNullable(this.roleIds);
+    }
+
+    @Import(name="sso")
+    private @Nullable GetAppsSso sso;
+
+    public Optional<GetAppsSso> sso() {
+        return Optional.ofNullable(this.sso);
     }
 
     @Import(name="tabId")
@@ -145,6 +182,8 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetAppsPlainArgs(GetAppsPlainArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.authMethodDescription = $.authMethodDescription;
+        this.brandId = $.brandId;
         this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
@@ -152,11 +191,14 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.enforcementPoint = $.enforcementPoint;
         this.filters = $.filters;
         this.iconUrl = $.iconUrl;
+        this.loginConfig = $.loginConfig;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
+        this.sso = $.sso;
         this.tabId = $.tabId;
         this.updatedAt = $.updatedAt;
         this.visible = $.visible;
@@ -187,6 +229,16 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder authMethod(@Nullable Integer authMethod) {
             $.authMethod = authMethod;
+            return this;
+        }
+
+        public Builder authMethodDescription(@Nullable String authMethodDescription) {
+            $.authMethodDescription = authMethodDescription;
+            return this;
+        }
+
+        public Builder brandId(@Nullable Integer brandId) {
+            $.brandId = brandId;
             return this;
         }
 
@@ -229,6 +281,11 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder loginConfig(@Nullable Integer loginConfig) {
+            $.loginConfig = loginConfig;
+            return this;
+        }
+
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
@@ -236,6 +293,11 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder notes(@Nullable String notes) {
             $.notes = notes;
+            return this;
+        }
+
+        public Builder parameters(@Nullable GetAppsParameters parameters) {
+            $.parameters = parameters;
             return this;
         }
 
@@ -256,6 +318,11 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder roleIds(Integer... roleIds) {
             return roleIds(List.of(roleIds));
+        }
+
+        public Builder sso(@Nullable GetAppsSso sso) {
+            $.sso = sso;
+            return this;
         }
 
         public Builder tabId(@Nullable Integer tabId) {

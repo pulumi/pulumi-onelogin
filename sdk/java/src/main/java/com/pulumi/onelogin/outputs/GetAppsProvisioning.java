@@ -5,15 +5,20 @@ package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetAppsProvisioning {
     private Boolean enabled;
+    private String status;
 
     private GetAppsProvisioning() {}
     public Boolean enabled() {
         return this.enabled;
+    }
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -26,10 +31,12 @@ public final class GetAppsProvisioning {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private String status;
         public Builder() {}
         public Builder(GetAppsProvisioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -37,9 +44,15 @@ public final class GetAppsProvisioning {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
+            return this;
+        }
         public GetAppsProvisioning build() {
             final var o = new GetAppsProvisioning();
             o.enabled = enabled;
+            o.status = status;
             return o;
         }
     }

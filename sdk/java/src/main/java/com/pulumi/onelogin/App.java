@@ -12,7 +12,9 @@ import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.AppState;
 import com.pulumi.onelogin.outputs.AppConfiguration;
 import com.pulumi.onelogin.outputs.AppEnforcementPoint;
+import com.pulumi.onelogin.outputs.AppParameters;
 import com.pulumi.onelogin.outputs.AppProvisioning;
+import com.pulumi.onelogin.outputs.AppSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -52,19 +54,31 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> authMethod() {
         return Codegen.optional(this.authMethod);
     }
+    @Export(name="authMethodDescription", type=String.class, parameters={})
+    private Output<String> authMethodDescription;
+
+    public Output<String> authMethodDescription() {
+        return this.authMethodDescription;
+    }
+    @Export(name="brandId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> brandId;
+
+    public Output<Optional<Integer>> brandId() {
+        return Codegen.optional(this.brandId);
+    }
     /**
-     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * Only apply configurations that are applicable to the type of app
      * 
      */
     @Export(name="configuration", type=AppConfiguration.class, parameters={})
-    private Output</* @Nullable */ AppConfiguration> configuration;
+    private Output<AppConfiguration> configuration;
 
     /**
-     * @return Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * @return Only apply configurations that are applicable to the type of app
      * 
      */
-    public Output<Optional<AppConfiguration>> configuration() {
-        return Codegen.optional(this.configuration);
+    public Output<AppConfiguration> configuration() {
+        return this.configuration;
     }
     /**
      * ID of the connector to base the app from.
@@ -138,6 +152,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> iconUrl() {
         return Codegen.optional(this.iconUrl);
     }
+    @Export(name="loginConfig", type=Integer.class, parameters={})
+    private Output<Integer> loginConfig;
+
+    public Output<Integer> loginConfig() {
+        return this.loginConfig;
+    }
     /**
      * The name of the app.
      * 
@@ -165,6 +185,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
+    }
+    @Export(name="parameters", type=AppParameters.class, parameters={})
+    private Output<AppParameters> parameters;
+
+    public Output<AppParameters> parameters() {
+        return this.parameters;
     }
     /**
      * The security policy assigned to the app.
@@ -209,6 +235,22 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<Integer>>> roleIds() {
         return Codegen.optional(this.roleIds);
+    }
+    /**
+     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     * 
+     */
+    @Export(name="sso", type=AppSso.class, parameters={})
+    private Output<AppSso> sso;
+
+    /**
+     * @return The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     * 
+     */
+    public Output<AppSso> sso() {
+        return this.sso;
     }
     /**
      * ID of the OneLogin portal tab that the app is assigned to.

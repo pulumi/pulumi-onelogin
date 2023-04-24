@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.onelogin.inputs.AppConfigurationArgs;
 import com.pulumi.onelogin.inputs.AppEnforcementPointArgs;
+import com.pulumi.onelogin.inputs.AppParametersArgs;
 import com.pulumi.onelogin.inputs.AppProvisioningArgs;
+import com.pulumi.onelogin.inputs.AppSsoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -53,15 +55,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.authMethod);
     }
 
+    @Import(name="authMethodDescription")
+    private @Nullable Output<String> authMethodDescription;
+
+    public Optional<Output<String>> authMethodDescription() {
+        return Optional.ofNullable(this.authMethodDescription);
+    }
+
+    @Import(name="brandId")
+    private @Nullable Output<Integer> brandId;
+
+    public Optional<Output<Integer>> brandId() {
+        return Optional.ofNullable(this.brandId);
+    }
+
     /**
-     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * Only apply configurations that are applicable to the type of app
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<AppConfigurationArgs> configuration;
 
     /**
-     * @return Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * @return Only apply configurations that are applicable to the type of app
      * 
      */
     public Optional<Output<AppConfigurationArgs>> configuration() {
@@ -145,6 +161,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.iconUrl);
     }
 
+    @Import(name="loginConfig")
+    private @Nullable Output<Integer> loginConfig;
+
+    public Optional<Output<Integer>> loginConfig() {
+        return Optional.ofNullable(this.loginConfig);
+    }
+
     /**
      * The name of the app.
      * 
@@ -173,6 +196,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
+    }
+
+    @Import(name="parameters")
+    private @Nullable Output<AppParametersArgs> parameters;
+
+    public Optional<Output<AppParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     /**
@@ -220,6 +250,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<Integer>>> roleIds() {
         return Optional.ofNullable(this.roleIds);
+    }
+
+    /**
+     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     * 
+     */
+    @Import(name="sso")
+    private @Nullable Output<AppSsoArgs> sso;
+
+    /**
+     * @return The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     * 
+     */
+    public Optional<Output<AppSsoArgs>> sso() {
+        return Optional.ofNullable(this.sso);
     }
 
     /**
@@ -272,17 +319,22 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     private AppArgs(AppArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.authMethodDescription = $.authMethodDescription;
+        this.brandId = $.brandId;
         this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
         this.description = $.description;
         this.enforcementPoint = $.enforcementPoint;
         this.iconUrl = $.iconUrl;
+        this.loginConfig = $.loginConfig;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
+        this.sso = $.sso;
         this.tabId = $.tabId;
         this.updatedAt = $.updatedAt;
         this.visible = $.visible;
@@ -350,8 +402,26 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return authMethod(Output.of(authMethod));
         }
 
+        public Builder authMethodDescription(@Nullable Output<String> authMethodDescription) {
+            $.authMethodDescription = authMethodDescription;
+            return this;
+        }
+
+        public Builder authMethodDescription(String authMethodDescription) {
+            return authMethodDescription(Output.of(authMethodDescription));
+        }
+
+        public Builder brandId(@Nullable Output<Integer> brandId) {
+            $.brandId = brandId;
+            return this;
+        }
+
+        public Builder brandId(Integer brandId) {
+            return brandId(Output.of(brandId));
+        }
+
         /**
-         * @param configuration Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+         * @param configuration Only apply configurations that are applicable to the type of app
          * 
          * @return builder
          * 
@@ -362,7 +432,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+         * @param configuration Only apply configurations that are applicable to the type of app
          * 
          * @return builder
          * 
@@ -478,6 +548,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return iconUrl(Output.of(iconUrl));
         }
 
+        public Builder loginConfig(@Nullable Output<Integer> loginConfig) {
+            $.loginConfig = loginConfig;
+            return this;
+        }
+
+        public Builder loginConfig(Integer loginConfig) {
+            return loginConfig(Output.of(loginConfig));
+        }
+
         /**
          * @param name The name of the app.
          * 
@@ -518,6 +597,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
+        }
+
+        public Builder parameters(@Nullable Output<AppParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(AppParametersArgs parameters) {
+            return parameters(Output.of(parameters));
         }
 
         /**
@@ -594,6 +682,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder roleIds(Integer... roleIds) {
             return roleIds(List.of(roleIds));
+        }
+
+        /**
+         * @param sso The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+         * are read only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sso(@Nullable Output<AppSsoArgs> sso) {
+            $.sso = sso;
+            return this;
+        }
+
+        /**
+         * @param sso The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+         * are read only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sso(AppSsoArgs sso) {
+            return sso(Output.of(sso));
         }
 
         /**

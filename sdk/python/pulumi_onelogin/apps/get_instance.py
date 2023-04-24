@@ -23,13 +23,19 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_assumed_signin=None, auth_method=None, configuration=None, connector_id=None, created_at=None, description=None, enforcement_point=None, icon_url=None, id=None, name=None, notes=None, policy_id=None, provisioning=None, role_ids=None, tab_id=None, updated_at=None, visible=None):
+    def __init__(__self__, allow_assumed_signin=None, auth_method=None, auth_method_description=None, brand_id=None, configuration=None, connector_id=None, created_at=None, description=None, enforcement_point=None, icon_url=None, id=None, login_config=None, name=None, notes=None, parameters=None, policy_id=None, provisioning=None, role_ids=None, sso=None, tab_id=None, updated_at=None, visible=None):
         if allow_assumed_signin and not isinstance(allow_assumed_signin, bool):
             raise TypeError("Expected argument 'allow_assumed_signin' to be a bool")
         pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
         if auth_method and not isinstance(auth_method, int):
             raise TypeError("Expected argument 'auth_method' to be a int")
         pulumi.set(__self__, "auth_method", auth_method)
+        if auth_method_description and not isinstance(auth_method_description, str):
+            raise TypeError("Expected argument 'auth_method_description' to be a str")
+        pulumi.set(__self__, "auth_method_description", auth_method_description)
+        if brand_id and not isinstance(brand_id, int):
+            raise TypeError("Expected argument 'brand_id' to be a int")
+        pulumi.set(__self__, "brand_id", brand_id)
         if configuration and not isinstance(configuration, dict):
             raise TypeError("Expected argument 'configuration' to be a dict")
         pulumi.set(__self__, "configuration", configuration)
@@ -51,12 +57,18 @@ class GetInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if login_config and not isinstance(login_config, int):
+            raise TypeError("Expected argument 'login_config' to be a int")
+        pulumi.set(__self__, "login_config", login_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if notes and not isinstance(notes, str):
             raise TypeError("Expected argument 'notes' to be a str")
         pulumi.set(__self__, "notes", notes)
+        if parameters and not isinstance(parameters, dict):
+            raise TypeError("Expected argument 'parameters' to be a dict")
+        pulumi.set(__self__, "parameters", parameters)
         if policy_id and not isinstance(policy_id, int):
             raise TypeError("Expected argument 'policy_id' to be a int")
         pulumi.set(__self__, "policy_id", policy_id)
@@ -66,6 +78,9 @@ class GetInstanceResult:
         if role_ids and not isinstance(role_ids, list):
             raise TypeError("Expected argument 'role_ids' to be a list")
         pulumi.set(__self__, "role_ids", role_ids)
+        if sso and not isinstance(sso, dict):
+            raise TypeError("Expected argument 'sso' to be a dict")
+        pulumi.set(__self__, "sso", sso)
         if tab_id and not isinstance(tab_id, int):
             raise TypeError("Expected argument 'tab_id' to be a int")
         pulumi.set(__self__, "tab_id", tab_id)
@@ -85,6 +100,16 @@ class GetInstanceResult:
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> int:
         return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter(name="authMethodDescription")
+    def auth_method_description(self) -> str:
+        return pulumi.get(self, "auth_method_description")
+
+    @property
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> int:
+        return pulumi.get(self, "brand_id")
 
     @property
     @pulumi.getter
@@ -122,6 +147,11 @@ class GetInstanceResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="loginConfig")
+    def login_config(self) -> int:
+        return pulumi.get(self, "login_config")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -130,6 +160,11 @@ class GetInstanceResult:
     @pulumi.getter
     def notes(self) -> str:
         return pulumi.get(self, "notes")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> 'outputs.GetInstanceParametersResult':
+        return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="policyId")
@@ -145,6 +180,11 @@ class GetInstanceResult:
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Sequence[int]:
         return pulumi.get(self, "role_ids")
+
+    @property
+    @pulumi.getter
+    def sso(self) -> 'outputs.GetInstanceSsoResult':
+        return pulumi.get(self, "sso")
 
     @property
     @pulumi.getter(name="tabId")
@@ -170,6 +210,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             allow_assumed_signin=self.allow_assumed_signin,
             auth_method=self.auth_method,
+            auth_method_description=self.auth_method_description,
+            brand_id=self.brand_id,
             configuration=self.configuration,
             connector_id=self.connector_id,
             created_at=self.created_at,
@@ -177,11 +219,14 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             enforcement_point=self.enforcement_point,
             icon_url=self.icon_url,
             id=self.id,
+            login_config=self.login_config,
             name=self.name,
             notes=self.notes,
+            parameters=self.parameters,
             policy_id=self.policy_id,
             provisioning=self.provisioning,
             role_ids=self.role_ids,
+            sso=self.sso,
             tab_id=self.tab_id,
             updated_at=self.updated_at,
             visible=self.visible)
@@ -189,6 +234,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
 
 def get_instance(allow_assumed_signin: Optional[bool] = None,
                  auth_method: Optional[int] = None,
+                 auth_method_description: Optional[str] = None,
+                 brand_id: Optional[int] = None,
                  configuration: Optional[pulumi.InputType['GetInstanceConfigurationArgs']] = None,
                  connector_id: Optional[int] = None,
                  created_at: Optional[str] = None,
@@ -196,11 +243,14 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
                  enforcement_point: Optional[pulumi.InputType['GetInstanceEnforcementPointArgs']] = None,
                  icon_url: Optional[str] = None,
                  id: Optional[str] = None,
+                 login_config: Optional[int] = None,
                  name: Optional[str] = None,
                  notes: Optional[str] = None,
+                 parameters: Optional[pulumi.InputType['GetInstanceParametersArgs']] = None,
                  policy_id: Optional[int] = None,
                  provisioning: Optional[pulumi.InputType['GetInstanceProvisioningArgs']] = None,
                  role_ids: Optional[Sequence[int]] = None,
+                 sso: Optional[pulumi.InputType['GetInstanceSsoArgs']] = None,
                  tab_id: Optional[int] = None,
                  updated_at: Optional[str] = None,
                  visible: Optional[bool] = None,
@@ -211,6 +261,8 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
     __args__ = dict()
     __args__['allowAssumedSignin'] = allow_assumed_signin
     __args__['authMethod'] = auth_method
+    __args__['authMethodDescription'] = auth_method_description
+    __args__['brandId'] = brand_id
     __args__['configuration'] = configuration
     __args__['connectorId'] = connector_id
     __args__['createdAt'] = created_at
@@ -218,11 +270,14 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
     __args__['enforcementPoint'] = enforcement_point
     __args__['iconUrl'] = icon_url
     __args__['id'] = id
+    __args__['loginConfig'] = login_config
     __args__['name'] = name
     __args__['notes'] = notes
+    __args__['parameters'] = parameters
     __args__['policyId'] = policy_id
     __args__['provisioning'] = provisioning
     __args__['roleIds'] = role_ids
+    __args__['sso'] = sso
     __args__['tabId'] = tab_id
     __args__['updatedAt'] = updated_at
     __args__['visible'] = visible
@@ -232,6 +287,8 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
     return AwaitableGetInstanceResult(
         allow_assumed_signin=__ret__.allow_assumed_signin,
         auth_method=__ret__.auth_method,
+        auth_method_description=__ret__.auth_method_description,
+        brand_id=__ret__.brand_id,
         configuration=__ret__.configuration,
         connector_id=__ret__.connector_id,
         created_at=__ret__.created_at,
@@ -239,11 +296,14 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
         enforcement_point=__ret__.enforcement_point,
         icon_url=__ret__.icon_url,
         id=__ret__.id,
+        login_config=__ret__.login_config,
         name=__ret__.name,
         notes=__ret__.notes,
+        parameters=__ret__.parameters,
         policy_id=__ret__.policy_id,
         provisioning=__ret__.provisioning,
         role_ids=__ret__.role_ids,
+        sso=__ret__.sso,
         tab_id=__ret__.tab_id,
         updated_at=__ret__.updated_at,
         visible=__ret__.visible)
@@ -252,6 +312,8 @@ def get_instance(allow_assumed_signin: Optional[bool] = None,
 @_utilities.lift_output_func(get_instance)
 def get_instance_output(allow_assumed_signin: Optional[pulumi.Input[Optional[bool]]] = None,
                         auth_method: Optional[pulumi.Input[Optional[int]]] = None,
+                        auth_method_description: Optional[pulumi.Input[Optional[str]]] = None,
+                        brand_id: Optional[pulumi.Input[Optional[int]]] = None,
                         configuration: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstanceConfigurationArgs']]]] = None,
                         connector_id: Optional[pulumi.Input[Optional[int]]] = None,
                         created_at: Optional[pulumi.Input[Optional[str]]] = None,
@@ -259,11 +321,14 @@ def get_instance_output(allow_assumed_signin: Optional[pulumi.Input[Optional[boo
                         enforcement_point: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstanceEnforcementPointArgs']]]] = None,
                         icon_url: Optional[pulumi.Input[Optional[str]]] = None,
                         id: Optional[pulumi.Input[str]] = None,
+                        login_config: Optional[pulumi.Input[Optional[int]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         notes: Optional[pulumi.Input[Optional[str]]] = None,
+                        parameters: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstanceParametersArgs']]]] = None,
                         policy_id: Optional[pulumi.Input[Optional[int]]] = None,
                         provisioning: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstanceProvisioningArgs']]]] = None,
                         role_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
+                        sso: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstanceSsoArgs']]]] = None,
                         tab_id: Optional[pulumi.Input[Optional[int]]] = None,
                         updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                         visible: Optional[pulumi.Input[Optional[bool]]] = None,

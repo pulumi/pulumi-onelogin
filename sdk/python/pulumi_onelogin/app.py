@@ -19,16 +19,21 @@ class AppArgs:
                  connector_id: pulumi.Input[int],
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[int]] = None,
+                 auth_method_description: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[int]] = None,
                  configuration: Optional[pulumi.Input['AppConfigurationArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enforcement_point: Optional[pulumi.Input['AppEnforcementPointArgs']] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
+                 login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input['AppParametersArgs']] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
                  provisioning: Optional[pulumi.Input['AppProvisioningArgs']] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 sso: Optional[pulumi.Input['AppSsoArgs']] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None):
@@ -38,7 +43,7 @@ class AppArgs:
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input['AppConfigurationArgs'] configuration: Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        :param pulumi.Input['AppConfigurationArgs'] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
         :param pulumi.Input['AppEnforcementPointArgs'] enforcement_point: For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
@@ -50,6 +55,8 @@ class AppArgs:
         :param pulumi.Input['AppProvisioningArgs'] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
+        :param pulumi.Input['AppSsoArgs'] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+               are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
@@ -59,6 +66,10 @@ class AppArgs:
             pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
+        if auth_method_description is not None:
+            pulumi.set(__self__, "auth_method_description", auth_method_description)
+        if brand_id is not None:
+            pulumi.set(__self__, "brand_id", brand_id)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if created_at is not None:
@@ -69,16 +80,22 @@ class AppArgs:
             pulumi.set(__self__, "enforcement_point", enforcement_point)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
+        if login_config is not None:
+            pulumi.set(__self__, "login_config", login_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
             pulumi.set(__self__, "notes", notes)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if provisioning is not None:
             pulumi.set(__self__, "provisioning", provisioning)
         if role_ids is not None:
             pulumi.set(__self__, "role_ids", role_ids)
+        if sso is not None:
+            pulumi.set(__self__, "sso", sso)
         if tab_id is not None:
             pulumi.set(__self__, "tab_id", tab_id)
         if updated_at is not None:
@@ -124,10 +141,28 @@ class AppArgs:
         pulumi.set(self, "auth_method", value)
 
     @property
+    @pulumi.getter(name="authMethodDescription")
+    def auth_method_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method_description")
+
+    @auth_method_description.setter
+    def auth_method_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method_description", value)
+
+    @property
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "brand_id")
+
+    @brand_id.setter
+    def brand_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "brand_id", value)
+
+    @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['AppConfigurationArgs']]:
         """
-        Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        Only apply configurations that are applicable to the type of app
         """
         return pulumi.get(self, "configuration")
 
@@ -185,6 +220,15 @@ class AppArgs:
         pulumi.set(self, "icon_url", value)
 
     @property
+    @pulumi.getter(name="loginConfig")
+    def login_config(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "login_config")
+
+    @login_config.setter
+    def login_config(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "login_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -207,6 +251,15 @@ class AppArgs:
     @notes.setter
     def notes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['AppParametersArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['AppParametersArgs']]):
+        pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter(name="policyId")
@@ -244,6 +297,19 @@ class AppArgs:
     @role_ids.setter
     def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "role_ids", value)
+
+    @property
+    @pulumi.getter
+    def sso(self) -> Optional[pulumi.Input['AppSsoArgs']]:
+        """
+        The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        are read only.
+        """
+        return pulumi.get(self, "sso")
+
+    @sso.setter
+    def sso(self, value: Optional[pulumi.Input['AppSsoArgs']]):
+        pulumi.set(self, "sso", value)
 
     @property
     @pulumi.getter(name="tabId")
@@ -287,17 +353,22 @@ class _AppState:
     def __init__(__self__, *,
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[int]] = None,
+                 auth_method_description: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[int]] = None,
                  configuration: Optional[pulumi.Input['AppConfigurationArgs']] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enforcement_point: Optional[pulumi.Input['AppEnforcementPointArgs']] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
+                 login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input['AppParametersArgs']] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
                  provisioning: Optional[pulumi.Input['AppProvisioningArgs']] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 sso: Optional[pulumi.Input['AppSsoArgs']] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None):
@@ -306,7 +377,7 @@ class _AppState:
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input['AppConfigurationArgs'] configuration: Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        :param pulumi.Input['AppConfigurationArgs'] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[int] connector_id: ID of the connector to base the app from.
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
@@ -319,6 +390,8 @@ class _AppState:
         :param pulumi.Input['AppProvisioningArgs'] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
+        :param pulumi.Input['AppSsoArgs'] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+               are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
@@ -327,6 +400,10 @@ class _AppState:
             pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
+        if auth_method_description is not None:
+            pulumi.set(__self__, "auth_method_description", auth_method_description)
+        if brand_id is not None:
+            pulumi.set(__self__, "brand_id", brand_id)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if connector_id is not None:
@@ -339,16 +416,22 @@ class _AppState:
             pulumi.set(__self__, "enforcement_point", enforcement_point)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
+        if login_config is not None:
+            pulumi.set(__self__, "login_config", login_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
             pulumi.set(__self__, "notes", notes)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if provisioning is not None:
             pulumi.set(__self__, "provisioning", provisioning)
         if role_ids is not None:
             pulumi.set(__self__, "role_ids", role_ids)
+        if sso is not None:
+            pulumi.set(__self__, "sso", sso)
         if tab_id is not None:
             pulumi.set(__self__, "tab_id", tab_id)
         if updated_at is not None:
@@ -382,10 +465,28 @@ class _AppState:
         pulumi.set(self, "auth_method", value)
 
     @property
+    @pulumi.getter(name="authMethodDescription")
+    def auth_method_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method_description")
+
+    @auth_method_description.setter
+    def auth_method_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method_description", value)
+
+    @property
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "brand_id")
+
+    @brand_id.setter
+    def brand_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "brand_id", value)
+
+    @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['AppConfigurationArgs']]:
         """
-        Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        Only apply configurations that are applicable to the type of app
         """
         return pulumi.get(self, "configuration")
 
@@ -455,6 +556,15 @@ class _AppState:
         pulumi.set(self, "icon_url", value)
 
     @property
+    @pulumi.getter(name="loginConfig")
+    def login_config(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "login_config")
+
+    @login_config.setter
+    def login_config(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "login_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -477,6 +587,15 @@ class _AppState:
     @notes.setter
     def notes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['AppParametersArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['AppParametersArgs']]):
+        pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter(name="policyId")
@@ -514,6 +633,19 @@ class _AppState:
     @role_ids.setter
     def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "role_ids", value)
+
+    @property
+    @pulumi.getter
+    def sso(self) -> Optional[pulumi.Input['AppSsoArgs']]:
+        """
+        The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        are read only.
+        """
+        return pulumi.get(self, "sso")
+
+    @sso.setter
+    def sso(self, value: Optional[pulumi.Input['AppSsoArgs']]):
+        pulumi.set(self, "sso", value)
 
     @property
     @pulumi.getter(name="tabId")
@@ -559,17 +691,22 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[int]] = None,
+                 auth_method_description: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[int]] = None,
                  configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
+                 login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
                  provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
@@ -581,7 +718,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[int] connector_id: ID of the connector to base the app from.
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
@@ -594,6 +731,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AppProvisioningArgs']] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
+        :param pulumi.Input[pulumi.InputType['AppSsoArgs']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+               are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
@@ -623,17 +762,22 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[int]] = None,
+                 auth_method_description: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[int]] = None,
                  configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
+                 login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
                  provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
@@ -648,6 +792,8 @@ class App(pulumi.CustomResource):
 
             __props__.__dict__["allow_assumed_signin"] = allow_assumed_signin
             __props__.__dict__["auth_method"] = auth_method
+            __props__.__dict__["auth_method_description"] = auth_method_description
+            __props__.__dict__["brand_id"] = brand_id
             __props__.__dict__["configuration"] = configuration
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
@@ -656,11 +802,14 @@ class App(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enforcement_point"] = enforcement_point
             __props__.__dict__["icon_url"] = icon_url
+            __props__.__dict__["login_config"] = login_config
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["policy_id"] = policy_id
             __props__.__dict__["provisioning"] = provisioning
             __props__.__dict__["role_ids"] = role_ids
+            __props__.__dict__["sso"] = sso
             __props__.__dict__["tab_id"] = tab_id
             __props__.__dict__["updated_at"] = updated_at
             __props__.__dict__["visible"] = visible
@@ -676,17 +825,22 @@ class App(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
             auth_method: Optional[pulumi.Input[int]] = None,
+            auth_method_description: Optional[pulumi.Input[str]] = None,
+            brand_id: Optional[pulumi.Input[int]] = None,
             configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
             connector_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
             icon_url: Optional[pulumi.Input[str]] = None,
+            login_config: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
+            parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
             policy_id: Optional[pulumi.Input[int]] = None,
             provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
             tab_id: Optional[pulumi.Input[int]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             visible: Optional[pulumi.Input[bool]] = None) -> 'App':
@@ -700,7 +854,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[int] connector_id: ID of the connector to base the app from.
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
@@ -713,6 +867,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AppProvisioningArgs']] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
+        :param pulumi.Input[pulumi.InputType['AppSsoArgs']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+               are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
@@ -723,17 +879,22 @@ class App(pulumi.CustomResource):
 
         __props__.__dict__["allow_assumed_signin"] = allow_assumed_signin
         __props__.__dict__["auth_method"] = auth_method
+        __props__.__dict__["auth_method_description"] = auth_method_description
+        __props__.__dict__["brand_id"] = brand_id
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["connector_id"] = connector_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["enforcement_point"] = enforcement_point
         __props__.__dict__["icon_url"] = icon_url
+        __props__.__dict__["login_config"] = login_config
         __props__.__dict__["name"] = name
         __props__.__dict__["notes"] = notes
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["provisioning"] = provisioning
         __props__.__dict__["role_ids"] = role_ids
+        __props__.__dict__["sso"] = sso
         __props__.__dict__["tab_id"] = tab_id
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["visible"] = visible
@@ -757,10 +918,20 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "auth_method")
 
     @property
+    @pulumi.getter(name="authMethodDescription")
+    def auth_method_description(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "auth_method_description")
+
+    @property
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "brand_id")
+
+    @property
     @pulumi.getter
-    def configuration(self) -> pulumi.Output[Optional['outputs.AppConfiguration']]:
+    def configuration(self) -> pulumi.Output['outputs.AppConfiguration']:
         """
-        Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        Only apply configurations that are applicable to the type of app
         """
         return pulumi.get(self, "configuration")
 
@@ -806,6 +977,11 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "icon_url")
 
     @property
+    @pulumi.getter(name="loginConfig")
+    def login_config(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "login_config")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -820,6 +996,11 @@ class App(pulumi.CustomResource):
         Freeform notes about the app.
         """
         return pulumi.get(self, "notes")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output['outputs.AppParameters']:
+        return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="policyId")
@@ -845,6 +1026,15 @@ class App(pulumi.CustomResource):
         provided.
         """
         return pulumi.get(self, "role_ids")
+
+    @property
+    @pulumi.getter
+    def sso(self) -> pulumi.Output['outputs.AppSso']:
+        """
+        The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        are read only.
+        """
+        return pulumi.get(self, "sso")
 
     @property
     @pulumi.getter(name="tabId")

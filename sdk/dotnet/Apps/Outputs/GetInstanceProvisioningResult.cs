@@ -14,11 +14,16 @@ namespace Pulumi.Onelogin.Apps.Outputs
     public sealed class GetInstanceProvisioningResult
     {
         public readonly bool Enabled;
+        public readonly string Status;
 
         [OutputConstructor]
-        private GetInstanceProvisioningResult(bool enabled)
+        private GetInstanceProvisioningResult(
+            bool enabled,
+
+            string status)
         {
             Enabled = enabled;
+            Status = status;
         }
     }
 }

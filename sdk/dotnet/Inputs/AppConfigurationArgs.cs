@@ -18,11 +18,23 @@ namespace Pulumi.Onelogin.Inputs
         [Input("loginUrl")]
         public Input<string>? LoginUrl { get; set; }
 
+        [Input("oidcApiVersion")]
+        public Input<string>? OidcApiVersion { get; set; }
+
         [Input("oidcApplicationType")]
         public Input<int>? OidcApplicationType { get; set; }
 
+        [Input("oidcEncryptionKey")]
+        public Input<string>? OidcEncryptionKey { get; set; }
+
+        [Input("postLogoutRedirectUri")]
+        public Input<string>? PostLogoutRedirectUri { get; set; }
+
         [Input("redirectUri")]
         public Input<string>? RedirectUri { get; set; }
+
+        [Input("refreshTokenExpirationMinutes")]
+        public Input<int>? RefreshTokenExpirationMinutes { get; set; }
 
         [Input("tokenEndpointAuthMethod")]
         public Input<int>? TokenEndpointAuthMethod { get; set; }

@@ -12,8 +12,12 @@ import java.util.Objects;
 public final class GetAppsConfiguration {
     private Integer accessTokenExpirationMinutes;
     private String loginUrl;
+    private String oidcApiVersion;
     private Integer oidcApplicationType;
+    private String oidcEncryptionKey;
+    private String postLogoutRedirectUri;
     private String redirectUri;
+    private Integer refreshTokenExpirationMinutes;
     private Integer tokenEndpointAuthMethod;
 
     private GetAppsConfiguration() {}
@@ -23,11 +27,23 @@ public final class GetAppsConfiguration {
     public String loginUrl() {
         return this.loginUrl;
     }
+    public String oidcApiVersion() {
+        return this.oidcApiVersion;
+    }
     public Integer oidcApplicationType() {
         return this.oidcApplicationType;
     }
+    public String oidcEncryptionKey() {
+        return this.oidcEncryptionKey;
+    }
+    public String postLogoutRedirectUri() {
+        return this.postLogoutRedirectUri;
+    }
     public String redirectUri() {
         return this.redirectUri;
+    }
+    public Integer refreshTokenExpirationMinutes() {
+        return this.refreshTokenExpirationMinutes;
     }
     public Integer tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
@@ -44,16 +60,24 @@ public final class GetAppsConfiguration {
     public static final class Builder {
         private Integer accessTokenExpirationMinutes;
         private String loginUrl;
+        private String oidcApiVersion;
         private Integer oidcApplicationType;
+        private String oidcEncryptionKey;
+        private String postLogoutRedirectUri;
         private String redirectUri;
+        private Integer refreshTokenExpirationMinutes;
         private Integer tokenEndpointAuthMethod;
         public Builder() {}
         public Builder(GetAppsConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessTokenExpirationMinutes = defaults.accessTokenExpirationMinutes;
     	      this.loginUrl = defaults.loginUrl;
+    	      this.oidcApiVersion = defaults.oidcApiVersion;
     	      this.oidcApplicationType = defaults.oidcApplicationType;
+    	      this.oidcEncryptionKey = defaults.oidcEncryptionKey;
+    	      this.postLogoutRedirectUri = defaults.postLogoutRedirectUri;
     	      this.redirectUri = defaults.redirectUri;
+    	      this.refreshTokenExpirationMinutes = defaults.refreshTokenExpirationMinutes;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
         }
 
@@ -68,13 +92,33 @@ public final class GetAppsConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcApiVersion(String oidcApiVersion) {
+            this.oidcApiVersion = Objects.requireNonNull(oidcApiVersion);
+            return this;
+        }
+        @CustomType.Setter
         public Builder oidcApplicationType(Integer oidcApplicationType) {
             this.oidcApplicationType = Objects.requireNonNull(oidcApplicationType);
             return this;
         }
         @CustomType.Setter
+        public Builder oidcEncryptionKey(String oidcEncryptionKey) {
+            this.oidcEncryptionKey = Objects.requireNonNull(oidcEncryptionKey);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder postLogoutRedirectUri(String postLogoutRedirectUri) {
+            this.postLogoutRedirectUri = Objects.requireNonNull(postLogoutRedirectUri);
+            return this;
+        }
+        @CustomType.Setter
         public Builder redirectUri(String redirectUri) {
             this.redirectUri = Objects.requireNonNull(redirectUri);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
+            this.refreshTokenExpirationMinutes = Objects.requireNonNull(refreshTokenExpirationMinutes);
             return this;
         }
         @CustomType.Setter
@@ -86,8 +130,12 @@ public final class GetAppsConfiguration {
             final var o = new GetAppsConfiguration();
             o.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             o.loginUrl = loginUrl;
+            o.oidcApiVersion = oidcApiVersion;
             o.oidcApplicationType = oidcApplicationType;
+            o.oidcEncryptionKey = oidcEncryptionKey;
+            o.postLogoutRedirectUri = postLogoutRedirectUri;
             o.redirectUri = redirectUri;
+            o.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             o.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return o;
         }

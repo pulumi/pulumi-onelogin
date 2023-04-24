@@ -15,6 +15,9 @@ namespace Pulumi.Onelogin.Apps.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        [Input("status", required: true)]
+        public Input<string> Status { get; set; } = null!;
+
         public GetInstanceProvisioningInputArgs()
         {
         }

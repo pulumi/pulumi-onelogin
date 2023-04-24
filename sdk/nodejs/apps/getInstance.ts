@@ -12,6 +12,8 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("onelogin:apps/getInstance:getInstance", {
         "allowAssumedSignin": args.allowAssumedSignin,
         "authMethod": args.authMethod,
+        "authMethodDescription": args.authMethodDescription,
+        "brandId": args.brandId,
         "configuration": args.configuration,
         "connectorId": args.connectorId,
         "createdAt": args.createdAt,
@@ -19,11 +21,14 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
         "enforcementPoint": args.enforcementPoint,
         "iconUrl": args.iconUrl,
         "id": args.id,
+        "loginConfig": args.loginConfig,
         "name": args.name,
         "notes": args.notes,
+        "parameters": args.parameters,
         "policyId": args.policyId,
         "provisioning": args.provisioning,
         "roleIds": args.roleIds,
+        "sso": args.sso,
         "tabId": args.tabId,
         "updatedAt": args.updatedAt,
         "visible": args.visible,
@@ -36,6 +41,8 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     allowAssumedSignin?: boolean;
     authMethod?: number;
+    authMethodDescription?: string;
+    brandId?: number;
     configuration?: inputs.apps.GetInstanceConfiguration;
     connectorId?: number;
     createdAt?: string;
@@ -43,11 +50,14 @@ export interface GetInstanceArgs {
     enforcementPoint?: inputs.apps.GetInstanceEnforcementPoint;
     iconUrl?: string;
     id: string;
+    loginConfig?: number;
     name?: string;
     notes?: string;
+    parameters?: inputs.apps.GetInstanceParameters;
     policyId?: number;
     provisioning?: inputs.apps.GetInstanceProvisioning;
     roleIds?: number[];
+    sso?: inputs.apps.GetInstanceSso;
     tabId?: number;
     updatedAt?: string;
     visible?: boolean;
@@ -59,6 +69,8 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly allowAssumedSignin: boolean;
     readonly authMethod: number;
+    readonly authMethodDescription: string;
+    readonly brandId: number;
     readonly configuration: outputs.apps.GetInstanceConfiguration;
     readonly connectorId: number;
     readonly createdAt: string;
@@ -66,11 +78,14 @@ export interface GetInstanceResult {
     readonly enforcementPoint: outputs.apps.GetInstanceEnforcementPoint;
     readonly iconUrl: string;
     readonly id: string;
+    readonly loginConfig: number;
     readonly name: string;
     readonly notes: string;
+    readonly parameters: outputs.apps.GetInstanceParameters;
     readonly policyId: number;
     readonly provisioning: outputs.apps.GetInstanceProvisioning;
     readonly roleIds: number[];
+    readonly sso: outputs.apps.GetInstanceSso;
     readonly tabId: number;
     readonly updatedAt: string;
     readonly visible: boolean;
@@ -85,6 +100,8 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
 export interface GetInstanceOutputArgs {
     allowAssumedSignin?: pulumi.Input<boolean>;
     authMethod?: pulumi.Input<number>;
+    authMethodDescription?: pulumi.Input<string>;
+    brandId?: pulumi.Input<number>;
     configuration?: pulumi.Input<inputs.apps.GetInstanceConfigurationArgs>;
     connectorId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
@@ -92,11 +109,14 @@ export interface GetInstanceOutputArgs {
     enforcementPoint?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointArgs>;
     iconUrl?: pulumi.Input<string>;
     id: pulumi.Input<string>;
+    loginConfig?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.apps.GetInstanceParametersArgs>;
     policyId?: pulumi.Input<number>;
     provisioning?: pulumi.Input<inputs.apps.GetInstanceProvisioningArgs>;
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    sso?: pulumi.Input<inputs.apps.GetInstanceSsoArgs>;
     tabId?: pulumi.Input<number>;
     updatedAt?: pulumi.Input<string>;
     visible?: pulumi.Input<boolean>;

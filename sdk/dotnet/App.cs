@@ -25,11 +25,17 @@ namespace Pulumi.Onelogin
         [Output("authMethod")]
         public Output<int?> AuthMethod { get; private set; } = null!;
 
+        [Output("authMethodDescription")]
+        public Output<string> AuthMethodDescription { get; private set; } = null!;
+
+        [Output("brandId")]
+        public Output<int?> BrandId { get; private set; } = null!;
+
         /// <summary>
-        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// Only apply configurations that are applicable to the type of app
         /// </summary>
         [Output("configuration")]
-        public Output<Outputs.AppConfiguration?> Configuration { get; private set; } = null!;
+        public Output<Outputs.AppConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
         /// ID of the connector to base the app from.
@@ -62,6 +68,9 @@ namespace Pulumi.Onelogin
         [Output("iconUrl")]
         public Output<string?> IconUrl { get; private set; } = null!;
 
+        [Output("loginConfig")]
+        public Output<int> LoginConfig { get; private set; } = null!;
+
         /// <summary>
         /// The name of the app.
         /// </summary>
@@ -73,6 +82,9 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
+
+        [Output("parameters")]
+        public Output<Outputs.AppParameters> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// The security policy assigned to the app.
@@ -92,6 +104,13 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Output("roleIds")]
         public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        /// are read only.
+        /// </summary>
+        [Output("sso")]
+        public Output<Outputs.AppSso> Sso { get; private set; } = null!;
 
         /// <summary>
         /// ID of the OneLogin portal tab that the app is assigned to.
@@ -170,8 +189,14 @@ namespace Pulumi.Onelogin
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
+        [Input("authMethodDescription")]
+        public Input<string>? AuthMethodDescription { get; set; }
+
+        [Input("brandId")]
+        public Input<int>? BrandId { get; set; }
+
         /// <summary>
-        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// Only apply configurations that are applicable to the type of app
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.AppConfigurationArgs>? Configuration { get; set; }
@@ -207,6 +232,9 @@ namespace Pulumi.Onelogin
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        [Input("loginConfig")]
+        public Input<int>? LoginConfig { get; set; }
+
         /// <summary>
         /// The name of the app.
         /// </summary>
@@ -218,6 +246,9 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
+
+        [Input("parameters")]
+        public Input<Inputs.AppParametersArgs>? Parameters { get; set; }
 
         /// <summary>
         /// The security policy assigned to the app.
@@ -243,6 +274,13 @@ namespace Pulumi.Onelogin
             get => _roleIds ?? (_roleIds = new InputList<int>());
             set => _roleIds = value;
         }
+
+        /// <summary>
+        /// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        /// are read only.
+        /// </summary>
+        [Input("sso")]
+        public Input<Inputs.AppSsoArgs>? Sso { get; set; }
 
         /// <summary>
         /// ID of the OneLogin portal tab that the app is assigned to.
@@ -283,8 +321,14 @@ namespace Pulumi.Onelogin
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
 
+        [Input("authMethodDescription")]
+        public Input<string>? AuthMethodDescription { get; set; }
+
+        [Input("brandId")]
+        public Input<int>? BrandId { get; set; }
+
         /// <summary>
-        /// Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+        /// Only apply configurations that are applicable to the type of app
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.AppConfigurationGetArgs>? Configuration { get; set; }
@@ -320,6 +364,9 @@ namespace Pulumi.Onelogin
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        [Input("loginConfig")]
+        public Input<int>? LoginConfig { get; set; }
+
         /// <summary>
         /// The name of the app.
         /// </summary>
@@ -331,6 +378,9 @@ namespace Pulumi.Onelogin
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
+
+        [Input("parameters")]
+        public Input<Inputs.AppParametersGetArgs>? Parameters { get; set; }
 
         /// <summary>
         /// The security policy assigned to the app.
@@ -356,6 +406,13 @@ namespace Pulumi.Onelogin
             get => _roleIds ?? (_roleIds = new InputList<int>());
             set => _roleIds = value;
         }
+
+        /// <summary>
+        /// The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        /// are read only.
+        /// </summary>
+        [Input("sso")]
+        public Input<Inputs.AppSsoGetArgs>? Sso { get; set; }
 
         /// <summary>
         /// ID of the OneLogin portal tab that the app is assigned to.

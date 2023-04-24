@@ -27,6 +27,12 @@ namespace Pulumi.Onelogin
         [Input("authMethod")]
         public int? AuthMethod { get; set; }
 
+        [Input("authMethodDescription")]
+        public string? AuthMethodDescription { get; set; }
+
+        [Input("brandId")]
+        public int? BrandId { get; set; }
+
         [Input("configuration")]
         public Inputs.GetAppsConfigurationArgs? Configuration { get; set; }
 
@@ -53,11 +59,17 @@ namespace Pulumi.Onelogin
         [Input("iconUrl")]
         public string? IconUrl { get; set; }
 
+        [Input("loginConfig")]
+        public int? LoginConfig { get; set; }
+
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("notes")]
         public string? Notes { get; set; }
+
+        [Input("parameters")]
+        public Inputs.GetAppsParametersArgs? Parameters { get; set; }
 
         [Input("policyId")]
         public int? PolicyId { get; set; }
@@ -72,6 +84,9 @@ namespace Pulumi.Onelogin
             get => _roleIds ?? (_roleIds = new List<int>());
             set => _roleIds = value;
         }
+
+        [Input("sso")]
+        public Inputs.GetAppsSsoArgs? Sso { get; set; }
 
         [Input("tabId")]
         public int? TabId { get; set; }
@@ -95,6 +110,12 @@ namespace Pulumi.Onelogin
 
         [Input("authMethod")]
         public Input<int>? AuthMethod { get; set; }
+
+        [Input("authMethodDescription")]
+        public Input<string>? AuthMethodDescription { get; set; }
+
+        [Input("brandId")]
+        public Input<int>? BrandId { get; set; }
 
         [Input("configuration")]
         public Input<Inputs.GetAppsConfigurationInputArgs>? Configuration { get; set; }
@@ -122,11 +143,17 @@ namespace Pulumi.Onelogin
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        [Input("loginConfig")]
+        public Input<int>? LoginConfig { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("notes")]
         public Input<string>? Notes { get; set; }
+
+        [Input("parameters")]
+        public Input<Inputs.GetAppsParametersInputArgs>? Parameters { get; set; }
 
         [Input("policyId")]
         public Input<int>? PolicyId { get; set; }
@@ -141,6 +168,9 @@ namespace Pulumi.Onelogin
             get => _roleIds ?? (_roleIds = new InputList<int>());
             set => _roleIds = value;
         }
+
+        [Input("sso")]
+        public Input<Inputs.GetAppsSsoInputArgs>? Sso { get; set; }
 
         [Input("tabId")]
         public Input<int>? TabId { get; set; }
@@ -163,6 +193,8 @@ namespace Pulumi.Onelogin
     {
         public readonly bool AllowAssumedSignin;
         public readonly int AuthMethod;
+        public readonly string AuthMethodDescription;
+        public readonly int BrandId;
         public readonly Outputs.GetAppsConfigurationResult Configuration;
         public readonly int ConnectorId;
         public readonly string CreatedAt;
@@ -174,11 +206,14 @@ namespace Pulumi.Onelogin
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int LoginConfig;
         public readonly string Name;
         public readonly string Notes;
+        public readonly Outputs.GetAppsParametersResult Parameters;
         public readonly int PolicyId;
         public readonly Outputs.GetAppsProvisioningResult Provisioning;
         public readonly ImmutableArray<int> RoleIds;
+        public readonly Outputs.GetAppsSsoResult Sso;
         public readonly int TabId;
         public readonly string UpdatedAt;
         public readonly bool Visible;
@@ -188,6 +223,10 @@ namespace Pulumi.Onelogin
             bool allowAssumedSignin,
 
             int authMethod,
+
+            string authMethodDescription,
+
+            int brandId,
 
             Outputs.GetAppsConfigurationResult configuration,
 
@@ -205,15 +244,21 @@ namespace Pulumi.Onelogin
 
             string id,
 
+            int loginConfig,
+
             string name,
 
             string notes,
+
+            Outputs.GetAppsParametersResult parameters,
 
             int policyId,
 
             Outputs.GetAppsProvisioningResult provisioning,
 
             ImmutableArray<int> roleIds,
+
+            Outputs.GetAppsSsoResult sso,
 
             int tabId,
 
@@ -223,6 +268,8 @@ namespace Pulumi.Onelogin
         {
             AllowAssumedSignin = allowAssumedSignin;
             AuthMethod = authMethod;
+            AuthMethodDescription = authMethodDescription;
+            BrandId = brandId;
             Configuration = configuration;
             ConnectorId = connectorId;
             CreatedAt = createdAt;
@@ -231,11 +278,14 @@ namespace Pulumi.Onelogin
             Filters = filters;
             IconUrl = iconUrl;
             Id = id;
+            LoginConfig = loginConfig;
             Name = name;
             Notes = notes;
+            Parameters = parameters;
             PolicyId = policyId;
             Provisioning = provisioning;
             RoleIds = roleIds;
+            Sso = sso;
             TabId = tabId;
             UpdatedAt = updatedAt;
             Visible = visible;

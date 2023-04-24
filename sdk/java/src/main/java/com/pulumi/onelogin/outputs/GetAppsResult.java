@@ -7,7 +7,9 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.onelogin.outputs.GetAppsConfiguration;
 import com.pulumi.onelogin.outputs.GetAppsEnforcementPoint;
 import com.pulumi.onelogin.outputs.GetAppsFilter;
+import com.pulumi.onelogin.outputs.GetAppsParameters;
 import com.pulumi.onelogin.outputs.GetAppsProvisioning;
+import com.pulumi.onelogin.outputs.GetAppsSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,6 +21,8 @@ import javax.annotation.Nullable;
 public final class GetAppsResult {
     private Boolean allowAssumedSignin;
     private Integer authMethod;
+    private String authMethodDescription;
+    private Integer brandId;
     private GetAppsConfiguration configuration;
     private Integer connectorId;
     private String createdAt;
@@ -31,11 +35,14 @@ public final class GetAppsResult {
      * 
      */
     private String id;
+    private Integer loginConfig;
     private String name;
     private String notes;
+    private GetAppsParameters parameters;
     private Integer policyId;
     private GetAppsProvisioning provisioning;
     private List<Integer> roleIds;
+    private GetAppsSso sso;
     private Integer tabId;
     private String updatedAt;
     private Boolean visible;
@@ -46,6 +53,12 @@ public final class GetAppsResult {
     }
     public Integer authMethod() {
         return this.authMethod;
+    }
+    public String authMethodDescription() {
+        return this.authMethodDescription;
+    }
+    public Integer brandId() {
+        return this.brandId;
     }
     public GetAppsConfiguration configuration() {
         return this.configuration;
@@ -75,11 +88,17 @@ public final class GetAppsResult {
     public String id() {
         return this.id;
     }
+    public Integer loginConfig() {
+        return this.loginConfig;
+    }
     public String name() {
         return this.name;
     }
     public String notes() {
         return this.notes;
+    }
+    public GetAppsParameters parameters() {
+        return this.parameters;
     }
     public Integer policyId() {
         return this.policyId;
@@ -89,6 +108,9 @@ public final class GetAppsResult {
     }
     public List<Integer> roleIds() {
         return this.roleIds;
+    }
+    public GetAppsSso sso() {
+        return this.sso;
     }
     public Integer tabId() {
         return this.tabId;
@@ -111,6 +133,8 @@ public final class GetAppsResult {
     public static final class Builder {
         private Boolean allowAssumedSignin;
         private Integer authMethod;
+        private String authMethodDescription;
+        private Integer brandId;
         private GetAppsConfiguration configuration;
         private Integer connectorId;
         private String createdAt;
@@ -119,11 +143,14 @@ public final class GetAppsResult {
         private @Nullable List<GetAppsFilter> filters;
         private String iconUrl;
         private String id;
+        private Integer loginConfig;
         private String name;
         private String notes;
+        private GetAppsParameters parameters;
         private Integer policyId;
         private GetAppsProvisioning provisioning;
         private List<Integer> roleIds;
+        private GetAppsSso sso;
         private Integer tabId;
         private String updatedAt;
         private Boolean visible;
@@ -132,6 +159,8 @@ public final class GetAppsResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowAssumedSignin = defaults.allowAssumedSignin;
     	      this.authMethod = defaults.authMethod;
+    	      this.authMethodDescription = defaults.authMethodDescription;
+    	      this.brandId = defaults.brandId;
     	      this.configuration = defaults.configuration;
     	      this.connectorId = defaults.connectorId;
     	      this.createdAt = defaults.createdAt;
@@ -140,11 +169,14 @@ public final class GetAppsResult {
     	      this.filters = defaults.filters;
     	      this.iconUrl = defaults.iconUrl;
     	      this.id = defaults.id;
+    	      this.loginConfig = defaults.loginConfig;
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
+    	      this.parameters = defaults.parameters;
     	      this.policyId = defaults.policyId;
     	      this.provisioning = defaults.provisioning;
     	      this.roleIds = defaults.roleIds;
+    	      this.sso = defaults.sso;
     	      this.tabId = defaults.tabId;
     	      this.updatedAt = defaults.updatedAt;
     	      this.visible = defaults.visible;
@@ -158,6 +190,16 @@ public final class GetAppsResult {
         @CustomType.Setter
         public Builder authMethod(Integer authMethod) {
             this.authMethod = Objects.requireNonNull(authMethod);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authMethodDescription(String authMethodDescription) {
+            this.authMethodDescription = Objects.requireNonNull(authMethodDescription);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder brandId(Integer brandId) {
+            this.brandId = Objects.requireNonNull(brandId);
             return this;
         }
         @CustomType.Setter
@@ -204,6 +246,11 @@ public final class GetAppsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder loginConfig(Integer loginConfig) {
+            this.loginConfig = Objects.requireNonNull(loginConfig);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -211,6 +258,11 @@ public final class GetAppsResult {
         @CustomType.Setter
         public Builder notes(String notes) {
             this.notes = Objects.requireNonNull(notes);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parameters(GetAppsParameters parameters) {
+            this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
         @CustomType.Setter
@@ -232,6 +284,11 @@ public final class GetAppsResult {
             return roleIds(List.of(roleIds));
         }
         @CustomType.Setter
+        public Builder sso(GetAppsSso sso) {
+            this.sso = Objects.requireNonNull(sso);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tabId(Integer tabId) {
             this.tabId = Objects.requireNonNull(tabId);
             return this;
@@ -250,6 +307,8 @@ public final class GetAppsResult {
             final var o = new GetAppsResult();
             o.allowAssumedSignin = allowAssumedSignin;
             o.authMethod = authMethod;
+            o.authMethodDescription = authMethodDescription;
+            o.brandId = brandId;
             o.configuration = configuration;
             o.connectorId = connectorId;
             o.createdAt = createdAt;
@@ -258,11 +317,14 @@ public final class GetAppsResult {
             o.filters = filters;
             o.iconUrl = iconUrl;
             o.id = id;
+            o.loginConfig = loginConfig;
             o.name = name;
             o.notes = notes;
+            o.parameters = parameters;
             o.policyId = policyId;
             o.provisioning = provisioning;
             o.roleIds = roleIds;
+            o.sso = sso;
             o.tabId = tabId;
             o.updatedAt = updatedAt;
             o.visible = visible;

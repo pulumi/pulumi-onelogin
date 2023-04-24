@@ -6,7 +6,9 @@ package com.pulumi.onelogin.apps.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.onelogin.apps.outputs.GetInstanceConfiguration;
 import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPoint;
+import com.pulumi.onelogin.apps.outputs.GetInstanceParameters;
 import com.pulumi.onelogin.apps.outputs.GetInstanceProvisioning;
+import com.pulumi.onelogin.apps.outputs.GetInstanceSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,6 +19,8 @@ import java.util.Objects;
 public final class GetInstanceResult {
     private Boolean allowAssumedSignin;
     private Integer authMethod;
+    private String authMethodDescription;
+    private Integer brandId;
     private GetInstanceConfiguration configuration;
     private Integer connectorId;
     private String createdAt;
@@ -24,11 +28,14 @@ public final class GetInstanceResult {
     private GetInstanceEnforcementPoint enforcementPoint;
     private String iconUrl;
     private String id;
+    private Integer loginConfig;
     private String name;
     private String notes;
+    private GetInstanceParameters parameters;
     private Integer policyId;
     private GetInstanceProvisioning provisioning;
     private List<Integer> roleIds;
+    private GetInstanceSso sso;
     private Integer tabId;
     private String updatedAt;
     private Boolean visible;
@@ -39,6 +46,12 @@ public final class GetInstanceResult {
     }
     public Integer authMethod() {
         return this.authMethod;
+    }
+    public String authMethodDescription() {
+        return this.authMethodDescription;
+    }
+    public Integer brandId() {
+        return this.brandId;
     }
     public GetInstanceConfiguration configuration() {
         return this.configuration;
@@ -61,11 +74,17 @@ public final class GetInstanceResult {
     public String id() {
         return this.id;
     }
+    public Integer loginConfig() {
+        return this.loginConfig;
+    }
     public String name() {
         return this.name;
     }
     public String notes() {
         return this.notes;
+    }
+    public GetInstanceParameters parameters() {
+        return this.parameters;
     }
     public Integer policyId() {
         return this.policyId;
@@ -75,6 +94,9 @@ public final class GetInstanceResult {
     }
     public List<Integer> roleIds() {
         return this.roleIds;
+    }
+    public GetInstanceSso sso() {
+        return this.sso;
     }
     public Integer tabId() {
         return this.tabId;
@@ -97,6 +119,8 @@ public final class GetInstanceResult {
     public static final class Builder {
         private Boolean allowAssumedSignin;
         private Integer authMethod;
+        private String authMethodDescription;
+        private Integer brandId;
         private GetInstanceConfiguration configuration;
         private Integer connectorId;
         private String createdAt;
@@ -104,11 +128,14 @@ public final class GetInstanceResult {
         private GetInstanceEnforcementPoint enforcementPoint;
         private String iconUrl;
         private String id;
+        private Integer loginConfig;
         private String name;
         private String notes;
+        private GetInstanceParameters parameters;
         private Integer policyId;
         private GetInstanceProvisioning provisioning;
         private List<Integer> roleIds;
+        private GetInstanceSso sso;
         private Integer tabId;
         private String updatedAt;
         private Boolean visible;
@@ -117,6 +144,8 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowAssumedSignin = defaults.allowAssumedSignin;
     	      this.authMethod = defaults.authMethod;
+    	      this.authMethodDescription = defaults.authMethodDescription;
+    	      this.brandId = defaults.brandId;
     	      this.configuration = defaults.configuration;
     	      this.connectorId = defaults.connectorId;
     	      this.createdAt = defaults.createdAt;
@@ -124,11 +153,14 @@ public final class GetInstanceResult {
     	      this.enforcementPoint = defaults.enforcementPoint;
     	      this.iconUrl = defaults.iconUrl;
     	      this.id = defaults.id;
+    	      this.loginConfig = defaults.loginConfig;
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
+    	      this.parameters = defaults.parameters;
     	      this.policyId = defaults.policyId;
     	      this.provisioning = defaults.provisioning;
     	      this.roleIds = defaults.roleIds;
+    	      this.sso = defaults.sso;
     	      this.tabId = defaults.tabId;
     	      this.updatedAt = defaults.updatedAt;
     	      this.visible = defaults.visible;
@@ -142,6 +174,16 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder authMethod(Integer authMethod) {
             this.authMethod = Objects.requireNonNull(authMethod);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authMethodDescription(String authMethodDescription) {
+            this.authMethodDescription = Objects.requireNonNull(authMethodDescription);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder brandId(Integer brandId) {
+            this.brandId = Objects.requireNonNull(brandId);
             return this;
         }
         @CustomType.Setter
@@ -180,6 +222,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder loginConfig(Integer loginConfig) {
+            this.loginConfig = Objects.requireNonNull(loginConfig);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -187,6 +234,11 @@ public final class GetInstanceResult {
         @CustomType.Setter
         public Builder notes(String notes) {
             this.notes = Objects.requireNonNull(notes);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parameters(GetInstanceParameters parameters) {
+            this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
         @CustomType.Setter
@@ -208,6 +260,11 @@ public final class GetInstanceResult {
             return roleIds(List.of(roleIds));
         }
         @CustomType.Setter
+        public Builder sso(GetInstanceSso sso) {
+            this.sso = Objects.requireNonNull(sso);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tabId(Integer tabId) {
             this.tabId = Objects.requireNonNull(tabId);
             return this;
@@ -226,6 +283,8 @@ public final class GetInstanceResult {
             final var o = new GetInstanceResult();
             o.allowAssumedSignin = allowAssumedSignin;
             o.authMethod = authMethod;
+            o.authMethodDescription = authMethodDescription;
+            o.brandId = brandId;
             o.configuration = configuration;
             o.connectorId = connectorId;
             o.createdAt = createdAt;
@@ -233,11 +292,14 @@ public final class GetInstanceResult {
             o.enforcementPoint = enforcementPoint;
             o.iconUrl = iconUrl;
             o.id = id;
+            o.loginConfig = loginConfig;
             o.name = name;
             o.notes = notes;
+            o.parameters = parameters;
             o.policyId = policyId;
             o.provisioning = provisioning;
             o.roleIds = roleIds;
+            o.sso = sso;
             o.tabId = tabId;
             o.updatedAt = updatedAt;
             o.visible = visible;
