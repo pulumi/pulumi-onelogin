@@ -16,6 +16,8 @@ package onelogin
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"unicode"
 
@@ -161,7 +163,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "5.0.0",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	err = x.ComputeDefaults(&prov, x.TokensKnownModules("onelogin_",
@@ -173,6 +175,8 @@ func Provider() tfbridge.ProviderInfo {
 			"users_",
 		}, x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
 
@@ -189,3 +193,6 @@ func Provider() tfbridge.ProviderInfo {
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-onelogin/bridge-metadata.json
+var metadata []byte

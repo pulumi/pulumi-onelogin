@@ -25,7 +25,7 @@ index 0000000..2d7a3dc
 +// exporting the provider.
 +func Provider() (*schema.Provider, error) {
 +	providerName := "onelogin"
-+	providerOpenAPIURL := "https://raw.githubusercontent.com/onelogin/terraform-provider-onelogin/tpoas/swag-api.yml"
++	providerOpenAPIURL := "https://raw.githubusercontent.com/onelogin/terraform-provider-onelogin/develop/swag-api.yml"
 +
 +	p := openapi.ProviderOpenAPI{ProviderName: providerName}
 +	serviceProviderConfig := &openapi.ServiceConfigV1{

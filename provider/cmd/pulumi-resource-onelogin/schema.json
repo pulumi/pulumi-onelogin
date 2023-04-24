@@ -177,11 +177,23 @@
                 "loginUrl": {
                     "type": "string"
                 },
+                "oidcApiVersion": {
+                    "type": "string"
+                },
                 "oidcApplicationType": {
                     "type": "integer"
                 },
+                "oidcEncryptionKey": {
+                    "type": "string"
+                },
+                "postLogoutRedirectUri": {
+                    "type": "string"
+                },
                 "redirectUri": {
                     "type": "string"
+                },
+                "refreshTokenExpirationMinutes": {
+                    "type": "integer"
                 },
                 "tokenEndpointAuthMethod": {
                     "type": "integer"
@@ -191,8 +203,12 @@
             "required": [
                 "accessTokenExpirationMinutes",
                 "loginUrl",
+                "oidcApiVersion",
                 "oidcApplicationType",
+                "oidcEncryptionKey",
+                "postLogoutRedirectUri",
                 "redirectUri",
+                "refreshTokenExpirationMinutes",
                 "tokenEndpointAuthMethod"
             ],
             "language": {
@@ -340,15 +356,143 @@
                 }
             }
         },
-        "onelogin:apps/getInstanceProvisioning:getInstanceProvisioning": {
+        "onelogin:apps/getInstanceParameters:getInstanceParameters": {
             "properties": {
-                "enabled": {
-                    "type": "boolean"
+                "groups": {
+                    "$ref": "#/types/onelogin:apps/getInstanceParametersGroups:getInstanceParametersGroups"
                 }
             },
             "type": "object",
             "required": [
-                "enabled"
+                "groups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceParametersGroups:getInstanceParametersGroups": {
+            "properties": {
+                "attributesTransformations": {
+                    "type": "string"
+                },
+                "defaultValues": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "provisionedEntitlements": {
+                    "type": "boolean"
+                },
+                "skipIfBlank": {
+                    "type": "boolean"
+                },
+                "userAttributeMacros": {
+                    "type": "string"
+                },
+                "userAttributeMappings": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "attributesTransformations",
+                "defaultValues",
+                "id",
+                "label",
+                "provisionedEntitlements",
+                "skipIfBlank",
+                "userAttributeMacros",
+                "userAttributeMappings",
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceProvisioning:getInstanceProvisioning": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceSso:getInstanceSso": {
+            "properties": {
+                "acsUrl": {
+                    "type": "string"
+                },
+                "certificate": {
+                    "$ref": "#/types/onelogin:apps/getInstanceSsoCertificate:getInstanceSsoCertificate"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "metadataUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acsUrl",
+                "certificate",
+                "clientId",
+                "clientSecret",
+                "issuer",
+                "metadataUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:apps/getInstanceSsoCertificate:getInstanceSsoCertificate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "value"
             ],
             "language": {
                 "nodejs": {
@@ -523,17 +667,36 @@
                 "loginUrl": {
                     "type": "string"
                 },
+                "oidcApiVersion": {
+                    "type": "string"
+                },
                 "oidcApplicationType": {
                     "type": "integer"
                 },
+                "oidcEncryptionKey": {
+                    "type": "string"
+                },
+                "postLogoutRedirectUri": {
+                    "type": "string"
+                },
                 "redirectUri": {
                     "type": "string"
+                },
+                "refreshTokenExpirationMinutes": {
+                    "type": "integer"
                 },
                 "tokenEndpointAuthMethod": {
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "oidcApiVersion"
+                    ]
+                }
+            }
         },
         "onelogin:index/AppEnforcementPoint:AppEnforcementPoint": {
             "properties": {
@@ -631,10 +794,109 @@
             },
             "type": "object"
         },
+        "onelogin:index/AppParameters:AppParameters": {
+            "properties": {
+                "groups": {
+                    "$ref": "#/types/onelogin:index/AppParametersGroups:AppParametersGroups"
+                }
+            },
+            "type": "object"
+        },
+        "onelogin:index/AppParametersGroups:AppParametersGroups": {
+            "properties": {
+                "attributesTransformations": {
+                    "type": "string"
+                },
+                "defaultValues": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "provisionedEntitlements": {
+                    "type": "boolean"
+                },
+                "skipIfBlank": {
+                    "type": "boolean"
+                },
+                "userAttributeMacros": {
+                    "type": "string"
+                },
+                "userAttributeMappings": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "onelogin:index/AppProvisioning:AppProvisioning": {
             "properties": {
                 "enabled": {
                     "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "status"
+                    ]
+                }
+            }
+        },
+        "onelogin:index/AppSso:AppSso": {
+            "properties": {
+                "acsUrl": {
+                    "type": "string"
+                },
+                "certificate": {
+                    "$ref": "#/types/onelogin:index/AppSsoCertificate:AppSsoCertificate"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "metadataUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "acsUrl",
+                        "certificate",
+                        "clientId",
+                        "clientSecret",
+                        "issuer",
+                        "metadataUrl"
+                    ]
+                }
+            }
+        },
+        "onelogin:index/AppSsoCertificate:AppSsoCertificate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -750,11 +1012,23 @@
                 "loginUrl": {
                     "type": "string"
                 },
+                "oidcApiVersion": {
+                    "type": "string"
+                },
                 "oidcApplicationType": {
                     "type": "integer"
                 },
+                "oidcEncryptionKey": {
+                    "type": "string"
+                },
+                "postLogoutRedirectUri": {
+                    "type": "string"
+                },
                 "redirectUri": {
                     "type": "string"
+                },
+                "refreshTokenExpirationMinutes": {
+                    "type": "integer"
                 },
                 "tokenEndpointAuthMethod": {
                     "type": "integer"
@@ -764,8 +1038,12 @@
             "required": [
                 "accessTokenExpirationMinutes",
                 "loginUrl",
+                "oidcApiVersion",
                 "oidcApplicationType",
+                "oidcEncryptionKey",
+                "postLogoutRedirectUri",
                 "redirectUri",
+                "refreshTokenExpirationMinutes",
                 "tokenEndpointAuthMethod"
             ],
             "language": {
@@ -931,15 +1209,143 @@
                 "values"
             ]
         },
-        "onelogin:index/getAppsProvisioning:getAppsProvisioning": {
+        "onelogin:index/getAppsParameters:getAppsParameters": {
             "properties": {
-                "enabled": {
-                    "type": "boolean"
+                "groups": {
+                    "$ref": "#/types/onelogin:index/getAppsParametersGroups:getAppsParametersGroups"
                 }
             },
             "type": "object",
             "required": [
-                "enabled"
+                "groups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsParametersGroups:getAppsParametersGroups": {
+            "properties": {
+                "attributesTransformations": {
+                    "type": "string"
+                },
+                "defaultValues": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "provisionedEntitlements": {
+                    "type": "boolean"
+                },
+                "skipIfBlank": {
+                    "type": "boolean"
+                },
+                "userAttributeMacros": {
+                    "type": "string"
+                },
+                "userAttributeMappings": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "attributesTransformations",
+                "defaultValues",
+                "id",
+                "label",
+                "provisionedEntitlements",
+                "skipIfBlank",
+                "userAttributeMacros",
+                "userAttributeMappings",
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsProvisioning:getAppsProvisioning": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsSso:getAppsSso": {
+            "properties": {
+                "acsUrl": {
+                    "type": "string"
+                },
+                "certificate": {
+                    "$ref": "#/types/onelogin:index/getAppsSsoCertificate:getAppsSsoCertificate"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "metadataUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acsUrl",
+                "certificate",
+                "clientId",
+                "clientSecret",
+                "issuer",
+                "metadataUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "onelogin:index/getAppsSsoCertificate:getAppsSsoCertificate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "value"
             ],
             "language": {
                 "nodejs": {
@@ -1636,9 +2042,15 @@
                     "type": "integer",
                     "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                 },
+                "authMethodDescription": {
+                    "type": "string"
+                },
+                "brandId": {
+                    "type": "integer"
+                },
                 "configuration": {
                     "$ref": "#/types/onelogin:index/AppConfiguration:AppConfiguration",
-                    "description": "Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps\n"
+                    "description": "Only apply configurations that are applicable to the type of app\n"
                 },
                 "connectorId": {
                     "type": "integer",
@@ -1660,6 +2072,9 @@
                     "type": "string",
                     "description": "A link to the apps icon url\n"
                 },
+                "loginConfig": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the app.\n"
@@ -1667,6 +2082,9 @@
                 "notes": {
                     "type": "string",
                     "description": "Freeform notes about the app.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/onelogin:index/AppParameters:AppParameters"
                 },
                 "policyId": {
                     "type": "integer",
@@ -1682,6 +2100,10 @@
                         "type": "integer"
                     },
                     "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
+                },
+                "sso": {
+                    "$ref": "#/types/onelogin:index/AppSso:AppSso",
+                    "description": "The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object\nare read only.\n"
                 },
                 "tabId": {
                     "type": "integer",
@@ -1697,9 +2119,14 @@
                 }
             },
             "required": [
+                "authMethodDescription",
+                "configuration",
                 "connectorId",
                 "createdAt",
+                "loginConfig",
                 "name",
+                "parameters",
+                "sso",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -1711,9 +2138,15 @@
                     "type": "integer",
                     "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                 },
+                "authMethodDescription": {
+                    "type": "string"
+                },
+                "brandId": {
+                    "type": "integer"
+                },
                 "configuration": {
                     "$ref": "#/types/onelogin:index/AppConfiguration:AppConfiguration",
-                    "description": "Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps\n"
+                    "description": "Only apply configurations that are applicable to the type of app\n"
                 },
                 "connectorId": {
                     "type": "integer",
@@ -1735,6 +2168,9 @@
                     "type": "string",
                     "description": "A link to the apps icon url\n"
                 },
+                "loginConfig": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the app.\n"
@@ -1742,6 +2178,9 @@
                 "notes": {
                     "type": "string",
                     "description": "Freeform notes about the app.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/onelogin:index/AppParameters:AppParameters"
                 },
                 "policyId": {
                     "type": "integer",
@@ -1757,6 +2196,10 @@
                         "type": "integer"
                     },
                     "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
+                },
+                "sso": {
+                    "$ref": "#/types/onelogin:index/AppSso:AppSso",
+                    "description": "The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object\nare read only.\n"
                 },
                 "tabId": {
                     "type": "integer",
@@ -1785,9 +2228,15 @@
                         "type": "integer",
                         "description": "An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:\nWSFED - 8: OpenId Connect\n"
                     },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandId": {
+                        "type": "integer"
+                    },
                     "configuration": {
                         "$ref": "#/types/onelogin:index/AppConfiguration:AppConfiguration",
-                        "description": "Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps\n"
+                        "description": "Only apply configurations that are applicable to the type of app\n"
                     },
                     "connectorId": {
                         "type": "integer",
@@ -1809,6 +2258,9 @@
                         "type": "string",
                         "description": "A link to the apps icon url\n"
                     },
+                    "loginConfig": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the app.\n"
@@ -1816,6 +2268,9 @@
                     "notes": {
                         "type": "string",
                         "description": "Freeform notes about the app.\n"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/AppParameters:AppParameters"
                     },
                     "policyId": {
                         "type": "integer",
@@ -1831,6 +2286,10 @@
                             "type": "integer"
                         },
                         "description": "List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values\nprovided.\n"
+                    },
+                    "sso": {
+                        "$ref": "#/types/onelogin:index/AppSso:AppSso",
+                        "description": "The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object\nare read only.\n"
                     },
                     "tabId": {
                         "type": "integer",
@@ -3210,6 +3669,12 @@
                     "authMethod": {
                         "type": "integer"
                     },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandId": {
+                        "type": "integer"
+                    },
                     "configuration": {
                         "$ref": "#/types/onelogin:apps/getInstanceConfiguration:getInstanceConfiguration"
                     },
@@ -3231,11 +3696,17 @@
                     "id": {
                         "type": "string"
                     },
+                    "loginConfig": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:apps/getInstanceParameters:getInstanceParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -3248,6 +3719,9 @@
                         "items": {
                             "type": "integer"
                         }
+                    },
+                    "sso": {
+                        "$ref": "#/types/onelogin:apps/getInstanceSso:getInstanceSso"
                     },
                     "tabId": {
                         "type": "integer"
@@ -3273,6 +3747,12 @@
                     "authMethod": {
                         "type": "integer"
                     },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandId": {
+                        "type": "integer"
+                    },
                     "configuration": {
                         "$ref": "#/types/onelogin:apps/getInstanceConfiguration:getInstanceConfiguration"
                     },
@@ -3294,11 +3774,17 @@
                     "id": {
                         "type": "string"
                     },
+                    "loginConfig": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:apps/getInstanceParameters:getInstanceParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -3311,6 +3797,9 @@
                         "items": {
                             "type": "integer"
                         }
+                    },
+                    "sso": {
+                        "$ref": "#/types/onelogin:apps/getInstanceSso:getInstanceSso"
                     },
                     "tabId": {
                         "type": "integer"
@@ -3326,6 +3815,8 @@
                 "required": [
                     "allowAssumedSignin",
                     "authMethod",
+                    "authMethodDescription",
+                    "brandId",
                     "configuration",
                     "connectorId",
                     "createdAt",
@@ -3333,11 +3824,14 @@
                     "enforcementPoint",
                     "iconUrl",
                     "id",
+                    "loginConfig",
                     "name",
                     "notes",
+                    "parameters",
                     "policyId",
                     "provisioning",
                     "roleIds",
+                    "sso",
                     "tabId",
                     "updatedAt",
                     "visible"
@@ -3835,6 +4329,12 @@
                     "authMethod": {
                         "type": "integer"
                     },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandId": {
+                        "type": "integer"
+                    },
                     "configuration": {
                         "$ref": "#/types/onelogin:index/getAppsConfiguration:getAppsConfiguration"
                     },
@@ -3860,11 +4360,17 @@
                     "iconUrl": {
                         "type": "string"
                     },
+                    "loginConfig": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/getAppsParameters:getAppsParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -3877,6 +4383,9 @@
                         "items": {
                             "type": "integer"
                         }
+                    },
+                    "sso": {
+                        "$ref": "#/types/onelogin:index/getAppsSso:getAppsSso"
                     },
                     "tabId": {
                         "type": "integer"
@@ -3897,6 +4406,12 @@
                         "type": "boolean"
                     },
                     "authMethod": {
+                        "type": "integer"
+                    },
+                    "authMethodDescription": {
+                        "type": "string"
+                    },
+                    "brandId": {
                         "type": "integer"
                     },
                     "configuration": {
@@ -3927,11 +4442,17 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "loginConfig": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/onelogin:index/getAppsParameters:getAppsParameters"
                     },
                     "policyId": {
                         "type": "integer"
@@ -3944,6 +4465,9 @@
                         "items": {
                             "type": "integer"
                         }
+                    },
+                    "sso": {
+                        "$ref": "#/types/onelogin:index/getAppsSso:getAppsSso"
                     },
                     "tabId": {
                         "type": "integer"
@@ -3959,17 +4483,22 @@
                 "required": [
                     "allowAssumedSignin",
                     "authMethod",
+                    "authMethodDescription",
+                    "brandId",
                     "configuration",
                     "connectorId",
                     "createdAt",
                     "description",
                     "enforcementPoint",
                     "iconUrl",
+                    "loginConfig",
                     "name",
                     "notes",
+                    "parameters",
                     "policyId",
                     "provisioning",
                     "roleIds",
+                    "sso",
                     "tabId",
                     "updatedAt",
                     "visible",
