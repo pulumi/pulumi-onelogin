@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.onelogin.apps.inputs.GetInstanceConfigurationArgs;
 import com.pulumi.onelogin.apps.inputs.GetInstanceEnforcementPointArgs;
+import com.pulumi.onelogin.apps.inputs.GetInstanceParametersArgs;
 import com.pulumi.onelogin.apps.inputs.GetInstanceProvisioningArgs;
+import com.pulumi.onelogin.apps.inputs.GetInstanceSsoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -33,6 +35,20 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<Integer>> authMethod() {
         return Optional.ofNullable(this.authMethod);
+    }
+
+    @Import(name="authMethodDescription")
+    private @Nullable Output<String> authMethodDescription;
+
+    public Optional<Output<String>> authMethodDescription() {
+        return Optional.ofNullable(this.authMethodDescription);
+    }
+
+    @Import(name="brandId")
+    private @Nullable Output<Integer> brandId;
+
+    public Optional<Output<Integer>> brandId() {
+        return Optional.ofNullable(this.brandId);
     }
 
     @Import(name="configuration")
@@ -84,6 +100,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    @Import(name="loginConfig")
+    private @Nullable Output<Integer> loginConfig;
+
+    public Optional<Output<Integer>> loginConfig() {
+        return Optional.ofNullable(this.loginConfig);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -96,6 +119,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
+    }
+
+    @Import(name="parameters")
+    private @Nullable Output<GetInstanceParametersArgs> parameters;
+
+    public Optional<Output<GetInstanceParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     @Import(name="policyId")
@@ -117,6 +147,13 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<List<Integer>>> roleIds() {
         return Optional.ofNullable(this.roleIds);
+    }
+
+    @Import(name="sso")
+    private @Nullable Output<GetInstanceSsoArgs> sso;
+
+    public Optional<Output<GetInstanceSsoArgs>> sso() {
+        return Optional.ofNullable(this.sso);
     }
 
     @Import(name="tabId")
@@ -145,6 +182,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     private GetInstanceArgs(GetInstanceArgs $) {
         this.allowAssumedSignin = $.allowAssumedSignin;
         this.authMethod = $.authMethod;
+        this.authMethodDescription = $.authMethodDescription;
+        this.brandId = $.brandId;
         this.configuration = $.configuration;
         this.connectorId = $.connectorId;
         this.createdAt = $.createdAt;
@@ -152,11 +191,14 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         this.enforcementPoint = $.enforcementPoint;
         this.iconUrl = $.iconUrl;
         this.id = $.id;
+        this.loginConfig = $.loginConfig;
         this.name = $.name;
         this.notes = $.notes;
+        this.parameters = $.parameters;
         this.policyId = $.policyId;
         this.provisioning = $.provisioning;
         this.roleIds = $.roleIds;
+        this.sso = $.sso;
         this.tabId = $.tabId;
         this.updatedAt = $.updatedAt;
         this.visible = $.visible;
@@ -196,6 +238,24 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder authMethod(Integer authMethod) {
             return authMethod(Output.of(authMethod));
+        }
+
+        public Builder authMethodDescription(@Nullable Output<String> authMethodDescription) {
+            $.authMethodDescription = authMethodDescription;
+            return this;
+        }
+
+        public Builder authMethodDescription(String authMethodDescription) {
+            return authMethodDescription(Output.of(authMethodDescription));
+        }
+
+        public Builder brandId(@Nullable Output<Integer> brandId) {
+            $.brandId = brandId;
+            return this;
+        }
+
+        public Builder brandId(Integer brandId) {
+            return brandId(Output.of(brandId));
         }
 
         public Builder configuration(@Nullable Output<GetInstanceConfigurationArgs> configuration) {
@@ -261,6 +321,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
             return id(Output.of(id));
         }
 
+        public Builder loginConfig(@Nullable Output<Integer> loginConfig) {
+            $.loginConfig = loginConfig;
+            return this;
+        }
+
+        public Builder loginConfig(Integer loginConfig) {
+            return loginConfig(Output.of(loginConfig));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -277,6 +346,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder notes(String notes) {
             return notes(Output.of(notes));
+        }
+
+        public Builder parameters(@Nullable Output<GetInstanceParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(GetInstanceParametersArgs parameters) {
+            return parameters(Output.of(parameters));
         }
 
         public Builder policyId(@Nullable Output<Integer> policyId) {
@@ -308,6 +386,15 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder roleIds(Integer... roleIds) {
             return roleIds(List.of(roleIds));
+        }
+
+        public Builder sso(@Nullable Output<GetInstanceSsoArgs> sso) {
+            $.sso = sso;
+            return this;
+        }
+
+        public Builder sso(GetInstanceSsoArgs sso) {
+            return sso(Output.of(sso));
         }
 
         public Builder tabId(@Nullable Output<Integer> tabId) {

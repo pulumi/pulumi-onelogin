@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 
@@ -19,10 +20,18 @@ public final class GetAppsProvisioning extends com.pulumi.resources.InvokeArgs {
         return this.enabled;
     }
 
+    @Import(name="status", required=true)
+    private String status;
+
+    public String status() {
+        return this.status;
+    }
+
     private GetAppsProvisioning() {}
 
     private GetAppsProvisioning(GetAppsProvisioning $) {
         this.enabled = $.enabled;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -48,8 +57,14 @@ public final class GetAppsProvisioning extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder status(String status) {
+            $.status = status;
+            return this;
+        }
+
         public GetAppsProvisioning build() {
             $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
             return $;
         }
     }

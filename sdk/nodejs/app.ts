@@ -43,10 +43,12 @@ export class App extends pulumi.CustomResource {
      * WSFED - 8: OpenId Connect
      */
     public readonly authMethod!: pulumi.Output<number | undefined>;
+    public readonly authMethodDescription!: pulumi.Output<string>;
+    public readonly brandId!: pulumi.Output<number | undefined>;
     /**
-     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * Only apply configurations that are applicable to the type of app
      */
-    public readonly configuration!: pulumi.Output<outputs.AppConfiguration | undefined>;
+    public readonly configuration!: pulumi.Output<outputs.AppConfiguration>;
     /**
      * ID of the connector to base the app from.
      */
@@ -68,6 +70,7 @@ export class App extends pulumi.CustomResource {
      * A link to the apps icon url
      */
     public readonly iconUrl!: pulumi.Output<string | undefined>;
+    public readonly loginConfig!: pulumi.Output<number>;
     /**
      * The name of the app.
      */
@@ -76,6 +79,7 @@ export class App extends pulumi.CustomResource {
      * Freeform notes about the app.
      */
     public readonly notes!: pulumi.Output<string | undefined>;
+    public readonly parameters!: pulumi.Output<outputs.AppParameters>;
     /**
      * The security policy assigned to the app.
      */
@@ -89,6 +93,11 @@ export class App extends pulumi.CustomResource {
      * provided.
      */
     public readonly roleIds!: pulumi.Output<number[] | undefined>;
+    /**
+     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     */
+    public readonly sso!: pulumi.Output<outputs.AppSso>;
     /**
      * ID of the OneLogin portal tab that the app is assigned to.
      */
@@ -117,17 +126,22 @@ export class App extends pulumi.CustomResource {
             const state = argsOrState as AppState | undefined;
             resourceInputs["allowAssumedSignin"] = state ? state.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = state ? state.authMethod : undefined;
+            resourceInputs["authMethodDescription"] = state ? state.authMethodDescription : undefined;
+            resourceInputs["brandId"] = state ? state.brandId : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enforcementPoint"] = state ? state.enforcementPoint : undefined;
             resourceInputs["iconUrl"] = state ? state.iconUrl : undefined;
+            resourceInputs["loginConfig"] = state ? state.loginConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["provisioning"] = state ? state.provisioning : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["tabId"] = state ? state.tabId : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["visible"] = state ? state.visible : undefined;
@@ -138,17 +152,22 @@ export class App extends pulumi.CustomResource {
             }
             resourceInputs["allowAssumedSignin"] = args ? args.allowAssumedSignin : undefined;
             resourceInputs["authMethod"] = args ? args.authMethod : undefined;
+            resourceInputs["authMethodDescription"] = args ? args.authMethodDescription : undefined;
+            resourceInputs["brandId"] = args ? args.brandId : undefined;
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["connectorId"] = args ? args.connectorId : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enforcementPoint"] = args ? args.enforcementPoint : undefined;
             resourceInputs["iconUrl"] = args ? args.iconUrl : undefined;
+            resourceInputs["loginConfig"] = args ? args.loginConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
             resourceInputs["provisioning"] = args ? args.provisioning : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["tabId"] = args ? args.tabId : undefined;
             resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["visible"] = args ? args.visible : undefined;
@@ -171,8 +190,10 @@ export interface AppState {
      * WSFED - 8: OpenId Connect
      */
     authMethod?: pulumi.Input<number>;
+    authMethodDescription?: pulumi.Input<string>;
+    brandId?: pulumi.Input<number>;
     /**
-     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * Only apply configurations that are applicable to the type of app
      */
     configuration?: pulumi.Input<inputs.AppConfiguration>;
     /**
@@ -196,6 +217,7 @@ export interface AppState {
      * A link to the apps icon url
      */
     iconUrl?: pulumi.Input<string>;
+    loginConfig?: pulumi.Input<number>;
     /**
      * The name of the app.
      */
@@ -204,6 +226,7 @@ export interface AppState {
      * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.AppParameters>;
     /**
      * The security policy assigned to the app.
      */
@@ -217,6 +240,11 @@ export interface AppState {
      * provided.
      */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     */
+    sso?: pulumi.Input<inputs.AppSso>;
     /**
      * ID of the OneLogin portal tab that the app is assigned to.
      */
@@ -244,8 +272,10 @@ export interface AppArgs {
      * WSFED - 8: OpenId Connect
      */
     authMethod?: pulumi.Input<number>;
+    authMethodDescription?: pulumi.Input<string>;
+    brandId?: pulumi.Input<number>;
     /**
-     * Onelogin currently only supports OIDC App configuration through Terraform Provider. Leave blank for SAML Apps
+     * Only apply configurations that are applicable to the type of app
      */
     configuration?: pulumi.Input<inputs.AppConfiguration>;
     /**
@@ -269,6 +299,7 @@ export interface AppArgs {
      * A link to the apps icon url
      */
     iconUrl?: pulumi.Input<string>;
+    loginConfig?: pulumi.Input<number>;
     /**
      * The name of the app.
      */
@@ -277,6 +308,7 @@ export interface AppArgs {
      * Freeform notes about the app.
      */
     notes?: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.AppParameters>;
     /**
      * The security policy assigned to the app.
      */
@@ -290,6 +322,11 @@ export interface AppArgs {
      * provided.
      */
     roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+     * are read only.
+     */
+    sso?: pulumi.Input<inputs.AppSso>;
     /**
      * ID of the OneLogin portal tab that the app is assigned to.
      */

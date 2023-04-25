@@ -1,0 +1,690 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "onelogin_apps": {
+                "current": "onelogin:index/app:App"
+            },
+            "onelogin_apps_rules": {
+                "current": "onelogin:apps/rules:Rules"
+            },
+            "onelogin_auth_servers": {
+                "current": "onelogin:index/authServers:AuthServers"
+            },
+            "onelogin_privileges": {
+                "current": "onelogin:index/privileges:Privileges"
+            },
+            "onelogin_risk_rules": {
+                "current": "onelogin:index/riskRules:RiskRules"
+            },
+            "onelogin_roles": {
+                "current": "onelogin:index/role:Role"
+            },
+            "onelogin_users": {
+                "current": "onelogin:index/user:User"
+            },
+            "onelogin_users_v1": {
+                "current": "onelogin:users/v1:V1"
+            }
+        },
+        "datasources": {
+            "onelogin_apps": {
+                "current": "onelogin:index/getApps:getApps"
+            },
+            "onelogin_apps_actions": {
+                "current": "onelogin:apps/getActions:getActions"
+            },
+            "onelogin_apps_actions_values": {
+                "current": "onelogin:apps/getActionsValues:getActionsValues"
+            },
+            "onelogin_apps_conditions": {
+                "current": "onelogin:apps/getConditions:getConditions"
+            },
+            "onelogin_apps_conditions_operators": {
+                "current": "onelogin:apps/getConditionsOperators:getConditionsOperators"
+            },
+            "onelogin_apps_instance": {
+                "current": "onelogin:apps/getInstance:getInstance"
+            },
+            "onelogin_apps_rules": {
+                "current": "onelogin:apps/getRules:getRules"
+            },
+            "onelogin_apps_rules_instance": {
+                "current": "onelogin:apps/getRulesInstance:getRulesInstance"
+            },
+            "onelogin_apps_users": {
+                "current": "onelogin:apps/getUsers:getUsers"
+            },
+            "onelogin_auth_servers": {
+                "current": "onelogin:index/getAuthServers:getAuthServers"
+            },
+            "onelogin_auth_servers_claims": {
+                "current": "onelogin:index/getAuthServersClaims:getAuthServersClaims"
+            },
+            "onelogin_auth_servers_instance": {
+                "current": "onelogin:index/getAuthServersInstance:getAuthServersInstance"
+            },
+            "onelogin_auth_servers_scopes": {
+                "current": "onelogin:index/getAuthServersScopes:getAuthServersScopes"
+            },
+            "onelogin_mappings": {
+                "current": "onelogin:index/getMappings:getMappings"
+            },
+            "onelogin_privileges": {
+                "current": "onelogin:index/getPrivileges:getPrivileges"
+            },
+            "onelogin_privileges_instance": {
+                "current": "onelogin:index/getPrivilegesInstance:getPrivilegesInstance"
+            },
+            "onelogin_risk_rules": {
+                "current": "onelogin:index/getRiskRules:getRiskRules"
+            },
+            "onelogin_risk_rules_instance": {
+                "current": "onelogin:index/getRiskRulesInstance:getRiskRulesInstance"
+            },
+            "onelogin_roles": {
+                "current": "onelogin:roles/getRoles:getRoles"
+            },
+            "onelogin_roles_admins": {
+                "current": "onelogin:roles/getAdmins:getAdmins"
+            },
+            "onelogin_roles_apps": {
+                "current": "onelogin:roles/getApps:getApps"
+            },
+            "onelogin_roles_instance": {
+                "current": "onelogin:roles/getInstance:getInstance"
+            },
+            "onelogin_roles_users": {
+                "current": "onelogin:roles/getUsers:getUsers"
+            },
+            "onelogin_rules": {
+                "current": "onelogin:rules/getRules:getRules"
+            },
+            "onelogin_users": {
+                "current": "onelogin:users/getUsers:getUsers"
+            },
+            "onelogin_users_apps": {
+                "current": "onelogin:users/getApps:getApps"
+            },
+            "onelogin_users_devices": {
+                "current": "onelogin:users/getDevices:getDevices"
+            },
+            "onelogin_users_instance": {
+                "current": "onelogin:users/getInstance:getInstance"
+            },
+            "onelogin_users_v1": {
+                "current": "onelogin:users/getV1:getV1"
+            },
+            "onelogin_users_v1_apps": {
+                "current": "onelogin:users/getV1Apps:getV1Apps"
+            },
+            "onelogin_users_v1_instance": {
+                "current": "onelogin:users/getV1Instance:getV1Instance"
+            }
+        }
+    },
+    "renames": {
+        "resources": {
+            "onelogin:apps/rules:Rules": "onelogin_apps_rules",
+            "onelogin:index/app:App": "onelogin_apps",
+            "onelogin:index/authServers:AuthServers": "onelogin_auth_servers",
+            "onelogin:index/privileges:Privileges": "onelogin_privileges",
+            "onelogin:index/riskRules:RiskRules": "onelogin_risk_rules",
+            "onelogin:index/role:Role": "onelogin_roles",
+            "onelogin:index/user:User": "onelogin_users",
+            "onelogin:users/v1:V1": "onelogin_users_v1"
+        },
+        "functions": {
+            "onelogin:apps/getActions:getActions": "onelogin_apps_actions",
+            "onelogin:apps/getActionsValues:getActionsValues": "onelogin_apps_actions_values",
+            "onelogin:apps/getConditions:getConditions": "onelogin_apps_conditions",
+            "onelogin:apps/getConditionsOperators:getConditionsOperators": "onelogin_apps_conditions_operators",
+            "onelogin:apps/getInstance:getInstance": "onelogin_apps_instance",
+            "onelogin:apps/getRules:getRules": "onelogin_apps_rules",
+            "onelogin:apps/getRulesInstance:getRulesInstance": "onelogin_apps_rules_instance",
+            "onelogin:apps/getUsers:getUsers": "onelogin_apps_users",
+            "onelogin:index/getApps:getApps": "onelogin_apps",
+            "onelogin:index/getAuthServers:getAuthServers": "onelogin_auth_servers",
+            "onelogin:index/getAuthServersClaims:getAuthServersClaims": "onelogin_auth_servers_claims",
+            "onelogin:index/getAuthServersInstance:getAuthServersInstance": "onelogin_auth_servers_instance",
+            "onelogin:index/getAuthServersScopes:getAuthServersScopes": "onelogin_auth_servers_scopes",
+            "onelogin:index/getMappings:getMappings": "onelogin_mappings",
+            "onelogin:index/getPrivileges:getPrivileges": "onelogin_privileges",
+            "onelogin:index/getPrivilegesInstance:getPrivilegesInstance": "onelogin_privileges_instance",
+            "onelogin:index/getRiskRules:getRiskRules": "onelogin_risk_rules",
+            "onelogin:index/getRiskRulesInstance:getRiskRulesInstance": "onelogin_risk_rules_instance",
+            "onelogin:roles/getAdmins:getAdmins": "onelogin_roles_admins",
+            "onelogin:roles/getApps:getApps": "onelogin_roles_apps",
+            "onelogin:roles/getInstance:getInstance": "onelogin_roles_instance",
+            "onelogin:roles/getRoles:getRoles": "onelogin_roles",
+            "onelogin:roles/getUsers:getUsers": "onelogin_roles_users",
+            "onelogin:users/getApps:getApps": "onelogin_users_apps",
+            "onelogin:users/getDevices:getDevices": "onelogin_users_devices",
+            "onelogin:users/getInstance:getInstance": "onelogin_users_instance",
+            "onelogin:users/getUsers:getUsers": "onelogin_users",
+            "onelogin:users/getV1:getV1": "onelogin_users_v1",
+            "onelogin:users/getV1Apps:getV1Apps": "onelogin_users_v1_apps",
+            "onelogin:users/getV1Instance:getV1Instance": "onelogin_users_v1_instance"
+        },
+        "renamedProperties": {
+            "onelogin:apps/RulesAction:RulesAction": {
+                "values": "value"
+            },
+            "onelogin:apps/getActions:getActions": {
+                "appsId": "apps_id",
+                "filters": "filter"
+            },
+            "onelogin:apps/getActionsValues:getActionsValues": {
+                "actionsId": "actions_id",
+                "appsId": "apps_id",
+                "filters": "filter"
+            },
+            "onelogin:apps/getConditions:getConditions": {
+                "appsId": "apps_id",
+                "filters": "filter"
+            },
+            "onelogin:apps/getConditionsOperators:getConditionsOperators": {
+                "appsId": "apps_id",
+                "conditionsId": "conditions_id",
+                "filters": "filter"
+            },
+            "onelogin:apps/getInstance:getInstance": {
+                "allowAssumedSignin": "allow_assumed_signin",
+                "authMethod": "auth_method",
+                "authMethodDescription": "auth_method_description",
+                "brandId": "brand_id",
+                "connectorId": "connector_id",
+                "createdAt": "created_at",
+                "enforcementPoint": "enforcement_point",
+                "iconUrl": "icon_url",
+                "loginConfig": "login_config",
+                "policyId": "policy_id",
+                "roleIds": "role_ids",
+                "tabId": "tab_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:apps/getInstanceConfiguration:getInstanceConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "loginUrl": "login_url",
+                "oidcApiVersion": "oidc_api_version",
+                "oidcApplicationType": "oidc_application_type",
+                "oidcEncryptionKey": "oidc_encryption_key",
+                "postLogoutRedirectUri": "post_logout_redirect_uri",
+                "redirectUri": "redirect_uri",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "tokenEndpointAuthMethod": "token_endpoint_auth_method"
+            },
+            "onelogin:apps/getInstanceEnforcementPoint:getInstanceEnforcementPoint": {
+                "caseSensitive": "case_sensitive",
+                "contextRoot": "context_root",
+                "landingPage": "landing_page",
+                "requireSitewideAuthentication": "require_sitewide_authentication",
+                "sessionExpiryFixed": "session_expiry_fixed",
+                "sessionExpiryInactivity": "session_expiry_inactivity",
+                "useTargetHostHeader": "use_target_host_header"
+            },
+            "onelogin:apps/getInstanceEnforcementPointResource:getInstanceEnforcementPointResource": {
+                "isPathRegex": "is_path_regex",
+                "requireAuth": "require_auth"
+            },
+            "onelogin:apps/getInstanceParametersGroups:getInstanceParametersGroups": {
+                "attributesTransformations": "attributes_transformations",
+                "defaultValues": "default_values",
+                "provisionedEntitlements": "provisioned_entitlements",
+                "skipIfBlank": "skip_if_blank",
+                "userAttributeMacros": "user_attribute_macros",
+                "userAttributeMappings": "user_attribute_mappings"
+            },
+            "onelogin:apps/getInstanceSso:getInstanceSso": {
+                "acsUrl": "acs_url",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "metadataUrl": "metadata_url"
+            },
+            "onelogin:apps/getRules:getRules": {
+                "appsId": "apps_id",
+                "filters": "filter"
+            },
+            "onelogin:apps/getRulesAction:getRulesAction": {
+                "values": "value"
+            },
+            "onelogin:apps/getRulesInstance:getRulesInstance": {
+                "appsId": "apps_id"
+            },
+            "onelogin:apps/getRulesInstanceAction:getRulesInstanceAction": {
+                "values": "value"
+            },
+            "onelogin:apps/getUsers:getUsers": {
+                "activatedAt": "activated_at",
+                "appsId": "apps_id",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "filters": "filter",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:apps/rules:Rules": {
+                "appsId": "apps_id"
+            },
+            "onelogin:config/endpoints:endpoints": {
+                "appsRules": "apps_rules",
+                "authServers": "auth_servers",
+                "riskRules": "risk_rules",
+                "usersV1": "users_v1"
+            },
+            "onelogin:index/AppConfiguration:AppConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "loginUrl": "login_url",
+                "oidcApiVersion": "oidc_api_version",
+                "oidcApplicationType": "oidc_application_type",
+                "oidcEncryptionKey": "oidc_encryption_key",
+                "postLogoutRedirectUri": "post_logout_redirect_uri",
+                "redirectUri": "redirect_uri",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "tokenEndpointAuthMethod": "token_endpoint_auth_method"
+            },
+            "onelogin:index/AppEnforcementPoint:AppEnforcementPoint": {
+                "caseSensitive": "case_sensitive",
+                "contextRoot": "context_root",
+                "landingPage": "landing_page",
+                "requireSitewideAuthentication": "require_sitewide_authentication",
+                "sessionExpiryFixed": "session_expiry_fixed",
+                "sessionExpiryInactivity": "session_expiry_inactivity",
+                "useTargetHostHeader": "use_target_host_header"
+            },
+            "onelogin:index/AppEnforcementPointResource:AppEnforcementPointResource": {
+                "isPathRegex": "is_path_regex",
+                "requireAuth": "require_auth"
+            },
+            "onelogin:index/AppParametersGroups:AppParametersGroups": {
+                "attributesTransformations": "attributes_transformations",
+                "defaultValues": "default_values",
+                "provisionedEntitlements": "provisioned_entitlements",
+                "skipIfBlank": "skip_if_blank",
+                "userAttributeMacros": "user_attribute_macros",
+                "userAttributeMappings": "user_attribute_mappings"
+            },
+            "onelogin:index/AppSso:AppSso": {
+                "acsUrl": "acs_url",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "metadataUrl": "metadata_url"
+            },
+            "onelogin:index/AuthServersConfiguration:AuthServersConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "resourceIdentifier": "resource_identifier"
+            },
+            "onelogin:index/PrivilegesPrivilege:PrivilegesPrivilege": {
+                "statements": "statement"
+            },
+            "onelogin:index/PrivilegesPrivilegeStatement:PrivilegesPrivilegeStatement": {
+                "actions": "action",
+                "scopes": "scope"
+            },
+            "onelogin:index/ProviderEndpoint:ProviderEndpoint": {
+                "appsRules": "apps_rules",
+                "authServers": "auth_servers",
+                "riskRules": "risk_rules",
+                "usersV1": "users_v1"
+            },
+            "onelogin:index/app:App": {
+                "allowAssumedSignin": "allow_assumed_signin",
+                "authMethod": "auth_method",
+                "authMethodDescription": "auth_method_description",
+                "brandId": "brand_id",
+                "connectorId": "connector_id",
+                "createdAt": "created_at",
+                "enforcementPoint": "enforcement_point",
+                "iconUrl": "icon_url",
+                "loginConfig": "login_config",
+                "policyId": "policy_id",
+                "roleIds": "role_ids",
+                "tabId": "tab_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:index/getApps:getApps": {
+                "allowAssumedSignin": "allow_assumed_signin",
+                "authMethod": "auth_method",
+                "authMethodDescription": "auth_method_description",
+                "brandId": "brand_id",
+                "connectorId": "connector_id",
+                "createdAt": "created_at",
+                "enforcementPoint": "enforcement_point",
+                "filters": "filter",
+                "iconUrl": "icon_url",
+                "loginConfig": "login_config",
+                "policyId": "policy_id",
+                "roleIds": "role_ids",
+                "tabId": "tab_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:index/getAppsConfiguration:getAppsConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "loginUrl": "login_url",
+                "oidcApiVersion": "oidc_api_version",
+                "oidcApplicationType": "oidc_application_type",
+                "oidcEncryptionKey": "oidc_encryption_key",
+                "postLogoutRedirectUri": "post_logout_redirect_uri",
+                "redirectUri": "redirect_uri",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "tokenEndpointAuthMethod": "token_endpoint_auth_method"
+            },
+            "onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint": {
+                "caseSensitive": "case_sensitive",
+                "contextRoot": "context_root",
+                "landingPage": "landing_page",
+                "requireSitewideAuthentication": "require_sitewide_authentication",
+                "sessionExpiryFixed": "session_expiry_fixed",
+                "sessionExpiryInactivity": "session_expiry_inactivity",
+                "useTargetHostHeader": "use_target_host_header"
+            },
+            "onelogin:index/getAppsEnforcementPointResource:getAppsEnforcementPointResource": {
+                "isPathRegex": "is_path_regex",
+                "requireAuth": "require_auth"
+            },
+            "onelogin:index/getAppsParametersGroups:getAppsParametersGroups": {
+                "attributesTransformations": "attributes_transformations",
+                "defaultValues": "default_values",
+                "provisionedEntitlements": "provisioned_entitlements",
+                "skipIfBlank": "skip_if_blank",
+                "userAttributeMacros": "user_attribute_macros",
+                "userAttributeMappings": "user_attribute_mappings"
+            },
+            "onelogin:index/getAppsSso:getAppsSso": {
+                "acsUrl": "acs_url",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "metadataUrl": "metadata_url"
+            },
+            "onelogin:index/getAuthServers:getAuthServers": {
+                "filters": "filter"
+            },
+            "onelogin:index/getAuthServersClaims:getAuthServersClaims": {
+                "attributeTransformations": "attribute_transformations",
+                "authServersId": "auth_servers_id",
+                "defaultValues": "default_values",
+                "filters": "filter",
+                "provisionedEntitlements": "provisioned_entitlements",
+                "skipIfBlank": "skip_if_blank",
+                "userAttributeMacros": "user_attribute_macros",
+                "userAttributeMappings": "user_attribute_mappings"
+            },
+            "onelogin:index/getAuthServersConfiguration:getAuthServersConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "resourceIdentifier": "resource_identifier"
+            },
+            "onelogin:index/getAuthServersInstanceConfiguration:getAuthServersInstanceConfiguration": {
+                "accessTokenExpirationMinutes": "access_token_expiration_minutes",
+                "refreshTokenExpirationMinutes": "refresh_token_expiration_minutes",
+                "resourceIdentifier": "resource_identifier"
+            },
+            "onelogin:index/getAuthServersScopes:getAuthServersScopes": {
+                "authServersId": "auth_servers_id",
+                "filters": "filter"
+            },
+            "onelogin:index/getMappings:getMappings": {
+                "filters": "filter"
+            },
+            "onelogin:index/getMappingsAction:getMappingsAction": {
+                "values": "value"
+            },
+            "onelogin:index/getPrivileges:getPrivileges": {
+                "filters": "filter"
+            },
+            "onelogin:index/getPrivilegesInstancePrivilege:getPrivilegesInstancePrivilege": {
+                "statements": "statement"
+            },
+            "onelogin:index/getPrivilegesInstancePrivilegeStatement:getPrivilegesInstancePrivilegeStatement": {
+                "actions": "action",
+                "scopes": "scope"
+            },
+            "onelogin:index/getPrivilegesPrivilege:getPrivilegesPrivilege": {
+                "statements": "statement"
+            },
+            "onelogin:index/getPrivilegesPrivilegeStatement:getPrivilegesPrivilegeStatement": {
+                "actions": "action",
+                "scopes": "scope"
+            },
+            "onelogin:index/user:User": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:index:Provider": {
+                "apikeyAuth": "apikey_auth",
+                "contentType": "content_type"
+            },
+            "onelogin:roles/getAdmins:getAdmins": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "filters": "filter",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "rolesId": "roles_id",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:roles/getApps:getApps": {
+                "filters": "filter",
+                "iconUrl": "icon_url",
+                "rolesId": "roles_id"
+            },
+            "onelogin:roles/getRoles:getRoles": {
+                "filters": "filter"
+            },
+            "onelogin:roles/getUsers:getUsers": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "filters": "filter",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "rolesId": "roles_id",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:users/getApps:getApps": {
+                "filters": "filter",
+                "iconUrl": "icon_url",
+                "loginId": "login_id",
+                "provisioningEnabled": "provisioning_enabled",
+                "provisioningState": "provisioning_state",
+                "provisioningStatus": "provisioning_status",
+                "usersId": "users_id"
+            },
+            "onelogin:users/getDevices:getDevices": {
+                "authFactorName": "auth_factor_name",
+                "deviceId": "device_id",
+                "filters": "filter",
+                "typeDisplayName": "type_display_name",
+                "userDisplayName": "user_display_name",
+                "usersId": "users_id"
+            },
+            "onelogin:users/getInstance:getInstance": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:users/getUsers:getUsers": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "filters": "filter",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:users/getV1:getV1": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "filters": "filter",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:users/getV1Apps:getV1Apps": {
+                "filters": "filter",
+                "iconUrl": "icon_url",
+                "loginId": "login_id",
+                "provisioningEnabled": "provisioning_enabled",
+                "provisioningState": "provisioning_state",
+                "provisioningStatus": "provisioning_status",
+                "usersV1Id": "users_v1_id"
+            },
+            "onelogin:users/getV1Instance:getV1Instance": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            },
+            "onelogin:users/v1:V1": {
+                "activatedAt": "activated_at",
+                "createdAt": "created_at",
+                "directoryId": "directory_id",
+                "distinguishedName": "distinguished_name",
+                "externalId": "external_id",
+                "groupId": "group_id",
+                "invalidLoginAttempts": "invalid_login_attempts",
+                "invitationSentAt": "invitation_sent_at",
+                "lastLogin": "last_login",
+                "lockedUntil": "locked_until",
+                "managerAdId": "manager_ad_id",
+                "managerUserId": "manager_user_id",
+                "memberOf": "member_of",
+                "passwordAlgorithm": "password_algorithm",
+                "passwordChangedAt": "password_changed_at",
+                "passwordConfirmation": "password_confirmation",
+                "preferredLocaleCode": "preferred_locale_code",
+                "roleIds": "role_ids",
+                "trustedIdpId": "trusted_idp_id",
+                "updatedAt": "updated_at"
+            }
+        },
+        "renamedConfigProperties": {
+            "apikeyAuth": "apikey_auth",
+            "contentType": "content_type"
+        }
+    }
+}

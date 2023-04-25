@@ -15,8 +15,12 @@ namespace Pulumi.Onelogin.Outputs
     {
         public readonly int AccessTokenExpirationMinutes;
         public readonly string LoginUrl;
+        public readonly string OidcApiVersion;
         public readonly int OidcApplicationType;
+        public readonly string OidcEncryptionKey;
+        public readonly string PostLogoutRedirectUri;
         public readonly string RedirectUri;
+        public readonly int RefreshTokenExpirationMinutes;
         public readonly int TokenEndpointAuthMethod;
 
         [OutputConstructor]
@@ -25,16 +29,28 @@ namespace Pulumi.Onelogin.Outputs
 
             string loginUrl,
 
+            string oidcApiVersion,
+
             int oidcApplicationType,
 
+            string oidcEncryptionKey,
+
+            string postLogoutRedirectUri,
+
             string redirectUri,
+
+            int refreshTokenExpirationMinutes,
 
             int tokenEndpointAuthMethod)
         {
             AccessTokenExpirationMinutes = accessTokenExpirationMinutes;
             LoginUrl = loginUrl;
+            OidcApiVersion = oidcApiVersion;
             OidcApplicationType = oidcApplicationType;
+            OidcEncryptionKey = oidcEncryptionKey;
+            PostLogoutRedirectUri = postLogoutRedirectUri;
             RedirectUri = redirectUri;
+            RefreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             TokenEndpointAuthMethod = tokenEndpointAuthMethod;
         }
     }

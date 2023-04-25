@@ -22,7 +22,11 @@ __all__ = [
     'GetInstanceEnforcementPointResourceResult',
     'GetInstanceEnforcementPointSessionExpiryFixedResult',
     'GetInstanceEnforcementPointSessionExpiryInactivityResult',
+    'GetInstanceParametersResult',
+    'GetInstanceParametersGroupsResult',
     'GetInstanceProvisioningResult',
+    'GetInstanceSsoResult',
+    'GetInstanceSsoCertificateResult',
     'GetRulesActionResult',
     'GetRulesConditionResult',
     'GetRulesFilterResult',
@@ -162,13 +166,21 @@ class GetInstanceConfigurationResult(dict):
     def __init__(__self__, *,
                  access_token_expiration_minutes: int,
                  login_url: str,
+                 oidc_api_version: str,
                  oidc_application_type: int,
+                 oidc_encryption_key: str,
+                 post_logout_redirect_uri: str,
                  redirect_uri: str,
+                 refresh_token_expiration_minutes: int,
                  token_endpoint_auth_method: int):
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "oidc_api_version", oidc_api_version)
         pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        pulumi.set(__self__, "oidc_encryption_key", oidc_encryption_key)
+        pulumi.set(__self__, "post_logout_redirect_uri", post_logout_redirect_uri)
         pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
         pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
 
     @property
@@ -182,14 +194,34 @@ class GetInstanceConfigurationResult(dict):
         return pulumi.get(self, "login_url")
 
     @property
+    @pulumi.getter(name="oidcApiVersion")
+    def oidc_api_version(self) -> str:
+        return pulumi.get(self, "oidc_api_version")
+
+    @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> int:
         return pulumi.get(self, "oidc_application_type")
 
     @property
+    @pulumi.getter(name="oidcEncryptionKey")
+    def oidc_encryption_key(self) -> str:
+        return pulumi.get(self, "oidc_encryption_key")
+
+    @property
+    @pulumi.getter(name="postLogoutRedirectUri")
+    def post_logout_redirect_uri(self) -> str:
+        return pulumi.get(self, "post_logout_redirect_uri")
+
+    @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> str:
         return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
@@ -372,15 +404,175 @@ class GetInstanceEnforcementPointSessionExpiryInactivityResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceParametersResult(dict):
+    def __init__(__self__, *,
+                 groups: 'outputs.GetInstanceParametersGroupsResult'):
+        pulumi.set(__self__, "groups", groups)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> 'outputs.GetInstanceParametersGroupsResult':
+        return pulumi.get(self, "groups")
+
+
+@pulumi.output_type
+class GetInstanceParametersGroupsResult(dict):
+    def __init__(__self__, *,
+                 attributes_transformations: str,
+                 default_values: str,
+                 id: int,
+                 label: str,
+                 provisioned_entitlements: bool,
+                 skip_if_blank: bool,
+                 user_attribute_macros: str,
+                 user_attribute_mappings: str,
+                 values: str):
+        pulumi.set(__self__, "attributes_transformations", attributes_transformations)
+        pulumi.set(__self__, "default_values", default_values)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "provisioned_entitlements", provisioned_entitlements)
+        pulumi.set(__self__, "skip_if_blank", skip_if_blank)
+        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
+        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="attributesTransformations")
+    def attributes_transformations(self) -> str:
+        return pulumi.get(self, "attributes_transformations")
+
+    @property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> str:
+        return pulumi.get(self, "default_values")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="provisionedEntitlements")
+    def provisioned_entitlements(self) -> bool:
+        return pulumi.get(self, "provisioned_entitlements")
+
+    @property
+    @pulumi.getter(name="skipIfBlank")
+    def skip_if_blank(self) -> bool:
+        return pulumi.get(self, "skip_if_blank")
+
+    @property
+    @pulumi.getter(name="userAttributeMacros")
+    def user_attribute_macros(self) -> str:
+        return pulumi.get(self, "user_attribute_macros")
+
+    @property
+    @pulumi.getter(name="userAttributeMappings")
+    def user_attribute_mappings(self) -> str:
+        return pulumi.get(self, "user_attribute_mappings")
+
+    @property
+    @pulumi.getter
+    def values(self) -> str:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GetInstanceProvisioningResult(dict):
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 status: str):
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetInstanceSsoResult(dict):
+    def __init__(__self__, *,
+                 acs_url: str,
+                 certificate: 'outputs.GetInstanceSsoCertificateResult',
+                 client_id: str,
+                 client_secret: str,
+                 issuer: str,
+                 metadata_url: str):
+        pulumi.set(__self__, "acs_url", acs_url)
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "metadata_url", metadata_url)
+
+    @property
+    @pulumi.getter(name="acsUrl")
+    def acs_url(self) -> str:
+        return pulumi.get(self, "acs_url")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> 'outputs.GetInstanceSsoCertificateResult':
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> str:
+        return pulumi.get(self, "metadata_url")
+
+
+@pulumi.output_type
+class GetInstanceSsoCertificateResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

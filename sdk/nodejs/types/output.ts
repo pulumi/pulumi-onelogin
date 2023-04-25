@@ -8,8 +8,12 @@ import * as outputs from "../types/output";
 export interface AppConfiguration {
     accessTokenExpirationMinutes?: number;
     loginUrl?: string;
+    oidcApiVersion: string;
     oidcApplicationType?: number;
+    oidcEncryptionKey?: string;
+    postLogoutRedirectUri?: string;
     redirectUri?: string;
+    refreshTokenExpirationMinutes?: number;
     tokenEndpointAuthMethod?: number;
 }
 
@@ -47,8 +51,40 @@ export interface AppEnforcementPointSessionExpiryInactivity {
     value?: number;
 }
 
+export interface AppParameters {
+    groups?: outputs.AppParametersGroups;
+}
+
+export interface AppParametersGroups {
+    attributesTransformations?: string;
+    defaultValues?: string;
+    id?: number;
+    label?: string;
+    provisionedEntitlements?: boolean;
+    skipIfBlank?: boolean;
+    userAttributeMacros?: string;
+    userAttributeMappings?: string;
+    values?: string;
+}
+
 export interface AppProvisioning {
     enabled?: boolean;
+    status: string;
+}
+
+export interface AppSso {
+    acsUrl: string;
+    certificate: outputs.AppSsoCertificate;
+    clientId: string;
+    clientSecret: string;
+    issuer: string;
+    metadataUrl: string;
+}
+
+export interface AppSsoCertificate {
+    id?: number;
+    name?: string;
+    value?: string;
 }
 
 export interface AuthServersConfiguration {
@@ -61,8 +97,12 @@ export interface AuthServersConfiguration {
 export interface GetAppsConfiguration {
     accessTokenExpirationMinutes: number;
     loginUrl: string;
+    oidcApiVersion: string;
     oidcApplicationType: number;
+    oidcEncryptionKey: string;
+    postLogoutRedirectUri: string;
     redirectUri: string;
+    refreshTokenExpirationMinutes: number;
     tokenEndpointAuthMethod: number;
 }
 
@@ -105,8 +145,40 @@ export interface GetAppsFilter {
     values: string[];
 }
 
+export interface GetAppsParameters {
+    groups: outputs.GetAppsParametersGroups;
+}
+
+export interface GetAppsParametersGroups {
+    attributesTransformations: string;
+    defaultValues: string;
+    id: number;
+    label: string;
+    provisionedEntitlements: boolean;
+    skipIfBlank: boolean;
+    userAttributeMacros: string;
+    userAttributeMappings: string;
+    values: string;
+}
+
 export interface GetAppsProvisioning {
     enabled: boolean;
+    status: string;
+}
+
+export interface GetAppsSso {
+    acsUrl: string;
+    certificate: outputs.GetAppsSsoCertificate;
+    clientId: string;
+    clientSecret: string;
+    issuer: string;
+    metadataUrl: string;
+}
+
+export interface GetAppsSsoCertificate {
+    id: number;
+    name: string;
+    value: string;
 }
 
 export interface GetAuthServersClaimsFilter {
@@ -236,8 +308,12 @@ export namespace apps {
     export interface GetInstanceConfiguration {
         accessTokenExpirationMinutes: number;
         loginUrl: string;
+        oidcApiVersion: string;
         oidcApplicationType: number;
+        oidcEncryptionKey: string;
+        postLogoutRedirectUri: string;
         redirectUri: string;
+        refreshTokenExpirationMinutes: number;
         tokenEndpointAuthMethod: number;
     }
 
@@ -275,8 +351,40 @@ export namespace apps {
         value: number;
     }
 
+    export interface GetInstanceParameters {
+        groups: outputs.apps.GetInstanceParametersGroups;
+    }
+
+    export interface GetInstanceParametersGroups {
+        attributesTransformations: string;
+        defaultValues: string;
+        id: number;
+        label: string;
+        provisionedEntitlements: boolean;
+        skipIfBlank: boolean;
+        userAttributeMacros: string;
+        userAttributeMappings: string;
+        values: string;
+    }
+
     export interface GetInstanceProvisioning {
         enabled: boolean;
+        status: string;
+    }
+
+    export interface GetInstanceSso {
+        acsUrl: string;
+        certificate: outputs.apps.GetInstanceSsoCertificate;
+        clientId: string;
+        clientSecret: string;
+        issuer: string;
+        metadataUrl: string;
+    }
+
+    export interface GetInstanceSsoCertificate {
+        id: number;
+        name: string;
+        value: string;
     }
 
     export interface GetRulesAction {

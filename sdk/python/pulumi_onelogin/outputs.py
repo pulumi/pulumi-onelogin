@@ -16,7 +16,11 @@ __all__ = [
     'AppEnforcementPointResource',
     'AppEnforcementPointSessionExpiryFixed',
     'AppEnforcementPointSessionExpiryInactivity',
+    'AppParameters',
+    'AppParametersGroups',
     'AppProvisioning',
+    'AppSso',
+    'AppSsoCertificate',
     'AuthServersConfiguration',
     'PrivilegesPrivilege',
     'PrivilegesPrivilegeStatement',
@@ -27,7 +31,11 @@ __all__ = [
     'GetAppsEnforcementPointSessionExpiryFixedResult',
     'GetAppsEnforcementPointSessionExpiryInactivityResult',
     'GetAppsFilterResult',
+    'GetAppsParametersResult',
+    'GetAppsParametersGroupsResult',
     'GetAppsProvisioningResult',
+    'GetAppsSsoResult',
+    'GetAppsSsoCertificateResult',
     'GetAuthServersClaimsFilterResult',
     'GetAuthServersConfigurationResult',
     'GetAuthServersFilterResult',
@@ -55,10 +63,18 @@ class AppConfiguration(dict):
             suggest = "access_token_expiration_minutes"
         elif key == "loginUrl":
             suggest = "login_url"
+        elif key == "oidcApiVersion":
+            suggest = "oidc_api_version"
         elif key == "oidcApplicationType":
             suggest = "oidc_application_type"
+        elif key == "oidcEncryptionKey":
+            suggest = "oidc_encryption_key"
+        elif key == "postLogoutRedirectUri":
+            suggest = "post_logout_redirect_uri"
         elif key == "redirectUri":
             suggest = "redirect_uri"
+        elif key == "refreshTokenExpirationMinutes":
+            suggest = "refresh_token_expiration_minutes"
         elif key == "tokenEndpointAuthMethod":
             suggest = "token_endpoint_auth_method"
 
@@ -76,17 +92,29 @@ class AppConfiguration(dict):
     def __init__(__self__, *,
                  access_token_expiration_minutes: Optional[int] = None,
                  login_url: Optional[str] = None,
+                 oidc_api_version: Optional[str] = None,
                  oidc_application_type: Optional[int] = None,
+                 oidc_encryption_key: Optional[str] = None,
+                 post_logout_redirect_uri: Optional[str] = None,
                  redirect_uri: Optional[str] = None,
+                 refresh_token_expiration_minutes: Optional[int] = None,
                  token_endpoint_auth_method: Optional[int] = None):
         if access_token_expiration_minutes is not None:
             pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         if login_url is not None:
             pulumi.set(__self__, "login_url", login_url)
+        if oidc_api_version is not None:
+            pulumi.set(__self__, "oidc_api_version", oidc_api_version)
         if oidc_application_type is not None:
             pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        if oidc_encryption_key is not None:
+            pulumi.set(__self__, "oidc_encryption_key", oidc_encryption_key)
+        if post_logout_redirect_uri is not None:
+            pulumi.set(__self__, "post_logout_redirect_uri", post_logout_redirect_uri)
         if redirect_uri is not None:
             pulumi.set(__self__, "redirect_uri", redirect_uri)
+        if refresh_token_expiration_minutes is not None:
+            pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
         if token_endpoint_auth_method is not None:
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
 
@@ -101,14 +129,34 @@ class AppConfiguration(dict):
         return pulumi.get(self, "login_url")
 
     @property
+    @pulumi.getter(name="oidcApiVersion")
+    def oidc_api_version(self) -> Optional[str]:
+        return pulumi.get(self, "oidc_api_version")
+
+    @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> Optional[int]:
         return pulumi.get(self, "oidc_application_type")
 
     @property
+    @pulumi.getter(name="oidcEncryptionKey")
+    def oidc_encryption_key(self) -> Optional[str]:
+        return pulumi.get(self, "oidc_encryption_key")
+
+    @property
+    @pulumi.getter(name="postLogoutRedirectUri")
+    def post_logout_redirect_uri(self) -> Optional[str]:
+        return pulumi.get(self, "post_logout_redirect_uri")
+
+    @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> Optional[str]:
         return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> Optional[int]:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
@@ -361,16 +409,246 @@ class AppEnforcementPointSessionExpiryInactivity(dict):
 
 
 @pulumi.output_type
+class AppParameters(dict):
+    def __init__(__self__, *,
+                 groups: Optional['outputs.AppParametersGroups'] = None):
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional['outputs.AppParametersGroups']:
+        return pulumi.get(self, "groups")
+
+
+@pulumi.output_type
+class AppParametersGroups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributesTransformations":
+            suggest = "attributes_transformations"
+        elif key == "defaultValues":
+            suggest = "default_values"
+        elif key == "provisionedEntitlements":
+            suggest = "provisioned_entitlements"
+        elif key == "skipIfBlank":
+            suggest = "skip_if_blank"
+        elif key == "userAttributeMacros":
+            suggest = "user_attribute_macros"
+        elif key == "userAttributeMappings":
+            suggest = "user_attribute_mappings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppParametersGroups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppParametersGroups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppParametersGroups.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attributes_transformations: Optional[str] = None,
+                 default_values: Optional[str] = None,
+                 id: Optional[int] = None,
+                 label: Optional[str] = None,
+                 provisioned_entitlements: Optional[bool] = None,
+                 skip_if_blank: Optional[bool] = None,
+                 user_attribute_macros: Optional[str] = None,
+                 user_attribute_mappings: Optional[str] = None,
+                 values: Optional[str] = None):
+        if attributes_transformations is not None:
+            pulumi.set(__self__, "attributes_transformations", attributes_transformations)
+        if default_values is not None:
+            pulumi.set(__self__, "default_values", default_values)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if provisioned_entitlements is not None:
+            pulumi.set(__self__, "provisioned_entitlements", provisioned_entitlements)
+        if skip_if_blank is not None:
+            pulumi.set(__self__, "skip_if_blank", skip_if_blank)
+        if user_attribute_macros is not None:
+            pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
+        if user_attribute_mappings is not None:
+            pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="attributesTransformations")
+    def attributes_transformations(self) -> Optional[str]:
+        return pulumi.get(self, "attributes_transformations")
+
+    @property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> Optional[str]:
+        return pulumi.get(self, "default_values")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="provisionedEntitlements")
+    def provisioned_entitlements(self) -> Optional[bool]:
+        return pulumi.get(self, "provisioned_entitlements")
+
+    @property
+    @pulumi.getter(name="skipIfBlank")
+    def skip_if_blank(self) -> Optional[bool]:
+        return pulumi.get(self, "skip_if_blank")
+
+    @property
+    @pulumi.getter(name="userAttributeMacros")
+    def user_attribute_macros(self) -> Optional[str]:
+        return pulumi.get(self, "user_attribute_macros")
+
+    @property
+    @pulumi.getter(name="userAttributeMappings")
+    def user_attribute_mappings(self) -> Optional[str]:
+        return pulumi.get(self, "user_attribute_mappings")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class AppProvisioning(dict):
     def __init__(__self__, *,
-                 enabled: Optional[bool] = None):
+                 enabled: Optional[bool] = None,
+                 status: Optional[str] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class AppSso(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acsUrl":
+            suggest = "acs_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "metadataUrl":
+            suggest = "metadata_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSso. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSso.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSso.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acs_url: Optional[str] = None,
+                 certificate: Optional['outputs.AppSsoCertificate'] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 issuer: Optional[str] = None,
+                 metadata_url: Optional[str] = None):
+        if acs_url is not None:
+            pulumi.set(__self__, "acs_url", acs_url)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if metadata_url is not None:
+            pulumi.set(__self__, "metadata_url", metadata_url)
+
+    @property
+    @pulumi.getter(name="acsUrl")
+    def acs_url(self) -> Optional[str]:
+        return pulumi.get(self, "acs_url")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional['outputs.AppSsoCertificate']:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[str]:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> Optional[str]:
+        return pulumi.get(self, "metadata_url")
+
+
+@pulumi.output_type
+class AppSsoCertificate(dict):
+    def __init__(__self__, *,
+                 id: Optional[int] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -502,13 +780,21 @@ class GetAppsConfigurationResult(dict):
     def __init__(__self__, *,
                  access_token_expiration_minutes: int,
                  login_url: str,
+                 oidc_api_version: str,
                  oidc_application_type: int,
+                 oidc_encryption_key: str,
+                 post_logout_redirect_uri: str,
                  redirect_uri: str,
+                 refresh_token_expiration_minutes: int,
                  token_endpoint_auth_method: int):
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "oidc_api_version", oidc_api_version)
         pulumi.set(__self__, "oidc_application_type", oidc_application_type)
+        pulumi.set(__self__, "oidc_encryption_key", oidc_encryption_key)
+        pulumi.set(__self__, "post_logout_redirect_uri", post_logout_redirect_uri)
         pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
         pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
 
     @property
@@ -522,14 +808,34 @@ class GetAppsConfigurationResult(dict):
         return pulumi.get(self, "login_url")
 
     @property
+    @pulumi.getter(name="oidcApiVersion")
+    def oidc_api_version(self) -> str:
+        return pulumi.get(self, "oidc_api_version")
+
+    @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> int:
         return pulumi.get(self, "oidc_application_type")
 
     @property
+    @pulumi.getter(name="oidcEncryptionKey")
+    def oidc_encryption_key(self) -> str:
+        return pulumi.get(self, "oidc_encryption_key")
+
+    @property
+    @pulumi.getter(name="postLogoutRedirectUri")
+    def post_logout_redirect_uri(self) -> str:
+        return pulumi.get(self, "post_logout_redirect_uri")
+
+    @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> str:
         return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter(name="refreshTokenExpirationMinutes")
+    def refresh_token_expiration_minutes(self) -> int:
+        return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
@@ -731,15 +1037,175 @@ class GetAppsFilterResult(dict):
 
 
 @pulumi.output_type
+class GetAppsParametersResult(dict):
+    def __init__(__self__, *,
+                 groups: 'outputs.GetAppsParametersGroupsResult'):
+        pulumi.set(__self__, "groups", groups)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> 'outputs.GetAppsParametersGroupsResult':
+        return pulumi.get(self, "groups")
+
+
+@pulumi.output_type
+class GetAppsParametersGroupsResult(dict):
+    def __init__(__self__, *,
+                 attributes_transformations: str,
+                 default_values: str,
+                 id: int,
+                 label: str,
+                 provisioned_entitlements: bool,
+                 skip_if_blank: bool,
+                 user_attribute_macros: str,
+                 user_attribute_mappings: str,
+                 values: str):
+        pulumi.set(__self__, "attributes_transformations", attributes_transformations)
+        pulumi.set(__self__, "default_values", default_values)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "provisioned_entitlements", provisioned_entitlements)
+        pulumi.set(__self__, "skip_if_blank", skip_if_blank)
+        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
+        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="attributesTransformations")
+    def attributes_transformations(self) -> str:
+        return pulumi.get(self, "attributes_transformations")
+
+    @property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> str:
+        return pulumi.get(self, "default_values")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="provisionedEntitlements")
+    def provisioned_entitlements(self) -> bool:
+        return pulumi.get(self, "provisioned_entitlements")
+
+    @property
+    @pulumi.getter(name="skipIfBlank")
+    def skip_if_blank(self) -> bool:
+        return pulumi.get(self, "skip_if_blank")
+
+    @property
+    @pulumi.getter(name="userAttributeMacros")
+    def user_attribute_macros(self) -> str:
+        return pulumi.get(self, "user_attribute_macros")
+
+    @property
+    @pulumi.getter(name="userAttributeMappings")
+    def user_attribute_mappings(self) -> str:
+        return pulumi.get(self, "user_attribute_mappings")
+
+    @property
+    @pulumi.getter
+    def values(self) -> str:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GetAppsProvisioningResult(dict):
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 status: str):
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAppsSsoResult(dict):
+    def __init__(__self__, *,
+                 acs_url: str,
+                 certificate: 'outputs.GetAppsSsoCertificateResult',
+                 client_id: str,
+                 client_secret: str,
+                 issuer: str,
+                 metadata_url: str):
+        pulumi.set(__self__, "acs_url", acs_url)
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "metadata_url", metadata_url)
+
+    @property
+    @pulumi.getter(name="acsUrl")
+    def acs_url(self) -> str:
+        return pulumi.get(self, "acs_url")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> 'outputs.GetAppsSsoCertificateResult':
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> str:
+        return pulumi.get(self, "metadata_url")
+
+
+@pulumi.output_type
+class GetAppsSsoCertificateResult(dict):
+    def __init__(__self__, *,
+                 id: int,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -21,43 +21,53 @@ func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getApps.
 type GetAppsArgs struct {
-	AllowAssumedSignin *bool                    `pulumi:"allowAssumedSignin"`
-	AuthMethod         *int                     `pulumi:"authMethod"`
-	Configuration      *GetAppsConfiguration    `pulumi:"configuration"`
-	ConnectorId        *int                     `pulumi:"connectorId"`
-	CreatedAt          *string                  `pulumi:"createdAt"`
-	Description        *string                  `pulumi:"description"`
-	EnforcementPoint   *GetAppsEnforcementPoint `pulumi:"enforcementPoint"`
-	Filters            []GetAppsFilter          `pulumi:"filters"`
-	IconUrl            *string                  `pulumi:"iconUrl"`
-	Name               *string                  `pulumi:"name"`
-	Notes              *string                  `pulumi:"notes"`
-	PolicyId           *int                     `pulumi:"policyId"`
-	Provisioning       *GetAppsProvisioning     `pulumi:"provisioning"`
-	RoleIds            []int                    `pulumi:"roleIds"`
-	TabId              *int                     `pulumi:"tabId"`
-	UpdatedAt          *string                  `pulumi:"updatedAt"`
-	Visible            *bool                    `pulumi:"visible"`
+	AllowAssumedSignin    *bool                    `pulumi:"allowAssumedSignin"`
+	AuthMethod            *int                     `pulumi:"authMethod"`
+	AuthMethodDescription *string                  `pulumi:"authMethodDescription"`
+	BrandId               *int                     `pulumi:"brandId"`
+	Configuration         *GetAppsConfiguration    `pulumi:"configuration"`
+	ConnectorId           *int                     `pulumi:"connectorId"`
+	CreatedAt             *string                  `pulumi:"createdAt"`
+	Description           *string                  `pulumi:"description"`
+	EnforcementPoint      *GetAppsEnforcementPoint `pulumi:"enforcementPoint"`
+	Filters               []GetAppsFilter          `pulumi:"filters"`
+	IconUrl               *string                  `pulumi:"iconUrl"`
+	LoginConfig           *int                     `pulumi:"loginConfig"`
+	Name                  *string                  `pulumi:"name"`
+	Notes                 *string                  `pulumi:"notes"`
+	Parameters            *GetAppsParameters       `pulumi:"parameters"`
+	PolicyId              *int                     `pulumi:"policyId"`
+	Provisioning          *GetAppsProvisioning     `pulumi:"provisioning"`
+	RoleIds               []int                    `pulumi:"roleIds"`
+	Sso                   *GetAppsSso              `pulumi:"sso"`
+	TabId                 *int                     `pulumi:"tabId"`
+	UpdatedAt             *string                  `pulumi:"updatedAt"`
+	Visible               *bool                    `pulumi:"visible"`
 }
 
 // A collection of values returned by getApps.
 type GetAppsResult struct {
-	AllowAssumedSignin bool                    `pulumi:"allowAssumedSignin"`
-	AuthMethod         int                     `pulumi:"authMethod"`
-	Configuration      GetAppsConfiguration    `pulumi:"configuration"`
-	ConnectorId        int                     `pulumi:"connectorId"`
-	CreatedAt          string                  `pulumi:"createdAt"`
-	Description        string                  `pulumi:"description"`
-	EnforcementPoint   GetAppsEnforcementPoint `pulumi:"enforcementPoint"`
-	Filters            []GetAppsFilter         `pulumi:"filters"`
-	IconUrl            string                  `pulumi:"iconUrl"`
+	AllowAssumedSignin    bool                    `pulumi:"allowAssumedSignin"`
+	AuthMethod            int                     `pulumi:"authMethod"`
+	AuthMethodDescription string                  `pulumi:"authMethodDescription"`
+	BrandId               int                     `pulumi:"brandId"`
+	Configuration         GetAppsConfiguration    `pulumi:"configuration"`
+	ConnectorId           int                     `pulumi:"connectorId"`
+	CreatedAt             string                  `pulumi:"createdAt"`
+	Description           string                  `pulumi:"description"`
+	EnforcementPoint      GetAppsEnforcementPoint `pulumi:"enforcementPoint"`
+	Filters               []GetAppsFilter         `pulumi:"filters"`
+	IconUrl               string                  `pulumi:"iconUrl"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string              `pulumi:"id"`
+	LoginConfig  int                 `pulumi:"loginConfig"`
 	Name         string              `pulumi:"name"`
 	Notes        string              `pulumi:"notes"`
+	Parameters   GetAppsParameters   `pulumi:"parameters"`
 	PolicyId     int                 `pulumi:"policyId"`
 	Provisioning GetAppsProvisioning `pulumi:"provisioning"`
 	RoleIds      []int               `pulumi:"roleIds"`
+	Sso          GetAppsSso          `pulumi:"sso"`
 	TabId        int                 `pulumi:"tabId"`
 	UpdatedAt    string              `pulumi:"updatedAt"`
 	Visible      bool                `pulumi:"visible"`
@@ -78,23 +88,28 @@ func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getApps.
 type GetAppsOutputArgs struct {
-	AllowAssumedSignin pulumi.BoolPtrInput             `pulumi:"allowAssumedSignin"`
-	AuthMethod         pulumi.IntPtrInput              `pulumi:"authMethod"`
-	Configuration      GetAppsConfigurationPtrInput    `pulumi:"configuration"`
-	ConnectorId        pulumi.IntPtrInput              `pulumi:"connectorId"`
-	CreatedAt          pulumi.StringPtrInput           `pulumi:"createdAt"`
-	Description        pulumi.StringPtrInput           `pulumi:"description"`
-	EnforcementPoint   GetAppsEnforcementPointPtrInput `pulumi:"enforcementPoint"`
-	Filters            GetAppsFilterArrayInput         `pulumi:"filters"`
-	IconUrl            pulumi.StringPtrInput           `pulumi:"iconUrl"`
-	Name               pulumi.StringPtrInput           `pulumi:"name"`
-	Notes              pulumi.StringPtrInput           `pulumi:"notes"`
-	PolicyId           pulumi.IntPtrInput              `pulumi:"policyId"`
-	Provisioning       GetAppsProvisioningPtrInput     `pulumi:"provisioning"`
-	RoleIds            pulumi.IntArrayInput            `pulumi:"roleIds"`
-	TabId              pulumi.IntPtrInput              `pulumi:"tabId"`
-	UpdatedAt          pulumi.StringPtrInput           `pulumi:"updatedAt"`
-	Visible            pulumi.BoolPtrInput             `pulumi:"visible"`
+	AllowAssumedSignin    pulumi.BoolPtrInput             `pulumi:"allowAssumedSignin"`
+	AuthMethod            pulumi.IntPtrInput              `pulumi:"authMethod"`
+	AuthMethodDescription pulumi.StringPtrInput           `pulumi:"authMethodDescription"`
+	BrandId               pulumi.IntPtrInput              `pulumi:"brandId"`
+	Configuration         GetAppsConfigurationPtrInput    `pulumi:"configuration"`
+	ConnectorId           pulumi.IntPtrInput              `pulumi:"connectorId"`
+	CreatedAt             pulumi.StringPtrInput           `pulumi:"createdAt"`
+	Description           pulumi.StringPtrInput           `pulumi:"description"`
+	EnforcementPoint      GetAppsEnforcementPointPtrInput `pulumi:"enforcementPoint"`
+	Filters               GetAppsFilterArrayInput         `pulumi:"filters"`
+	IconUrl               pulumi.StringPtrInput           `pulumi:"iconUrl"`
+	LoginConfig           pulumi.IntPtrInput              `pulumi:"loginConfig"`
+	Name                  pulumi.StringPtrInput           `pulumi:"name"`
+	Notes                 pulumi.StringPtrInput           `pulumi:"notes"`
+	Parameters            GetAppsParametersPtrInput       `pulumi:"parameters"`
+	PolicyId              pulumi.IntPtrInput              `pulumi:"policyId"`
+	Provisioning          GetAppsProvisioningPtrInput     `pulumi:"provisioning"`
+	RoleIds               pulumi.IntArrayInput            `pulumi:"roleIds"`
+	Sso                   GetAppsSsoPtrInput              `pulumi:"sso"`
+	TabId                 pulumi.IntPtrInput              `pulumi:"tabId"`
+	UpdatedAt             pulumi.StringPtrInput           `pulumi:"updatedAt"`
+	Visible               pulumi.BoolPtrInput             `pulumi:"visible"`
 }
 
 func (GetAppsOutputArgs) ElementType() reflect.Type {
@@ -122,6 +137,14 @@ func (o GetAppsResultOutput) AllowAssumedSignin() pulumi.BoolOutput {
 
 func (o GetAppsResultOutput) AuthMethod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsResult) int { return v.AuthMethod }).(pulumi.IntOutput)
+}
+
+func (o GetAppsResultOutput) AuthMethodDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsResult) string { return v.AuthMethodDescription }).(pulumi.StringOutput)
+}
+
+func (o GetAppsResultOutput) BrandId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppsResult) int { return v.BrandId }).(pulumi.IntOutput)
 }
 
 func (o GetAppsResultOutput) Configuration() GetAppsConfigurationOutput {
@@ -157,12 +180,20 @@ func (o GetAppsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetAppsResultOutput) LoginConfig() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppsResult) int { return v.LoginConfig }).(pulumi.IntOutput)
+}
+
 func (o GetAppsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetAppsResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+func (o GetAppsResultOutput) Parameters() GetAppsParametersOutput {
+	return o.ApplyT(func(v GetAppsResult) GetAppsParameters { return v.Parameters }).(GetAppsParametersOutput)
 }
 
 func (o GetAppsResultOutput) PolicyId() pulumi.IntOutput {
@@ -175,6 +206,10 @@ func (o GetAppsResultOutput) Provisioning() GetAppsProvisioningOutput {
 
 func (o GetAppsResultOutput) RoleIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAppsResult) []int { return v.RoleIds }).(pulumi.IntArrayOutput)
+}
+
+func (o GetAppsResultOutput) Sso() GetAppsSsoOutput {
+	return o.ApplyT(func(v GetAppsResult) GetAppsSso { return v.Sso }).(GetAppsSsoOutput)
 }
 
 func (o GetAppsResultOutput) TabId() pulumi.IntOutput {

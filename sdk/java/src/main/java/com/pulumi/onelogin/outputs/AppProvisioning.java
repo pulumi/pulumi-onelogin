@@ -5,6 +5,7 @@ package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppProvisioning {
     private @Nullable Boolean enabled;
+    private @Nullable String status;
 
     private AppProvisioning() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -28,10 +33,12 @@ public final class AppProvisioning {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable String status;
         public Builder() {}
         public Builder(AppProvisioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -39,9 +46,15 @@ public final class AppProvisioning {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+            this.status = status;
+            return this;
+        }
         public AppProvisioning build() {
             final var o = new AppProvisioning();
             o.enabled = enabled;
+            o.status = status;
             return o;
         }
     }

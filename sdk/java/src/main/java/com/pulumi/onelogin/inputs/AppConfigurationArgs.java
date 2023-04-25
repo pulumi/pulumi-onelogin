@@ -30,6 +30,13 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.loginUrl);
     }
 
+    @Import(name="oidcApiVersion")
+    private @Nullable Output<String> oidcApiVersion;
+
+    public Optional<Output<String>> oidcApiVersion() {
+        return Optional.ofNullable(this.oidcApiVersion);
+    }
+
     @Import(name="oidcApplicationType")
     private @Nullable Output<Integer> oidcApplicationType;
 
@@ -37,11 +44,32 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.oidcApplicationType);
     }
 
+    @Import(name="oidcEncryptionKey")
+    private @Nullable Output<String> oidcEncryptionKey;
+
+    public Optional<Output<String>> oidcEncryptionKey() {
+        return Optional.ofNullable(this.oidcEncryptionKey);
+    }
+
+    @Import(name="postLogoutRedirectUri")
+    private @Nullable Output<String> postLogoutRedirectUri;
+
+    public Optional<Output<String>> postLogoutRedirectUri() {
+        return Optional.ofNullable(this.postLogoutRedirectUri);
+    }
+
     @Import(name="redirectUri")
     private @Nullable Output<String> redirectUri;
 
     public Optional<Output<String>> redirectUri() {
         return Optional.ofNullable(this.redirectUri);
+    }
+
+    @Import(name="refreshTokenExpirationMinutes")
+    private @Nullable Output<Integer> refreshTokenExpirationMinutes;
+
+    public Optional<Output<Integer>> refreshTokenExpirationMinutes() {
+        return Optional.ofNullable(this.refreshTokenExpirationMinutes);
     }
 
     @Import(name="tokenEndpointAuthMethod")
@@ -56,8 +84,12 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
     private AppConfigurationArgs(AppConfigurationArgs $) {
         this.accessTokenExpirationMinutes = $.accessTokenExpirationMinutes;
         this.loginUrl = $.loginUrl;
+        this.oidcApiVersion = $.oidcApiVersion;
         this.oidcApplicationType = $.oidcApplicationType;
+        this.oidcEncryptionKey = $.oidcEncryptionKey;
+        this.postLogoutRedirectUri = $.postLogoutRedirectUri;
         this.redirectUri = $.redirectUri;
+        this.refreshTokenExpirationMinutes = $.refreshTokenExpirationMinutes;
         this.tokenEndpointAuthMethod = $.tokenEndpointAuthMethod;
     }
 
@@ -97,6 +129,15 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
             return loginUrl(Output.of(loginUrl));
         }
 
+        public Builder oidcApiVersion(@Nullable Output<String> oidcApiVersion) {
+            $.oidcApiVersion = oidcApiVersion;
+            return this;
+        }
+
+        public Builder oidcApiVersion(String oidcApiVersion) {
+            return oidcApiVersion(Output.of(oidcApiVersion));
+        }
+
         public Builder oidcApplicationType(@Nullable Output<Integer> oidcApplicationType) {
             $.oidcApplicationType = oidcApplicationType;
             return this;
@@ -106,6 +147,24 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
             return oidcApplicationType(Output.of(oidcApplicationType));
         }
 
+        public Builder oidcEncryptionKey(@Nullable Output<String> oidcEncryptionKey) {
+            $.oidcEncryptionKey = oidcEncryptionKey;
+            return this;
+        }
+
+        public Builder oidcEncryptionKey(String oidcEncryptionKey) {
+            return oidcEncryptionKey(Output.of(oidcEncryptionKey));
+        }
+
+        public Builder postLogoutRedirectUri(@Nullable Output<String> postLogoutRedirectUri) {
+            $.postLogoutRedirectUri = postLogoutRedirectUri;
+            return this;
+        }
+
+        public Builder postLogoutRedirectUri(String postLogoutRedirectUri) {
+            return postLogoutRedirectUri(Output.of(postLogoutRedirectUri));
+        }
+
         public Builder redirectUri(@Nullable Output<String> redirectUri) {
             $.redirectUri = redirectUri;
             return this;
@@ -113,6 +172,15 @@ public final class AppConfigurationArgs extends com.pulumi.resources.ResourceArg
 
         public Builder redirectUri(String redirectUri) {
             return redirectUri(Output.of(redirectUri));
+        }
+
+        public Builder refreshTokenExpirationMinutes(@Nullable Output<Integer> refreshTokenExpirationMinutes) {
+            $.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
+            return this;
+        }
+
+        public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
+            return refreshTokenExpirationMinutes(Output.of(refreshTokenExpirationMinutes));
         }
 
         public Builder tokenEndpointAuthMethod(@Nullable Output<Integer> tokenEndpointAuthMethod) {

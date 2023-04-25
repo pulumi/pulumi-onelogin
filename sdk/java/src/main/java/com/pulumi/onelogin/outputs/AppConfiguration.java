@@ -14,8 +14,12 @@ import javax.annotation.Nullable;
 public final class AppConfiguration {
     private @Nullable Integer accessTokenExpirationMinutes;
     private @Nullable String loginUrl;
+    private @Nullable String oidcApiVersion;
     private @Nullable Integer oidcApplicationType;
+    private @Nullable String oidcEncryptionKey;
+    private @Nullable String postLogoutRedirectUri;
     private @Nullable String redirectUri;
+    private @Nullable Integer refreshTokenExpirationMinutes;
     private @Nullable Integer tokenEndpointAuthMethod;
 
     private AppConfiguration() {}
@@ -25,11 +29,23 @@ public final class AppConfiguration {
     public Optional<String> loginUrl() {
         return Optional.ofNullable(this.loginUrl);
     }
+    public Optional<String> oidcApiVersion() {
+        return Optional.ofNullable(this.oidcApiVersion);
+    }
     public Optional<Integer> oidcApplicationType() {
         return Optional.ofNullable(this.oidcApplicationType);
     }
+    public Optional<String> oidcEncryptionKey() {
+        return Optional.ofNullable(this.oidcEncryptionKey);
+    }
+    public Optional<String> postLogoutRedirectUri() {
+        return Optional.ofNullable(this.postLogoutRedirectUri);
+    }
     public Optional<String> redirectUri() {
         return Optional.ofNullable(this.redirectUri);
+    }
+    public Optional<Integer> refreshTokenExpirationMinutes() {
+        return Optional.ofNullable(this.refreshTokenExpirationMinutes);
     }
     public Optional<Integer> tokenEndpointAuthMethod() {
         return Optional.ofNullable(this.tokenEndpointAuthMethod);
@@ -46,16 +62,24 @@ public final class AppConfiguration {
     public static final class Builder {
         private @Nullable Integer accessTokenExpirationMinutes;
         private @Nullable String loginUrl;
+        private @Nullable String oidcApiVersion;
         private @Nullable Integer oidcApplicationType;
+        private @Nullable String oidcEncryptionKey;
+        private @Nullable String postLogoutRedirectUri;
         private @Nullable String redirectUri;
+        private @Nullable Integer refreshTokenExpirationMinutes;
         private @Nullable Integer tokenEndpointAuthMethod;
         public Builder() {}
         public Builder(AppConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessTokenExpirationMinutes = defaults.accessTokenExpirationMinutes;
     	      this.loginUrl = defaults.loginUrl;
+    	      this.oidcApiVersion = defaults.oidcApiVersion;
     	      this.oidcApplicationType = defaults.oidcApplicationType;
+    	      this.oidcEncryptionKey = defaults.oidcEncryptionKey;
+    	      this.postLogoutRedirectUri = defaults.postLogoutRedirectUri;
     	      this.redirectUri = defaults.redirectUri;
+    	      this.refreshTokenExpirationMinutes = defaults.refreshTokenExpirationMinutes;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
         }
 
@@ -70,13 +94,33 @@ public final class AppConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcApiVersion(@Nullable String oidcApiVersion) {
+            this.oidcApiVersion = oidcApiVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder oidcApplicationType(@Nullable Integer oidcApplicationType) {
             this.oidcApplicationType = oidcApplicationType;
             return this;
         }
         @CustomType.Setter
+        public Builder oidcEncryptionKey(@Nullable String oidcEncryptionKey) {
+            this.oidcEncryptionKey = oidcEncryptionKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder postLogoutRedirectUri(@Nullable String postLogoutRedirectUri) {
+            this.postLogoutRedirectUri = postLogoutRedirectUri;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redirectUri(@Nullable String redirectUri) {
             this.redirectUri = redirectUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder refreshTokenExpirationMinutes(@Nullable Integer refreshTokenExpirationMinutes) {
+            this.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
@@ -88,8 +132,12 @@ public final class AppConfiguration {
             final var o = new AppConfiguration();
             o.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             o.loginUrl = loginUrl;
+            o.oidcApiVersion = oidcApiVersion;
             o.oidcApplicationType = oidcApplicationType;
+            o.oidcEncryptionKey = oidcEncryptionKey;
+            o.postLogoutRedirectUri = postLogoutRedirectUri;
             o.redirectUri = redirectUri;
+            o.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             o.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return o;
         }

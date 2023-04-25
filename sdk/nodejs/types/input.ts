@@ -8,8 +8,12 @@ import * as outputs from "../types/output";
 export interface AppConfiguration {
     accessTokenExpirationMinutes?: pulumi.Input<number>;
     loginUrl?: pulumi.Input<string>;
+    oidcApiVersion?: pulumi.Input<string>;
     oidcApplicationType?: pulumi.Input<number>;
+    oidcEncryptionKey?: pulumi.Input<string>;
+    postLogoutRedirectUri?: pulumi.Input<string>;
     redirectUri?: pulumi.Input<string>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
     tokenEndpointAuthMethod?: pulumi.Input<number>;
 }
 
@@ -47,8 +51,40 @@ export interface AppEnforcementPointSessionExpiryInactivity {
     value?: pulumi.Input<number>;
 }
 
+export interface AppParameters {
+    groups?: pulumi.Input<inputs.AppParametersGroups>;
+}
+
+export interface AppParametersGroups {
+    attributesTransformations?: pulumi.Input<string>;
+    defaultValues?: pulumi.Input<string>;
+    id?: pulumi.Input<number>;
+    label?: pulumi.Input<string>;
+    provisionedEntitlements?: pulumi.Input<boolean>;
+    skipIfBlank?: pulumi.Input<boolean>;
+    userAttributeMacros?: pulumi.Input<string>;
+    userAttributeMappings?: pulumi.Input<string>;
+    values?: pulumi.Input<string>;
+}
+
 export interface AppProvisioning {
     enabled?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
+}
+
+export interface AppSso {
+    acsUrl?: pulumi.Input<string>;
+    certificate?: pulumi.Input<inputs.AppSsoCertificate>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string>;
+    metadataUrl?: pulumi.Input<string>;
+}
+
+export interface AppSsoCertificate {
+    id?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface AuthServersConfiguration {
@@ -61,16 +97,24 @@ export interface AuthServersConfiguration {
 export interface GetAppsConfiguration {
     accessTokenExpirationMinutes?: number;
     loginUrl?: string;
+    oidcApiVersion?: string;
     oidcApplicationType?: number;
+    oidcEncryptionKey?: string;
+    postLogoutRedirectUri?: string;
     redirectUri?: string;
+    refreshTokenExpirationMinutes?: number;
     tokenEndpointAuthMethod?: number;
 }
 
 export interface GetAppsConfigurationArgs {
     accessTokenExpirationMinutes?: pulumi.Input<number>;
     loginUrl?: pulumi.Input<string>;
+    oidcApiVersion?: pulumi.Input<string>;
     oidcApplicationType?: pulumi.Input<number>;
+    oidcEncryptionKey?: pulumi.Input<string>;
+    postLogoutRedirectUri?: pulumi.Input<string>;
     redirectUri?: pulumi.Input<string>;
+    refreshTokenExpirationMinutes?: pulumi.Input<number>;
     tokenEndpointAuthMethod?: pulumi.Input<number>;
 }
 
@@ -152,12 +196,76 @@ export interface GetAppsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetAppsParameters {
+    groups?: inputs.GetAppsParametersGroups;
+}
+
+export interface GetAppsParametersArgs {
+    groups?: pulumi.Input<inputs.GetAppsParametersGroupsArgs>;
+}
+
+export interface GetAppsParametersGroups {
+    attributesTransformations?: string;
+    defaultValues?: string;
+    id?: number;
+    label?: string;
+    provisionedEntitlements?: boolean;
+    skipIfBlank?: boolean;
+    userAttributeMacros?: string;
+    userAttributeMappings?: string;
+    values?: string;
+}
+
+export interface GetAppsParametersGroupsArgs {
+    attributesTransformations?: pulumi.Input<string>;
+    defaultValues?: pulumi.Input<string>;
+    id?: pulumi.Input<number>;
+    label?: pulumi.Input<string>;
+    provisionedEntitlements?: pulumi.Input<boolean>;
+    skipIfBlank?: pulumi.Input<boolean>;
+    userAttributeMacros?: pulumi.Input<string>;
+    userAttributeMappings?: pulumi.Input<string>;
+    values?: pulumi.Input<string>;
+}
+
 export interface GetAppsProvisioning {
     enabled?: boolean;
+    status?: string;
 }
 
 export interface GetAppsProvisioningArgs {
     enabled?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
+}
+
+export interface GetAppsSso {
+    acsUrl?: string;
+    certificate?: inputs.GetAppsSsoCertificate;
+    clientId?: string;
+    clientSecret?: string;
+    issuer?: string;
+    metadataUrl?: string;
+}
+
+export interface GetAppsSsoArgs {
+    acsUrl?: pulumi.Input<string>;
+    certificate?: pulumi.Input<inputs.GetAppsSsoCertificateArgs>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string>;
+    metadataUrl?: pulumi.Input<string>;
+}
+
+export interface GetAppsSsoCertificate {
+    id?: number;
+    name?: string;
+    value?: string;
+}
+
+export interface GetAppsSsoCertificateArgs {
+    id?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetAuthServersClaimsFilter {
@@ -404,16 +512,24 @@ export namespace apps {
     export interface GetInstanceConfiguration {
         accessTokenExpirationMinutes?: number;
         loginUrl?: string;
+        oidcApiVersion?: string;
         oidcApplicationType?: number;
+        oidcEncryptionKey?: string;
+        postLogoutRedirectUri?: string;
         redirectUri?: string;
+        refreshTokenExpirationMinutes?: number;
         tokenEndpointAuthMethod?: number;
     }
 
     export interface GetInstanceConfigurationArgs {
         accessTokenExpirationMinutes?: pulumi.Input<number>;
         loginUrl?: pulumi.Input<string>;
+        oidcApiVersion?: pulumi.Input<string>;
         oidcApplicationType?: pulumi.Input<number>;
+        oidcEncryptionKey?: pulumi.Input<string>;
+        postLogoutRedirectUri?: pulumi.Input<string>;
         redirectUri?: pulumi.Input<string>;
+        refreshTokenExpirationMinutes?: pulumi.Input<number>;
         tokenEndpointAuthMethod?: pulumi.Input<number>;
     }
 
@@ -485,12 +601,76 @@ export namespace apps {
         value?: pulumi.Input<number>;
     }
 
+    export interface GetInstanceParameters {
+        groups?: inputs.apps.GetInstanceParametersGroups;
+    }
+
+    export interface GetInstanceParametersArgs {
+        groups?: pulumi.Input<inputs.apps.GetInstanceParametersGroupsArgs>;
+    }
+
+    export interface GetInstanceParametersGroups {
+        attributesTransformations?: string;
+        defaultValues?: string;
+        id?: number;
+        label?: string;
+        provisionedEntitlements?: boolean;
+        skipIfBlank?: boolean;
+        userAttributeMacros?: string;
+        userAttributeMappings?: string;
+        values?: string;
+    }
+
+    export interface GetInstanceParametersGroupsArgs {
+        attributesTransformations?: pulumi.Input<string>;
+        defaultValues?: pulumi.Input<string>;
+        id?: pulumi.Input<number>;
+        label?: pulumi.Input<string>;
+        provisionedEntitlements?: pulumi.Input<boolean>;
+        skipIfBlank?: pulumi.Input<boolean>;
+        userAttributeMacros?: pulumi.Input<string>;
+        userAttributeMappings?: pulumi.Input<string>;
+        values?: pulumi.Input<string>;
+    }
+
     export interface GetInstanceProvisioning {
         enabled?: boolean;
+        status?: string;
     }
 
     export interface GetInstanceProvisioningArgs {
         enabled?: pulumi.Input<boolean>;
+        status?: pulumi.Input<string>;
+    }
+
+    export interface GetInstanceSso {
+        acsUrl?: string;
+        certificate?: inputs.apps.GetInstanceSsoCertificate;
+        clientId?: string;
+        clientSecret?: string;
+        issuer?: string;
+        metadataUrl?: string;
+    }
+
+    export interface GetInstanceSsoArgs {
+        acsUrl?: pulumi.Input<string>;
+        certificate?: pulumi.Input<inputs.apps.GetInstanceSsoCertificateArgs>;
+        clientId?: pulumi.Input<string>;
+        clientSecret?: pulumi.Input<string>;
+        issuer?: pulumi.Input<string>;
+        metadataUrl?: pulumi.Input<string>;
+    }
+
+    export interface GetInstanceSsoCertificate {
+        id?: number;
+        name?: string;
+        value?: string;
+    }
+
+    export interface GetInstanceSsoCertificateArgs {
+        id?: pulumi.Input<number>;
+        name?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 
     export interface GetRulesAction {

@@ -14,11 +14,16 @@ namespace Pulumi.Onelogin.Outputs
     public sealed class AppProvisioning
     {
         public readonly bool? Enabled;
+        public readonly string? Status;
 
         [OutputConstructor]
-        private AppProvisioning(bool? enabled)
+        private AppProvisioning(
+            bool? enabled,
+
+            string? status)
         {
             Enabled = enabled;
+            Status = status;
         }
     }
 }
