@@ -2,28 +2,153 @@
     "auto-aliasing": {
         "resources": {
             "onelogin_apps": {
-                "current": "onelogin:index/app:App"
+                "current": "onelogin:index/app:App",
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": true
+                    },
+                    "enforcement_point": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "session_expiry_fixed": {
+                                    "maxItemsOne": true
+                                },
+                                "session_expiry_inactivity": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "parameters": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "groups": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "provisioning": {
+                        "maxItemsOne": true
+                    },
+                    "role_ids": {
+                        "maxItemsOne": false
+                    },
+                    "sso": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "certificate": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "onelogin_apps_rules": {
-                "current": "onelogin:apps/rules:Rules"
+                "current": "onelogin:apps/rules:Rules",
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "conditions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "onelogin_auth_servers": {
-                "current": "onelogin:index/authServers:AuthServers"
+                "current": "onelogin:index/authServers:AuthServers",
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "audiences": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "onelogin_privileges": {
-                "current": "onelogin:index/privileges:Privileges"
+                "current": "onelogin:index/privileges:Privileges",
+                "fields": {
+                    "privilege": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "statement": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "action": {
+                                                "maxItemsOne": false
+                                            },
+                                            "scope": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "onelogin_risk_rules": {
-                "current": "onelogin:index/riskRules:RiskRules"
+                "current": "onelogin:index/riskRules:RiskRules",
+                "fields": {
+                    "filters": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "onelogin_roles": {
-                "current": "onelogin:index/role:Role"
+                "current": "onelogin:index/role:Role",
+                "fields": {
+                    "admins": {
+                        "maxItemsOne": false
+                    },
+                    "apps": {
+                        "maxItemsOne": false
+                    },
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "onelogin_users": {
-                "current": "onelogin:index/user:User"
+                "current": "onelogin:index/user:User",
+                "fields": {
+                    "role_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "onelogin_users_v1": {
-                "current": "onelogin:users/v1:V1"
+                "current": "onelogin:users/v1:V1",
+                "fields": {
+                    "role_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
