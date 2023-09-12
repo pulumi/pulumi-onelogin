@@ -96,11 +96,11 @@ def get_instance(admins: Optional[Sequence[int]] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:roles/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        admins=__ret__.admins,
-        apps=__ret__.apps,
-        id=__ret__.id,
-        name=__ret__.name,
-        users=__ret__.users)
+        admins=pulumi.get(__ret__, 'admins'),
+        apps=pulumi.get(__ret__, 'apps'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_instance)

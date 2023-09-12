@@ -87,10 +87,10 @@ def get_privileges_instance(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:index/getPrivilegesInstance:getPrivilegesInstance', __args__, opts=opts, typ=GetPrivilegesInstanceResult).value
 
     return AwaitableGetPrivilegesInstanceResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        privilege=__ret__.privilege)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        privilege=pulumi.get(__ret__, 'privilege'))
 
 
 @_utilities.lift_output_func(get_privileges_instance)

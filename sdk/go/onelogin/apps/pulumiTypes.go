@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type RulesAction struct {
 	Action *string  `pulumi:"action"`
@@ -43,6 +47,12 @@ func (i RulesActionArgs) ToRulesActionOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, i).(RulesActionOutput)
 }
 
+func (i RulesActionArgs) ToOutput(ctx context.Context) pulumix.Output[RulesAction] {
+	return pulumix.Output[RulesAction]{
+		OutputState: i.ToRulesActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RulesActionArrayInput is an input type that accepts RulesActionArray and RulesActionArrayOutput values.
 // You can construct a concrete instance of `RulesActionArrayInput` via:
 //
@@ -68,6 +78,12 @@ func (i RulesActionArray) ToRulesActionArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RulesActionArrayOutput)
 }
 
+func (i RulesActionArray) ToOutput(ctx context.Context) pulumix.Output[[]RulesAction] {
+	return pulumix.Output[[]RulesAction]{
+		OutputState: i.ToRulesActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesActionOutput struct{ *pulumi.OutputState }
 
 func (RulesActionOutput) ElementType() reflect.Type {
@@ -80,6 +96,12 @@ func (o RulesActionOutput) ToRulesActionOutput() RulesActionOutput {
 
 func (o RulesActionOutput) ToRulesActionOutputWithContext(ctx context.Context) RulesActionOutput {
 	return o
+}
+
+func (o RulesActionOutput) ToOutput(ctx context.Context) pulumix.Output[RulesAction] {
+	return pulumix.Output[RulesAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesActionOutput) Action() pulumi.StringPtrOutput {
@@ -102,6 +124,12 @@ func (o RulesActionArrayOutput) ToRulesActionArrayOutput() RulesActionArrayOutpu
 
 func (o RulesActionArrayOutput) ToRulesActionArrayOutputWithContext(ctx context.Context) RulesActionArrayOutput {
 	return o
+}
+
+func (o RulesActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RulesAction] {
+	return pulumix.Output[[]RulesAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesActionArrayOutput) Index(i pulumi.IntInput) RulesActionOutput {
@@ -145,6 +173,12 @@ func (i RulesConditionArgs) ToRulesConditionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RulesConditionOutput)
 }
 
+func (i RulesConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RulesCondition] {
+	return pulumix.Output[RulesCondition]{
+		OutputState: i.ToRulesConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RulesConditionArrayInput is an input type that accepts RulesConditionArray and RulesConditionArrayOutput values.
 // You can construct a concrete instance of `RulesConditionArrayInput` via:
 //
@@ -170,6 +204,12 @@ func (i RulesConditionArray) ToRulesConditionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RulesConditionArrayOutput)
 }
 
+func (i RulesConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]RulesCondition] {
+	return pulumix.Output[[]RulesCondition]{
+		OutputState: i.ToRulesConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesConditionOutput struct{ *pulumi.OutputState }
 
 func (RulesConditionOutput) ElementType() reflect.Type {
@@ -182,6 +222,12 @@ func (o RulesConditionOutput) ToRulesConditionOutput() RulesConditionOutput {
 
 func (o RulesConditionOutput) ToRulesConditionOutputWithContext(ctx context.Context) RulesConditionOutput {
 	return o
+}
+
+func (o RulesConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RulesCondition] {
+	return pulumix.Output[RulesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesConditionOutput) Operator() pulumi.StringPtrOutput {
@@ -208,6 +254,12 @@ func (o RulesConditionArrayOutput) ToRulesConditionArrayOutput() RulesConditionA
 
 func (o RulesConditionArrayOutput) ToRulesConditionArrayOutputWithContext(ctx context.Context) RulesConditionArrayOutput {
 	return o
+}
+
+func (o RulesConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RulesCondition] {
+	return pulumix.Output[[]RulesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesConditionArrayOutput) Index(i pulumi.IntInput) RulesConditionOutput {
@@ -249,6 +301,12 @@ func (i GetActionsFilterArgs) ToGetActionsFilterOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetActionsFilterOutput)
 }
 
+func (i GetActionsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetActionsFilter] {
+	return pulumix.Output[GetActionsFilter]{
+		OutputState: i.ToGetActionsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetActionsFilterArrayInput is an input type that accepts GetActionsFilterArray and GetActionsFilterArrayOutput values.
 // You can construct a concrete instance of `GetActionsFilterArrayInput` via:
 //
@@ -274,6 +332,12 @@ func (i GetActionsFilterArray) ToGetActionsFilterArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetActionsFilterArrayOutput)
 }
 
+func (i GetActionsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetActionsFilter] {
+	return pulumix.Output[[]GetActionsFilter]{
+		OutputState: i.ToGetActionsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetActionsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetActionsFilterOutput) ElementType() reflect.Type {
@@ -286,6 +350,12 @@ func (o GetActionsFilterOutput) ToGetActionsFilterOutput() GetActionsFilterOutpu
 
 func (o GetActionsFilterOutput) ToGetActionsFilterOutputWithContext(ctx context.Context) GetActionsFilterOutput {
 	return o
+}
+
+func (o GetActionsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetActionsFilter] {
+	return pulumix.Output[GetActionsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActionsFilterOutput) Name() pulumi.StringOutput {
@@ -308,6 +378,12 @@ func (o GetActionsFilterArrayOutput) ToGetActionsFilterArrayOutput() GetActionsF
 
 func (o GetActionsFilterArrayOutput) ToGetActionsFilterArrayOutputWithContext(ctx context.Context) GetActionsFilterArrayOutput {
 	return o
+}
+
+func (o GetActionsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetActionsFilter] {
+	return pulumix.Output[[]GetActionsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActionsFilterArrayOutput) Index(i pulumi.IntInput) GetActionsFilterOutput {
@@ -349,6 +425,12 @@ func (i GetActionsValuesFilterArgs) ToGetActionsValuesFilterOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetActionsValuesFilterOutput)
 }
 
+func (i GetActionsValuesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetActionsValuesFilter] {
+	return pulumix.Output[GetActionsValuesFilter]{
+		OutputState: i.ToGetActionsValuesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetActionsValuesFilterArrayInput is an input type that accepts GetActionsValuesFilterArray and GetActionsValuesFilterArrayOutput values.
 // You can construct a concrete instance of `GetActionsValuesFilterArrayInput` via:
 //
@@ -374,6 +456,12 @@ func (i GetActionsValuesFilterArray) ToGetActionsValuesFilterArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetActionsValuesFilterArrayOutput)
 }
 
+func (i GetActionsValuesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetActionsValuesFilter] {
+	return pulumix.Output[[]GetActionsValuesFilter]{
+		OutputState: i.ToGetActionsValuesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetActionsValuesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetActionsValuesFilterOutput) ElementType() reflect.Type {
@@ -386,6 +474,12 @@ func (o GetActionsValuesFilterOutput) ToGetActionsValuesFilterOutput() GetAction
 
 func (o GetActionsValuesFilterOutput) ToGetActionsValuesFilterOutputWithContext(ctx context.Context) GetActionsValuesFilterOutput {
 	return o
+}
+
+func (o GetActionsValuesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetActionsValuesFilter] {
+	return pulumix.Output[GetActionsValuesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActionsValuesFilterOutput) Name() pulumi.StringOutput {
@@ -408,6 +502,12 @@ func (o GetActionsValuesFilterArrayOutput) ToGetActionsValuesFilterArrayOutput()
 
 func (o GetActionsValuesFilterArrayOutput) ToGetActionsValuesFilterArrayOutputWithContext(ctx context.Context) GetActionsValuesFilterArrayOutput {
 	return o
+}
+
+func (o GetActionsValuesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetActionsValuesFilter] {
+	return pulumix.Output[[]GetActionsValuesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActionsValuesFilterArrayOutput) Index(i pulumi.IntInput) GetActionsValuesFilterOutput {
@@ -449,6 +549,12 @@ func (i GetConditionsFilterArgs) ToGetConditionsFilterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsFilterOutput)
 }
 
+func (i GetConditionsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetConditionsFilter] {
+	return pulumix.Output[GetConditionsFilter]{
+		OutputState: i.ToGetConditionsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConditionsFilterArrayInput is an input type that accepts GetConditionsFilterArray and GetConditionsFilterArrayOutput values.
 // You can construct a concrete instance of `GetConditionsFilterArrayInput` via:
 //
@@ -474,6 +580,12 @@ func (i GetConditionsFilterArray) ToGetConditionsFilterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsFilterArrayOutput)
 }
 
+func (i GetConditionsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConditionsFilter] {
+	return pulumix.Output[[]GetConditionsFilter]{
+		OutputState: i.ToGetConditionsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConditionsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetConditionsFilterOutput) ElementType() reflect.Type {
@@ -486,6 +598,12 @@ func (o GetConditionsFilterOutput) ToGetConditionsFilterOutput() GetConditionsFi
 
 func (o GetConditionsFilterOutput) ToGetConditionsFilterOutputWithContext(ctx context.Context) GetConditionsFilterOutput {
 	return o
+}
+
+func (o GetConditionsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetConditionsFilter] {
+	return pulumix.Output[GetConditionsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConditionsFilterOutput) Name() pulumi.StringOutput {
@@ -508,6 +626,12 @@ func (o GetConditionsFilterArrayOutput) ToGetConditionsFilterArrayOutput() GetCo
 
 func (o GetConditionsFilterArrayOutput) ToGetConditionsFilterArrayOutputWithContext(ctx context.Context) GetConditionsFilterArrayOutput {
 	return o
+}
+
+func (o GetConditionsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConditionsFilter] {
+	return pulumix.Output[[]GetConditionsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConditionsFilterArrayOutput) Index(i pulumi.IntInput) GetConditionsFilterOutput {
@@ -549,6 +673,12 @@ func (i GetConditionsOperatorsFilterArgs) ToGetConditionsOperatorsFilterOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsOperatorsFilterOutput)
 }
 
+func (i GetConditionsOperatorsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetConditionsOperatorsFilter] {
+	return pulumix.Output[GetConditionsOperatorsFilter]{
+		OutputState: i.ToGetConditionsOperatorsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConditionsOperatorsFilterArrayInput is an input type that accepts GetConditionsOperatorsFilterArray and GetConditionsOperatorsFilterArrayOutput values.
 // You can construct a concrete instance of `GetConditionsOperatorsFilterArrayInput` via:
 //
@@ -574,6 +704,12 @@ func (i GetConditionsOperatorsFilterArray) ToGetConditionsOperatorsFilterArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetConditionsOperatorsFilterArrayOutput)
 }
 
+func (i GetConditionsOperatorsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConditionsOperatorsFilter] {
+	return pulumix.Output[[]GetConditionsOperatorsFilter]{
+		OutputState: i.ToGetConditionsOperatorsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConditionsOperatorsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetConditionsOperatorsFilterOutput) ElementType() reflect.Type {
@@ -586,6 +722,12 @@ func (o GetConditionsOperatorsFilterOutput) ToGetConditionsOperatorsFilterOutput
 
 func (o GetConditionsOperatorsFilterOutput) ToGetConditionsOperatorsFilterOutputWithContext(ctx context.Context) GetConditionsOperatorsFilterOutput {
 	return o
+}
+
+func (o GetConditionsOperatorsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetConditionsOperatorsFilter] {
+	return pulumix.Output[GetConditionsOperatorsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConditionsOperatorsFilterOutput) Name() pulumi.StringOutput {
@@ -608,6 +750,12 @@ func (o GetConditionsOperatorsFilterArrayOutput) ToGetConditionsOperatorsFilterA
 
 func (o GetConditionsOperatorsFilterArrayOutput) ToGetConditionsOperatorsFilterArrayOutputWithContext(ctx context.Context) GetConditionsOperatorsFilterArrayOutput {
 	return o
+}
+
+func (o GetConditionsOperatorsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConditionsOperatorsFilter] {
+	return pulumix.Output[[]GetConditionsOperatorsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConditionsOperatorsFilterArrayOutput) Index(i pulumi.IntInput) GetConditionsOperatorsFilterOutput {
@@ -663,6 +811,12 @@ func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfigurationOutput)
 }
 
+func (i GetInstanceConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceConfiguration] {
+	return pulumix.Output[GetInstanceConfiguration]{
+		OutputState: i.ToGetInstanceConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceConfigurationArgs) ToGetInstanceConfigurationPtrOutput() GetInstanceConfigurationPtrOutput {
 	return i.ToGetInstanceConfigurationPtrOutputWithContext(context.Background())
 }
@@ -704,6 +858,12 @@ func (i *getInstanceConfigurationPtrType) ToGetInstanceConfigurationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfigurationPtrOutput)
 }
 
+func (i *getInstanceConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceConfiguration] {
+	return pulumix.Output[*GetInstanceConfiguration]{
+		OutputState: i.ToGetInstanceConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceConfigurationOutput) ElementType() reflect.Type {
@@ -726,6 +886,12 @@ func (o GetInstanceConfigurationOutput) ToGetInstanceConfigurationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceConfiguration) *GetInstanceConfiguration {
 		return &v
 	}).(GetInstanceConfigurationPtrOutput)
+}
+
+func (o GetInstanceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceConfiguration] {
+	return pulumix.Output[GetInstanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
@@ -776,6 +942,12 @@ func (o GetInstanceConfigurationPtrOutput) ToGetInstanceConfigurationPtrOutput()
 
 func (o GetInstanceConfigurationPtrOutput) ToGetInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetInstanceConfigurationPtrOutput {
 	return o
+}
+
+func (o GetInstanceConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceConfiguration] {
+	return pulumix.Output[*GetInstanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceConfigurationPtrOutput) Elem() GetInstanceConfigurationOutput {
@@ -924,6 +1096,12 @@ func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointOutput)
 }
 
+func (i GetInstanceEnforcementPointArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPoint] {
+	return pulumix.Output[GetInstanceEnforcementPoint]{
+		OutputState: i.ToGetInstanceEnforcementPointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceEnforcementPointArgs) ToGetInstanceEnforcementPointPtrOutput() GetInstanceEnforcementPointPtrOutput {
 	return i.ToGetInstanceEnforcementPointPtrOutputWithContext(context.Background())
 }
@@ -965,6 +1143,12 @@ func (i *getInstanceEnforcementPointPtrType) ToGetInstanceEnforcementPointPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointPtrOutput)
 }
 
+func (i *getInstanceEnforcementPointPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPoint] {
+	return pulumix.Output[*GetInstanceEnforcementPoint]{
+		OutputState: i.ToGetInstanceEnforcementPointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnforcementPointOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnforcementPointOutput) ElementType() reflect.Type {
@@ -987,6 +1171,12 @@ func (o GetInstanceEnforcementPointOutput) ToGetInstanceEnforcementPointPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceEnforcementPoint) *GetInstanceEnforcementPoint {
 		return &v
 	}).(GetInstanceEnforcementPointPtrOutput)
+}
+
+func (o GetInstanceEnforcementPointOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPoint] {
+	return pulumix.Output[GetInstanceEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointOutput) CaseSensitive() pulumi.BoolOutput {
@@ -1057,6 +1247,12 @@ func (o GetInstanceEnforcementPointPtrOutput) ToGetInstanceEnforcementPointPtrOu
 
 func (o GetInstanceEnforcementPointPtrOutput) ToGetInstanceEnforcementPointPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointPtrOutput {
 	return o
+}
+
+func (o GetInstanceEnforcementPointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPoint] {
+	return pulumix.Output[*GetInstanceEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointPtrOutput) Elem() GetInstanceEnforcementPointOutput {
@@ -1225,6 +1421,12 @@ func (i GetInstanceEnforcementPointResourceArgs) ToGetInstanceEnforcementPointRe
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointResourceOutput)
 }
 
+func (i GetInstanceEnforcementPointResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointResource] {
+	return pulumix.Output[GetInstanceEnforcementPointResource]{
+		OutputState: i.ToGetInstanceEnforcementPointResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceEnforcementPointResourceArrayInput is an input type that accepts GetInstanceEnforcementPointResourceArray and GetInstanceEnforcementPointResourceArrayOutput values.
 // You can construct a concrete instance of `GetInstanceEnforcementPointResourceArrayInput` via:
 //
@@ -1250,6 +1452,12 @@ func (i GetInstanceEnforcementPointResourceArray) ToGetInstanceEnforcementPointR
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointResourceArrayOutput)
 }
 
+func (i GetInstanceEnforcementPointResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnforcementPointResource] {
+	return pulumix.Output[[]GetInstanceEnforcementPointResource]{
+		OutputState: i.ToGetInstanceEnforcementPointResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnforcementPointResourceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnforcementPointResourceOutput) ElementType() reflect.Type {
@@ -1262,6 +1470,12 @@ func (o GetInstanceEnforcementPointResourceOutput) ToGetInstanceEnforcementPoint
 
 func (o GetInstanceEnforcementPointResourceOutput) ToGetInstanceEnforcementPointResourceOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceOutput {
 	return o
+}
+
+func (o GetInstanceEnforcementPointResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointResource] {
+	return pulumix.Output[GetInstanceEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointResourceOutput) Conditions() pulumi.StringOutput {
@@ -1296,6 +1510,12 @@ func (o GetInstanceEnforcementPointResourceArrayOutput) ToGetInstanceEnforcement
 
 func (o GetInstanceEnforcementPointResourceArrayOutput) ToGetInstanceEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetInstanceEnforcementPointResourceArrayOutput {
 	return o
+}
+
+func (o GetInstanceEnforcementPointResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnforcementPointResource] {
+	return pulumix.Output[[]GetInstanceEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) GetInstanceEnforcementPointResourceOutput {
@@ -1335,6 +1555,12 @@ func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcem
 
 func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[GetInstanceEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToGetInstanceEnforcementPointSessionExpiryFixedOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetInstanceEnforcementPointSessionExpiryFixedArgs) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutput() GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
@@ -1378,6 +1604,12 @@ func (i *getInstanceEnforcementPointSessionExpiryFixedPtrType) ToGetInstanceEnfo
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (i *getInstanceEnforcementPointSessionExpiryFixedPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*GetInstanceEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
@@ -1402,6 +1634,12 @@ func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToGetInstanceEnforc
 	}).(GetInstanceEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[GetInstanceEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryFixed) int { return v.Unit }).(pulumi.IntOutput)
 }
@@ -1422,6 +1660,12 @@ func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ToGetInstanceEnf
 
 func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ToGetInstanceEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryFixedPtrOutput {
 	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*GetInstanceEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointSessionExpiryFixedPtrOutput) Elem() GetInstanceEnforcementPointSessionExpiryFixedOutput {
@@ -1485,6 +1729,12 @@ func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnf
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryInactivityOutput)
 }
 
+func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[GetInstanceEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToGetInstanceEnforcementPointSessionExpiryInactivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceEnforcementPointSessionExpiryInactivityArgs) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutput() GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
 	return i.ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
 }
@@ -1526,6 +1776,12 @@ func (i *getInstanceEnforcementPointSessionExpiryInactivityPtrType) ToGetInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (i *getInstanceEnforcementPointSessionExpiryInactivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*GetInstanceEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
@@ -1550,6 +1806,12 @@ func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToGetInstanceE
 	}).(GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[GetInstanceEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceEnforcementPointSessionExpiryInactivity) int { return v.Unit }).(pulumi.IntOutput)
 }
@@ -1570,6 +1832,12 @@ func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ToGetInstan
 
 func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ToGetInstanceEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o
+}
+
+func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*GetInstanceEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnforcementPointSessionExpiryInactivityPtrOutput) Elem() GetInstanceEnforcementPointSessionExpiryInactivityOutput {
@@ -1631,6 +1899,12 @@ func (i GetInstanceParametersArgs) ToGetInstanceParametersOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersOutput)
 }
 
+func (i GetInstanceParametersArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceParameters] {
+	return pulumix.Output[GetInstanceParameters]{
+		OutputState: i.ToGetInstanceParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceParametersArgs) ToGetInstanceParametersPtrOutput() GetInstanceParametersPtrOutput {
 	return i.ToGetInstanceParametersPtrOutputWithContext(context.Background())
 }
@@ -1672,6 +1946,12 @@ func (i *getInstanceParametersPtrType) ToGetInstanceParametersPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersPtrOutput)
 }
 
+func (i *getInstanceParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceParameters] {
+	return pulumix.Output[*GetInstanceParameters]{
+		OutputState: i.ToGetInstanceParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceParametersOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceParametersOutput) ElementType() reflect.Type {
@@ -1696,6 +1976,12 @@ func (o GetInstanceParametersOutput) ToGetInstanceParametersPtrOutputWithContext
 	}).(GetInstanceParametersPtrOutput)
 }
 
+func (o GetInstanceParametersOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceParameters] {
+	return pulumix.Output[GetInstanceParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceParametersOutput) Groups() GetInstanceParametersGroupsOutput {
 	return o.ApplyT(func(v GetInstanceParameters) GetInstanceParametersGroups { return v.Groups }).(GetInstanceParametersGroupsOutput)
 }
@@ -1712,6 +1998,12 @@ func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutput() GetIn
 
 func (o GetInstanceParametersPtrOutput) ToGetInstanceParametersPtrOutputWithContext(ctx context.Context) GetInstanceParametersPtrOutput {
 	return o
+}
+
+func (o GetInstanceParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceParameters] {
+	return pulumix.Output[*GetInstanceParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceParametersPtrOutput) Elem() GetInstanceParametersOutput {
@@ -1780,6 +2072,12 @@ func (i GetInstanceParametersGroupsArgs) ToGetInstanceParametersGroupsOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersGroupsOutput)
 }
 
+func (i GetInstanceParametersGroupsArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceParametersGroups] {
+	return pulumix.Output[GetInstanceParametersGroups]{
+		OutputState: i.ToGetInstanceParametersGroupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceParametersGroupsArgs) ToGetInstanceParametersGroupsPtrOutput() GetInstanceParametersGroupsPtrOutput {
 	return i.ToGetInstanceParametersGroupsPtrOutputWithContext(context.Background())
 }
@@ -1821,6 +2119,12 @@ func (i *getInstanceParametersGroupsPtrType) ToGetInstanceParametersGroupsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParametersGroupsPtrOutput)
 }
 
+func (i *getInstanceParametersGroupsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceParametersGroups] {
+	return pulumix.Output[*GetInstanceParametersGroups]{
+		OutputState: i.ToGetInstanceParametersGroupsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceParametersGroupsOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceParametersGroupsOutput) ElementType() reflect.Type {
@@ -1843,6 +2147,12 @@ func (o GetInstanceParametersGroupsOutput) ToGetInstanceParametersGroupsPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceParametersGroups) *GetInstanceParametersGroups {
 		return &v
 	}).(GetInstanceParametersGroupsPtrOutput)
+}
+
+func (o GetInstanceParametersGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceParametersGroups] {
+	return pulumix.Output[GetInstanceParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceParametersGroupsOutput) AttributesTransformations() pulumi.StringOutput {
@@ -1893,6 +2203,12 @@ func (o GetInstanceParametersGroupsPtrOutput) ToGetInstanceParametersGroupsPtrOu
 
 func (o GetInstanceParametersGroupsPtrOutput) ToGetInstanceParametersGroupsPtrOutputWithContext(ctx context.Context) GetInstanceParametersGroupsPtrOutput {
 	return o
+}
+
+func (o GetInstanceParametersGroupsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceParametersGroups] {
+	return pulumix.Output[*GetInstanceParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceParametersGroupsPtrOutput) Elem() GetInstanceParametersGroupsOutput {
@@ -2019,6 +2335,12 @@ func (i GetInstanceProvisioningArgs) ToGetInstanceProvisioningOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceProvisioningOutput)
 }
 
+func (i GetInstanceProvisioningArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceProvisioning] {
+	return pulumix.Output[GetInstanceProvisioning]{
+		OutputState: i.ToGetInstanceProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceProvisioningArgs) ToGetInstanceProvisioningPtrOutput() GetInstanceProvisioningPtrOutput {
 	return i.ToGetInstanceProvisioningPtrOutputWithContext(context.Background())
 }
@@ -2060,6 +2382,12 @@ func (i *getInstanceProvisioningPtrType) ToGetInstanceProvisioningPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceProvisioningPtrOutput)
 }
 
+func (i *getInstanceProvisioningPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceProvisioning] {
+	return pulumix.Output[*GetInstanceProvisioning]{
+		OutputState: i.ToGetInstanceProvisioningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceProvisioningOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceProvisioningOutput) ElementType() reflect.Type {
@@ -2084,6 +2412,12 @@ func (o GetInstanceProvisioningOutput) ToGetInstanceProvisioningPtrOutputWithCon
 	}).(GetInstanceProvisioningPtrOutput)
 }
 
+func (o GetInstanceProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceProvisioning] {
+	return pulumix.Output[GetInstanceProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceProvisioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2104,6 +2438,12 @@ func (o GetInstanceProvisioningPtrOutput) ToGetInstanceProvisioningPtrOutput() G
 
 func (o GetInstanceProvisioningPtrOutput) ToGetInstanceProvisioningPtrOutputWithContext(ctx context.Context) GetInstanceProvisioningPtrOutput {
 	return o
+}
+
+func (o GetInstanceProvisioningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceProvisioning] {
+	return pulumix.Output[*GetInstanceProvisioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceProvisioningPtrOutput) Elem() GetInstanceProvisioningOutput {
@@ -2175,6 +2515,12 @@ func (i GetInstanceSsoArgs) ToGetInstanceSsoOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSsoOutput)
 }
 
+func (i GetInstanceSsoArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSso] {
+	return pulumix.Output[GetInstanceSso]{
+		OutputState: i.ToGetInstanceSsoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceSsoArgs) ToGetInstanceSsoPtrOutput() GetInstanceSsoPtrOutput {
 	return i.ToGetInstanceSsoPtrOutputWithContext(context.Background())
 }
@@ -2216,6 +2562,12 @@ func (i *getInstanceSsoPtrType) ToGetInstanceSsoPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSsoPtrOutput)
 }
 
+func (i *getInstanceSsoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceSso] {
+	return pulumix.Output[*GetInstanceSso]{
+		OutputState: i.ToGetInstanceSsoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceSsoOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceSsoOutput) ElementType() reflect.Type {
@@ -2238,6 +2590,12 @@ func (o GetInstanceSsoOutput) ToGetInstanceSsoPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceSso) *GetInstanceSso {
 		return &v
 	}).(GetInstanceSsoPtrOutput)
+}
+
+func (o GetInstanceSsoOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSso] {
+	return pulumix.Output[GetInstanceSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceSsoOutput) AcsUrl() pulumi.StringOutput {
@@ -2276,6 +2634,12 @@ func (o GetInstanceSsoPtrOutput) ToGetInstanceSsoPtrOutput() GetInstanceSsoPtrOu
 
 func (o GetInstanceSsoPtrOutput) ToGetInstanceSsoPtrOutputWithContext(ctx context.Context) GetInstanceSsoPtrOutput {
 	return o
+}
+
+func (o GetInstanceSsoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceSso] {
+	return pulumix.Output[*GetInstanceSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceSsoPtrOutput) Elem() GetInstanceSsoOutput {
@@ -2377,6 +2741,12 @@ func (i GetInstanceSsoCertificateArgs) ToGetInstanceSsoCertificateOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSsoCertificateOutput)
 }
 
+func (i GetInstanceSsoCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSsoCertificate] {
+	return pulumix.Output[GetInstanceSsoCertificate]{
+		OutputState: i.ToGetInstanceSsoCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetInstanceSsoCertificateArgs) ToGetInstanceSsoCertificatePtrOutput() GetInstanceSsoCertificatePtrOutput {
 	return i.ToGetInstanceSsoCertificatePtrOutputWithContext(context.Background())
 }
@@ -2418,6 +2788,12 @@ func (i *getInstanceSsoCertificatePtrType) ToGetInstanceSsoCertificatePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSsoCertificatePtrOutput)
 }
 
+func (i *getInstanceSsoCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceSsoCertificate] {
+	return pulumix.Output[*GetInstanceSsoCertificate]{
+		OutputState: i.ToGetInstanceSsoCertificatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceSsoCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceSsoCertificateOutput) ElementType() reflect.Type {
@@ -2440,6 +2816,12 @@ func (o GetInstanceSsoCertificateOutput) ToGetInstanceSsoCertificatePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInstanceSsoCertificate) *GetInstanceSsoCertificate {
 		return &v
 	}).(GetInstanceSsoCertificatePtrOutput)
+}
+
+func (o GetInstanceSsoCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSsoCertificate] {
+	return pulumix.Output[GetInstanceSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceSsoCertificateOutput) Id() pulumi.IntOutput {
@@ -2466,6 +2848,12 @@ func (o GetInstanceSsoCertificatePtrOutput) ToGetInstanceSsoCertificatePtrOutput
 
 func (o GetInstanceSsoCertificatePtrOutput) ToGetInstanceSsoCertificatePtrOutputWithContext(ctx context.Context) GetInstanceSsoCertificatePtrOutput {
 	return o
+}
+
+func (o GetInstanceSsoCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInstanceSsoCertificate] {
+	return pulumix.Output[*GetInstanceSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceSsoCertificatePtrOutput) Elem() GetInstanceSsoCertificateOutput {
@@ -2538,6 +2926,12 @@ func (i GetRulesActionArgs) ToGetRulesActionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesActionOutput)
 }
 
+func (i GetRulesActionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesAction] {
+	return pulumix.Output[GetRulesAction]{
+		OutputState: i.ToGetRulesActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesActionArrayInput is an input type that accepts GetRulesActionArray and GetRulesActionArrayOutput values.
 // You can construct a concrete instance of `GetRulesActionArrayInput` via:
 //
@@ -2563,6 +2957,12 @@ func (i GetRulesActionArray) ToGetRulesActionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesActionArrayOutput)
 }
 
+func (i GetRulesActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesAction] {
+	return pulumix.Output[[]GetRulesAction]{
+		OutputState: i.ToGetRulesActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesActionOutput struct{ *pulumi.OutputState }
 
 func (GetRulesActionOutput) ElementType() reflect.Type {
@@ -2575,6 +2975,12 @@ func (o GetRulesActionOutput) ToGetRulesActionOutput() GetRulesActionOutput {
 
 func (o GetRulesActionOutput) ToGetRulesActionOutputWithContext(ctx context.Context) GetRulesActionOutput {
 	return o
+}
+
+func (o GetRulesActionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesAction] {
+	return pulumix.Output[GetRulesAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesActionOutput) Action() pulumi.StringOutput {
@@ -2597,6 +3003,12 @@ func (o GetRulesActionArrayOutput) ToGetRulesActionArrayOutput() GetRulesActionA
 
 func (o GetRulesActionArrayOutput) ToGetRulesActionArrayOutputWithContext(ctx context.Context) GetRulesActionArrayOutput {
 	return o
+}
+
+func (o GetRulesActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesAction] {
+	return pulumix.Output[[]GetRulesAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesActionArrayOutput) Index(i pulumi.IntInput) GetRulesActionOutput {
@@ -2640,6 +3052,12 @@ func (i GetRulesConditionArgs) ToGetRulesConditionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesConditionOutput)
 }
 
+func (i GetRulesConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesCondition] {
+	return pulumix.Output[GetRulesCondition]{
+		OutputState: i.ToGetRulesConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesConditionArrayInput is an input type that accepts GetRulesConditionArray and GetRulesConditionArrayOutput values.
 // You can construct a concrete instance of `GetRulesConditionArrayInput` via:
 //
@@ -2665,6 +3083,12 @@ func (i GetRulesConditionArray) ToGetRulesConditionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesConditionArrayOutput)
 }
 
+func (i GetRulesConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesCondition] {
+	return pulumix.Output[[]GetRulesCondition]{
+		OutputState: i.ToGetRulesConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesConditionOutput struct{ *pulumi.OutputState }
 
 func (GetRulesConditionOutput) ElementType() reflect.Type {
@@ -2677,6 +3101,12 @@ func (o GetRulesConditionOutput) ToGetRulesConditionOutput() GetRulesConditionOu
 
 func (o GetRulesConditionOutput) ToGetRulesConditionOutputWithContext(ctx context.Context) GetRulesConditionOutput {
 	return o
+}
+
+func (o GetRulesConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesCondition] {
+	return pulumix.Output[GetRulesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesConditionOutput) Operator() pulumi.StringOutput {
@@ -2703,6 +3133,12 @@ func (o GetRulesConditionArrayOutput) ToGetRulesConditionArrayOutput() GetRulesC
 
 func (o GetRulesConditionArrayOutput) ToGetRulesConditionArrayOutputWithContext(ctx context.Context) GetRulesConditionArrayOutput {
 	return o
+}
+
+func (o GetRulesConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesCondition] {
+	return pulumix.Output[[]GetRulesCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesConditionArrayOutput) Index(i pulumi.IntInput) GetRulesConditionOutput {
@@ -2744,6 +3180,12 @@ func (i GetRulesFilterArgs) ToGetRulesFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesFilterOutput)
 }
 
+func (i GetRulesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesFilter] {
+	return pulumix.Output[GetRulesFilter]{
+		OutputState: i.ToGetRulesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesFilterArrayInput is an input type that accepts GetRulesFilterArray and GetRulesFilterArrayOutput values.
 // You can construct a concrete instance of `GetRulesFilterArrayInput` via:
 //
@@ -2769,6 +3211,12 @@ func (i GetRulesFilterArray) ToGetRulesFilterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesFilterArrayOutput)
 }
 
+func (i GetRulesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesFilter] {
+	return pulumix.Output[[]GetRulesFilter]{
+		OutputState: i.ToGetRulesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetRulesFilterOutput) ElementType() reflect.Type {
@@ -2781,6 +3229,12 @@ func (o GetRulesFilterOutput) ToGetRulesFilterOutput() GetRulesFilterOutput {
 
 func (o GetRulesFilterOutput) ToGetRulesFilterOutputWithContext(ctx context.Context) GetRulesFilterOutput {
 	return o
+}
+
+func (o GetRulesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesFilter] {
+	return pulumix.Output[GetRulesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesFilterOutput) Name() pulumi.StringOutput {
@@ -2803,6 +3257,12 @@ func (o GetRulesFilterArrayOutput) ToGetRulesFilterArrayOutput() GetRulesFilterA
 
 func (o GetRulesFilterArrayOutput) ToGetRulesFilterArrayOutputWithContext(ctx context.Context) GetRulesFilterArrayOutput {
 	return o
+}
+
+func (o GetRulesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesFilter] {
+	return pulumix.Output[[]GetRulesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRulesFilterOutput {
@@ -2844,6 +3304,12 @@ func (i GetRulesInstanceActionArgs) ToGetRulesInstanceActionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceActionOutput)
 }
 
+func (i GetRulesInstanceActionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesInstanceAction] {
+	return pulumix.Output[GetRulesInstanceAction]{
+		OutputState: i.ToGetRulesInstanceActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesInstanceActionArrayInput is an input type that accepts GetRulesInstanceActionArray and GetRulesInstanceActionArrayOutput values.
 // You can construct a concrete instance of `GetRulesInstanceActionArrayInput` via:
 //
@@ -2869,6 +3335,12 @@ func (i GetRulesInstanceActionArray) ToGetRulesInstanceActionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceActionArrayOutput)
 }
 
+func (i GetRulesInstanceActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesInstanceAction] {
+	return pulumix.Output[[]GetRulesInstanceAction]{
+		OutputState: i.ToGetRulesInstanceActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesInstanceActionOutput struct{ *pulumi.OutputState }
 
 func (GetRulesInstanceActionOutput) ElementType() reflect.Type {
@@ -2881,6 +3353,12 @@ func (o GetRulesInstanceActionOutput) ToGetRulesInstanceActionOutput() GetRulesI
 
 func (o GetRulesInstanceActionOutput) ToGetRulesInstanceActionOutputWithContext(ctx context.Context) GetRulesInstanceActionOutput {
 	return o
+}
+
+func (o GetRulesInstanceActionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesInstanceAction] {
+	return pulumix.Output[GetRulesInstanceAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesInstanceActionOutput) Action() pulumi.StringOutput {
@@ -2903,6 +3381,12 @@ func (o GetRulesInstanceActionArrayOutput) ToGetRulesInstanceActionArrayOutput()
 
 func (o GetRulesInstanceActionArrayOutput) ToGetRulesInstanceActionArrayOutputWithContext(ctx context.Context) GetRulesInstanceActionArrayOutput {
 	return o
+}
+
+func (o GetRulesInstanceActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesInstanceAction] {
+	return pulumix.Output[[]GetRulesInstanceAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesInstanceActionArrayOutput) Index(i pulumi.IntInput) GetRulesInstanceActionOutput {
@@ -2946,6 +3430,12 @@ func (i GetRulesInstanceConditionArgs) ToGetRulesInstanceConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceConditionOutput)
 }
 
+func (i GetRulesInstanceConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesInstanceCondition] {
+	return pulumix.Output[GetRulesInstanceCondition]{
+		OutputState: i.ToGetRulesInstanceConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesInstanceConditionArrayInput is an input type that accepts GetRulesInstanceConditionArray and GetRulesInstanceConditionArrayOutput values.
 // You can construct a concrete instance of `GetRulesInstanceConditionArrayInput` via:
 //
@@ -2971,6 +3461,12 @@ func (i GetRulesInstanceConditionArray) ToGetRulesInstanceConditionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesInstanceConditionArrayOutput)
 }
 
+func (i GetRulesInstanceConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesInstanceCondition] {
+	return pulumix.Output[[]GetRulesInstanceCondition]{
+		OutputState: i.ToGetRulesInstanceConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesInstanceConditionOutput struct{ *pulumi.OutputState }
 
 func (GetRulesInstanceConditionOutput) ElementType() reflect.Type {
@@ -2983,6 +3479,12 @@ func (o GetRulesInstanceConditionOutput) ToGetRulesInstanceConditionOutput() Get
 
 func (o GetRulesInstanceConditionOutput) ToGetRulesInstanceConditionOutputWithContext(ctx context.Context) GetRulesInstanceConditionOutput {
 	return o
+}
+
+func (o GetRulesInstanceConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesInstanceCondition] {
+	return pulumix.Output[GetRulesInstanceCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesInstanceConditionOutput) Operator() pulumi.StringOutput {
@@ -3009,6 +3511,12 @@ func (o GetRulesInstanceConditionArrayOutput) ToGetRulesInstanceConditionArrayOu
 
 func (o GetRulesInstanceConditionArrayOutput) ToGetRulesInstanceConditionArrayOutputWithContext(ctx context.Context) GetRulesInstanceConditionArrayOutput {
 	return o
+}
+
+func (o GetRulesInstanceConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesInstanceCondition] {
+	return pulumix.Output[[]GetRulesInstanceCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesInstanceConditionArrayOutput) Index(i pulumi.IntInput) GetRulesInstanceConditionOutput {
@@ -3050,6 +3558,12 @@ func (i GetUsersFilterArgs) ToGetUsersFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterOutput)
 }
 
+func (i GetUsersFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersFilter] {
+	return pulumix.Output[GetUsersFilter]{
+		OutputState: i.ToGetUsersFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetUsersFilterArrayInput is an input type that accepts GetUsersFilterArray and GetUsersFilterArrayOutput values.
 // You can construct a concrete instance of `GetUsersFilterArrayInput` via:
 //
@@ -3075,6 +3589,12 @@ func (i GetUsersFilterArray) ToGetUsersFilterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterArrayOutput)
 }
 
+func (i GetUsersFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersFilter] {
+	return pulumix.Output[[]GetUsersFilter]{
+		OutputState: i.ToGetUsersFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetUsersFilterOutput struct{ *pulumi.OutputState }
 
 func (GetUsersFilterOutput) ElementType() reflect.Type {
@@ -3087,6 +3607,12 @@ func (o GetUsersFilterOutput) ToGetUsersFilterOutput() GetUsersFilterOutput {
 
 func (o GetUsersFilterOutput) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
 	return o
+}
+
+func (o GetUsersFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersFilter] {
+	return pulumix.Output[GetUsersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUsersFilterOutput) Name() pulumi.StringOutput {
@@ -3109,6 +3635,12 @@ func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutput() GetUsersFilterA
 
 func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
 	return o
+}
+
+func (o GetUsersFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersFilter] {
+	return pulumix.Output[[]GetUsersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput {

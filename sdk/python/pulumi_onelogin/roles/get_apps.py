@@ -99,11 +99,11 @@ def get_apps(filters: Optional[Sequence[pulumi.InputType['GetAppsFilterArgs']]] 
     __ret__ = pulumi.runtime.invoke('onelogin:roles/getApps:getApps', __args__, opts=opts, typ=GetAppsResult).value
 
     return AwaitableGetAppsResult(
-        filters=__ret__.filters,
-        icon_url=__ret__.icon_url,
-        id=__ret__.id,
-        name=__ret__.name,
-        roles_id=__ret__.roles_id)
+        filters=pulumi.get(__ret__, 'filters'),
+        icon_url=pulumi.get(__ret__, 'icon_url'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        roles_id=pulumi.get(__ret__, 'roles_id'))
 
 
 @_utilities.lift_output_func(get_apps)

@@ -99,11 +99,11 @@ def get_auth_servers_scopes(auth_servers_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:index/getAuthServersScopes:getAuthServersScopes', __args__, opts=opts, typ=GetAuthServersScopesResult).value
 
     return AwaitableGetAuthServersScopesResult(
-        auth_servers_id=__ret__.auth_servers_id,
-        description=__ret__.description,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        value=__ret__.value)
+        auth_servers_id=pulumi.get(__ret__, 'auth_servers_id'),
+        description=pulumi.get(__ret__, 'description'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_auth_servers_scopes)

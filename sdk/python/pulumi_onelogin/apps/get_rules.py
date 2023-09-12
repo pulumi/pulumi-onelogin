@@ -143,15 +143,15 @@ def get_rules(actions: Optional[Sequence[pulumi.InputType['GetRulesActionArgs']]
     __ret__ = pulumi.runtime.invoke('onelogin:apps/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        actions=__ret__.actions,
-        apps_id=__ret__.apps_id,
-        conditions=__ret__.conditions,
-        enabled=__ret__.enabled,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        match=__ret__.match,
-        name=__ret__.name,
-        position=__ret__.position)
+        actions=pulumi.get(__ret__, 'actions'),
+        apps_id=pulumi.get(__ret__, 'apps_id'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        match=pulumi.get(__ret__, 'match'),
+        name=pulumi.get(__ret__, 'name'),
+        position=pulumi.get(__ret__, 'position'))
 
 
 @_utilities.lift_output_func(get_rules)

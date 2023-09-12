@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupV1(ctx *pulumi.Context, args *LookupV1Args, opts ...pulumi.InvokeOption) (*LookupV1Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupV1Result
 	err := ctx.Invoke("onelogin:users/getV1:getV1", args, &rv, opts...)
 	if err != nil {
@@ -171,6 +174,12 @@ func (o LookupV1ResultOutput) ToLookupV1ResultOutput() LookupV1ResultOutput {
 
 func (o LookupV1ResultOutput) ToLookupV1ResultOutputWithContext(ctx context.Context) LookupV1ResultOutput {
 	return o
+}
+
+func (o LookupV1ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupV1Result] {
+	return pulumix.Output[LookupV1Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupV1ResultOutput) ActivatedAt() pulumi.StringOutput {

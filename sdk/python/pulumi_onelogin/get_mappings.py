@@ -132,14 +132,14 @@ def get_mappings(actions: Optional[Sequence[pulumi.InputType['GetMappingsActionA
     __ret__ = pulumi.runtime.invoke('onelogin:index/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult).value
 
     return AwaitableGetMappingsResult(
-        actions=__ret__.actions,
-        conditions=__ret__.conditions,
-        enabled=__ret__.enabled,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        match=__ret__.match,
-        name=__ret__.name,
-        position=__ret__.position)
+        actions=pulumi.get(__ret__, 'actions'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        match=pulumi.get(__ret__, 'match'),
+        name=pulumi.get(__ret__, 'name'),
+        position=pulumi.get(__ret__, 'position'))
 
 
 @_utilities.lift_output_func(get_mappings)

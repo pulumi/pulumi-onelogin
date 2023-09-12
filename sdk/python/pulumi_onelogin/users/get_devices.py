@@ -132,14 +132,14 @@ def get_devices(auth_factor_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:users/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult).value
 
     return AwaitableGetDevicesResult(
-        auth_factor_name=__ret__.auth_factor_name,
-        default=__ret__.default,
-        device_id=__ret__.device_id,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        type_display_name=__ret__.type_display_name,
-        user_display_name=__ret__.user_display_name,
-        users_id=__ret__.users_id)
+        auth_factor_name=pulumi.get(__ret__, 'auth_factor_name'),
+        default=pulumi.get(__ret__, 'default'),
+        device_id=pulumi.get(__ret__, 'device_id'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        type_display_name=pulumi.get(__ret__, 'type_display_name'),
+        user_display_name=pulumi.get(__ret__, 'user_display_name'),
+        users_id=pulumi.get(__ret__, 'users_id'))
 
 
 @_utilities.lift_output_func(get_devices)

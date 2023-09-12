@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Privileges struct {
@@ -29,6 +31,7 @@ func NewPrivileges(ctx *pulumi.Context,
 	if args.Privilege == nil {
 		return nil, errors.New("invalid value for required argument 'Privilege'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Privileges
 	err := ctx.RegisterResource("onelogin:index/privileges:Privileges", name, args, &resource, opts...)
 	if err != nil {
@@ -102,6 +105,12 @@ func (i *Privileges) ToPrivilegesOutputWithContext(ctx context.Context) Privileg
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesOutput)
 }
 
+func (i *Privileges) ToOutput(ctx context.Context) pulumix.Output[*Privileges] {
+	return pulumix.Output[*Privileges]{
+		OutputState: i.ToPrivilegesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivilegesArrayInput is an input type that accepts PrivilegesArray and PrivilegesArrayOutput values.
 // You can construct a concrete instance of `PrivilegesArrayInput` via:
 //
@@ -125,6 +134,12 @@ func (i PrivilegesArray) ToPrivilegesArrayOutput() PrivilegesArrayOutput {
 
 func (i PrivilegesArray) ToPrivilegesArrayOutputWithContext(ctx context.Context) PrivilegesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesArrayOutput)
+}
+
+func (i PrivilegesArray) ToOutput(ctx context.Context) pulumix.Output[[]*Privileges] {
+	return pulumix.Output[[]*Privileges]{
+		OutputState: i.ToPrivilegesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrivilegesMapInput is an input type that accepts PrivilegesMap and PrivilegesMapOutput values.
@@ -152,6 +167,12 @@ func (i PrivilegesMap) ToPrivilegesMapOutputWithContext(ctx context.Context) Pri
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesMapOutput)
 }
 
+func (i PrivilegesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Privileges] {
+	return pulumix.Output[map[string]*Privileges]{
+		OutputState: i.ToPrivilegesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivilegesOutput struct{ *pulumi.OutputState }
 
 func (PrivilegesOutput) ElementType() reflect.Type {
@@ -164,6 +185,12 @@ func (o PrivilegesOutput) ToPrivilegesOutput() PrivilegesOutput {
 
 func (o PrivilegesOutput) ToPrivilegesOutputWithContext(ctx context.Context) PrivilegesOutput {
 	return o
+}
+
+func (o PrivilegesOutput) ToOutput(ctx context.Context) pulumix.Output[*Privileges] {
+	return pulumix.Output[*Privileges]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivilegesOutput) Description() pulumi.StringPtrOutput {
@@ -192,6 +219,12 @@ func (o PrivilegesArrayOutput) ToPrivilegesArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o PrivilegesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Privileges] {
+	return pulumix.Output[[]*Privileges]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivilegesArrayOutput) Index(i pulumi.IntInput) PrivilegesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Privileges {
 		return vs[0].([]*Privileges)[vs[1].(int)]
@@ -210,6 +243,12 @@ func (o PrivilegesMapOutput) ToPrivilegesMapOutput() PrivilegesMapOutput {
 
 func (o PrivilegesMapOutput) ToPrivilegesMapOutputWithContext(ctx context.Context) PrivilegesMapOutput {
 	return o
+}
+
+func (o PrivilegesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Privileges] {
+	return pulumix.Output[map[string]*Privileges]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivilegesMapOutput) MapIndex(k pulumi.StringInput) PrivilegesOutput {

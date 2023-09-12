@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetConditionsOperators(ctx *pulumi.Context, args *GetConditionsOperatorsArgs, opts ...pulumi.InvokeOption) (*GetConditionsOperatorsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConditionsOperatorsResult
 	err := ctx.Invoke("onelogin:apps/getConditionsOperators:getConditionsOperators", args, &rv, opts...)
 	if err != nil {
@@ -78,6 +81,12 @@ func (o GetConditionsOperatorsResultOutput) ToGetConditionsOperatorsResultOutput
 
 func (o GetConditionsOperatorsResultOutput) ToGetConditionsOperatorsResultOutputWithContext(ctx context.Context) GetConditionsOperatorsResultOutput {
 	return o
+}
+
+func (o GetConditionsOperatorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConditionsOperatorsResult] {
+	return pulumix.Output[GetConditionsOperatorsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConditionsOperatorsResultOutput) AppsId() pulumi.StringOutput {

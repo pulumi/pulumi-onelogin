@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupPrivileges(ctx *pulumi.Context, args *LookupPrivilegesArgs, opts ...pulumi.InvokeOption) (*LookupPrivilegesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivilegesResult
 	err := ctx.Invoke("onelogin:index/getPrivileges:getPrivileges", args, &rv, opts...)
 	if err != nil {
@@ -75,6 +78,12 @@ func (o LookupPrivilegesResultOutput) ToLookupPrivilegesResultOutput() LookupPri
 
 func (o LookupPrivilegesResultOutput) ToLookupPrivilegesResultOutputWithContext(ctx context.Context) LookupPrivilegesResultOutput {
 	return o
+}
+
+func (o LookupPrivilegesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivilegesResult] {
+	return pulumix.Output[LookupPrivilegesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupPrivilegesResultOutput) Description() pulumi.StringOutput {

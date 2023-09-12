@@ -110,12 +110,12 @@ def get_roles(admins: Optional[Sequence[int]] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:roles/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
     return AwaitableGetRolesResult(
-        admins=__ret__.admins,
-        apps=__ret__.apps,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        name=__ret__.name,
-        users=__ret__.users)
+        admins=pulumi.get(__ret__, 'admins'),
+        apps=pulumi.get(__ret__, 'apps'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_roles)
