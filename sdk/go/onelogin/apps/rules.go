@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Rules struct {
@@ -38,6 +40,7 @@ func NewRules(ctx *pulumi.Context,
 	if args.AppsId == nil {
 		return nil, errors.New("invalid value for required argument 'AppsId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Rules
 	err := ctx.RegisterResource("onelogin:apps/rules:Rules", name, args, &resource, opts...)
 	if err != nil {
@@ -147,6 +150,12 @@ func (i *Rules) ToRulesOutputWithContext(ctx context.Context) RulesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RulesOutput)
 }
 
+func (i *Rules) ToOutput(ctx context.Context) pulumix.Output[*Rules] {
+	return pulumix.Output[*Rules]{
+		OutputState: i.ToRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RulesArrayInput is an input type that accepts RulesArray and RulesArrayOutput values.
 // You can construct a concrete instance of `RulesArrayInput` via:
 //
@@ -170,6 +179,12 @@ func (i RulesArray) ToRulesArrayOutput() RulesArrayOutput {
 
 func (i RulesArray) ToRulesArrayOutputWithContext(ctx context.Context) RulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RulesArrayOutput)
+}
+
+func (i RulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*Rules] {
+	return pulumix.Output[[]*Rules]{
+		OutputState: i.ToRulesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RulesMapInput is an input type that accepts RulesMap and RulesMapOutput values.
@@ -197,6 +212,12 @@ func (i RulesMap) ToRulesMapOutputWithContext(ctx context.Context) RulesMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RulesMapOutput)
 }
 
+func (i RulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Rules] {
+	return pulumix.Output[map[string]*Rules]{
+		OutputState: i.ToRulesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesOutput struct{ *pulumi.OutputState }
 
 func (RulesOutput) ElementType() reflect.Type {
@@ -209,6 +230,12 @@ func (o RulesOutput) ToRulesOutput() RulesOutput {
 
 func (o RulesOutput) ToRulesOutputWithContext(ctx context.Context) RulesOutput {
 	return o
+}
+
+func (o RulesOutput) ToOutput(ctx context.Context) pulumix.Output[*Rules] {
+	return pulumix.Output[*Rules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesOutput) Actions() RulesActionArrayOutput {
@@ -258,6 +285,12 @@ func (o RulesArrayOutput) ToRulesArrayOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
+func (o RulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Rules] {
+	return pulumix.Output[[]*Rules]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RulesArrayOutput) Index(i pulumi.IntInput) RulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Rules {
 		return vs[0].([]*Rules)[vs[1].(int)]
@@ -276,6 +309,12 @@ func (o RulesMapOutput) ToRulesMapOutput() RulesMapOutput {
 
 func (o RulesMapOutput) ToRulesMapOutputWithContext(ctx context.Context) RulesMapOutput {
 	return o
+}
+
+func (o RulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Rules] {
+	return pulumix.Output[map[string]*Rules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesMapOutput) MapIndex(k pulumi.StringInput) RulesOutput {

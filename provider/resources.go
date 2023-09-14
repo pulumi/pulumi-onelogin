@@ -22,9 +22,10 @@ import (
 	"unicode"
 
 	onelogin "github.com/onelogin/terraform-provider-onelogin/shim"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -127,7 +128,6 @@ func Provider() tfbridge.ProviderInfo {
 			"onelogin_mappings":   {Tok: makeDataSource(mainMod, "getMappings")},
 			"onelogin_privileges": {Tok: makeDataSource(mainMod, "getPrivileges")},
 			"onelogin_roles":      {Tok: makeDataSource("roles", "getRoles")},
-			"onelogin_rules":      {Tok: makeDataSource("rules", "getRules")},
 			"onelogin_users":      {Tok: makeDataSource("users", "getUsers")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -167,17 +167,19 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err = x.ComputeDefaults(&prov, x.TokensKnownModules("onelogin_",
-		mainMod, []string{
+	prov.MustComputeTokens(tfbridgetokens.KnownModules(
+		"onelogin_",
+		mainMod,
+		[]string{
 			"api_",
 			"apps_",
 			"roles_",
 			"rules_",
 			"users_",
-		}, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to compute default mappings")
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
+		}, tfbridgetokens.MakeStandard(mainPkg),
+	))
+
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 

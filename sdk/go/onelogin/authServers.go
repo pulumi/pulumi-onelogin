@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AuthServers struct {
@@ -35,6 +37,7 @@ func NewAuthServers(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthServers
 	err := ctx.RegisterResource("onelogin:index/authServers:AuthServers", name, args, &resource, opts...)
 	if err != nil {
@@ -120,6 +123,12 @@ func (i *AuthServers) ToAuthServersOutputWithContext(ctx context.Context) AuthSe
 	return pulumi.ToOutputWithContext(ctx, i).(AuthServersOutput)
 }
 
+func (i *AuthServers) ToOutput(ctx context.Context) pulumix.Output[*AuthServers] {
+	return pulumix.Output[*AuthServers]{
+		OutputState: i.ToAuthServersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthServersArrayInput is an input type that accepts AuthServersArray and AuthServersArrayOutput values.
 // You can construct a concrete instance of `AuthServersArrayInput` via:
 //
@@ -143,6 +152,12 @@ func (i AuthServersArray) ToAuthServersArrayOutput() AuthServersArrayOutput {
 
 func (i AuthServersArray) ToAuthServersArrayOutputWithContext(ctx context.Context) AuthServersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthServersArrayOutput)
+}
+
+func (i AuthServersArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthServers] {
+	return pulumix.Output[[]*AuthServers]{
+		OutputState: i.ToAuthServersArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthServersMapInput is an input type that accepts AuthServersMap and AuthServersMapOutput values.
@@ -170,6 +185,12 @@ func (i AuthServersMap) ToAuthServersMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AuthServersMapOutput)
 }
 
+func (i AuthServersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthServers] {
+	return pulumix.Output[map[string]*AuthServers]{
+		OutputState: i.ToAuthServersMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthServersOutput struct{ *pulumi.OutputState }
 
 func (AuthServersOutput) ElementType() reflect.Type {
@@ -182,6 +203,12 @@ func (o AuthServersOutput) ToAuthServersOutput() AuthServersOutput {
 
 func (o AuthServersOutput) ToAuthServersOutputWithContext(ctx context.Context) AuthServersOutput {
 	return o
+}
+
+func (o AuthServersOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthServers] {
+	return pulumix.Output[*AuthServers]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authorization server configuration
@@ -213,6 +240,12 @@ func (o AuthServersArrayOutput) ToAuthServersArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AuthServersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthServers] {
+	return pulumix.Output[[]*AuthServers]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthServersArrayOutput) Index(i pulumi.IntInput) AuthServersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthServers {
 		return vs[0].([]*AuthServers)[vs[1].(int)]
@@ -231,6 +264,12 @@ func (o AuthServersMapOutput) ToAuthServersMapOutput() AuthServersMapOutput {
 
 func (o AuthServersMapOutput) ToAuthServersMapOutputWithContext(ctx context.Context) AuthServersMapOutput {
 	return o
+}
+
+func (o AuthServersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthServers] {
+	return pulumix.Output[map[string]*AuthServers]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthServersMapOutput) MapIndex(k pulumi.StringInput) AuthServersOutput {

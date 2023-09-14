@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult
 	err := ctx.Invoke("onelogin:roles/getRoles:getRoles", args, &rv, opts...)
 	if err != nil {
@@ -78,6 +81,12 @@ func (o GetRolesResultOutput) ToGetRolesResultOutput() GetRolesResultOutput {
 
 func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Context) GetRolesResultOutput {
 	return o
+}
+
+func (o GetRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesResult] {
+	return pulumix.Output[GetRolesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRolesResultOutput) Admins() pulumi.IntArrayOutput {

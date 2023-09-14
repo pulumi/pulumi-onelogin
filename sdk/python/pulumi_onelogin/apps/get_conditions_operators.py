@@ -110,12 +110,12 @@ def get_conditions_operators(apps_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:apps/getConditionsOperators:getConditionsOperators', __args__, opts=opts, typ=GetConditionsOperatorsResult).value
 
     return AwaitableGetConditionsOperatorsResult(
-        apps_id=__ret__.apps_id,
-        conditions_id=__ret__.conditions_id,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        name=__ret__.name,
-        value=__ret__.value)
+        apps_id=pulumi.get(__ret__, 'apps_id'),
+        conditions_id=pulumi.get(__ret__, 'conditions_id'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_conditions_operators)

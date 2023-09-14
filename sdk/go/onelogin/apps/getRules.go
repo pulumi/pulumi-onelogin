@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupRules(ctx *pulumi.Context, args *LookupRulesArgs, opts ...pulumi.InvokeOption) (*LookupRulesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRulesResult
 	err := ctx.Invoke("onelogin:apps/getRules:getRules", args, &rv, opts...)
 	if err != nil {
@@ -87,6 +90,12 @@ func (o LookupRulesResultOutput) ToLookupRulesResultOutput() LookupRulesResultOu
 
 func (o LookupRulesResultOutput) ToLookupRulesResultOutputWithContext(ctx context.Context) LookupRulesResultOutput {
 	return o
+}
+
+func (o LookupRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRulesResult] {
+	return pulumix.Output[LookupRulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupRulesResultOutput) Actions() GetRulesActionArrayOutput {

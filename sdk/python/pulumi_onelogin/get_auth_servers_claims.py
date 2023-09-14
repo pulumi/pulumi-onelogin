@@ -165,17 +165,17 @@ def get_auth_servers_claims(attribute_transformations: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:index/getAuthServersClaims:getAuthServersClaims', __args__, opts=opts, typ=GetAuthServersClaimsResult).value
 
     return AwaitableGetAuthServersClaimsResult(
-        attribute_transformations=__ret__.attribute_transformations,
-        auth_servers_id=__ret__.auth_servers_id,
-        default_values=__ret__.default_values,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        label=__ret__.label,
-        provisioned_entitlements=__ret__.provisioned_entitlements,
-        skip_if_blank=__ret__.skip_if_blank,
-        user_attribute_macros=__ret__.user_attribute_macros,
-        user_attribute_mappings=__ret__.user_attribute_mappings,
-        values=__ret__.values)
+        attribute_transformations=pulumi.get(__ret__, 'attribute_transformations'),
+        auth_servers_id=pulumi.get(__ret__, 'auth_servers_id'),
+        default_values=pulumi.get(__ret__, 'default_values'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        provisioned_entitlements=pulumi.get(__ret__, 'provisioned_entitlements'),
+        skip_if_blank=pulumi.get(__ret__, 'skip_if_blank'),
+        user_attribute_macros=pulumi.get(__ret__, 'user_attribute_macros'),
+        user_attribute_mappings=pulumi.get(__ret__, 'user_attribute_mappings'),
+        values=pulumi.get(__ret__, 'values'))
 
 
 @_utilities.lift_output_func(get_auth_servers_claims)

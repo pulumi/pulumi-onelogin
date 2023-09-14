@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetRiskRulesInstance(ctx *pulumi.Context, args *GetRiskRulesInstanceArgs, opts ...pulumi.InvokeOption) (*GetRiskRulesInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRiskRulesInstanceResult
 	err := ctx.Invoke("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", args, &rv, opts...)
 	if err != nil {
@@ -82,6 +85,12 @@ func (o GetRiskRulesInstanceResultOutput) ToGetRiskRulesInstanceResultOutput() G
 
 func (o GetRiskRulesInstanceResultOutput) ToGetRiskRulesInstanceResultOutputWithContext(ctx context.Context) GetRiskRulesInstanceResultOutput {
 	return o
+}
+
+func (o GetRiskRulesInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesInstanceResult] {
+	return pulumix.Output[GetRiskRulesInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRiskRulesInstanceResultOutput) Description() pulumi.StringOutput {

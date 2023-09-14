@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAuthServersClaims(ctx *pulumi.Context, args *GetAuthServersClaimsArgs, opts ...pulumi.InvokeOption) (*GetAuthServersClaimsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAuthServersClaimsResult
 	err := ctx.Invoke("onelogin:index/getAuthServersClaims:getAuthServersClaims", args, &rv, opts...)
 	if err != nil {
@@ -93,6 +96,12 @@ func (o GetAuthServersClaimsResultOutput) ToGetAuthServersClaimsResultOutput() G
 
 func (o GetAuthServersClaimsResultOutput) ToGetAuthServersClaimsResultOutputWithContext(ctx context.Context) GetAuthServersClaimsResultOutput {
 	return o
+}
+
+func (o GetAuthServersClaimsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersClaimsResult] {
+	return pulumix.Output[GetAuthServersClaimsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersClaimsResultOutput) AttributeTransformations() pulumi.StringOutput {

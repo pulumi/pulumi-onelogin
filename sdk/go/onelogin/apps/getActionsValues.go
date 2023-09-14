@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetActionsValues(ctx *pulumi.Context, args *GetActionsValuesArgs, opts ...pulumi.InvokeOption) (*GetActionsValuesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetActionsValuesResult
 	err := ctx.Invoke("onelogin:apps/getActionsValues:getActionsValues", args, &rv, opts...)
 	if err != nil {
@@ -78,6 +81,12 @@ func (o GetActionsValuesResultOutput) ToGetActionsValuesResultOutput() GetAction
 
 func (o GetActionsValuesResultOutput) ToGetActionsValuesResultOutputWithContext(ctx context.Context) GetActionsValuesResultOutput {
 	return o
+}
+
+func (o GetActionsValuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetActionsValuesResult] {
+	return pulumix.Output[GetActionsValuesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActionsValuesResultOutput) ActionsId() pulumi.StringOutput {

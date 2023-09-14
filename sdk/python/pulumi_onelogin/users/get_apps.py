@@ -154,16 +154,16 @@ def get_apps(extension: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:users/getApps:getApps', __args__, opts=opts, typ=GetAppsResult).value
 
     return AwaitableGetAppsResult(
-        extension=__ret__.extension,
-        filters=__ret__.filters,
-        icon_url=__ret__.icon_url,
-        id=__ret__.id,
-        login_id=__ret__.login_id,
-        name=__ret__.name,
-        provisioning_enabled=__ret__.provisioning_enabled,
-        provisioning_state=__ret__.provisioning_state,
-        provisioning_status=__ret__.provisioning_status,
-        users_id=__ret__.users_id)
+        extension=pulumi.get(__ret__, 'extension'),
+        filters=pulumi.get(__ret__, 'filters'),
+        icon_url=pulumi.get(__ret__, 'icon_url'),
+        id=pulumi.get(__ret__, 'id'),
+        login_id=pulumi.get(__ret__, 'login_id'),
+        name=pulumi.get(__ret__, 'name'),
+        provisioning_enabled=pulumi.get(__ret__, 'provisioning_enabled'),
+        provisioning_state=pulumi.get(__ret__, 'provisioning_state'),
+        provisioning_status=pulumi.get(__ret__, 'provisioning_status'),
+        users_id=pulumi.get(__ret__, 'users_id'))
 
 
 @_utilities.lift_output_func(get_apps)

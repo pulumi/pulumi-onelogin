@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetInstance(ctx *pulumi.Context, args *GetInstanceArgs, opts ...pulumi.InvokeOption) (*GetInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceResult
 	err := ctx.Invoke("onelogin:apps/getInstance:getInstance", args, &rv, opts...)
 	if err != nil {
@@ -127,6 +130,12 @@ func (o GetInstanceResultOutput) ToGetInstanceResultOutput() GetInstanceResultOu
 
 func (o GetInstanceResultOutput) ToGetInstanceResultOutputWithContext(ctx context.Context) GetInstanceResultOutput {
 	return o
+}
+
+func (o GetInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceResult] {
+	return pulumix.Output[GetInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceResultOutput) AllowAssumedSignin() pulumi.BoolOutput {

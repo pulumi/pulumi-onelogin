@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AppConfiguration struct {
 	AccessTokenExpirationMinutes  *int    `pulumi:"accessTokenExpirationMinutes"`
@@ -57,6 +61,12 @@ func (i AppConfigurationArgs) ToAppConfigurationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AppConfigurationOutput)
 }
 
+func (i AppConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AppConfiguration] {
+	return pulumix.Output[AppConfiguration]{
+		OutputState: i.ToAppConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppConfigurationArgs) ToAppConfigurationPtrOutput() AppConfigurationPtrOutput {
 	return i.ToAppConfigurationPtrOutputWithContext(context.Background())
 }
@@ -98,6 +108,12 @@ func (i *appConfigurationPtrType) ToAppConfigurationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AppConfigurationPtrOutput)
 }
 
+func (i *appConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppConfiguration] {
+	return pulumix.Output[*AppConfiguration]{
+		OutputState: i.ToAppConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AppConfigurationOutput) ElementType() reflect.Type {
@@ -120,6 +136,12 @@ func (o AppConfigurationOutput) ToAppConfigurationPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConfiguration) *AppConfiguration {
 		return &v
 	}).(AppConfigurationPtrOutput)
+}
+
+func (o AppConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AppConfiguration] {
+	return pulumix.Output[AppConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
@@ -170,6 +192,12 @@ func (o AppConfigurationPtrOutput) ToAppConfigurationPtrOutput() AppConfiguratio
 
 func (o AppConfigurationPtrOutput) ToAppConfigurationPtrOutputWithContext(ctx context.Context) AppConfigurationPtrOutput {
 	return o
+}
+
+func (o AppConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConfiguration] {
+	return pulumix.Output[*AppConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConfigurationPtrOutput) Elem() AppConfigurationOutput {
@@ -318,6 +346,12 @@ func (i AppEnforcementPointArgs) ToAppEnforcementPointOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointOutput)
 }
 
+func (i AppEnforcementPointArgs) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPoint] {
+	return pulumix.Output[AppEnforcementPoint]{
+		OutputState: i.ToAppEnforcementPointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppEnforcementPointArgs) ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput {
 	return i.ToAppEnforcementPointPtrOutputWithContext(context.Background())
 }
@@ -359,6 +393,12 @@ func (i *appEnforcementPointPtrType) ToAppEnforcementPointPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointPtrOutput)
 }
 
+func (i *appEnforcementPointPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPoint] {
+	return pulumix.Output[*AppEnforcementPoint]{
+		OutputState: i.ToAppEnforcementPointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEnforcementPointOutput struct{ *pulumi.OutputState }
 
 func (AppEnforcementPointOutput) ElementType() reflect.Type {
@@ -381,6 +421,12 @@ func (o AppEnforcementPointOutput) ToAppEnforcementPointPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEnforcementPoint) *AppEnforcementPoint {
 		return &v
 	}).(AppEnforcementPointPtrOutput)
+}
+
+func (o AppEnforcementPointOutput) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPoint] {
+	return pulumix.Output[AppEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointOutput) CaseSensitive() pulumi.BoolPtrOutput {
@@ -449,6 +495,12 @@ func (o AppEnforcementPointPtrOutput) ToAppEnforcementPointPtrOutput() AppEnforc
 
 func (o AppEnforcementPointPtrOutput) ToAppEnforcementPointPtrOutputWithContext(ctx context.Context) AppEnforcementPointPtrOutput {
 	return o
+}
+
+func (o AppEnforcementPointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPoint] {
+	return pulumix.Output[*AppEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointPtrOutput) Elem() AppEnforcementPointOutput {
@@ -617,6 +669,12 @@ func (i AppEnforcementPointResourceArgs) ToAppEnforcementPointResourceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointResourceOutput)
 }
 
+func (i AppEnforcementPointResourceArgs) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointResource] {
+	return pulumix.Output[AppEnforcementPointResource]{
+		OutputState: i.ToAppEnforcementPointResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AppEnforcementPointResourceArrayInput is an input type that accepts AppEnforcementPointResourceArray and AppEnforcementPointResourceArrayOutput values.
 // You can construct a concrete instance of `AppEnforcementPointResourceArrayInput` via:
 //
@@ -642,6 +700,12 @@ func (i AppEnforcementPointResourceArray) ToAppEnforcementPointResourceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointResourceArrayOutput)
 }
 
+func (i AppEnforcementPointResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]AppEnforcementPointResource] {
+	return pulumix.Output[[]AppEnforcementPointResource]{
+		OutputState: i.ToAppEnforcementPointResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEnforcementPointResourceOutput struct{ *pulumi.OutputState }
 
 func (AppEnforcementPointResourceOutput) ElementType() reflect.Type {
@@ -654,6 +718,12 @@ func (o AppEnforcementPointResourceOutput) ToAppEnforcementPointResourceOutput()
 
 func (o AppEnforcementPointResourceOutput) ToAppEnforcementPointResourceOutputWithContext(ctx context.Context) AppEnforcementPointResourceOutput {
 	return o
+}
+
+func (o AppEnforcementPointResourceOutput) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointResource] {
+	return pulumix.Output[AppEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointResourceOutput) Conditions() pulumi.StringPtrOutput {
@@ -688,6 +758,12 @@ func (o AppEnforcementPointResourceArrayOutput) ToAppEnforcementPointResourceArr
 
 func (o AppEnforcementPointResourceArrayOutput) ToAppEnforcementPointResourceArrayOutputWithContext(ctx context.Context) AppEnforcementPointResourceArrayOutput {
 	return o
+}
+
+func (o AppEnforcementPointResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AppEnforcementPointResource] {
+	return pulumix.Output[[]AppEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) AppEnforcementPointResourceOutput {
@@ -727,6 +803,12 @@ func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionE
 
 func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (i AppEnforcementPointSessionExpiryFixedArgs) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[AppEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToAppEnforcementPointSessionExpiryFixedOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput {
@@ -770,6 +852,12 @@ func (i *appEnforcementPointSessionExpiryFixedPtrType) ToAppEnforcementPointSess
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (i *appEnforcementPointSessionExpiryFixedPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*AppEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
 
 func (AppEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
@@ -794,6 +882,12 @@ func (o AppEnforcementPointSessionExpiryFixedOutput) ToAppEnforcementPointSessio
 	}).(AppEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (o AppEnforcementPointSessionExpiryFixedOutput) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[AppEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPointSessionExpiryFixed) *int { return v.Unit }).(pulumi.IntPtrOutput)
 }
@@ -814,6 +908,12 @@ func (o AppEnforcementPointSessionExpiryFixedPtrOutput) ToAppEnforcementPointSes
 
 func (o AppEnforcementPointSessionExpiryFixedPtrOutput) ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput {
 	return o
+}
+
+func (o AppEnforcementPointSessionExpiryFixedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*AppEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointSessionExpiryFixedPtrOutput) Elem() AppEnforcementPointSessionExpiryFixedOutput {
@@ -877,6 +977,12 @@ func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSes
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryInactivityOutput)
 }
 
+func (i AppEnforcementPointSessionExpiryInactivityArgs) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[AppEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToAppEnforcementPointSessionExpiryInactivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput {
 	return i.ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
 }
@@ -918,6 +1024,12 @@ func (i *appEnforcementPointSessionExpiryInactivityPtrType) ToAppEnforcementPoin
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (i *appEnforcementPointSessionExpiryInactivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*AppEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
 
 func (AppEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
@@ -942,6 +1054,12 @@ func (o AppEnforcementPointSessionExpiryInactivityOutput) ToAppEnforcementPointS
 	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (o AppEnforcementPointSessionExpiryInactivityOutput) ToOutput(ctx context.Context) pulumix.Output[AppEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[AppEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPointSessionExpiryInactivity) *int { return v.Unit }).(pulumi.IntPtrOutput)
 }
@@ -962,6 +1080,12 @@ func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) ToAppEnforcementPoi
 
 func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o
+}
+
+func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*AppEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) Elem() AppEnforcementPointSessionExpiryInactivityOutput {
@@ -1023,6 +1147,12 @@ func (i AppParametersArgs) ToAppParametersOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AppParametersOutput)
 }
 
+func (i AppParametersArgs) ToOutput(ctx context.Context) pulumix.Output[AppParameters] {
+	return pulumix.Output[AppParameters]{
+		OutputState: i.ToAppParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppParametersArgs) ToAppParametersPtrOutput() AppParametersPtrOutput {
 	return i.ToAppParametersPtrOutputWithContext(context.Background())
 }
@@ -1064,6 +1194,12 @@ func (i *appParametersPtrType) ToAppParametersPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AppParametersPtrOutput)
 }
 
+func (i *appParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppParameters] {
+	return pulumix.Output[*AppParameters]{
+		OutputState: i.ToAppParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppParametersOutput struct{ *pulumi.OutputState }
 
 func (AppParametersOutput) ElementType() reflect.Type {
@@ -1088,6 +1224,12 @@ func (o AppParametersOutput) ToAppParametersPtrOutputWithContext(ctx context.Con
 	}).(AppParametersPtrOutput)
 }
 
+func (o AppParametersOutput) ToOutput(ctx context.Context) pulumix.Output[AppParameters] {
+	return pulumix.Output[AppParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppParametersOutput) Groups() AppParametersGroupsPtrOutput {
 	return o.ApplyT(func(v AppParameters) *AppParametersGroups { return v.Groups }).(AppParametersGroupsPtrOutput)
 }
@@ -1104,6 +1246,12 @@ func (o AppParametersPtrOutput) ToAppParametersPtrOutput() AppParametersPtrOutpu
 
 func (o AppParametersPtrOutput) ToAppParametersPtrOutputWithContext(ctx context.Context) AppParametersPtrOutput {
 	return o
+}
+
+func (o AppParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppParameters] {
+	return pulumix.Output[*AppParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppParametersPtrOutput) Elem() AppParametersOutput {
@@ -1172,6 +1320,12 @@ func (i AppParametersGroupsArgs) ToAppParametersGroupsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AppParametersGroupsOutput)
 }
 
+func (i AppParametersGroupsArgs) ToOutput(ctx context.Context) pulumix.Output[AppParametersGroups] {
+	return pulumix.Output[AppParametersGroups]{
+		OutputState: i.ToAppParametersGroupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppParametersGroupsArgs) ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput {
 	return i.ToAppParametersGroupsPtrOutputWithContext(context.Background())
 }
@@ -1213,6 +1367,12 @@ func (i *appParametersGroupsPtrType) ToAppParametersGroupsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AppParametersGroupsPtrOutput)
 }
 
+func (i *appParametersGroupsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppParametersGroups] {
+	return pulumix.Output[*AppParametersGroups]{
+		OutputState: i.ToAppParametersGroupsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppParametersGroupsOutput struct{ *pulumi.OutputState }
 
 func (AppParametersGroupsOutput) ElementType() reflect.Type {
@@ -1235,6 +1395,12 @@ func (o AppParametersGroupsOutput) ToAppParametersGroupsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppParametersGroups) *AppParametersGroups {
 		return &v
 	}).(AppParametersGroupsPtrOutput)
+}
+
+func (o AppParametersGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[AppParametersGroups] {
+	return pulumix.Output[AppParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppParametersGroupsOutput) AttributesTransformations() pulumi.StringPtrOutput {
@@ -1285,6 +1451,12 @@ func (o AppParametersGroupsPtrOutput) ToAppParametersGroupsPtrOutput() AppParame
 
 func (o AppParametersGroupsPtrOutput) ToAppParametersGroupsPtrOutputWithContext(ctx context.Context) AppParametersGroupsPtrOutput {
 	return o
+}
+
+func (o AppParametersGroupsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppParametersGroups] {
+	return pulumix.Output[*AppParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppParametersGroupsPtrOutput) Elem() AppParametersGroupsOutput {
@@ -1411,6 +1583,12 @@ func (i AppProvisioningArgs) ToAppProvisioningOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningOutput)
 }
 
+func (i AppProvisioningArgs) ToOutput(ctx context.Context) pulumix.Output[AppProvisioning] {
+	return pulumix.Output[AppProvisioning]{
+		OutputState: i.ToAppProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppProvisioningArgs) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
 	return i.ToAppProvisioningPtrOutputWithContext(context.Background())
 }
@@ -1452,6 +1630,12 @@ func (i *appProvisioningPtrType) ToAppProvisioningPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningPtrOutput)
 }
 
+func (i *appProvisioningPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppProvisioning] {
+	return pulumix.Output[*AppProvisioning]{
+		OutputState: i.ToAppProvisioningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppProvisioningOutput struct{ *pulumi.OutputState }
 
 func (AppProvisioningOutput) ElementType() reflect.Type {
@@ -1476,6 +1660,12 @@ func (o AppProvisioningOutput) ToAppProvisioningPtrOutputWithContext(ctx context
 	}).(AppProvisioningPtrOutput)
 }
 
+func (o AppProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[AppProvisioning] {
+	return pulumix.Output[AppProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppProvisioningOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppProvisioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1496,6 +1686,12 @@ func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutput() AppProvisioningPt
 
 func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
 	return o
+}
+
+func (o AppProvisioningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppProvisioning] {
+	return pulumix.Output[*AppProvisioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppProvisioningPtrOutput) Elem() AppProvisioningOutput {
@@ -1567,6 +1763,12 @@ func (i AppSsoArgs) ToAppSsoOutputWithContext(ctx context.Context) AppSsoOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AppSsoOutput)
 }
 
+func (i AppSsoArgs) ToOutput(ctx context.Context) pulumix.Output[AppSso] {
+	return pulumix.Output[AppSso]{
+		OutputState: i.ToAppSsoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppSsoArgs) ToAppSsoPtrOutput() AppSsoPtrOutput {
 	return i.ToAppSsoPtrOutputWithContext(context.Background())
 }
@@ -1608,6 +1810,12 @@ func (i *appSsoPtrType) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSso
 	return pulumi.ToOutputWithContext(ctx, i).(AppSsoPtrOutput)
 }
 
+func (i *appSsoPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppSso] {
+	return pulumix.Output[*AppSso]{
+		OutputState: i.ToAppSsoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppSsoOutput struct{ *pulumi.OutputState }
 
 func (AppSsoOutput) ElementType() reflect.Type {
@@ -1630,6 +1838,12 @@ func (o AppSsoOutput) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSso) *AppSso {
 		return &v
 	}).(AppSsoPtrOutput)
+}
+
+func (o AppSsoOutput) ToOutput(ctx context.Context) pulumix.Output[AppSso] {
+	return pulumix.Output[AppSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppSsoOutput) AcsUrl() pulumi.StringPtrOutput {
@@ -1668,6 +1882,12 @@ func (o AppSsoPtrOutput) ToAppSsoPtrOutput() AppSsoPtrOutput {
 
 func (o AppSsoPtrOutput) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPtrOutput {
 	return o
+}
+
+func (o AppSsoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppSso] {
+	return pulumix.Output[*AppSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppSsoPtrOutput) Elem() AppSsoOutput {
@@ -1769,6 +1989,12 @@ func (i AppSsoCertificateArgs) ToAppSsoCertificateOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AppSsoCertificateOutput)
 }
 
+func (i AppSsoCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[AppSsoCertificate] {
+	return pulumix.Output[AppSsoCertificate]{
+		OutputState: i.ToAppSsoCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppSsoCertificateArgs) ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput {
 	return i.ToAppSsoCertificatePtrOutputWithContext(context.Background())
 }
@@ -1810,6 +2036,12 @@ func (i *appSsoCertificatePtrType) ToAppSsoCertificatePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AppSsoCertificatePtrOutput)
 }
 
+func (i *appSsoCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*AppSsoCertificate] {
+	return pulumix.Output[*AppSsoCertificate]{
+		OutputState: i.ToAppSsoCertificatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppSsoCertificateOutput struct{ *pulumi.OutputState }
 
 func (AppSsoCertificateOutput) ElementType() reflect.Type {
@@ -1832,6 +2064,12 @@ func (o AppSsoCertificateOutput) ToAppSsoCertificatePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSsoCertificate) *AppSsoCertificate {
 		return &v
 	}).(AppSsoCertificatePtrOutput)
+}
+
+func (o AppSsoCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[AppSsoCertificate] {
+	return pulumix.Output[AppSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppSsoCertificateOutput) Id() pulumi.IntPtrOutput {
@@ -1858,6 +2096,12 @@ func (o AppSsoCertificatePtrOutput) ToAppSsoCertificatePtrOutput() AppSsoCertifi
 
 func (o AppSsoCertificatePtrOutput) ToAppSsoCertificatePtrOutputWithContext(ctx context.Context) AppSsoCertificatePtrOutput {
 	return o
+}
+
+func (o AppSsoCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppSsoCertificate] {
+	return pulumix.Output[*AppSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppSsoCertificatePtrOutput) Elem() AppSsoCertificateOutput {
@@ -1934,6 +2178,12 @@ func (i AuthServersConfigurationArgs) ToAuthServersConfigurationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthServersConfigurationOutput)
 }
 
+func (i AuthServersConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AuthServersConfiguration] {
+	return pulumix.Output[AuthServersConfiguration]{
+		OutputState: i.ToAuthServersConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AuthServersConfigurationArgs) ToAuthServersConfigurationPtrOutput() AuthServersConfigurationPtrOutput {
 	return i.ToAuthServersConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1975,6 +2225,12 @@ func (i *authServersConfigurationPtrType) ToAuthServersConfigurationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AuthServersConfigurationPtrOutput)
 }
 
+func (i *authServersConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AuthServersConfiguration] {
+	return pulumix.Output[*AuthServersConfiguration]{
+		OutputState: i.ToAuthServersConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthServersConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AuthServersConfigurationOutput) ElementType() reflect.Type {
@@ -1997,6 +2253,12 @@ func (o AuthServersConfigurationOutput) ToAuthServersConfigurationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthServersConfiguration) *AuthServersConfiguration {
 		return &v
 	}).(AuthServersConfigurationPtrOutput)
+}
+
+func (o AuthServersConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AuthServersConfiguration] {
+	return pulumix.Output[AuthServersConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
@@ -2027,6 +2289,12 @@ func (o AuthServersConfigurationPtrOutput) ToAuthServersConfigurationPtrOutput()
 
 func (o AuthServersConfigurationPtrOutput) ToAuthServersConfigurationPtrOutputWithContext(ctx context.Context) AuthServersConfigurationPtrOutput {
 	return o
+}
+
+func (o AuthServersConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthServersConfiguration] {
+	return pulumix.Output[*AuthServersConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthServersConfigurationPtrOutput) Elem() AuthServersConfigurationOutput {
@@ -2108,6 +2376,12 @@ func (i PrivilegesPrivilegeArgs) ToPrivilegesPrivilegeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeOutput)
 }
 
+func (i PrivilegesPrivilegeArgs) ToOutput(ctx context.Context) pulumix.Output[PrivilegesPrivilege] {
+	return pulumix.Output[PrivilegesPrivilege]{
+		OutputState: i.ToPrivilegesPrivilegeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivilegesPrivilegeArgs) ToPrivilegesPrivilegePtrOutput() PrivilegesPrivilegePtrOutput {
 	return i.ToPrivilegesPrivilegePtrOutputWithContext(context.Background())
 }
@@ -2149,6 +2423,12 @@ func (i *privilegesPrivilegePtrType) ToPrivilegesPrivilegePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegePtrOutput)
 }
 
+func (i *privilegesPrivilegePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivilegesPrivilege] {
+	return pulumix.Output[*PrivilegesPrivilege]{
+		OutputState: i.ToPrivilegesPrivilegePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivilegesPrivilegeOutput struct{ *pulumi.OutputState }
 
 func (PrivilegesPrivilegeOutput) ElementType() reflect.Type {
@@ -2173,6 +2453,12 @@ func (o PrivilegesPrivilegeOutput) ToPrivilegesPrivilegePtrOutputWithContext(ctx
 	}).(PrivilegesPrivilegePtrOutput)
 }
 
+func (o PrivilegesPrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivilegesPrivilege] {
+	return pulumix.Output[PrivilegesPrivilege]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivilegesPrivilegeOutput) Statements() PrivilegesPrivilegeStatementArrayOutput {
 	return o.ApplyT(func(v PrivilegesPrivilege) []PrivilegesPrivilegeStatement { return v.Statements }).(PrivilegesPrivilegeStatementArrayOutput)
 }
@@ -2193,6 +2479,12 @@ func (o PrivilegesPrivilegePtrOutput) ToPrivilegesPrivilegePtrOutput() Privilege
 
 func (o PrivilegesPrivilegePtrOutput) ToPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) PrivilegesPrivilegePtrOutput {
 	return o
+}
+
+func (o PrivilegesPrivilegePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivilegesPrivilege] {
+	return pulumix.Output[*PrivilegesPrivilege]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivilegesPrivilegePtrOutput) Elem() PrivilegesPrivilegeOutput {
@@ -2258,6 +2550,12 @@ func (i PrivilegesPrivilegeStatementArgs) ToPrivilegesPrivilegeStatementOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeStatementOutput)
 }
 
+func (i PrivilegesPrivilegeStatementArgs) ToOutput(ctx context.Context) pulumix.Output[PrivilegesPrivilegeStatement] {
+	return pulumix.Output[PrivilegesPrivilegeStatement]{
+		OutputState: i.ToPrivilegesPrivilegeStatementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivilegesPrivilegeStatementArrayInput is an input type that accepts PrivilegesPrivilegeStatementArray and PrivilegesPrivilegeStatementArrayOutput values.
 // You can construct a concrete instance of `PrivilegesPrivilegeStatementArrayInput` via:
 //
@@ -2283,6 +2581,12 @@ func (i PrivilegesPrivilegeStatementArray) ToPrivilegesPrivilegeStatementArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegesPrivilegeStatementArrayOutput)
 }
 
+func (i PrivilegesPrivilegeStatementArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivilegesPrivilegeStatement] {
+	return pulumix.Output[[]PrivilegesPrivilegeStatement]{
+		OutputState: i.ToPrivilegesPrivilegeStatementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivilegesPrivilegeStatementOutput struct{ *pulumi.OutputState }
 
 func (PrivilegesPrivilegeStatementOutput) ElementType() reflect.Type {
@@ -2295,6 +2599,12 @@ func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutput
 
 func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementOutput {
 	return o
+}
+
+func (o PrivilegesPrivilegeStatementOutput) ToOutput(ctx context.Context) pulumix.Output[PrivilegesPrivilegeStatement] {
+	return pulumix.Output[PrivilegesPrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
@@ -2321,6 +2631,12 @@ func (o PrivilegesPrivilegeStatementArrayOutput) ToPrivilegesPrivilegeStatementA
 
 func (o PrivilegesPrivilegeStatementArrayOutput) ToPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) PrivilegesPrivilegeStatementArrayOutput {
 	return o
+}
+
+func (o PrivilegesPrivilegeStatementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivilegesPrivilegeStatement] {
+	return pulumix.Output[[]PrivilegesPrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) PrivilegesPrivilegeStatementOutput {
@@ -2374,6 +2690,12 @@ func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointOutput)
 }
 
+func (i ProviderEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderEndpoint] {
+	return pulumix.Output[ProviderEndpoint]{
+		OutputState: i.ToProviderEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
 // You can construct a concrete instance of `ProviderEndpointArrayInput` via:
 //
@@ -2399,6 +2721,12 @@ func (i ProviderEndpointArray) ToProviderEndpointArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointArrayOutput)
 }
 
+func (i ProviderEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]ProviderEndpoint] {
+	return pulumix.Output[[]ProviderEndpoint]{
+		OutputState: i.ToProviderEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderEndpointOutput struct{ *pulumi.OutputState }
 
 func (ProviderEndpointOutput) ElementType() reflect.Type {
@@ -2411,6 +2739,12 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutput() ProviderEndpointOutpu
 
 func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
 	return o
+}
+
+func (o ProviderEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderEndpoint] {
+	return pulumix.Output[ProviderEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProviderEndpointOutput) Apps() pulumi.StringPtrOutput {
@@ -2459,6 +2793,12 @@ func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutputWithContext(ct
 	return o
 }
 
+func (o ProviderEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProviderEndpoint] {
+	return pulumix.Output[[]ProviderEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
 		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
@@ -2496,6 +2836,12 @@ func (i RiskRulesSourceArgs) ToRiskRulesSourceOutput() RiskRulesSourceOutput {
 
 func (i RiskRulesSourceArgs) ToRiskRulesSourceOutputWithContext(ctx context.Context) RiskRulesSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesSourceOutput)
+}
+
+func (i RiskRulesSourceArgs) ToOutput(ctx context.Context) pulumix.Output[RiskRulesSource] {
+	return pulumix.Output[RiskRulesSource]{
+		OutputState: i.ToRiskRulesSourceOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i RiskRulesSourceArgs) ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput {
@@ -2539,6 +2885,12 @@ func (i *riskRulesSourcePtrType) ToRiskRulesSourcePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesSourcePtrOutput)
 }
 
+func (i *riskRulesSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*RiskRulesSource] {
+	return pulumix.Output[*RiskRulesSource]{
+		OutputState: i.ToRiskRulesSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RiskRulesSourceOutput struct{ *pulumi.OutputState }
 
 func (RiskRulesSourceOutput) ElementType() reflect.Type {
@@ -2563,6 +2915,12 @@ func (o RiskRulesSourceOutput) ToRiskRulesSourcePtrOutputWithContext(ctx context
 	}).(RiskRulesSourcePtrOutput)
 }
 
+func (o RiskRulesSourceOutput) ToOutput(ctx context.Context) pulumix.Output[RiskRulesSource] {
+	return pulumix.Output[RiskRulesSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RiskRulesSourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RiskRulesSource) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2583,6 +2941,12 @@ func (o RiskRulesSourcePtrOutput) ToRiskRulesSourcePtrOutput() RiskRulesSourcePt
 
 func (o RiskRulesSourcePtrOutput) ToRiskRulesSourcePtrOutputWithContext(ctx context.Context) RiskRulesSourcePtrOutput {
 	return o
+}
+
+func (o RiskRulesSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RiskRulesSource] {
+	return pulumix.Output[*RiskRulesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RiskRulesSourcePtrOutput) Elem() RiskRulesSourceOutput {
@@ -2660,6 +3024,12 @@ func (i GetAppsConfigurationArgs) ToGetAppsConfigurationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsConfigurationOutput)
 }
 
+func (i GetAppsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsConfiguration] {
+	return pulumix.Output[GetAppsConfiguration]{
+		OutputState: i.ToGetAppsConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsConfigurationArgs) ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput {
 	return i.ToGetAppsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2701,6 +3071,12 @@ func (i *getAppsConfigurationPtrType) ToGetAppsConfigurationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsConfigurationPtrOutput)
 }
 
+func (i *getAppsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsConfiguration] {
+	return pulumix.Output[*GetAppsConfiguration]{
+		OutputState: i.ToGetAppsConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetAppsConfigurationOutput) ElementType() reflect.Type {
@@ -2723,6 +3099,12 @@ func (o GetAppsConfigurationOutput) ToGetAppsConfigurationPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsConfiguration) *GetAppsConfiguration {
 		return &v
 	}).(GetAppsConfigurationPtrOutput)
+}
+
+func (o GetAppsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsConfiguration] {
+	return pulumix.Output[GetAppsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
@@ -2773,6 +3155,12 @@ func (o GetAppsConfigurationPtrOutput) ToGetAppsConfigurationPtrOutput() GetApps
 
 func (o GetAppsConfigurationPtrOutput) ToGetAppsConfigurationPtrOutputWithContext(ctx context.Context) GetAppsConfigurationPtrOutput {
 	return o
+}
+
+func (o GetAppsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsConfiguration] {
+	return pulumix.Output[*GetAppsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsConfigurationPtrOutput) Elem() GetAppsConfigurationOutput {
@@ -2921,6 +3309,12 @@ func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointOutput)
 }
 
+func (i GetAppsEnforcementPointArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPoint] {
+	return pulumix.Output[GetAppsEnforcementPoint]{
+		OutputState: i.ToGetAppsEnforcementPointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput {
 	return i.ToGetAppsEnforcementPointPtrOutputWithContext(context.Background())
 }
@@ -2962,6 +3356,12 @@ func (i *getAppsEnforcementPointPtrType) ToGetAppsEnforcementPointPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointPtrOutput)
 }
 
+func (i *getAppsEnforcementPointPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPoint] {
+	return pulumix.Output[*GetAppsEnforcementPoint]{
+		OutputState: i.ToGetAppsEnforcementPointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsEnforcementPointOutput struct{ *pulumi.OutputState }
 
 func (GetAppsEnforcementPointOutput) ElementType() reflect.Type {
@@ -2984,6 +3384,12 @@ func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsEnforcementPoint) *GetAppsEnforcementPoint {
 		return &v
 	}).(GetAppsEnforcementPointPtrOutput)
+}
+
+func (o GetAppsEnforcementPointOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPoint] {
+	return pulumix.Output[GetAppsEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointOutput) CaseSensitive() pulumi.BoolOutput {
@@ -3052,6 +3458,12 @@ func (o GetAppsEnforcementPointPtrOutput) ToGetAppsEnforcementPointPtrOutput() G
 
 func (o GetAppsEnforcementPointPtrOutput) ToGetAppsEnforcementPointPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointPtrOutput {
 	return o
+}
+
+func (o GetAppsEnforcementPointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPoint] {
+	return pulumix.Output[*GetAppsEnforcementPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointPtrOutput) Elem() GetAppsEnforcementPointOutput {
@@ -3220,6 +3632,12 @@ func (i GetAppsEnforcementPointResourceArgs) ToGetAppsEnforcementPointResourceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointResourceOutput)
 }
 
+func (i GetAppsEnforcementPointResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointResource] {
+	return pulumix.Output[GetAppsEnforcementPointResource]{
+		OutputState: i.ToGetAppsEnforcementPointResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppsEnforcementPointResourceArrayInput is an input type that accepts GetAppsEnforcementPointResourceArray and GetAppsEnforcementPointResourceArrayOutput values.
 // You can construct a concrete instance of `GetAppsEnforcementPointResourceArrayInput` via:
 //
@@ -3245,6 +3663,12 @@ func (i GetAppsEnforcementPointResourceArray) ToGetAppsEnforcementPointResourceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointResourceArrayOutput)
 }
 
+func (i GetAppsEnforcementPointResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsEnforcementPointResource] {
+	return pulumix.Output[[]GetAppsEnforcementPointResource]{
+		OutputState: i.ToGetAppsEnforcementPointResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsEnforcementPointResourceOutput struct{ *pulumi.OutputState }
 
 func (GetAppsEnforcementPointResourceOutput) ElementType() reflect.Type {
@@ -3257,6 +3681,12 @@ func (o GetAppsEnforcementPointResourceOutput) ToGetAppsEnforcementPointResource
 
 func (o GetAppsEnforcementPointResourceOutput) ToGetAppsEnforcementPointResourceOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceOutput {
 	return o
+}
+
+func (o GetAppsEnforcementPointResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointResource] {
+	return pulumix.Output[GetAppsEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointResourceOutput) Conditions() pulumi.StringOutput {
@@ -3291,6 +3721,12 @@ func (o GetAppsEnforcementPointResourceArrayOutput) ToGetAppsEnforcementPointRes
 
 func (o GetAppsEnforcementPointResourceArrayOutput) ToGetAppsEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceArrayOutput {
 	return o
+}
+
+func (o GetAppsEnforcementPointResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsEnforcementPointResource] {
+	return pulumix.Output[[]GetAppsEnforcementPointResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) GetAppsEnforcementPointResourceOutput {
@@ -3330,6 +3766,12 @@ func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPoint
 
 func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryFixedOutput)
+}
+
+func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[GetAppsEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
@@ -3373,6 +3815,12 @@ func (i *getAppsEnforcementPointSessionExpiryFixedPtrType) ToGetAppsEnforcementP
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (i *getAppsEnforcementPointSessionExpiryFixedPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*GetAppsEnforcementPointSessionExpiryFixed]{
+		OutputState: i.ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
 
 func (GetAppsEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
@@ -3397,6 +3845,12 @@ func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToGetAppsEnforcementPoi
 	}).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[GetAppsEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAppsEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryFixed) int { return v.Unit }).(pulumi.IntOutput)
 }
@@ -3417,6 +3871,12 @@ func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ToGetAppsEnforcement
 
 func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
 	return o
+}
+
+func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPointSessionExpiryFixed] {
+	return pulumix.Output[*GetAppsEnforcementPointSessionExpiryFixed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) Elem() GetAppsEnforcementPointSessionExpiryFixedOutput {
@@ -3480,6 +3940,12 @@ func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcement
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryInactivityOutput)
 }
 
+func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[GetAppsEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToGetAppsEnforcementPointSessionExpiryInactivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
 	return i.ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
 }
@@ -3521,6 +3987,12 @@ func (i *getAppsEnforcementPointSessionExpiryInactivityPtrType) ToGetAppsEnforce
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (i *getAppsEnforcementPointSessionExpiryInactivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*GetAppsEnforcementPointSessionExpiryInactivity]{
+		OutputState: i.ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
 
 func (GetAppsEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
@@ -3545,6 +4017,12 @@ func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToGetAppsEnforceme
 	}).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[GetAppsEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryInactivity) int { return v.Unit }).(pulumi.IntOutput)
 }
@@ -3565,6 +4043,12 @@ func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ToGetAppsEnforc
 
 func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o
+}
+
+func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsEnforcementPointSessionExpiryInactivity] {
+	return pulumix.Output[*GetAppsEnforcementPointSessionExpiryInactivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) Elem() GetAppsEnforcementPointSessionExpiryInactivityOutput {
@@ -3628,6 +4112,12 @@ func (i GetAppsFilterArgs) ToGetAppsFilterOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterOutput)
 }
 
+func (i GetAppsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsFilter] {
+	return pulumix.Output[GetAppsFilter]{
+		OutputState: i.ToGetAppsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppsFilterArrayInput is an input type that accepts GetAppsFilterArray and GetAppsFilterArrayOutput values.
 // You can construct a concrete instance of `GetAppsFilterArrayInput` via:
 //
@@ -3653,6 +4143,12 @@ func (i GetAppsFilterArray) ToGetAppsFilterArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterArrayOutput)
 }
 
+func (i GetAppsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsFilter] {
+	return pulumix.Output[[]GetAppsFilter]{
+		OutputState: i.ToGetAppsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetAppsFilterOutput) ElementType() reflect.Type {
@@ -3665,6 +4161,12 @@ func (o GetAppsFilterOutput) ToGetAppsFilterOutput() GetAppsFilterOutput {
 
 func (o GetAppsFilterOutput) ToGetAppsFilterOutputWithContext(ctx context.Context) GetAppsFilterOutput {
 	return o
+}
+
+func (o GetAppsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsFilter] {
+	return pulumix.Output[GetAppsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsFilterOutput) Name() pulumi.StringOutput {
@@ -3687,6 +4189,12 @@ func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutput() GetAppsFilterArra
 
 func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutputWithContext(ctx context.Context) GetAppsFilterArrayOutput {
 	return o
+}
+
+func (o GetAppsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsFilter] {
+	return pulumix.Output[[]GetAppsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsFilterArrayOutput) Index(i pulumi.IntInput) GetAppsFilterOutput {
@@ -3724,6 +4232,12 @@ func (i GetAppsParametersArgs) ToGetAppsParametersOutput() GetAppsParametersOutp
 
 func (i GetAppsParametersArgs) ToGetAppsParametersOutputWithContext(ctx context.Context) GetAppsParametersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersOutput)
+}
+
+func (i GetAppsParametersArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsParameters] {
+	return pulumix.Output[GetAppsParameters]{
+		OutputState: i.ToGetAppsParametersOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetAppsParametersArgs) ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput {
@@ -3767,6 +4281,12 @@ func (i *getAppsParametersPtrType) ToGetAppsParametersPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersPtrOutput)
 }
 
+func (i *getAppsParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsParameters] {
+	return pulumix.Output[*GetAppsParameters]{
+		OutputState: i.ToGetAppsParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsParametersOutput struct{ *pulumi.OutputState }
 
 func (GetAppsParametersOutput) ElementType() reflect.Type {
@@ -3791,6 +4311,12 @@ func (o GetAppsParametersOutput) ToGetAppsParametersPtrOutputWithContext(ctx con
 	}).(GetAppsParametersPtrOutput)
 }
 
+func (o GetAppsParametersOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsParameters] {
+	return pulumix.Output[GetAppsParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAppsParametersOutput) Groups() GetAppsParametersGroupsOutput {
 	return o.ApplyT(func(v GetAppsParameters) GetAppsParametersGroups { return v.Groups }).(GetAppsParametersGroupsOutput)
 }
@@ -3807,6 +4333,12 @@ func (o GetAppsParametersPtrOutput) ToGetAppsParametersPtrOutput() GetAppsParame
 
 func (o GetAppsParametersPtrOutput) ToGetAppsParametersPtrOutputWithContext(ctx context.Context) GetAppsParametersPtrOutput {
 	return o
+}
+
+func (o GetAppsParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsParameters] {
+	return pulumix.Output[*GetAppsParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsParametersPtrOutput) Elem() GetAppsParametersOutput {
@@ -3875,6 +4407,12 @@ func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersGroupsOutput)
 }
 
+func (i GetAppsParametersGroupsArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsParametersGroups] {
+	return pulumix.Output[GetAppsParametersGroups]{
+		OutputState: i.ToGetAppsParametersGroupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput {
 	return i.ToGetAppsParametersGroupsPtrOutputWithContext(context.Background())
 }
@@ -3916,6 +4454,12 @@ func (i *getAppsParametersGroupsPtrType) ToGetAppsParametersGroupsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersGroupsPtrOutput)
 }
 
+func (i *getAppsParametersGroupsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsParametersGroups] {
+	return pulumix.Output[*GetAppsParametersGroups]{
+		OutputState: i.ToGetAppsParametersGroupsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsParametersGroupsOutput struct{ *pulumi.OutputState }
 
 func (GetAppsParametersGroupsOutput) ElementType() reflect.Type {
@@ -3938,6 +4482,12 @@ func (o GetAppsParametersGroupsOutput) ToGetAppsParametersGroupsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsParametersGroups) *GetAppsParametersGroups {
 		return &v
 	}).(GetAppsParametersGroupsPtrOutput)
+}
+
+func (o GetAppsParametersGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsParametersGroups] {
+	return pulumix.Output[GetAppsParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsParametersGroupsOutput) AttributesTransformations() pulumi.StringOutput {
@@ -3988,6 +4538,12 @@ func (o GetAppsParametersGroupsPtrOutput) ToGetAppsParametersGroupsPtrOutput() G
 
 func (o GetAppsParametersGroupsPtrOutput) ToGetAppsParametersGroupsPtrOutputWithContext(ctx context.Context) GetAppsParametersGroupsPtrOutput {
 	return o
+}
+
+func (o GetAppsParametersGroupsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsParametersGroups] {
+	return pulumix.Output[*GetAppsParametersGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsParametersGroupsPtrOutput) Elem() GetAppsParametersGroupsOutput {
@@ -4114,6 +4670,12 @@ func (i GetAppsProvisioningArgs) ToGetAppsProvisioningOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsProvisioningOutput)
 }
 
+func (i GetAppsProvisioningArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsProvisioning] {
+	return pulumix.Output[GetAppsProvisioning]{
+		OutputState: i.ToGetAppsProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsProvisioningArgs) ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput {
 	return i.ToGetAppsProvisioningPtrOutputWithContext(context.Background())
 }
@@ -4155,6 +4717,12 @@ func (i *getAppsProvisioningPtrType) ToGetAppsProvisioningPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsProvisioningPtrOutput)
 }
 
+func (i *getAppsProvisioningPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsProvisioning] {
+	return pulumix.Output[*GetAppsProvisioning]{
+		OutputState: i.ToGetAppsProvisioningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsProvisioningOutput struct{ *pulumi.OutputState }
 
 func (GetAppsProvisioningOutput) ElementType() reflect.Type {
@@ -4179,6 +4747,12 @@ func (o GetAppsProvisioningOutput) ToGetAppsProvisioningPtrOutputWithContext(ctx
 	}).(GetAppsProvisioningPtrOutput)
 }
 
+func (o GetAppsProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsProvisioning] {
+	return pulumix.Output[GetAppsProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAppsProvisioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppsProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4199,6 +4773,12 @@ func (o GetAppsProvisioningPtrOutput) ToGetAppsProvisioningPtrOutput() GetAppsPr
 
 func (o GetAppsProvisioningPtrOutput) ToGetAppsProvisioningPtrOutputWithContext(ctx context.Context) GetAppsProvisioningPtrOutput {
 	return o
+}
+
+func (o GetAppsProvisioningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsProvisioning] {
+	return pulumix.Output[*GetAppsProvisioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsProvisioningPtrOutput) Elem() GetAppsProvisioningOutput {
@@ -4270,6 +4850,12 @@ func (i GetAppsSsoArgs) ToGetAppsSsoOutputWithContext(ctx context.Context) GetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoOutput)
 }
 
+func (i GetAppsSsoArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsSso] {
+	return pulumix.Output[GetAppsSso]{
+		OutputState: i.ToGetAppsSsoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsSsoArgs) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
 	return i.ToGetAppsSsoPtrOutputWithContext(context.Background())
 }
@@ -4311,6 +4897,12 @@ func (i *getAppsSsoPtrType) ToGetAppsSsoPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoPtrOutput)
 }
 
+func (i *getAppsSsoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsSso] {
+	return pulumix.Output[*GetAppsSso]{
+		OutputState: i.ToGetAppsSsoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsSsoOutput struct{ *pulumi.OutputState }
 
 func (GetAppsSsoOutput) ElementType() reflect.Type {
@@ -4333,6 +4925,12 @@ func (o GetAppsSsoOutput) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsSso) *GetAppsSso {
 		return &v
 	}).(GetAppsSsoPtrOutput)
+}
+
+func (o GetAppsSsoOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsSso] {
+	return pulumix.Output[GetAppsSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsSsoOutput) AcsUrl() pulumi.StringOutput {
@@ -4371,6 +4969,12 @@ func (o GetAppsSsoPtrOutput) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
 
 func (o GetAppsSsoPtrOutput) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) GetAppsSsoPtrOutput {
 	return o
+}
+
+func (o GetAppsSsoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsSso] {
+	return pulumix.Output[*GetAppsSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsSsoPtrOutput) Elem() GetAppsSsoOutput {
@@ -4472,6 +5076,12 @@ func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificateOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoCertificateOutput)
 }
 
+func (i GetAppsSsoCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsSsoCertificate] {
+	return pulumix.Output[GetAppsSsoCertificate]{
+		OutputState: i.ToGetAppsSsoCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput {
 	return i.ToGetAppsSsoCertificatePtrOutputWithContext(context.Background())
 }
@@ -4513,6 +5123,12 @@ func (i *getAppsSsoCertificatePtrType) ToGetAppsSsoCertificatePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoCertificatePtrOutput)
 }
 
+func (i *getAppsSsoCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAppsSsoCertificate] {
+	return pulumix.Output[*GetAppsSsoCertificate]{
+		OutputState: i.ToGetAppsSsoCertificatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppsSsoCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetAppsSsoCertificateOutput) ElementType() reflect.Type {
@@ -4535,6 +5151,12 @@ func (o GetAppsSsoCertificateOutput) ToGetAppsSsoCertificatePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsSsoCertificate) *GetAppsSsoCertificate {
 		return &v
 	}).(GetAppsSsoCertificatePtrOutput)
+}
+
+func (o GetAppsSsoCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsSsoCertificate] {
+	return pulumix.Output[GetAppsSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsSsoCertificateOutput) Id() pulumi.IntOutput {
@@ -4561,6 +5183,12 @@ func (o GetAppsSsoCertificatePtrOutput) ToGetAppsSsoCertificatePtrOutput() GetAp
 
 func (o GetAppsSsoCertificatePtrOutput) ToGetAppsSsoCertificatePtrOutputWithContext(ctx context.Context) GetAppsSsoCertificatePtrOutput {
 	return o
+}
+
+func (o GetAppsSsoCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAppsSsoCertificate] {
+	return pulumix.Output[*GetAppsSsoCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsSsoCertificatePtrOutput) Elem() GetAppsSsoCertificateOutput {
@@ -4633,6 +5261,12 @@ func (i GetAuthServersClaimsFilterArgs) ToGetAuthServersClaimsFilterOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersClaimsFilterOutput)
 }
 
+func (i GetAuthServersClaimsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersClaimsFilter] {
+	return pulumix.Output[GetAuthServersClaimsFilter]{
+		OutputState: i.ToGetAuthServersClaimsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthServersClaimsFilterArrayInput is an input type that accepts GetAuthServersClaimsFilterArray and GetAuthServersClaimsFilterArrayOutput values.
 // You can construct a concrete instance of `GetAuthServersClaimsFilterArrayInput` via:
 //
@@ -4658,6 +5292,12 @@ func (i GetAuthServersClaimsFilterArray) ToGetAuthServersClaimsFilterArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersClaimsFilterArrayOutput)
 }
 
+func (i GetAuthServersClaimsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersClaimsFilter] {
+	return pulumix.Output[[]GetAuthServersClaimsFilter]{
+		OutputState: i.ToGetAuthServersClaimsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthServersClaimsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetAuthServersClaimsFilterOutput) ElementType() reflect.Type {
@@ -4670,6 +5310,12 @@ func (o GetAuthServersClaimsFilterOutput) ToGetAuthServersClaimsFilterOutput() G
 
 func (o GetAuthServersClaimsFilterOutput) ToGetAuthServersClaimsFilterOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterOutput {
 	return o
+}
+
+func (o GetAuthServersClaimsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersClaimsFilter] {
+	return pulumix.Output[GetAuthServersClaimsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersClaimsFilterOutput) Name() pulumi.StringOutput {
@@ -4692,6 +5338,12 @@ func (o GetAuthServersClaimsFilterArrayOutput) ToGetAuthServersClaimsFilterArray
 
 func (o GetAuthServersClaimsFilterArrayOutput) ToGetAuthServersClaimsFilterArrayOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterArrayOutput {
 	return o
+}
+
+func (o GetAuthServersClaimsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersClaimsFilter] {
+	return pulumix.Output[[]GetAuthServersClaimsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersClaimsFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersClaimsFilterOutput {
@@ -4737,6 +5389,12 @@ func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersConfigurationOutput)
 }
 
+func (i GetAuthServersConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersConfiguration] {
+	return pulumix.Output[GetAuthServersConfiguration]{
+		OutputState: i.ToGetAuthServersConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput {
 	return i.ToGetAuthServersConfigurationPtrOutputWithContext(context.Background())
 }
@@ -4778,6 +5436,12 @@ func (i *getAuthServersConfigurationPtrType) ToGetAuthServersConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersConfigurationPtrOutput)
 }
 
+func (i *getAuthServersConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAuthServersConfiguration] {
+	return pulumix.Output[*GetAuthServersConfiguration]{
+		OutputState: i.ToGetAuthServersConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthServersConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetAuthServersConfigurationOutput) ElementType() reflect.Type {
@@ -4800,6 +5464,12 @@ func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAuthServersConfiguration) *GetAuthServersConfiguration {
 		return &v
 	}).(GetAuthServersConfigurationPtrOutput)
+}
+
+func (o GetAuthServersConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersConfiguration] {
+	return pulumix.Output[GetAuthServersConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
@@ -4830,6 +5500,12 @@ func (o GetAuthServersConfigurationPtrOutput) ToGetAuthServersConfigurationPtrOu
 
 func (o GetAuthServersConfigurationPtrOutput) ToGetAuthServersConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersConfigurationPtrOutput {
 	return o
+}
+
+func (o GetAuthServersConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAuthServersConfiguration] {
+	return pulumix.Output[*GetAuthServersConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersConfigurationPtrOutput) Elem() GetAuthServersConfigurationOutput {
@@ -4911,6 +5587,12 @@ func (i GetAuthServersFilterArgs) ToGetAuthServersFilterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersFilterOutput)
 }
 
+func (i GetAuthServersFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersFilter] {
+	return pulumix.Output[GetAuthServersFilter]{
+		OutputState: i.ToGetAuthServersFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthServersFilterArrayInput is an input type that accepts GetAuthServersFilterArray and GetAuthServersFilterArrayOutput values.
 // You can construct a concrete instance of `GetAuthServersFilterArrayInput` via:
 //
@@ -4936,6 +5618,12 @@ func (i GetAuthServersFilterArray) ToGetAuthServersFilterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersFilterArrayOutput)
 }
 
+func (i GetAuthServersFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersFilter] {
+	return pulumix.Output[[]GetAuthServersFilter]{
+		OutputState: i.ToGetAuthServersFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthServersFilterOutput struct{ *pulumi.OutputState }
 
 func (GetAuthServersFilterOutput) ElementType() reflect.Type {
@@ -4948,6 +5636,12 @@ func (o GetAuthServersFilterOutput) ToGetAuthServersFilterOutput() GetAuthServer
 
 func (o GetAuthServersFilterOutput) ToGetAuthServersFilterOutputWithContext(ctx context.Context) GetAuthServersFilterOutput {
 	return o
+}
+
+func (o GetAuthServersFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersFilter] {
+	return pulumix.Output[GetAuthServersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersFilterOutput) Name() pulumi.StringOutput {
@@ -4970,6 +5664,12 @@ func (o GetAuthServersFilterArrayOutput) ToGetAuthServersFilterArrayOutput() Get
 
 func (o GetAuthServersFilterArrayOutput) ToGetAuthServersFilterArrayOutputWithContext(ctx context.Context) GetAuthServersFilterArrayOutput {
 	return o
+}
+
+func (o GetAuthServersFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersFilter] {
+	return pulumix.Output[[]GetAuthServersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersFilterOutput {
@@ -5015,6 +5715,12 @@ func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersInstanceConfigurationOutput)
 }
 
+func (i GetAuthServersInstanceConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersInstanceConfiguration] {
+	return pulumix.Output[GetAuthServersInstanceConfiguration]{
+		OutputState: i.ToGetAuthServersInstanceConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput {
 	return i.ToGetAuthServersInstanceConfigurationPtrOutputWithContext(context.Background())
 }
@@ -5056,6 +5762,12 @@ func (i *getAuthServersInstanceConfigurationPtrType) ToGetAuthServersInstanceCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersInstanceConfigurationPtrOutput)
 }
 
+func (i *getAuthServersInstanceConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetAuthServersInstanceConfiguration] {
+	return pulumix.Output[*GetAuthServersInstanceConfiguration]{
+		OutputState: i.ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthServersInstanceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetAuthServersInstanceConfigurationOutput) ElementType() reflect.Type {
@@ -5078,6 +5790,12 @@ func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAuthServersInstanceConfiguration) *GetAuthServersInstanceConfiguration {
 		return &v
 	}).(GetAuthServersInstanceConfigurationPtrOutput)
+}
+
+func (o GetAuthServersInstanceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersInstanceConfiguration] {
+	return pulumix.Output[GetAuthServersInstanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersInstanceConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
@@ -5108,6 +5826,12 @@ func (o GetAuthServersInstanceConfigurationPtrOutput) ToGetAuthServersInstanceCo
 
 func (o GetAuthServersInstanceConfigurationPtrOutput) ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationPtrOutput {
 	return o
+}
+
+func (o GetAuthServersInstanceConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetAuthServersInstanceConfiguration] {
+	return pulumix.Output[*GetAuthServersInstanceConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersInstanceConfigurationPtrOutput) Elem() GetAuthServersInstanceConfigurationOutput {
@@ -5189,6 +5913,12 @@ func (i GetAuthServersScopesFilterArgs) ToGetAuthServersScopesFilterOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersScopesFilterOutput)
 }
 
+func (i GetAuthServersScopesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersScopesFilter] {
+	return pulumix.Output[GetAuthServersScopesFilter]{
+		OutputState: i.ToGetAuthServersScopesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthServersScopesFilterArrayInput is an input type that accepts GetAuthServersScopesFilterArray and GetAuthServersScopesFilterArrayOutput values.
 // You can construct a concrete instance of `GetAuthServersScopesFilterArrayInput` via:
 //
@@ -5214,6 +5944,12 @@ func (i GetAuthServersScopesFilterArray) ToGetAuthServersScopesFilterArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersScopesFilterArrayOutput)
 }
 
+func (i GetAuthServersScopesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersScopesFilter] {
+	return pulumix.Output[[]GetAuthServersScopesFilter]{
+		OutputState: i.ToGetAuthServersScopesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthServersScopesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetAuthServersScopesFilterOutput) ElementType() reflect.Type {
@@ -5226,6 +5962,12 @@ func (o GetAuthServersScopesFilterOutput) ToGetAuthServersScopesFilterOutput() G
 
 func (o GetAuthServersScopesFilterOutput) ToGetAuthServersScopesFilterOutputWithContext(ctx context.Context) GetAuthServersScopesFilterOutput {
 	return o
+}
+
+func (o GetAuthServersScopesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersScopesFilter] {
+	return pulumix.Output[GetAuthServersScopesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersScopesFilterOutput) Name() pulumi.StringOutput {
@@ -5248,6 +5990,12 @@ func (o GetAuthServersScopesFilterArrayOutput) ToGetAuthServersScopesFilterArray
 
 func (o GetAuthServersScopesFilterArrayOutput) ToGetAuthServersScopesFilterArrayOutputWithContext(ctx context.Context) GetAuthServersScopesFilterArrayOutput {
 	return o
+}
+
+func (o GetAuthServersScopesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthServersScopesFilter] {
+	return pulumix.Output[[]GetAuthServersScopesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthServersScopesFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersScopesFilterOutput {
@@ -5289,6 +6037,12 @@ func (i GetMappingsActionArgs) ToGetMappingsActionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionOutput)
 }
 
+func (i GetMappingsActionArgs) ToOutput(ctx context.Context) pulumix.Output[GetMappingsAction] {
+	return pulumix.Output[GetMappingsAction]{
+		OutputState: i.ToGetMappingsActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMappingsActionArrayInput is an input type that accepts GetMappingsActionArray and GetMappingsActionArrayOutput values.
 // You can construct a concrete instance of `GetMappingsActionArrayInput` via:
 //
@@ -5314,6 +6068,12 @@ func (i GetMappingsActionArray) ToGetMappingsActionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionArrayOutput)
 }
 
+func (i GetMappingsActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsAction] {
+	return pulumix.Output[[]GetMappingsAction]{
+		OutputState: i.ToGetMappingsActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMappingsActionOutput struct{ *pulumi.OutputState }
 
 func (GetMappingsActionOutput) ElementType() reflect.Type {
@@ -5326,6 +6086,12 @@ func (o GetMappingsActionOutput) ToGetMappingsActionOutput() GetMappingsActionOu
 
 func (o GetMappingsActionOutput) ToGetMappingsActionOutputWithContext(ctx context.Context) GetMappingsActionOutput {
 	return o
+}
+
+func (o GetMappingsActionOutput) ToOutput(ctx context.Context) pulumix.Output[GetMappingsAction] {
+	return pulumix.Output[GetMappingsAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsActionOutput) Action() pulumi.StringOutput {
@@ -5348,6 +6114,12 @@ func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutput() GetMappin
 
 func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutputWithContext(ctx context.Context) GetMappingsActionArrayOutput {
 	return o
+}
+
+func (o GetMappingsActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsAction] {
+	return pulumix.Output[[]GetMappingsAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsActionArrayOutput) Index(i pulumi.IntInput) GetMappingsActionOutput {
@@ -5391,6 +6163,12 @@ func (i GetMappingsConditionArgs) ToGetMappingsConditionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionOutput)
 }
 
+func (i GetMappingsConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetMappingsCondition] {
+	return pulumix.Output[GetMappingsCondition]{
+		OutputState: i.ToGetMappingsConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMappingsConditionArrayInput is an input type that accepts GetMappingsConditionArray and GetMappingsConditionArrayOutput values.
 // You can construct a concrete instance of `GetMappingsConditionArrayInput` via:
 //
@@ -5416,6 +6194,12 @@ func (i GetMappingsConditionArray) ToGetMappingsConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionArrayOutput)
 }
 
+func (i GetMappingsConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsCondition] {
+	return pulumix.Output[[]GetMappingsCondition]{
+		OutputState: i.ToGetMappingsConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMappingsConditionOutput struct{ *pulumi.OutputState }
 
 func (GetMappingsConditionOutput) ElementType() reflect.Type {
@@ -5428,6 +6212,12 @@ func (o GetMappingsConditionOutput) ToGetMappingsConditionOutput() GetMappingsCo
 
 func (o GetMappingsConditionOutput) ToGetMappingsConditionOutputWithContext(ctx context.Context) GetMappingsConditionOutput {
 	return o
+}
+
+func (o GetMappingsConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetMappingsCondition] {
+	return pulumix.Output[GetMappingsCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsConditionOutput) Operator() pulumi.StringOutput {
@@ -5454,6 +6244,12 @@ func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutput() Get
 
 func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutputWithContext(ctx context.Context) GetMappingsConditionArrayOutput {
 	return o
+}
+
+func (o GetMappingsConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsCondition] {
+	return pulumix.Output[[]GetMappingsCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsConditionArrayOutput) Index(i pulumi.IntInput) GetMappingsConditionOutput {
@@ -5495,6 +6291,12 @@ func (i GetMappingsFilterArgs) ToGetMappingsFilterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterOutput)
 }
 
+func (i GetMappingsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetMappingsFilter] {
+	return pulumix.Output[GetMappingsFilter]{
+		OutputState: i.ToGetMappingsFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMappingsFilterArrayInput is an input type that accepts GetMappingsFilterArray and GetMappingsFilterArrayOutput values.
 // You can construct a concrete instance of `GetMappingsFilterArrayInput` via:
 //
@@ -5520,6 +6322,12 @@ func (i GetMappingsFilterArray) ToGetMappingsFilterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterArrayOutput)
 }
 
+func (i GetMappingsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsFilter] {
+	return pulumix.Output[[]GetMappingsFilter]{
+		OutputState: i.ToGetMappingsFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMappingsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetMappingsFilterOutput) ElementType() reflect.Type {
@@ -5532,6 +6340,12 @@ func (o GetMappingsFilterOutput) ToGetMappingsFilterOutput() GetMappingsFilterOu
 
 func (o GetMappingsFilterOutput) ToGetMappingsFilterOutputWithContext(ctx context.Context) GetMappingsFilterOutput {
 	return o
+}
+
+func (o GetMappingsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetMappingsFilter] {
+	return pulumix.Output[GetMappingsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsFilterOutput) Name() pulumi.StringOutput {
@@ -5554,6 +6368,12 @@ func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutput() GetMappin
 
 func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutputWithContext(ctx context.Context) GetMappingsFilterArrayOutput {
 	return o
+}
+
+func (o GetMappingsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMappingsFilter] {
+	return pulumix.Output[[]GetMappingsFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMappingsFilterArrayOutput) Index(i pulumi.IntInput) GetMappingsFilterOutput {
@@ -5595,6 +6415,12 @@ func (i GetPrivilegesFilterArgs) ToGetPrivilegesFilterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterOutput)
 }
 
+func (i GetPrivilegesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesFilter] {
+	return pulumix.Output[GetPrivilegesFilter]{
+		OutputState: i.ToGetPrivilegesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivilegesFilterArrayInput is an input type that accepts GetPrivilegesFilterArray and GetPrivilegesFilterArrayOutput values.
 // You can construct a concrete instance of `GetPrivilegesFilterArrayInput` via:
 //
@@ -5620,6 +6446,12 @@ func (i GetPrivilegesFilterArray) ToGetPrivilegesFilterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterArrayOutput)
 }
 
+func (i GetPrivilegesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesFilter] {
+	return pulumix.Output[[]GetPrivilegesFilter]{
+		OutputState: i.ToGetPrivilegesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivilegesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetPrivilegesFilterOutput) ElementType() reflect.Type {
@@ -5632,6 +6464,12 @@ func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutput() GetPrivilegesFi
 
 func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutputWithContext(ctx context.Context) GetPrivilegesFilterOutput {
 	return o
+}
+
+func (o GetPrivilegesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesFilter] {
+	return pulumix.Output[GetPrivilegesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesFilterOutput) Name() pulumi.StringOutput {
@@ -5654,6 +6492,12 @@ func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutput() GetPr
 
 func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutputWithContext(ctx context.Context) GetPrivilegesFilterArrayOutput {
 	return o
+}
+
+func (o GetPrivilegesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesFilter] {
+	return pulumix.Output[[]GetPrivilegesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesFilterArrayOutput) Index(i pulumi.IntInput) GetPrivilegesFilterOutput {
@@ -5693,6 +6537,12 @@ func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegeOutp
 
 func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegeOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeOutput)
+}
+
+func (i GetPrivilegesInstancePrivilegeArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesInstancePrivilege] {
+	return pulumix.Output[GetPrivilegesInstancePrivilege]{
+		OutputState: i.ToGetPrivilegesInstancePrivilegeOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput {
@@ -5736,6 +6586,12 @@ func (i *getPrivilegesInstancePrivilegePtrType) ToGetPrivilegesInstancePrivilege
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegePtrOutput)
 }
 
+func (i *getPrivilegesInstancePrivilegePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPrivilegesInstancePrivilege] {
+	return pulumix.Output[*GetPrivilegesInstancePrivilege]{
+		OutputState: i.ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivilegesInstancePrivilegeOutput struct{ *pulumi.OutputState }
 
 func (GetPrivilegesInstancePrivilegeOutput) ElementType() reflect.Type {
@@ -5760,6 +6616,12 @@ func (o GetPrivilegesInstancePrivilegeOutput) ToGetPrivilegesInstancePrivilegePt
 	}).(GetPrivilegesInstancePrivilegePtrOutput)
 }
 
+func (o GetPrivilegesInstancePrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesInstancePrivilege] {
+	return pulumix.Output[GetPrivilegesInstancePrivilege]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetPrivilegesInstancePrivilegeOutput) Statements() GetPrivilegesInstancePrivilegeStatementArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesInstancePrivilege) []GetPrivilegesInstancePrivilegeStatement { return v.Statements }).(GetPrivilegesInstancePrivilegeStatementArrayOutput)
 }
@@ -5780,6 +6642,12 @@ func (o GetPrivilegesInstancePrivilegePtrOutput) ToGetPrivilegesInstancePrivileg
 
 func (o GetPrivilegesInstancePrivilegePtrOutput) ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegePtrOutput {
 	return o
+}
+
+func (o GetPrivilegesInstancePrivilegePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPrivilegesInstancePrivilege] {
+	return pulumix.Output[*GetPrivilegesInstancePrivilege]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesInstancePrivilegePtrOutput) Elem() GetPrivilegesInstancePrivilegeOutput {
@@ -5845,6 +6713,12 @@ func (i GetPrivilegesInstancePrivilegeStatementArgs) ToGetPrivilegesInstancePriv
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeStatementOutput)
 }
 
+func (i GetPrivilegesInstancePrivilegeStatementArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesInstancePrivilegeStatement] {
+	return pulumix.Output[GetPrivilegesInstancePrivilegeStatement]{
+		OutputState: i.ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivilegesInstancePrivilegeStatementArrayInput is an input type that accepts GetPrivilegesInstancePrivilegeStatementArray and GetPrivilegesInstancePrivilegeStatementArrayOutput values.
 // You can construct a concrete instance of `GetPrivilegesInstancePrivilegeStatementArrayInput` via:
 //
@@ -5870,6 +6744,12 @@ func (i GetPrivilegesInstancePrivilegeStatementArray) ToGetPrivilegesInstancePri
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeStatementArrayOutput)
 }
 
+func (i GetPrivilegesInstancePrivilegeStatementArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesInstancePrivilegeStatement] {
+	return pulumix.Output[[]GetPrivilegesInstancePrivilegeStatement]{
+		OutputState: i.ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivilegesInstancePrivilegeStatementOutput struct{ *pulumi.OutputState }
 
 func (GetPrivilegesInstancePrivilegeStatementOutput) ElementType() reflect.Type {
@@ -5882,6 +6762,12 @@ func (o GetPrivilegesInstancePrivilegeStatementOutput) ToGetPrivilegesInstancePr
 
 func (o GetPrivilegesInstancePrivilegeStatementOutput) ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementOutput {
 	return o
+}
+
+func (o GetPrivilegesInstancePrivilegeStatementOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesInstancePrivilegeStatement] {
+	return pulumix.Output[GetPrivilegesInstancePrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesInstancePrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
@@ -5908,6 +6794,12 @@ func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) ToGetPrivilegesInsta
 
 func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementArrayOutput {
 	return o
+}
+
+func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesInstancePrivilegeStatement] {
+	return pulumix.Output[[]GetPrivilegesInstancePrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) Index(i pulumi.IntInput) GetPrivilegesInstancePrivilegeStatementOutput {
@@ -5947,6 +6839,12 @@ func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutput() GetPrivileg
 
 func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeOutput)
+}
+
+func (i GetPrivilegesPrivilegeArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesPrivilege] {
+	return pulumix.Output[GetPrivilegesPrivilege]{
+		OutputState: i.ToGetPrivilegesPrivilegeOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
@@ -5990,6 +6888,12 @@ func (i *getPrivilegesPrivilegePtrType) ToGetPrivilegesPrivilegePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegePtrOutput)
 }
 
+func (i *getPrivilegesPrivilegePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPrivilegesPrivilege] {
+	return pulumix.Output[*GetPrivilegesPrivilege]{
+		OutputState: i.ToGetPrivilegesPrivilegePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivilegesPrivilegeOutput struct{ *pulumi.OutputState }
 
 func (GetPrivilegesPrivilegeOutput) ElementType() reflect.Type {
@@ -6014,6 +6918,12 @@ func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegePtrOutputWithConte
 	}).(GetPrivilegesPrivilegePtrOutput)
 }
 
+func (o GetPrivilegesPrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesPrivilege] {
+	return pulumix.Output[GetPrivilegesPrivilege]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetPrivilegesPrivilegeOutput) Statements() GetPrivilegesPrivilegeStatementArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesPrivilege) []GetPrivilegesPrivilegeStatement { return v.Statements }).(GetPrivilegesPrivilegeStatementArrayOutput)
 }
@@ -6034,6 +6944,12 @@ func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutput() Get
 
 func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
 	return o
+}
+
+func (o GetPrivilegesPrivilegePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPrivilegesPrivilege] {
+	return pulumix.Output[*GetPrivilegesPrivilege]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesPrivilegePtrOutput) Elem() GetPrivilegesPrivilegeOutput {
@@ -6099,6 +7015,12 @@ func (i GetPrivilegesPrivilegeStatementArgs) ToGetPrivilegesPrivilegeStatementOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementOutput)
 }
 
+func (i GetPrivilegesPrivilegeStatementArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesPrivilegeStatement] {
+	return pulumix.Output[GetPrivilegesPrivilegeStatement]{
+		OutputState: i.ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivilegesPrivilegeStatementArrayInput is an input type that accepts GetPrivilegesPrivilegeStatementArray and GetPrivilegesPrivilegeStatementArrayOutput values.
 // You can construct a concrete instance of `GetPrivilegesPrivilegeStatementArrayInput` via:
 //
@@ -6124,6 +7046,12 @@ func (i GetPrivilegesPrivilegeStatementArray) ToGetPrivilegesPrivilegeStatementA
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementArrayOutput)
 }
 
+func (i GetPrivilegesPrivilegeStatementArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesPrivilegeStatement] {
+	return pulumix.Output[[]GetPrivilegesPrivilegeStatement]{
+		OutputState: i.ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivilegesPrivilegeStatementOutput struct{ *pulumi.OutputState }
 
 func (GetPrivilegesPrivilegeStatementOutput) ElementType() reflect.Type {
@@ -6136,6 +7064,12 @@ func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatement
 
 func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementOutput {
 	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesPrivilegeStatement] {
+	return pulumix.Output[GetPrivilegesPrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
@@ -6162,6 +7096,12 @@ func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStat
 
 func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementArrayOutput {
 	return o
+}
+
+func (o GetPrivilegesPrivilegeStatementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivilegesPrivilegeStatement] {
+	return pulumix.Output[[]GetPrivilegesPrivilegeStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) GetPrivilegesPrivilegeStatementOutput {
@@ -6203,6 +7143,12 @@ func (i GetRiskRulesFilterArgs) ToGetRiskRulesFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesFilterOutput)
 }
 
+func (i GetRiskRulesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesFilter] {
+	return pulumix.Output[GetRiskRulesFilter]{
+		OutputState: i.ToGetRiskRulesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRiskRulesFilterArrayInput is an input type that accepts GetRiskRulesFilterArray and GetRiskRulesFilterArrayOutput values.
 // You can construct a concrete instance of `GetRiskRulesFilterArrayInput` via:
 //
@@ -6228,6 +7174,12 @@ func (i GetRiskRulesFilterArray) ToGetRiskRulesFilterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesFilterArrayOutput)
 }
 
+func (i GetRiskRulesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRiskRulesFilter] {
+	return pulumix.Output[[]GetRiskRulesFilter]{
+		OutputState: i.ToGetRiskRulesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRiskRulesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetRiskRulesFilterOutput) ElementType() reflect.Type {
@@ -6240,6 +7192,12 @@ func (o GetRiskRulesFilterOutput) ToGetRiskRulesFilterOutput() GetRiskRulesFilte
 
 func (o GetRiskRulesFilterOutput) ToGetRiskRulesFilterOutputWithContext(ctx context.Context) GetRiskRulesFilterOutput {
 	return o
+}
+
+func (o GetRiskRulesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesFilter] {
+	return pulumix.Output[GetRiskRulesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRiskRulesFilterOutput) Name() pulumi.StringOutput {
@@ -6262,6 +7220,12 @@ func (o GetRiskRulesFilterArrayOutput) ToGetRiskRulesFilterArrayOutput() GetRisk
 
 func (o GetRiskRulesFilterArrayOutput) ToGetRiskRulesFilterArrayOutputWithContext(ctx context.Context) GetRiskRulesFilterArrayOutput {
 	return o
+}
+
+func (o GetRiskRulesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRiskRulesFilter] {
+	return pulumix.Output[[]GetRiskRulesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRiskRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRiskRulesFilterOutput {
@@ -6301,6 +7265,12 @@ func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourceOutput() Get
 
 func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourceOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesInstanceSourceOutput)
+}
+
+func (i GetRiskRulesInstanceSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesInstanceSource] {
+	return pulumix.Output[GetRiskRulesInstanceSource]{
+		OutputState: i.ToGetRiskRulesInstanceSourceOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput {
@@ -6344,6 +7314,12 @@ func (i *getRiskRulesInstanceSourcePtrType) ToGetRiskRulesInstanceSourcePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesInstanceSourcePtrOutput)
 }
 
+func (i *getRiskRulesInstanceSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetRiskRulesInstanceSource] {
+	return pulumix.Output[*GetRiskRulesInstanceSource]{
+		OutputState: i.ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRiskRulesInstanceSourceOutput struct{ *pulumi.OutputState }
 
 func (GetRiskRulesInstanceSourceOutput) ElementType() reflect.Type {
@@ -6368,6 +7344,12 @@ func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourcePtrOutputW
 	}).(GetRiskRulesInstanceSourcePtrOutput)
 }
 
+func (o GetRiskRulesInstanceSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesInstanceSource] {
+	return pulumix.Output[GetRiskRulesInstanceSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRiskRulesInstanceSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesInstanceSource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6388,6 +7370,12 @@ func (o GetRiskRulesInstanceSourcePtrOutput) ToGetRiskRulesInstanceSourcePtrOutp
 
 func (o GetRiskRulesInstanceSourcePtrOutput) ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourcePtrOutput {
 	return o
+}
+
+func (o GetRiskRulesInstanceSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetRiskRulesInstanceSource] {
+	return pulumix.Output[*GetRiskRulesInstanceSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRiskRulesInstanceSourcePtrOutput) Elem() GetRiskRulesInstanceSourceOutput {
@@ -6451,6 +7439,12 @@ func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesSourceOutput)
 }
 
+func (i GetRiskRulesSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesSource] {
+	return pulumix.Output[GetRiskRulesSource]{
+		OutputState: i.ToGetRiskRulesSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput {
 	return i.ToGetRiskRulesSourcePtrOutputWithContext(context.Background())
 }
@@ -6492,6 +7486,12 @@ func (i *getRiskRulesSourcePtrType) ToGetRiskRulesSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesSourcePtrOutput)
 }
 
+func (i *getRiskRulesSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GetRiskRulesSource] {
+	return pulumix.Output[*GetRiskRulesSource]{
+		OutputState: i.ToGetRiskRulesSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRiskRulesSourceOutput struct{ *pulumi.OutputState }
 
 func (GetRiskRulesSourceOutput) ElementType() reflect.Type {
@@ -6516,6 +7516,12 @@ func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourcePtrOutputWithContext(ctx c
 	}).(GetRiskRulesSourcePtrOutput)
 }
 
+func (o GetRiskRulesSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetRiskRulesSource] {
+	return pulumix.Output[GetRiskRulesSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRiskRulesSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesSource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6536,6 +7542,12 @@ func (o GetRiskRulesSourcePtrOutput) ToGetRiskRulesSourcePtrOutput() GetRiskRule
 
 func (o GetRiskRulesSourcePtrOutput) ToGetRiskRulesSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesSourcePtrOutput {
 	return o
+}
+
+func (o GetRiskRulesSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetRiskRulesSource] {
+	return pulumix.Output[*GetRiskRulesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRiskRulesSourcePtrOutput) Elem() GetRiskRulesSourceOutput {

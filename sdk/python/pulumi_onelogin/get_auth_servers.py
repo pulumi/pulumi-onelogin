@@ -99,11 +99,11 @@ def get_auth_servers(configuration: Optional[pulumi.InputType['GetAuthServersCon
     __ret__ = pulumi.runtime.invoke('onelogin:index/getAuthServers:getAuthServers', __args__, opts=opts, typ=GetAuthServersResult).value
 
     return AwaitableGetAuthServersResult(
-        configuration=__ret__.configuration,
-        description=__ret__.description,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        name=__ret__.name)
+        configuration=pulumi.get(__ret__, 'configuration'),
+        description=pulumi.get(__ret__, 'description'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_auth_servers)

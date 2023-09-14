@@ -132,14 +132,14 @@ def get_risk_rules(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('onelogin:index/getRiskRules:getRiskRules', __args__, opts=opts, typ=GetRiskRulesResult).value
 
     return AwaitableGetRiskRulesResult(
-        description=__ret__.description,
-        filter=__ret__.filter,
-        filters=__ret__.filters,
-        id=__ret__.id,
-        name=__ret__.name,
-        source=__ret__.source,
-        target=__ret__.target,
-        type=__ret__.type)
+        description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        source=pulumi.get(__ret__, 'source'),
+        target=pulumi.get(__ret__, 'target'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_risk_rules)

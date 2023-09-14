@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetRulesInstance(ctx *pulumi.Context, args *GetRulesInstanceArgs, opts ...pulumi.InvokeOption) (*GetRulesInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesInstanceResult
 	err := ctx.Invoke("onelogin:apps/getRulesInstance:getRulesInstance", args, &rv, opts...)
 	if err != nil {
@@ -85,6 +88,12 @@ func (o GetRulesInstanceResultOutput) ToGetRulesInstanceResultOutput() GetRulesI
 
 func (o GetRulesInstanceResultOutput) ToGetRulesInstanceResultOutputWithContext(ctx context.Context) GetRulesInstanceResultOutput {
 	return o
+}
+
+func (o GetRulesInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesInstanceResult] {
+	return pulumix.Output[GetRulesInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesInstanceResultOutput) Actions() GetRulesInstanceActionArrayOutput {
