@@ -14,3 +14,6 @@ sdk/dotnet/version.txt
 yarn.lock
 sdk/java/.gradle
 sdk/java/build
+
+
+sdk/python/venv
