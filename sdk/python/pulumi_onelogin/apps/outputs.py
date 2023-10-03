@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -40,10 +40,21 @@ class RulesAction(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        RulesAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -62,12 +73,25 @@ class RulesCondition(dict):
                  operator: Optional[str] = None,
                  source: Optional[str] = None,
                  value: Optional[str] = None):
+        RulesCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            source=source,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: Optional[str] = None,
+             source: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -90,8 +114,19 @@ class GetActionsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetActionsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -109,8 +144,19 @@ class GetActionsValuesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetActionsValuesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -128,8 +174,19 @@ class GetConditionsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetConditionsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -147,8 +204,19 @@ class GetConditionsOperatorsFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetConditionsOperatorsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -173,15 +241,40 @@ class GetInstanceConfigurationResult(dict):
                  redirect_uri: str,
                  refresh_token_expiration_minutes: int,
                  token_endpoint_auth_method: int):
-        pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
-        pulumi.set(__self__, "login_url", login_url)
-        pulumi.set(__self__, "oidc_api_version", oidc_api_version)
-        pulumi.set(__self__, "oidc_application_type", oidc_application_type)
-        pulumi.set(__self__, "oidc_encryption_key", oidc_encryption_key)
-        pulumi.set(__self__, "post_logout_redirect_uri", post_logout_redirect_uri)
-        pulumi.set(__self__, "redirect_uri", redirect_uri)
-        pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
-        pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        GetInstanceConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_token_expiration_minutes=access_token_expiration_minutes,
+            login_url=login_url,
+            oidc_api_version=oidc_api_version,
+            oidc_application_type=oidc_application_type,
+            oidc_encryption_key=oidc_encryption_key,
+            post_logout_redirect_uri=post_logout_redirect_uri,
+            redirect_uri=redirect_uri,
+            refresh_token_expiration_minutes=refresh_token_expiration_minutes,
+            token_endpoint_auth_method=token_endpoint_auth_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_token_expiration_minutes: int,
+             login_url: str,
+             oidc_api_version: str,
+             oidc_application_type: int,
+             oidc_encryption_key: str,
+             post_logout_redirect_uri: str,
+             redirect_uri: str,
+             refresh_token_expiration_minutes: int,
+             token_endpoint_auth_method: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_token_expiration_minutes", access_token_expiration_minutes)
+        _setter("login_url", login_url)
+        _setter("oidc_api_version", oidc_api_version)
+        _setter("oidc_application_type", oidc_application_type)
+        _setter("oidc_encryption_key", oidc_encryption_key)
+        _setter("post_logout_redirect_uri", post_logout_redirect_uri)
+        _setter("redirect_uri", redirect_uri)
+        _setter("refresh_token_expiration_minutes", refresh_token_expiration_minutes)
+        _setter("token_endpoint_auth_method", token_endpoint_auth_method)
 
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
@@ -245,19 +338,52 @@ class GetInstanceEnforcementPointResult(dict):
                  token: str,
                  use_target_host_header: bool,
                  vhost: str):
-        pulumi.set(__self__, "case_sensitive", case_sensitive)
-        pulumi.set(__self__, "conditions", conditions)
-        pulumi.set(__self__, "context_root", context_root)
-        pulumi.set(__self__, "landing_page", landing_page)
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "require_sitewide_authentication", require_sitewide_authentication)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "session_expiry_fixed", session_expiry_fixed)
-        pulumi.set(__self__, "session_expiry_inactivity", session_expiry_inactivity)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "token", token)
-        pulumi.set(__self__, "use_target_host_header", use_target_host_header)
-        pulumi.set(__self__, "vhost", vhost)
+        GetInstanceEnforcementPointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            case_sensitive=case_sensitive,
+            conditions=conditions,
+            context_root=context_root,
+            landing_page=landing_page,
+            permissions=permissions,
+            require_sitewide_authentication=require_sitewide_authentication,
+            resources=resources,
+            session_expiry_fixed=session_expiry_fixed,
+            session_expiry_inactivity=session_expiry_inactivity,
+            target=target,
+            token=token,
+            use_target_host_header=use_target_host_header,
+            vhost=vhost,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             case_sensitive: bool,
+             conditions: str,
+             context_root: str,
+             landing_page: str,
+             permissions: str,
+             require_sitewide_authentication: bool,
+             resources: Sequence['outputs.GetInstanceEnforcementPointResourceResult'],
+             session_expiry_fixed: 'outputs.GetInstanceEnforcementPointSessionExpiryFixedResult',
+             session_expiry_inactivity: 'outputs.GetInstanceEnforcementPointSessionExpiryInactivityResult',
+             target: str,
+             token: str,
+             use_target_host_header: bool,
+             vhost: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("case_sensitive", case_sensitive)
+        _setter("conditions", conditions)
+        _setter("context_root", context_root)
+        _setter("landing_page", landing_page)
+        _setter("permissions", permissions)
+        _setter("require_sitewide_authentication", require_sitewide_authentication)
+        _setter("resources", resources)
+        _setter("session_expiry_fixed", session_expiry_fixed)
+        _setter("session_expiry_inactivity", session_expiry_inactivity)
+        _setter("target", target)
+        _setter("token", token)
+        _setter("use_target_host_header", use_target_host_header)
+        _setter("vhost", vhost)
 
     @property
     @pulumi.getter(name="caseSensitive")
@@ -333,11 +459,28 @@ class GetInstanceEnforcementPointResourceResult(dict):
                  path: str,
                  permission: str,
                  require_auth: bool):
-        pulumi.set(__self__, "conditions", conditions)
-        pulumi.set(__self__, "is_path_regex", is_path_regex)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "require_auth", require_auth)
+        GetInstanceEnforcementPointResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conditions=conditions,
+            is_path_regex=is_path_regex,
+            path=path,
+            permission=permission,
+            require_auth=require_auth,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conditions: str,
+             is_path_regex: bool,
+             path: str,
+             permission: str,
+             require_auth: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("conditions", conditions)
+        _setter("is_path_regex", is_path_regex)
+        _setter("path", path)
+        _setter("permission", permission)
+        _setter("require_auth", require_auth)
 
     @property
     @pulumi.getter
@@ -370,8 +513,19 @@ class GetInstanceEnforcementPointSessionExpiryFixedResult(dict):
     def __init__(__self__, *,
                  unit: int,
                  value: int):
-        pulumi.set(__self__, "unit", unit)
-        pulumi.set(__self__, "value", value)
+        GetInstanceEnforcementPointSessionExpiryFixedResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            unit=unit,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             unit: int,
+             value: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("unit", unit)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -389,8 +543,19 @@ class GetInstanceEnforcementPointSessionExpiryInactivityResult(dict):
     def __init__(__self__, *,
                  unit: int,
                  value: int):
-        pulumi.set(__self__, "unit", unit)
-        pulumi.set(__self__, "value", value)
+        GetInstanceEnforcementPointSessionExpiryInactivityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            unit=unit,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             unit: int,
+             value: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("unit", unit)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -407,7 +572,16 @@ class GetInstanceEnforcementPointSessionExpiryInactivityResult(dict):
 class GetInstanceParametersResult(dict):
     def __init__(__self__, *,
                  groups: 'outputs.GetInstanceParametersGroupsResult'):
-        pulumi.set(__self__, "groups", groups)
+        GetInstanceParametersResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: 'outputs.GetInstanceParametersGroupsResult',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("groups", groups)
 
     @property
     @pulumi.getter
@@ -427,15 +601,40 @@ class GetInstanceParametersGroupsResult(dict):
                  user_attribute_macros: str,
                  user_attribute_mappings: str,
                  values: str):
-        pulumi.set(__self__, "attributes_transformations", attributes_transformations)
-        pulumi.set(__self__, "default_values", default_values)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "provisioned_entitlements", provisioned_entitlements)
-        pulumi.set(__self__, "skip_if_blank", skip_if_blank)
-        pulumi.set(__self__, "user_attribute_macros", user_attribute_macros)
-        pulumi.set(__self__, "user_attribute_mappings", user_attribute_mappings)
-        pulumi.set(__self__, "values", values)
+        GetInstanceParametersGroupsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes_transformations=attributes_transformations,
+            default_values=default_values,
+            id=id,
+            label=label,
+            provisioned_entitlements=provisioned_entitlements,
+            skip_if_blank=skip_if_blank,
+            user_attribute_macros=user_attribute_macros,
+            user_attribute_mappings=user_attribute_mappings,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes_transformations: str,
+             default_values: str,
+             id: int,
+             label: str,
+             provisioned_entitlements: bool,
+             skip_if_blank: bool,
+             user_attribute_macros: str,
+             user_attribute_mappings: str,
+             values: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attributes_transformations", attributes_transformations)
+        _setter("default_values", default_values)
+        _setter("id", id)
+        _setter("label", label)
+        _setter("provisioned_entitlements", provisioned_entitlements)
+        _setter("skip_if_blank", skip_if_blank)
+        _setter("user_attribute_macros", user_attribute_macros)
+        _setter("user_attribute_mappings", user_attribute_mappings)
+        _setter("values", values)
 
     @property
     @pulumi.getter(name="attributesTransformations")
@@ -488,8 +687,19 @@ class GetInstanceProvisioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  status: str):
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "status", status)
+        GetInstanceProvisioningResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -511,12 +721,31 @@ class GetInstanceSsoResult(dict):
                  client_secret: str,
                  issuer: str,
                  metadata_url: str):
-        pulumi.set(__self__, "acs_url", acs_url)
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_secret", client_secret)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "metadata_url", metadata_url)
+        GetInstanceSsoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acs_url=acs_url,
+            certificate=certificate,
+            client_id=client_id,
+            client_secret=client_secret,
+            issuer=issuer,
+            metadata_url=metadata_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acs_url: str,
+             certificate: 'outputs.GetInstanceSsoCertificateResult',
+             client_id: str,
+             client_secret: str,
+             issuer: str,
+             metadata_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acs_url", acs_url)
+        _setter("certificate", certificate)
+        _setter("client_id", client_id)
+        _setter("client_secret", client_secret)
+        _setter("issuer", issuer)
+        _setter("metadata_url", metadata_url)
 
     @property
     @pulumi.getter(name="acsUrl")
@@ -555,9 +784,22 @@ class GetInstanceSsoCertificateResult(dict):
                  id: int,
                  name: str,
                  value: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetInstanceSsoCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -580,8 +822,19 @@ class GetRulesActionResult(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "values", values)
+        GetRulesActionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -600,9 +853,22 @@ class GetRulesConditionResult(dict):
                  operator: str,
                  source: str,
                  value: str):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "value", value)
+        GetRulesConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            source=source,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: str,
+             source: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator", operator)
+        _setter("source", source)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -625,8 +891,19 @@ class GetRulesFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetRulesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -644,8 +921,19 @@ class GetRulesInstanceActionResult(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "values", values)
+        GetRulesInstanceActionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -664,9 +952,22 @@ class GetRulesInstanceConditionResult(dict):
                  operator: str,
                  source: str,
                  value: str):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "value", value)
+        GetRulesInstanceConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            source=source,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: str,
+             source: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator", operator)
+        _setter("source", source)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -689,8 +990,19 @@ class GetUsersFilterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+        GetUsersFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
