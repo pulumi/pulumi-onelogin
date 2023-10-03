@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['V1Args', 'V1']
@@ -77,76 +77,153 @@ class V1Args:
         :param pulumi.Input[str] username: A username for the user.
         :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
+        V1Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activated_at=activated_at,
+            comment=comment,
+            company=company,
+            created_at=created_at,
+            department=department,
+            directory_id=directory_id,
+            distinguished_name=distinguished_name,
+            email=email,
+            external_id=external_id,
+            firstname=firstname,
+            group_id=group_id,
+            invalid_login_attempts=invalid_login_attempts,
+            invitation_sent_at=invitation_sent_at,
+            last_login=last_login,
+            lastname=lastname,
+            locked_until=locked_until,
+            manager_ad_id=manager_ad_id,
+            manager_user_id=manager_user_id,
+            member_of=member_of,
+            password=password,
+            password_algorithm=password_algorithm,
+            password_changed_at=password_changed_at,
+            password_confirmation=password_confirmation,
+            phone=phone,
+            preferred_locale_code=preferred_locale_code,
+            role_ids=role_ids,
+            salt=salt,
+            samaccountname=samaccountname,
+            state=state,
+            status=status,
+            title=title,
+            trusted_idp_id=trusted_idp_id,
+            updated_at=updated_at,
+            username=username,
+            userprincipalname=userprincipalname,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activated_at: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             company: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             department: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[int]] = None,
+             distinguished_name: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             firstname: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             invalid_login_attempts: Optional[pulumi.Input[int]] = None,
+             invitation_sent_at: Optional[pulumi.Input[str]] = None,
+             last_login: Optional[pulumi.Input[str]] = None,
+             lastname: Optional[pulumi.Input[str]] = None,
+             locked_until: Optional[pulumi.Input[str]] = None,
+             manager_ad_id: Optional[pulumi.Input[str]] = None,
+             manager_user_id: Optional[pulumi.Input[str]] = None,
+             member_of: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_algorithm: Optional[pulumi.Input[str]] = None,
+             password_changed_at: Optional[pulumi.Input[str]] = None,
+             password_confirmation: Optional[pulumi.Input[str]] = None,
+             phone: Optional[pulumi.Input[str]] = None,
+             preferred_locale_code: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             salt: Optional[pulumi.Input[str]] = None,
+             samaccountname: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             trusted_idp_id: Optional[pulumi.Input[int]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             userprincipalname: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if activated_at is not None:
-            pulumi.set(__self__, "activated_at", activated_at)
+            _setter("activated_at", activated_at)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if company is not None:
-            pulumi.set(__self__, "company", company)
+            _setter("company", company)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if department is not None:
-            pulumi.set(__self__, "department", department)
+            _setter("department", department)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if distinguished_name is not None:
-            pulumi.set(__self__, "distinguished_name", distinguished_name)
+            _setter("distinguished_name", distinguished_name)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if firstname is not None:
-            pulumi.set(__self__, "firstname", firstname)
+            _setter("firstname", firstname)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if invalid_login_attempts is not None:
-            pulumi.set(__self__, "invalid_login_attempts", invalid_login_attempts)
+            _setter("invalid_login_attempts", invalid_login_attempts)
         if invitation_sent_at is not None:
-            pulumi.set(__self__, "invitation_sent_at", invitation_sent_at)
+            _setter("invitation_sent_at", invitation_sent_at)
         if last_login is not None:
-            pulumi.set(__self__, "last_login", last_login)
+            _setter("last_login", last_login)
         if lastname is not None:
-            pulumi.set(__self__, "lastname", lastname)
+            _setter("lastname", lastname)
         if locked_until is not None:
-            pulumi.set(__self__, "locked_until", locked_until)
+            _setter("locked_until", locked_until)
         if manager_ad_id is not None:
-            pulumi.set(__self__, "manager_ad_id", manager_ad_id)
+            _setter("manager_ad_id", manager_ad_id)
         if manager_user_id is not None:
-            pulumi.set(__self__, "manager_user_id", manager_user_id)
+            _setter("manager_user_id", manager_user_id)
         if member_of is not None:
-            pulumi.set(__self__, "member_of", member_of)
+            _setter("member_of", member_of)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_algorithm is not None:
-            pulumi.set(__self__, "password_algorithm", password_algorithm)
+            _setter("password_algorithm", password_algorithm)
         if password_changed_at is not None:
-            pulumi.set(__self__, "password_changed_at", password_changed_at)
+            _setter("password_changed_at", password_changed_at)
         if password_confirmation is not None:
-            pulumi.set(__self__, "password_confirmation", password_confirmation)
+            _setter("password_confirmation", password_confirmation)
         if phone is not None:
-            pulumi.set(__self__, "phone", phone)
+            _setter("phone", phone)
         if preferred_locale_code is not None:
-            pulumi.set(__self__, "preferred_locale_code", preferred_locale_code)
+            _setter("preferred_locale_code", preferred_locale_code)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if salt is not None:
-            pulumi.set(__self__, "salt", salt)
+            _setter("salt", salt)
         if samaccountname is not None:
-            pulumi.set(__self__, "samaccountname", samaccountname)
+            _setter("samaccountname", samaccountname)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if trusted_idp_id is not None:
-            pulumi.set(__self__, "trusted_idp_id", trusted_idp_id)
+            _setter("trusted_idp_id", trusted_idp_id)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if userprincipalname is not None:
-            pulumi.set(__self__, "userprincipalname", userprincipalname)
+            _setter("userprincipalname", userprincipalname)
 
     @property
     @pulumi.getter(name="activatedAt")
@@ -603,76 +680,153 @@ class _V1State:
         :param pulumi.Input[str] username: A username for the user.
         :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
+        _V1State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activated_at=activated_at,
+            comment=comment,
+            company=company,
+            created_at=created_at,
+            department=department,
+            directory_id=directory_id,
+            distinguished_name=distinguished_name,
+            email=email,
+            external_id=external_id,
+            firstname=firstname,
+            group_id=group_id,
+            invalid_login_attempts=invalid_login_attempts,
+            invitation_sent_at=invitation_sent_at,
+            last_login=last_login,
+            lastname=lastname,
+            locked_until=locked_until,
+            manager_ad_id=manager_ad_id,
+            manager_user_id=manager_user_id,
+            member_of=member_of,
+            password=password,
+            password_algorithm=password_algorithm,
+            password_changed_at=password_changed_at,
+            password_confirmation=password_confirmation,
+            phone=phone,
+            preferred_locale_code=preferred_locale_code,
+            role_ids=role_ids,
+            salt=salt,
+            samaccountname=samaccountname,
+            state=state,
+            status=status,
+            title=title,
+            trusted_idp_id=trusted_idp_id,
+            updated_at=updated_at,
+            username=username,
+            userprincipalname=userprincipalname,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activated_at: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             company: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             department: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[int]] = None,
+             distinguished_name: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             firstname: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             invalid_login_attempts: Optional[pulumi.Input[int]] = None,
+             invitation_sent_at: Optional[pulumi.Input[str]] = None,
+             last_login: Optional[pulumi.Input[str]] = None,
+             lastname: Optional[pulumi.Input[str]] = None,
+             locked_until: Optional[pulumi.Input[str]] = None,
+             manager_ad_id: Optional[pulumi.Input[str]] = None,
+             manager_user_id: Optional[pulumi.Input[str]] = None,
+             member_of: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_algorithm: Optional[pulumi.Input[str]] = None,
+             password_changed_at: Optional[pulumi.Input[str]] = None,
+             password_confirmation: Optional[pulumi.Input[str]] = None,
+             phone: Optional[pulumi.Input[str]] = None,
+             preferred_locale_code: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             salt: Optional[pulumi.Input[str]] = None,
+             samaccountname: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             trusted_idp_id: Optional[pulumi.Input[int]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             userprincipalname: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if activated_at is not None:
-            pulumi.set(__self__, "activated_at", activated_at)
+            _setter("activated_at", activated_at)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if company is not None:
-            pulumi.set(__self__, "company", company)
+            _setter("company", company)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if department is not None:
-            pulumi.set(__self__, "department", department)
+            _setter("department", department)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if distinguished_name is not None:
-            pulumi.set(__self__, "distinguished_name", distinguished_name)
+            _setter("distinguished_name", distinguished_name)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if firstname is not None:
-            pulumi.set(__self__, "firstname", firstname)
+            _setter("firstname", firstname)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if invalid_login_attempts is not None:
-            pulumi.set(__self__, "invalid_login_attempts", invalid_login_attempts)
+            _setter("invalid_login_attempts", invalid_login_attempts)
         if invitation_sent_at is not None:
-            pulumi.set(__self__, "invitation_sent_at", invitation_sent_at)
+            _setter("invitation_sent_at", invitation_sent_at)
         if last_login is not None:
-            pulumi.set(__self__, "last_login", last_login)
+            _setter("last_login", last_login)
         if lastname is not None:
-            pulumi.set(__self__, "lastname", lastname)
+            _setter("lastname", lastname)
         if locked_until is not None:
-            pulumi.set(__self__, "locked_until", locked_until)
+            _setter("locked_until", locked_until)
         if manager_ad_id is not None:
-            pulumi.set(__self__, "manager_ad_id", manager_ad_id)
+            _setter("manager_ad_id", manager_ad_id)
         if manager_user_id is not None:
-            pulumi.set(__self__, "manager_user_id", manager_user_id)
+            _setter("manager_user_id", manager_user_id)
         if member_of is not None:
-            pulumi.set(__self__, "member_of", member_of)
+            _setter("member_of", member_of)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_algorithm is not None:
-            pulumi.set(__self__, "password_algorithm", password_algorithm)
+            _setter("password_algorithm", password_algorithm)
         if password_changed_at is not None:
-            pulumi.set(__self__, "password_changed_at", password_changed_at)
+            _setter("password_changed_at", password_changed_at)
         if password_confirmation is not None:
-            pulumi.set(__self__, "password_confirmation", password_confirmation)
+            _setter("password_confirmation", password_confirmation)
         if phone is not None:
-            pulumi.set(__self__, "phone", phone)
+            _setter("phone", phone)
         if preferred_locale_code is not None:
-            pulumi.set(__self__, "preferred_locale_code", preferred_locale_code)
+            _setter("preferred_locale_code", preferred_locale_code)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if salt is not None:
-            pulumi.set(__self__, "salt", salt)
+            _setter("salt", salt)
         if samaccountname is not None:
-            pulumi.set(__self__, "samaccountname", samaccountname)
+            _setter("samaccountname", samaccountname)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if trusted_idp_id is not None:
-            pulumi.set(__self__, "trusted_idp_id", trusted_idp_id)
+            _setter("trusted_idp_id", trusted_idp_id)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if userprincipalname is not None:
-            pulumi.set(__self__, "userprincipalname", userprincipalname)
+            _setter("userprincipalname", userprincipalname)
 
     @property
     @pulumi.getter(name="activatedAt")
@@ -1152,6 +1306,10 @@ class V1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            V1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
