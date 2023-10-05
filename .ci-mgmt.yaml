@@ -1,0 +1,7 @@
+provider: onelogin
+major-version: 1
+makeTemplate: bridged
+plugins:
+  - name: random 
+    version: "2.2.0"
+team: ecosystem
