@@ -34,10 +34,16 @@ class AuthServersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: pulumi.Input['AuthServersConfigurationArgs'],
-             description: pulumi.Input[str],
+             configuration: Optional[pulumi.Input['AuthServersConfigurationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+
         _setter("configuration", configuration)
         _setter("description", description)
         if name is not None:
@@ -104,7 +110,9 @@ class _AuthServersState:
              configuration: Optional[pulumi.Input['AuthServersConfigurationArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if configuration is not None:
             _setter("configuration", configuration)
         if description is not None:
@@ -205,11 +213,7 @@ class AuthServers(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AuthServersArgs.__new__(AuthServersArgs)
 
-            if configuration is not None and not isinstance(configuration, AuthServersConfigurationArgs):
-                configuration = configuration or {}
-                def _setter(key, value):
-                    configuration[key] = value
-                AuthServersConfigurationArgs._configure(_setter, **configuration)
+            configuration = _utilities.configure(configuration, AuthServersConfigurationArgs, True)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration

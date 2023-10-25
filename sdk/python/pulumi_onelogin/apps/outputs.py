@@ -50,7 +50,9 @@ class RulesAction(dict):
              _setter: Callable[[Any, Any], None],
              action: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if action is not None:
             _setter("action", action)
         if values is not None:
@@ -85,7 +87,9 @@ class RulesCondition(dict):
              operator: Optional[str] = None,
              source: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if operator is not None:
             _setter("operator", operator)
         if source is not None:
@@ -122,9 +126,15 @@ class GetActionsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -152,9 +162,15 @@ class GetActionsValuesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -182,9 +198,15 @@ class GetConditionsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -212,9 +234,15 @@ class GetConditionsOperatorsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -256,16 +284,54 @@ class GetInstanceConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_token_expiration_minutes: int,
-             login_url: str,
-             oidc_api_version: str,
-             oidc_application_type: int,
-             oidc_encryption_key: str,
-             post_logout_redirect_uri: str,
-             redirect_uri: str,
-             refresh_token_expiration_minutes: int,
-             token_endpoint_auth_method: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             access_token_expiration_minutes: Optional[int] = None,
+             login_url: Optional[str] = None,
+             oidc_api_version: Optional[str] = None,
+             oidc_application_type: Optional[int] = None,
+             oidc_encryption_key: Optional[str] = None,
+             post_logout_redirect_uri: Optional[str] = None,
+             redirect_uri: Optional[str] = None,
+             refresh_token_expiration_minutes: Optional[int] = None,
+             token_endpoint_auth_method: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_token_expiration_minutes is None and 'accessTokenExpirationMinutes' in kwargs:
+            access_token_expiration_minutes = kwargs['accessTokenExpirationMinutes']
+        if access_token_expiration_minutes is None:
+            raise TypeError("Missing 'access_token_expiration_minutes' argument")
+        if login_url is None and 'loginUrl' in kwargs:
+            login_url = kwargs['loginUrl']
+        if login_url is None:
+            raise TypeError("Missing 'login_url' argument")
+        if oidc_api_version is None and 'oidcApiVersion' in kwargs:
+            oidc_api_version = kwargs['oidcApiVersion']
+        if oidc_api_version is None:
+            raise TypeError("Missing 'oidc_api_version' argument")
+        if oidc_application_type is None and 'oidcApplicationType' in kwargs:
+            oidc_application_type = kwargs['oidcApplicationType']
+        if oidc_application_type is None:
+            raise TypeError("Missing 'oidc_application_type' argument")
+        if oidc_encryption_key is None and 'oidcEncryptionKey' in kwargs:
+            oidc_encryption_key = kwargs['oidcEncryptionKey']
+        if oidc_encryption_key is None:
+            raise TypeError("Missing 'oidc_encryption_key' argument")
+        if post_logout_redirect_uri is None and 'postLogoutRedirectUri' in kwargs:
+            post_logout_redirect_uri = kwargs['postLogoutRedirectUri']
+        if post_logout_redirect_uri is None:
+            raise TypeError("Missing 'post_logout_redirect_uri' argument")
+        if redirect_uri is None and 'redirectUri' in kwargs:
+            redirect_uri = kwargs['redirectUri']
+        if redirect_uri is None:
+            raise TypeError("Missing 'redirect_uri' argument")
+        if refresh_token_expiration_minutes is None and 'refreshTokenExpirationMinutes' in kwargs:
+            refresh_token_expiration_minutes = kwargs['refreshTokenExpirationMinutes']
+        if refresh_token_expiration_minutes is None:
+            raise TypeError("Missing 'refresh_token_expiration_minutes' argument")
+        if token_endpoint_auth_method is None and 'tokenEndpointAuthMethod' in kwargs:
+            token_endpoint_auth_method = kwargs['tokenEndpointAuthMethod']
+        if token_endpoint_auth_method is None:
+            raise TypeError("Missing 'token_endpoint_auth_method' argument")
+
         _setter("access_token_expiration_minutes", access_token_expiration_minutes)
         _setter("login_url", login_url)
         _setter("oidc_api_version", oidc_api_version)
@@ -357,20 +423,62 @@ class GetInstanceEnforcementPointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             case_sensitive: bool,
-             conditions: str,
-             context_root: str,
-             landing_page: str,
-             permissions: str,
-             require_sitewide_authentication: bool,
-             resources: Sequence['outputs.GetInstanceEnforcementPointResourceResult'],
-             session_expiry_fixed: 'outputs.GetInstanceEnforcementPointSessionExpiryFixedResult',
-             session_expiry_inactivity: 'outputs.GetInstanceEnforcementPointSessionExpiryInactivityResult',
-             target: str,
-             token: str,
-             use_target_host_header: bool,
-             vhost: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             case_sensitive: Optional[bool] = None,
+             conditions: Optional[str] = None,
+             context_root: Optional[str] = None,
+             landing_page: Optional[str] = None,
+             permissions: Optional[str] = None,
+             require_sitewide_authentication: Optional[bool] = None,
+             resources: Optional[Sequence['outputs.GetInstanceEnforcementPointResourceResult']] = None,
+             session_expiry_fixed: Optional['outputs.GetInstanceEnforcementPointSessionExpiryFixedResult'] = None,
+             session_expiry_inactivity: Optional['outputs.GetInstanceEnforcementPointSessionExpiryInactivityResult'] = None,
+             target: Optional[str] = None,
+             token: Optional[str] = None,
+             use_target_host_header: Optional[bool] = None,
+             vhost: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if case_sensitive is None and 'caseSensitive' in kwargs:
+            case_sensitive = kwargs['caseSensitive']
+        if case_sensitive is None:
+            raise TypeError("Missing 'case_sensitive' argument")
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if context_root is None and 'contextRoot' in kwargs:
+            context_root = kwargs['contextRoot']
+        if context_root is None:
+            raise TypeError("Missing 'context_root' argument")
+        if landing_page is None and 'landingPage' in kwargs:
+            landing_page = kwargs['landingPage']
+        if landing_page is None:
+            raise TypeError("Missing 'landing_page' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if require_sitewide_authentication is None and 'requireSitewideAuthentication' in kwargs:
+            require_sitewide_authentication = kwargs['requireSitewideAuthentication']
+        if require_sitewide_authentication is None:
+            raise TypeError("Missing 'require_sitewide_authentication' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if session_expiry_fixed is None and 'sessionExpiryFixed' in kwargs:
+            session_expiry_fixed = kwargs['sessionExpiryFixed']
+        if session_expiry_fixed is None:
+            raise TypeError("Missing 'session_expiry_fixed' argument")
+        if session_expiry_inactivity is None and 'sessionExpiryInactivity' in kwargs:
+            session_expiry_inactivity = kwargs['sessionExpiryInactivity']
+        if session_expiry_inactivity is None:
+            raise TypeError("Missing 'session_expiry_inactivity' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if use_target_host_header is None and 'useTargetHostHeader' in kwargs:
+            use_target_host_header = kwargs['useTargetHostHeader']
+        if use_target_host_header is None:
+            raise TypeError("Missing 'use_target_host_header' argument")
+        if vhost is None:
+            raise TypeError("Missing 'vhost' argument")
+
         _setter("case_sensitive", case_sensitive)
         _setter("conditions", conditions)
         _setter("context_root", context_root)
@@ -470,12 +578,28 @@ class GetInstanceEnforcementPointResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conditions: str,
-             is_path_regex: bool,
-             path: str,
-             permission: str,
-             require_auth: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             conditions: Optional[str] = None,
+             is_path_regex: Optional[bool] = None,
+             path: Optional[str] = None,
+             permission: Optional[str] = None,
+             require_auth: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if is_path_regex is None and 'isPathRegex' in kwargs:
+            is_path_regex = kwargs['isPathRegex']
+        if is_path_regex is None:
+            raise TypeError("Missing 'is_path_regex' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if require_auth is None and 'requireAuth' in kwargs:
+            require_auth = kwargs['requireAuth']
+        if require_auth is None:
+            raise TypeError("Missing 'require_auth' argument")
+
         _setter("conditions", conditions)
         _setter("is_path_regex", is_path_regex)
         _setter("path", path)
@@ -521,9 +645,15 @@ class GetInstanceEnforcementPointSessionExpiryFixedResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             unit: int,
-             value: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             unit: Optional[int] = None,
+             value: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("unit", unit)
         _setter("value", value)
 
@@ -551,9 +681,15 @@ class GetInstanceEnforcementPointSessionExpiryInactivityResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             unit: int,
-             value: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             unit: Optional[int] = None,
+             value: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("unit", unit)
         _setter("value", value)
 
@@ -579,8 +715,12 @@ class GetInstanceParametersResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             groups: 'outputs.GetInstanceParametersGroupsResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             groups: Optional['outputs.GetInstanceParametersGroupsResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if groups is None:
+            raise TypeError("Missing 'groups' argument")
+
         _setter("groups", groups)
 
     @property
@@ -616,16 +756,48 @@ class GetInstanceParametersGroupsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes_transformations: str,
-             default_values: str,
-             id: int,
-             label: str,
-             provisioned_entitlements: bool,
-             skip_if_blank: bool,
-             user_attribute_macros: str,
-             user_attribute_mappings: str,
-             values: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             attributes_transformations: Optional[str] = None,
+             default_values: Optional[str] = None,
+             id: Optional[int] = None,
+             label: Optional[str] = None,
+             provisioned_entitlements: Optional[bool] = None,
+             skip_if_blank: Optional[bool] = None,
+             user_attribute_macros: Optional[str] = None,
+             user_attribute_mappings: Optional[str] = None,
+             values: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attributes_transformations is None and 'attributesTransformations' in kwargs:
+            attributes_transformations = kwargs['attributesTransformations']
+        if attributes_transformations is None:
+            raise TypeError("Missing 'attributes_transformations' argument")
+        if default_values is None and 'defaultValues' in kwargs:
+            default_values = kwargs['defaultValues']
+        if default_values is None:
+            raise TypeError("Missing 'default_values' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if provisioned_entitlements is None and 'provisionedEntitlements' in kwargs:
+            provisioned_entitlements = kwargs['provisionedEntitlements']
+        if provisioned_entitlements is None:
+            raise TypeError("Missing 'provisioned_entitlements' argument")
+        if skip_if_blank is None and 'skipIfBlank' in kwargs:
+            skip_if_blank = kwargs['skipIfBlank']
+        if skip_if_blank is None:
+            raise TypeError("Missing 'skip_if_blank' argument")
+        if user_attribute_macros is None and 'userAttributeMacros' in kwargs:
+            user_attribute_macros = kwargs['userAttributeMacros']
+        if user_attribute_macros is None:
+            raise TypeError("Missing 'user_attribute_macros' argument")
+        if user_attribute_mappings is None and 'userAttributeMappings' in kwargs:
+            user_attribute_mappings = kwargs['userAttributeMappings']
+        if user_attribute_mappings is None:
+            raise TypeError("Missing 'user_attribute_mappings' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("attributes_transformations", attributes_transformations)
         _setter("default_values", default_values)
         _setter("id", id)
@@ -695,9 +867,15 @@ class GetInstanceProvisioningResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
         _setter("enabled", enabled)
         _setter("status", status)
 
@@ -733,13 +911,35 @@ class GetInstanceSsoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acs_url: str,
-             certificate: 'outputs.GetInstanceSsoCertificateResult',
-             client_id: str,
-             client_secret: str,
-             issuer: str,
-             metadata_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             acs_url: Optional[str] = None,
+             certificate: Optional['outputs.GetInstanceSsoCertificateResult'] = None,
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             issuer: Optional[str] = None,
+             metadata_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if acs_url is None and 'acsUrl' in kwargs:
+            acs_url = kwargs['acsUrl']
+        if acs_url is None:
+            raise TypeError("Missing 'acs_url' argument")
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if metadata_url is None and 'metadataUrl' in kwargs:
+            metadata_url = kwargs['metadataUrl']
+        if metadata_url is None:
+            raise TypeError("Missing 'metadata_url' argument")
+
         _setter("acs_url", acs_url)
         _setter("certificate", certificate)
         _setter("client_id", client_id)
@@ -793,10 +993,18 @@ class GetInstanceSsoCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: int,
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[int] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("id", id)
         _setter("name", name)
         _setter("value", value)
@@ -830,9 +1038,15 @@ class GetRulesActionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             action: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("action", action)
         _setter("values", values)
 
@@ -862,10 +1076,18 @@ class GetRulesConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             source: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             operator: Optional[str] = None,
+             source: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("operator", operator)
         _setter("source", source)
         _setter("value", value)
@@ -899,9 +1121,15 @@ class GetRulesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -929,9 +1157,15 @@ class GetRulesInstanceActionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             action: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("action", action)
         _setter("values", values)
 
@@ -961,10 +1195,18 @@ class GetRulesInstanceConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             source: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             operator: Optional[str] = None,
+             source: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("operator", operator)
         _setter("source", source)
         _setter("value", value)
@@ -998,9 +1240,15 @@ class GetUsersFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 

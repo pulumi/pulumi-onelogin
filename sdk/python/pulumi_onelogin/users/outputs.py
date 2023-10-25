@@ -30,9 +30,15 @@ class GetAppsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -60,9 +66,15 @@ class GetDevicesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -90,9 +102,15 @@ class GetUsersFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -120,9 +138,15 @@ class GetV1AppsFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -150,9 +174,15 @@ class GetV1FilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 

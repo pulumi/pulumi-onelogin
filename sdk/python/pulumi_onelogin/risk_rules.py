@@ -48,7 +48,9 @@ class RiskRulesArgs:
              source: Optional[pulumi.Input['RiskRulesSourceArgs']] = None,
              target: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if filters is not None:
@@ -167,7 +169,9 @@ class _RiskRulesState:
              source: Optional[pulumi.Input['RiskRulesSourceArgs']] = None,
              target: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if filters is not None:
@@ -318,11 +322,7 @@ class RiskRules(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["filters"] = filters
             __props__.__dict__["name"] = name
-            if source is not None and not isinstance(source, RiskRulesSourceArgs):
-                source = source or {}
-                def _setter(key, value):
-                    source[key] = value
-                RiskRulesSourceArgs._configure(_setter, **source)
+            source = _utilities.configure(source, RiskRulesSourceArgs, True)
             __props__.__dict__["source"] = source
             __props__.__dict__["target"] = target
             __props__.__dict__["type"] = type
