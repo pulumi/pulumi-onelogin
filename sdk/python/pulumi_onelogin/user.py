@@ -153,7 +153,49 @@ class UserArgs:
              updated_at: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              userprincipalname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if activated_at is None and 'activatedAt' in kwargs:
+            activated_at = kwargs['activatedAt']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if distinguished_name is None and 'distinguishedName' in kwargs:
+            distinguished_name = kwargs['distinguishedName']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if invalid_login_attempts is None and 'invalidLoginAttempts' in kwargs:
+            invalid_login_attempts = kwargs['invalidLoginAttempts']
+        if invitation_sent_at is None and 'invitationSentAt' in kwargs:
+            invitation_sent_at = kwargs['invitationSentAt']
+        if last_login is None and 'lastLogin' in kwargs:
+            last_login = kwargs['lastLogin']
+        if locked_until is None and 'lockedUntil' in kwargs:
+            locked_until = kwargs['lockedUntil']
+        if manager_ad_id is None and 'managerAdId' in kwargs:
+            manager_ad_id = kwargs['managerAdId']
+        if manager_user_id is None and 'managerUserId' in kwargs:
+            manager_user_id = kwargs['managerUserId']
+        if member_of is None and 'memberOf' in kwargs:
+            member_of = kwargs['memberOf']
+        if password_algorithm is None and 'passwordAlgorithm' in kwargs:
+            password_algorithm = kwargs['passwordAlgorithm']
+        if password_changed_at is None and 'passwordChangedAt' in kwargs:
+            password_changed_at = kwargs['passwordChangedAt']
+        if password_confirmation is None and 'passwordConfirmation' in kwargs:
+            password_confirmation = kwargs['passwordConfirmation']
+        if preferred_locale_code is None and 'preferredLocaleCode' in kwargs:
+            preferred_locale_code = kwargs['preferredLocaleCode']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if trusted_idp_id is None and 'trustedIdpId' in kwargs:
+            trusted_idp_id = kwargs['trustedIdpId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if activated_at is not None:
             _setter("activated_at", activated_at)
         if comment is not None:
@@ -756,7 +798,49 @@ class _UserState:
              updated_at: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              userprincipalname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if activated_at is None and 'activatedAt' in kwargs:
+            activated_at = kwargs['activatedAt']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if distinguished_name is None and 'distinguishedName' in kwargs:
+            distinguished_name = kwargs['distinguishedName']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if invalid_login_attempts is None and 'invalidLoginAttempts' in kwargs:
+            invalid_login_attempts = kwargs['invalidLoginAttempts']
+        if invitation_sent_at is None and 'invitationSentAt' in kwargs:
+            invitation_sent_at = kwargs['invitationSentAt']
+        if last_login is None and 'lastLogin' in kwargs:
+            last_login = kwargs['lastLogin']
+        if locked_until is None and 'lockedUntil' in kwargs:
+            locked_until = kwargs['lockedUntil']
+        if manager_ad_id is None and 'managerAdId' in kwargs:
+            manager_ad_id = kwargs['managerAdId']
+        if manager_user_id is None and 'managerUserId' in kwargs:
+            manager_user_id = kwargs['managerUserId']
+        if member_of is None and 'memberOf' in kwargs:
+            member_of = kwargs['memberOf']
+        if password_algorithm is None and 'passwordAlgorithm' in kwargs:
+            password_algorithm = kwargs['passwordAlgorithm']
+        if password_changed_at is None and 'passwordChangedAt' in kwargs:
+            password_changed_at = kwargs['passwordChangedAt']
+        if password_confirmation is None and 'passwordConfirmation' in kwargs:
+            password_confirmation = kwargs['passwordConfirmation']
+        if preferred_locale_code is None and 'preferredLocaleCode' in kwargs:
+            preferred_locale_code = kwargs['preferredLocaleCode']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if trusted_idp_id is None and 'trustedIdpId' in kwargs:
+            trusted_idp_id = kwargs['trustedIdpId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if activated_at is not None:
             _setter("activated_at", activated_at)
         if comment is not None:

@@ -46,7 +46,17 @@ class Endpoints(dict):
              roles: Optional[str] = None,
              users: Optional[str] = None,
              users_v1: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apps_rules is None and 'appsRules' in kwargs:
+            apps_rules = kwargs['appsRules']
+        if auth_servers is None and 'authServers' in kwargs:
+            auth_servers = kwargs['authServers']
+        if risk_rules is None and 'riskRules' in kwargs:
+            risk_rules = kwargs['riskRules']
+        if users_v1 is None and 'usersV1' in kwargs:
+            users_v1 = kwargs['usersV1']
+
         if apps is not None:
             _setter("apps", apps)
         if apps_rules is not None:

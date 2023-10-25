@@ -39,7 +39,9 @@ class RoleArgs:
              apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if admins is not None:
             _setter("admins", admins)
         if apps is not None:
@@ -126,7 +128,9 @@ class _RoleState:
              apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if admins is not None:
             _setter("admins", admins)
         if apps is not None:

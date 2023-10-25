@@ -31,10 +31,14 @@ class PrivilegesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             privilege: pulumi.Input['PrivilegesPrivilegeArgs'],
+             privilege: Optional[pulumi.Input['PrivilegesPrivilegeArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if privilege is None:
+            raise TypeError("Missing 'privilege' argument")
+
         _setter("privilege", privilege)
         if description is not None:
             _setter("description", description)
@@ -90,7 +94,9 @@ class _PrivilegesState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              privilege: Optional[pulumi.Input['PrivilegesPrivilegeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -181,11 +187,7 @@ class Privileges(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if privilege is not None and not isinstance(privilege, PrivilegesPrivilegeArgs):
-                privilege = privilege or {}
-                def _setter(key, value):
-                    privilege[key] = value
-                PrivilegesPrivilegeArgs._configure(_setter, **privilege)
+            privilege = _utilities.configure(privilege, PrivilegesPrivilegeArgs, True)
             if privilege is None and not opts.urn:
                 raise TypeError("Missing required property 'privilege'")
             __props__.__dict__["privilege"] = privilege

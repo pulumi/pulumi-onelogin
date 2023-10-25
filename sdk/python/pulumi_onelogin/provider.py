@@ -30,10 +30,18 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             apikey_auth: pulumi.Input[str],
+             apikey_auth: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apikey_auth is None and 'apikeyAuth' in kwargs:
+            apikey_auth = kwargs['apikeyAuth']
+        if apikey_auth is None:
+            raise TypeError("Missing 'apikey_auth' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+
         _setter("apikey_auth", apikey_auth)
         if content_type is not None:
             _setter("content_type", content_type)

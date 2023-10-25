@@ -44,14 +44,20 @@ class RulesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             apps_id: pulumi.Input[str],
+             apps_id: Optional[pulumi.Input[str]] = None,
              actions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesActionArgs']]]] = None,
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesConditionArgs']]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              match: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apps_id is None and 'appsId' in kwargs:
+            apps_id = kwargs['appsId']
+        if apps_id is None:
+            raise TypeError("Missing 'apps_id' argument")
+
         _setter("apps_id", apps_id)
         if actions is not None:
             _setter("actions", actions)
@@ -183,7 +189,11 @@ class _RulesState:
              match: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apps_id is None and 'appsId' in kwargs:
+            apps_id = kwargs['appsId']
+
         if actions is not None:
             _setter("actions", actions)
         if apps_id is not None:
