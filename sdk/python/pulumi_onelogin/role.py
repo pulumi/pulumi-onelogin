@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -25,31 +25,14 @@ class RoleArgs:
         :param pulumi.Input[str] name: The name of the role.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs to assign to the role.
         """
-        RoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admins=admins,
-            apps=apps,
-            name=name,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admins: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if admins is not None:
-            _setter("admins", admins)
+            pulumi.set(__self__, "admins", admins)
         if apps is not None:
-            _setter("apps", apps)
+            pulumi.set(__self__, "apps", apps)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -114,31 +97,14 @@ class _RoleState:
         :param pulumi.Input[str] name: The name of the role.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] users: A list of user IDs to assign to the role.
         """
-        _RoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admins=admins,
-            apps=apps,
-            name=name,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admins: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             apps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if admins is not None:
-            _setter("admins", admins)
+            pulumi.set(__self__, "admins", admins)
         if apps is not None:
-            _setter("apps", apps)
+            pulumi.set(__self__, "apps", apps)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -226,10 +192,6 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
