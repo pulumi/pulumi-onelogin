@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,25 +21,8 @@ class GetAdminsFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        GetAdminsFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("name", name)
-        _setter("values", values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -65,25 +48,8 @@ class GetAppsFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        GetAppsFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("name", name)
-        _setter("values", values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -109,25 +75,8 @@ class GetRolesFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        GetRolesFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("name", name)
-        _setter("values", values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -153,25 +102,8 @@ class GetUsersFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
-        GetUsersFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("name", name)
-        _setter("values", values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
