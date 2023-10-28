@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,39 +30,18 @@ class RiskRulesArgs:
         :param pulumi.Input[str] target: The target parameter that will be used when evaluating the rule against an incoming event.
         :param pulumi.Input[str] type: The type parameter specifies the type of rule that will be created.
         """
-        RiskRulesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            filters=filters,
-            name=name,
-            source=source,
-            target=target,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input['RiskRulesSourceArgs']] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -151,39 +130,18 @@ class _RiskRulesState:
         :param pulumi.Input[str] target: The target parameter that will be used when evaluating the rule against an incoming event.
         :param pulumi.Input[str] type: The type parameter specifies the type of rule that will be created.
         """
-        _RiskRulesState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            filters=filters,
-            name=name,
-            source=source,
-            target=target,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input['RiskRulesSourceArgs']] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -295,10 +253,6 @@ class RiskRules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RiskRulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -322,7 +276,6 @@ class RiskRules(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["filters"] = filters
             __props__.__dict__["name"] = name
-            source = _utilities.configure(source, RiskRulesSourceArgs, True)
             __props__.__dict__["source"] = source
             __props__.__dict__["target"] = target
             __props__.__dict__["type"] = type
