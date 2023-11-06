@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,22 +24,55 @@ class Endpoints(dict):
                  roles: Optional[str] = None,
                  users: Optional[str] = None,
                  users_v1: Optional[str] = None):
+        Endpoints._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            apps=apps,
+            apps_rules=apps_rules,
+            auth_servers=auth_servers,
+            privileges=privileges,
+            risk_rules=risk_rules,
+            roles=roles,
+            users=users,
+            users_v1=users_v1,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             apps: Optional[str] = None,
+             apps_rules: Optional[str] = None,
+             auth_servers: Optional[str] = None,
+             privileges: Optional[str] = None,
+             risk_rules: Optional[str] = None,
+             roles: Optional[str] = None,
+             users: Optional[str] = None,
+             users_v1: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if apps_rules is None and 'appsRules' in kwargs:
+            apps_rules = kwargs['appsRules']
+        if auth_servers is None and 'authServers' in kwargs:
+            auth_servers = kwargs['authServers']
+        if risk_rules is None and 'riskRules' in kwargs:
+            risk_rules = kwargs['riskRules']
+        if users_v1 is None and 'usersV1' in kwargs:
+            users_v1 = kwargs['usersV1']
+
         if apps is not None:
-            pulumi.set(__self__, "apps", apps)
+            _setter("apps", apps)
         if apps_rules is not None:
-            pulumi.set(__self__, "apps_rules", apps_rules)
+            _setter("apps_rules", apps_rules)
         if auth_servers is not None:
-            pulumi.set(__self__, "auth_servers", auth_servers)
+            _setter("auth_servers", auth_servers)
         if privileges is not None:
-            pulumi.set(__self__, "privileges", privileges)
+            _setter("privileges", privileges)
         if risk_rules is not None:
-            pulumi.set(__self__, "risk_rules", risk_rules)
+            _setter("risk_rules", risk_rules)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
         if users_v1 is not None:
-            pulumi.set(__self__, "users_v1", users_v1)
+            _setter("users_v1", users_v1)
 
     @property
     @pulumi.getter

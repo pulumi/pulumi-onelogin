@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -61,47 +61,126 @@ class AppArgs:
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
         """
-        pulumi.set(__self__, "connector_id", connector_id)
+        AppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            allow_assumed_signin=allow_assumed_signin,
+            auth_method=auth_method,
+            auth_method_description=auth_method_description,
+            brand_id=brand_id,
+            configuration=configuration,
+            created_at=created_at,
+            description=description,
+            enforcement_point=enforcement_point,
+            icon_url=icon_url,
+            login_config=login_config,
+            name=name,
+            notes=notes,
+            parameters=parameters,
+            policy_id=policy_id,
+            provisioning=provisioning,
+            role_ids=role_ids,
+            sso=sso,
+            tab_id=tab_id,
+            updated_at=updated_at,
+            visible=visible,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: Optional[pulumi.Input[int]] = None,
+             allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
+             auth_method: Optional[pulumi.Input[int]] = None,
+             auth_method_description: Optional[pulumi.Input[str]] = None,
+             brand_id: Optional[pulumi.Input[int]] = None,
+             configuration: Optional[pulumi.Input['AppConfigurationArgs']] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enforcement_point: Optional[pulumi.Input['AppEnforcementPointArgs']] = None,
+             icon_url: Optional[pulumi.Input[str]] = None,
+             login_config: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input['AppParametersArgs']] = None,
+             policy_id: Optional[pulumi.Input[int]] = None,
+             provisioning: Optional[pulumi.Input['AppProvisioningArgs']] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             sso: Optional[pulumi.Input['AppSsoArgs']] = None,
+             tab_id: Optional[pulumi.Input[int]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             visible: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connector_id is None and 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if connector_id is None:
+            raise TypeError("Missing 'connector_id' argument")
+        if allow_assumed_signin is None and 'allowAssumedSignin' in kwargs:
+            allow_assumed_signin = kwargs['allowAssumedSignin']
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method_description is None and 'authMethodDescription' in kwargs:
+            auth_method_description = kwargs['authMethodDescription']
+        if brand_id is None and 'brandId' in kwargs:
+            brand_id = kwargs['brandId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if enforcement_point is None and 'enforcementPoint' in kwargs:
+            enforcement_point = kwargs['enforcementPoint']
+        if icon_url is None and 'iconUrl' in kwargs:
+            icon_url = kwargs['iconUrl']
+        if login_config is None and 'loginConfig' in kwargs:
+            login_config = kwargs['loginConfig']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if tab_id is None and 'tabId' in kwargs:
+            tab_id = kwargs['tabId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
+        _setter("connector_id", connector_id)
         if allow_assumed_signin is not None:
-            pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
+            _setter("allow_assumed_signin", allow_assumed_signin)
         if auth_method is not None:
-            pulumi.set(__self__, "auth_method", auth_method)
+            _setter("auth_method", auth_method)
         if auth_method_description is not None:
-            pulumi.set(__self__, "auth_method_description", auth_method_description)
+            _setter("auth_method_description", auth_method_description)
         if brand_id is not None:
-            pulumi.set(__self__, "brand_id", brand_id)
+            _setter("brand_id", brand_id)
         if configuration is not None:
-            pulumi.set(__self__, "configuration", configuration)
+            _setter("configuration", configuration)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enforcement_point is not None:
-            pulumi.set(__self__, "enforcement_point", enforcement_point)
+            _setter("enforcement_point", enforcement_point)
         if icon_url is not None:
-            pulumi.set(__self__, "icon_url", icon_url)
+            _setter("icon_url", icon_url)
         if login_config is not None:
-            pulumi.set(__self__, "login_config", login_config)
+            _setter("login_config", login_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if provisioning is not None:
-            pulumi.set(__self__, "provisioning", provisioning)
+            _setter("provisioning", provisioning)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if sso is not None:
-            pulumi.set(__self__, "sso", sso)
+            _setter("sso", sso)
         if tab_id is not None:
-            pulumi.set(__self__, "tab_id", tab_id)
+            _setter("tab_id", tab_id)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if visible is not None:
-            pulumi.set(__self__, "visible", visible)
+            _setter("visible", visible)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -396,48 +475,125 @@ class _AppState:
         :param pulumi.Input[str] updated_at: the date the app was last updated
         :param pulumi.Input[bool] visible: Indicates if the app is visible in the OneLogin portal.
         """
+        _AppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_assumed_signin=allow_assumed_signin,
+            auth_method=auth_method,
+            auth_method_description=auth_method_description,
+            brand_id=brand_id,
+            configuration=configuration,
+            connector_id=connector_id,
+            created_at=created_at,
+            description=description,
+            enforcement_point=enforcement_point,
+            icon_url=icon_url,
+            login_config=login_config,
+            name=name,
+            notes=notes,
+            parameters=parameters,
+            policy_id=policy_id,
+            provisioning=provisioning,
+            role_ids=role_ids,
+            sso=sso,
+            tab_id=tab_id,
+            updated_at=updated_at,
+            visible=visible,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_assumed_signin: Optional[pulumi.Input[bool]] = None,
+             auth_method: Optional[pulumi.Input[int]] = None,
+             auth_method_description: Optional[pulumi.Input[str]] = None,
+             brand_id: Optional[pulumi.Input[int]] = None,
+             configuration: Optional[pulumi.Input['AppConfigurationArgs']] = None,
+             connector_id: Optional[pulumi.Input[int]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enforcement_point: Optional[pulumi.Input['AppEnforcementPointArgs']] = None,
+             icon_url: Optional[pulumi.Input[str]] = None,
+             login_config: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input['AppParametersArgs']] = None,
+             policy_id: Optional[pulumi.Input[int]] = None,
+             provisioning: Optional[pulumi.Input['AppProvisioningArgs']] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             sso: Optional[pulumi.Input['AppSsoArgs']] = None,
+             tab_id: Optional[pulumi.Input[int]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             visible: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_assumed_signin is None and 'allowAssumedSignin' in kwargs:
+            allow_assumed_signin = kwargs['allowAssumedSignin']
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method_description is None and 'authMethodDescription' in kwargs:
+            auth_method_description = kwargs['authMethodDescription']
+        if brand_id is None and 'brandId' in kwargs:
+            brand_id = kwargs['brandId']
+        if connector_id is None and 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if enforcement_point is None and 'enforcementPoint' in kwargs:
+            enforcement_point = kwargs['enforcementPoint']
+        if icon_url is None and 'iconUrl' in kwargs:
+            icon_url = kwargs['iconUrl']
+        if login_config is None and 'loginConfig' in kwargs:
+            login_config = kwargs['loginConfig']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if tab_id is None and 'tabId' in kwargs:
+            tab_id = kwargs['tabId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if allow_assumed_signin is not None:
-            pulumi.set(__self__, "allow_assumed_signin", allow_assumed_signin)
+            _setter("allow_assumed_signin", allow_assumed_signin)
         if auth_method is not None:
-            pulumi.set(__self__, "auth_method", auth_method)
+            _setter("auth_method", auth_method)
         if auth_method_description is not None:
-            pulumi.set(__self__, "auth_method_description", auth_method_description)
+            _setter("auth_method_description", auth_method_description)
         if brand_id is not None:
-            pulumi.set(__self__, "brand_id", brand_id)
+            _setter("brand_id", brand_id)
         if configuration is not None:
-            pulumi.set(__self__, "configuration", configuration)
+            _setter("configuration", configuration)
         if connector_id is not None:
-            pulumi.set(__self__, "connector_id", connector_id)
+            _setter("connector_id", connector_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enforcement_point is not None:
-            pulumi.set(__self__, "enforcement_point", enforcement_point)
+            _setter("enforcement_point", enforcement_point)
         if icon_url is not None:
-            pulumi.set(__self__, "icon_url", icon_url)
+            _setter("icon_url", icon_url)
         if login_config is not None:
-            pulumi.set(__self__, "login_config", login_config)
+            _setter("login_config", login_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if provisioning is not None:
-            pulumi.set(__self__, "provisioning", provisioning)
+            _setter("provisioning", provisioning)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if sso is not None:
-            pulumi.set(__self__, "sso", sso)
+            _setter("sso", sso)
         if tab_id is not None:
-            pulumi.set(__self__, "tab_id", tab_id)
+            _setter("tab_id", tab_id)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if visible is not None:
-            pulumi.set(__self__, "visible", visible)
+            _setter("visible", visible)
 
     @property
     @pulumi.getter(name="allowAssumedSignin")
@@ -755,6 +911,10 @@ class App(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -794,21 +954,46 @@ class App(pulumi.CustomResource):
             __props__.__dict__["auth_method"] = auth_method
             __props__.__dict__["auth_method_description"] = auth_method_description
             __props__.__dict__["brand_id"] = brand_id
+            if configuration is not None and not isinstance(configuration, AppConfigurationArgs):
+                configuration = configuration or {}
+                def _setter(key, value):
+                    configuration[key] = value
+                AppConfigurationArgs._configure(_setter, **configuration)
             __props__.__dict__["configuration"] = configuration
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["description"] = description
+            if enforcement_point is not None and not isinstance(enforcement_point, AppEnforcementPointArgs):
+                enforcement_point = enforcement_point or {}
+                def _setter(key, value):
+                    enforcement_point[key] = value
+                AppEnforcementPointArgs._configure(_setter, **enforcement_point)
             __props__.__dict__["enforcement_point"] = enforcement_point
             __props__.__dict__["icon_url"] = icon_url
             __props__.__dict__["login_config"] = login_config
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes
+            if parameters is not None and not isinstance(parameters, AppParametersArgs):
+                parameters = parameters or {}
+                def _setter(key, value):
+                    parameters[key] = value
+                AppParametersArgs._configure(_setter, **parameters)
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["policy_id"] = policy_id
+            if provisioning is not None and not isinstance(provisioning, AppProvisioningArgs):
+                provisioning = provisioning or {}
+                def _setter(key, value):
+                    provisioning[key] = value
+                AppProvisioningArgs._configure(_setter, **provisioning)
             __props__.__dict__["provisioning"] = provisioning
             __props__.__dict__["role_ids"] = role_ids
+            if sso is not None and not isinstance(sso, AppSsoArgs):
+                sso = sso or {}
+                def _setter(key, value):
+                    sso[key] = value
+                AppSsoArgs._configure(_setter, **sso)
             __props__.__dict__["sso"] = sso
             __props__.__dict__["tab_id"] = tab_id
             __props__.__dict__["updated_at"] = updated_at

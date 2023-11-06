@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,19 +31,46 @@ class RulesArgs:
         :param pulumi.Input[str] name: Rule Name
         :param pulumi.Input[int] position: Indicates the order of the rule. When `null` this will default to last position.
         """
-        pulumi.set(__self__, "apps_id", apps_id)
+        RulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            apps_id=apps_id,
+            actions=actions,
+            conditions=conditions,
+            enabled=enabled,
+            match=match,
+            name=name,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             apps_id: Optional[pulumi.Input[str]] = None,
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesActionArgs']]]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesConditionArgs']]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if apps_id is None and 'appsId' in kwargs:
+            apps_id = kwargs['appsId']
+        if apps_id is None:
+            raise TypeError("Missing 'apps_id' argument")
+
+        _setter("apps_id", apps_id)
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter(name="appsId")
@@ -142,20 +169,45 @@ class _RulesState:
         :param pulumi.Input[str] name: Rule Name
         :param pulumi.Input[int] position: Indicates the order of the rule. When `null` this will default to last position.
         """
+        _RulesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            apps_id=apps_id,
+            conditions=conditions,
+            enabled=enabled,
+            match=match,
+            name=name,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesActionArgs']]]] = None,
+             apps_id: Optional[pulumi.Input[str]] = None,
+             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RulesConditionArgs']]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if apps_id is None and 'appsId' in kwargs:
+            apps_id = kwargs['appsId']
+
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
         if apps_id is not None:
-            pulumi.set(__self__, "apps_id", apps_id)
+            _setter("apps_id", apps_id)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
 
     @property
     @pulumi.getter
@@ -277,6 +329,10 @@ class Rules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

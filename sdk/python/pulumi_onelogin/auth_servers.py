@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,29 @@ class AuthServersArgs:
         :param pulumi.Input[str] description: Description of what the API does.
         :param pulumi.Input[str] name: Name of the API.
         """
-        pulumi.set(__self__, "configuration", configuration)
-        pulumi.set(__self__, "description", description)
+        AuthServersArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configuration=configuration,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configuration: Optional[pulumi.Input['AuthServersConfigurationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+
+        _setter("configuration", configuration)
+        _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -79,12 +98,27 @@ class _AuthServersState:
         :param pulumi.Input[str] description: Description of what the API does.
         :param pulumi.Input[str] name: Name of the API.
         """
+        _AuthServersState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configuration=configuration,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configuration: Optional[pulumi.Input['AuthServersConfigurationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if configuration is not None:
-            pulumi.set(__self__, "configuration", configuration)
+            _setter("configuration", configuration)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -158,6 +192,10 @@ class AuthServers(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthServersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -175,6 +213,11 @@ class AuthServers(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AuthServersArgs.__new__(AuthServersArgs)
 
+            if configuration is not None and not isinstance(configuration, AuthServersConfigurationArgs):
+                configuration = configuration or {}
+                def _setter(key, value):
+                    configuration[key] = value
+                AuthServersConfigurationArgs._configure(_setter, **configuration)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration
