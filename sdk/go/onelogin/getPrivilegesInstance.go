@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetPrivilegesInstance(ctx *pulumi.Context, args *GetPrivilegesInstanceArgs, opts ...pulumi.InvokeOption) (*GetPrivilegesInstanceResult, error) {
@@ -76,12 +75,6 @@ func (o GetPrivilegesInstanceResultOutput) ToGetPrivilegesInstanceResultOutput()
 
 func (o GetPrivilegesInstanceResultOutput) ToGetPrivilegesInstanceResultOutputWithContext(ctx context.Context) GetPrivilegesInstanceResultOutput {
 	return o
-}
-
-func (o GetPrivilegesInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivilegesInstanceResult] {
-	return pulumix.Output[GetPrivilegesInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPrivilegesInstanceResultOutput) Description() pulumi.StringOutput {
