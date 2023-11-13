@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type RiskRules struct {
@@ -141,12 +140,6 @@ func (i *RiskRules) ToRiskRulesOutputWithContext(ctx context.Context) RiskRulesO
 	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesOutput)
 }
 
-func (i *RiskRules) ToOutput(ctx context.Context) pulumix.Output[*RiskRules] {
-	return pulumix.Output[*RiskRules]{
-		OutputState: i.ToRiskRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RiskRulesArrayInput is an input type that accepts RiskRulesArray and RiskRulesArrayOutput values.
 // You can construct a concrete instance of `RiskRulesArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i RiskRulesArray) ToRiskRulesArrayOutput() RiskRulesArrayOutput {
 
 func (i RiskRulesArray) ToRiskRulesArrayOutputWithContext(ctx context.Context) RiskRulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesArrayOutput)
-}
-
-func (i RiskRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*RiskRules] {
-	return pulumix.Output[[]*RiskRules]{
-		OutputState: i.ToRiskRulesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RiskRulesMapInput is an input type that accepts RiskRulesMap and RiskRulesMapOutput values.
@@ -203,12 +190,6 @@ func (i RiskRulesMap) ToRiskRulesMapOutputWithContext(ctx context.Context) RiskR
 	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesMapOutput)
 }
 
-func (i RiskRulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RiskRules] {
-	return pulumix.Output[map[string]*RiskRules]{
-		OutputState: i.ToRiskRulesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RiskRulesOutput struct{ *pulumi.OutputState }
 
 func (RiskRulesOutput) ElementType() reflect.Type {
@@ -221,12 +202,6 @@ func (o RiskRulesOutput) ToRiskRulesOutput() RiskRulesOutput {
 
 func (o RiskRulesOutput) ToRiskRulesOutputWithContext(ctx context.Context) RiskRulesOutput {
 	return o
-}
-
-func (o RiskRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*RiskRules] {
-	return pulumix.Output[*RiskRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RiskRulesOutput) Description() pulumi.StringPtrOutput {
@@ -272,12 +247,6 @@ func (o RiskRulesArrayOutput) ToRiskRulesArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RiskRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RiskRules] {
-	return pulumix.Output[[]*RiskRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RiskRulesArrayOutput) Index(i pulumi.IntInput) RiskRulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RiskRules {
 		return vs[0].([]*RiskRules)[vs[1].(int)]
@@ -296,12 +265,6 @@ func (o RiskRulesMapOutput) ToRiskRulesMapOutput() RiskRulesMapOutput {
 
 func (o RiskRulesMapOutput) ToRiskRulesMapOutputWithContext(ctx context.Context) RiskRulesMapOutput {
 	return o
-}
-
-func (o RiskRulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RiskRules] {
-	return pulumix.Output[map[string]*RiskRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RiskRulesMapOutput) MapIndex(k pulumi.StringInput) RiskRulesOutput {

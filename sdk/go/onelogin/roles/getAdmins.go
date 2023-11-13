@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAdmins(ctx *pulumi.Context, args *GetAdminsArgs, opts ...pulumi.InvokeOption) (*GetAdminsResult, error) {
@@ -177,12 +176,6 @@ func (o GetAdminsResultOutput) ToGetAdminsResultOutput() GetAdminsResultOutput {
 
 func (o GetAdminsResultOutput) ToGetAdminsResultOutputWithContext(ctx context.Context) GetAdminsResultOutput {
 	return o
-}
-
-func (o GetAdminsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdminsResult] {
-	return pulumix.Output[GetAdminsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdminsResultOutput) ActivatedAt() pulumi.StringOutput {

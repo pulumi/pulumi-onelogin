@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAuthServersScopes(ctx *pulumi.Context, args *GetAuthServersScopesArgs, opts ...pulumi.InvokeOption) (*GetAuthServersScopesResult, error) {
@@ -78,12 +77,6 @@ func (o GetAuthServersScopesResultOutput) ToGetAuthServersScopesResultOutput() G
 
 func (o GetAuthServersScopesResultOutput) ToGetAuthServersScopesResultOutputWithContext(ctx context.Context) GetAuthServersScopesResultOutput {
 	return o
-}
-
-func (o GetAuthServersScopesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthServersScopesResult] {
-	return pulumix.Output[GetAuthServersScopesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAuthServersScopesResultOutput) AuthServersId() pulumi.StringOutput {
