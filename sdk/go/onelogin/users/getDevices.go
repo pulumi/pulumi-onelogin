@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.InvokeOption) (*GetDevicesResult, error) {
@@ -87,12 +86,6 @@ func (o GetDevicesResultOutput) ToGetDevicesResultOutput() GetDevicesResultOutpu
 
 func (o GetDevicesResultOutput) ToGetDevicesResultOutputWithContext(ctx context.Context) GetDevicesResultOutput {
 	return o
-}
-
-func (o GetDevicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesResult] {
-	return pulumix.Output[GetDevicesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDevicesResultOutput) AuthFactorName() pulumi.StringOutput {

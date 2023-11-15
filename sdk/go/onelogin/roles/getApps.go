@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption) (*GetAppsResult, error) {
@@ -78,12 +77,6 @@ func (o GetAppsResultOutput) ToGetAppsResultOutput() GetAppsResultOutput {
 
 func (o GetAppsResultOutput) ToGetAppsResultOutputWithContext(ctx context.Context) GetAppsResultOutput {
 	return o
-}
-
-func (o GetAppsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsResult] {
-	return pulumix.Output[GetAppsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAppsResultOutput) Filters() GetAppsFilterArrayOutput {

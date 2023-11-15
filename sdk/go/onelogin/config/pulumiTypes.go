@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i EndpointsArgs) ToEndpointsOutputWithContext(ctx context.Context) Endpoin
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointsOutput)
 }
 
-func (i EndpointsArgs) ToOutput(ctx context.Context) pulumix.Output[Endpoints] {
-	return pulumix.Output[Endpoints]{
-		OutputState: i.ToEndpointsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointsArrayInput is an input type that accepts EndpointsArray and EndpointsArrayOutput values.
 // You can construct a concrete instance of `EndpointsArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i EndpointsArray) ToEndpointsArrayOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointsArrayOutput)
 }
 
-func (i EndpointsArray) ToOutput(ctx context.Context) pulumix.Output[[]Endpoints] {
-	return pulumix.Output[[]Endpoints]{
-		OutputState: i.ToEndpointsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointsOutput struct{ *pulumi.OutputState }
 
 func (EndpointsOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o EndpointsOutput) ToEndpointsOutput() EndpointsOutput {
 
 func (o EndpointsOutput) ToEndpointsOutputWithContext(ctx context.Context) EndpointsOutput {
 	return o
-}
-
-func (o EndpointsOutput) ToOutput(ctx context.Context) pulumix.Output[Endpoints] {
-	return pulumix.Output[Endpoints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointsOutput) Apps() pulumi.StringPtrOutput {
@@ -160,12 +141,6 @@ func (o EndpointsArrayOutput) ToEndpointsArrayOutput() EndpointsArrayOutput {
 
 func (o EndpointsArrayOutput) ToEndpointsArrayOutputWithContext(ctx context.Context) EndpointsArrayOutput {
 	return o
-}
-
-func (o EndpointsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Endpoints] {
-	return pulumix.Output[[]Endpoints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointsArrayOutput) Index(i pulumi.IntInput) EndpointsOutput {

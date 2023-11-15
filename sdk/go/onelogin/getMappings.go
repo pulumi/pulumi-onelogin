@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetMappings(ctx *pulumi.Context, args *GetMappingsArgs, opts ...pulumi.InvokeOption) (*GetMappingsResult, error) {
@@ -87,12 +86,6 @@ func (o GetMappingsResultOutput) ToGetMappingsResultOutput() GetMappingsResultOu
 
 func (o GetMappingsResultOutput) ToGetMappingsResultOutputWithContext(ctx context.Context) GetMappingsResultOutput {
 	return o
-}
-
-func (o GetMappingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMappingsResult] {
-	return pulumix.Output[GetMappingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMappingsResultOutput) Actions() GetMappingsActionArrayOutput {
