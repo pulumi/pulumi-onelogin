@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type App struct {
@@ -300,12 +299,6 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
 }
 
-func (i *App) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: i.ToAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
 // You can construct a concrete instance of `AppArrayInput` via:
 //
@@ -329,12 +322,6 @@ func (i AppArray) ToAppArrayOutput() AppArrayOutput {
 
 func (i AppArray) ToAppArrayOutputWithContext(ctx context.Context) AppArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppArrayOutput)
-}
-
-func (i AppArray) ToOutput(ctx context.Context) pulumix.Output[[]*App] {
-	return pulumix.Output[[]*App]{
-		OutputState: i.ToAppArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppMapInput is an input type that accepts AppMap and AppMapOutput values.
@@ -362,12 +349,6 @@ func (i AppMap) ToAppMapOutputWithContext(ctx context.Context) AppMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppMapOutput)
 }
 
-func (i AppMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*App] {
-	return pulumix.Output[map[string]*App]{
-		OutputState: i.ToAppMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
@@ -380,12 +361,6 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
-}
-
-func (o AppOutput) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether or not administrators can access the app as a user that they have assumed control over.
@@ -507,12 +482,6 @@ func (o AppArrayOutput) ToAppArrayOutputWithContext(ctx context.Context) AppArra
 	return o
 }
 
-func (o AppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*App] {
-	return pulumix.Output[[]*App]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppArrayOutput) Index(i pulumi.IntInput) AppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *App {
 		return vs[0].([]*App)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o AppMapOutput) ToAppMapOutput() AppMapOutput {
 
 func (o AppMapOutput) ToAppMapOutputWithContext(ctx context.Context) AppMapOutput {
 	return o
-}
-
-func (o AppMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*App] {
-	return pulumix.Output[map[string]*App]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppMapOutput) MapIndex(k pulumi.StringInput) AppOutput {

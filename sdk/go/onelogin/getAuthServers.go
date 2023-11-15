@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupAuthServers(ctx *pulumi.Context, args *LookupAuthServersArgs, opts ...pulumi.InvokeOption) (*LookupAuthServersResult, error) {
@@ -78,12 +77,6 @@ func (o LookupAuthServersResultOutput) ToLookupAuthServersResultOutput() LookupA
 
 func (o LookupAuthServersResultOutput) ToLookupAuthServersResultOutputWithContext(ctx context.Context) LookupAuthServersResultOutput {
 	return o
-}
-
-func (o LookupAuthServersResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthServersResult] {
-	return pulumix.Output[LookupAuthServersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAuthServersResultOutput) Configuration() GetAuthServersConfigurationOutput {

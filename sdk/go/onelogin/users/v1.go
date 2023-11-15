@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-onelogin/sdk/go/onelogin/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type V1 struct {
@@ -386,12 +385,6 @@ func (i *V1) ToV1OutputWithContext(ctx context.Context) V1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(V1Output)
 }
 
-func (i *V1) ToOutput(ctx context.Context) pulumix.Output[*V1] {
-	return pulumix.Output[*V1]{
-		OutputState: i.ToV1OutputWithContext(ctx).OutputState,
-	}
-}
-
 // V1ArrayInput is an input type that accepts V1Array and V1ArrayOutput values.
 // You can construct a concrete instance of `V1ArrayInput` via:
 //
@@ -415,12 +408,6 @@ func (i V1Array) ToV1ArrayOutput() V1ArrayOutput {
 
 func (i V1Array) ToV1ArrayOutputWithContext(ctx context.Context) V1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V1ArrayOutput)
-}
-
-func (i V1Array) ToOutput(ctx context.Context) pulumix.Output[[]*V1] {
-	return pulumix.Output[[]*V1]{
-		OutputState: i.ToV1ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // V1MapInput is an input type that accepts V1Map and V1MapOutput values.
@@ -448,12 +435,6 @@ func (i V1Map) ToV1MapOutputWithContext(ctx context.Context) V1MapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V1MapOutput)
 }
 
-func (i V1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*V1] {
-	return pulumix.Output[map[string]*V1]{
-		OutputState: i.ToV1MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type V1Output struct{ *pulumi.OutputState }
 
 func (V1Output) ElementType() reflect.Type {
@@ -466,12 +447,6 @@ func (o V1Output) ToV1Output() V1Output {
 
 func (o V1Output) ToV1OutputWithContext(ctx context.Context) V1Output {
 	return o
-}
-
-func (o V1Output) ToOutput(ctx context.Context) pulumix.Output[*V1] {
-	return pulumix.Output[*V1]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o V1Output) ActivatedAt() pulumi.StringPtrOutput {
@@ -653,12 +628,6 @@ func (o V1ArrayOutput) ToV1ArrayOutputWithContext(ctx context.Context) V1ArrayOu
 	return o
 }
 
-func (o V1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*V1] {
-	return pulumix.Output[[]*V1]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o V1ArrayOutput) Index(i pulumi.IntInput) V1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *V1 {
 		return vs[0].([]*V1)[vs[1].(int)]
@@ -677,12 +646,6 @@ func (o V1MapOutput) ToV1MapOutput() V1MapOutput {
 
 func (o V1MapOutput) ToV1MapOutputWithContext(ctx context.Context) V1MapOutput {
 	return o
-}
-
-func (o V1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*V1] {
-	return pulumix.Output[map[string]*V1]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o V1MapOutput) MapIndex(k pulumi.StringInput) V1Output {
