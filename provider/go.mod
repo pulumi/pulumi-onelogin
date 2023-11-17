@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/onelogin/terraform-provider-onelogin v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.1-0.20231117214246-27a2e69fd393
 	github.com/pulumi/pulumi/sdk/v3 v3.93.0
 )
 
@@ -250,6 +250,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
+	github.com/yuin/goldmark v1.5.2 // indirect
 	go.mongodb.org/mongo-driver v1.11.4 // indirect
 	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
