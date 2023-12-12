@@ -150,17 +150,17 @@ public final class GetRulesResult {
             return this;
         }
         public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.actions = actions;
-            o.appsId = appsId;
-            o.conditions = conditions;
-            o.enabled = enabled;
-            o.filters = filters;
-            o.id = id;
-            o.match = match;
-            o.name = name;
-            o.position = position;
-            return o;
+            final var _resultValue = new GetRulesResult();
+            _resultValue.actions = actions;
+            _resultValue.appsId = appsId;
+            _resultValue.conditions = conditions;
+            _resultValue.enabled = enabled;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.match = match;
+            _resultValue.name = name;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

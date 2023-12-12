@@ -53,10 +53,10 @@ public final class GetConditionsFilter {
             return values(List.of(values));
         }
         public GetConditionsFilter build() {
-            final var o = new GetConditionsFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetConditionsFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -76,12 +76,12 @@ public final class GetAuthServersConfiguration {
             return this;
         }
         public GetAuthServersConfiguration build() {
-            final var o = new GetAuthServersConfiguration();
-            o.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
-            o.audiences = audiences;
-            o.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
-            o.resourceIdentifier = resourceIdentifier;
-            return o;
+            final var _resultValue = new GetAuthServersConfiguration();
+            _resultValue.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
+            _resultValue.audiences = audiences;
+            _resultValue.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
+            _resultValue.resourceIdentifier = resourceIdentifier;
+            return _resultValue;
         }
     }
 }

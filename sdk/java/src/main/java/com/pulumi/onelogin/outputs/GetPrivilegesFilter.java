@@ -53,10 +53,10 @@ public final class GetPrivilegesFilter {
             return values(List.of(values));
         }
         public GetPrivilegesFilter build() {
-            final var o = new GetPrivilegesFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetPrivilegesFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

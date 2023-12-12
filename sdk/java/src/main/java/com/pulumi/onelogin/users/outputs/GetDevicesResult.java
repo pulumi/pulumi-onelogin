@@ -130,16 +130,16 @@ public final class GetDevicesResult {
             return this;
         }
         public GetDevicesResult build() {
-            final var o = new GetDevicesResult();
-            o.authFactorName = authFactorName;
-            o.default_ = default_;
-            o.deviceId = deviceId;
-            o.filters = filters;
-            o.id = id;
-            o.typeDisplayName = typeDisplayName;
-            o.userDisplayName = userDisplayName;
-            o.usersId = usersId;
-            return o;
+            final var _resultValue = new GetDevicesResult();
+            _resultValue.authFactorName = authFactorName;
+            _resultValue.default_ = default_;
+            _resultValue.deviceId = deviceId;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.typeDisplayName = typeDisplayName;
+            _resultValue.userDisplayName = userDisplayName;
+            _resultValue.usersId = usersId;
+            return _resultValue;
         }
     }
 }

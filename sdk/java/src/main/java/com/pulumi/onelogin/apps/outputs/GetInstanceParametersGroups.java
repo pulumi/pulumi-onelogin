@@ -128,17 +128,17 @@ public final class GetInstanceParametersGroups {
             return this;
         }
         public GetInstanceParametersGroups build() {
-            final var o = new GetInstanceParametersGroups();
-            o.attributesTransformations = attributesTransformations;
-            o.defaultValues = defaultValues;
-            o.id = id;
-            o.label = label;
-            o.provisionedEntitlements = provisionedEntitlements;
-            o.skipIfBlank = skipIfBlank;
-            o.userAttributeMacros = userAttributeMacros;
-            o.userAttributeMappings = userAttributeMappings;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetInstanceParametersGroups();
+            _resultValue.attributesTransformations = attributesTransformations;
+            _resultValue.defaultValues = defaultValues;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.provisionedEntitlements = provisionedEntitlements;
+            _resultValue.skipIfBlank = skipIfBlank;
+            _resultValue.userAttributeMacros = userAttributeMacros;
+            _resultValue.userAttributeMappings = userAttributeMappings;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

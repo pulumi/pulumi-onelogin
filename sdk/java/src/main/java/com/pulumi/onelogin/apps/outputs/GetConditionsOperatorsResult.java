@@ -107,14 +107,14 @@ public final class GetConditionsOperatorsResult {
             return this;
         }
         public GetConditionsOperatorsResult build() {
-            final var o = new GetConditionsOperatorsResult();
-            o.appsId = appsId;
-            o.conditionsId = conditionsId;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetConditionsOperatorsResult();
+            _resultValue.appsId = appsId;
+            _resultValue.conditionsId = conditionsId;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

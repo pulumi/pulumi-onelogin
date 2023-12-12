@@ -139,16 +139,16 @@ public final class GetMappingsResult {
             return this;
         }
         public GetMappingsResult build() {
-            final var o = new GetMappingsResult();
-            o.actions = actions;
-            o.conditions = conditions;
-            o.enabled = enabled;
-            o.filters = filters;
-            o.id = id;
-            o.match = match;
-            o.name = name;
-            o.position = position;
-            return o;
+            final var _resultValue = new GetMappingsResult();
+            _resultValue.actions = actions;
+            _resultValue.conditions = conditions;
+            _resultValue.enabled = enabled;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.match = match;
+            _resultValue.name = name;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

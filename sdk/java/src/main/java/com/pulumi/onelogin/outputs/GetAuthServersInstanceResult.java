@@ -72,12 +72,12 @@ public final class GetAuthServersInstanceResult {
             return this;
         }
         public GetAuthServersInstanceResult build() {
-            final var o = new GetAuthServersInstanceResult();
-            o.configuration = configuration;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAuthServersInstanceResult();
+            _resultValue.configuration = configuration;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

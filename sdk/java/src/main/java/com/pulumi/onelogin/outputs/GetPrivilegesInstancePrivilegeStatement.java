@@ -67,11 +67,11 @@ public final class GetPrivilegesInstancePrivilegeStatement {
             return scopes(List.of(scopes));
         }
         public GetPrivilegesInstancePrivilegeStatement build() {
-            final var o = new GetPrivilegesInstancePrivilegeStatement();
-            o.actions = actions;
-            o.effect = effect;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new GetPrivilegesInstancePrivilegeStatement();
+            _resultValue.actions = actions;
+            _resultValue.effect = effect;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

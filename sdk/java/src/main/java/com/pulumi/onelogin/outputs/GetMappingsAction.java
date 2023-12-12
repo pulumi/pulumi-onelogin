@@ -53,10 +53,10 @@ public final class GetMappingsAction {
             return values(List.of(values));
         }
         public GetMappingsAction build() {
-            final var o = new GetMappingsAction();
-            o.action = action;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetMappingsAction();
+            _resultValue.action = action;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

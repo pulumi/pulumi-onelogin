@@ -53,10 +53,10 @@ public final class GetRiskRulesFilter {
             return values(List.of(values));
         }
         public GetRiskRulesFilter build() {
-            final var o = new GetRiskRulesFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRiskRulesFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

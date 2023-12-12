@@ -93,13 +93,13 @@ public final class GetInstanceResult {
             return users(List.of(users));
         }
         public GetInstanceResult build() {
-            final var o = new GetInstanceResult();
-            o.admins = admins;
-            o.apps = apps;
-            o.id = id;
-            o.name = name;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetInstanceResult();
+            _resultValue.admins = admins;
+            _resultValue.apps = apps;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

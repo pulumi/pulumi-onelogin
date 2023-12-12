@@ -127,17 +127,17 @@ public final class GetAppsConfiguration {
             return this;
         }
         public GetAppsConfiguration build() {
-            final var o = new GetAppsConfiguration();
-            o.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
-            o.loginUrl = loginUrl;
-            o.oidcApiVersion = oidcApiVersion;
-            o.oidcApplicationType = oidcApplicationType;
-            o.oidcEncryptionKey = oidcEncryptionKey;
-            o.postLogoutRedirectUri = postLogoutRedirectUri;
-            o.redirectUri = redirectUri;
-            o.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
-            o.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
-            return o;
+            final var _resultValue = new GetAppsConfiguration();
+            _resultValue.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
+            _resultValue.loginUrl = loginUrl;
+            _resultValue.oidcApiVersion = oidcApiVersion;
+            _resultValue.oidcApplicationType = oidcApplicationType;
+            _resultValue.oidcEncryptionKey = oidcEncryptionKey;
+            _resultValue.postLogoutRedirectUri = postLogoutRedirectUri;
+            _resultValue.redirectUri = redirectUri;
+            _resultValue.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
+            _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            return _resultValue;
         }
     }
 }

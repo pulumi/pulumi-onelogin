@@ -49,10 +49,10 @@ public final class GetInstanceEnforcementPointSessionExpiryInactivity {
             return this;
         }
         public GetInstanceEnforcementPointSessionExpiryInactivity build() {
-            final var o = new GetInstanceEnforcementPointSessionExpiryInactivity();
-            o.unit = unit;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetInstanceEnforcementPointSessionExpiryInactivity();
+            _resultValue.unit = unit;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

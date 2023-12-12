@@ -20,7 +20,7 @@ public class AuthServers extends com.pulumi.resources.CustomResource {
      * Authorization server configuration
      * 
      */
-    @Export(name="configuration", type=AuthServersConfiguration.class, parameters={})
+    @Export(name="configuration", refs={AuthServersConfiguration.class}, tree="[0]")
     private Output<AuthServersConfiguration> configuration;
 
     /**
@@ -34,7 +34,7 @@ public class AuthServers extends com.pulumi.resources.CustomResource {
      * Description of what the API does.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -48,7 +48,7 @@ public class AuthServers extends com.pulumi.resources.CustomResource {
      * Name of the API.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

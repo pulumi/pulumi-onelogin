@@ -17,19 +17,19 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:index/privileges:Privileges")
 public class Privileges extends com.pulumi.resources.CustomResource {
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="privilege", type=PrivilegesPrivilege.class, parameters={})
+    @Export(name="privilege", refs={PrivilegesPrivilege.class}, tree="[0]")
     private Output<PrivilegesPrivilege> privilege;
 
     public Output<PrivilegesPrivilege> privilege() {

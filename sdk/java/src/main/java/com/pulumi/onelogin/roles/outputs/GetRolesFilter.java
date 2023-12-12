@@ -53,10 +53,10 @@ public final class GetRolesFilter {
             return values(List.of(values));
         }
         public GetRolesFilter build() {
-            final var o = new GetRolesFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRolesFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetAppsParameters {
             return this;
         }
         public GetAppsParameters build() {
-            final var o = new GetAppsParameters();
-            o.groups = groups;
-            return o;
+            final var _resultValue = new GetAppsParameters();
+            _resultValue.groups = groups;
+            return _resultValue;
         }
     }
 }

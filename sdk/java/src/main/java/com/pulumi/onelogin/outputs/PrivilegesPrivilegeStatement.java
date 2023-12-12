@@ -67,11 +67,11 @@ public final class PrivilegesPrivilegeStatement {
             return scopes(List.of(scopes));
         }
         public PrivilegesPrivilegeStatement build() {
-            final var o = new PrivilegesPrivilegeStatement();
-            o.actions = actions;
-            o.effect = effect;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new PrivilegesPrivilegeStatement();
+            _resultValue.actions = actions;
+            _resultValue.effect = effect;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

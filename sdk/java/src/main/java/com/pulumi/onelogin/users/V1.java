@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:users/v1:V1")
 public class V1 extends com.pulumi.resources.CustomResource {
-    @Export(name="activatedAt", type=String.class, parameters={})
+    @Export(name="activatedAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activatedAt;
 
     public Output<Optional<String>> activatedAt() {
@@ -28,7 +28,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * Free text related to the user.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -42,7 +42,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s company.
      * 
      */
-    @Export(name="company", type=String.class, parameters={})
+    @Export(name="company", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> company;
 
     /**
@@ -52,7 +52,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> company() {
         return Codegen.optional(this.company);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> createdAt;
 
     public Output<Optional<String>> createdAt() {
@@ -62,7 +62,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s department.
      * 
      */
-    @Export(name="department", type=String.class, parameters={})
+    @Export(name="department", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> department;
 
     /**
@@ -76,7 +76,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The ID of the OneLogin Directory of the user.
      * 
      */
-    @Export(name="directoryId", type=Integer.class, parameters={})
+    @Export(name="directoryId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> directoryId;
 
     /**
@@ -90,7 +90,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The distinguished name of the user.
      * 
      */
-    @Export(name="distinguishedName", type=String.class, parameters={})
+    @Export(name="distinguishedName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> distinguishedName;
 
     /**
@@ -104,7 +104,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * A valid email for the user.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -118,7 +118,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The ID of the user in an external directory.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
@@ -132,7 +132,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s first name.
      * 
      */
-    @Export(name="firstname", type=String.class, parameters={})
+    @Export(name="firstname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firstname;
 
     /**
@@ -146,7 +146,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The ID of the Group in OneLogin that the user is assigned to.
      * 
      */
-    @Export(name="groupId", type=Integer.class, parameters={})
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> groupId;
 
     /**
@@ -156,19 +156,19 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> groupId() {
         return Codegen.optional(this.groupId);
     }
-    @Export(name="invalidLoginAttempts", type=Integer.class, parameters={})
+    @Export(name="invalidLoginAttempts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> invalidLoginAttempts;
 
     public Output<Optional<Integer>> invalidLoginAttempts() {
         return Codegen.optional(this.invalidLoginAttempts);
     }
-    @Export(name="invitationSentAt", type=String.class, parameters={})
+    @Export(name="invitationSentAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> invitationSentAt;
 
     public Output<Optional<String>> invitationSentAt() {
         return Codegen.optional(this.invitationSentAt);
     }
-    @Export(name="lastLogin", type=String.class, parameters={})
+    @Export(name="lastLogin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastLogin;
 
     public Output<Optional<String>> lastLogin() {
@@ -178,7 +178,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s last name.
      * 
      */
-    @Export(name="lastname", type=String.class, parameters={})
+    @Export(name="lastname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastname;
 
     /**
@@ -188,7 +188,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> lastname() {
         return Codegen.optional(this.lastname);
     }
-    @Export(name="lockedUntil", type=String.class, parameters={})
+    @Export(name="lockedUntil", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lockedUntil;
 
     public Output<Optional<String>> lockedUntil() {
@@ -198,7 +198,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The ID of the user&#39;s manager in Active Directory.
      * 
      */
-    @Export(name="managerAdId", type=String.class, parameters={})
+    @Export(name="managerAdId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managerAdId;
 
     /**
@@ -212,7 +212,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The OneLogin User ID for the user&#39;s manager.
      * 
      */
-    @Export(name="managerUserId", type=String.class, parameters={})
+    @Export(name="managerUserId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managerUserId;
 
     /**
@@ -226,7 +226,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s directory membership.
      * 
      */
-    @Export(name="memberOf", type=String.class, parameters={})
+    @Export(name="memberOf", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memberOf;
 
     /**
@@ -240,7 +240,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The password to set for a user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -255,7 +255,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * SHA-256-encoding it
      * 
      */
-    @Export(name="passwordAlgorithm", type=String.class, parameters={})
+    @Export(name="passwordAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordAlgorithm;
 
     /**
@@ -266,7 +266,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> passwordAlgorithm() {
         return Codegen.optional(this.passwordAlgorithm);
     }
-    @Export(name="passwordChangedAt", type=String.class, parameters={})
+    @Export(name="passwordChangedAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordChangedAt;
 
     public Output<Optional<String>> passwordChangedAt() {
@@ -276,7 +276,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * Required if the password is being set.
      * 
      */
-    @Export(name="passwordConfirmation", type=String.class, parameters={})
+    @Export(name="passwordConfirmation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordConfirmation;
 
     /**
@@ -290,7 +290,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The E.164 format phone number for a user.
      * 
      */
-    @Export(name="phone", type=String.class, parameters={})
+    @Export(name="phone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phone;
 
     /**
@@ -300,7 +300,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> phone() {
         return Codegen.optional(this.phone);
     }
-    @Export(name="preferredLocaleCode", type=String.class, parameters={})
+    @Export(name="preferredLocaleCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preferredLocaleCode;
 
     public Output<Optional<String>> preferredLocaleCode() {
@@ -310,7 +310,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * A list of OneLogin Role IDs of the user
      * 
      */
-    @Export(name="roleIds", type=List.class, parameters={Integer.class})
+    @Export(name="roleIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> roleIds;
 
     /**
@@ -324,7 +324,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The salt value used with the password_algorithm.
      * 
      */
-    @Export(name="salt", type=String.class, parameters={})
+    @Export(name="salt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> salt;
 
     /**
@@ -338,7 +338,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s Active Directory username.
      * 
      */
-    @Export(name="samaccountname", type=String.class, parameters={})
+    @Export(name="samaccountname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> samaccountname;
 
     /**
@@ -348,13 +348,13 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> samaccountname() {
         return Codegen.optional(this.samaccountname);
     }
-    @Export(name="state", type=Integer.class, parameters={})
+    @Export(name="state", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> state;
 
     public Output<Optional<Integer>> state() {
         return Codegen.optional(this.state);
     }
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> status;
 
     public Output<Optional<Integer>> status() {
@@ -364,7 +364,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The user&#39;s job title.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> title;
 
     /**
@@ -378,7 +378,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The ID of the OneLogin Trusted IDP of the user.
      * 
      */
-    @Export(name="trustedIdpId", type=Integer.class, parameters={})
+    @Export(name="trustedIdpId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> trustedIdpId;
 
     /**
@@ -388,7 +388,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> trustedIdpId() {
         return Codegen.optional(this.trustedIdpId);
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> updatedAt;
 
     public Output<Optional<String>> updatedAt() {
@@ -398,7 +398,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * A username for the user.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -412,7 +412,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * The principle name of the user.
      * 
      */
-    @Export(name="userprincipalname", type=String.class, parameters={})
+    @Export(name="userprincipalname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userprincipalname;
 
     /**

@@ -51,10 +51,10 @@ public final class AppEnforcementPointSessionExpiryInactivity {
             return this;
         }
         public AppEnforcementPointSessionExpiryInactivity build() {
-            final var o = new AppEnforcementPointSessionExpiryInactivity();
-            o.unit = unit;
-            o.value = value;
-            return o;
+            final var _resultValue = new AppEnforcementPointSessionExpiryInactivity();
+            _resultValue.unit = unit;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

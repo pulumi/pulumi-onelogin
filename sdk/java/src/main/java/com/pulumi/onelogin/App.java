@@ -28,7 +28,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Indicates whether or not administrators can access the app as a user that they have assumed control over.
      * 
      */
-    @Export(name="allowAssumedSignin", type=Boolean.class, parameters={})
+    @Export(name="allowAssumedSignin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowAssumedSignin;
 
     /**
@@ -43,7 +43,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * WSFED - 8: OpenId Connect
      * 
      */
-    @Export(name="authMethod", type=Integer.class, parameters={})
+    @Export(name="authMethod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> authMethod;
 
     /**
@@ -54,13 +54,13 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> authMethod() {
         return Codegen.optional(this.authMethod);
     }
-    @Export(name="authMethodDescription", type=String.class, parameters={})
+    @Export(name="authMethodDescription", refs={String.class}, tree="[0]")
     private Output<String> authMethodDescription;
 
     public Output<String> authMethodDescription() {
         return this.authMethodDescription;
     }
-    @Export(name="brandId", type=Integer.class, parameters={})
+    @Export(name="brandId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> brandId;
 
     public Output<Optional<Integer>> brandId() {
@@ -70,7 +70,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Only apply configurations that are applicable to the type of app
      * 
      */
-    @Export(name="configuration", type=AppConfiguration.class, parameters={})
+    @Export(name="configuration", refs={AppConfiguration.class}, tree="[0]")
     private Output<AppConfiguration> configuration;
 
     /**
@@ -84,7 +84,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * ID of the connector to base the app from.
      * 
      */
-    @Export(name="connectorId", type=Integer.class, parameters={})
+    @Export(name="connectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectorId;
 
     /**
@@ -98,7 +98,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * the date the app was created
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -112,7 +112,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Freeform description of the app.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -127,7 +127,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * with the app payload.
      * 
      */
-    @Export(name="enforcementPoint", type=AppEnforcementPoint.class, parameters={})
+    @Export(name="enforcementPoint", refs={AppEnforcementPoint.class}, tree="[0]")
     private Output</* @Nullable */ AppEnforcementPoint> enforcementPoint;
 
     /**
@@ -142,7 +142,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * A link to the apps icon url
      * 
      */
-    @Export(name="iconUrl", type=String.class, parameters={})
+    @Export(name="iconUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iconUrl;
 
     /**
@@ -152,7 +152,7 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> iconUrl() {
         return Codegen.optional(this.iconUrl);
     }
-    @Export(name="loginConfig", type=Integer.class, parameters={})
+    @Export(name="loginConfig", refs={Integer.class}, tree="[0]")
     private Output<Integer> loginConfig;
 
     public Output<Integer> loginConfig() {
@@ -162,7 +162,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The name of the app.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Freeform notes about the app.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -186,7 +186,7 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
-    @Export(name="parameters", type=AppParameters.class, parameters={})
+    @Export(name="parameters", refs={AppParameters.class}, tree="[0]")
     private Output<AppParameters> parameters;
 
     public Output<AppParameters> parameters() {
@@ -196,7 +196,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The security policy assigned to the app.
      * 
      */
-    @Export(name="policyId", type=Integer.class, parameters={})
+    @Export(name="policyId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> policyId;
 
     /**
@@ -210,7 +210,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Indicates if provisioning is enabled for this app.
      * 
      */
-    @Export(name="provisioning", type=AppProvisioning.class, parameters={})
+    @Export(name="provisioning", refs={AppProvisioning.class}, tree="[0]")
     private Output</* @Nullable */ AppProvisioning> provisioning;
 
     /**
@@ -225,7 +225,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * provided.
      * 
      */
-    @Export(name="roleIds", type=List.class, parameters={Integer.class})
+    @Export(name="roleIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> roleIds;
 
     /**
@@ -241,7 +241,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * are read only.
      * 
      */
-    @Export(name="sso", type=AppSso.class, parameters={})
+    @Export(name="sso", refs={AppSso.class}, tree="[0]")
     private Output<AppSso> sso;
 
     /**
@@ -256,7 +256,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * ID of the OneLogin portal tab that the app is assigned to.
      * 
      */
-    @Export(name="tabId", type=Integer.class, parameters={})
+    @Export(name="tabId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> tabId;
 
     /**
@@ -270,7 +270,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * the date the app was last updated
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -284,7 +284,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Indicates if the app is visible in the OneLogin portal.
      * 
      */
-    @Export(name="visible", type=Boolean.class, parameters={})
+    @Export(name="visible", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> visible;
 
     /**

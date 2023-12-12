@@ -49,10 +49,10 @@ public final class GetAppsEnforcementPointSessionExpiryFixed {
             return this;
         }
         public GetAppsEnforcementPointSessionExpiryFixed build() {
-            final var o = new GetAppsEnforcementPointSessionExpiryFixed();
-            o.unit = unit;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetAppsEnforcementPointSessionExpiryFixed();
+            _resultValue.unit = unit;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

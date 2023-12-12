@@ -62,11 +62,11 @@ public final class RulesCondition {
             return this;
         }
         public RulesCondition build() {
-            final var o = new RulesCondition();
-            o.operator = operator;
-            o.source = source;
-            o.value = value;
-            return o;
+            final var _resultValue = new RulesCondition();
+            _resultValue.operator = operator;
+            _resultValue.source = source;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

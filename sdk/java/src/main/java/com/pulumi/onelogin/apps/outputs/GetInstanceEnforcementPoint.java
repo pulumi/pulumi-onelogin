@@ -178,21 +178,21 @@ public final class GetInstanceEnforcementPoint {
             return this;
         }
         public GetInstanceEnforcementPoint build() {
-            final var o = new GetInstanceEnforcementPoint();
-            o.caseSensitive = caseSensitive;
-            o.conditions = conditions;
-            o.contextRoot = contextRoot;
-            o.landingPage = landingPage;
-            o.permissions = permissions;
-            o.requireSitewideAuthentication = requireSitewideAuthentication;
-            o.resources = resources;
-            o.sessionExpiryFixed = sessionExpiryFixed;
-            o.sessionExpiryInactivity = sessionExpiryInactivity;
-            o.target = target;
-            o.token = token;
-            o.useTargetHostHeader = useTargetHostHeader;
-            o.vhost = vhost;
-            return o;
+            final var _resultValue = new GetInstanceEnforcementPoint();
+            _resultValue.caseSensitive = caseSensitive;
+            _resultValue.conditions = conditions;
+            _resultValue.contextRoot = contextRoot;
+            _resultValue.landingPage = landingPage;
+            _resultValue.permissions = permissions;
+            _resultValue.requireSitewideAuthentication = requireSitewideAuthentication;
+            _resultValue.resources = resources;
+            _resultValue.sessionExpiryFixed = sessionExpiryFixed;
+            _resultValue.sessionExpiryInactivity = sessionExpiryInactivity;
+            _resultValue.target = target;
+            _resultValue.token = token;
+            _resultValue.useTargetHostHeader = useTargetHostHeader;
+            _resultValue.vhost = vhost;
+            return _resultValue;
         }
     }
 }

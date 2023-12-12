@@ -153,18 +153,18 @@ public final class GetV1AppsResult {
             return this;
         }
         public GetV1AppsResult build() {
-            final var o = new GetV1AppsResult();
-            o.extension = extension;
-            o.filters = filters;
-            o.iconUrl = iconUrl;
-            o.id = id;
-            o.loginId = loginId;
-            o.name = name;
-            o.provisioningEnabled = provisioningEnabled;
-            o.provisioningState = provisioningState;
-            o.provisioningStatus = provisioningStatus;
-            o.usersV1Id = usersV1Id;
-            return o;
+            final var _resultValue = new GetV1AppsResult();
+            _resultValue.extension = extension;
+            _resultValue.filters = filters;
+            _resultValue.iconUrl = iconUrl;
+            _resultValue.id = id;
+            _resultValue.loginId = loginId;
+            _resultValue.name = name;
+            _resultValue.provisioningEnabled = provisioningEnabled;
+            _resultValue.provisioningState = provisioningState;
+            _resultValue.provisioningStatus = provisioningStatus;
+            _resultValue.usersV1Id = usersV1Id;
+            return _resultValue;
         }
     }
 }

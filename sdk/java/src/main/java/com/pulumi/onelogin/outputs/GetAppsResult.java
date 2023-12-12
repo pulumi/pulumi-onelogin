@@ -304,31 +304,31 @@ public final class GetAppsResult {
             return this;
         }
         public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.allowAssumedSignin = allowAssumedSignin;
-            o.authMethod = authMethod;
-            o.authMethodDescription = authMethodDescription;
-            o.brandId = brandId;
-            o.configuration = configuration;
-            o.connectorId = connectorId;
-            o.createdAt = createdAt;
-            o.description = description;
-            o.enforcementPoint = enforcementPoint;
-            o.filters = filters;
-            o.iconUrl = iconUrl;
-            o.id = id;
-            o.loginConfig = loginConfig;
-            o.name = name;
-            o.notes = notes;
-            o.parameters = parameters;
-            o.policyId = policyId;
-            o.provisioning = provisioning;
-            o.roleIds = roleIds;
-            o.sso = sso;
-            o.tabId = tabId;
-            o.updatedAt = updatedAt;
-            o.visible = visible;
-            return o;
+            final var _resultValue = new GetAppsResult();
+            _resultValue.allowAssumedSignin = allowAssumedSignin;
+            _resultValue.authMethod = authMethod;
+            _resultValue.authMethodDescription = authMethodDescription;
+            _resultValue.brandId = brandId;
+            _resultValue.configuration = configuration;
+            _resultValue.connectorId = connectorId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.enforcementPoint = enforcementPoint;
+            _resultValue.filters = filters;
+            _resultValue.iconUrl = iconUrl;
+            _resultValue.id = id;
+            _resultValue.loginConfig = loginConfig;
+            _resultValue.name = name;
+            _resultValue.notes = notes;
+            _resultValue.parameters = parameters;
+            _resultValue.policyId = policyId;
+            _resultValue.provisioning = provisioning;
+            _resultValue.roleIds = roleIds;
+            _resultValue.sso = sso;
+            _resultValue.tabId = tabId;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.visible = visible;
+            return _resultValue;
         }
     }
 }

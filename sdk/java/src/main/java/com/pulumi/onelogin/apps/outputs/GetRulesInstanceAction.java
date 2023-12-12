@@ -53,10 +53,10 @@ public final class GetRulesInstanceAction {
             return values(List.of(values));
         }
         public GetRulesInstanceAction build() {
-            final var o = new GetRulesInstanceAction();
-            o.action = action;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesInstanceAction();
+            _resultValue.action = action;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

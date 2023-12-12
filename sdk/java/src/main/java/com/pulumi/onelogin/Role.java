@@ -22,7 +22,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * A list of user IDs to assign as role administrators.
      * 
      */
-    @Export(name="admins", type=List.class, parameters={Integer.class})
+    @Export(name="admins", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> admins;
 
     /**
@@ -36,7 +36,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * A list of app IDs that will be assigned to the role.
      * 
      */
-    @Export(name="apps", type=List.class, parameters={Integer.class})
+    @Export(name="apps", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> apps;
 
     /**
@@ -50,7 +50,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -64,7 +64,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * A list of user IDs to assign to the role.
      * 
      */
-    @Export(name="users", type=List.class, parameters={Integer.class})
+    @Export(name="users", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> users;
 
     /**

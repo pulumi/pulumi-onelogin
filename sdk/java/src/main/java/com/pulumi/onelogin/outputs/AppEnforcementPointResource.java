@@ -85,13 +85,13 @@ public final class AppEnforcementPointResource {
             return this;
         }
         public AppEnforcementPointResource build() {
-            final var o = new AppEnforcementPointResource();
-            o.conditions = conditions;
-            o.isPathRegex = isPathRegex;
-            o.path = path;
-            o.permission = permission;
-            o.requireAuth = requireAuth;
-            return o;
+            final var _resultValue = new AppEnforcementPointResource();
+            _resultValue.conditions = conditions;
+            _resultValue.isPathRegex = isPathRegex;
+            _resultValue.path = path;
+            _resultValue.permission = permission;
+            _resultValue.requireAuth = requireAuth;
+            return _resultValue;
         }
     }
 }
