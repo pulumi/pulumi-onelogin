@@ -22,13 +22,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:onelogin")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="apikeyAuth", type=String.class, parameters={})
+    @Export(name="apikeyAuth", refs={String.class}, tree="[0]")
     private Output<String> apikeyAuth;
 
     public Output<String> apikeyAuth() {
         return this.apikeyAuth;
     }
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     public Output<Optional<String>> contentType() {

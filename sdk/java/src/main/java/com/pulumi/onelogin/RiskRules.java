@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:index/riskRules:RiskRules")
 public class RiskRules extends com.pulumi.resources.CustomResource {
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
@@ -28,7 +28,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * A list of IP addresses or country codes or names to evaluate against each event.
      * 
      */
-    @Export(name="filters", type=List.class, parameters={String.class})
+    @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
@@ -42,7 +42,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * The name of this rule
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -56,7 +56,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * Used for targeting custom rules based on a group of people, customers, accounts, or even a single user.
      * 
      */
-    @Export(name="source", type=RiskRulesSource.class, parameters={})
+    @Export(name="source", refs={RiskRulesSource.class}, tree="[0]")
     private Output</* @Nullable */ RiskRulesSource> source;
 
     /**
@@ -70,7 +70,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * The target parameter that will be used when evaluating the rule against an incoming event.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> target;
 
     /**
@@ -84,7 +84,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * The type parameter specifies the type of rule that will be created.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

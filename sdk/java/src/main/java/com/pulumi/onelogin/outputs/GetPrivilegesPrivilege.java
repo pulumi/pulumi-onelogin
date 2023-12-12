@@ -54,10 +54,10 @@ public final class GetPrivilegesPrivilege {
             return this;
         }
         public GetPrivilegesPrivilege build() {
-            final var o = new GetPrivilegesPrivilege();
-            o.statements = statements;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetPrivilegesPrivilege();
+            _resultValue.statements = statements;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

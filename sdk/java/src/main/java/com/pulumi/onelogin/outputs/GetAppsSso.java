@@ -94,14 +94,14 @@ public final class GetAppsSso {
             return this;
         }
         public GetAppsSso build() {
-            final var o = new GetAppsSso();
-            o.acsUrl = acsUrl;
-            o.certificate = certificate;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.issuer = issuer;
-            o.metadataUrl = metadataUrl;
-            return o;
+            final var _resultValue = new GetAppsSso();
+            _resultValue.acsUrl = acsUrl;
+            _resultValue.certificate = certificate;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.issuer = issuer;
+            _resultValue.metadataUrl = metadataUrl;
+            return _resultValue;
         }
     }
 }

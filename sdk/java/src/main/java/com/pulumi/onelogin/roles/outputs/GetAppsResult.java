@@ -96,13 +96,13 @@ public final class GetAppsResult {
             return this;
         }
         public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.filters = filters;
-            o.iconUrl = iconUrl;
-            o.id = id;
-            o.name = name;
-            o.rolesId = rolesId;
-            return o;
+            final var _resultValue = new GetAppsResult();
+            _resultValue.filters = filters;
+            _resultValue.iconUrl = iconUrl;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.rolesId = rolesId;
+            return _resultValue;
         }
     }
 }

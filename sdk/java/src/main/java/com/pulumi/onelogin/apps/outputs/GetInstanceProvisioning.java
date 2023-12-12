@@ -50,10 +50,10 @@ public final class GetInstanceProvisioning {
             return this;
         }
         public GetInstanceProvisioning build() {
-            final var o = new GetInstanceProvisioning();
-            o.enabled = enabled;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstanceProvisioning();
+            _resultValue.enabled = enabled;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

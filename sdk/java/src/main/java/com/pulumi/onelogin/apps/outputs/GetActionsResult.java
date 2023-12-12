@@ -96,13 +96,13 @@ public final class GetActionsResult {
             return this;
         }
         public GetActionsResult build() {
-            final var o = new GetActionsResult();
-            o.appsId = appsId;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetActionsResult();
+            _resultValue.appsId = appsId;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

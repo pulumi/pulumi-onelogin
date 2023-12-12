@@ -60,11 +60,11 @@ public final class GetRulesInstanceCondition {
             return this;
         }
         public GetRulesInstanceCondition build() {
-            final var o = new GetRulesInstanceCondition();
-            o.operator = operator;
-            o.source = source;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesInstanceCondition();
+            _resultValue.operator = operator;
+            _resultValue.source = source;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

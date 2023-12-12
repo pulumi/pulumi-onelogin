@@ -53,10 +53,10 @@ public final class GetMappingsFilter {
             return values(List.of(values));
         }
         public GetMappingsFilter build() {
-            final var o = new GetMappingsFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetMappingsFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

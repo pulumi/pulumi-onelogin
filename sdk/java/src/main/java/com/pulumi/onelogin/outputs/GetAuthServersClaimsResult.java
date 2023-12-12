@@ -166,19 +166,19 @@ public final class GetAuthServersClaimsResult {
             return values(List.of(values));
         }
         public GetAuthServersClaimsResult build() {
-            final var o = new GetAuthServersClaimsResult();
-            o.attributeTransformations = attributeTransformations;
-            o.authServersId = authServersId;
-            o.defaultValues = defaultValues;
-            o.filters = filters;
-            o.id = id;
-            o.label = label;
-            o.provisionedEntitlements = provisionedEntitlements;
-            o.skipIfBlank = skipIfBlank;
-            o.userAttributeMacros = userAttributeMacros;
-            o.userAttributeMappings = userAttributeMappings;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetAuthServersClaimsResult();
+            _resultValue.attributeTransformations = attributeTransformations;
+            _resultValue.authServersId = authServersId;
+            _resultValue.defaultValues = defaultValues;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.provisionedEntitlements = provisionedEntitlements;
+            _resultValue.skipIfBlank = skipIfBlank;
+            _resultValue.userAttributeMacros = userAttributeMacros;
+            _resultValue.userAttributeMappings = userAttributeMappings;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

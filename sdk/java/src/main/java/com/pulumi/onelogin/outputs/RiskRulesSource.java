@@ -51,10 +51,10 @@ public final class RiskRulesSource {
             return this;
         }
         public RiskRulesSource build() {
-            final var o = new RiskRulesSource();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new RiskRulesSource();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

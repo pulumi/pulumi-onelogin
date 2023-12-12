@@ -49,10 +49,10 @@ public final class GetRiskRulesSource {
             return this;
         }
         public GetRiskRulesSource build() {
-            final var o = new GetRiskRulesSource();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetRiskRulesSource();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

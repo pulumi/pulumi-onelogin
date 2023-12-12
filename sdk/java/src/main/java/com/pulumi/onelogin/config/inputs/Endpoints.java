@@ -117,16 +117,16 @@ public final class Endpoints {
             return this;
         }
         public Endpoints build() {
-            final var o = new Endpoints();
-            o.apps = apps;
-            o.appsRules = appsRules;
-            o.authServers = authServers;
-            o.privileges = privileges;
-            o.riskRules = riskRules;
-            o.roles = roles;
-            o.users = users;
-            o.usersV1 = usersV1;
-            return o;
+            final var _resultValue = new Endpoints();
+            _resultValue.apps = apps;
+            _resultValue.appsRules = appsRules;
+            _resultValue.authServers = authServers;
+            _resultValue.privileges = privileges;
+            _resultValue.riskRules = riskRules;
+            _resultValue.roles = roles;
+            _resultValue.users = users;
+            _resultValue.usersV1 = usersV1;
+            return _resultValue;
         }
     }
 }

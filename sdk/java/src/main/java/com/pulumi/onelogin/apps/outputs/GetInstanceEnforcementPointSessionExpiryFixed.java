@@ -49,10 +49,10 @@ public final class GetInstanceEnforcementPointSessionExpiryFixed {
             return this;
         }
         public GetInstanceEnforcementPointSessionExpiryFixed build() {
-            final var o = new GetInstanceEnforcementPointSessionExpiryFixed();
-            o.unit = unit;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetInstanceEnforcementPointSessionExpiryFixed();
+            _resultValue.unit = unit;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

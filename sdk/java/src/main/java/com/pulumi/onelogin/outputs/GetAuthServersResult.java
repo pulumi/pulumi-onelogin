@@ -97,13 +97,13 @@ public final class GetAuthServersResult {
             return this;
         }
         public GetAuthServersResult build() {
-            final var o = new GetAuthServersResult();
-            o.configuration = configuration;
-            o.description = description;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAuthServersResult();
+            _resultValue.configuration = configuration;
+            _resultValue.description = description;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

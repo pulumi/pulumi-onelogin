@@ -61,11 +61,11 @@ public final class GetInstanceSsoCertificate {
             return this;
         }
         public GetInstanceSsoCertificate build() {
-            final var o = new GetInstanceSsoCertificate();
-            o.id = id;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetInstanceSsoCertificate();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

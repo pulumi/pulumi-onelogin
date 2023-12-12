@@ -60,11 +60,11 @@ public final class GetMappingsCondition {
             return this;
         }
         public GetMappingsCondition build() {
-            final var o = new GetMappingsCondition();
-            o.operator = operator;
-            o.source = source;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetMappingsCondition();
+            _resultValue.operator = operator;
+            _resultValue.source = source;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

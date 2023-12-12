@@ -38,9 +38,9 @@ public final class GetInstanceParameters {
             return this;
         }
         public GetInstanceParameters build() {
-            final var o = new GetInstanceParameters();
-            o.groups = groups;
-            return o;
+            final var _resultValue = new GetInstanceParameters();
+            _resultValue.groups = groups;
+            return _resultValue;
         }
     }
 }

@@ -133,16 +133,16 @@ public final class GetRiskRulesResult {
             return this;
         }
         public GetRiskRulesResult build() {
-            final var o = new GetRiskRulesResult();
-            o.description = description;
-            o.filter = filter;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.source = source;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRiskRulesResult();
+            _resultValue.description = description;
+            _resultValue.filter = filter;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

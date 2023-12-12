@@ -53,10 +53,10 @@ public final class GetUsersFilter {
             return values(List.of(values));
         }
         public GetUsersFilter build() {
-            final var o = new GetUsersFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetUsersFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

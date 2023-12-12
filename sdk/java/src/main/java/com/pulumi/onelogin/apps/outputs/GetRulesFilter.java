@@ -53,10 +53,10 @@ public final class GetRulesFilter {
             return values(List.of(values));
         }
         public GetRulesFilter build() {
-            final var o = new GetRulesFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -53,10 +53,10 @@ public final class GetAdminsFilter {
             return values(List.of(values));
         }
         public GetAdminsFilter build() {
-            final var o = new GetAdminsFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetAdminsFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

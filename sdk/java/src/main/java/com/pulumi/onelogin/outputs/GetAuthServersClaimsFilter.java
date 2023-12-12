@@ -53,10 +53,10 @@ public final class GetAuthServersClaimsFilter {
             return values(List.of(values));
         }
         public GetAuthServersClaimsFilter build() {
-            final var o = new GetAuthServersClaimsFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetAuthServersClaimsFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

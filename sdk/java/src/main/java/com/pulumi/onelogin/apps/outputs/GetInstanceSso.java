@@ -94,14 +94,14 @@ public final class GetInstanceSso {
             return this;
         }
         public GetInstanceSso build() {
-            final var o = new GetInstanceSso();
-            o.acsUrl = acsUrl;
-            o.certificate = certificate;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.issuer = issuer;
-            o.metadataUrl = metadataUrl;
-            return o;
+            final var _resultValue = new GetInstanceSso();
+            _resultValue.acsUrl = acsUrl;
+            _resultValue.certificate = certificate;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.issuer = issuer;
+            _resultValue.metadataUrl = metadataUrl;
+            return _resultValue;
         }
     }
 }

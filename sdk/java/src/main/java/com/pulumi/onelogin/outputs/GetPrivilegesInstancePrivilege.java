@@ -54,10 +54,10 @@ public final class GetPrivilegesInstancePrivilege {
             return this;
         }
         public GetPrivilegesInstancePrivilege build() {
-            final var o = new GetPrivilegesInstancePrivilege();
-            o.statements = statements;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetPrivilegesInstancePrivilege();
+            _resultValue.statements = statements;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

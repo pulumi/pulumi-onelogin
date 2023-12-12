@@ -117,14 +117,14 @@ public final class GetRolesResult {
             return users(List.of(users));
         }
         public GetRolesResult build() {
-            final var o = new GetRolesResult();
-            o.admins = admins;
-            o.apps = apps;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetRolesResult();
+            _resultValue.admins = admins;
+            _resultValue.apps = apps;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

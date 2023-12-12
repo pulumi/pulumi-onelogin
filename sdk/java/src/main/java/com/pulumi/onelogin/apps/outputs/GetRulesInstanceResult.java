@@ -126,16 +126,16 @@ public final class GetRulesInstanceResult {
             return this;
         }
         public GetRulesInstanceResult build() {
-            final var o = new GetRulesInstanceResult();
-            o.actions = actions;
-            o.appsId = appsId;
-            o.conditions = conditions;
-            o.enabled = enabled;
-            o.id = id;
-            o.match = match;
-            o.name = name;
-            o.position = position;
-            return o;
+            final var _resultValue = new GetRulesInstanceResult();
+            _resultValue.actions = actions;
+            _resultValue.appsId = appsId;
+            _resultValue.conditions = conditions;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.match = match;
+            _resultValue.name = name;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

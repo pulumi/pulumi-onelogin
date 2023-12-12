@@ -53,10 +53,10 @@ public final class GetAuthServersFilter {
             return values(List.of(values));
         }
         public GetAuthServersFilter build() {
-            final var o = new GetAuthServersFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetAuthServersFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -78,12 +78,12 @@ public final class AuthServersConfiguration {
             return this;
         }
         public AuthServersConfiguration build() {
-            final var o = new AuthServersConfiguration();
-            o.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
-            o.audiences = audiences;
-            o.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
-            o.resourceIdentifier = resourceIdentifier;
-            return o;
+            final var _resultValue = new AuthServersConfiguration();
+            _resultValue.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
+            _resultValue.audiences = audiences;
+            _resultValue.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
+            _resultValue.resourceIdentifier = resourceIdentifier;
+            return _resultValue;
         }
     }
 }

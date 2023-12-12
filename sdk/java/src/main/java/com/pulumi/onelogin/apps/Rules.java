@@ -21,13 +21,13 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:apps/rules:Rules")
 public class Rules extends com.pulumi.resources.CustomResource {
-    @Export(name="actions", type=List.class, parameters={RulesAction.class})
+    @Export(name="actions", refs={List.class,RulesAction.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RulesAction>> actions;
 
     public Output<Optional<List<RulesAction>>> actions() {
         return Codegen.optional(this.actions);
     }
-    @Export(name="appsId", type=String.class, parameters={})
+    @Export(name="appsId", refs={String.class}, tree="[0]")
     private Output<String> appsId;
 
     public Output<String> appsId() {
@@ -37,7 +37,7 @@ public class Rules extends com.pulumi.resources.CustomResource {
      * An array of conditions that the user must meet in order for the rule to be applied.
      * 
      */
-    @Export(name="conditions", type=List.class, parameters={RulesCondition.class})
+    @Export(name="conditions", refs={List.class,RulesCondition.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RulesCondition>> conditions;
 
     /**
@@ -51,7 +51,7 @@ public class Rules extends com.pulumi.resources.CustomResource {
      * Indicates if the rule is enabled or not.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -65,7 +65,7 @@ public class Rules extends com.pulumi.resources.CustomResource {
      * Indicates how conditions should be matched.
      * 
      */
-    @Export(name="match", type=String.class, parameters={})
+    @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
@@ -79,7 +79,7 @@ public class Rules extends com.pulumi.resources.CustomResource {
      * Rule Name
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -93,7 +93,7 @@ public class Rules extends com.pulumi.resources.CustomResource {
      * Indicates the order of the rule. When `null` this will default to last position.
      * 
      */
-    @Export(name="position", type=Integer.class, parameters={})
+    @Export(name="position", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> position;
 
     /**

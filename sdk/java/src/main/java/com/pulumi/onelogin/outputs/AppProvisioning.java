@@ -52,10 +52,10 @@ public final class AppProvisioning {
             return this;
         }
         public AppProvisioning build() {
-            final var o = new AppProvisioning();
-            o.enabled = enabled;
-            o.status = status;
-            return o;
+            final var _resultValue = new AppProvisioning();
+            _resultValue.enabled = enabled;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

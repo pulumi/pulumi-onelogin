@@ -53,10 +53,10 @@ public final class GetV1Filter {
             return values(List.of(values));
         }
         public GetV1Filter build() {
-            final var o = new GetV1Filter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetV1Filter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

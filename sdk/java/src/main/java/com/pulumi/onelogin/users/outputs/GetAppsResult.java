@@ -153,18 +153,18 @@ public final class GetAppsResult {
             return this;
         }
         public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.extension = extension;
-            o.filters = filters;
-            o.iconUrl = iconUrl;
-            o.id = id;
-            o.loginId = loginId;
-            o.name = name;
-            o.provisioningEnabled = provisioningEnabled;
-            o.provisioningState = provisioningState;
-            o.provisioningStatus = provisioningStatus;
-            o.usersId = usersId;
-            return o;
+            final var _resultValue = new GetAppsResult();
+            _resultValue.extension = extension;
+            _resultValue.filters = filters;
+            _resultValue.iconUrl = iconUrl;
+            _resultValue.id = id;
+            _resultValue.loginId = loginId;
+            _resultValue.name = name;
+            _resultValue.provisioningEnabled = provisioningEnabled;
+            _resultValue.provisioningState = provisioningState;
+            _resultValue.provisioningStatus = provisioningStatus;
+            _resultValue.usersId = usersId;
+            return _resultValue;
         }
     }
 }

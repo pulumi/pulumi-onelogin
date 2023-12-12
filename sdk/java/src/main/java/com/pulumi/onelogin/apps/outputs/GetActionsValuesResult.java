@@ -107,14 +107,14 @@ public final class GetActionsValuesResult {
             return this;
         }
         public GetActionsValuesResult build() {
-            final var o = new GetActionsValuesResult();
-            o.actionsId = actionsId;
-            o.appsId = appsId;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetActionsValuesResult();
+            _resultValue.actionsId = actionsId;
+            _resultValue.appsId = appsId;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

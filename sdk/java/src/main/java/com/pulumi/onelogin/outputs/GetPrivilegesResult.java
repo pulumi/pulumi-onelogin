@@ -97,13 +97,13 @@ public final class GetPrivilegesResult {
             return this;
         }
         public GetPrivilegesResult build() {
-            final var o = new GetPrivilegesResult();
-            o.description = description;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.privilege = privilege;
-            return o;
+            final var _resultValue = new GetPrivilegesResult();
+            _resultValue.description = description;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privilege = privilege;
+            return _resultValue;
         }
     }
 }

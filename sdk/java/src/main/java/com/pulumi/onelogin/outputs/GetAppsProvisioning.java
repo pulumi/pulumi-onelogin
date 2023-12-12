@@ -50,10 +50,10 @@ public final class GetAppsProvisioning {
             return this;
         }
         public GetAppsProvisioning build() {
-            final var o = new GetAppsProvisioning();
-            o.enabled = enabled;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAppsProvisioning();
+            _resultValue.enabled = enabled;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

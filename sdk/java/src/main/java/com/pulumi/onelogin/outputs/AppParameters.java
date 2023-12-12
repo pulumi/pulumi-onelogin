@@ -40,9 +40,9 @@ public final class AppParameters {
             return this;
         }
         public AppParameters build() {
-            final var o = new AppParameters();
-            o.groups = groups;
-            return o;
+            final var _resultValue = new AppParameters();
+            _resultValue.groups = groups;
+            return _resultValue;
         }
     }
 }

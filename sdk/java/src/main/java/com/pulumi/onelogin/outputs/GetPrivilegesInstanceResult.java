@@ -72,12 +72,12 @@ public final class GetPrivilegesInstanceResult {
             return this;
         }
         public GetPrivilegesInstanceResult build() {
-            final var o = new GetPrivilegesInstanceResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.privilege = privilege;
-            return o;
+            final var _resultValue = new GetPrivilegesInstanceResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privilege = privilege;
+            return _resultValue;
         }
     }
 }

@@ -109,15 +109,15 @@ public final class GetRiskRulesInstanceResult {
             return this;
         }
         public GetRiskRulesInstanceResult build() {
-            final var o = new GetRiskRulesInstanceResult();
-            o.description = description;
-            o.filters = filters;
-            o.id = id;
-            o.name = name;
-            o.source = source;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRiskRulesInstanceResult();
+            _resultValue.description = description;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

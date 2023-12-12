@@ -55,10 +55,10 @@ public final class RulesAction {
             return values(List.of(values));
         }
         public RulesAction build() {
-            final var o = new RulesAction();
-            o.action = action;
-            o.values = values;
-            return o;
+            final var _resultValue = new RulesAction();
+            _resultValue.action = action;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }
