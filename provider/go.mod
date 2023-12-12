@@ -4,8 +4,8 @@ go 1.21
 
 require (
 	github.com/onelogin/terraform-provider-onelogin v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.0
-	github.com/pulumi/pulumi/sdk/v3 v3.95.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.0
+	github.com/pulumi/pulumi/sdk/v3 v3.96.2
 )
 
 replace github.com/onelogin/terraform-provider-onelogin => ../upstream
@@ -156,7 +156,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.4.3 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.95.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.96.2 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -222,6 +222,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
+	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/dikhan/http_goclient v0.0.0-20190525013310-7112df6e36eb // indirect
 	github.com/dikhan/terraform-provider-openapi/v3 v3.0.0 // indirect
 	github.com/fatih/color v1.15.0 // indirect
