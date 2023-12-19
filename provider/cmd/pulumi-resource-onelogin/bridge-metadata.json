@@ -668,9 +668,6 @@
                     }
                 }
             },
-            "onelogin_rules": {
-                "current": "onelogin:rules/getRules:getRules"
-            },
             "onelogin_users": {
                 "current": "onelogin:users/getUsers:getUsers",
                 "fields": {
@@ -770,6 +767,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "onelogin:apps/rules:Rules": "onelogin_apps_rules",
