@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.outputs.GetConditionsOperatorsFilter;
 import java.lang.String;
 import java.util.List;
@@ -75,16 +76,23 @@ public final class GetConditionsOperatorsResult {
 
         @CustomType.Setter
         public Builder appsId(String appsId) {
-            this.appsId = Objects.requireNonNull(appsId);
+            if (appsId == null) {
+              throw new MissingRequiredPropertyException("GetConditionsOperatorsResult", "appsId");
+            }
+            this.appsId = appsId;
             return this;
         }
         @CustomType.Setter
         public Builder conditionsId(String conditionsId) {
-            this.conditionsId = Objects.requireNonNull(conditionsId);
+            if (conditionsId == null) {
+              throw new MissingRequiredPropertyException("GetConditionsOperatorsResult", "conditionsId");
+            }
+            this.conditionsId = conditionsId;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetConditionsOperatorsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -93,17 +101,26 @@ public final class GetConditionsOperatorsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConditionsOperatorsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConditionsOperatorsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetConditionsOperatorsResult", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetConditionsOperatorsResult build() {

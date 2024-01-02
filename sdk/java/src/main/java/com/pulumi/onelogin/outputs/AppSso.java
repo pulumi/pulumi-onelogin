@@ -67,31 +67,37 @@ public final class AppSso {
 
         @CustomType.Setter
         public Builder acsUrl(@Nullable String acsUrl) {
+
             this.acsUrl = acsUrl;
             return this;
         }
         @CustomType.Setter
         public Builder certificate(@Nullable AppSsoCertificate certificate) {
+
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder issuer(@Nullable String issuer) {
+
             this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder metadataUrl(@Nullable String metadataUrl) {
+
             this.metadataUrl = metadataUrl;
             return this;
         }

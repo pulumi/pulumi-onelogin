@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAuthServersClaimsFilter;
 import java.lang.Boolean;
 import java.lang.String;
@@ -106,21 +107,31 @@ public final class GetAuthServersClaimsResult {
 
         @CustomType.Setter
         public Builder attributeTransformations(String attributeTransformations) {
-            this.attributeTransformations = Objects.requireNonNull(attributeTransformations);
+            if (attributeTransformations == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "attributeTransformations");
+            }
+            this.attributeTransformations = attributeTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder authServersId(String authServersId) {
-            this.authServersId = Objects.requireNonNull(authServersId);
+            if (authServersId == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "authServersId");
+            }
+            this.authServersId = authServersId;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValues(String defaultValues) {
-            this.defaultValues = Objects.requireNonNull(defaultValues);
+            if (defaultValues == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "defaultValues");
+            }
+            this.defaultValues = defaultValues;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAuthServersClaimsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -129,37 +140,58 @@ public final class GetAuthServersClaimsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedEntitlements(Boolean provisionedEntitlements) {
-            this.provisionedEntitlements = Objects.requireNonNull(provisionedEntitlements);
+            if (provisionedEntitlements == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "provisionedEntitlements");
+            }
+            this.provisionedEntitlements = provisionedEntitlements;
             return this;
         }
         @CustomType.Setter
         public Builder skipIfBlank(Boolean skipIfBlank) {
-            this.skipIfBlank = Objects.requireNonNull(skipIfBlank);
+            if (skipIfBlank == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "skipIfBlank");
+            }
+            this.skipIfBlank = skipIfBlank;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMacros(String userAttributeMacros) {
-            this.userAttributeMacros = Objects.requireNonNull(userAttributeMacros);
+            if (userAttributeMacros == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "userAttributeMacros");
+            }
+            this.userAttributeMacros = userAttributeMacros;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMappings(String userAttributeMappings) {
-            this.userAttributeMappings = Objects.requireNonNull(userAttributeMappings);
+            if (userAttributeMappings == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "userAttributeMappings");
+            }
+            this.userAttributeMappings = userAttributeMappings;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersClaimsResult", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

@@ -78,41 +78,49 @@ public final class Endpoints {
 
         @CustomType.Setter
         public Builder apps(@Nullable String apps) {
+
             this.apps = apps;
             return this;
         }
         @CustomType.Setter
         public Builder appsRules(@Nullable String appsRules) {
+
             this.appsRules = appsRules;
             return this;
         }
         @CustomType.Setter
         public Builder authServers(@Nullable String authServers) {
+
             this.authServers = authServers;
             return this;
         }
         @CustomType.Setter
         public Builder privileges(@Nullable String privileges) {
+
             this.privileges = privileges;
             return this;
         }
         @CustomType.Setter
         public Builder riskRules(@Nullable String riskRules) {
+
             this.riskRules = riskRules;
             return this;
         }
         @CustomType.Setter
         public Builder roles(@Nullable String roles) {
+
             this.roles = roles;
             return this;
         }
         @CustomType.Setter
         public Builder users(@Nullable String users) {
+
             this.users = users;
             return this;
         }
         @CustomType.Setter
         public Builder usersV1(@Nullable String usersV1) {
+
             this.usersV1 = usersV1;
             return this;
         }

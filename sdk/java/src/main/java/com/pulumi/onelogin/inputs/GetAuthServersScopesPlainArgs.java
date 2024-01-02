@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.GetAuthServersScopesFilter;
 import java.lang.String;
 import java.util.List;
@@ -96,7 +97,9 @@ public final class GetAuthServersScopesPlainArgs extends com.pulumi.resources.In
         }
 
         public GetAuthServersScopesPlainArgs build() {
-            $.authServersId = Objects.requireNonNull($.authServersId, "expected parameter 'authServersId' to be non-null");
+            if ($.authServersId == null) {
+                throw new MissingRequiredPropertyException("GetAuthServersScopesPlainArgs", "authServersId");
+            }
             return $;
         }
     }

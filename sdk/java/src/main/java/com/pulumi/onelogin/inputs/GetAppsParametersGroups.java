@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -155,15 +156,33 @@ public final class GetAppsParametersGroups extends com.pulumi.resources.InvokeAr
         }
 
         public GetAppsParametersGroups build() {
-            $.attributesTransformations = Objects.requireNonNull($.attributesTransformations, "expected parameter 'attributesTransformations' to be non-null");
-            $.defaultValues = Objects.requireNonNull($.defaultValues, "expected parameter 'defaultValues' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.provisionedEntitlements = Objects.requireNonNull($.provisionedEntitlements, "expected parameter 'provisionedEntitlements' to be non-null");
-            $.skipIfBlank = Objects.requireNonNull($.skipIfBlank, "expected parameter 'skipIfBlank' to be non-null");
-            $.userAttributeMacros = Objects.requireNonNull($.userAttributeMacros, "expected parameter 'userAttributeMacros' to be non-null");
-            $.userAttributeMappings = Objects.requireNonNull($.userAttributeMappings, "expected parameter 'userAttributeMappings' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.attributesTransformations == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "attributesTransformations");
+            }
+            if ($.defaultValues == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "defaultValues");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "id");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "label");
+            }
+            if ($.provisionedEntitlements == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "provisionedEntitlements");
+            }
+            if ($.skipIfBlank == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "skipIfBlank");
+            }
+            if ($.userAttributeMacros == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "userAttributeMacros");
+            }
+            if ($.userAttributeMappings == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "userAttributeMappings");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersGroups", "values");
+            }
             return $;
         }
     }

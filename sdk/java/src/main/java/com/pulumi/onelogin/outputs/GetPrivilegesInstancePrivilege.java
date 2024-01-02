@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetPrivilegesInstancePrivilegeStatement;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetPrivilegesInstancePrivilege {
 
         @CustomType.Setter
         public Builder statements(List<GetPrivilegesInstancePrivilegeStatement> statements) {
-            this.statements = Objects.requireNonNull(statements);
+            if (statements == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesInstancePrivilege", "statements");
+            }
+            this.statements = statements;
             return this;
         }
         public Builder statements(GetPrivilegesInstancePrivilegeStatement... statements) {
@@ -50,7 +54,10 @@ public final class GetPrivilegesInstancePrivilege {
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesInstancePrivilege", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetPrivilegesInstancePrivilege build() {

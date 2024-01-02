@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -67,8 +68,12 @@ public final class GetRulesInstanceAction extends com.pulumi.resources.InvokeArg
         }
 
         public GetRulesInstanceAction build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("GetRulesInstanceAction", "action");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetRulesInstanceAction", "values");
+            }
             return $;
         }
     }

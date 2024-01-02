@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.roles.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.roles.inputs.GetUsersFilter;
 import java.lang.Integer;
 import java.lang.String;
@@ -530,7 +531,9 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetUsersPlainArgs build() {
-            $.rolesId = Objects.requireNonNull($.rolesId, "expected parameter 'rolesId' to be non-null");
+            if ($.rolesId == null) {
+                throw new MissingRequiredPropertyException("GetUsersPlainArgs", "rolesId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetPrivilegesFilter;
 import com.pulumi.onelogin.outputs.GetPrivilegesPrivilege;
 import java.lang.String;
@@ -70,11 +71,15 @@ public final class GetPrivilegesResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetPrivilegesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -83,17 +88,26 @@ public final class GetPrivilegesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privilege(GetPrivilegesPrivilege privilege) {
-            this.privilege = Objects.requireNonNull(privilege);
+            if (privilege == null) {
+              throw new MissingRequiredPropertyException("GetPrivilegesResult", "privilege");
+            }
+            this.privilege = privilege;
             return this;
         }
         public GetPrivilegesResult build() {

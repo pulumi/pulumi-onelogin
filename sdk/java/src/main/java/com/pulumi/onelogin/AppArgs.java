@@ -5,6 +5,7 @@ package com.pulumi.onelogin;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.AppConfigurationArgs;
 import com.pulumi.onelogin.inputs.AppEnforcementPointArgs;
 import com.pulumi.onelogin.inputs.AppParametersArgs;
@@ -771,7 +772,9 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppArgs build() {
-            $.connectorId = Objects.requireNonNull($.connectorId, "expected parameter 'connectorId' to be non-null");
+            if ($.connectorId == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "connectorId");
+            }
             return $;
         }
     }

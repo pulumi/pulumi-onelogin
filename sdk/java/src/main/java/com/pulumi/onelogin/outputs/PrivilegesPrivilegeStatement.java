@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,10 @@ public final class PrivilegesPrivilegeStatement {
 
         @CustomType.Setter
         public Builder actions(List<String> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("PrivilegesPrivilegeStatement", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(String... actions) {
@@ -55,12 +59,18 @@ public final class PrivilegesPrivilegeStatement {
         }
         @CustomType.Setter
         public Builder effect(String effect) {
-            this.effect = Objects.requireNonNull(effect);
+            if (effect == null) {
+              throw new MissingRequiredPropertyException("PrivilegesPrivilegeStatement", "effect");
+            }
+            this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(List<String> scopes) {
-            this.scopes = Objects.requireNonNull(scopes);
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("PrivilegesPrivilegeStatement", "scopes");
+            }
+            this.scopes = scopes;
             return this;
         }
         public Builder scopes(String... scopes) {

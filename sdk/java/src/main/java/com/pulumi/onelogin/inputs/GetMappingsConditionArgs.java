@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,9 +89,15 @@ public final class GetMappingsConditionArgs extends com.pulumi.resources.Resourc
         }
 
         public GetMappingsConditionArgs build() {
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("GetMappingsConditionArgs", "operator");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("GetMappingsConditionArgs", "source");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetMappingsConditionArgs", "value");
+            }
             return $;
         }
     }

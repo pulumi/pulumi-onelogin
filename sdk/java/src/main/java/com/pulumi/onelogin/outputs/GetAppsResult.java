@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAppsConfiguration;
 import com.pulumi.onelogin.outputs.GetAppsEnforcementPoint;
 import com.pulumi.onelogin.outputs.GetAppsFilter;
@@ -184,51 +185,79 @@ public final class GetAppsResult {
 
         @CustomType.Setter
         public Builder allowAssumedSignin(Boolean allowAssumedSignin) {
-            this.allowAssumedSignin = Objects.requireNonNull(allowAssumedSignin);
+            if (allowAssumedSignin == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "allowAssumedSignin");
+            }
+            this.allowAssumedSignin = allowAssumedSignin;
             return this;
         }
         @CustomType.Setter
         public Builder authMethod(Integer authMethod) {
-            this.authMethod = Objects.requireNonNull(authMethod);
+            if (authMethod == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "authMethod");
+            }
+            this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
         public Builder authMethodDescription(String authMethodDescription) {
-            this.authMethodDescription = Objects.requireNonNull(authMethodDescription);
+            if (authMethodDescription == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "authMethodDescription");
+            }
+            this.authMethodDescription = authMethodDescription;
             return this;
         }
         @CustomType.Setter
         public Builder brandId(Integer brandId) {
-            this.brandId = Objects.requireNonNull(brandId);
+            if (brandId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "brandId");
+            }
+            this.brandId = brandId;
             return this;
         }
         @CustomType.Setter
         public Builder configuration(GetAppsConfiguration configuration) {
-            this.configuration = Objects.requireNonNull(configuration);
+            if (configuration == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "configuration");
+            }
+            this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder connectorId(Integer connectorId) {
-            this.connectorId = Objects.requireNonNull(connectorId);
+            if (connectorId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "connectorId");
+            }
+            this.connectorId = connectorId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enforcementPoint(GetAppsEnforcementPoint enforcementPoint) {
-            this.enforcementPoint = Objects.requireNonNull(enforcementPoint);
+            if (enforcementPoint == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "enforcementPoint");
+            }
+            this.enforcementPoint = enforcementPoint;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAppsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -237,47 +266,74 @@ public final class GetAppsResult {
         }
         @CustomType.Setter
         public Builder iconUrl(String iconUrl) {
-            this.iconUrl = Objects.requireNonNull(iconUrl);
+            if (iconUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "iconUrl");
+            }
+            this.iconUrl = iconUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loginConfig(Integer loginConfig) {
-            this.loginConfig = Objects.requireNonNull(loginConfig);
+            if (loginConfig == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "loginConfig");
+            }
+            this.loginConfig = loginConfig;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notes(String notes) {
-            this.notes = Objects.requireNonNull(notes);
+            if (notes == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "notes");
+            }
+            this.notes = notes;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(GetAppsParameters parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(Integer policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder provisioning(GetAppsProvisioning provisioning) {
-            this.provisioning = Objects.requireNonNull(provisioning);
+            if (provisioning == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "provisioning");
+            }
+            this.provisioning = provisioning;
             return this;
         }
         @CustomType.Setter
         public Builder roleIds(List<Integer> roleIds) {
-            this.roleIds = Objects.requireNonNull(roleIds);
+            if (roleIds == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "roleIds");
+            }
+            this.roleIds = roleIds;
             return this;
         }
         public Builder roleIds(Integer... roleIds) {
@@ -285,22 +341,34 @@ public final class GetAppsResult {
         }
         @CustomType.Setter
         public Builder sso(GetAppsSso sso) {
-            this.sso = Objects.requireNonNull(sso);
+            if (sso == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "sso");
+            }
+            this.sso = sso;
             return this;
         }
         @CustomType.Setter
         public Builder tabId(Integer tabId) {
-            this.tabId = Objects.requireNonNull(tabId);
+            if (tabId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "tabId");
+            }
+            this.tabId = tabId;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder visible(Boolean visible) {
-            this.visible = Objects.requireNonNull(visible);
+            if (visible == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "visible");
+            }
+            this.visible = visible;
             return this;
         }
         public GetAppsResult build() {

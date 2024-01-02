@@ -85,46 +85,55 @@ public final class AppConfiguration {
 
         @CustomType.Setter
         public Builder accessTokenExpirationMinutes(@Nullable Integer accessTokenExpirationMinutes) {
+
             this.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder loginUrl(@Nullable String loginUrl) {
+
             this.loginUrl = loginUrl;
             return this;
         }
         @CustomType.Setter
         public Builder oidcApiVersion(@Nullable String oidcApiVersion) {
+
             this.oidcApiVersion = oidcApiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder oidcApplicationType(@Nullable Integer oidcApplicationType) {
+
             this.oidcApplicationType = oidcApplicationType;
             return this;
         }
         @CustomType.Setter
         public Builder oidcEncryptionKey(@Nullable String oidcEncryptionKey) {
+
             this.oidcEncryptionKey = oidcEncryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder postLogoutRedirectUri(@Nullable String postLogoutRedirectUri) {
+
             this.postLogoutRedirectUri = postLogoutRedirectUri;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUri(@Nullable String redirectUri) {
+
             this.redirectUri = redirectUri;
             return this;
         }
         @CustomType.Setter
         public Builder refreshTokenExpirationMinutes(@Nullable Integer refreshTokenExpirationMinutes) {
+
             this.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpointAuthMethod(@Nullable Integer tokenEndpointAuthMethod) {
+
             this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return this;
         }

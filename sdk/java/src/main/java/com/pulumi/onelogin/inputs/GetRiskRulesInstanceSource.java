@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -62,8 +63,12 @@ public final class GetRiskRulesInstanceSource extends com.pulumi.resources.Invok
         }
 
         public GetRiskRulesInstanceSource build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetRiskRulesInstanceSource", "id");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetRiskRulesInstanceSource", "name");
+            }
             return $;
         }
     }
