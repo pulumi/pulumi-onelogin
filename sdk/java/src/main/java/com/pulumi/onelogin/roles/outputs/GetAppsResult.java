@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.roles.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.roles.outputs.GetAppsFilter;
 import java.lang.String;
 import java.util.List;
@@ -69,6 +70,7 @@ public final class GetAppsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAppsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -77,22 +79,34 @@ public final class GetAppsResult {
         }
         @CustomType.Setter
         public Builder iconUrl(String iconUrl) {
-            this.iconUrl = Objects.requireNonNull(iconUrl);
+            if (iconUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "iconUrl");
+            }
+            this.iconUrl = iconUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rolesId(String rolesId) {
-            this.rolesId = Objects.requireNonNull(rolesId);
+            if (rolesId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "rolesId");
+            }
+            this.rolesId = rolesId;
             return this;
         }
         public GetAppsResult build() {

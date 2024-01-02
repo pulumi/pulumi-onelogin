@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -102,11 +103,21 @@ public final class GetAppsEnforcementPointResource extends com.pulumi.resources.
         }
 
         public GetAppsEnforcementPointResource build() {
-            $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
-            $.isPathRegex = Objects.requireNonNull($.isPathRegex, "expected parameter 'isPathRegex' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.permission = Objects.requireNonNull($.permission, "expected parameter 'permission' to be non-null");
-            $.requireAuth = Objects.requireNonNull($.requireAuth, "expected parameter 'requireAuth' to be non-null");
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "conditions");
+            }
+            if ($.isPathRegex == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "isPathRegex");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "path");
+            }
+            if ($.permission == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "permission");
+            }
+            if ($.requireAuth == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "requireAuth");
+            }
             return $;
         }
     }

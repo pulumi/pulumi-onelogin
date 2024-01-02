@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAuthServersScopesFilter;
 import java.lang.String;
 import java.util.List;
@@ -69,16 +70,23 @@ public final class GetAuthServersScopesResult {
 
         @CustomType.Setter
         public Builder authServersId(String authServersId) {
-            this.authServersId = Objects.requireNonNull(authServersId);
+            if (authServersId == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersScopesResult", "authServersId");
+            }
+            this.authServersId = authServersId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersScopesResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAuthServersScopesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -87,12 +95,18 @@ public final class GetAuthServersScopesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersScopesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersScopesResult", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetAuthServersScopesResult build() {

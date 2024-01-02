@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetMappingsAction;
 import com.pulumi.onelogin.outputs.GetMappingsCondition;
 import com.pulumi.onelogin.outputs.GetMappingsFilter;
@@ -91,7 +92,10 @@ public final class GetMappingsResult {
 
         @CustomType.Setter
         public Builder actions(List<GetMappingsAction> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(GetMappingsAction... actions) {
@@ -99,7 +103,10 @@ public final class GetMappingsResult {
         }
         @CustomType.Setter
         public Builder conditions(List<GetMappingsCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetMappingsCondition... conditions) {
@@ -107,11 +114,15 @@ public final class GetMappingsResult {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetMappingsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -120,22 +131,34 @@ public final class GetMappingsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder match(String match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder position(Integer position) {
-            this.position = Objects.requireNonNull(position);
+            if (position == null) {
+              throw new MissingRequiredPropertyException("GetMappingsResult", "position");
+            }
+            this.position = position;
             return this;
         }
         public GetMappingsResult build() {

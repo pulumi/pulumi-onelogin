@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -154,15 +155,33 @@ public final class GetInstanceConfiguration extends com.pulumi.resources.InvokeA
         }
 
         public GetInstanceConfiguration build() {
-            $.accessTokenExpirationMinutes = Objects.requireNonNull($.accessTokenExpirationMinutes, "expected parameter 'accessTokenExpirationMinutes' to be non-null");
-            $.loginUrl = Objects.requireNonNull($.loginUrl, "expected parameter 'loginUrl' to be non-null");
-            $.oidcApiVersion = Objects.requireNonNull($.oidcApiVersion, "expected parameter 'oidcApiVersion' to be non-null");
-            $.oidcApplicationType = Objects.requireNonNull($.oidcApplicationType, "expected parameter 'oidcApplicationType' to be non-null");
-            $.oidcEncryptionKey = Objects.requireNonNull($.oidcEncryptionKey, "expected parameter 'oidcEncryptionKey' to be non-null");
-            $.postLogoutRedirectUri = Objects.requireNonNull($.postLogoutRedirectUri, "expected parameter 'postLogoutRedirectUri' to be non-null");
-            $.redirectUri = Objects.requireNonNull($.redirectUri, "expected parameter 'redirectUri' to be non-null");
-            $.refreshTokenExpirationMinutes = Objects.requireNonNull($.refreshTokenExpirationMinutes, "expected parameter 'refreshTokenExpirationMinutes' to be non-null");
-            $.tokenEndpointAuthMethod = Objects.requireNonNull($.tokenEndpointAuthMethod, "expected parameter 'tokenEndpointAuthMethod' to be non-null");
+            if ($.accessTokenExpirationMinutes == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "accessTokenExpirationMinutes");
+            }
+            if ($.loginUrl == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "loginUrl");
+            }
+            if ($.oidcApiVersion == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcApiVersion");
+            }
+            if ($.oidcApplicationType == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcApplicationType");
+            }
+            if ($.oidcEncryptionKey == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcEncryptionKey");
+            }
+            if ($.postLogoutRedirectUri == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "postLogoutRedirectUri");
+            }
+            if ($.redirectUri == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "redirectUri");
+            }
+            if ($.refreshTokenExpirationMinutes == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "refreshTokenExpirationMinutes");
+            }
+            if ($.tokenEndpointAuthMethod == null) {
+                throw new MissingRequiredPropertyException("GetInstanceConfiguration", "tokenEndpointAuthMethod");
+            }
             return $;
         }
     }

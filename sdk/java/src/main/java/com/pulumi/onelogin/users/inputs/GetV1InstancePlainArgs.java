@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.users.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -512,7 +513,9 @@ public final class GetV1InstancePlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetV1InstancePlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetV1InstancePlainArgs", "id");
+            }
             return $;
         }
     }

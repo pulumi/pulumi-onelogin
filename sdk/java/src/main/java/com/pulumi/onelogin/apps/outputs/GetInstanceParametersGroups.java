@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -84,47 +85,74 @@ public final class GetInstanceParametersGroups {
 
         @CustomType.Setter
         public Builder attributesTransformations(String attributesTransformations) {
-            this.attributesTransformations = Objects.requireNonNull(attributesTransformations);
+            if (attributesTransformations == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "attributesTransformations");
+            }
+            this.attributesTransformations = attributesTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValues(String defaultValues) {
-            this.defaultValues = Objects.requireNonNull(defaultValues);
+            if (defaultValues == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "defaultValues");
+            }
+            this.defaultValues = defaultValues;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedEntitlements(Boolean provisionedEntitlements) {
-            this.provisionedEntitlements = Objects.requireNonNull(provisionedEntitlements);
+            if (provisionedEntitlements == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "provisionedEntitlements");
+            }
+            this.provisionedEntitlements = provisionedEntitlements;
             return this;
         }
         @CustomType.Setter
         public Builder skipIfBlank(Boolean skipIfBlank) {
-            this.skipIfBlank = Objects.requireNonNull(skipIfBlank);
+            if (skipIfBlank == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "skipIfBlank");
+            }
+            this.skipIfBlank = skipIfBlank;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMacros(String userAttributeMacros) {
-            this.userAttributeMacros = Objects.requireNonNull(userAttributeMacros);
+            if (userAttributeMacros == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "userAttributeMacros");
+            }
+            this.userAttributeMacros = userAttributeMacros;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMappings(String userAttributeMappings) {
-            this.userAttributeMappings = Objects.requireNonNull(userAttributeMappings);
+            if (userAttributeMappings == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "userAttributeMappings");
+            }
+            this.userAttributeMappings = userAttributeMappings;
             return this;
         }
         @CustomType.Setter
         public Builder values(String values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParametersGroups", "values");
+            }
+            this.values = values;
             return this;
         }
         public GetInstanceParametersGroups build() {

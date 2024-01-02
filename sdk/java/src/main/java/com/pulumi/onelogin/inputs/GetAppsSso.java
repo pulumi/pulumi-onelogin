@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.GetAppsSsoCertificate;
 import java.lang.String;
 import java.util.Objects;
@@ -115,12 +116,24 @@ public final class GetAppsSso extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAppsSso build() {
-            $.acsUrl = Objects.requireNonNull($.acsUrl, "expected parameter 'acsUrl' to be non-null");
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
-            $.metadataUrl = Objects.requireNonNull($.metadataUrl, "expected parameter 'metadataUrl' to be non-null");
+            if ($.acsUrl == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "acsUrl");
+            }
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "certificate");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "clientSecret");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "issuer");
+            }
+            if ($.metadataUrl == null) {
+                throw new MissingRequiredPropertyException("GetAppsSso", "metadataUrl");
+            }
             return $;
         }
     }

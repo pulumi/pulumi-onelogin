@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.inputs.GetInstanceConfiguration;
 import com.pulumi.onelogin.apps.inputs.GetInstanceEnforcementPoint;
 import com.pulumi.onelogin.apps.inputs.GetInstanceParameters;
@@ -336,7 +337,9 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetInstancePlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetInstancePlainArgs", "id");
+            }
             return $;
         }
     }

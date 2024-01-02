@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -56,12 +57,16 @@ public final class AuthServersConfiguration {
 
         @CustomType.Setter
         public Builder accessTokenExpirationMinutes(@Nullable Integer accessTokenExpirationMinutes) {
+
             this.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder audiences(List<String> audiences) {
-            this.audiences = Objects.requireNonNull(audiences);
+            if (audiences == null) {
+              throw new MissingRequiredPropertyException("AuthServersConfiguration", "audiences");
+            }
+            this.audiences = audiences;
             return this;
         }
         public Builder audiences(String... audiences) {
@@ -69,12 +74,16 @@ public final class AuthServersConfiguration {
         }
         @CustomType.Setter
         public Builder refreshTokenExpirationMinutes(@Nullable Integer refreshTokenExpirationMinutes) {
+
             this.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder resourceIdentifier(String resourceIdentifier) {
-            this.resourceIdentifier = Objects.requireNonNull(resourceIdentifier);
+            if (resourceIdentifier == null) {
+              throw new MissingRequiredPropertyException("AuthServersConfiguration", "resourceIdentifier");
+            }
+            this.resourceIdentifier = resourceIdentifier;
             return this;
         }
         public AuthServersConfiguration build() {

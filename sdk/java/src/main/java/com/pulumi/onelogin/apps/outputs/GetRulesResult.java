@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.outputs.GetRulesAction;
 import com.pulumi.onelogin.apps.outputs.GetRulesCondition;
 import com.pulumi.onelogin.apps.outputs.GetRulesFilter;
@@ -97,7 +98,10 @@ public final class GetRulesResult {
 
         @CustomType.Setter
         public Builder actions(List<GetRulesAction> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(GetRulesAction... actions) {
@@ -105,12 +109,18 @@ public final class GetRulesResult {
         }
         @CustomType.Setter
         public Builder appsId(String appsId) {
-            this.appsId = Objects.requireNonNull(appsId);
+            if (appsId == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "appsId");
+            }
+            this.appsId = appsId;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetRulesCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetRulesCondition... conditions) {
@@ -118,11 +128,15 @@ public final class GetRulesResult {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetRulesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -131,22 +145,34 @@ public final class GetRulesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder match(String match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder position(Integer position) {
-            this.position = Objects.requireNonNull(position);
+            if (position == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "position");
+            }
+            this.position = position;
             return this;
         }
         public GetRulesResult build() {

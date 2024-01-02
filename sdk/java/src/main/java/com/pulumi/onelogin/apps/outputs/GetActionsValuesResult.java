@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.outputs.GetActionsValuesFilter;
 import java.lang.String;
 import java.util.List;
@@ -75,16 +76,23 @@ public final class GetActionsValuesResult {
 
         @CustomType.Setter
         public Builder actionsId(String actionsId) {
-            this.actionsId = Objects.requireNonNull(actionsId);
+            if (actionsId == null) {
+              throw new MissingRequiredPropertyException("GetActionsValuesResult", "actionsId");
+            }
+            this.actionsId = actionsId;
             return this;
         }
         @CustomType.Setter
         public Builder appsId(String appsId) {
-            this.appsId = Objects.requireNonNull(appsId);
+            if (appsId == null) {
+              throw new MissingRequiredPropertyException("GetActionsValuesResult", "appsId");
+            }
+            this.appsId = appsId;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetActionsValuesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -93,17 +101,26 @@ public final class GetActionsValuesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetActionsValuesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetActionsValuesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetActionsValuesResult", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetActionsValuesResult build() {

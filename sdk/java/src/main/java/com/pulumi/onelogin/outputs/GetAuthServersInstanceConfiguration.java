@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -54,12 +55,18 @@ public final class GetAuthServersInstanceConfiguration {
 
         @CustomType.Setter
         public Builder accessTokenExpirationMinutes(Integer accessTokenExpirationMinutes) {
-            this.accessTokenExpirationMinutes = Objects.requireNonNull(accessTokenExpirationMinutes);
+            if (accessTokenExpirationMinutes == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersInstanceConfiguration", "accessTokenExpirationMinutes");
+            }
+            this.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder audiences(List<String> audiences) {
-            this.audiences = Objects.requireNonNull(audiences);
+            if (audiences == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersInstanceConfiguration", "audiences");
+            }
+            this.audiences = audiences;
             return this;
         }
         public Builder audiences(String... audiences) {
@@ -67,12 +74,18 @@ public final class GetAuthServersInstanceConfiguration {
         }
         @CustomType.Setter
         public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
-            this.refreshTokenExpirationMinutes = Objects.requireNonNull(refreshTokenExpirationMinutes);
+            if (refreshTokenExpirationMinutes == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersInstanceConfiguration", "refreshTokenExpirationMinutes");
+            }
+            this.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder resourceIdentifier(String resourceIdentifier) {
-            this.resourceIdentifier = Objects.requireNonNull(resourceIdentifier);
+            if (resourceIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersInstanceConfiguration", "resourceIdentifier");
+            }
+            this.resourceIdentifier = resourceIdentifier;
             return this;
         }
         public GetAuthServersInstanceConfiguration build() {

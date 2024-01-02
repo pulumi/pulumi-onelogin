@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetRiskRulesFilter;
 import com.pulumi.onelogin.outputs.GetRiskRulesSource;
 import java.lang.String;
@@ -88,11 +89,15 @@ public final class GetRiskRulesResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable List<GetRiskRulesFilter> filter) {
+
             this.filter = filter;
             return this;
         }
@@ -101,7 +106,10 @@ public final class GetRiskRulesResult {
         }
         @CustomType.Setter
         public Builder filters(List<String> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(String... filters) {
@@ -109,27 +117,42 @@ public final class GetRiskRulesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder source(GetRiskRulesSource source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRiskRulesResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRiskRulesResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.GetAppsEnforcementPointResource;
 import com.pulumi.onelogin.inputs.GetAppsEnforcementPointSessionExpiryFixed;
 import com.pulumi.onelogin.inputs.GetAppsEnforcementPointSessionExpiryInactivity;
@@ -214,19 +215,45 @@ public final class GetAppsEnforcementPoint extends com.pulumi.resources.InvokeAr
         }
 
         public GetAppsEnforcementPoint build() {
-            $.caseSensitive = Objects.requireNonNull($.caseSensitive, "expected parameter 'caseSensitive' to be non-null");
-            $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
-            $.contextRoot = Objects.requireNonNull($.contextRoot, "expected parameter 'contextRoot' to be non-null");
-            $.landingPage = Objects.requireNonNull($.landingPage, "expected parameter 'landingPage' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.requireSitewideAuthentication = Objects.requireNonNull($.requireSitewideAuthentication, "expected parameter 'requireSitewideAuthentication' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
-            $.sessionExpiryFixed = Objects.requireNonNull($.sessionExpiryFixed, "expected parameter 'sessionExpiryFixed' to be non-null");
-            $.sessionExpiryInactivity = Objects.requireNonNull($.sessionExpiryInactivity, "expected parameter 'sessionExpiryInactivity' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.token = Objects.requireNonNull($.token, "expected parameter 'token' to be non-null");
-            $.useTargetHostHeader = Objects.requireNonNull($.useTargetHostHeader, "expected parameter 'useTargetHostHeader' to be non-null");
-            $.vhost = Objects.requireNonNull($.vhost, "expected parameter 'vhost' to be non-null");
+            if ($.caseSensitive == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "caseSensitive");
+            }
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "conditions");
+            }
+            if ($.contextRoot == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "contextRoot");
+            }
+            if ($.landingPage == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "landingPage");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "permissions");
+            }
+            if ($.requireSitewideAuthentication == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "requireSitewideAuthentication");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "resources");
+            }
+            if ($.sessionExpiryFixed == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "sessionExpiryFixed");
+            }
+            if ($.sessionExpiryInactivity == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "sessionExpiryInactivity");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "target");
+            }
+            if ($.token == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "token");
+            }
+            if ($.useTargetHostHeader == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "useTargetHostHeader");
+            }
+            if ($.vhost == null) {
+                throw new MissingRequiredPropertyException("GetAppsEnforcementPoint", "vhost");
+            }
             return $;
         }
     }

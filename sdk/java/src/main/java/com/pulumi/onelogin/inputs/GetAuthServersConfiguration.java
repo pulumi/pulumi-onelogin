@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -94,10 +95,18 @@ public final class GetAuthServersConfiguration extends com.pulumi.resources.Invo
         }
 
         public GetAuthServersConfiguration build() {
-            $.accessTokenExpirationMinutes = Objects.requireNonNull($.accessTokenExpirationMinutes, "expected parameter 'accessTokenExpirationMinutes' to be non-null");
-            $.audiences = Objects.requireNonNull($.audiences, "expected parameter 'audiences' to be non-null");
-            $.refreshTokenExpirationMinutes = Objects.requireNonNull($.refreshTokenExpirationMinutes, "expected parameter 'refreshTokenExpirationMinutes' to be non-null");
-            $.resourceIdentifier = Objects.requireNonNull($.resourceIdentifier, "expected parameter 'resourceIdentifier' to be non-null");
+            if ($.accessTokenExpirationMinutes == null) {
+                throw new MissingRequiredPropertyException("GetAuthServersConfiguration", "accessTokenExpirationMinutes");
+            }
+            if ($.audiences == null) {
+                throw new MissingRequiredPropertyException("GetAuthServersConfiguration", "audiences");
+            }
+            if ($.refreshTokenExpirationMinutes == null) {
+                throw new MissingRequiredPropertyException("GetAuthServersConfiguration", "refreshTokenExpirationMinutes");
+            }
+            if ($.resourceIdentifier == null) {
+                throw new MissingRequiredPropertyException("GetAuthServersConfiguration", "resourceIdentifier");
+            }
             return $;
         }
     }

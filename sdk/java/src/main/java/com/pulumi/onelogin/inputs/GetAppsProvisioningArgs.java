@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class GetAppsProvisioningArgs extends com.pulumi.resources.Resource
         }
 
         public GetAppsProvisioningArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("GetAppsProvisioningArgs", "enabled");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetAppsProvisioningArgs", "status");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -83,47 +84,74 @@ public final class GetInstanceConfiguration {
 
         @CustomType.Setter
         public Builder accessTokenExpirationMinutes(Integer accessTokenExpirationMinutes) {
-            this.accessTokenExpirationMinutes = Objects.requireNonNull(accessTokenExpirationMinutes);
+            if (accessTokenExpirationMinutes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "accessTokenExpirationMinutes");
+            }
+            this.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder loginUrl(String loginUrl) {
-            this.loginUrl = Objects.requireNonNull(loginUrl);
+            if (loginUrl == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "loginUrl");
+            }
+            this.loginUrl = loginUrl;
             return this;
         }
         @CustomType.Setter
         public Builder oidcApiVersion(String oidcApiVersion) {
-            this.oidcApiVersion = Objects.requireNonNull(oidcApiVersion);
+            if (oidcApiVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcApiVersion");
+            }
+            this.oidcApiVersion = oidcApiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder oidcApplicationType(Integer oidcApplicationType) {
-            this.oidcApplicationType = Objects.requireNonNull(oidcApplicationType);
+            if (oidcApplicationType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcApplicationType");
+            }
+            this.oidcApplicationType = oidcApplicationType;
             return this;
         }
         @CustomType.Setter
         public Builder oidcEncryptionKey(String oidcEncryptionKey) {
-            this.oidcEncryptionKey = Objects.requireNonNull(oidcEncryptionKey);
+            if (oidcEncryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "oidcEncryptionKey");
+            }
+            this.oidcEncryptionKey = oidcEncryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder postLogoutRedirectUri(String postLogoutRedirectUri) {
-            this.postLogoutRedirectUri = Objects.requireNonNull(postLogoutRedirectUri);
+            if (postLogoutRedirectUri == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "postLogoutRedirectUri");
+            }
+            this.postLogoutRedirectUri = postLogoutRedirectUri;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUri(String redirectUri) {
-            this.redirectUri = Objects.requireNonNull(redirectUri);
+            if (redirectUri == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "redirectUri");
+            }
+            this.redirectUri = redirectUri;
             return this;
         }
         @CustomType.Setter
         public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
-            this.refreshTokenExpirationMinutes = Objects.requireNonNull(refreshTokenExpirationMinutes);
+            if (refreshTokenExpirationMinutes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "refreshTokenExpirationMinutes");
+            }
+            this.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpointAuthMethod(Integer tokenEndpointAuthMethod) {
-            this.tokenEndpointAuthMethod = Objects.requireNonNull(tokenEndpointAuthMethod);
+            if (tokenEndpointAuthMethod == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfiguration", "tokenEndpointAuthMethod");
+            }
+            this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return this;
         }
         public GetInstanceConfiguration build() {

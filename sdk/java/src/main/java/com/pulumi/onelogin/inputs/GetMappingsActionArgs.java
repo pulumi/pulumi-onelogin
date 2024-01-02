@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,8 +77,12 @@ public final class GetMappingsActionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GetMappingsActionArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("GetMappingsActionArgs", "action");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetMappingsActionArgs", "values");
+            }
             return $;
         }
     }

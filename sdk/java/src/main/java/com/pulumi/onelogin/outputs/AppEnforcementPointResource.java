@@ -61,26 +61,31 @@ public final class AppEnforcementPointResource {
 
         @CustomType.Setter
         public Builder conditions(@Nullable String conditions) {
+
             this.conditions = conditions;
             return this;
         }
         @CustomType.Setter
         public Builder isPathRegex(@Nullable Boolean isPathRegex) {
+
             this.isPathRegex = isPathRegex;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder permission(@Nullable String permission) {
+
             this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder requireAuth(@Nullable Boolean requireAuth) {
+
             this.requireAuth = requireAuth;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.inputs.GetActionsValuesFilter;
 import java.lang.String;
 import java.util.List;
@@ -109,8 +110,12 @@ public final class GetActionsValuesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetActionsValuesPlainArgs build() {
-            $.actionsId = Objects.requireNonNull($.actionsId, "expected parameter 'actionsId' to be non-null");
-            $.appsId = Objects.requireNonNull($.appsId, "expected parameter 'appsId' to be non-null");
+            if ($.actionsId == null) {
+                throw new MissingRequiredPropertyException("GetActionsValuesPlainArgs", "actionsId");
+            }
+            if ($.appsId == null) {
+                throw new MissingRequiredPropertyException("GetActionsValuesPlainArgs", "appsId");
+            }
             return $;
         }
     }
