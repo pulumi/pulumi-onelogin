@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.users.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.users.outputs.GetAppsFilter;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -101,11 +102,15 @@ public final class GetAppsResult {
 
         @CustomType.Setter
         public Builder extension(Boolean extension) {
-            this.extension = Objects.requireNonNull(extension);
+            if (extension == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "extension");
+            }
+            this.extension = extension;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAppsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -114,42 +119,66 @@ public final class GetAppsResult {
         }
         @CustomType.Setter
         public Builder iconUrl(String iconUrl) {
-            this.iconUrl = Objects.requireNonNull(iconUrl);
+            if (iconUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "iconUrl");
+            }
+            this.iconUrl = iconUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loginId(Integer loginId) {
-            this.loginId = Objects.requireNonNull(loginId);
+            if (loginId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "loginId");
+            }
+            this.loginId = loginId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningEnabled(Boolean provisioningEnabled) {
-            this.provisioningEnabled = Objects.requireNonNull(provisioningEnabled);
+            if (provisioningEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "provisioningEnabled");
+            }
+            this.provisioningEnabled = provisioningEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningState(String provisioningState) {
-            this.provisioningState = Objects.requireNonNull(provisioningState);
+            if (provisioningState == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "provisioningState");
+            }
+            this.provisioningState = provisioningState;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningStatus(String provisioningStatus) {
-            this.provisioningStatus = Objects.requireNonNull(provisioningStatus);
+            if (provisioningStatus == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "provisioningStatus");
+            }
+            this.provisioningStatus = provisioningStatus;
             return this;
         }
         @CustomType.Setter
         public Builder usersId(String usersId) {
-            this.usersId = Objects.requireNonNull(usersId);
+            if (usersId == null) {
+              throw new MissingRequiredPropertyException("GetAppsResult", "usersId");
+            }
+            this.usersId = usersId;
             return this;
         }
         public GetAppsResult build() {

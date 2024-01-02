@@ -86,46 +86,55 @@ public final class AppParametersGroups {
 
         @CustomType.Setter
         public Builder attributesTransformations(@Nullable String attributesTransformations) {
+
             this.attributesTransformations = attributesTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValues(@Nullable String defaultValues) {
+
             this.defaultValues = defaultValues;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedEntitlements(@Nullable Boolean provisionedEntitlements) {
+
             this.provisionedEntitlements = provisionedEntitlements;
             return this;
         }
         @CustomType.Setter
         public Builder skipIfBlank(@Nullable Boolean skipIfBlank) {
+
             this.skipIfBlank = skipIfBlank;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMacros(@Nullable String userAttributeMacros) {
+
             this.userAttributeMacros = userAttributeMacros;
             return this;
         }
         @CustomType.Setter
         public Builder userAttributeMappings(@Nullable String userAttributeMappings) {
+
             this.userAttributeMappings = userAttributeMappings;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable String values) {
+
             this.values = values;
             return this;
         }

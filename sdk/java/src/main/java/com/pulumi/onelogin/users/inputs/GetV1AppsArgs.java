@@ -5,6 +5,7 @@ package com.pulumi.onelogin.users.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.users.inputs.GetV1AppsFilterArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -200,7 +201,9 @@ public final class GetV1AppsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetV1AppsArgs build() {
-            $.usersV1Id = Objects.requireNonNull($.usersV1Id, "expected parameter 'usersV1Id' to be non-null");
+            if ($.usersV1Id == null) {
+                throw new MissingRequiredPropertyException("GetV1AppsArgs", "usersV1Id");
+            }
             return $;
         }
     }

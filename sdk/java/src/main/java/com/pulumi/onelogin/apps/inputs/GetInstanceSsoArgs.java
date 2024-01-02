@@ -5,6 +5,7 @@ package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.inputs.GetInstanceSsoCertificateArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -140,12 +141,24 @@ public final class GetInstanceSsoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GetInstanceSsoArgs build() {
-            $.acsUrl = Objects.requireNonNull($.acsUrl, "expected parameter 'acsUrl' to be non-null");
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
-            $.metadataUrl = Objects.requireNonNull($.metadataUrl, "expected parameter 'metadataUrl' to be non-null");
+            if ($.acsUrl == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "acsUrl");
+            }
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "certificate");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "clientSecret");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "issuer");
+            }
+            if ($.metadataUrl == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSsoArgs", "metadataUrl");
+            }
             return $;
         }
     }

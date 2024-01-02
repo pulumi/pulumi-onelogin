@@ -42,11 +42,13 @@ public final class AppEnforcementPointSessionExpiryFixed {
 
         @CustomType.Setter
         public Builder unit(@Nullable Integer unit) {
+
             this.unit = unit;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable Integer value) {
+
             this.value = value;
             return this;
         }

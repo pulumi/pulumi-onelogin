@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.inputs.GetRulesInstanceAction;
 import com.pulumi.onelogin.apps.inputs.GetRulesInstanceCondition;
 import java.lang.Boolean;
@@ -155,8 +156,12 @@ public final class GetRulesInstancePlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetRulesInstancePlainArgs build() {
-            $.appsId = Objects.requireNonNull($.appsId, "expected parameter 'appsId' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.appsId == null) {
+                throw new MissingRequiredPropertyException("GetRulesInstancePlainArgs", "appsId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetRulesInstancePlainArgs", "id");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.inputs.GetConditionsOperatorsFilter;
 import java.lang.String;
 import java.util.List;
@@ -109,8 +110,12 @@ public final class GetConditionsOperatorsPlainArgs extends com.pulumi.resources.
         }
 
         public GetConditionsOperatorsPlainArgs build() {
-            $.appsId = Objects.requireNonNull($.appsId, "expected parameter 'appsId' to be non-null");
-            $.conditionsId = Objects.requireNonNull($.conditionsId, "expected parameter 'conditionsId' to be non-null");
+            if ($.appsId == null) {
+                throw new MissingRequiredPropertyException("GetConditionsOperatorsPlainArgs", "appsId");
+            }
+            if ($.conditionsId == null) {
+                throw new MissingRequiredPropertyException("GetConditionsOperatorsPlainArgs", "conditionsId");
+            }
             return $;
         }
     }

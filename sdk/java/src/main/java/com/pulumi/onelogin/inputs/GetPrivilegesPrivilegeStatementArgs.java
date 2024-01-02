@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -97,9 +98,15 @@ public final class GetPrivilegesPrivilegeStatementArgs extends com.pulumi.resour
         }
 
         public GetPrivilegesPrivilegeStatementArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.effect = Objects.requireNonNull($.effect, "expected parameter 'effect' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("GetPrivilegesPrivilegeStatementArgs", "actions");
+            }
+            if ($.effect == null) {
+                throw new MissingRequiredPropertyException("GetPrivilegesPrivilegeStatementArgs", "effect");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("GetPrivilegesPrivilegeStatementArgs", "scopes");
+            }
             return $;
         }
     }

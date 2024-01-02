@@ -5,6 +5,7 @@ package com.pulumi.onelogin;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.ProviderEndpointArgs;
 import java.lang.String;
 import java.util.List;
@@ -96,7 +97,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.apikeyAuth = Objects.requireNonNull($.apikeyAuth, "expected parameter 'apikeyAuth' to be non-null");
+            if ($.apikeyAuth == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "apikeyAuth");
+            }
             return $;
         }
     }

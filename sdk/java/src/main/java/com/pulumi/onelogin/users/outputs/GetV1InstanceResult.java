@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.users.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -246,137 +247,218 @@ public final class GetV1InstanceResult {
 
         @CustomType.Setter
         public Builder activatedAt(String activatedAt) {
-            this.activatedAt = Objects.requireNonNull(activatedAt);
+            if (activatedAt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "activatedAt");
+            }
+            this.activatedAt = activatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder company(String company) {
-            this.company = Objects.requireNonNull(company);
+            if (company == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "company");
+            }
+            this.company = company;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder department(String department) {
-            this.department = Objects.requireNonNull(department);
+            if (department == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "department");
+            }
+            this.department = department;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(Integer directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder distinguishedName(String distinguishedName) {
-            this.distinguishedName = Objects.requireNonNull(distinguishedName);
+            if (distinguishedName == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "distinguishedName");
+            }
+            this.distinguishedName = distinguishedName;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder firstname(String firstname) {
-            this.firstname = Objects.requireNonNull(firstname);
+            if (firstname == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "firstname");
+            }
+            this.firstname = firstname;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invalidLoginAttempts(Integer invalidLoginAttempts) {
-            this.invalidLoginAttempts = Objects.requireNonNull(invalidLoginAttempts);
+            if (invalidLoginAttempts == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "invalidLoginAttempts");
+            }
+            this.invalidLoginAttempts = invalidLoginAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder invitationSentAt(String invitationSentAt) {
-            this.invitationSentAt = Objects.requireNonNull(invitationSentAt);
+            if (invitationSentAt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "invitationSentAt");
+            }
+            this.invitationSentAt = invitationSentAt;
             return this;
         }
         @CustomType.Setter
         public Builder lastLogin(String lastLogin) {
-            this.lastLogin = Objects.requireNonNull(lastLogin);
+            if (lastLogin == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "lastLogin");
+            }
+            this.lastLogin = lastLogin;
             return this;
         }
         @CustomType.Setter
         public Builder lastname(String lastname) {
-            this.lastname = Objects.requireNonNull(lastname);
+            if (lastname == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "lastname");
+            }
+            this.lastname = lastname;
             return this;
         }
         @CustomType.Setter
         public Builder lockedUntil(String lockedUntil) {
-            this.lockedUntil = Objects.requireNonNull(lockedUntil);
+            if (lockedUntil == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "lockedUntil");
+            }
+            this.lockedUntil = lockedUntil;
             return this;
         }
         @CustomType.Setter
         public Builder managerAdId(String managerAdId) {
-            this.managerAdId = Objects.requireNonNull(managerAdId);
+            if (managerAdId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "managerAdId");
+            }
+            this.managerAdId = managerAdId;
             return this;
         }
         @CustomType.Setter
         public Builder managerUserId(String managerUserId) {
-            this.managerUserId = Objects.requireNonNull(managerUserId);
+            if (managerUserId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "managerUserId");
+            }
+            this.managerUserId = managerUserId;
             return this;
         }
         @CustomType.Setter
         public Builder memberOf(String memberOf) {
-            this.memberOf = Objects.requireNonNull(memberOf);
+            if (memberOf == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "memberOf");
+            }
+            this.memberOf = memberOf;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder passwordAlgorithm(String passwordAlgorithm) {
-            this.passwordAlgorithm = Objects.requireNonNull(passwordAlgorithm);
+            if (passwordAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "passwordAlgorithm");
+            }
+            this.passwordAlgorithm = passwordAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder passwordChangedAt(String passwordChangedAt) {
-            this.passwordChangedAt = Objects.requireNonNull(passwordChangedAt);
+            if (passwordChangedAt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "passwordChangedAt");
+            }
+            this.passwordChangedAt = passwordChangedAt;
             return this;
         }
         @CustomType.Setter
         public Builder passwordConfirmation(String passwordConfirmation) {
-            this.passwordConfirmation = Objects.requireNonNull(passwordConfirmation);
+            if (passwordConfirmation == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "passwordConfirmation");
+            }
+            this.passwordConfirmation = passwordConfirmation;
             return this;
         }
         @CustomType.Setter
         public Builder phone(String phone) {
-            this.phone = Objects.requireNonNull(phone);
+            if (phone == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "phone");
+            }
+            this.phone = phone;
             return this;
         }
         @CustomType.Setter
         public Builder preferredLocaleCode(String preferredLocaleCode) {
-            this.preferredLocaleCode = Objects.requireNonNull(preferredLocaleCode);
+            if (preferredLocaleCode == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "preferredLocaleCode");
+            }
+            this.preferredLocaleCode = preferredLocaleCode;
             return this;
         }
         @CustomType.Setter
         public Builder roleIds(List<Integer> roleIds) {
-            this.roleIds = Objects.requireNonNull(roleIds);
+            if (roleIds == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "roleIds");
+            }
+            this.roleIds = roleIds;
             return this;
         }
         public Builder roleIds(Integer... roleIds) {
@@ -384,47 +466,74 @@ public final class GetV1InstanceResult {
         }
         @CustomType.Setter
         public Builder salt(String salt) {
-            this.salt = Objects.requireNonNull(salt);
+            if (salt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "salt");
+            }
+            this.salt = salt;
             return this;
         }
         @CustomType.Setter
         public Builder samaccountname(String samaccountname) {
-            this.samaccountname = Objects.requireNonNull(samaccountname);
+            if (samaccountname == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "samaccountname");
+            }
+            this.samaccountname = samaccountname;
             return this;
         }
         @CustomType.Setter
         public Builder state(Integer state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "title");
+            }
+            this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder trustedIdpId(Integer trustedIdpId) {
-            this.trustedIdpId = Objects.requireNonNull(trustedIdpId);
+            if (trustedIdpId == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "trustedIdpId");
+            }
+            this.trustedIdpId = trustedIdpId;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder userprincipalname(String userprincipalname) {
-            this.userprincipalname = Objects.requireNonNull(userprincipalname);
+            if (userprincipalname == null) {
+              throw new MissingRequiredPropertyException("GetV1InstanceResult", "userprincipalname");
+            }
+            this.userprincipalname = userprincipalname;
             return this;
         }
         public GetV1InstanceResult build() {

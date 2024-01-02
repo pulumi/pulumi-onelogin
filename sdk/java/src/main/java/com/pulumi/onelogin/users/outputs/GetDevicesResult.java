@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.users.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.users.outputs.GetDevicesFilter;
 import java.lang.Boolean;
 import java.lang.String;
@@ -88,21 +89,31 @@ public final class GetDevicesResult {
 
         @CustomType.Setter
         public Builder authFactorName(String authFactorName) {
-            this.authFactorName = Objects.requireNonNull(authFactorName);
+            if (authFactorName == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "authFactorName");
+            }
+            this.authFactorName = authFactorName;
             return this;
         }
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder deviceId(String deviceId) {
-            this.deviceId = Objects.requireNonNull(deviceId);
+            if (deviceId == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "deviceId");
+            }
+            this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetDevicesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -111,22 +122,34 @@ public final class GetDevicesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder typeDisplayName(String typeDisplayName) {
-            this.typeDisplayName = Objects.requireNonNull(typeDisplayName);
+            if (typeDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "typeDisplayName");
+            }
+            this.typeDisplayName = typeDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder userDisplayName(String userDisplayName) {
-            this.userDisplayName = Objects.requireNonNull(userDisplayName);
+            if (userDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "userDisplayName");
+            }
+            this.userDisplayName = userDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder usersId(String usersId) {
-            this.usersId = Objects.requireNonNull(usersId);
+            if (usersId == null) {
+              throw new MissingRequiredPropertyException("GetDevicesResult", "usersId");
+            }
+            this.usersId = usersId;
             return this;
         }
         public GetDevicesResult build() {

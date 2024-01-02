@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPointResource;
 import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPointSessionExpiryFixed;
 import com.pulumi.onelogin.apps.outputs.GetInstanceEnforcementPointSessionExpiryInactivity;
@@ -111,37 +112,58 @@ public final class GetInstanceEnforcementPoint {
 
         @CustomType.Setter
         public Builder caseSensitive(Boolean caseSensitive) {
-            this.caseSensitive = Objects.requireNonNull(caseSensitive);
+            if (caseSensitive == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "caseSensitive");
+            }
+            this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(String conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         @CustomType.Setter
         public Builder contextRoot(String contextRoot) {
-            this.contextRoot = Objects.requireNonNull(contextRoot);
+            if (contextRoot == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "contextRoot");
+            }
+            this.contextRoot = contextRoot;
             return this;
         }
         @CustomType.Setter
         public Builder landingPage(String landingPage) {
-            this.landingPage = Objects.requireNonNull(landingPage);
+            if (landingPage == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "landingPage");
+            }
+            this.landingPage = landingPage;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(String permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         @CustomType.Setter
         public Builder requireSitewideAuthentication(Boolean requireSitewideAuthentication) {
-            this.requireSitewideAuthentication = Objects.requireNonNull(requireSitewideAuthentication);
+            if (requireSitewideAuthentication == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "requireSitewideAuthentication");
+            }
+            this.requireSitewideAuthentication = requireSitewideAuthentication;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<GetInstanceEnforcementPointResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(GetInstanceEnforcementPointResource... resources) {
@@ -149,32 +171,50 @@ public final class GetInstanceEnforcementPoint {
         }
         @CustomType.Setter
         public Builder sessionExpiryFixed(GetInstanceEnforcementPointSessionExpiryFixed sessionExpiryFixed) {
-            this.sessionExpiryFixed = Objects.requireNonNull(sessionExpiryFixed);
+            if (sessionExpiryFixed == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "sessionExpiryFixed");
+            }
+            this.sessionExpiryFixed = sessionExpiryFixed;
             return this;
         }
         @CustomType.Setter
         public Builder sessionExpiryInactivity(GetInstanceEnforcementPointSessionExpiryInactivity sessionExpiryInactivity) {
-            this.sessionExpiryInactivity = Objects.requireNonNull(sessionExpiryInactivity);
+            if (sessionExpiryInactivity == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "sessionExpiryInactivity");
+            }
+            this.sessionExpiryInactivity = sessionExpiryInactivity;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder useTargetHostHeader(Boolean useTargetHostHeader) {
-            this.useTargetHostHeader = Objects.requireNonNull(useTargetHostHeader);
+            if (useTargetHostHeader == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "useTargetHostHeader");
+            }
+            this.useTargetHostHeader = useTargetHostHeader;
             return this;
         }
         @CustomType.Setter
         public Builder vhost(String vhost) {
-            this.vhost = Objects.requireNonNull(vhost);
+            if (vhost == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPoint", "vhost");
+            }
+            this.vhost = vhost;
             return this;
         }
         public GetInstanceEnforcementPoint build() {

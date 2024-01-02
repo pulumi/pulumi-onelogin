@@ -5,6 +5,7 @@ package com.pulumi.onelogin;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.AuthServersConfigurationArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class AuthServersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AuthServersArgs build() {
-            $.configuration = Objects.requireNonNull($.configuration, "expected parameter 'configuration' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
+            if ($.configuration == null) {
+                throw new MissingRequiredPropertyException("AuthServersArgs", "configuration");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AuthServersArgs", "description");
+            }
             return $;
         }
     }

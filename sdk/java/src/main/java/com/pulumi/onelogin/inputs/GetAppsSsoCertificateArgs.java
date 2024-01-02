@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class GetAppsSsoCertificateArgs extends com.pulumi.resources.Resour
         }
 
         public GetAppsSsoCertificateArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetAppsSsoCertificateArgs", "id");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAppsSsoCertificateArgs", "name");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetAppsSsoCertificateArgs", "value");
+            }
             return $;
         }
     }

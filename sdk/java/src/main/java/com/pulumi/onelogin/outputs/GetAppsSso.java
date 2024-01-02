@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAppsSsoCertificate;
 import java.lang.String;
 import java.util.Objects;
@@ -65,32 +66,50 @@ public final class GetAppsSso {
 
         @CustomType.Setter
         public Builder acsUrl(String acsUrl) {
-            this.acsUrl = Objects.requireNonNull(acsUrl);
+            if (acsUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "acsUrl");
+            }
+            this.acsUrl = acsUrl;
             return this;
         }
         @CustomType.Setter
         public Builder certificate(GetAppsSsoCertificate certificate) {
-            this.certificate = Objects.requireNonNull(certificate);
+            if (certificate == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "certificate");
+            }
+            this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder issuer(String issuer) {
-            this.issuer = Objects.requireNonNull(issuer);
+            if (issuer == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "issuer");
+            }
+            this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder metadataUrl(String metadataUrl) {
-            this.metadataUrl = Objects.requireNonNull(metadataUrl);
+            if (metadataUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsSso", "metadataUrl");
+            }
+            this.metadataUrl = metadataUrl;
             return this;
         }
         public GetAppsSso build() {

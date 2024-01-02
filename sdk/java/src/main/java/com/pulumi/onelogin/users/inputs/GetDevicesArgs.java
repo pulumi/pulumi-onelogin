@@ -5,6 +5,7 @@ package com.pulumi.onelogin.users.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.users.inputs.GetDevicesFilterArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -165,7 +166,9 @@ public final class GetDevicesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDevicesArgs build() {
-            $.usersId = Objects.requireNonNull($.usersId, "expected parameter 'usersId' to be non-null");
+            if ($.usersId == null) {
+                throw new MissingRequiredPropertyException("GetDevicesArgs", "usersId");
+            }
             return $;
         }
     }

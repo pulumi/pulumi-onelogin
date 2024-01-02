@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAuthServersConfiguration;
 import com.pulumi.onelogin.outputs.GetAuthServersFilter;
 import java.lang.String;
@@ -70,16 +71,23 @@ public final class GetAuthServersResult {
 
         @CustomType.Setter
         public Builder configuration(GetAuthServersConfiguration configuration) {
-            this.configuration = Objects.requireNonNull(configuration);
+            if (configuration == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersResult", "configuration");
+            }
+            this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetAuthServersFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -88,12 +96,18 @@ public final class GetAuthServersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAuthServersResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetAuthServersResult build() {

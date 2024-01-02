@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetAppsEnforcementPointResource {
 
         @CustomType.Setter
         public Builder conditions(String conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         @CustomType.Setter
         public Builder isPathRegex(Boolean isPathRegex) {
-            this.isPathRegex = Objects.requireNonNull(isPathRegex);
+            if (isPathRegex == null) {
+              throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "isPathRegex");
+            }
+            this.isPathRegex = isPathRegex;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder requireAuth(Boolean requireAuth) {
-            this.requireAuth = Objects.requireNonNull(requireAuth);
+            if (requireAuth == null) {
+              throw new MissingRequiredPropertyException("GetAppsEnforcementPointResource", "requireAuth");
+            }
+            this.requireAuth = requireAuth;
             return this;
         }
         public GetAppsEnforcementPointResource build() {

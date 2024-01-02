@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.GetAppsParametersGroups;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetAppsParameters {
 
         @CustomType.Setter
         public Builder groups(GetAppsParametersGroups groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetAppsParameters", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public GetAppsParameters build() {

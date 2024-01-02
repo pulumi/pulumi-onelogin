@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.roles.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.roles.outputs.GetRolesFilter;
 import java.lang.Integer;
 import java.lang.String;
@@ -76,7 +77,10 @@ public final class GetRolesResult {
 
         @CustomType.Setter
         public Builder admins(List<Integer> admins) {
-            this.admins = Objects.requireNonNull(admins);
+            if (admins == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "admins");
+            }
+            this.admins = admins;
             return this;
         }
         public Builder admins(Integer... admins) {
@@ -84,7 +88,10 @@ public final class GetRolesResult {
         }
         @CustomType.Setter
         public Builder apps(List<Integer> apps) {
-            this.apps = Objects.requireNonNull(apps);
+            if (apps == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "apps");
+            }
+            this.apps = apps;
             return this;
         }
         public Builder apps(Integer... apps) {
@@ -92,6 +99,7 @@ public final class GetRolesResult {
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetRolesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -100,17 +108,26 @@ public final class GetRolesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder users(List<Integer> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetRolesResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(Integer... users) {

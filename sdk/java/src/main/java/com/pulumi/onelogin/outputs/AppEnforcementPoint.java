@@ -113,36 +113,43 @@ public final class AppEnforcementPoint {
 
         @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
+
             this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(@Nullable String conditions) {
+
             this.conditions = conditions;
             return this;
         }
         @CustomType.Setter
         public Builder contextRoot(@Nullable String contextRoot) {
+
             this.contextRoot = contextRoot;
             return this;
         }
         @CustomType.Setter
         public Builder landingPage(@Nullable String landingPage) {
+
             this.landingPage = landingPage;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable String permissions) {
+
             this.permissions = permissions;
             return this;
         }
         @CustomType.Setter
         public Builder requireSitewideAuthentication(@Nullable Boolean requireSitewideAuthentication) {
+
             this.requireSitewideAuthentication = requireSitewideAuthentication;
             return this;
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<AppEnforcementPointResource> resources) {
+
             this.resources = resources;
             return this;
         }
@@ -151,31 +158,37 @@ public final class AppEnforcementPoint {
         }
         @CustomType.Setter
         public Builder sessionExpiryFixed(@Nullable AppEnforcementPointSessionExpiryFixed sessionExpiryFixed) {
+
             this.sessionExpiryFixed = sessionExpiryFixed;
             return this;
         }
         @CustomType.Setter
         public Builder sessionExpiryInactivity(@Nullable AppEnforcementPointSessionExpiryInactivity sessionExpiryInactivity) {
+
             this.sessionExpiryInactivity = sessionExpiryInactivity;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder useTargetHostHeader(@Nullable Boolean useTargetHostHeader) {
+
             this.useTargetHostHeader = useTargetHostHeader;
             return this;
         }
         @CustomType.Setter
         public Builder vhost(@Nullable String vhost) {
+
             this.vhost = vhost;
             return this;
         }

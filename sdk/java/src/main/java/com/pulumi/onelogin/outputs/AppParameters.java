@@ -36,6 +36,7 @@ public final class AppParameters {
 
         @CustomType.Setter
         public Builder groups(@Nullable AppParametersGroups groups) {
+
             this.groups = groups;
             return this;
         }

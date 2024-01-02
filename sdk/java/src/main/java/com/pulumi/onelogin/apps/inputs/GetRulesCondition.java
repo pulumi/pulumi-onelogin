@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -75,9 +76,15 @@ public final class GetRulesCondition extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRulesCondition build() {
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("GetRulesCondition", "operator");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("GetRulesCondition", "source");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetRulesCondition", "value");
+            }
             return $;
         }
     }

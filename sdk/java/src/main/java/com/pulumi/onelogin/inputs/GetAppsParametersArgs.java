@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.GetAppsParametersGroupsArgs;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class GetAppsParametersArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GetAppsParametersArgs build() {
-            $.groups = Objects.requireNonNull($.groups, "expected parameter 'groups' to be non-null");
+            if ($.groups == null) {
+                throw new MissingRequiredPropertyException("GetAppsParametersArgs", "groups");
+            }
             return $;
         }
     }

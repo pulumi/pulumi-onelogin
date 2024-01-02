@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.apps.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceEnforcementPointSessionExpiryFixed {
 
         @CustomType.Setter
         public Builder unit(Integer unit) {
-            this.unit = Objects.requireNonNull(unit);
+            if (unit == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPointSessionExpiryFixed", "unit");
+            }
+            this.unit = unit;
             return this;
         }
         @CustomType.Setter
         public Builder value(Integer value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnforcementPointSessionExpiryFixed", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetInstanceEnforcementPointSessionExpiryFixed build() {

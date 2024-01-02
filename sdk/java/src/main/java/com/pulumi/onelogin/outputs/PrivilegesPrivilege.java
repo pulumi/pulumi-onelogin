@@ -44,6 +44,7 @@ public final class PrivilegesPrivilege {
 
         @CustomType.Setter
         public Builder statements(@Nullable List<PrivilegesPrivilegeStatement> statements) {
+
             this.statements = statements;
             return this;
         }
@@ -52,6 +53,7 @@ public final class PrivilegesPrivilege {
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }
