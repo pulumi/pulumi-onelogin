@@ -17,9 +17,10 @@
 package main
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+
 	onelogin "github.com/pulumi/pulumi-onelogin/provider"
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func main() {
