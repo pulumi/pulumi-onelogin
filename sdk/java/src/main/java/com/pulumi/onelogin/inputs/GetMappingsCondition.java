@@ -13,23 +13,47 @@ public final class GetMappingsCondition extends com.pulumi.resources.InvokeArgs 
 
     public static final GetMappingsCondition Empty = new GetMappingsCondition();
 
+    /**
+     * A valid operator for the selected condition source
+     * 
+     */
     @Import(name="operator", required=true)
     private String operator;
 
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     public String operator() {
         return this.operator;
     }
 
+    /**
+     * source field to check.
+     * 
+     */
     @Import(name="source", required=true)
     private String source;
 
+    /**
+     * @return source field to check.
+     * 
+     */
     public String source() {
         return this.source;
     }
 
+    /**
+     * A plain text string or valid value for the selected  condition source
+     * 
+     */
     @Import(name="value", required=true)
     private String value;
 
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     public String value() {
         return this.value;
     }
@@ -60,16 +84,34 @@ public final class GetMappingsCondition extends com.pulumi.resources.InvokeArgs 
             $ = new GetMappingsCondition(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param operator A valid operator for the selected condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param source source field to check.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param value A plain text string or valid value for the selected  condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             $.value = value;
             return this;

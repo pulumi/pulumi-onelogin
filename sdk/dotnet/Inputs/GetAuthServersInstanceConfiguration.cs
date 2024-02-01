@@ -12,20 +12,33 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class GetAuthServersInstanceConfigurationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The number of minutes until access token expires. There is no maximum expiry limit.
+        /// </summary>
         [Input("accessTokenExpirationMinutes", required: true)]
         public int AccessTokenExpirationMinutes { get; set; }
 
         [Input("audiences", required: true)]
         private List<string>? _audiences;
+
+        /// <summary>
+        /// List of API endpoints that will be returned in Access Tokens.
+        /// </summary>
         public List<string> Audiences
         {
             get => _audiences ?? (_audiences = new List<string>());
             set => _audiences = value;
         }
 
+        /// <summary>
+        /// The number of minutes until refresh token expires. There is no maximum expiry limit.
+        /// </summary>
         [Input("refreshTokenExpirationMinutes", required: true)]
         public int RefreshTokenExpirationMinutes { get; set; }
 
+        /// <summary>
+        /// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        /// </summary>
         [Input("resourceIdentifier", required: true)]
         public string ResourceIdentifier { get; set; } = null!;
 

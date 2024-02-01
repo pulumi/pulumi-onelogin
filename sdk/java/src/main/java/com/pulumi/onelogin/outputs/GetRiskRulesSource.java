@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRiskRulesSource {
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     private String id;
+    /**
+     * @return The name of the source
+     * 
+     */
     private String name;
 
     private GetRiskRulesSource() {}
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the source
+     * 
+     */
     public String name() {
         return this.name;
     }

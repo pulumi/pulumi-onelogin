@@ -12,12 +12,21 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class GetMappingsConditionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A valid operator for the selected condition source
+        /// </summary>
         [Input("operator", required: true)]
         public string Operator { get; set; } = null!;
 
+        /// <summary>
+        /// source field to check.
+        /// </summary>
         [Input("source", required: true)]
         public string Source { get; set; } = null!;
 
+        /// <summary>
+        /// A plain text string or valid value for the selected  condition source
+        /// </summary>
         [Input("value", required: true)]
         public string Value { get; set; } = null!;
 

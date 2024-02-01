@@ -13,8 +13,17 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class GetMappingsConditionResult
     {
+        /// <summary>
+        /// A valid operator for the selected condition source
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// source field to check.
+        /// </summary>
         public readonly string Source;
+        /// <summary>
+        /// A plain text string or valid value for the selected  condition source
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

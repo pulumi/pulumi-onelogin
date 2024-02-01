@@ -13,7 +13,13 @@ namespace Pulumi.Onelogin.Apps.Outputs
     [OutputType]
     public sealed class GetRulesInstanceActionResult
     {
+        /// <summary>
+        /// The action to apply
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

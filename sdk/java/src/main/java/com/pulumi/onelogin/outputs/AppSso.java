@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSso {
+    /**
+     * @return App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     private @Nullable String acsUrl;
+    /**
+     * @return The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     private @Nullable AppSsoCertificate certificate;
+    /**
+     * @return The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     private @Nullable String clientId;
+    /**
+     * @return OpenId Connet Client Secret
+     * 
+     */
     private @Nullable String clientSecret;
+    /**
+     * @return Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     private @Nullable String issuer;
+    /**
+     * @return ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     private @Nullable String metadataUrl;
 
     private AppSso() {}
+    /**
+     * @return App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<String> acsUrl() {
         return Optional.ofNullable(this.acsUrl);
     }
+    /**
+     * @return The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<AppSsoCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
     }
+    /**
+     * @return The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return OpenId Connet Client Secret
+     * 
+     */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
+    /**
+     * @return Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<String> issuer() {
         return Optional.ofNullable(this.issuer);
     }
+    /**
+     * @return ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<String> metadataUrl() {
         return Optional.ofNullable(this.metadataUrl);
     }

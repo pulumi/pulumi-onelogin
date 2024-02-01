@@ -14,23 +14,57 @@ public final class GetPrivilegesPrivilegeStatement extends com.pulumi.resources.
 
     public static final GetPrivilegesPrivilegeStatement Empty = new GetPrivilegesPrivilegeStatement();
 
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     * 
+     */
     @Import(name="actions", required=true)
     private List<String> actions;
 
+    /**
+     * @return An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     * 
+     */
     public List<String> actions() {
         return this.actions;
     }
 
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     * 
+     */
     @Import(name="effect", required=true)
     private String effect;
 
+    /**
+     * @return Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     * 
+     */
     public String effect() {
         return this.effect;
     }
 
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     * 
+     */
     @Import(name="scopes", required=true)
     private List<String> scopes;
 
+    /**
+     * @return Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     * 
+     */
     public List<String> scopes() {
         return this.scopes;
     }
@@ -61,25 +95,65 @@ public final class GetPrivilegesPrivilegeStatement extends com.pulumi.resources.
             $ = new GetPrivilegesPrivilegeStatement(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actions An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+         * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(List<String> actions) {
             $.actions = actions;
             return this;
         }
 
+        /**
+         * @param actions An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+         * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
 
+        /**
+         * @param effect Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param scopes Target the privileged action against specific resources with the scope.
+         * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+         * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+         * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+         * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(List<String> scopes) {
             $.scopes = scopes;
             return this;
         }
 
+        /**
+         * @param scopes Target the privileged action against specific resources with the scope.
+         * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+         * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+         * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+         * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }

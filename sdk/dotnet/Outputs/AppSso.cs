@@ -13,11 +13,29 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class AppSso
     {
+        /// <summary>
+        /// App Name.	This is only returned after Creating a SAML App.
+        /// </summary>
         public readonly string? AcsUrl;
+        /// <summary>
+        /// The certificate used for signing.	This is only returned after Creating a SAML App.
+        /// </summary>
         public readonly Outputs.AppSsoCertificate? Certificate;
+        /// <summary>
+        /// The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// OpenId Connet Client Secret
+        /// </summary>
         public readonly string? ClientSecret;
+        /// <summary>
+        /// Issuer of app.	This is only returned after Creating a SAML App.
+        /// </summary>
         public readonly string? Issuer;
+        /// <summary>
+        /// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        /// </summary>
         public readonly string? MetadataUrl;
 
         [OutputConstructor]

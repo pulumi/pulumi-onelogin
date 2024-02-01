@@ -13,16 +13,32 @@ public final class GetRiskRulesInstanceSource extends com.pulumi.resources.Invok
 
     public static final GetRiskRulesInstanceSource Empty = new GetRiskRulesInstanceSource();
 
+    /**
+     * A unique id that represents the source of the event.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     public String id() {
         return this.id;
     }
 
+    /**
+     * The name of the source
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the source
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -52,11 +68,23 @@ public final class GetRiskRulesInstanceSource extends com.pulumi.resources.Invok
             $ = new GetRiskRulesInstanceSource(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id A unique id that represents the source of the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param name The name of the source
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

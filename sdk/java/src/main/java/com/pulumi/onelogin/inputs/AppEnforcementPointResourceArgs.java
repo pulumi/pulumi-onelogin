@@ -16,9 +16,17 @@ public final class AppEnforcementPointResourceArgs extends com.pulumi.resources.
 
     public static final AppEnforcementPointResourceArgs Empty = new AppEnforcementPointResourceArgs();
 
+    /**
+     * required if permission == &#34;conditions&#34;
+     * 
+     */
     @Import(name="conditions")
     private @Nullable Output<String> conditions;
 
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     public Optional<Output<String>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
@@ -79,11 +87,23 @@ public final class AppEnforcementPointResourceArgs extends com.pulumi.resources.
             $ = new AppEnforcementPointResourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditions required if permission == &#34;conditions&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(@Nullable Output<String> conditions) {
             $.conditions = conditions;
             return this;
         }
 
+        /**
+         * @param conditions required if permission == &#34;conditions&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(String conditions) {
             return conditions(Output.of(conditions));
         }

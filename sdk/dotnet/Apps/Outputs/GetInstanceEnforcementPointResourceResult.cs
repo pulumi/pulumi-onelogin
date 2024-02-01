@@ -13,6 +13,9 @@ namespace Pulumi.Onelogin.Apps.Outputs
     [OutputType]
     public sealed class GetInstanceEnforcementPointResourceResult
     {
+        /// <summary>
+        /// required if permission == "conditions"
+        /// </summary>
         public readonly string Conditions;
         public readonly bool IsPathRegex;
         public readonly string Path;

@@ -16,16 +16,32 @@ public final class RulesActionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesActionArgs Empty = new RulesActionArgs();
 
+    /**
+     * The action to apply
+     * 
+     */
     @Import(name="action")
     private @Nullable Output<String> action;
 
+    /**
+     * @return The action to apply
+     * 
+     */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -55,24 +71,54 @@ public final class RulesActionArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RulesActionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action The action to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action The action to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param values Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }
