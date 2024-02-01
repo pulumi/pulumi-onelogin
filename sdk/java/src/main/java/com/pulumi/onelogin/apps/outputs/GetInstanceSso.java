@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceSso {
+    /**
+     * @return App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     private String acsUrl;
+    /**
+     * @return The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     private GetInstanceSsoCertificate certificate;
+    /**
+     * @return The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     private String clientId;
+    /**
+     * @return OpenId Connet Client Secret
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     private String issuer;
+    /**
+     * @return ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     private String metadataUrl;
 
     private GetInstanceSso() {}
+    /**
+     * @return App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     public String acsUrl() {
         return this.acsUrl;
     }
+    /**
+     * @return The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     public GetInstanceSsoCertificate certificate() {
         return this.certificate;
     }
+    /**
+     * @return The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return OpenId Connet Client Secret
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     public String issuer() {
         return this.issuer;
     }
+    /**
+     * @return ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     public String metadataUrl() {
         return this.metadataUrl;
     }

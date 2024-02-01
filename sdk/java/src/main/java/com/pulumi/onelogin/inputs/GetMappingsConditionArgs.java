@@ -14,23 +14,47 @@ public final class GetMappingsConditionArgs extends com.pulumi.resources.Resourc
 
     public static final GetMappingsConditionArgs Empty = new GetMappingsConditionArgs();
 
+    /**
+     * A valid operator for the selected condition source
+     * 
+     */
     @Import(name="operator", required=true)
     private Output<String> operator;
 
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     public Output<String> operator() {
         return this.operator;
     }
 
+    /**
+     * source field to check.
+     * 
+     */
     @Import(name="source", required=true)
     private Output<String> source;
 
+    /**
+     * @return source field to check.
+     * 
+     */
     public Output<String> source() {
         return this.source;
     }
 
+    /**
+     * A plain text string or valid value for the selected  condition source
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -61,29 +85,65 @@ public final class GetMappingsConditionArgs extends com.pulumi.resources.Resourc
             $ = new GetMappingsConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param operator A valid operator for the selected condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator A valid operator for the selected condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param source source field to check.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source source field to check.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }
 
+        /**
+         * @param value A plain text string or valid value for the selected  condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value A plain text string or valid value for the selected  condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

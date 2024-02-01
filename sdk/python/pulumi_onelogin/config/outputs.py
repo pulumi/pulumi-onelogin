@@ -24,6 +24,16 @@ class Endpoints(dict):
                  roles: Optional[str] = None,
                  users: Optional[str] = None,
                  users_v1: Optional[str] = None):
+        """
+        :param str apps: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str apps_rules: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str auth_servers: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str privileges: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str risk_rules: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str roles: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str users: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param str users_v1: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
         if apps_rules is not None:
@@ -44,41 +54,65 @@ class Endpoints(dict):
     @property
     @pulumi.getter
     def apps(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "apps")
 
     @property
     @pulumi.getter(name="appsRules")
     def apps_rules(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "apps_rules")
 
     @property
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "auth_servers")
 
     @property
     @pulumi.getter
     def privileges(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "privileges")
 
     @property
     @pulumi.getter(name="riskRules")
     def risk_rules(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "risk_rules")
 
     @property
     @pulumi.getter
     def roles(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "users")
 
     @property
     @pulumi.getter(name="usersV1")
     def users_v1(self) -> Optional[str]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "users_v1")
 
 

@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppEnforcementPointResource {
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     private @Nullable String conditions;
     private @Nullable Boolean isPathRegex;
     private @Nullable String path;
@@ -19,6 +23,10 @@ public final class AppEnforcementPointResource {
     private @Nullable Boolean requireAuth;
 
     private AppEnforcementPointResource() {}
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     public Optional<String> conditions() {
         return Optional.ofNullable(this.conditions);
     }

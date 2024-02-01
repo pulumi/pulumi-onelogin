@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthServersInstanceConfiguration {
+    /**
+     * @return The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     private Integer accessTokenExpirationMinutes;
+    /**
+     * @return List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     private List<String> audiences;
+    /**
+     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     private Integer refreshTokenExpirationMinutes;
+    /**
+     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     private String resourceIdentifier;
 
     private GetAuthServersInstanceConfiguration() {}
+    /**
+     * @return The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     public Integer accessTokenExpirationMinutes() {
         return this.accessTokenExpirationMinutes;
     }
+    /**
+     * @return List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     public List<String> audiences() {
         return this.audiences;
     }
+    /**
+     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     public Integer refreshTokenExpirationMinutes() {
         return this.refreshTokenExpirationMinutes;
     }
+    /**
+     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     public String resourceIdentifier() {
         return this.resourceIdentifier;
     }

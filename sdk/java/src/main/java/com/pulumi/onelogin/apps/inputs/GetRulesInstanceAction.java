@@ -14,16 +14,32 @@ public final class GetRulesInstanceAction extends com.pulumi.resources.InvokeArg
 
     public static final GetRulesInstanceAction Empty = new GetRulesInstanceAction();
 
+    /**
+     * The action to apply
+     * 
+     */
     @Import(name="action", required=true)
     private String action;
 
+    /**
+     * @return The action to apply
+     * 
+     */
     public String action() {
         return this.action;
     }
 
+    /**
+     * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     @Import(name="values", required=true)
     private List<String> values;
 
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }
@@ -53,16 +69,34 @@ public final class GetRulesInstanceAction extends com.pulumi.resources.InvokeArg
             $ = new GetRulesInstanceAction(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action The action to apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param values Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

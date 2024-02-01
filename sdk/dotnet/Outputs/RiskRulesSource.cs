@@ -13,7 +13,13 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class RiskRulesSource
     {
+        /// <summary>
+        /// A unique id that represents the source of the event.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The name of the source
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

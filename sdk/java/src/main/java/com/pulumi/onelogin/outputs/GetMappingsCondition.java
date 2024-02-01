@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMappingsCondition {
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     private String operator;
+    /**
+     * @return source field to check.
+     * 
+     */
     private String source;
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     private String value;
 
     private GetMappingsCondition() {}
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     public String operator() {
         return this.operator;
     }
+    /**
+     * @return source field to check.
+     * 
+     */
     public String source() {
         return this.source;
     }
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     public String value() {
         return this.value;
     }

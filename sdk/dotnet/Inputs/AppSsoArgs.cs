@@ -12,21 +12,39 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class AppSsoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// App Name.	This is only returned after Creating a SAML App.
+        /// </summary>
         [Input("acsUrl")]
         public Input<string>? AcsUrl { get; set; }
 
+        /// <summary>
+        /// The certificate used for signing.	This is only returned after Creating a SAML App.
+        /// </summary>
         [Input("certificate")]
         public Input<Inputs.AppSsoCertificateArgs>? Certificate { get; set; }
 
+        /// <summary>
+        /// The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        /// <summary>
+        /// OpenId Connet Client Secret
+        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
+        /// <summary>
+        /// Issuer of app.	This is only returned after Creating a SAML App.
+        /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        /// <summary>
+        /// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        /// </summary>
         [Input("metadataUrl")]
         public Input<string>? MetadataUrl { get; set; }
 

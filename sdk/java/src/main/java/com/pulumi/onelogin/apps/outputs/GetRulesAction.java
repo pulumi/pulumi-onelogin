@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesAction {
+    /**
+     * @return The action to apply
+     * 
+     */
     private String action;
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     private List<String> values;
 
     private GetRulesAction() {}
+    /**
+     * @return The action to apply
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

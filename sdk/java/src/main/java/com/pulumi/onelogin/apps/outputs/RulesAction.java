@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesAction {
+    /**
+     * @return The action to apply
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     private @Nullable List<String> values;
 
     private RulesAction() {}
+    /**
+     * @return The action to apply
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

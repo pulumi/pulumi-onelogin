@@ -15,23 +15,47 @@ public final class RulesConditionArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final RulesConditionArgs Empty = new RulesConditionArgs();
 
+    /**
+     * A valid operator for the selected condition source
+     * 
+     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * source field to check.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return source field to check.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
 
+    /**
+     * A plain text string or valid value for the selected  condition source
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -62,29 +86,65 @@ public final class RulesConditionArgs extends com.pulumi.resources.ResourceArgs 
             $ = new RulesConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param operator A valid operator for the selected condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator A valid operator for the selected condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param source source field to check.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source source field to check.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }
 
+        /**
+         * @param value A plain text string or valid value for the selected  condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value A plain text string or valid value for the selected  condition source
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

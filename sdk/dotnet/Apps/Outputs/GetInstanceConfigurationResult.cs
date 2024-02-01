@@ -13,14 +13,43 @@ namespace Pulumi.Onelogin.Apps.Outputs
     [OutputType]
     public sealed class GetInstanceConfigurationResult
     {
+        /// <summary>
+        /// OIDC Apps only Number of minutes the refresh token will be valid for.
+        /// </summary>
         public readonly int AccessTokenExpirationMinutes;
+        /// <summary>
+        /// OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        /// </summary>
         public readonly string LoginUrl;
         public readonly string OidcApiVersion;
+        /// <summary>
+        /// OIDC Apps Only
+        ///   - 0: Web
+        ///   - 1: Native/Mobile
+        /// </summary>
         public readonly int OidcApplicationType;
+        /// <summary>
+        /// OIDC Apps only
+        /// </summary>
         public readonly string OidcEncryptionKey;
+        /// <summary>
+        /// OIDC Apps only
+        /// </summary>
         public readonly string PostLogoutRedirectUri;
+        /// <summary>
+        /// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        /// </summary>
         public readonly string RedirectUri;
+        /// <summary>
+        /// Number of minutes the refresh token will be valid for.
+        /// </summary>
         public readonly int RefreshTokenExpirationMinutes;
+        /// <summary>
+        /// OIDC Apps only
+        ///  - 0: Basic
+        ///  - 1: POST
+        ///  - 2: None / PKCE
+        /// </summary>
         public readonly int TokenEndpointAuthMethod;
 
         [OutputConstructor]

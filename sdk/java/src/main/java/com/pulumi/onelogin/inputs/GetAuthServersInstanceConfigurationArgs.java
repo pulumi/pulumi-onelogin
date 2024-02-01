@@ -16,30 +16,62 @@ public final class GetAuthServersInstanceConfigurationArgs extends com.pulumi.re
 
     public static final GetAuthServersInstanceConfigurationArgs Empty = new GetAuthServersInstanceConfigurationArgs();
 
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     @Import(name="accessTokenExpirationMinutes", required=true)
     private Output<Integer> accessTokenExpirationMinutes;
 
+    /**
+     * @return The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     public Output<Integer> accessTokenExpirationMinutes() {
         return this.accessTokenExpirationMinutes;
     }
 
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     @Import(name="audiences", required=true)
     private Output<List<String>> audiences;
 
+    /**
+     * @return List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     public Output<List<String>> audiences() {
         return this.audiences;
     }
 
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     @Import(name="refreshTokenExpirationMinutes", required=true)
     private Output<Integer> refreshTokenExpirationMinutes;
 
+    /**
+     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     public Output<Integer> refreshTokenExpirationMinutes() {
         return this.refreshTokenExpirationMinutes;
     }
 
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     @Import(name="resourceIdentifier", required=true)
     private Output<String> resourceIdentifier;
 
+    /**
+     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     public Output<String> resourceIdentifier() {
         return this.resourceIdentifier;
     }
@@ -71,42 +103,96 @@ public final class GetAuthServersInstanceConfigurationArgs extends com.pulumi.re
             $ = new GetAuthServersInstanceConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessTokenExpirationMinutes The number of minutes until access token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenExpirationMinutes(Output<Integer> accessTokenExpirationMinutes) {
             $.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param accessTokenExpirationMinutes The number of minutes until access token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenExpirationMinutes(Integer accessTokenExpirationMinutes) {
             return accessTokenExpirationMinutes(Output.of(accessTokenExpirationMinutes));
         }
 
+        /**
+         * @param audiences List of API endpoints that will be returned in Access Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audiences(Output<List<String>> audiences) {
             $.audiences = audiences;
             return this;
         }
 
+        /**
+         * @param audiences List of API endpoints that will be returned in Access Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audiences(List<String> audiences) {
             return audiences(Output.of(audiences));
         }
 
+        /**
+         * @param audiences List of API endpoints that will be returned in Access Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audiences(String... audiences) {
             return audiences(List.of(audiences));
         }
 
+        /**
+         * @param refreshTokenExpirationMinutes The number of minutes until refresh token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenExpirationMinutes(Output<Integer> refreshTokenExpirationMinutes) {
             $.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param refreshTokenExpirationMinutes The number of minutes until refresh token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
             return refreshTokenExpirationMinutes(Output.of(refreshTokenExpirationMinutes));
         }
 
+        /**
+         * @param resourceIdentifier Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceIdentifier(Output<String> resourceIdentifier) {
             $.resourceIdentifier = resourceIdentifier;
             return this;
         }
 
+        /**
+         * @param resourceIdentifier Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceIdentifier(String resourceIdentifier) {
             return resourceIdentifier(Output.of(resourceIdentifier));
         }

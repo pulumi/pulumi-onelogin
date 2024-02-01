@@ -20,93 +20,197 @@ public final class AppEnforcementPointArgs extends com.pulumi.resources.Resource
 
     public static final AppEnforcementPointArgs Empty = new AppEnforcementPointArgs();
 
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     * 
+     */
     @Import(name="caseSensitive")
     private @Nullable Output<Boolean> caseSensitive;
 
+    /**
+     * @return The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     * 
+     */
     public Optional<Output<Boolean>> caseSensitive() {
         return Optional.ofNullable(this.caseSensitive);
     }
 
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     * 
+     */
     @Import(name="conditions")
     private @Nullable Output<String> conditions;
 
+    /**
+     * @return If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     * 
+     */
     public Optional<Output<String>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     * 
+     */
     @Import(name="contextRoot")
     private @Nullable Output<String> contextRoot;
 
+    /**
+     * @return The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     * 
+     */
     public Optional<Output<String>> contextRoot() {
         return Optional.ofNullable(this.contextRoot);
     }
 
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     * 
+     */
     @Import(name="landingPage")
     private @Nullable Output<String> landingPage;
 
+    /**
+     * @return The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     * 
+     */
     public Optional<Output<String>> landingPage() {
         return Optional.ofNullable(this.landingPage);
     }
 
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     * 
+     */
     @Import(name="permissions")
     private @Nullable Output<String> permissions;
 
+    /**
+     * @return Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     * 
+     */
     public Optional<Output<String>> permissions() {
         return Optional.ofNullable(this.permissions);
     }
 
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     * 
+     */
     @Import(name="requireSitewideAuthentication")
     private @Nullable Output<Boolean> requireSitewideAuthentication;
 
+    /**
+     * @return Require user authentication to access any resource protected by this enforcement point.
+     * 
+     */
     public Optional<Output<Boolean>> requireSitewideAuthentication() {
         return Optional.ofNullable(this.requireSitewideAuthentication);
     }
 
+    /**
+     * Array of resource objects
+     * 
+     */
     @Import(name="resources")
     private @Nullable Output<List<AppEnforcementPointResourceArgs>> resources;
 
+    /**
+     * @return Array of resource objects
+     * 
+     */
     public Optional<Output<List<AppEnforcementPointResourceArgs>>> resources() {
         return Optional.ofNullable(this.resources);
     }
 
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     * 
+     */
     @Import(name="sessionExpiryFixed")
     private @Nullable Output<AppEnforcementPointSessionExpiryFixedArgs> sessionExpiryFixed;
 
+    /**
+     * @return unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     * 
+     */
     public Optional<Output<AppEnforcementPointSessionExpiryFixedArgs>> sessionExpiryFixed() {
         return Optional.ofNullable(this.sessionExpiryFixed);
     }
 
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     * 
+     */
     @Import(name="sessionExpiryInactivity")
     private @Nullable Output<AppEnforcementPointSessionExpiryInactivityArgs> sessionExpiryInactivity;
 
+    /**
+     * @return unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     * 
+     */
     public Optional<Output<AppEnforcementPointSessionExpiryInactivityArgs>> sessionExpiryInactivity() {
         return Optional.ofNullable(this.sessionExpiryInactivity);
     }
 
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     * 
+     */
     @Import(name="target")
     private @Nullable Output<String> target;
 
+    /**
+     * @return A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     * 
+     */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
 
+    /**
+     * Can only be set on create. Access Gateway Token.
+     * 
+     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
+    /**
+     * @return Can only be set on create. Access Gateway Token.
+     * 
+     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     * 
+     */
     @Import(name="useTargetHostHeader")
     private @Nullable Output<Boolean> useTargetHostHeader;
 
+    /**
+     * @return Use the target host header as opposed to the original gateway or upstream host header.
+     * 
+     */
     public Optional<Output<Boolean>> useTargetHostHeader() {
         return Optional.ofNullable(this.useTargetHostHeader);
     }
 
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     * 
+     */
     @Import(name="vhost")
     private @Nullable Output<String> vhost;
 
+    /**
+     * @return A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     * 
+     */
     public Optional<Output<String>> vhost() {
         return Optional.ofNullable(this.vhost);
     }
@@ -147,123 +251,285 @@ public final class AppEnforcementPointArgs extends com.pulumi.resources.Resource
             $ = new AppEnforcementPointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param caseSensitive The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caseSensitive(@Nullable Output<Boolean> caseSensitive) {
             $.caseSensitive = caseSensitive;
             return this;
         }
 
+        /**
+         * @param caseSensitive The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caseSensitive(Boolean caseSensitive) {
             return caseSensitive(Output.of(caseSensitive));
         }
 
+        /**
+         * @param conditions If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(@Nullable Output<String> conditions) {
             $.conditions = conditions;
             return this;
         }
 
+        /**
+         * @param conditions If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(String conditions) {
             return conditions(Output.of(conditions));
         }
 
+        /**
+         * @param contextRoot The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contextRoot(@Nullable Output<String> contextRoot) {
             $.contextRoot = contextRoot;
             return this;
         }
 
+        /**
+         * @param contextRoot The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contextRoot(String contextRoot) {
             return contextRoot(Output.of(contextRoot));
         }
 
+        /**
+         * @param landingPage The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder landingPage(@Nullable Output<String> landingPage) {
             $.landingPage = landingPage;
             return this;
         }
 
+        /**
+         * @param landingPage The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder landingPage(String landingPage) {
             return landingPage(Output.of(landingPage));
         }
 
+        /**
+         * @param permissions Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(@Nullable Output<String> permissions) {
             $.permissions = permissions;
             return this;
         }
 
+        /**
+         * @param permissions Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(String permissions) {
             return permissions(Output.of(permissions));
         }
 
+        /**
+         * @param requireSitewideAuthentication Require user authentication to access any resource protected by this enforcement point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireSitewideAuthentication(@Nullable Output<Boolean> requireSitewideAuthentication) {
             $.requireSitewideAuthentication = requireSitewideAuthentication;
             return this;
         }
 
+        /**
+         * @param requireSitewideAuthentication Require user authentication to access any resource protected by this enforcement point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireSitewideAuthentication(Boolean requireSitewideAuthentication) {
             return requireSitewideAuthentication(Output.of(requireSitewideAuthentication));
         }
 
+        /**
+         * @param resources Array of resource objects
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(@Nullable Output<List<AppEnforcementPointResourceArgs>> resources) {
             $.resources = resources;
             return this;
         }
 
+        /**
+         * @param resources Array of resource objects
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(List<AppEnforcementPointResourceArgs> resources) {
             return resources(Output.of(resources));
         }
 
+        /**
+         * @param resources Array of resource objects
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(AppEnforcementPointResourceArgs... resources) {
             return resources(List.of(resources));
         }
 
+        /**
+         * @param sessionExpiryFixed unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiryFixed(@Nullable Output<AppEnforcementPointSessionExpiryFixedArgs> sessionExpiryFixed) {
             $.sessionExpiryFixed = sessionExpiryFixed;
             return this;
         }
 
+        /**
+         * @param sessionExpiryFixed unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiryFixed(AppEnforcementPointSessionExpiryFixedArgs sessionExpiryFixed) {
             return sessionExpiryFixed(Output.of(sessionExpiryFixed));
         }
 
+        /**
+         * @param sessionExpiryInactivity unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiryInactivity(@Nullable Output<AppEnforcementPointSessionExpiryInactivityArgs> sessionExpiryInactivity) {
             $.sessionExpiryInactivity = sessionExpiryInactivity;
             return this;
         }
 
+        /**
+         * @param sessionExpiryInactivity unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiryInactivity(AppEnforcementPointSessionExpiryInactivityArgs sessionExpiryInactivity) {
             return sessionExpiryInactivity(Output.of(sessionExpiryInactivity));
         }
 
+        /**
+         * @param target A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
+        /**
+         * @param target A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(String target) {
             return target(Output.of(target));
         }
 
+        /**
+         * @param token Can only be set on create. Access Gateway Token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param token Can only be set on create. Access Gateway Token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(String token) {
             return token(Output.of(token));
         }
 
+        /**
+         * @param useTargetHostHeader Use the target host header as opposed to the original gateway or upstream host header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useTargetHostHeader(@Nullable Output<Boolean> useTargetHostHeader) {
             $.useTargetHostHeader = useTargetHostHeader;
             return this;
         }
 
+        /**
+         * @param useTargetHostHeader Use the target host header as opposed to the original gateway or upstream host header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useTargetHostHeader(Boolean useTargetHostHeader) {
             return useTargetHostHeader(Output.of(useTargetHostHeader));
         }
 
+        /**
+         * @param vhost A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vhost(@Nullable Output<String> vhost) {
             $.vhost = vhost;
             return this;
         }
 
+        /**
+         * @param vhost A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vhost(String vhost) {
             return vhost(Output.of(vhost));
         }

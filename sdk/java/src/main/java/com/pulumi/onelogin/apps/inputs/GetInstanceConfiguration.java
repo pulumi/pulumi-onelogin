@@ -14,16 +14,32 @@ public final class GetInstanceConfiguration extends com.pulumi.resources.InvokeA
 
     public static final GetInstanceConfiguration Empty = new GetInstanceConfiguration();
 
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     @Import(name="accessTokenExpirationMinutes", required=true)
     private Integer accessTokenExpirationMinutes;
 
+    /**
+     * @return OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Integer accessTokenExpirationMinutes() {
         return this.accessTokenExpirationMinutes;
     }
 
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     @Import(name="loginUrl", required=true)
     private String loginUrl;
 
+    /**
+     * @return OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     public String loginUrl() {
         return this.loginUrl;
     }
@@ -35,44 +51,102 @@ public final class GetInstanceConfiguration extends com.pulumi.resources.InvokeA
         return this.oidcApiVersion;
     }
 
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     @Import(name="oidcApplicationType", required=true)
     private Integer oidcApplicationType;
 
+    /**
+     * @return OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     public Integer oidcApplicationType() {
         return this.oidcApplicationType;
     }
 
+    /**
+     * OIDC Apps only
+     * 
+     */
     @Import(name="oidcEncryptionKey", required=true)
     private String oidcEncryptionKey;
 
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public String oidcEncryptionKey() {
         return this.oidcEncryptionKey;
     }
 
+    /**
+     * OIDC Apps only
+     * 
+     */
     @Import(name="postLogoutRedirectUri", required=true)
     private String postLogoutRedirectUri;
 
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public String postLogoutRedirectUri() {
         return this.postLogoutRedirectUri;
     }
 
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     @Import(name="redirectUri", required=true)
     private String redirectUri;
 
+    /**
+     * @return OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     public String redirectUri() {
         return this.redirectUri;
     }
 
+    /**
+     * Number of minutes the refresh token will be valid for.
+     * 
+     */
     @Import(name="refreshTokenExpirationMinutes", required=true)
     private Integer refreshTokenExpirationMinutes;
 
+    /**
+     * @return Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Integer refreshTokenExpirationMinutes() {
         return this.refreshTokenExpirationMinutes;
     }
 
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     @Import(name="tokenEndpointAuthMethod", required=true)
     private Integer tokenEndpointAuthMethod;
 
+    /**
+     * @return OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     public Integer tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }
@@ -109,11 +183,23 @@ public final class GetInstanceConfiguration extends com.pulumi.resources.InvokeA
             $ = new GetInstanceConfiguration(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessTokenExpirationMinutes OIDC Apps only Number of minutes the refresh token will be valid for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenExpirationMinutes(Integer accessTokenExpirationMinutes) {
             $.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param loginUrl OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loginUrl(String loginUrl) {
             $.loginUrl = loginUrl;
             return this;
@@ -124,31 +210,72 @@ public final class GetInstanceConfiguration extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param oidcApplicationType OIDC Apps Only
+         *   - 0: Web
+         *   - 1: Native/Mobile
+         * 
+         * @return builder
+         * 
+         */
         public Builder oidcApplicationType(Integer oidcApplicationType) {
             $.oidcApplicationType = oidcApplicationType;
             return this;
         }
 
+        /**
+         * @param oidcEncryptionKey OIDC Apps only
+         * 
+         * @return builder
+         * 
+         */
         public Builder oidcEncryptionKey(String oidcEncryptionKey) {
             $.oidcEncryptionKey = oidcEncryptionKey;
             return this;
         }
 
+        /**
+         * @param postLogoutRedirectUri OIDC Apps only
+         * 
+         * @return builder
+         * 
+         */
         public Builder postLogoutRedirectUri(String postLogoutRedirectUri) {
             $.postLogoutRedirectUri = postLogoutRedirectUri;
             return this;
         }
 
+        /**
+         * @param redirectUri OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redirectUri(String redirectUri) {
             $.redirectUri = redirectUri;
             return this;
         }
 
+        /**
+         * @param refreshTokenExpirationMinutes Number of minutes the refresh token will be valid for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
             $.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param tokenEndpointAuthMethod OIDC Apps only
+         *  - 0: Basic
+         *  - 1: POST
+         *  - 2: None / PKCE
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenEndpointAuthMethod(Integer tokenEndpointAuthMethod) {
             $.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return this;

@@ -12,11 +12,18 @@ namespace Pulumi.Onelogin.Apps.Inputs
 
     public sealed class GetRulesActionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The action to apply
+        /// </summary>
         [Input("action", required: true)]
         public string Action { get; set; } = null!;
 
         [Input("values", required: true)]
         private List<string>? _values;
+
+        /// <summary>
+        /// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());
