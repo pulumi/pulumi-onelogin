@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppsEnforcementPointResource {
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     private String conditions;
     private Boolean isPathRegex;
     private String path;
@@ -18,6 +22,10 @@ public final class GetAppsEnforcementPointResource {
     private Boolean requireAuth;
 
     private GetAppsEnforcementPointResource() {}
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     public String conditions() {
         return this.conditions;
     }

@@ -15,30 +15,62 @@ public final class GetAuthServersInstanceConfiguration extends com.pulumi.resour
 
     public static final GetAuthServersInstanceConfiguration Empty = new GetAuthServersInstanceConfiguration();
 
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     @Import(name="accessTokenExpirationMinutes", required=true)
     private Integer accessTokenExpirationMinutes;
 
+    /**
+     * @return The number of minutes until access token expires. There is no maximum expiry limit.
+     * 
+     */
     public Integer accessTokenExpirationMinutes() {
         return this.accessTokenExpirationMinutes;
     }
 
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     @Import(name="audiences", required=true)
     private List<String> audiences;
 
+    /**
+     * @return List of API endpoints that will be returned in Access Tokens.
+     * 
+     */
     public List<String> audiences() {
         return this.audiences;
     }
 
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     @Import(name="refreshTokenExpirationMinutes", required=true)
     private Integer refreshTokenExpirationMinutes;
 
+    /**
+     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
+     * 
+     */
     public Integer refreshTokenExpirationMinutes() {
         return this.refreshTokenExpirationMinutes;
     }
 
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     @Import(name="resourceIdentifier", required=true)
     private String resourceIdentifier;
 
+    /**
+     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     * 
+     */
     public String resourceIdentifier() {
         return this.resourceIdentifier;
     }
@@ -70,25 +102,55 @@ public final class GetAuthServersInstanceConfiguration extends com.pulumi.resour
             $ = new GetAuthServersInstanceConfiguration(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessTokenExpirationMinutes The number of minutes until access token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenExpirationMinutes(Integer accessTokenExpirationMinutes) {
             $.accessTokenExpirationMinutes = accessTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param audiences List of API endpoints that will be returned in Access Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audiences(List<String> audiences) {
             $.audiences = audiences;
             return this;
         }
 
+        /**
+         * @param audiences List of API endpoints that will be returned in Access Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audiences(String... audiences) {
             return audiences(List.of(audiences));
         }
 
+        /**
+         * @param refreshTokenExpirationMinutes The number of minutes until refresh token expires. There is no maximum expiry limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenExpirationMinutes(Integer refreshTokenExpirationMinutes) {
             $.refreshTokenExpirationMinutes = refreshTokenExpirationMinutes;
             return this;
         }
 
+        /**
+         * @param resourceIdentifier Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceIdentifier(String resourceIdentifier) {
             $.resourceIdentifier = resourceIdentifier;
             return this;

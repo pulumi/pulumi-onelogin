@@ -14,14 +14,22 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Endpoints struct {
-	Apps        *string `pulumi:"apps"`
-	AppsRules   *string `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Apps *string `pulumi:"apps"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	AppsRules *string `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 	AuthServers *string `pulumi:"authServers"`
-	Privileges  *string `pulumi:"privileges"`
-	RiskRules   *string `pulumi:"riskRules"`
-	Roles       *string `pulumi:"roles"`
-	Users       *string `pulumi:"users"`
-	UsersV1     *string `pulumi:"usersV1"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Privileges *string `pulumi:"privileges"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	RiskRules *string `pulumi:"riskRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Roles *string `pulumi:"roles"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Users *string `pulumi:"users"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	UsersV1 *string `pulumi:"usersV1"`
 }
 
 // EndpointsInput is an input type that accepts EndpointsArgs and EndpointsOutput values.
@@ -36,14 +44,22 @@ type EndpointsInput interface {
 }
 
 type EndpointsArgs struct {
-	Apps        pulumi.StringPtrInput `pulumi:"apps"`
-	AppsRules   pulumi.StringPtrInput `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Apps pulumi.StringPtrInput `pulumi:"apps"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	AppsRules pulumi.StringPtrInput `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 	AuthServers pulumi.StringPtrInput `pulumi:"authServers"`
-	Privileges  pulumi.StringPtrInput `pulumi:"privileges"`
-	RiskRules   pulumi.StringPtrInput `pulumi:"riskRules"`
-	Roles       pulumi.StringPtrInput `pulumi:"roles"`
-	Users       pulumi.StringPtrInput `pulumi:"users"`
-	UsersV1     pulumi.StringPtrInput `pulumi:"usersV1"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Privileges pulumi.StringPtrInput `pulumi:"privileges"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	RiskRules pulumi.StringPtrInput `pulumi:"riskRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Roles pulumi.StringPtrInput `pulumi:"roles"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Users pulumi.StringPtrInput `pulumi:"users"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	UsersV1 pulumi.StringPtrInput `pulumi:"usersV1"`
 }
 
 func (EndpointsArgs) ElementType() reflect.Type {
@@ -97,34 +113,42 @@ func (o EndpointsOutput) ToEndpointsOutputWithContext(ctx context.Context) Endpo
 	return o
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) Apps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Apps }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) AppsRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.AppsRules }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) AuthServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.AuthServers }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) Privileges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Privileges }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) RiskRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.RiskRules }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) Roles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Roles }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) Users() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Users }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o EndpointsOutput) UsersV1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.UsersV1 }).(pulumi.StringPtrOutput)
 }

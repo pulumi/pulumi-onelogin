@@ -12,30 +12,59 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class GetAppsConfigurationInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// OIDC Apps only Number of minutes the refresh token will be valid for.
+        /// </summary>
         [Input("accessTokenExpirationMinutes", required: true)]
         public Input<int> AccessTokenExpirationMinutes { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        /// </summary>
         [Input("loginUrl", required: true)]
         public Input<string> LoginUrl { get; set; } = null!;
 
         [Input("oidcApiVersion", required: true)]
         public Input<string> OidcApiVersion { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps Only
+        ///   - 0: Web
+        ///   - 1: Native/Mobile
+        /// </summary>
         [Input("oidcApplicationType", required: true)]
         public Input<int> OidcApplicationType { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps only
+        /// </summary>
         [Input("oidcEncryptionKey", required: true)]
         public Input<string> OidcEncryptionKey { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps only
+        /// </summary>
         [Input("postLogoutRedirectUri", required: true)]
         public Input<string> PostLogoutRedirectUri { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        /// </summary>
         [Input("redirectUri", required: true)]
         public Input<string> RedirectUri { get; set; } = null!;
 
+        /// <summary>
+        /// Number of minutes the refresh token will be valid for.
+        /// </summary>
         [Input("refreshTokenExpirationMinutes", required: true)]
         public Input<int> RefreshTokenExpirationMinutes { get; set; } = null!;
 
+        /// <summary>
+        /// OIDC Apps only
+        ///  - 0: Basic
+        ///  - 1: POST
+        ///  - 2: None / PKCE
+        /// </summary>
         [Input("tokenEndpointAuthMethod", required: true)]
         public Input<int> TokenEndpointAuthMethod { get; set; } = null!;
 

@@ -40,6 +40,10 @@ class RulesAction(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str action: The action to apply
+        :param Sequence[str] values: Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         if action is not None:
             pulumi.set(__self__, "action", action)
         if values is not None:
@@ -48,11 +52,17 @@ class RulesAction(dict):
     @property
     @pulumi.getter
     def action(self) -> Optional[str]:
+        """
+        The action to apply
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         return pulumi.get(self, "values")
 
 
@@ -62,6 +72,11 @@ class RulesCondition(dict):
                  operator: Optional[str] = None,
                  source: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str operator: A valid operator for the selected condition source
+        :param str source: source field to check.
+        :param str value: A plain text string or valid value for the selected  condition source
+        """
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if source is not None:
@@ -72,16 +87,25 @@ class RulesCondition(dict):
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
+        """
+        A valid operator for the selected condition source
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
+        """
+        source field to check.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        A plain text string or valid value for the selected  condition source
+        """
         return pulumi.get(self, "value")
 
 
@@ -173,6 +197,21 @@ class GetInstanceConfigurationResult(dict):
                  redirect_uri: str,
                  refresh_token_expiration_minutes: int,
                  token_endpoint_auth_method: int):
+        """
+        :param int access_token_expiration_minutes: OIDC Apps only Number of minutes the refresh token will be valid for.
+        :param str login_url: OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        :param int oidc_application_type: OIDC Apps Only
+                 - 0: Web
+                 - 1: Native/Mobile
+        :param str oidc_encryption_key: OIDC Apps only
+        :param str post_logout_redirect_uri: OIDC Apps only
+        :param str redirect_uri: OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        :param int refresh_token_expiration_minutes: Number of minutes the refresh token will be valid for.
+        :param int token_endpoint_auth_method: OIDC Apps only
+                - 0: Basic
+                - 1: POST
+                - 2: None / PKCE
+        """
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "login_url", login_url)
         pulumi.set(__self__, "oidc_api_version", oidc_api_version)
@@ -186,11 +225,17 @@ class GetInstanceConfigurationResult(dict):
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> int:
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> str:
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
         return pulumi.get(self, "login_url")
 
     @property
@@ -201,31 +246,54 @@ class GetInstanceConfigurationResult(dict):
     @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> int:
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
         return pulumi.get(self, "oidc_application_type")
 
     @property
     @pulumi.getter(name="oidcEncryptionKey")
     def oidc_encryption_key(self) -> str:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "oidc_encryption_key")
 
     @property
     @pulumi.getter(name="postLogoutRedirectUri")
     def post_logout_redirect_uri(self) -> str:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "post_logout_redirect_uri")
 
     @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> str:
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
         return pulumi.get(self, "redirect_uri")
 
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> int:
+        """
+        Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> int:
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
 
@@ -245,6 +313,21 @@ class GetInstanceEnforcementPointResult(dict):
                  token: str,
                  use_target_host_header: bool,
                  vhost: str):
+        """
+        :param bool case_sensitive: The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        :param str conditions: If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        :param str context_root: The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        :param str landing_page: The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        :param str permissions: Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        :param bool require_sitewide_authentication: Require user authentication to access any resource protected by this enforcement point.
+        :param Sequence['GetInstanceEnforcementPointResourceArgs'] resources: Array of resource objects
+        :param 'GetInstanceEnforcementPointSessionExpiryFixedArgs' session_expiry_fixed: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param 'GetInstanceEnforcementPointSessionExpiryInactivityArgs' session_expiry_inactivity: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param str target: A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        :param str token: Can only be set on create. Access Gateway Token.
+        :param bool use_target_host_header: Use the target host header as opposed to the original gateway or upstream host header.
+        :param str vhost: A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         pulumi.set(__self__, "case_sensitive", case_sensitive)
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "context_root", context_root)
@@ -262,66 +345,105 @@ class GetInstanceEnforcementPointResult(dict):
     @property
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> bool:
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
         return pulumi.get(self, "case_sensitive")
 
     @property
     @pulumi.getter
     def conditions(self) -> str:
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
         return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter(name="contextRoot")
     def context_root(self) -> str:
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
         return pulumi.get(self, "context_root")
 
     @property
     @pulumi.getter(name="landingPage")
     def landing_page(self) -> str:
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
         return pulumi.get(self, "landing_page")
 
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
         return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter(name="requireSitewideAuthentication")
     def require_sitewide_authentication(self) -> bool:
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
         return pulumi.get(self, "require_sitewide_authentication")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetInstanceEnforcementPointResourceResult']:
+        """
+        Array of resource objects
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="sessionExpiryFixed")
     def session_expiry_fixed(self) -> 'outputs.GetInstanceEnforcementPointSessionExpiryFixedResult':
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_fixed")
 
     @property
     @pulumi.getter(name="sessionExpiryInactivity")
     def session_expiry_inactivity(self) -> 'outputs.GetInstanceEnforcementPointSessionExpiryInactivityResult':
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_inactivity")
 
     @property
     @pulumi.getter
     def target(self) -> str:
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Can only be set on create. Access Gateway Token.
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter(name="useTargetHostHeader")
     def use_target_host_header(self) -> bool:
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
         return pulumi.get(self, "use_target_host_header")
 
     @property
     @pulumi.getter
     def vhost(self) -> str:
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         return pulumi.get(self, "vhost")
 
 
@@ -333,6 +455,9 @@ class GetInstanceEnforcementPointResourceResult(dict):
                  path: str,
                  permission: str,
                  require_auth: bool):
+        """
+        :param str conditions: required if permission == "conditions"
+        """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "is_path_regex", is_path_regex)
         pulumi.set(__self__, "path", path)
@@ -342,6 +467,9 @@ class GetInstanceEnforcementPointResourceResult(dict):
     @property
     @pulumi.getter
     def conditions(self) -> str:
+        """
+        required if permission == "conditions"
+        """
         return pulumi.get(self, "conditions")
 
     @property
@@ -511,6 +639,14 @@ class GetInstanceSsoResult(dict):
                  client_secret: str,
                  issuer: str,
                  metadata_url: str):
+        """
+        :param str acs_url: App Name.	This is only returned after Creating a SAML App.
+        :param 'GetInstanceSsoCertificateArgs' certificate: The certificate used for signing.	This is only returned after Creating a SAML App.
+        :param str client_id: The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        :param str client_secret: OpenId Connet Client Secret
+        :param str issuer: Issuer of app.	This is only returned after Creating a SAML App.
+        :param str metadata_url: ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         pulumi.set(__self__, "acs_url", acs_url)
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "client_id", client_id)
@@ -521,31 +657,49 @@ class GetInstanceSsoResult(dict):
     @property
     @pulumi.getter(name="acsUrl")
     def acs_url(self) -> str:
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "acs_url")
 
     @property
     @pulumi.getter
     def certificate(self) -> 'outputs.GetInstanceSsoCertificateResult':
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
+        """
+        OpenId Connet Client Secret
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter
     def issuer(self) -> str:
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="metadataUrl")
     def metadata_url(self) -> str:
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "metadata_url")
 
 
@@ -580,17 +734,27 @@ class GetRulesActionResult(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
+        """
+        :param str action: The action to apply
+        :param Sequence[str] values: Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        The action to apply
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         return pulumi.get(self, "values")
 
 
@@ -600,6 +764,11 @@ class GetRulesConditionResult(dict):
                  operator: str,
                  source: str,
                  value: str):
+        """
+        :param str operator: A valid operator for the selected condition source
+        :param str source: source field to check.
+        :param str value: A plain text string or valid value for the selected  condition source
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "value", value)
@@ -607,16 +776,25 @@ class GetRulesConditionResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        A valid operator for the selected condition source
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def source(self) -> str:
+        """
+        source field to check.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        A plain text string or valid value for the selected  condition source
+        """
         return pulumi.get(self, "value")
 
 
@@ -644,17 +822,27 @@ class GetRulesInstanceActionResult(dict):
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
+        """
+        :param str action: The action to apply
+        :param Sequence[str] values: Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        The action to apply
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         return pulumi.get(self, "values")
 
 
@@ -664,6 +852,11 @@ class GetRulesInstanceConditionResult(dict):
                  operator: str,
                  source: str,
                  value: str):
+        """
+        :param str operator: A valid operator for the selected condition source
+        :param str source: source field to check.
+        :param str value: A plain text string or valid value for the selected  condition source
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "value", value)
@@ -671,16 +864,25 @@ class GetRulesInstanceConditionResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        A valid operator for the selected condition source
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def source(self) -> str:
+        """
+        source field to check.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        A plain text string or valid value for the selected  condition source
+        """
         return pulumi.get(self, "value")
 
 

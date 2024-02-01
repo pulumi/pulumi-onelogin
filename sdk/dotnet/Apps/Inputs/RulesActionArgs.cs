@@ -12,11 +12,18 @@ namespace Pulumi.Onelogin.Apps.Inputs
 
     public sealed class RulesActionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The action to apply
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

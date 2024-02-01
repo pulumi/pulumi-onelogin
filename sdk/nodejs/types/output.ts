@@ -6,34 +6,105 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AppConfiguration {
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     */
     accessTokenExpirationMinutes?: number;
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+     */
     loginUrl?: string;
     oidcApiVersion: string;
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     */
     oidcApplicationType?: number;
+    /**
+     * OIDC Apps only
+     */
     oidcEncryptionKey?: string;
+    /**
+     * OIDC Apps only
+     */
     postLogoutRedirectUri?: string;
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     */
     redirectUri?: string;
+    /**
+     * Number of minutes the refresh token will be valid for.
+     */
     refreshTokenExpirationMinutes?: number;
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     */
     tokenEndpointAuthMethod?: number;
 }
 
 export interface AppEnforcementPoint {
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     */
     caseSensitive?: boolean;
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     */
     conditions?: string;
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     */
     contextRoot?: string;
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     */
     landingPage?: string;
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     */
     permissions?: string;
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     */
     requireSitewideAuthentication?: boolean;
+    /**
+     * Array of resource objects
+     */
     resources?: outputs.AppEnforcementPointResource[];
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryFixed?: outputs.AppEnforcementPointSessionExpiryFixed;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryInactivity?: outputs.AppEnforcementPointSessionExpiryInactivity;
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     */
     target?: string;
+    /**
+     * Can only be set on create. Access Gateway Token.
+     */
     token: string;
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     */
     useTargetHostHeader?: boolean;
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     */
     vhost?: string;
 }
 
 export interface AppEnforcementPointResource {
+    /**
+     * required if permission == "conditions"
+     */
     conditions?: string;
     isPathRegex?: boolean;
     path?: string;
@@ -73,11 +144,29 @@ export interface AppProvisioning {
 }
 
 export interface AppSso {
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     */
     acsUrl: string;
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     */
     certificate: outputs.AppSsoCertificate;
+    /**
+     * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+     */
     clientId: string;
+    /**
+     * OpenId Connet Client Secret
+     */
     clientSecret: string;
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     */
     issuer: string;
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     */
     metadataUrl: string;
 }
 
@@ -88,41 +177,124 @@ export interface AppSsoCertificate {
 }
 
 export interface AuthServersConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences: string[];
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier: string;
 }
 
 export interface GetAppsConfiguration {
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     */
     accessTokenExpirationMinutes: number;
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+     */
     loginUrl: string;
     oidcApiVersion: string;
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     */
     oidcApplicationType: number;
+    /**
+     * OIDC Apps only
+     */
     oidcEncryptionKey: string;
+    /**
+     * OIDC Apps only
+     */
     postLogoutRedirectUri: string;
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     */
     redirectUri: string;
+    /**
+     * Number of minutes the refresh token will be valid for.
+     */
     refreshTokenExpirationMinutes: number;
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     */
     tokenEndpointAuthMethod: number;
 }
 
 export interface GetAppsEnforcementPoint {
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     */
     caseSensitive: boolean;
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     */
     conditions: string;
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     */
     contextRoot: string;
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     */
     landingPage: string;
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     */
     permissions: string;
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     */
     requireSitewideAuthentication: boolean;
+    /**
+     * Array of resource objects
+     */
     resources: outputs.GetAppsEnforcementPointResource[];
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryFixed: outputs.GetAppsEnforcementPointSessionExpiryFixed;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryInactivity: outputs.GetAppsEnforcementPointSessionExpiryInactivity;
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     */
     target: string;
+    /**
+     * Can only be set on create. Access Gateway Token.
+     */
     token: string;
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     */
     useTargetHostHeader: boolean;
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     */
     vhost: string;
 }
 
 export interface GetAppsEnforcementPointResource {
+    /**
+     * required if permission == "conditions"
+     */
     conditions: string;
     isPathRegex: boolean;
     path: string;
@@ -167,11 +339,29 @@ export interface GetAppsProvisioning {
 }
 
 export interface GetAppsSso {
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     */
     acsUrl: string;
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     */
     certificate: outputs.GetAppsSsoCertificate;
+    /**
+     * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+     */
     clientId: string;
+    /**
+     * OpenId Connet Client Secret
+     */
     clientSecret: string;
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     */
     issuer: string;
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     */
     metadataUrl: string;
 }
 
@@ -187,9 +377,21 @@ export interface GetAuthServersClaimsFilter {
 }
 
 export interface GetAuthServersConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences: string[];
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier: string;
 }
 
@@ -199,9 +401,21 @@ export interface GetAuthServersFilter {
 }
 
 export interface GetAuthServersInstanceConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences: string[];
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier: string;
 }
 
@@ -211,13 +425,28 @@ export interface GetAuthServersScopesFilter {
 }
 
 export interface GetMappingsAction {
+    /**
+     * The action to apply
+     */
     action: string;
+    /**
+     * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     */
     values: string[];
 }
 
 export interface GetMappingsCondition {
+    /**
+     * A valid operator for the selected condition source
+     */
     operator: string;
+    /**
+     * source field to check.
+     */
     source: string;
+    /**
+     * A plain text string or valid value for the selected  condition source
+     */
     value: string;
 }
 
@@ -237,8 +466,22 @@ export interface GetPrivilegesInstancePrivilege {
 }
 
 export interface GetPrivilegesInstancePrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions: string[];
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect: string;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes: string[];
 }
 
@@ -248,8 +491,22 @@ export interface GetPrivilegesPrivilege {
 }
 
 export interface GetPrivilegesPrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions: string[];
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect: string;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes: string[];
 }
 
@@ -259,12 +516,24 @@ export interface GetRiskRulesFilter {
 }
 
 export interface GetRiskRulesInstanceSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id: string;
+    /**
+     * The name of the source
+     */
     name: string;
 }
 
 export interface GetRiskRulesSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id: string;
+    /**
+     * The name of the source
+     */
     name: string;
 }
 
@@ -274,13 +543,33 @@ export interface PrivilegesPrivilege {
 }
 
 export interface PrivilegesPrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions: string[];
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect: string;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes: string[];
 }
 
 export interface RiskRulesSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: string;
+    /**
+     * The name of the source
+     */
     name?: string;
 }
 
@@ -306,34 +595,105 @@ export namespace apps {
     }
 
     export interface GetInstanceConfiguration {
+        /**
+         * OIDC Apps only Number of minutes the refresh token will be valid for.
+         */
         accessTokenExpirationMinutes: number;
+        /**
+         * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+         */
         loginUrl: string;
         oidcApiVersion: string;
+        /**
+         * OIDC Apps Only
+         *   - 0: Web
+         *   - 1: Native/Mobile
+         */
         oidcApplicationType: number;
+        /**
+         * OIDC Apps only
+         */
         oidcEncryptionKey: string;
+        /**
+         * OIDC Apps only
+         */
         postLogoutRedirectUri: string;
+        /**
+         * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+         */
         redirectUri: string;
+        /**
+         * Number of minutes the refresh token will be valid for.
+         */
         refreshTokenExpirationMinutes: number;
+        /**
+         * OIDC Apps only
+         *  - 0: Basic
+         *  - 1: POST
+         *  - 2: None / PKCE
+         */
         tokenEndpointAuthMethod: number;
     }
 
     export interface GetInstanceEnforcementPoint {
+        /**
+         * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+         */
         caseSensitive: boolean;
+        /**
+         * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+         */
         conditions: string;
+        /**
+         * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+         */
         contextRoot: string;
+        /**
+         * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+         */
         landingPage: string;
+        /**
+         * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+         */
         permissions: string;
+        /**
+         * Require user authentication to access any resource protected by this enforcement point.
+         */
         requireSitewideAuthentication: boolean;
+        /**
+         * Array of resource objects
+         */
         resources: outputs.apps.GetInstanceEnforcementPointResource[];
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryFixed: outputs.apps.GetInstanceEnforcementPointSessionExpiryFixed;
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryInactivity: outputs.apps.GetInstanceEnforcementPointSessionExpiryInactivity;
+        /**
+         * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+         */
         target: string;
+        /**
+         * Can only be set on create. Access Gateway Token.
+         */
         token: string;
+        /**
+         * Use the target host header as opposed to the original gateway or upstream host header.
+         */
         useTargetHostHeader: boolean;
+        /**
+         * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+         */
         vhost: string;
     }
 
     export interface GetInstanceEnforcementPointResource {
+        /**
+         * required if permission == "conditions"
+         */
         conditions: string;
         isPathRegex: boolean;
         path: string;
@@ -373,11 +733,29 @@ export namespace apps {
     }
 
     export interface GetInstanceSso {
+        /**
+         * App Name.	This is only returned after Creating a SAML App.
+         */
         acsUrl: string;
+        /**
+         * The certificate used for signing.	This is only returned after Creating a SAML App.
+         */
         certificate: outputs.apps.GetInstanceSsoCertificate;
+        /**
+         * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+         */
         clientId: string;
+        /**
+         * OpenId Connet Client Secret
+         */
         clientSecret: string;
+        /**
+         * Issuer of app.	This is only returned after Creating a SAML App.
+         */
         issuer: string;
+        /**
+         * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+         */
         metadataUrl: string;
     }
 
@@ -388,13 +766,28 @@ export namespace apps {
     }
 
     export interface GetRulesAction {
+        /**
+         * The action to apply
+         */
         action: string;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values: string[];
     }
 
     export interface GetRulesCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator: string;
+        /**
+         * source field to check.
+         */
         source: string;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value: string;
     }
 
@@ -404,13 +797,28 @@ export namespace apps {
     }
 
     export interface GetRulesInstanceAction {
+        /**
+         * The action to apply
+         */
         action: string;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values: string[];
     }
 
     export interface GetRulesInstanceCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator: string;
+        /**
+         * source field to check.
+         */
         source: string;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value: string;
     }
 
@@ -420,13 +828,28 @@ export namespace apps {
     }
 
     export interface RulesAction {
+        /**
+         * The action to apply
+         */
         action?: string;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: string[];
     }
 
     export interface RulesCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: string;
+        /**
+         * source field to check.
+         */
         source?: string;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: string;
     }
 
@@ -434,13 +857,37 @@ export namespace apps {
 
 export namespace config {
     export interface Endpoints {
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         apps?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         appsRules?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         authServers?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         privileges?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         riskRules?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         roles?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         users?: string;
+        /**
+         * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+         */
         usersV1?: string;
     }
 

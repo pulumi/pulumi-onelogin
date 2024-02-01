@@ -14,15 +14,28 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AppConfiguration struct {
-	AccessTokenExpirationMinutes  *int    `pulumi:"accessTokenExpirationMinutes"`
-	LoginUrl                      *string `pulumi:"loginUrl"`
-	OidcApiVersion                *string `pulumi:"oidcApiVersion"`
-	OidcApplicationType           *int    `pulumi:"oidcApplicationType"`
-	OidcEncryptionKey             *string `pulumi:"oidcEncryptionKey"`
-	PostLogoutRedirectUri         *string `pulumi:"postLogoutRedirectUri"`
-	RedirectUri                   *string `pulumi:"redirectUri"`
-	RefreshTokenExpirationMinutes *int    `pulumi:"refreshTokenExpirationMinutes"`
-	TokenEndpointAuthMethod       *int    `pulumi:"tokenEndpointAuthMethod"`
+	// OIDC Apps only Number of minutes the refresh token will be valid for.
+	AccessTokenExpirationMinutes *int `pulumi:"accessTokenExpirationMinutes"`
+	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+	LoginUrl       *string `pulumi:"loginUrl"`
+	OidcApiVersion *string `pulumi:"oidcApiVersion"`
+	// OIDC Apps Only
+	//   - 0: Web
+	//   - 1: Native/Mobile
+	OidcApplicationType *int `pulumi:"oidcApplicationType"`
+	// OIDC Apps only
+	OidcEncryptionKey *string `pulumi:"oidcEncryptionKey"`
+	// OIDC Apps only
+	PostLogoutRedirectUri *string `pulumi:"postLogoutRedirectUri"`
+	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+	RedirectUri *string `pulumi:"redirectUri"`
+	// Number of minutes the refresh token will be valid for.
+	RefreshTokenExpirationMinutes *int `pulumi:"refreshTokenExpirationMinutes"`
+	// OIDC Apps only
+	//  - 0: Basic
+	//  - 1: POST
+	//  - 2: None / PKCE
+	TokenEndpointAuthMethod *int `pulumi:"tokenEndpointAuthMethod"`
 }
 
 // AppConfigurationInput is an input type that accepts AppConfigurationArgs and AppConfigurationOutput values.
@@ -37,15 +50,28 @@ type AppConfigurationInput interface {
 }
 
 type AppConfigurationArgs struct {
-	AccessTokenExpirationMinutes  pulumi.IntPtrInput    `pulumi:"accessTokenExpirationMinutes"`
-	LoginUrl                      pulumi.StringPtrInput `pulumi:"loginUrl"`
-	OidcApiVersion                pulumi.StringPtrInput `pulumi:"oidcApiVersion"`
-	OidcApplicationType           pulumi.IntPtrInput    `pulumi:"oidcApplicationType"`
-	OidcEncryptionKey             pulumi.StringPtrInput `pulumi:"oidcEncryptionKey"`
-	PostLogoutRedirectUri         pulumi.StringPtrInput `pulumi:"postLogoutRedirectUri"`
-	RedirectUri                   pulumi.StringPtrInput `pulumi:"redirectUri"`
-	RefreshTokenExpirationMinutes pulumi.IntPtrInput    `pulumi:"refreshTokenExpirationMinutes"`
-	TokenEndpointAuthMethod       pulumi.IntPtrInput    `pulumi:"tokenEndpointAuthMethod"`
+	// OIDC Apps only Number of minutes the refresh token will be valid for.
+	AccessTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"accessTokenExpirationMinutes"`
+	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+	LoginUrl       pulumi.StringPtrInput `pulumi:"loginUrl"`
+	OidcApiVersion pulumi.StringPtrInput `pulumi:"oidcApiVersion"`
+	// OIDC Apps Only
+	//   - 0: Web
+	//   - 1: Native/Mobile
+	OidcApplicationType pulumi.IntPtrInput `pulumi:"oidcApplicationType"`
+	// OIDC Apps only
+	OidcEncryptionKey pulumi.StringPtrInput `pulumi:"oidcEncryptionKey"`
+	// OIDC Apps only
+	PostLogoutRedirectUri pulumi.StringPtrInput `pulumi:"postLogoutRedirectUri"`
+	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+	// Number of minutes the refresh token will be valid for.
+	RefreshTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"refreshTokenExpirationMinutes"`
+	// OIDC Apps only
+	//  - 0: Basic
+	//  - 1: POST
+	//  - 2: None / PKCE
+	TokenEndpointAuthMethod pulumi.IntPtrInput `pulumi:"tokenEndpointAuthMethod"`
 }
 
 func (AppConfigurationArgs) ElementType() reflect.Type {
@@ -125,10 +151,12 @@ func (o AppConfigurationOutput) ToAppConfigurationPtrOutputWithContext(ctx conte
 	}).(AppConfigurationPtrOutput)
 }
 
+// OIDC Apps only Number of minutes the refresh token will be valid for.
 func (o AppConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
 func (o AppConfigurationOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *string { return v.LoginUrl }).(pulumi.StringPtrOutput)
 }
@@ -137,26 +165,37 @@ func (o AppConfigurationOutput) OidcApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *string { return v.OidcApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps Only
+//   - 0: Web
+//   - 1: Native/Mobile
 func (o AppConfigurationOutput) OidcApplicationType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *int { return v.OidcApplicationType }).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
 func (o AppConfigurationOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *string { return v.OidcEncryptionKey }).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only
 func (o AppConfigurationOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *string { return v.PostLogoutRedirectUri }).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
 func (o AppConfigurationOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
 }
 
+// Number of minutes the refresh token will be valid for.
 func (o AppConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
+//   - 0: Basic
+//   - 1: POST
+//   - 2: None / PKCE
 func (o AppConfigurationOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppConfiguration) *int { return v.TokenEndpointAuthMethod }).(pulumi.IntPtrOutput)
 }
@@ -185,6 +224,7 @@ func (o AppConfigurationPtrOutput) Elem() AppConfigurationOutput {
 	}).(AppConfigurationOutput)
 }
 
+// OIDC Apps only Number of minutes the refresh token will be valid for.
 func (o AppConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *int {
 		if v == nil {
@@ -194,6 +234,7 @@ func (o AppConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
 func (o AppConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *string {
 		if v == nil {
@@ -212,6 +253,9 @@ func (o AppConfigurationPtrOutput) OidcApiVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps Only
+//   - 0: Web
+//   - 1: Native/Mobile
 func (o AppConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *int {
 		if v == nil {
@@ -221,6 +265,7 @@ func (o AppConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
 func (o AppConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *string {
 		if v == nil {
@@ -230,6 +275,7 @@ func (o AppConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only
 func (o AppConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *string {
 		if v == nil {
@@ -239,6 +285,7 @@ func (o AppConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
 func (o AppConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *string {
 		if v == nil {
@@ -248,6 +295,7 @@ func (o AppConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of minutes the refresh token will be valid for.
 func (o AppConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *int {
 		if v == nil {
@@ -257,6 +305,10 @@ func (o AppConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
+//   - 0: Basic
+//   - 1: POST
+//   - 2: None / PKCE
 func (o AppConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConfiguration) *int {
 		if v == nil {
@@ -267,19 +319,32 @@ func (o AppConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput
 }
 
 type AppEnforcementPoint struct {
-	CaseSensitive                 *bool                                       `pulumi:"caseSensitive"`
-	Conditions                    *string                                     `pulumi:"conditions"`
-	ContextRoot                   *string                                     `pulumi:"contextRoot"`
-	LandingPage                   *string                                     `pulumi:"landingPage"`
-	Permissions                   *string                                     `pulumi:"permissions"`
-	RequireSitewideAuthentication *bool                                       `pulumi:"requireSitewideAuthentication"`
-	Resources                     []AppEnforcementPointResource               `pulumi:"resources"`
-	SessionExpiryFixed            *AppEnforcementPointSessionExpiryFixed      `pulumi:"sessionExpiryFixed"`
-	SessionExpiryInactivity       *AppEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
-	Target                        *string                                     `pulumi:"target"`
-	Token                         *string                                     `pulumi:"token"`
-	UseTargetHostHeader           *bool                                       `pulumi:"useTargetHostHeader"`
-	Vhost                         *string                                     `pulumi:"vhost"`
+	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+	CaseSensitive *bool `pulumi:"caseSensitive"`
+	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+	Conditions *string `pulumi:"conditions"`
+	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+	ContextRoot *string `pulumi:"contextRoot"`
+	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+	LandingPage *string `pulumi:"landingPage"`
+	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+	Permissions *string `pulumi:"permissions"`
+	// Require user authentication to access any resource protected by this enforcement point.
+	RequireSitewideAuthentication *bool `pulumi:"requireSitewideAuthentication"`
+	// Array of resource objects
+	Resources []AppEnforcementPointResource `pulumi:"resources"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryFixed *AppEnforcementPointSessionExpiryFixed `pulumi:"sessionExpiryFixed"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryInactivity *AppEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
+	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+	Target *string `pulumi:"target"`
+	// Can only be set on create. Access Gateway Token.
+	Token *string `pulumi:"token"`
+	// Use the target host header as opposed to the original gateway or upstream host header.
+	UseTargetHostHeader *bool `pulumi:"useTargetHostHeader"`
+	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+	Vhost *string `pulumi:"vhost"`
 }
 
 // AppEnforcementPointInput is an input type that accepts AppEnforcementPointArgs and AppEnforcementPointOutput values.
@@ -294,19 +359,32 @@ type AppEnforcementPointInput interface {
 }
 
 type AppEnforcementPointArgs struct {
-	CaseSensitive                 pulumi.BoolPtrInput                                `pulumi:"caseSensitive"`
-	Conditions                    pulumi.StringPtrInput                              `pulumi:"conditions"`
-	ContextRoot                   pulumi.StringPtrInput                              `pulumi:"contextRoot"`
-	LandingPage                   pulumi.StringPtrInput                              `pulumi:"landingPage"`
-	Permissions                   pulumi.StringPtrInput                              `pulumi:"permissions"`
-	RequireSitewideAuthentication pulumi.BoolPtrInput                                `pulumi:"requireSitewideAuthentication"`
-	Resources                     AppEnforcementPointResourceArrayInput              `pulumi:"resources"`
-	SessionExpiryFixed            AppEnforcementPointSessionExpiryFixedPtrInput      `pulumi:"sessionExpiryFixed"`
-	SessionExpiryInactivity       AppEnforcementPointSessionExpiryInactivityPtrInput `pulumi:"sessionExpiryInactivity"`
-	Target                        pulumi.StringPtrInput                              `pulumi:"target"`
-	Token                         pulumi.StringPtrInput                              `pulumi:"token"`
-	UseTargetHostHeader           pulumi.BoolPtrInput                                `pulumi:"useTargetHostHeader"`
-	Vhost                         pulumi.StringPtrInput                              `pulumi:"vhost"`
+	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
+	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+	Conditions pulumi.StringPtrInput `pulumi:"conditions"`
+	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+	ContextRoot pulumi.StringPtrInput `pulumi:"contextRoot"`
+	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+	LandingPage pulumi.StringPtrInput `pulumi:"landingPage"`
+	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// Require user authentication to access any resource protected by this enforcement point.
+	RequireSitewideAuthentication pulumi.BoolPtrInput `pulumi:"requireSitewideAuthentication"`
+	// Array of resource objects
+	Resources AppEnforcementPointResourceArrayInput `pulumi:"resources"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryFixed AppEnforcementPointSessionExpiryFixedPtrInput `pulumi:"sessionExpiryFixed"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryInactivity AppEnforcementPointSessionExpiryInactivityPtrInput `pulumi:"sessionExpiryInactivity"`
+	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Can only be set on create. Access Gateway Token.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Use the target host header as opposed to the original gateway or upstream host header.
+	UseTargetHostHeader pulumi.BoolPtrInput `pulumi:"useTargetHostHeader"`
+	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+	Vhost pulumi.StringPtrInput `pulumi:"vhost"`
 }
 
 func (AppEnforcementPointArgs) ElementType() reflect.Type {
@@ -386,56 +464,69 @@ func (o AppEnforcementPointOutput) ToAppEnforcementPointPtrOutputWithContext(ctx
 	}).(AppEnforcementPointPtrOutput)
 }
 
+// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
 func (o AppEnforcementPointOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
 }
 
+// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
 func (o AppEnforcementPointOutput) Conditions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Conditions }).(pulumi.StringPtrOutput)
 }
 
+// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
 func (o AppEnforcementPointOutput) ContextRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.ContextRoot }).(pulumi.StringPtrOutput)
 }
 
+// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
 func (o AppEnforcementPointOutput) LandingPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.LandingPage }).(pulumi.StringPtrOutput)
 }
 
+// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
 func (o AppEnforcementPointOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Permissions }).(pulumi.StringPtrOutput)
 }
 
+// Require user authentication to access any resource protected by this enforcement point.
 func (o AppEnforcementPointOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.RequireSitewideAuthentication }).(pulumi.BoolPtrOutput)
 }
 
+// Array of resource objects
 func (o AppEnforcementPointOutput) Resources() AppEnforcementPointResourceArrayOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) []AppEnforcementPointResource { return v.Resources }).(AppEnforcementPointResourceArrayOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o AppEnforcementPointOutput) SessionExpiryFixed() AppEnforcementPointSessionExpiryFixedPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *AppEnforcementPointSessionExpiryFixed { return v.SessionExpiryFixed }).(AppEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o AppEnforcementPointOutput) SessionExpiryInactivity() AppEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *AppEnforcementPointSessionExpiryInactivity {
 		return v.SessionExpiryInactivity
 	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
 func (o AppEnforcementPointOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// Can only be set on create. Access Gateway Token.
 func (o AppEnforcementPointOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Use the target host header as opposed to the original gateway or upstream host header.
 func (o AppEnforcementPointOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.UseTargetHostHeader }).(pulumi.BoolPtrOutput)
 }
 
+// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
 func (o AppEnforcementPointOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Vhost }).(pulumi.StringPtrOutput)
 }
@@ -464,6 +555,7 @@ func (o AppEnforcementPointPtrOutput) Elem() AppEnforcementPointOutput {
 	}).(AppEnforcementPointOutput)
 }
 
+// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
 func (o AppEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
 		if v == nil {
@@ -473,6 +565,7 @@ func (o AppEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
 func (o AppEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -482,6 +575,7 @@ func (o AppEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
 func (o AppEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -491,6 +585,7 @@ func (o AppEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
 func (o AppEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -500,6 +595,7 @@ func (o AppEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
 func (o AppEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -509,6 +605,7 @@ func (o AppEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require user authentication to access any resource protected by this enforcement point.
 func (o AppEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
 		if v == nil {
@@ -518,6 +615,7 @@ func (o AppEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Array of resource objects
 func (o AppEnforcementPointPtrOutput) Resources() AppEnforcementPointResourceArrayOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) []AppEnforcementPointResource {
 		if v == nil {
@@ -527,6 +625,7 @@ func (o AppEnforcementPointPtrOutput) Resources() AppEnforcementPointResourceArr
 	}).(AppEnforcementPointResourceArrayOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o AppEnforcementPointPtrOutput) SessionExpiryFixed() AppEnforcementPointSessionExpiryFixedPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *AppEnforcementPointSessionExpiryFixed {
 		if v == nil {
@@ -536,6 +635,7 @@ func (o AppEnforcementPointPtrOutput) SessionExpiryFixed() AppEnforcementPointSe
 	}).(AppEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o AppEnforcementPointPtrOutput) SessionExpiryInactivity() AppEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *AppEnforcementPointSessionExpiryInactivity {
 		if v == nil {
@@ -545,6 +645,7 @@ func (o AppEnforcementPointPtrOutput) SessionExpiryInactivity() AppEnforcementPo
 	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
 func (o AppEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -554,6 +655,7 @@ func (o AppEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Can only be set on create. Access Gateway Token.
 func (o AppEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -563,6 +665,7 @@ func (o AppEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use the target host header as opposed to the original gateway or upstream host header.
 func (o AppEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
 		if v == nil {
@@ -572,6 +675,7 @@ func (o AppEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
 func (o AppEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEnforcementPoint) *string {
 		if v == nil {
@@ -582,6 +686,7 @@ func (o AppEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
 }
 
 type AppEnforcementPointResource struct {
+	// required if permission == "conditions"
 	Conditions  *string `pulumi:"conditions"`
 	IsPathRegex *bool   `pulumi:"isPathRegex"`
 	Path        *string `pulumi:"path"`
@@ -601,6 +706,7 @@ type AppEnforcementPointResourceInput interface {
 }
 
 type AppEnforcementPointResourceArgs struct {
+	// required if permission == "conditions"
 	Conditions  pulumi.StringPtrInput `pulumi:"conditions"`
 	IsPathRegex pulumi.BoolPtrInput   `pulumi:"isPathRegex"`
 	Path        pulumi.StringPtrInput `pulumi:"path"`
@@ -659,6 +765,7 @@ func (o AppEnforcementPointResourceOutput) ToAppEnforcementPointResourceOutputWi
 	return o
 }
 
+// required if permission == "conditions"
 func (o AppEnforcementPointResourceOutput) Conditions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEnforcementPointResource) *string { return v.Conditions }).(pulumi.StringPtrOutput)
 }
@@ -1530,12 +1637,18 @@ func (o AppProvisioningPtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 type AppSso struct {
-	AcsUrl       *string            `pulumi:"acsUrl"`
-	Certificate  *AppSsoCertificate `pulumi:"certificate"`
-	ClientId     *string            `pulumi:"clientId"`
-	ClientSecret *string            `pulumi:"clientSecret"`
-	Issuer       *string            `pulumi:"issuer"`
-	MetadataUrl  *string            `pulumi:"metadataUrl"`
+	// App Name.	This is only returned after Creating a SAML App.
+	AcsUrl *string `pulumi:"acsUrl"`
+	// The certificate used for signing.	This is only returned after Creating a SAML App.
+	Certificate *AppSsoCertificate `pulumi:"certificate"`
+	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+	ClientId *string `pulumi:"clientId"`
+	// OpenId Connet Client Secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Issuer of app.	This is only returned after Creating a SAML App.
+	Issuer *string `pulumi:"issuer"`
+	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+	MetadataUrl *string `pulumi:"metadataUrl"`
 }
 
 // AppSsoInput is an input type that accepts AppSsoArgs and AppSsoOutput values.
@@ -1550,12 +1663,18 @@ type AppSsoInput interface {
 }
 
 type AppSsoArgs struct {
-	AcsUrl       pulumi.StringPtrInput     `pulumi:"acsUrl"`
-	Certificate  AppSsoCertificatePtrInput `pulumi:"certificate"`
-	ClientId     pulumi.StringPtrInput     `pulumi:"clientId"`
-	ClientSecret pulumi.StringPtrInput     `pulumi:"clientSecret"`
-	Issuer       pulumi.StringPtrInput     `pulumi:"issuer"`
-	MetadataUrl  pulumi.StringPtrInput     `pulumi:"metadataUrl"`
+	// App Name.	This is only returned after Creating a SAML App.
+	AcsUrl pulumi.StringPtrInput `pulumi:"acsUrl"`
+	// The certificate used for signing.	This is only returned after Creating a SAML App.
+	Certificate AppSsoCertificatePtrInput `pulumi:"certificate"`
+	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// OpenId Connet Client Secret
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Issuer of app.	This is only returned after Creating a SAML App.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+	MetadataUrl pulumi.StringPtrInput `pulumi:"metadataUrl"`
 }
 
 func (AppSsoArgs) ElementType() reflect.Type {
@@ -1635,26 +1754,32 @@ func (o AppSsoOutput) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPt
 	}).(AppSsoPtrOutput)
 }
 
+// App Name.	This is only returned after Creating a SAML App.
 func (o AppSsoOutput) AcsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSso) *string { return v.AcsUrl }).(pulumi.StringPtrOutput)
 }
 
+// The certificate used for signing.	This is only returned after Creating a SAML App.
 func (o AppSsoOutput) Certificate() AppSsoCertificatePtrOutput {
 	return o.ApplyT(func(v AppSso) *AppSsoCertificate { return v.Certificate }).(AppSsoCertificatePtrOutput)
 }
 
+// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
 func (o AppSsoOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSso) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// OpenId Connet Client Secret
 func (o AppSsoOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSso) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Issuer of app.	This is only returned after Creating a SAML App.
 func (o AppSsoOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSso) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
+// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
 func (o AppSsoOutput) MetadataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSso) *string { return v.MetadataUrl }).(pulumi.StringPtrOutput)
 }
@@ -1683,6 +1808,7 @@ func (o AppSsoPtrOutput) Elem() AppSsoOutput {
 	}).(AppSsoOutput)
 }
 
+// App Name.	This is only returned after Creating a SAML App.
 func (o AppSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSso) *string {
 		if v == nil {
@@ -1692,6 +1818,7 @@ func (o AppSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The certificate used for signing.	This is only returned after Creating a SAML App.
 func (o AppSsoPtrOutput) Certificate() AppSsoCertificatePtrOutput {
 	return o.ApplyT(func(v *AppSso) *AppSsoCertificate {
 		if v == nil {
@@ -1701,6 +1828,7 @@ func (o AppSsoPtrOutput) Certificate() AppSsoCertificatePtrOutput {
 	}).(AppSsoCertificatePtrOutput)
 }
 
+// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
 func (o AppSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSso) *string {
 		if v == nil {
@@ -1710,6 +1838,7 @@ func (o AppSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OpenId Connet Client Secret
 func (o AppSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSso) *string {
 		if v == nil {
@@ -1719,6 +1848,7 @@ func (o AppSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Issuer of app.	This is only returned after Creating a SAML App.
 func (o AppSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSso) *string {
 		if v == nil {
@@ -1728,6 +1858,7 @@ func (o AppSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
 func (o AppSsoPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppSso) *string {
 		if v == nil {
@@ -1901,10 +2032,14 @@ func (o AppSsoCertificatePtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type AuthServersConfiguration struct {
-	AccessTokenExpirationMinutes  *int     `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     []string `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes *int     `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            string   `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes *int `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences []string `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes *int `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier string `pulumi:"resourceIdentifier"`
 }
 
 // AuthServersConfigurationInput is an input type that accepts AuthServersConfigurationArgs and AuthServersConfigurationOutput values.
@@ -1919,10 +2054,14 @@ type AuthServersConfigurationInput interface {
 }
 
 type AuthServersConfigurationArgs struct {
-	AccessTokenExpirationMinutes  pulumi.IntPtrInput      `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     pulumi.StringArrayInput `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes pulumi.IntPtrInput      `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            pulumi.StringInput      `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
 }
 
 func (AuthServersConfigurationArgs) ElementType() reflect.Type {
@@ -2002,18 +2141,22 @@ func (o AuthServersConfigurationOutput) ToAuthServersConfigurationPtrOutputWithC
 	}).(AuthServersConfigurationPtrOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o AuthServersConfigurationOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o AuthServersConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
 }
@@ -2042,6 +2185,7 @@ func (o AuthServersConfigurationPtrOutput) Elem() AuthServersConfigurationOutput
 	}).(AuthServersConfigurationOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *int {
 		if v == nil {
@@ -2051,6 +2195,7 @@ func (o AuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o AuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) []string {
 		if v == nil {
@@ -2060,6 +2205,7 @@ func (o AuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *int {
 		if v == nil {
@@ -2069,6 +2215,7 @@ func (o AuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o AuthServersConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *string {
 		if v == nil {
@@ -2227,9 +2374,17 @@ func (o PrivilegesPrivilegePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type PrivilegesPrivilegeStatement struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions []string `pulumi:"actions"`
-	Effect  string   `pulumi:"effect"`
-	Scopes  []string `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect string `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes []string `pulumi:"scopes"`
 }
 
 // PrivilegesPrivilegeStatementInput is an input type that accepts PrivilegesPrivilegeStatementArgs and PrivilegesPrivilegeStatementOutput values.
@@ -2244,9 +2399,17 @@ type PrivilegesPrivilegeStatementInput interface {
 }
 
 type PrivilegesPrivilegeStatementArgs struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	Effect  pulumi.StringInput      `pulumi:"effect"`
-	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (PrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
@@ -2300,14 +2463,22 @@ func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutput
 	return o
 }
 
+// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 func (o PrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
 func (o PrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Target the privileged action against specific resources with the scope.
+// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
 func (o PrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -2333,14 +2504,22 @@ func (o PrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) Privil
 }
 
 type ProviderEndpoint struct {
-	Apps        *string `pulumi:"apps"`
-	AppsRules   *string `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Apps *string `pulumi:"apps"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	AppsRules *string `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 	AuthServers *string `pulumi:"authServers"`
-	Privileges  *string `pulumi:"privileges"`
-	RiskRules   *string `pulumi:"riskRules"`
-	Roles       *string `pulumi:"roles"`
-	Users       *string `pulumi:"users"`
-	UsersV1     *string `pulumi:"usersV1"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Privileges *string `pulumi:"privileges"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	RiskRules *string `pulumi:"riskRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Roles *string `pulumi:"roles"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Users *string `pulumi:"users"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	UsersV1 *string `pulumi:"usersV1"`
 }
 
 // ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
@@ -2355,14 +2534,22 @@ type ProviderEndpointInput interface {
 }
 
 type ProviderEndpointArgs struct {
-	Apps        pulumi.StringPtrInput `pulumi:"apps"`
-	AppsRules   pulumi.StringPtrInput `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Apps pulumi.StringPtrInput `pulumi:"apps"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	AppsRules pulumi.StringPtrInput `pulumi:"appsRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 	AuthServers pulumi.StringPtrInput `pulumi:"authServers"`
-	Privileges  pulumi.StringPtrInput `pulumi:"privileges"`
-	RiskRules   pulumi.StringPtrInput `pulumi:"riskRules"`
-	Roles       pulumi.StringPtrInput `pulumi:"roles"`
-	Users       pulumi.StringPtrInput `pulumi:"users"`
-	UsersV1     pulumi.StringPtrInput `pulumi:"usersV1"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Privileges pulumi.StringPtrInput `pulumi:"privileges"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	RiskRules pulumi.StringPtrInput `pulumi:"riskRules"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Roles pulumi.StringPtrInput `pulumi:"roles"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	Users pulumi.StringPtrInput `pulumi:"users"`
+	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+	UsersV1 pulumi.StringPtrInput `pulumi:"usersV1"`
 }
 
 func (ProviderEndpointArgs) ElementType() reflect.Type {
@@ -2416,34 +2603,42 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.
 	return o
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) Apps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apps }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) AppsRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.AppsRules }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) AuthServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.AuthServers }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) Privileges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Privileges }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) RiskRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.RiskRules }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) Roles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Roles }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) Users() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Users }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
 func (o ProviderEndpointOutput) UsersV1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.UsersV1 }).(pulumi.StringPtrOutput)
 }
@@ -2469,7 +2664,9 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 }
 
 type RiskRulesSource struct {
-	Id   *string `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id *string `pulumi:"id"`
+	// The name of the source
 	Name *string `pulumi:"name"`
 }
 
@@ -2485,7 +2682,9 @@ type RiskRulesSourceInput interface {
 }
 
 type RiskRulesSourceArgs struct {
-	Id   pulumi.StringPtrInput `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the source
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2566,10 +2765,12 @@ func (o RiskRulesSourceOutput) ToRiskRulesSourcePtrOutputWithContext(ctx context
 	}).(RiskRulesSourcePtrOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o RiskRulesSourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RiskRulesSource) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the source
 func (o RiskRulesSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RiskRulesSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2598,6 +2799,7 @@ func (o RiskRulesSourcePtrOutput) Elem() RiskRulesSourceOutput {
 	}).(RiskRulesSourceOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o RiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RiskRulesSource) *string {
 		if v == nil {
@@ -2607,6 +2809,7 @@ func (o RiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the source
 func (o RiskRulesSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RiskRulesSource) *string {
 		if v == nil {
@@ -2617,15 +2820,28 @@ func (o RiskRulesSourcePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type GetAppsConfiguration struct {
-	AccessTokenExpirationMinutes  int    `pulumi:"accessTokenExpirationMinutes"`
-	LoginUrl                      string `pulumi:"loginUrl"`
-	OidcApiVersion                string `pulumi:"oidcApiVersion"`
-	OidcApplicationType           int    `pulumi:"oidcApplicationType"`
-	OidcEncryptionKey             string `pulumi:"oidcEncryptionKey"`
-	PostLogoutRedirectUri         string `pulumi:"postLogoutRedirectUri"`
-	RedirectUri                   string `pulumi:"redirectUri"`
-	RefreshTokenExpirationMinutes int    `pulumi:"refreshTokenExpirationMinutes"`
-	TokenEndpointAuthMethod       int    `pulumi:"tokenEndpointAuthMethod"`
+	// OIDC Apps only Number of minutes the refresh token will be valid for.
+	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
+	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+	LoginUrl       string `pulumi:"loginUrl"`
+	OidcApiVersion string `pulumi:"oidcApiVersion"`
+	// OIDC Apps Only
+	//   - 0: Web
+	//   - 1: Native/Mobile
+	OidcApplicationType int `pulumi:"oidcApplicationType"`
+	// OIDC Apps only
+	OidcEncryptionKey string `pulumi:"oidcEncryptionKey"`
+	// OIDC Apps only
+	PostLogoutRedirectUri string `pulumi:"postLogoutRedirectUri"`
+	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+	RedirectUri string `pulumi:"redirectUri"`
+	// Number of minutes the refresh token will be valid for.
+	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
+	// OIDC Apps only
+	//  - 0: Basic
+	//  - 1: POST
+	//  - 2: None / PKCE
+	TokenEndpointAuthMethod int `pulumi:"tokenEndpointAuthMethod"`
 }
 
 // GetAppsConfigurationInput is an input type that accepts GetAppsConfigurationArgs and GetAppsConfigurationOutput values.
@@ -2640,15 +2856,28 @@ type GetAppsConfigurationInput interface {
 }
 
 type GetAppsConfigurationArgs struct {
-	AccessTokenExpirationMinutes  pulumi.IntInput    `pulumi:"accessTokenExpirationMinutes"`
-	LoginUrl                      pulumi.StringInput `pulumi:"loginUrl"`
-	OidcApiVersion                pulumi.StringInput `pulumi:"oidcApiVersion"`
-	OidcApplicationType           pulumi.IntInput    `pulumi:"oidcApplicationType"`
-	OidcEncryptionKey             pulumi.StringInput `pulumi:"oidcEncryptionKey"`
-	PostLogoutRedirectUri         pulumi.StringInput `pulumi:"postLogoutRedirectUri"`
-	RedirectUri                   pulumi.StringInput `pulumi:"redirectUri"`
-	RefreshTokenExpirationMinutes pulumi.IntInput    `pulumi:"refreshTokenExpirationMinutes"`
-	TokenEndpointAuthMethod       pulumi.IntInput    `pulumi:"tokenEndpointAuthMethod"`
+	// OIDC Apps only Number of minutes the refresh token will be valid for.
+	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
+	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+	LoginUrl       pulumi.StringInput `pulumi:"loginUrl"`
+	OidcApiVersion pulumi.StringInput `pulumi:"oidcApiVersion"`
+	// OIDC Apps Only
+	//   - 0: Web
+	//   - 1: Native/Mobile
+	OidcApplicationType pulumi.IntInput `pulumi:"oidcApplicationType"`
+	// OIDC Apps only
+	OidcEncryptionKey pulumi.StringInput `pulumi:"oidcEncryptionKey"`
+	// OIDC Apps only
+	PostLogoutRedirectUri pulumi.StringInput `pulumi:"postLogoutRedirectUri"`
+	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+	// Number of minutes the refresh token will be valid for.
+	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
+	// OIDC Apps only
+	//  - 0: Basic
+	//  - 1: POST
+	//  - 2: None / PKCE
+	TokenEndpointAuthMethod pulumi.IntInput `pulumi:"tokenEndpointAuthMethod"`
 }
 
 func (GetAppsConfigurationArgs) ElementType() reflect.Type {
@@ -2728,10 +2957,12 @@ func (o GetAppsConfigurationOutput) ToGetAppsConfigurationPtrOutputWithContext(c
 	}).(GetAppsConfigurationPtrOutput)
 }
 
+// OIDC Apps only Number of minutes the refresh token will be valid for.
 func (o GetAppsConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
 func (o GetAppsConfigurationOutput) LoginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) string { return v.LoginUrl }).(pulumi.StringOutput)
 }
@@ -2740,26 +2971,37 @@ func (o GetAppsConfigurationOutput) OidcApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) string { return v.OidcApiVersion }).(pulumi.StringOutput)
 }
 
+// OIDC Apps Only
+//   - 0: Web
+//   - 1: Native/Mobile
 func (o GetAppsConfigurationOutput) OidcApplicationType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) int { return v.OidcApplicationType }).(pulumi.IntOutput)
 }
 
+// OIDC Apps only
 func (o GetAppsConfigurationOutput) OidcEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) string { return v.OidcEncryptionKey }).(pulumi.StringOutput)
 }
 
+// OIDC Apps only
 func (o GetAppsConfigurationOutput) PostLogoutRedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) string { return v.PostLogoutRedirectUri }).(pulumi.StringOutput)
 }
 
+// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
 func (o GetAppsConfigurationOutput) RedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) string { return v.RedirectUri }).(pulumi.StringOutput)
 }
 
+// Number of minutes the refresh token will be valid for.
 func (o GetAppsConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// OIDC Apps only
+//   - 0: Basic
+//   - 1: POST
+//   - 2: None / PKCE
 func (o GetAppsConfigurationOutput) TokenEndpointAuthMethod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsConfiguration) int { return v.TokenEndpointAuthMethod }).(pulumi.IntOutput)
 }
@@ -2788,6 +3030,7 @@ func (o GetAppsConfigurationPtrOutput) Elem() GetAppsConfigurationOutput {
 	}).(GetAppsConfigurationOutput)
 }
 
+// OIDC Apps only Number of minutes the refresh token will be valid for.
 func (o GetAppsConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *int {
 		if v == nil {
@@ -2797,6 +3040,7 @@ func (o GetAppsConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
 func (o GetAppsConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *string {
 		if v == nil {
@@ -2815,6 +3059,9 @@ func (o GetAppsConfigurationPtrOutput) OidcApiVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps Only
+//   - 0: Web
+//   - 1: Native/Mobile
 func (o GetAppsConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *int {
 		if v == nil {
@@ -2824,6 +3071,7 @@ func (o GetAppsConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
 func (o GetAppsConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *string {
 		if v == nil {
@@ -2833,6 +3081,7 @@ func (o GetAppsConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only
 func (o GetAppsConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *string {
 		if v == nil {
@@ -2842,6 +3091,7 @@ func (o GetAppsConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
 func (o GetAppsConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *string {
 		if v == nil {
@@ -2851,6 +3101,7 @@ func (o GetAppsConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of minutes the refresh token will be valid for.
 func (o GetAppsConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *int {
 		if v == nil {
@@ -2860,6 +3111,10 @@ func (o GetAppsConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+// OIDC Apps only
+//   - 0: Basic
+//   - 1: POST
+//   - 2: None / PKCE
 func (o GetAppsConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAppsConfiguration) *int {
 		if v == nil {
@@ -2870,19 +3125,32 @@ func (o GetAppsConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOu
 }
 
 type GetAppsEnforcementPoint struct {
-	CaseSensitive                 bool                                           `pulumi:"caseSensitive"`
-	Conditions                    string                                         `pulumi:"conditions"`
-	ContextRoot                   string                                         `pulumi:"contextRoot"`
-	LandingPage                   string                                         `pulumi:"landingPage"`
-	Permissions                   string                                         `pulumi:"permissions"`
-	RequireSitewideAuthentication bool                                           `pulumi:"requireSitewideAuthentication"`
-	Resources                     []GetAppsEnforcementPointResource              `pulumi:"resources"`
-	SessionExpiryFixed            GetAppsEnforcementPointSessionExpiryFixed      `pulumi:"sessionExpiryFixed"`
-	SessionExpiryInactivity       GetAppsEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
-	Target                        string                                         `pulumi:"target"`
-	Token                         string                                         `pulumi:"token"`
-	UseTargetHostHeader           bool                                           `pulumi:"useTargetHostHeader"`
-	Vhost                         string                                         `pulumi:"vhost"`
+	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+	CaseSensitive bool `pulumi:"caseSensitive"`
+	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+	Conditions string `pulumi:"conditions"`
+	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+	ContextRoot string `pulumi:"contextRoot"`
+	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+	LandingPage string `pulumi:"landingPage"`
+	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+	Permissions string `pulumi:"permissions"`
+	// Require user authentication to access any resource protected by this enforcement point.
+	RequireSitewideAuthentication bool `pulumi:"requireSitewideAuthentication"`
+	// Array of resource objects
+	Resources []GetAppsEnforcementPointResource `pulumi:"resources"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryFixed GetAppsEnforcementPointSessionExpiryFixed `pulumi:"sessionExpiryFixed"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryInactivity GetAppsEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
+	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+	Target string `pulumi:"target"`
+	// Can only be set on create. Access Gateway Token.
+	Token string `pulumi:"token"`
+	// Use the target host header as opposed to the original gateway or upstream host header.
+	UseTargetHostHeader bool `pulumi:"useTargetHostHeader"`
+	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+	Vhost string `pulumi:"vhost"`
 }
 
 // GetAppsEnforcementPointInput is an input type that accepts GetAppsEnforcementPointArgs and GetAppsEnforcementPointOutput values.
@@ -2897,19 +3165,32 @@ type GetAppsEnforcementPointInput interface {
 }
 
 type GetAppsEnforcementPointArgs struct {
-	CaseSensitive                 pulumi.BoolInput                                    `pulumi:"caseSensitive"`
-	Conditions                    pulumi.StringInput                                  `pulumi:"conditions"`
-	ContextRoot                   pulumi.StringInput                                  `pulumi:"contextRoot"`
-	LandingPage                   pulumi.StringInput                                  `pulumi:"landingPage"`
-	Permissions                   pulumi.StringInput                                  `pulumi:"permissions"`
-	RequireSitewideAuthentication pulumi.BoolInput                                    `pulumi:"requireSitewideAuthentication"`
-	Resources                     GetAppsEnforcementPointResourceArrayInput           `pulumi:"resources"`
-	SessionExpiryFixed            GetAppsEnforcementPointSessionExpiryFixedInput      `pulumi:"sessionExpiryFixed"`
-	SessionExpiryInactivity       GetAppsEnforcementPointSessionExpiryInactivityInput `pulumi:"sessionExpiryInactivity"`
-	Target                        pulumi.StringInput                                  `pulumi:"target"`
-	Token                         pulumi.StringInput                                  `pulumi:"token"`
-	UseTargetHostHeader           pulumi.BoolInput                                    `pulumi:"useTargetHostHeader"`
-	Vhost                         pulumi.StringInput                                  `pulumi:"vhost"`
+	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
+	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+	Conditions pulumi.StringInput `pulumi:"conditions"`
+	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+	ContextRoot pulumi.StringInput `pulumi:"contextRoot"`
+	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+	LandingPage pulumi.StringInput `pulumi:"landingPage"`
+	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+	// Require user authentication to access any resource protected by this enforcement point.
+	RequireSitewideAuthentication pulumi.BoolInput `pulumi:"requireSitewideAuthentication"`
+	// Array of resource objects
+	Resources GetAppsEnforcementPointResourceArrayInput `pulumi:"resources"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryFixed GetAppsEnforcementPointSessionExpiryFixedInput `pulumi:"sessionExpiryFixed"`
+	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+	SessionExpiryInactivity GetAppsEnforcementPointSessionExpiryInactivityInput `pulumi:"sessionExpiryInactivity"`
+	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+	Target pulumi.StringInput `pulumi:"target"`
+	// Can only be set on create. Access Gateway Token.
+	Token pulumi.StringInput `pulumi:"token"`
+	// Use the target host header as opposed to the original gateway or upstream host header.
+	UseTargetHostHeader pulumi.BoolInput `pulumi:"useTargetHostHeader"`
+	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+	Vhost pulumi.StringInput `pulumi:"vhost"`
 }
 
 func (GetAppsEnforcementPointArgs) ElementType() reflect.Type {
@@ -2989,56 +3270,69 @@ func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointPtrOutputWithCon
 	}).(GetAppsEnforcementPointPtrOutput)
 }
 
+// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
 func (o GetAppsEnforcementPointOutput) CaseSensitive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
 }
 
+// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
 func (o GetAppsEnforcementPointOutput) Conditions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Conditions }).(pulumi.StringOutput)
 }
 
+// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
 func (o GetAppsEnforcementPointOutput) ContextRoot() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.ContextRoot }).(pulumi.StringOutput)
 }
 
+// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
 func (o GetAppsEnforcementPointOutput) LandingPage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.LandingPage }).(pulumi.StringOutput)
 }
 
+// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
 func (o GetAppsEnforcementPointOutput) Permissions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Permissions }).(pulumi.StringOutput)
 }
 
+// Require user authentication to access any resource protected by this enforcement point.
 func (o GetAppsEnforcementPointOutput) RequireSitewideAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.RequireSitewideAuthentication }).(pulumi.BoolOutput)
 }
 
+// Array of resource objects
 func (o GetAppsEnforcementPointOutput) Resources() GetAppsEnforcementPointResourceArrayOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) []GetAppsEnforcementPointResource { return v.Resources }).(GetAppsEnforcementPointResourceArrayOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o GetAppsEnforcementPointOutput) SessionExpiryFixed() GetAppsEnforcementPointSessionExpiryFixedOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) GetAppsEnforcementPointSessionExpiryFixed { return v.SessionExpiryFixed }).(GetAppsEnforcementPointSessionExpiryFixedOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o GetAppsEnforcementPointOutput) SessionExpiryInactivity() GetAppsEnforcementPointSessionExpiryInactivityOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) GetAppsEnforcementPointSessionExpiryInactivity {
 		return v.SessionExpiryInactivity
 	}).(GetAppsEnforcementPointSessionExpiryInactivityOutput)
 }
 
+// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
 func (o GetAppsEnforcementPointOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Target }).(pulumi.StringOutput)
 }
 
+// Can only be set on create. Access Gateway Token.
 func (o GetAppsEnforcementPointOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Token }).(pulumi.StringOutput)
 }
 
+// Use the target host header as opposed to the original gateway or upstream host header.
 func (o GetAppsEnforcementPointOutput) UseTargetHostHeader() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.UseTargetHostHeader }).(pulumi.BoolOutput)
 }
 
+// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
 func (o GetAppsEnforcementPointOutput) Vhost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Vhost }).(pulumi.StringOutput)
 }
@@ -3067,6 +3361,7 @@ func (o GetAppsEnforcementPointPtrOutput) Elem() GetAppsEnforcementPointOutput {
 	}).(GetAppsEnforcementPointOutput)
 }
 
+// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
 func (o GetAppsEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
 		if v == nil {
@@ -3076,6 +3371,7 @@ func (o GetAppsEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
 func (o GetAppsEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3085,6 +3381,7 @@ func (o GetAppsEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
 func (o GetAppsEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3094,6 +3391,7 @@ func (o GetAppsEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
 func (o GetAppsEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3103,6 +3401,7 @@ func (o GetAppsEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
 func (o GetAppsEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3112,6 +3411,7 @@ func (o GetAppsEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require user authentication to access any resource protected by this enforcement point.
 func (o GetAppsEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
 		if v == nil {
@@ -3121,6 +3421,7 @@ func (o GetAppsEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Array of resource objects
 func (o GetAppsEnforcementPointPtrOutput) Resources() GetAppsEnforcementPointResourceArrayOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) []GetAppsEnforcementPointResource {
 		if v == nil {
@@ -3130,6 +3431,7 @@ func (o GetAppsEnforcementPointPtrOutput) Resources() GetAppsEnforcementPointRes
 	}).(GetAppsEnforcementPointResourceArrayOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o GetAppsEnforcementPointPtrOutput) SessionExpiryFixed() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *GetAppsEnforcementPointSessionExpiryFixed {
 		if v == nil {
@@ -3139,6 +3441,7 @@ func (o GetAppsEnforcementPointPtrOutput) SessionExpiryFixed() GetAppsEnforcemen
 	}).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
 }
 
+// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
 func (o GetAppsEnforcementPointPtrOutput) SessionExpiryInactivity() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *GetAppsEnforcementPointSessionExpiryInactivity {
 		if v == nil {
@@ -3148,6 +3451,7 @@ func (o GetAppsEnforcementPointPtrOutput) SessionExpiryInactivity() GetAppsEnfor
 	}).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
 }
 
+// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
 func (o GetAppsEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3157,6 +3461,7 @@ func (o GetAppsEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Can only be set on create. Access Gateway Token.
 func (o GetAppsEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3166,6 +3471,7 @@ func (o GetAppsEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use the target host header as opposed to the original gateway or upstream host header.
 func (o GetAppsEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
 		if v == nil {
@@ -3175,6 +3481,7 @@ func (o GetAppsEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
 func (o GetAppsEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
 		if v == nil {
@@ -3185,6 +3492,7 @@ func (o GetAppsEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
 }
 
 type GetAppsEnforcementPointResource struct {
+	// required if permission == "conditions"
 	Conditions  string `pulumi:"conditions"`
 	IsPathRegex bool   `pulumi:"isPathRegex"`
 	Path        string `pulumi:"path"`
@@ -3204,6 +3512,7 @@ type GetAppsEnforcementPointResourceInput interface {
 }
 
 type GetAppsEnforcementPointResourceArgs struct {
+	// required if permission == "conditions"
 	Conditions  pulumi.StringInput `pulumi:"conditions"`
 	IsPathRegex pulumi.BoolInput   `pulumi:"isPathRegex"`
 	Path        pulumi.StringInput `pulumi:"path"`
@@ -3262,6 +3571,7 @@ func (o GetAppsEnforcementPointResourceOutput) ToGetAppsEnforcementPointResource
 	return o
 }
 
+// required if permission == "conditions"
 func (o GetAppsEnforcementPointResourceOutput) Conditions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsEnforcementPointResource) string { return v.Conditions }).(pulumi.StringOutput)
 }
@@ -4233,12 +4543,18 @@ func (o GetAppsProvisioningPtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 type GetAppsSso struct {
-	AcsUrl       string                `pulumi:"acsUrl"`
-	Certificate  GetAppsSsoCertificate `pulumi:"certificate"`
-	ClientId     string                `pulumi:"clientId"`
-	ClientSecret string                `pulumi:"clientSecret"`
-	Issuer       string                `pulumi:"issuer"`
-	MetadataUrl  string                `pulumi:"metadataUrl"`
+	// App Name.	This is only returned after Creating a SAML App.
+	AcsUrl string `pulumi:"acsUrl"`
+	// The certificate used for signing.	This is only returned after Creating a SAML App.
+	Certificate GetAppsSsoCertificate `pulumi:"certificate"`
+	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+	ClientId string `pulumi:"clientId"`
+	// OpenId Connet Client Secret
+	ClientSecret string `pulumi:"clientSecret"`
+	// Issuer of app.	This is only returned after Creating a SAML App.
+	Issuer string `pulumi:"issuer"`
+	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+	MetadataUrl string `pulumi:"metadataUrl"`
 }
 
 // GetAppsSsoInput is an input type that accepts GetAppsSsoArgs and GetAppsSsoOutput values.
@@ -4253,12 +4569,18 @@ type GetAppsSsoInput interface {
 }
 
 type GetAppsSsoArgs struct {
-	AcsUrl       pulumi.StringInput         `pulumi:"acsUrl"`
-	Certificate  GetAppsSsoCertificateInput `pulumi:"certificate"`
-	ClientId     pulumi.StringInput         `pulumi:"clientId"`
-	ClientSecret pulumi.StringInput         `pulumi:"clientSecret"`
-	Issuer       pulumi.StringInput         `pulumi:"issuer"`
-	MetadataUrl  pulumi.StringInput         `pulumi:"metadataUrl"`
+	// App Name.	This is only returned after Creating a SAML App.
+	AcsUrl pulumi.StringInput `pulumi:"acsUrl"`
+	// The certificate used for signing.	This is only returned after Creating a SAML App.
+	Certificate GetAppsSsoCertificateInput `pulumi:"certificate"`
+	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// OpenId Connet Client Secret
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Issuer of app.	This is only returned after Creating a SAML App.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+	MetadataUrl pulumi.StringInput `pulumi:"metadataUrl"`
 }
 
 func (GetAppsSsoArgs) ElementType() reflect.Type {
@@ -4338,26 +4660,32 @@ func (o GetAppsSsoOutput) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) 
 	}).(GetAppsSsoPtrOutput)
 }
 
+// App Name.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoOutput) AcsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSso) string { return v.AcsUrl }).(pulumi.StringOutput)
 }
 
+// The certificate used for signing.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoOutput) Certificate() GetAppsSsoCertificateOutput {
 	return o.ApplyT(func(v GetAppsSso) GetAppsSsoCertificate { return v.Certificate }).(GetAppsSsoCertificateOutput)
 }
 
+// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
 func (o GetAppsSsoOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSso) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// OpenId Connet Client Secret
 func (o GetAppsSsoOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSso) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+// Issuer of app.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSso) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
+// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoOutput) MetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSso) string { return v.MetadataUrl }).(pulumi.StringOutput)
 }
@@ -4386,6 +4714,7 @@ func (o GetAppsSsoPtrOutput) Elem() GetAppsSsoOutput {
 	}).(GetAppsSsoOutput)
 }
 
+// App Name.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *string {
 		if v == nil {
@@ -4395,6 +4724,7 @@ func (o GetAppsSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The certificate used for signing.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoPtrOutput) Certificate() GetAppsSsoCertificatePtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *GetAppsSsoCertificate {
 		if v == nil {
@@ -4404,6 +4734,7 @@ func (o GetAppsSsoPtrOutput) Certificate() GetAppsSsoCertificatePtrOutput {
 	}).(GetAppsSsoCertificatePtrOutput)
 }
 
+// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
 func (o GetAppsSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *string {
 		if v == nil {
@@ -4413,6 +4744,7 @@ func (o GetAppsSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OpenId Connet Client Secret
 func (o GetAppsSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *string {
 		if v == nil {
@@ -4422,6 +4754,7 @@ func (o GetAppsSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Issuer of app.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *string {
 		if v == nil {
@@ -4431,6 +4764,7 @@ func (o GetAppsSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
 func (o GetAppsSsoPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsSso) *string {
 		if v == nil {
@@ -4704,10 +5038,14 @@ func (o GetAuthServersClaimsFilterArrayOutput) Index(i pulumi.IntInput) GetAuthS
 }
 
 type GetAuthServersConfiguration struct {
-	AccessTokenExpirationMinutes  int      `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     []string `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes int      `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            string   `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences []string `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier string `pulumi:"resourceIdentifier"`
 }
 
 // GetAuthServersConfigurationInput is an input type that accepts GetAuthServersConfigurationArgs and GetAuthServersConfigurationOutput values.
@@ -4722,10 +5060,14 @@ type GetAuthServersConfigurationInput interface {
 }
 
 type GetAuthServersConfigurationArgs struct {
-	AccessTokenExpirationMinutes  pulumi.IntInput         `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     pulumi.StringArrayInput `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes pulumi.IntInput         `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            pulumi.StringInput      `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
 }
 
 func (GetAuthServersConfigurationArgs) ElementType() reflect.Type {
@@ -4805,18 +5147,22 @@ func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationPtrOutpu
 	}).(GetAuthServersConfigurationPtrOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o GetAuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAuthServersConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o GetAuthServersConfigurationOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthServersConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o GetAuthServersConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAuthServersConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o GetAuthServersConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthServersConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
 }
@@ -4845,6 +5191,7 @@ func (o GetAuthServersConfigurationPtrOutput) Elem() GetAuthServersConfiguration
 	}).(GetAuthServersConfigurationOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o GetAuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersConfiguration) *int {
 		if v == nil {
@@ -4854,6 +5201,7 @@ func (o GetAuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o GetAuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAuthServersConfiguration) []string {
 		if v == nil {
@@ -4863,6 +5211,7 @@ func (o GetAuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o GetAuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersConfiguration) *int {
 		if v == nil {
@@ -4872,6 +5221,7 @@ func (o GetAuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o GetAuthServersConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersConfiguration) *string {
 		if v == nil {
@@ -4982,10 +5332,14 @@ func (o GetAuthServersFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServers
 }
 
 type GetAuthServersInstanceConfiguration struct {
-	AccessTokenExpirationMinutes  int      `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     []string `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes int      `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            string   `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences []string `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier string `pulumi:"resourceIdentifier"`
 }
 
 // GetAuthServersInstanceConfigurationInput is an input type that accepts GetAuthServersInstanceConfigurationArgs and GetAuthServersInstanceConfigurationOutput values.
@@ -5000,10 +5354,14 @@ type GetAuthServersInstanceConfigurationInput interface {
 }
 
 type GetAuthServersInstanceConfigurationArgs struct {
-	AccessTokenExpirationMinutes  pulumi.IntInput         `pulumi:"accessTokenExpirationMinutes"`
-	Audiences                     pulumi.StringArrayInput `pulumi:"audiences"`
-	RefreshTokenExpirationMinutes pulumi.IntInput         `pulumi:"refreshTokenExpirationMinutes"`
-	ResourceIdentifier            pulumi.StringInput      `pulumi:"resourceIdentifier"`
+	// The number of minutes until access token expires. There is no maximum expiry limit.
+	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
+	// List of API endpoints that will be returned in Access Tokens.
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// The number of minutes until refresh token expires. There is no maximum expiry limit.
+	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
+	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
 }
 
 func (GetAuthServersInstanceConfigurationArgs) ElementType() reflect.Type {
@@ -5083,18 +5441,22 @@ func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfi
 	}).(GetAuthServersInstanceConfigurationPtrOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o GetAuthServersInstanceConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o GetAuthServersInstanceConfigurationOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o GetAuthServersInstanceConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o GetAuthServersInstanceConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
 }
@@ -5123,6 +5485,7 @@ func (o GetAuthServersInstanceConfigurationPtrOutput) Elem() GetAuthServersInsta
 	}).(GetAuthServersInstanceConfigurationOutput)
 }
 
+// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o GetAuthServersInstanceConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *int {
 		if v == nil {
@@ -5132,6 +5495,7 @@ func (o GetAuthServersInstanceConfigurationPtrOutput) AccessTokenExpirationMinut
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of API endpoints that will be returned in Access Tokens.
 func (o GetAuthServersInstanceConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) []string {
 		if v == nil {
@@ -5141,6 +5505,7 @@ func (o GetAuthServersInstanceConfigurationPtrOutput) Audiences() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
+// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o GetAuthServersInstanceConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *int {
 		if v == nil {
@@ -5150,6 +5515,7 @@ func (o GetAuthServersInstanceConfigurationPtrOutput) RefreshTokenExpirationMinu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o GetAuthServersInstanceConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *string {
 		if v == nil {
@@ -5260,7 +5626,9 @@ func (o GetAuthServersScopesFilterArrayOutput) Index(i pulumi.IntInput) GetAuthS
 }
 
 type GetMappingsAction struct {
-	Action string   `pulumi:"action"`
+	// The action to apply
+	Action string `pulumi:"action"`
+	// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
 	Values []string `pulumi:"values"`
 }
 
@@ -5276,7 +5644,9 @@ type GetMappingsActionInput interface {
 }
 
 type GetMappingsActionArgs struct {
-	Action pulumi.StringInput      `pulumi:"action"`
+	// The action to apply
+	Action pulumi.StringInput `pulumi:"action"`
+	// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5331,10 +5701,12 @@ func (o GetMappingsActionOutput) ToGetMappingsActionOutputWithContext(ctx contex
 	return o
 }
 
+// The action to apply
 func (o GetMappingsActionOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMappingsAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
 func (o GetMappingsActionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMappingsAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5360,9 +5732,12 @@ func (o GetMappingsActionArrayOutput) Index(i pulumi.IntInput) GetMappingsAction
 }
 
 type GetMappingsCondition struct {
+	// A valid operator for the selected condition source
 	Operator string `pulumi:"operator"`
-	Source   string `pulumi:"source"`
-	Value    string `pulumi:"value"`
+	// source field to check.
+	Source string `pulumi:"source"`
+	// A plain text string or valid value for the selected  condition source
+	Value string `pulumi:"value"`
 }
 
 // GetMappingsConditionInput is an input type that accepts GetMappingsConditionArgs and GetMappingsConditionOutput values.
@@ -5377,9 +5752,12 @@ type GetMappingsConditionInput interface {
 }
 
 type GetMappingsConditionArgs struct {
+	// A valid operator for the selected condition source
 	Operator pulumi.StringInput `pulumi:"operator"`
-	Source   pulumi.StringInput `pulumi:"source"`
-	Value    pulumi.StringInput `pulumi:"value"`
+	// source field to check.
+	Source pulumi.StringInput `pulumi:"source"`
+	// A plain text string or valid value for the selected  condition source
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetMappingsConditionArgs) ElementType() reflect.Type {
@@ -5433,14 +5811,17 @@ func (o GetMappingsConditionOutput) ToGetMappingsConditionOutputWithContext(ctx 
 	return o
 }
 
+// A valid operator for the selected condition source
 func (o GetMappingsConditionOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMappingsCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// source field to check.
 func (o GetMappingsConditionOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMappingsCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
+// A plain text string or valid value for the selected  condition source
 func (o GetMappingsConditionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMappingsCondition) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5814,9 +6195,17 @@ func (o GetPrivilegesInstancePrivilegePtrOutput) Version() pulumi.StringPtrOutpu
 }
 
 type GetPrivilegesInstancePrivilegeStatement struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions []string `pulumi:"actions"`
-	Effect  string   `pulumi:"effect"`
-	Scopes  []string `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect string `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes []string `pulumi:"scopes"`
 }
 
 // GetPrivilegesInstancePrivilegeStatementInput is an input type that accepts GetPrivilegesInstancePrivilegeStatementArgs and GetPrivilegesInstancePrivilegeStatementOutput values.
@@ -5831,9 +6220,17 @@ type GetPrivilegesInstancePrivilegeStatementInput interface {
 }
 
 type GetPrivilegesInstancePrivilegeStatementArgs struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	Effect  pulumi.StringInput      `pulumi:"effect"`
-	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (GetPrivilegesInstancePrivilegeStatementArgs) ElementType() reflect.Type {
@@ -5887,14 +6284,22 @@ func (o GetPrivilegesInstancePrivilegeStatementOutput) ToGetPrivilegesInstancePr
 	return o
 }
 
+// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 func (o GetPrivilegesInstancePrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
 func (o GetPrivilegesInstancePrivilegeStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Target the privileged action against specific resources with the scope.
+// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
 func (o GetPrivilegesInstancePrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -6068,9 +6473,17 @@ func (o GetPrivilegesPrivilegePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type GetPrivilegesPrivilegeStatement struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions []string `pulumi:"actions"`
-	Effect  string   `pulumi:"effect"`
-	Scopes  []string `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect string `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes []string `pulumi:"scopes"`
 }
 
 // GetPrivilegesPrivilegeStatementInput is an input type that accepts GetPrivilegesPrivilegeStatementArgs and GetPrivilegesPrivilegeStatementOutput values.
@@ -6085,9 +6498,17 @@ type GetPrivilegesPrivilegeStatementInput interface {
 }
 
 type GetPrivilegesPrivilegeStatementArgs struct {
+	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	Effect  pulumi.StringInput      `pulumi:"effect"`
-	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
+	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Target the privileged action against specific resources with the scope.
+	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (GetPrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
@@ -6141,14 +6562,22 @@ func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatement
 	return o
 }
 
+// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 func (o GetPrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
 func (o GetPrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Target the privileged action against specific resources with the scope.
+// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
 func (o GetPrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -6274,7 +6703,9 @@ func (o GetRiskRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRiskRulesFilt
 }
 
 type GetRiskRulesInstanceSource struct {
-	Id   string `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id string `pulumi:"id"`
+	// The name of the source
 	Name string `pulumi:"name"`
 }
 
@@ -6290,7 +6721,9 @@ type GetRiskRulesInstanceSourceInput interface {
 }
 
 type GetRiskRulesInstanceSourceArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the source
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -6371,10 +6804,12 @@ func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourcePtrOutputW
 	}).(GetRiskRulesInstanceSourcePtrOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o GetRiskRulesInstanceSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesInstanceSource) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the source
 func (o GetRiskRulesInstanceSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesInstanceSource) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6403,6 +6838,7 @@ func (o GetRiskRulesInstanceSourcePtrOutput) Elem() GetRiskRulesInstanceSourceOu
 	}).(GetRiskRulesInstanceSourceOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o GetRiskRulesInstanceSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRiskRulesInstanceSource) *string {
 		if v == nil {
@@ -6412,6 +6848,7 @@ func (o GetRiskRulesInstanceSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the source
 func (o GetRiskRulesInstanceSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRiskRulesInstanceSource) *string {
 		if v == nil {
@@ -6422,7 +6859,9 @@ func (o GetRiskRulesInstanceSourcePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type GetRiskRulesSource struct {
-	Id   string `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id string `pulumi:"id"`
+	// The name of the source
 	Name string `pulumi:"name"`
 }
 
@@ -6438,7 +6877,9 @@ type GetRiskRulesSourceInput interface {
 }
 
 type GetRiskRulesSourceArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// A unique id that represents the source of the event.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the source
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -6519,10 +6960,12 @@ func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourcePtrOutputWithContext(ctx c
 	}).(GetRiskRulesSourcePtrOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o GetRiskRulesSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesSource) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the source
 func (o GetRiskRulesSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRiskRulesSource) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6551,6 +6994,7 @@ func (o GetRiskRulesSourcePtrOutput) Elem() GetRiskRulesSourceOutput {
 	}).(GetRiskRulesSourceOutput)
 }
 
+// A unique id that represents the source of the event.
 func (o GetRiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRiskRulesSource) *string {
 		if v == nil {
@@ -6560,6 +7004,7 @@ func (o GetRiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the source
 func (o GetRiskRulesSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRiskRulesSource) *string {
 		if v == nil {

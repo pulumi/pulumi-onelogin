@@ -12,41 +12,115 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppConfiguration {
+    /**
+     * @return OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     private @Nullable Integer accessTokenExpirationMinutes;
+    /**
+     * @return OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     private @Nullable String loginUrl;
     private @Nullable String oidcApiVersion;
+    /**
+     * @return OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     private @Nullable Integer oidcApplicationType;
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     private @Nullable String oidcEncryptionKey;
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     private @Nullable String postLogoutRedirectUri;
+    /**
+     * @return OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     private @Nullable String redirectUri;
+    /**
+     * @return Number of minutes the refresh token will be valid for.
+     * 
+     */
     private @Nullable Integer refreshTokenExpirationMinutes;
+    /**
+     * @return OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     private @Nullable Integer tokenEndpointAuthMethod;
 
     private AppConfiguration() {}
+    /**
+     * @return OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Optional<Integer> accessTokenExpirationMinutes() {
         return Optional.ofNullable(this.accessTokenExpirationMinutes);
     }
+    /**
+     * @return OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     public Optional<String> loginUrl() {
         return Optional.ofNullable(this.loginUrl);
     }
     public Optional<String> oidcApiVersion() {
         return Optional.ofNullable(this.oidcApiVersion);
     }
+    /**
+     * @return OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     public Optional<Integer> oidcApplicationType() {
         return Optional.ofNullable(this.oidcApplicationType);
     }
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public Optional<String> oidcEncryptionKey() {
         return Optional.ofNullable(this.oidcEncryptionKey);
     }
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public Optional<String> postLogoutRedirectUri() {
         return Optional.ofNullable(this.postLogoutRedirectUri);
     }
+    /**
+     * @return OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     public Optional<String> redirectUri() {
         return Optional.ofNullable(this.redirectUri);
     }
+    /**
+     * @return Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Optional<Integer> refreshTokenExpirationMinutes() {
         return Optional.ofNullable(this.refreshTokenExpirationMinutes);
     }
+    /**
+     * @return OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     public Optional<Integer> tokenEndpointAuthMethod() {
         return Optional.ofNullable(this.tokenEndpointAuthMethod);
     }
