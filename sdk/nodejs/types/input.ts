@@ -6,34 +6,105 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AppConfiguration {
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     */
     accessTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+     */
     loginUrl?: pulumi.Input<string>;
     oidcApiVersion?: pulumi.Input<string>;
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     */
     oidcApplicationType?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only
+     */
     oidcEncryptionKey?: pulumi.Input<string>;
+    /**
+     * OIDC Apps only
+     */
     postLogoutRedirectUri?: pulumi.Input<string>;
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     */
     redirectUri?: pulumi.Input<string>;
+    /**
+     * Number of minutes the refresh token will be valid for.
+     */
     refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     */
     tokenEndpointAuthMethod?: pulumi.Input<number>;
 }
 
 export interface AppEnforcementPoint {
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     */
     caseSensitive?: pulumi.Input<boolean>;
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     */
     conditions?: pulumi.Input<string>;
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     */
     contextRoot?: pulumi.Input<string>;
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     */
     landingPage?: pulumi.Input<string>;
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     */
     permissions?: pulumi.Input<string>;
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     */
     requireSitewideAuthentication?: pulumi.Input<boolean>;
+    /**
+     * Array of resource objects
+     */
     resources?: pulumi.Input<pulumi.Input<inputs.AppEnforcementPointResource>[]>;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryFixed?: pulumi.Input<inputs.AppEnforcementPointSessionExpiryFixed>;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryInactivity?: pulumi.Input<inputs.AppEnforcementPointSessionExpiryInactivity>;
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     */
     target?: pulumi.Input<string>;
+    /**
+     * Can only be set on create. Access Gateway Token.
+     */
     token?: pulumi.Input<string>;
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     */
     useTargetHostHeader?: pulumi.Input<boolean>;
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     */
     vhost?: pulumi.Input<string>;
 }
 
 export interface AppEnforcementPointResource {
+    /**
+     * required if permission == "conditions"
+     */
     conditions?: pulumi.Input<string>;
     isPathRegex?: pulumi.Input<boolean>;
     path?: pulumi.Input<string>;
@@ -73,11 +144,29 @@ export interface AppProvisioning {
 }
 
 export interface AppSso {
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     */
     acsUrl?: pulumi.Input<string>;
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     */
     certificate?: pulumi.Input<inputs.AppSsoCertificate>;
+    /**
+     * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * OpenId Connet Client Secret
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     */
     issuer?: pulumi.Input<string>;
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     */
     metadataUrl?: pulumi.Input<string>;
 }
 
@@ -88,69 +177,220 @@ export interface AppSsoCertificate {
 }
 
 export interface AuthServersConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier: pulumi.Input<string>;
 }
 
 export interface GetAppsConfiguration {
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     */
     accessTokenExpirationMinutes?: number;
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+     */
     loginUrl?: string;
     oidcApiVersion?: string;
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     */
     oidcApplicationType?: number;
+    /**
+     * OIDC Apps only
+     */
     oidcEncryptionKey?: string;
+    /**
+     * OIDC Apps only
+     */
     postLogoutRedirectUri?: string;
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     */
     redirectUri?: string;
+    /**
+     * Number of minutes the refresh token will be valid for.
+     */
     refreshTokenExpirationMinutes?: number;
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     */
     tokenEndpointAuthMethod?: number;
 }
 
 export interface GetAppsConfigurationArgs {
+    /**
+     * OIDC Apps only Number of minutes the refresh token will be valid for.
+     */
     accessTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+     */
     loginUrl?: pulumi.Input<string>;
     oidcApiVersion?: pulumi.Input<string>;
+    /**
+     * OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     */
     oidcApplicationType?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only
+     */
     oidcEncryptionKey?: pulumi.Input<string>;
+    /**
+     * OIDC Apps only
+     */
     postLogoutRedirectUri?: pulumi.Input<string>;
+    /**
+     * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     */
     redirectUri?: pulumi.Input<string>;
+    /**
+     * Number of minutes the refresh token will be valid for.
+     */
     refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     */
     tokenEndpointAuthMethod?: pulumi.Input<number>;
 }
 
 export interface GetAppsEnforcementPoint {
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     */
     caseSensitive?: boolean;
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     */
     conditions?: string;
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     */
     contextRoot?: string;
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     */
     landingPage?: string;
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     */
     permissions?: string;
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     */
     requireSitewideAuthentication?: boolean;
+    /**
+     * Array of resource objects
+     */
     resources?: inputs.GetAppsEnforcementPointResource[];
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryFixed?: inputs.GetAppsEnforcementPointSessionExpiryFixed;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryInactivity?: inputs.GetAppsEnforcementPointSessionExpiryInactivity;
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     */
     target?: string;
+    /**
+     * Can only be set on create. Access Gateway Token.
+     */
     token?: string;
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     */
     useTargetHostHeader?: boolean;
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     */
     vhost?: string;
 }
 
 export interface GetAppsEnforcementPointArgs {
+    /**
+     * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+     */
     caseSensitive?: pulumi.Input<boolean>;
+    /**
+     * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+     */
     conditions?: pulumi.Input<string>;
+    /**
+     * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+     */
     contextRoot?: pulumi.Input<string>;
+    /**
+     * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+     */
     landingPage?: pulumi.Input<string>;
+    /**
+     * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+     */
     permissions?: pulumi.Input<string>;
+    /**
+     * Require user authentication to access any resource protected by this enforcement point.
+     */
     requireSitewideAuthentication?: pulumi.Input<boolean>;
+    /**
+     * Array of resource objects
+     */
     resources?: pulumi.Input<pulumi.Input<inputs.GetAppsEnforcementPointResourceArgs>[]>;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryFixed?: pulumi.Input<inputs.GetAppsEnforcementPointSessionExpiryFixedArgs>;
+    /**
+     * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+     */
     sessionExpiryInactivity?: pulumi.Input<inputs.GetAppsEnforcementPointSessionExpiryInactivityArgs>;
+    /**
+     * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+     */
     target?: pulumi.Input<string>;
+    /**
+     * Can only be set on create. Access Gateway Token.
+     */
     token?: pulumi.Input<string>;
+    /**
+     * Use the target host header as opposed to the original gateway or upstream host header.
+     */
     useTargetHostHeader?: pulumi.Input<boolean>;
+    /**
+     * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+     */
     vhost?: pulumi.Input<string>;
 }
 
 export interface GetAppsEnforcementPointResource {
+    /**
+     * required if permission == "conditions"
+     */
     conditions?: string;
     isPathRegex?: boolean;
     path?: string;
@@ -159,6 +399,9 @@ export interface GetAppsEnforcementPointResource {
 }
 
 export interface GetAppsEnforcementPointResourceArgs {
+    /**
+     * required if permission == "conditions"
+     */
     conditions?: pulumi.Input<string>;
     isPathRegex?: pulumi.Input<boolean>;
     path?: pulumi.Input<string>;
@@ -239,20 +482,56 @@ export interface GetAppsProvisioningArgs {
 }
 
 export interface GetAppsSso {
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     */
     acsUrl?: string;
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     */
     certificate?: inputs.GetAppsSsoCertificate;
+    /**
+     * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+     */
     clientId?: string;
+    /**
+     * OpenId Connet Client Secret
+     */
     clientSecret?: string;
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     */
     issuer?: string;
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     */
     metadataUrl?: string;
 }
 
 export interface GetAppsSsoArgs {
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     */
     acsUrl?: pulumi.Input<string>;
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     */
     certificate?: pulumi.Input<inputs.GetAppsSsoCertificateArgs>;
+    /**
+     * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * OpenId Connet Client Secret
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     */
     issuer?: pulumi.Input<string>;
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     */
     metadataUrl?: pulumi.Input<string>;
 }
 
@@ -279,16 +558,40 @@ export interface GetAuthServersClaimsFilterArgs {
 }
 
 export interface GetAuthServersConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences?: string[];
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier?: string;
 }
 
 export interface GetAuthServersConfigurationArgs {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier?: pulumi.Input<string>;
 }
 
@@ -303,16 +606,40 @@ export interface GetAuthServersFilterArgs {
 }
 
 export interface GetAuthServersInstanceConfiguration {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: number;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences?: string[];
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: number;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier?: string;
 }
 
 export interface GetAuthServersInstanceConfigurationArgs {
+    /**
+     * The number of minutes until access token expires. There is no maximum expiry limit.
+     */
     accessTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * List of API endpoints that will be returned in Access Tokens.
+     */
     audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of minutes until refresh token expires. There is no maximum expiry limit.
+     */
     refreshTokenExpirationMinutes?: pulumi.Input<number>;
+    /**
+     * Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+     */
     resourceIdentifier?: pulumi.Input<string>;
 }
 
@@ -327,24 +654,54 @@ export interface GetAuthServersScopesFilterArgs {
 }
 
 export interface GetMappingsAction {
+    /**
+     * The action to apply
+     */
     action?: string;
+    /**
+     * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     */
     values?: string[];
 }
 
 export interface GetMappingsActionArgs {
+    /**
+     * The action to apply
+     */
     action?: pulumi.Input<string>;
+    /**
+     * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetMappingsCondition {
+    /**
+     * A valid operator for the selected condition source
+     */
     operator?: string;
+    /**
+     * source field to check.
+     */
     source?: string;
+    /**
+     * A plain text string or valid value for the selected  condition source
+     */
     value?: string;
 }
 
 export interface GetMappingsConditionArgs {
+    /**
+     * A valid operator for the selected condition source
+     */
     operator?: pulumi.Input<string>;
+    /**
+     * source field to check.
+     */
     source?: pulumi.Input<string>;
+    /**
+     * A plain text string or valid value for the selected  condition source
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -379,14 +736,42 @@ export interface GetPrivilegesInstancePrivilegeArgs {
 }
 
 export interface GetPrivilegesInstancePrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions?: string[];
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect?: string;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes?: string[];
 }
 
 export interface GetPrivilegesInstancePrivilegeStatementArgs {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect?: pulumi.Input<string>;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -401,14 +786,42 @@ export interface GetPrivilegesPrivilegeArgs {
 }
 
 export interface GetPrivilegesPrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions?: string[];
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect?: string;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes?: string[];
 }
 
 export interface GetPrivilegesPrivilegeStatementArgs {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect?: pulumi.Input<string>;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -423,22 +836,46 @@ export interface GetRiskRulesFilterArgs {
 }
 
 export interface GetRiskRulesInstanceSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: string;
+    /**
+     * The name of the source
+     */
     name?: string;
 }
 
 export interface GetRiskRulesInstanceSourceArgs {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The name of the source
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface GetRiskRulesSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: string;
+    /**
+     * The name of the source
+     */
     name?: string;
 }
 
 export interface GetRiskRulesSourceArgs {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The name of the source
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -448,24 +885,68 @@ export interface PrivilegesPrivilege {
 }
 
 export interface PrivilegesPrivilegeStatement {
+    /**
+     * An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+     * e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+     */
     actions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+     */
     effect: pulumi.Input<string>;
+    /**
+     * Target the privileged action against specific resources with the scope.
+     * The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+     * e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+     * The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+     * The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+     */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ProviderEndpoint {
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     apps?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     appsRules?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     authServers?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     privileges?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     riskRules?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     roles?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     users?: pulumi.Input<string>;
+    /**
+     * Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+     */
     usersV1?: pulumi.Input<string>;
 }
 
 export interface RiskRulesSource {
+    /**
+     * A unique id that represents the source of the event.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The name of the source
+     */
     name?: pulumi.Input<string>;
 }
 export namespace apps {
@@ -510,62 +991,201 @@ export namespace apps {
     }
 
     export interface GetInstanceConfiguration {
+        /**
+         * OIDC Apps only Number of minutes the refresh token will be valid for.
+         */
         accessTokenExpirationMinutes?: number;
+        /**
+         * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+         */
         loginUrl?: string;
         oidcApiVersion?: string;
+        /**
+         * OIDC Apps Only
+         *   - 0: Web
+         *   - 1: Native/Mobile
+         */
         oidcApplicationType?: number;
+        /**
+         * OIDC Apps only
+         */
         oidcEncryptionKey?: string;
+        /**
+         * OIDC Apps only
+         */
         postLogoutRedirectUri?: string;
+        /**
+         * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+         */
         redirectUri?: string;
+        /**
+         * Number of minutes the refresh token will be valid for.
+         */
         refreshTokenExpirationMinutes?: number;
+        /**
+         * OIDC Apps only
+         *  - 0: Basic
+         *  - 1: POST
+         *  - 2: None / PKCE
+         */
         tokenEndpointAuthMethod?: number;
     }
 
     export interface GetInstanceConfigurationArgs {
+        /**
+         * OIDC Apps only Number of minutes the refresh token will be valid for.
+         */
         accessTokenExpirationMinutes?: pulumi.Input<number>;
+        /**
+         * OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
+         */
         loginUrl?: pulumi.Input<string>;
         oidcApiVersion?: pulumi.Input<string>;
+        /**
+         * OIDC Apps Only
+         *   - 0: Web
+         *   - 1: Native/Mobile
+         */
         oidcApplicationType?: pulumi.Input<number>;
+        /**
+         * OIDC Apps only
+         */
         oidcEncryptionKey?: pulumi.Input<string>;
+        /**
+         * OIDC Apps only
+         */
         postLogoutRedirectUri?: pulumi.Input<string>;
+        /**
+         * OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+         */
         redirectUri?: pulumi.Input<string>;
+        /**
+         * Number of minutes the refresh token will be valid for.
+         */
         refreshTokenExpirationMinutes?: pulumi.Input<number>;
+        /**
+         * OIDC Apps only
+         *  - 0: Basic
+         *  - 1: POST
+         *  - 2: None / PKCE
+         */
         tokenEndpointAuthMethod?: pulumi.Input<number>;
     }
 
     export interface GetInstanceEnforcementPoint {
+        /**
+         * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+         */
         caseSensitive?: boolean;
+        /**
+         * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+         */
         conditions?: string;
+        /**
+         * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+         */
         contextRoot?: string;
+        /**
+         * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+         */
         landingPage?: string;
+        /**
+         * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+         */
         permissions?: string;
+        /**
+         * Require user authentication to access any resource protected by this enforcement point.
+         */
         requireSitewideAuthentication?: boolean;
+        /**
+         * Array of resource objects
+         */
         resources?: inputs.apps.GetInstanceEnforcementPointResource[];
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryFixed?: inputs.apps.GetInstanceEnforcementPointSessionExpiryFixed;
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryInactivity?: inputs.apps.GetInstanceEnforcementPointSessionExpiryInactivity;
+        /**
+         * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+         */
         target?: string;
+        /**
+         * Can only be set on create. Access Gateway Token.
+         */
         token?: string;
+        /**
+         * Use the target host header as opposed to the original gateway or upstream host header.
+         */
         useTargetHostHeader?: boolean;
+        /**
+         * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+         */
         vhost?: string;
     }
 
     export interface GetInstanceEnforcementPointArgs {
+        /**
+         * The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+         */
         caseSensitive?: pulumi.Input<boolean>;
+        /**
+         * If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+         */
         conditions?: pulumi.Input<string>;
+        /**
+         * The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+         */
         contextRoot?: pulumi.Input<string>;
+        /**
+         * The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+         */
         landingPage?: pulumi.Input<string>;
+        /**
+         * Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+         */
         permissions?: pulumi.Input<string>;
+        /**
+         * Require user authentication to access any resource protected by this enforcement point.
+         */
         requireSitewideAuthentication?: pulumi.Input<boolean>;
+        /**
+         * Array of resource objects
+         */
         resources?: pulumi.Input<pulumi.Input<inputs.apps.GetInstanceEnforcementPointResourceArgs>[]>;
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryFixed?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointSessionExpiryFixedArgs>;
+        /**
+         * unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+         */
         sessionExpiryInactivity?: pulumi.Input<inputs.apps.GetInstanceEnforcementPointSessionExpiryInactivityArgs>;
+        /**
+         * A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+         */
         target?: pulumi.Input<string>;
+        /**
+         * Can only be set on create. Access Gateway Token.
+         */
         token?: pulumi.Input<string>;
+        /**
+         * Use the target host header as opposed to the original gateway or upstream host header.
+         */
         useTargetHostHeader?: pulumi.Input<boolean>;
+        /**
+         * A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+         */
         vhost?: pulumi.Input<string>;
     }
 
     export interface GetInstanceEnforcementPointResource {
+        /**
+         * required if permission == "conditions"
+         */
         conditions?: string;
         isPathRegex?: boolean;
         path?: string;
@@ -574,6 +1194,9 @@ export namespace apps {
     }
 
     export interface GetInstanceEnforcementPointResourceArgs {
+        /**
+         * required if permission == "conditions"
+         */
         conditions?: pulumi.Input<string>;
         isPathRegex?: pulumi.Input<boolean>;
         path?: pulumi.Input<string>;
@@ -644,20 +1267,56 @@ export namespace apps {
     }
 
     export interface GetInstanceSso {
+        /**
+         * App Name.	This is only returned after Creating a SAML App.
+         */
         acsUrl?: string;
+        /**
+         * The certificate used for signing.	This is only returned after Creating a SAML App.
+         */
         certificate?: inputs.apps.GetInstanceSsoCertificate;
+        /**
+         * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+         */
         clientId?: string;
+        /**
+         * OpenId Connet Client Secret
+         */
         clientSecret?: string;
+        /**
+         * Issuer of app.	This is only returned after Creating a SAML App.
+         */
         issuer?: string;
+        /**
+         * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+         */
         metadataUrl?: string;
     }
 
     export interface GetInstanceSsoArgs {
+        /**
+         * App Name.	This is only returned after Creating a SAML App.
+         */
         acsUrl?: pulumi.Input<string>;
+        /**
+         * The certificate used for signing.	This is only returned after Creating a SAML App.
+         */
         certificate?: pulumi.Input<inputs.apps.GetInstanceSsoCertificateArgs>;
+        /**
+         * The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
+         */
         clientId?: pulumi.Input<string>;
+        /**
+         * OpenId Connet Client Secret
+         */
         clientSecret?: pulumi.Input<string>;
+        /**
+         * Issuer of app.	This is only returned after Creating a SAML App.
+         */
         issuer?: pulumi.Input<string>;
+        /**
+         * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+         */
         metadataUrl?: pulumi.Input<string>;
     }
 
@@ -674,24 +1333,54 @@ export namespace apps {
     }
 
     export interface GetRulesAction {
+        /**
+         * The action to apply
+         */
         action?: string;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: string[];
     }
 
     export interface GetRulesActionArgs {
+        /**
+         * The action to apply
+         */
         action?: pulumi.Input<string>;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetRulesCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: string;
+        /**
+         * source field to check.
+         */
         source?: string;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: string;
     }
 
     export interface GetRulesConditionArgs {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * source field to check.
+         */
         source?: pulumi.Input<string>;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -706,24 +1395,54 @@ export namespace apps {
     }
 
     export interface GetRulesInstanceAction {
+        /**
+         * The action to apply
+         */
         action?: string;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: string[];
     }
 
     export interface GetRulesInstanceActionArgs {
+        /**
+         * The action to apply
+         */
         action?: pulumi.Input<string>;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetRulesInstanceCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: string;
+        /**
+         * source field to check.
+         */
         source?: string;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: string;
     }
 
     export interface GetRulesInstanceConditionArgs {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * source field to check.
+         */
         source?: pulumi.Input<string>;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -738,13 +1457,28 @@ export namespace apps {
     }
 
     export interface RulesAction {
+        /**
+         * The action to apply
+         */
         action?: pulumi.Input<string>;
+        /**
+         * Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+         */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RulesCondition {
+        /**
+         * A valid operator for the selected condition source
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * source field to check.
+         */
         source?: pulumi.Input<string>;
+        /**
+         * A plain text string or valid value for the selected  condition source
+         */
         value?: pulumi.Input<string>;
     }
 }

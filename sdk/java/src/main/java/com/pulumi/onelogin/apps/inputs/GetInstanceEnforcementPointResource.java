@@ -14,9 +14,17 @@ public final class GetInstanceEnforcementPointResource extends com.pulumi.resour
 
     public static final GetInstanceEnforcementPointResource Empty = new GetInstanceEnforcementPointResource();
 
+    /**
+     * required if permission == &#34;conditions&#34;
+     * 
+     */
     @Import(name="conditions", required=true)
     private String conditions;
 
+    /**
+     * @return required if permission == &#34;conditions&#34;
+     * 
+     */
     public String conditions() {
         return this.conditions;
     }
@@ -77,6 +85,12 @@ public final class GetInstanceEnforcementPointResource extends com.pulumi.resour
             $ = new GetInstanceEnforcementPointResource(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditions required if permission == &#34;conditions&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(String conditions) {
             $.conditions = conditions;
             return this;

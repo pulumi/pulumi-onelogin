@@ -66,6 +66,21 @@ class AppConfigurationArgs:
                  redirect_uri: Optional[pulumi.Input[str]] = None,
                  refresh_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] access_token_expiration_minutes: OIDC Apps only Number of minutes the refresh token will be valid for.
+        :param pulumi.Input[str] login_url: OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        :param pulumi.Input[int] oidc_application_type: OIDC Apps Only
+                 - 0: Web
+                 - 1: Native/Mobile
+        :param pulumi.Input[str] oidc_encryption_key: OIDC Apps only
+        :param pulumi.Input[str] post_logout_redirect_uri: OIDC Apps only
+        :param pulumi.Input[str] redirect_uri: OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        :param pulumi.Input[int] refresh_token_expiration_minutes: Number of minutes the refresh token will be valid for.
+        :param pulumi.Input[int] token_endpoint_auth_method: OIDC Apps only
+                - 0: Basic
+                - 1: POST
+                - 2: None / PKCE
+        """
         if access_token_expiration_minutes is not None:
             pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         if login_url is not None:
@@ -88,6 +103,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -97,6 +115,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
         return pulumi.get(self, "login_url")
 
     @login_url.setter
@@ -115,6 +136,11 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
         return pulumi.get(self, "oidc_application_type")
 
     @oidc_application_type.setter
@@ -124,6 +150,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="oidcEncryptionKey")
     def oidc_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "oidc_encryption_key")
 
     @oidc_encryption_key.setter
@@ -133,6 +162,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="postLogoutRedirectUri")
     def post_logout_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "post_logout_redirect_uri")
 
     @post_logout_redirect_uri.setter
@@ -142,6 +174,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
         return pulumi.get(self, "redirect_uri")
 
     @redirect_uri.setter
@@ -151,6 +186,9 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -160,6 +198,12 @@ class AppConfigurationArgs:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> Optional[pulumi.Input[int]]:
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @token_endpoint_auth_method.setter
@@ -183,6 +227,21 @@ class AppEnforcementPointArgs:
                  token: Optional[pulumi.Input[str]] = None,
                  use_target_host_header: Optional[pulumi.Input[bool]] = None,
                  vhost: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] case_sensitive: The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        :param pulumi.Input[str] conditions: If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        :param pulumi.Input[str] context_root: The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        :param pulumi.Input[str] landing_page: The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        :param pulumi.Input[str] permissions: Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        :param pulumi.Input[bool] require_sitewide_authentication: Require user authentication to access any resource protected by this enforcement point.
+        :param pulumi.Input[Sequence[pulumi.Input['AppEnforcementPointResourceArgs']]] resources: Array of resource objects
+        :param pulumi.Input['AppEnforcementPointSessionExpiryFixedArgs'] session_expiry_fixed: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param pulumi.Input['AppEnforcementPointSessionExpiryInactivityArgs'] session_expiry_inactivity: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param pulumi.Input[str] target: A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        :param pulumi.Input[str] token: Can only be set on create. Access Gateway Token.
+        :param pulumi.Input[bool] use_target_host_header: Use the target host header as opposed to the original gateway or upstream host header.
+        :param pulumi.Input[str] vhost: A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         if case_sensitive is not None:
             pulumi.set(__self__, "case_sensitive", case_sensitive)
         if conditions is not None:
@@ -213,6 +272,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
@@ -222,6 +284,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[str]]:
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -231,6 +296,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="contextRoot")
     def context_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
         return pulumi.get(self, "context_root")
 
     @context_root.setter
@@ -240,6 +308,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="landingPage")
     def landing_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
         return pulumi.get(self, "landing_page")
 
     @landing_page.setter
@@ -249,6 +320,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -258,6 +332,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="requireSitewideAuthentication")
     def require_sitewide_authentication(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
         return pulumi.get(self, "require_sitewide_authentication")
 
     @require_sitewide_authentication.setter
@@ -267,6 +344,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppEnforcementPointResourceArgs']]]]:
+        """
+        Array of resource objects
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -276,6 +356,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="sessionExpiryFixed")
     def session_expiry_fixed(self) -> Optional[pulumi.Input['AppEnforcementPointSessionExpiryFixedArgs']]:
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_fixed")
 
     @session_expiry_fixed.setter
@@ -285,6 +368,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="sessionExpiryInactivity")
     def session_expiry_inactivity(self) -> Optional[pulumi.Input['AppEnforcementPointSessionExpiryInactivityArgs']]:
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_inactivity")
 
     @session_expiry_inactivity.setter
@@ -294,6 +380,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -303,6 +392,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Can only be set on create. Access Gateway Token.
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -312,6 +404,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter(name="useTargetHostHeader")
     def use_target_host_header(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
         return pulumi.get(self, "use_target_host_header")
 
     @use_target_host_header.setter
@@ -321,6 +416,9 @@ class AppEnforcementPointArgs:
     @property
     @pulumi.getter
     def vhost(self) -> Optional[pulumi.Input[str]]:
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         return pulumi.get(self, "vhost")
 
     @vhost.setter
@@ -336,6 +434,9 @@ class AppEnforcementPointResourceArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  require_auth: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] conditions: required if permission == "conditions"
+        """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if is_path_regex is not None:
@@ -350,6 +451,9 @@ class AppEnforcementPointResourceArgs:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[str]]:
+        """
+        required if permission == "conditions"
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -619,6 +723,14 @@ class AppSsoArgs:
                  client_secret: Optional[pulumi.Input[str]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
                  metadata_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acs_url: App Name.	This is only returned after Creating a SAML App.
+        :param pulumi.Input['AppSsoCertificateArgs'] certificate: The certificate used for signing.	This is only returned after Creating a SAML App.
+        :param pulumi.Input[str] client_id: The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        :param pulumi.Input[str] client_secret: OpenId Connet Client Secret
+        :param pulumi.Input[str] issuer: Issuer of app.	This is only returned after Creating a SAML App.
+        :param pulumi.Input[str] metadata_url: ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         if acs_url is not None:
             pulumi.set(__self__, "acs_url", acs_url)
         if certificate is not None:
@@ -635,6 +747,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter(name="acsUrl")
     def acs_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "acs_url")
 
     @acs_url.setter
@@ -644,6 +759,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input['AppSsoCertificateArgs']]:
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -653,6 +771,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -662,6 +783,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenId Connet Client Secret
+        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -671,6 +795,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -680,6 +807,9 @@ class AppSsoArgs:
     @property
     @pulumi.getter(name="metadataUrl")
     def metadata_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "metadata_url")
 
     @metadata_url.setter
@@ -735,6 +865,12 @@ class AuthServersConfigurationArgs:
                  resource_identifier: pulumi.Input[str],
                  access_token_expiration_minutes: Optional[pulumi.Input[int]] = None,
                  refresh_token_expiration_minutes: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of API endpoints that will be returned in Access Tokens.
+        :param pulumi.Input[str] resource_identifier: Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        :param pulumi.Input[int] access_token_expiration_minutes: The number of minutes until access token expires. There is no maximum expiry limit.
+        :param pulumi.Input[int] refresh_token_expiration_minutes: The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
         pulumi.set(__self__, "audiences", audiences)
         pulumi.set(__self__, "resource_identifier", resource_identifier)
         if access_token_expiration_minutes is not None:
@@ -745,6 +881,9 @@ class AuthServersConfigurationArgs:
     @property
     @pulumi.getter
     def audiences(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
@@ -754,6 +893,9 @@ class AuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="resourceIdentifier")
     def resource_identifier(self) -> pulumi.Input[str]:
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         return pulumi.get(self, "resource_identifier")
 
     @resource_identifier.setter
@@ -763,6 +905,9 @@ class AuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -772,6 +917,9 @@ class AuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -814,6 +962,16 @@ class PrivilegesPrivilegeStatementArgs:
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  effect: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+               e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        :param pulumi.Input[str] effect: Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Target the privileged action against specific resources with the scope.
+               The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+               e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+               The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+               The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "scopes", scopes)
@@ -821,6 +979,10 @@ class PrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -830,6 +992,9 @@ class PrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -839,6 +1004,13 @@ class PrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -857,6 +1029,16 @@ class ProviderEndpointArgs:
                  roles: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[str]] = None,
                  users_v1: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] apps: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] apps_rules: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] auth_servers: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] privileges: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] risk_rules: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] roles: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] users: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        :param pulumi.Input[str] users_v1: Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
         if apps_rules is not None:
@@ -877,6 +1059,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "apps")
 
     @apps.setter
@@ -886,6 +1071,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="appsRules")
     def apps_rules(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "apps_rules")
 
     @apps_rules.setter
@@ -895,6 +1083,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "auth_servers")
 
     @auth_servers.setter
@@ -904,6 +1095,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def privileges(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -913,6 +1107,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="riskRules")
     def risk_rules(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "risk_rules")
 
     @risk_rules.setter
@@ -922,6 +1119,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -931,6 +1131,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -940,6 +1143,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="usersV1")
     def users_v1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
         return pulumi.get(self, "users_v1")
 
     @users_v1.setter
@@ -952,6 +1158,10 @@ class RiskRulesSourceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: A unique id that represents the source of the event.
+        :param pulumi.Input[str] name: The name of the source
+        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -960,6 +1170,9 @@ class RiskRulesSourceArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique id that represents the source of the event.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -969,6 +1182,9 @@ class RiskRulesSourceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the source
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -988,6 +1204,21 @@ class GetAppsConfigurationArgs:
                  redirect_uri: str,
                  refresh_token_expiration_minutes: int,
                  token_endpoint_auth_method: int):
+        """
+        :param int access_token_expiration_minutes: OIDC Apps only Number of minutes the refresh token will be valid for.
+        :param str login_url: OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        :param int oidc_application_type: OIDC Apps Only
+                 - 0: Web
+                 - 1: Native/Mobile
+        :param str oidc_encryption_key: OIDC Apps only
+        :param str post_logout_redirect_uri: OIDC Apps only
+        :param str redirect_uri: OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        :param int refresh_token_expiration_minutes: Number of minutes the refresh token will be valid for.
+        :param int token_endpoint_auth_method: OIDC Apps only
+                - 0: Basic
+                - 1: POST
+                - 2: None / PKCE
+        """
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "login_url", login_url)
         pulumi.set(__self__, "oidc_api_version", oidc_api_version)
@@ -1001,6 +1232,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> int:
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -1010,6 +1244,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> str:
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
         return pulumi.get(self, "login_url")
 
     @login_url.setter
@@ -1028,6 +1265,11 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="oidcApplicationType")
     def oidc_application_type(self) -> int:
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
         return pulumi.get(self, "oidc_application_type")
 
     @oidc_application_type.setter
@@ -1037,6 +1279,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="oidcEncryptionKey")
     def oidc_encryption_key(self) -> str:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "oidc_encryption_key")
 
     @oidc_encryption_key.setter
@@ -1046,6 +1291,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="postLogoutRedirectUri")
     def post_logout_redirect_uri(self) -> str:
+        """
+        OIDC Apps only
+        """
         return pulumi.get(self, "post_logout_redirect_uri")
 
     @post_logout_redirect_uri.setter
@@ -1055,6 +1303,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> str:
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
         return pulumi.get(self, "redirect_uri")
 
     @redirect_uri.setter
@@ -1064,6 +1315,9 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> int:
+        """
+        Number of minutes the refresh token will be valid for.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -1073,6 +1327,12 @@ class GetAppsConfigurationArgs:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> int:
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @token_endpoint_auth_method.setter
@@ -1096,6 +1356,21 @@ class GetAppsEnforcementPointArgs:
                  token: str,
                  use_target_host_header: bool,
                  vhost: str):
+        """
+        :param bool case_sensitive: The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        :param str conditions: If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        :param str context_root: The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        :param str landing_page: The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        :param str permissions: Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        :param bool require_sitewide_authentication: Require user authentication to access any resource protected by this enforcement point.
+        :param Sequence['GetAppsEnforcementPointResourceArgs'] resources: Array of resource objects
+        :param 'GetAppsEnforcementPointSessionExpiryFixedArgs' session_expiry_fixed: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param 'GetAppsEnforcementPointSessionExpiryInactivityArgs' session_expiry_inactivity: unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        :param str target: A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        :param str token: Can only be set on create. Access Gateway Token.
+        :param bool use_target_host_header: Use the target host header as opposed to the original gateway or upstream host header.
+        :param str vhost: A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         pulumi.set(__self__, "case_sensitive", case_sensitive)
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "context_root", context_root)
@@ -1113,6 +1388,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> bool:
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
@@ -1122,6 +1400,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def conditions(self) -> str:
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -1131,6 +1412,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="contextRoot")
     def context_root(self) -> str:
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
         return pulumi.get(self, "context_root")
 
     @context_root.setter
@@ -1140,6 +1424,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="landingPage")
     def landing_page(self) -> str:
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
         return pulumi.get(self, "landing_page")
 
     @landing_page.setter
@@ -1149,6 +1436,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def permissions(self) -> str:
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -1158,6 +1448,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="requireSitewideAuthentication")
     def require_sitewide_authentication(self) -> bool:
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
         return pulumi.get(self, "require_sitewide_authentication")
 
     @require_sitewide_authentication.setter
@@ -1167,6 +1460,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def resources(self) -> Sequence['GetAppsEnforcementPointResourceArgs']:
+        """
+        Array of resource objects
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -1176,6 +1472,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="sessionExpiryFixed")
     def session_expiry_fixed(self) -> 'GetAppsEnforcementPointSessionExpiryFixedArgs':
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_fixed")
 
     @session_expiry_fixed.setter
@@ -1185,6 +1484,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="sessionExpiryInactivity")
     def session_expiry_inactivity(self) -> 'GetAppsEnforcementPointSessionExpiryInactivityArgs':
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
         return pulumi.get(self, "session_expiry_inactivity")
 
     @session_expiry_inactivity.setter
@@ -1194,6 +1496,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def target(self) -> str:
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -1203,6 +1508,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Can only be set on create. Access Gateway Token.
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -1212,6 +1520,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter(name="useTargetHostHeader")
     def use_target_host_header(self) -> bool:
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
         return pulumi.get(self, "use_target_host_header")
 
     @use_target_host_header.setter
@@ -1221,6 +1532,9 @@ class GetAppsEnforcementPointArgs:
     @property
     @pulumi.getter
     def vhost(self) -> str:
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
         return pulumi.get(self, "vhost")
 
     @vhost.setter
@@ -1236,6 +1550,9 @@ class GetAppsEnforcementPointResourceArgs:
                  path: str,
                  permission: str,
                  require_auth: bool):
+        """
+        :param str conditions: required if permission == "conditions"
+        """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "is_path_regex", is_path_regex)
         pulumi.set(__self__, "path", path)
@@ -1245,6 +1562,9 @@ class GetAppsEnforcementPointResourceArgs:
     @property
     @pulumi.getter
     def conditions(self) -> str:
+        """
+        required if permission == "conditions"
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -1525,6 +1845,14 @@ class GetAppsSsoArgs:
                  client_secret: str,
                  issuer: str,
                  metadata_url: str):
+        """
+        :param str acs_url: App Name.	This is only returned after Creating a SAML App.
+        :param 'GetAppsSsoCertificateArgs' certificate: The certificate used for signing.	This is only returned after Creating a SAML App.
+        :param str client_id: The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        :param str client_secret: OpenId Connet Client Secret
+        :param str issuer: Issuer of app.	This is only returned after Creating a SAML App.
+        :param str metadata_url: ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         pulumi.set(__self__, "acs_url", acs_url)
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "client_id", client_id)
@@ -1535,6 +1863,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter(name="acsUrl")
     def acs_url(self) -> str:
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "acs_url")
 
     @acs_url.setter
@@ -1544,6 +1875,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter
     def certificate(self) -> 'GetAppsSsoCertificateArgs':
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -1553,6 +1887,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -1562,6 +1899,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
+        """
+        OpenId Connet Client Secret
+        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -1571,6 +1911,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter
     def issuer(self) -> str:
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -1580,6 +1923,9 @@ class GetAppsSsoArgs:
     @property
     @pulumi.getter(name="metadataUrl")
     def metadata_url(self) -> str:
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
         return pulumi.get(self, "metadata_url")
 
     @metadata_url.setter
@@ -1659,6 +2005,12 @@ class GetAuthServersConfigurationArgs:
                  audiences: Sequence[str],
                  refresh_token_expiration_minutes: int,
                  resource_identifier: str):
+        """
+        :param int access_token_expiration_minutes: The number of minutes until access token expires. There is no maximum expiry limit.
+        :param Sequence[str] audiences: List of API endpoints that will be returned in Access Tokens.
+        :param int refresh_token_expiration_minutes: The number of minutes until refresh token expires. There is no maximum expiry limit.
+        :param str resource_identifier: Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "audiences", audiences)
         pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
@@ -1667,6 +2019,9 @@ class GetAuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> int:
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -1676,6 +2031,9 @@ class GetAuthServersConfigurationArgs:
     @property
     @pulumi.getter
     def audiences(self) -> Sequence[str]:
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
@@ -1685,6 +2043,9 @@ class GetAuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> int:
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -1694,6 +2055,9 @@ class GetAuthServersConfigurationArgs:
     @property
     @pulumi.getter(name="resourceIdentifier")
     def resource_identifier(self) -> str:
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         return pulumi.get(self, "resource_identifier")
 
     @resource_identifier.setter
@@ -1735,6 +2099,12 @@ class GetAuthServersInstanceConfigurationArgs:
                  audiences: Sequence[str],
                  refresh_token_expiration_minutes: int,
                  resource_identifier: str):
+        """
+        :param int access_token_expiration_minutes: The number of minutes until access token expires. There is no maximum expiry limit.
+        :param Sequence[str] audiences: List of API endpoints that will be returned in Access Tokens.
+        :param int refresh_token_expiration_minutes: The number of minutes until refresh token expires. There is no maximum expiry limit.
+        :param str resource_identifier: Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         pulumi.set(__self__, "access_token_expiration_minutes", access_token_expiration_minutes)
         pulumi.set(__self__, "audiences", audiences)
         pulumi.set(__self__, "refresh_token_expiration_minutes", refresh_token_expiration_minutes)
@@ -1743,6 +2113,9 @@ class GetAuthServersInstanceConfigurationArgs:
     @property
     @pulumi.getter(name="accessTokenExpirationMinutes")
     def access_token_expiration_minutes(self) -> int:
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "access_token_expiration_minutes")
 
     @access_token_expiration_minutes.setter
@@ -1752,6 +2125,9 @@ class GetAuthServersInstanceConfigurationArgs:
     @property
     @pulumi.getter
     def audiences(self) -> Sequence[str]:
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
@@ -1761,6 +2137,9 @@ class GetAuthServersInstanceConfigurationArgs:
     @property
     @pulumi.getter(name="refreshTokenExpirationMinutes")
     def refresh_token_expiration_minutes(self) -> int:
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
         return pulumi.get(self, "refresh_token_expiration_minutes")
 
     @refresh_token_expiration_minutes.setter
@@ -1770,6 +2149,9 @@ class GetAuthServersInstanceConfigurationArgs:
     @property
     @pulumi.getter(name="resourceIdentifier")
     def resource_identifier(self) -> str:
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
         return pulumi.get(self, "resource_identifier")
 
     @resource_identifier.setter
@@ -1809,12 +2191,19 @@ class GetMappingsActionArgs:
     def __init__(__self__, *,
                  action: str,
                  values: Sequence[str]):
+        """
+        :param str action: The action to apply
+        :param Sequence[str] values: Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        The action to apply
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -1824,6 +2213,9 @@ class GetMappingsActionArgs:
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1837,6 +2229,11 @@ class GetMappingsConditionArgs:
                  operator: str,
                  source: str,
                  value: str):
+        """
+        :param str operator: A valid operator for the selected condition source
+        :param str source: source field to check.
+        :param str value: A plain text string or valid value for the selected  condition source
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "value", value)
@@ -1844,6 +2241,9 @@ class GetMappingsConditionArgs:
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        A valid operator for the selected condition source
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -1853,6 +2253,9 @@ class GetMappingsConditionArgs:
     @property
     @pulumi.getter
     def source(self) -> str:
+        """
+        source field to check.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -1862,6 +2265,9 @@ class GetMappingsConditionArgs:
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        A plain text string or valid value for the selected  condition source
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1956,6 +2362,16 @@ class GetPrivilegesInstancePrivilegeStatementArgs:
                  actions: Sequence[str],
                  effect: str,
                  scopes: Sequence[str]):
+        """
+        :param Sequence[str] actions: An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+               e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        :param str effect: Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        :param Sequence[str] scopes: Target the privileged action against specific resources with the scope.
+               The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+               e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+               The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+               The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "scopes", scopes)
@@ -1963,6 +2379,10 @@ class GetPrivilegesInstancePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -1972,6 +2392,9 @@ class GetPrivilegesInstancePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def effect(self) -> str:
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -1981,6 +2404,13 @@ class GetPrivilegesInstancePrivilegeStatementArgs:
     @property
     @pulumi.getter
     def scopes(self) -> Sequence[str]:
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -2021,6 +2451,16 @@ class GetPrivilegesPrivilegeStatementArgs:
                  actions: Sequence[str],
                  effect: str,
                  scopes: Sequence[str]):
+        """
+        :param Sequence[str] actions: An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+               e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        :param str effect: Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        :param Sequence[str] scopes: Target the privileged action against specific resources with the scope.
+               The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+               e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+               The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+               The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "scopes", scopes)
@@ -2028,6 +2468,10 @@ class GetPrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -2037,6 +2481,9 @@ class GetPrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def effect(self) -> str:
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -2046,6 +2493,13 @@ class GetPrivilegesPrivilegeStatementArgs:
     @property
     @pulumi.getter
     def scopes(self) -> Sequence[str]:
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -2085,12 +2539,19 @@ class GetRiskRulesInstanceSourceArgs:
     def __init__(__self__, *,
                  id: str,
                  name: str):
+        """
+        :param str id: A unique id that represents the source of the event.
+        :param str name: The name of the source
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        A unique id that represents the source of the event.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -2100,6 +2561,9 @@ class GetRiskRulesInstanceSourceArgs:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the source
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2112,12 +2576,19 @@ class GetRiskRulesSourceArgs:
     def __init__(__self__, *,
                  id: str,
                  name: str):
+        """
+        :param str id: A unique id that represents the source of the event.
+        :param str name: The name of the source
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        A unique id that represents the source of the event.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -2127,6 +2598,9 @@ class GetRiskRulesSourceArgs:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the source
+        """
         return pulumi.get(self, "name")
 
     @name.setter

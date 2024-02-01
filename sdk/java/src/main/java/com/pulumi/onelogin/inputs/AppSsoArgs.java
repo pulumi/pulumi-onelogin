@@ -16,44 +16,92 @@ public final class AppSsoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSsoArgs Empty = new AppSsoArgs();
 
+    /**
+     * App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     @Import(name="acsUrl")
     private @Nullable Output<String> acsUrl;
 
+    /**
+     * @return App Name.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<Output<String>> acsUrl() {
         return Optional.ofNullable(this.acsUrl);
     }
 
+    /**
+     * The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     @Import(name="certificate")
     private @Nullable Output<AppSsoCertificateArgs> certificate;
 
+    /**
+     * @return The certificate used for signing.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<Output<AppSsoCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
+    /**
+     * The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
+    /**
+     * @return The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+     * 
+     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * OpenId Connet Client Secret
+     * 
+     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
+    /**
+     * @return OpenId Connet Client Secret
+     * 
+     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
 
+    /**
+     * Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
+    /**
+     * @return Issuer of app.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<Output<String>> issuer() {
         return Optional.ofNullable(this.issuer);
     }
 
+    /**
+     * ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     @Import(name="metadataUrl")
     private @Nullable Output<String> metadataUrl;
 
+    /**
+     * @return ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+     * 
+     */
     public Optional<Output<String>> metadataUrl() {
         return Optional.ofNullable(this.metadataUrl);
     }
@@ -87,56 +135,128 @@ public final class AppSsoArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AppSsoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acsUrl App Name.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acsUrl(@Nullable Output<String> acsUrl) {
             $.acsUrl = acsUrl;
             return this;
         }
 
+        /**
+         * @param acsUrl App Name.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acsUrl(String acsUrl) {
             return acsUrl(Output.of(acsUrl));
         }
 
+        /**
+         * @param certificate The certificate used for signing.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(@Nullable Output<AppSsoCertificateArgs> certificate) {
             $.certificate = certificate;
             return this;
         }
 
+        /**
+         * @param certificate The certificate used for signing.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(AppSsoCertificateArgs certificate) {
             return certificate(Output.of(certificate));
         }
 
+        /**
+         * @param clientId The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret OpenId Connet Client Secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret OpenId Connet Client Secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param issuer Issuer of app.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(@Nullable Output<String> issuer) {
             $.issuer = issuer;
             return this;
         }
 
+        /**
+         * @param issuer Issuer of app.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(String issuer) {
             return issuer(Output.of(issuer));
         }
 
+        /**
+         * @param metadataUrl ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadataUrl(@Nullable Output<String> metadataUrl) {
             $.metadataUrl = metadataUrl;
             return this;
         }
 
+        /**
+         * @param metadataUrl ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadataUrl(String metadataUrl) {
             return metadataUrl(Output.of(metadataUrl));
         }

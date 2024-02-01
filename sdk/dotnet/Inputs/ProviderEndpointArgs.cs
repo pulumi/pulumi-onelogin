@@ -12,27 +12,51 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class ProviderEndpointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("apps")]
         public Input<string>? Apps { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("appsRules")]
         public Input<string>? AppsRules { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("authServers")]
         public Input<string>? AuthServers { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("privileges")]
         public Input<string>? Privileges { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("riskRules")]
         public Input<string>? RiskRules { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("roles")]
         public Input<string>? Roles { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("users")]
         public Input<string>? Users { get; set; }
 
+        /// <summary>
+        /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        /// </summary>
         [Input("usersV1")]
         public Input<string>? UsersV1 { get; set; }
 

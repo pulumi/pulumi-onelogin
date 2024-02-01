@@ -12,9 +12,15 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class GetRiskRulesInstanceSourceInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A unique id that represents the source of the event.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the source
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

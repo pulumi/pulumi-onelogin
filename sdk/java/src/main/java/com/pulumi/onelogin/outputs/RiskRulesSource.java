@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RiskRulesSource {
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The name of the source
+     * 
+     */
     private @Nullable String name;
 
     private RiskRulesSource() {}
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The name of the source
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

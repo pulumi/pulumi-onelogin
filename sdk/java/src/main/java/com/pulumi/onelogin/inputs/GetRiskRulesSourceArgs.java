@@ -14,16 +14,32 @@ public final class GetRiskRulesSourceArgs extends com.pulumi.resources.ResourceA
 
     public static final GetRiskRulesSourceArgs Empty = new GetRiskRulesSourceArgs();
 
+    /**
+     * A unique id that represents the source of the event.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return A unique id that represents the source of the event.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
 
+    /**
+     * The name of the source
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the source
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -53,20 +69,44 @@ public final class GetRiskRulesSourceArgs extends com.pulumi.resources.ResourceA
             $ = new GetRiskRulesSourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id A unique id that represents the source of the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id A unique id that represents the source of the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param name The name of the source
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the source
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

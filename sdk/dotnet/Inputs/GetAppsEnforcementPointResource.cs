@@ -12,6 +12,9 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class GetAppsEnforcementPointResourceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// required if permission == "conditions"
+        /// </summary>
         [Input("conditions", required: true)]
         public string Conditions { get; set; } = null!;
 

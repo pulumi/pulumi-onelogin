@@ -11,41 +11,115 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceConfiguration {
+    /**
+     * @return OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     private Integer accessTokenExpirationMinutes;
+    /**
+     * @return OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     private String loginUrl;
     private String oidcApiVersion;
+    /**
+     * @return OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     private Integer oidcApplicationType;
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     private String oidcEncryptionKey;
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     private String postLogoutRedirectUri;
+    /**
+     * @return OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     private String redirectUri;
+    /**
+     * @return Number of minutes the refresh token will be valid for.
+     * 
+     */
     private Integer refreshTokenExpirationMinutes;
+    /**
+     * @return OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     private Integer tokenEndpointAuthMethod;
 
     private GetInstanceConfiguration() {}
+    /**
+     * @return OIDC Apps only Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Integer accessTokenExpirationMinutes() {
         return this.accessTokenExpirationMinutes;
     }
+    /**
+     * @return OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+     * 
+     */
     public String loginUrl() {
         return this.loginUrl;
     }
     public String oidcApiVersion() {
         return this.oidcApiVersion;
     }
+    /**
+     * @return OIDC Apps Only
+     *   - 0: Web
+     *   - 1: Native/Mobile
+     * 
+     */
     public Integer oidcApplicationType() {
         return this.oidcApplicationType;
     }
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public String oidcEncryptionKey() {
         return this.oidcEncryptionKey;
     }
+    /**
+     * @return OIDC Apps only
+     * 
+     */
     public String postLogoutRedirectUri() {
         return this.postLogoutRedirectUri;
     }
+    /**
+     * @return OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+     * 
+     */
     public String redirectUri() {
         return this.redirectUri;
     }
+    /**
+     * @return Number of minutes the refresh token will be valid for.
+     * 
+     */
     public Integer refreshTokenExpirationMinutes() {
         return this.refreshTokenExpirationMinutes;
     }
+    /**
+     * @return OIDC Apps only
+     *  - 0: Basic
+     *  - 1: POST
+     *  - 2: None / PKCE
+     * 
+     */
     public Integer tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }

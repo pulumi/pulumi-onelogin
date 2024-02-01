@@ -58,13 +58,37 @@ namespace Pulumi.Onelogin
 
              public class Endpoints
              {
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? Apps { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? AppsRules { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? AuthServers { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? Privileges { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? RiskRules { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? Roles { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? Users { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+            /// </summary>
                 public string? UsersV1 { get; set; } = null!;
             }
         }

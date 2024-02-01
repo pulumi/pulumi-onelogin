@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesCondition {
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     private @Nullable String operator;
+    /**
+     * @return source field to check.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     private @Nullable String value;
 
     private RulesCondition() {}
+    /**
+     * @return A valid operator for the selected condition source
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return source field to check.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return A plain text string or valid value for the selected  condition source
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

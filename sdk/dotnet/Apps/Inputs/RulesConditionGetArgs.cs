@@ -12,12 +12,21 @@ namespace Pulumi.Onelogin.Apps.Inputs
 
     public sealed class RulesConditionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A valid operator for the selected condition source
+        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// source field to check.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// A plain text string or valid value for the selected  condition source
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
