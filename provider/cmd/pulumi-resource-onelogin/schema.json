@@ -3591,14 +3591,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getActionsFilter:getActionsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -3607,13 +3607,13 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "appsId",
                     "name",
                     "value",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getActionsValues:getActionsValues": {
@@ -3656,14 +3656,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getActionsValuesFilter:getActionsValuesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -3672,14 +3672,14 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "actionsId",
                     "appsId",
                     "name",
                     "value",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getConditions:getConditions": {
@@ -3715,14 +3715,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getConditionsFilter:getConditionsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -3731,13 +3731,13 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "appsId",
                     "name",
                     "value",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getConditionsOperators:getConditionsOperators": {
@@ -3780,14 +3780,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getConditionsOperatorsFilter:getConditionsOperatorsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -3796,14 +3796,14 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "appsId",
                     "conditionsId",
                     "name",
                     "value",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getInstance:getInstance": {
@@ -3940,10 +3940,10 @@
                         "$ref": "#/types/onelogin:apps/getInstanceProvisioning:getInstanceProvisioning"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "sso": {
                         "$ref": "#/types/onelogin:apps/getInstanceSso:getInstanceSso"
@@ -3958,7 +3958,6 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object",
                 "required": [
                     "allowAssumedSignin",
                     "authMethod",
@@ -3982,7 +3981,8 @@
                     "tabId",
                     "updatedAt",
                     "visible"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getRules:getRules": {
@@ -4033,32 +4033,32 @@
                 "description": "A collection of values returned by getRules.\n",
                 "properties": {
                     "actions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getRulesAction:getRulesAction"
-                        }
+                        },
+                        "type": "array"
                     },
                     "appsId": {
                         "type": "string"
                     },
                     "conditions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getRulesCondition:getRulesCondition"
-                        }
+                        },
+                        "type": "array"
                     },
                     "enabled": {
                         "type": "boolean"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getRulesFilter:getRulesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "match": {
                         "type": "string"
@@ -4070,7 +4070,6 @@
                         "type": "integer"
                     }
                 },
-                "type": "object",
                 "required": [
                     "actions",
                     "appsId",
@@ -4080,7 +4079,8 @@
                     "name",
                     "position",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getRulesInstance:getRulesInstance": {
@@ -4128,19 +4128,19 @@
                 "description": "A collection of values returned by getRulesInstance.\n",
                 "properties": {
                     "actions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getRulesInstanceAction:getRulesInstanceAction"
-                        }
+                        },
+                        "type": "array"
                     },
                     "appsId": {
                         "type": "string"
                     },
                     "conditions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getRulesInstanceCondition:getRulesInstanceCondition"
-                        }
+                        },
+                        "type": "array"
                     },
                     "enabled": {
                         "type": "boolean"
@@ -4158,7 +4158,6 @@
                         "type": "integer"
                     }
                 },
-                "type": "object",
                 "required": [
                     "actions",
                     "appsId",
@@ -4168,7 +4167,8 @@
                     "match",
                     "name",
                     "position"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:apps/getUsers:getUsers": {
@@ -4333,10 +4333,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:apps/getUsersFilter:getUsersFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "firstname": {
                         "type": "string"
@@ -4345,8 +4345,8 @@
                         "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "invalidLoginAttempts": {
                         "type": "integer"
@@ -4391,10 +4391,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "salt": {
                         "type": "string"
@@ -4424,7 +4424,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "appsId",
@@ -4463,7 +4462,8 @@
                     "username",
                     "userprincipalname",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getApps:getApps": {
@@ -4577,17 +4577,17 @@
                         "$ref": "#/types/onelogin:index/getAppsEnforcementPoint:getAppsEnforcementPoint"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getAppsFilter:getAppsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "iconUrl": {
                         "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "loginConfig": {
                         "type": "integer"
@@ -4608,10 +4608,10 @@
                         "$ref": "#/types/onelogin:index/getAppsProvisioning:getAppsProvisioning"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "sso": {
                         "$ref": "#/types/onelogin:index/getAppsSso:getAppsSso"
@@ -4626,7 +4626,6 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object",
                 "required": [
                     "allowAssumedSignin",
                     "authMethod",
@@ -4650,7 +4649,8 @@
                     "updatedAt",
                     "visible",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getAuthServers:getAuthServers": {
@@ -4686,26 +4686,26 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getAuthServersFilter:getAuthServersFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "configuration",
                     "description",
                     "name",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getAuthServersClaims:getAuthServersClaims": {
@@ -4768,14 +4768,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getAuthServersClaimsFilter:getAuthServersClaimsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "label": {
                         "type": "string"
@@ -4793,13 +4793,12 @@
                         "type": "string"
                     },
                     "values": {
-                        "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "attributeTransformations",
                     "authServersId",
@@ -4811,7 +4810,8 @@
                     "userAttributeMappings",
                     "values",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getAuthServersInstance:getAuthServersInstance": {
@@ -4852,13 +4852,13 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "configuration",
                     "description",
                     "id",
                     "name"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getAuthServersScopes:getAuthServersScopes": {
@@ -4897,26 +4897,26 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getAuthServersScopesFilter:getAuthServersScopesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "value": {
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "authServersId",
                     "description",
                     "value",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getMappings:getMappings": {
@@ -4961,29 +4961,29 @@
                 "description": "A collection of values returned by getMappings.\n",
                 "properties": {
                     "actions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getMappingsAction:getMappingsAction"
-                        }
+                        },
+                        "type": "array"
                     },
                     "conditions": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getMappingsCondition:getMappingsCondition"
-                        }
+                        },
+                        "type": "array"
                     },
                     "enabled": {
                         "type": "boolean"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getMappingsFilter:getMappingsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "match": {
                         "type": "string"
@@ -4995,7 +4995,6 @@
                         "type": "integer"
                     }
                 },
-                "type": "object",
                 "required": [
                     "actions",
                     "conditions",
@@ -5004,7 +5003,8 @@
                     "name",
                     "position",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getPrivileges:getPrivileges": {
@@ -5037,14 +5037,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getPrivilegesFilter:getPrivilegesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -5053,13 +5053,13 @@
                         "$ref": "#/types/onelogin:index/getPrivilegesPrivilege:getPrivilegesPrivilege"
                     }
                 },
-                "type": "object",
                 "required": [
                     "description",
                     "name",
                     "privilege",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getPrivilegesInstance:getPrivilegesInstance": {
@@ -5100,13 +5100,13 @@
                         "$ref": "#/types/onelogin:index/getPrivilegesInstancePrivilege:getPrivilegesInstancePrivilege"
                     }
                 },
-                "type": "object",
                 "required": [
                     "description",
                     "id",
                     "name",
                     "privilege"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getRiskRules:getRiskRules": {
@@ -5151,20 +5151,20 @@
                         "type": "string"
                     },
                     "filter": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:index/getRiskRulesFilter:getRiskRulesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -5179,7 +5179,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "description",
                     "filters",
@@ -5188,7 +5187,8 @@
                     "target",
                     "type",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:index/getRiskRulesInstance:getRiskRulesInstance": {
@@ -5232,10 +5232,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
                         "type": "string"
@@ -5253,7 +5253,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "description",
                     "filters",
@@ -5262,7 +5261,8 @@
                     "source",
                     "target",
                     "type"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:roles/getAdmins:getAdmins": {
@@ -5424,10 +5424,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:roles/getAdminsFilter:getAdminsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "firstname": {
                         "type": "string"
@@ -5436,8 +5436,8 @@
                         "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "invalidLoginAttempts": {
                         "type": "integer"
@@ -5482,10 +5482,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "rolesId": {
                         "type": "string"
@@ -5518,7 +5518,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -5557,7 +5556,8 @@
                     "username",
                     "userprincipalname",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:roles/getApps:getApps": {
@@ -5590,17 +5590,17 @@
                 "description": "A collection of values returned by getApps.\n",
                 "properties": {
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:roles/getAppsFilter:getAppsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "iconUrl": {
                         "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -5609,13 +5609,13 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "iconUrl",
                     "name",
                     "rolesId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:roles/getInstance:getInstance": {
@@ -5656,16 +5656,16 @@
                 "description": "A collection of values returned by getInstance.\n",
                 "properties": {
                     "admins": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "apps": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
                         "type": "string"
@@ -5674,20 +5674,20 @@
                         "type": "string"
                     },
                     "users": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "admins",
                     "apps",
                     "id",
                     "name",
                     "users"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:roles/getRoles:getRoles": {
@@ -5729,45 +5729,45 @@
                 "description": "A collection of values returned by getRoles.\n",
                 "properties": {
                     "admins": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "apps": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:roles/getRolesFilter:getRolesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
                     },
                     "users": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "admins",
                     "apps",
                     "name",
                     "users",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:roles/getUsers:getUsers": {
@@ -5929,10 +5929,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:roles/getUsersFilter:getUsersFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "firstname": {
                         "type": "string"
@@ -5941,8 +5941,8 @@
                         "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "invalidLoginAttempts": {
                         "type": "integer"
@@ -5987,10 +5987,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "rolesId": {
                         "type": "string"
@@ -6023,7 +6023,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -6062,7 +6061,8 @@
                     "username",
                     "userprincipalname",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getApps:getApps": {
@@ -6113,17 +6113,17 @@
                         "type": "boolean"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:users/getAppsFilter:getAppsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "iconUrl": {
                         "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "loginId": {
                         "type": "integer"
@@ -6144,7 +6144,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "extension",
                     "iconUrl",
@@ -6155,7 +6154,8 @@
                     "provisioningStatus",
                     "usersId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getDevices:getDevices": {
@@ -6206,14 +6206,14 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:users/getDevicesFilter:getDevicesFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "typeDisplayName": {
                         "type": "string"
@@ -6225,7 +6225,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "authFactorName",
                     "default",
@@ -6234,7 +6233,8 @@
                     "userDisplayName",
                     "usersId",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getInstance:getInstance": {
@@ -6440,10 +6440,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "salt": {
                         "type": "string"
@@ -6473,7 +6473,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -6511,7 +6510,8 @@
                     "updatedAt",
                     "username",
                     "userprincipalname"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getUsers:getUsers": {
@@ -6667,10 +6667,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:users/getUsersFilter:getUsersFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "firstname": {
                         "type": "string"
@@ -6679,8 +6679,8 @@
                         "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "invalidLoginAttempts": {
                         "type": "integer"
@@ -6725,10 +6725,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "salt": {
                         "type": "string"
@@ -6758,7 +6758,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -6796,7 +6795,8 @@
                     "username",
                     "userprincipalname",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getV1:getV1": {
@@ -6952,10 +6952,10 @@
                         "type": "string"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:users/getV1Filter:getV1Filter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "firstname": {
                         "type": "string"
@@ -6964,8 +6964,8 @@
                         "type": "integer"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "invalidLoginAttempts": {
                         "type": "integer"
@@ -7010,10 +7010,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "salt": {
                         "type": "string"
@@ -7043,7 +7043,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -7081,7 +7080,8 @@
                     "username",
                     "userprincipalname",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getV1Apps:getV1Apps": {
@@ -7132,17 +7132,17 @@
                         "type": "boolean"
                     },
                     "filters": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/onelogin:users/getV1AppsFilter:getV1AppsFilter"
-                        }
+                        },
+                        "type": "array"
                     },
                     "iconUrl": {
                         "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "loginId": {
                         "type": "integer"
@@ -7163,7 +7163,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "extension",
                     "iconUrl",
@@ -7174,7 +7173,8 @@
                     "provisioningStatus",
                     "usersV1Id",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "onelogin:users/getV1Instance:getV1Instance": {
@@ -7380,10 +7380,10 @@
                         "type": "string"
                     },
                     "roleIds": {
-                        "type": "array",
                         "items": {
                             "type": "integer"
-                        }
+                        },
+                        "type": "array"
                     },
                     "salt": {
                         "type": "string"
@@ -7413,7 +7413,6 @@
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "activatedAt",
                     "comment",
@@ -7451,7 +7450,8 @@
                     "updatedAt",
                     "username",
                     "userprincipalname"
-                ]
+                ],
+                "type": "object"
             }
         }
     }
