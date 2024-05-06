@@ -62,8 +62,8 @@ export class App extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-     * with the app payload.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+     * the app payload.
      */
     public readonly enforcementPoint!: pulumi.Output<outputs.AppEnforcementPoint | undefined>;
     /**
@@ -209,8 +209,8 @@ export interface AppState {
      */
     description?: pulumi.Input<string>;
     /**
-     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-     * with the app payload.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+     * the app payload.
      */
     enforcementPoint?: pulumi.Input<inputs.AppEnforcementPoint>;
     /**
@@ -291,8 +291,8 @@ export interface AppArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-     * with the app payload.
+     * For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+     * the app payload.
      */
     enforcementPoint?: pulumi.Input<inputs.AppEnforcementPoint>;
     /**
