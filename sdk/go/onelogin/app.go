@@ -30,8 +30,8 @@ type App struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Freeform description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-	// with the app payload.
+	// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+	// the app payload.
 	EnforcementPoint AppEnforcementPointPtrOutput `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
 	IconUrl     pulumi.StringPtrOutput `pulumi:"iconUrl"`
@@ -107,8 +107,8 @@ type appState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Freeform description of the app.
 	Description *string `pulumi:"description"`
-	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-	// with the app payload.
+	// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+	// the app payload.
 	EnforcementPoint *AppEnforcementPoint `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
 	IconUrl     *string `pulumi:"iconUrl"`
@@ -152,8 +152,8 @@ type AppState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Freeform description of the app.
 	Description pulumi.StringPtrInput
-	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-	// with the app payload.
+	// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+	// the app payload.
 	EnforcementPoint AppEnforcementPointPtrInput
 	// A link to the apps icon url
 	IconUrl     pulumi.StringPtrInput
@@ -201,8 +201,8 @@ type appArgs struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Freeform description of the app.
 	Description *string `pulumi:"description"`
-	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-	// with the app payload.
+	// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+	// the app payload.
 	EnforcementPoint *AppEnforcementPoint `pulumi:"enforcementPoint"`
 	// A link to the apps icon url
 	IconUrl     *string `pulumi:"iconUrl"`
@@ -247,8 +247,8 @@ type AppArgs struct {
 	CreatedAt pulumi.StringPtrInput
 	// Freeform description of the app.
 	Description pulumi.StringPtrInput
-	// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-	// with the app payload.
+	// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+	// the app payload.
 	EnforcementPoint AppEnforcementPointPtrInput
 	// A link to the apps icon url
 	IconUrl     pulumi.StringPtrInput
@@ -402,8 +402,8 @@ func (o AppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-// with the app payload.
+// For apps that connect to a OneLogin Access Enforcement Point the following enforcementPoint object will be included with
+// the app payload.
 func (o AppOutput) EnforcementPoint() AppEnforcementPointPtrOutput {
 	return o.ApplyT(func(v *App) AppEnforcementPointPtrOutput { return v.EnforcementPoint }).(AppEnforcementPointPtrOutput)
 }
