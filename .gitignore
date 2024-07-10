@@ -14,6 +14,6 @@ sdk/dotnet/version.txt
 yarn.lock
 sdk/java/.gradle
 sdk/java/build
-
+provider/**/schema-embed.json
 
 sdk/python/venv
