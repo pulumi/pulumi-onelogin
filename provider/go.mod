@@ -1,11 +1,11 @@
 module github.com/pulumi/pulumi-onelogin/provider
 
-go 1.21
+go 1.21.12
 
 require (
 	github.com/onelogin/terraform-provider-onelogin v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.0
-	github.com/pulumi/pulumi/sdk/v3 v3.121.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
+	github.com/pulumi/pulumi/sdk/v3 v3.124.0
 )
 
 replace github.com/onelogin/terraform-provider-onelogin => ../upstream
@@ -79,7 +79,7 @@ require (
 	github.com/hashicorp/go-getter v1.7.5 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-plugin v1.6.0 // indirect
-	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
+	github.com/hashicorp/go-retryablehttp v0.7.7 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
 	github.com/hashicorp/go-secure-stdlib/parseutil v0.1.8 // indirect
@@ -133,8 +133,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.8.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.121.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.9.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.124.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -221,7 +221,7 @@ require (
 	github.com/go-openapi/spec v0.20.8 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
-	github.com/hashicorp/go-hclog v1.5.0 // indirect
+	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
