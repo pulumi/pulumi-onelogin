@@ -82,9 +82,9 @@ class AwaitableGetAuthServersResult(GetAuthServersResult):
             name=self.name)
 
 
-def get_auth_servers(configuration: Optional[pulumi.InputType['GetAuthServersConfigurationArgs']] = None,
+def get_auth_servers(configuration: Optional[Union['GetAuthServersConfigurationArgs', 'GetAuthServersConfigurationArgsDict']] = None,
                      description: Optional[str] = None,
-                     filters: Optional[Sequence[pulumi.InputType['GetAuthServersFilterArgs']]] = None,
+                     filters: Optional[Sequence[Union['GetAuthServersFilterArgs', 'GetAuthServersFilterArgsDict']]] = None,
                      name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthServersResult:
     """
@@ -107,9 +107,9 @@ def get_auth_servers(configuration: Optional[pulumi.InputType['GetAuthServersCon
 
 
 @_utilities.lift_output_func(get_auth_servers)
-def get_auth_servers_output(configuration: Optional[pulumi.Input[Optional[pulumi.InputType['GetAuthServersConfigurationArgs']]]] = None,
+def get_auth_servers_output(configuration: Optional[pulumi.Input[Optional[Union['GetAuthServersConfigurationArgs', 'GetAuthServersConfigurationArgsDict']]]] = None,
                             description: Optional[pulumi.Input[Optional[str]]] = None,
-                            filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAuthServersFilterArgs']]]]] = None,
+                            filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAuthServersFilterArgs', 'GetAuthServersFilterArgsDict']]]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthServersResult]:
     """

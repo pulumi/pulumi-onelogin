@@ -84,7 +84,7 @@ class AwaitableGetAuthServersScopesResult(GetAuthServersScopesResult):
 
 def get_auth_servers_scopes(auth_servers_id: Optional[str] = None,
                             description: Optional[str] = None,
-                            filters: Optional[Sequence[pulumi.InputType['GetAuthServersScopesFilterArgs']]] = None,
+                            filters: Optional[Sequence[Union['GetAuthServersScopesFilterArgs', 'GetAuthServersScopesFilterArgsDict']]] = None,
                             value: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthServersScopesResult:
     """
@@ -109,7 +109,7 @@ def get_auth_servers_scopes(auth_servers_id: Optional[str] = None,
 @_utilities.lift_output_func(get_auth_servers_scopes)
 def get_auth_servers_scopes_output(auth_servers_id: Optional[pulumi.Input[str]] = None,
                                    description: Optional[pulumi.Input[Optional[str]]] = None,
-                                   filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAuthServersScopesFilterArgs']]]]] = None,
+                                   filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAuthServersScopesFilterArgs', 'GetAuthServersScopesFilterArgsDict']]]]] = None,
                                    value: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthServersScopesResult]:
     """

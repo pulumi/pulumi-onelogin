@@ -99,7 +99,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RiskRules(String name) {
+    public RiskRules(java.lang.String name) {
         this(name, RiskRulesArgs.Empty);
     }
     /**
@@ -107,7 +107,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RiskRules(String name, @Nullable RiskRulesArgs args) {
+    public RiskRules(java.lang.String name, @Nullable RiskRulesArgs args) {
         this(name, args, null);
     }
     /**
@@ -116,15 +116,22 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RiskRules(String name, @Nullable RiskRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/riskRules:RiskRules", name, args == null ? RiskRulesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RiskRules(java.lang.String name, @Nullable RiskRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/riskRules:RiskRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RiskRules(String name, Output<String> id, @Nullable RiskRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/riskRules:RiskRules", name, state, makeResourceOptions(options, id));
+    private RiskRules(java.lang.String name, Output<java.lang.String> id, @Nullable RiskRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/riskRules:RiskRules", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RiskRulesArgs makeArgs(@Nullable RiskRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RiskRulesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -140,7 +147,7 @@ public class RiskRules extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RiskRules get(String name, Output<String> id, @Nullable RiskRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RiskRules get(java.lang.String name, Output<java.lang.String> id, @Nullable RiskRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RiskRules(name, id, state, options);
     }
 }
