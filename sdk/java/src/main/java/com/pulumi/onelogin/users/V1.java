@@ -427,7 +427,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public V1(String name) {
+    public V1(java.lang.String name) {
         this(name, V1Args.Empty);
     }
     /**
@@ -435,7 +435,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public V1(String name, @Nullable V1Args args) {
+    public V1(java.lang.String name, @Nullable V1Args args) {
         this(name, args, null);
     }
     /**
@@ -444,15 +444,22 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public V1(String name, @Nullable V1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:users/v1:V1", name, args == null ? V1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public V1(java.lang.String name, @Nullable V1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:users/v1:V1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private V1(String name, Output<String> id, @Nullable V1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:users/v1:V1", name, state, makeResourceOptions(options, id));
+    private V1(java.lang.String name, Output<java.lang.String> id, @Nullable V1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:users/v1:V1", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static V1Args makeArgs(@Nullable V1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? V1Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -468,7 +475,7 @@ public class V1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static V1 get(String name, Output<String> id, @Nullable V1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static V1 get(java.lang.String name, Output<java.lang.String> id, @Nullable V1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new V1(name, id, state, options);
     }
 }

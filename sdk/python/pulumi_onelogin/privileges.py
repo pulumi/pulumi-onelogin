@@ -107,7 +107,7 @@ class Privileges(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 privilege: Optional[pulumi.Input[pulumi.InputType['PrivilegesPrivilegeArgs']]] = None,
+                 privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None,
                  __props__=None):
         """
         Create a Privileges resource with the given unique name, props, and options.
@@ -139,7 +139,7 @@ class Privileges(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 privilege: Optional[pulumi.Input[pulumi.InputType['PrivilegesPrivilegeArgs']]] = None,
+                 privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -166,7 +166,7 @@ class Privileges(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            privilege: Optional[pulumi.Input[pulumi.InputType['PrivilegesPrivilegeArgs']]] = None) -> 'Privileges':
+            privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None) -> 'Privileges':
         """
         Get an existing Privileges resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -106,9 +106,9 @@ class AwaitableGetRulesInstanceResult(GetRulesInstanceResult):
             position=self.position)
 
 
-def get_rules_instance(actions: Optional[Sequence[pulumi.InputType['GetRulesInstanceActionArgs']]] = None,
+def get_rules_instance(actions: Optional[Sequence[Union['GetRulesInstanceActionArgs', 'GetRulesInstanceActionArgsDict']]] = None,
                        apps_id: Optional[str] = None,
-                       conditions: Optional[Sequence[pulumi.InputType['GetRulesInstanceConditionArgs']]] = None,
+                       conditions: Optional[Sequence[Union['GetRulesInstanceConditionArgs', 'GetRulesInstanceConditionArgsDict']]] = None,
                        enabled: Optional[bool] = None,
                        id: Optional[str] = None,
                        match: Optional[str] = None,
@@ -142,9 +142,9 @@ def get_rules_instance(actions: Optional[Sequence[pulumi.InputType['GetRulesInst
 
 
 @_utilities.lift_output_func(get_rules_instance)
-def get_rules_instance_output(actions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRulesInstanceActionArgs']]]]] = None,
+def get_rules_instance_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['GetRulesInstanceActionArgs', 'GetRulesInstanceActionArgsDict']]]]] = None,
                               apps_id: Optional[pulumi.Input[str]] = None,
-                              conditions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRulesInstanceConditionArgs']]]]] = None,
+                              conditions: Optional[pulumi.Input[Optional[Sequence[Union['GetRulesInstanceConditionArgs', 'GetRulesInstanceConditionArgsDict']]]]] = None,
                               enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                               id: Optional[pulumi.Input[str]] = None,
                               match: Optional[pulumi.Input[Optional[str]]] = None,

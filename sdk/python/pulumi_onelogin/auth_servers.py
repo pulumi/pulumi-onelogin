@@ -128,7 +128,7 @@ class AuthServers(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AuthServersConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AuthServersConfigurationArgs', 'AuthServersConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -136,7 +136,7 @@ class AuthServers(pulumi.CustomResource):
         Create a AuthServers resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthServersConfigurationArgs']] configuration: Authorization server configuration
+        :param pulumi.Input[Union['AuthServersConfigurationArgs', 'AuthServersConfigurationArgsDict']] configuration: Authorization server configuration
         :param pulumi.Input[str] description: Description of what the API does.
         :param pulumi.Input[str] name: Name of the API.
         """
@@ -163,7 +163,7 @@ class AuthServers(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AuthServersConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AuthServersConfigurationArgs', 'AuthServersConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -192,7 +192,7 @@ class AuthServers(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['AuthServersConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['AuthServersConfigurationArgs', 'AuthServersConfigurationArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'AuthServers':
         """
@@ -202,7 +202,7 @@ class AuthServers(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthServersConfigurationArgs']] configuration: Authorization server configuration
+        :param pulumi.Input[Union['AuthServersConfigurationArgs', 'AuthServersConfigurationArgsDict']] configuration: Authorization server configuration
         :param pulumi.Input[str] description: Description of what the API does.
         :param pulumi.Input[str] name: Name of the API.
         """

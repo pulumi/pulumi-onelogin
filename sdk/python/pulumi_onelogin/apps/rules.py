@@ -241,9 +241,9 @@ class Rules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesActionArgs', 'RulesActionArgsDict']]]]] = None,
                  apps_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesConditionArgs', 'RulesConditionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -253,7 +253,7 @@ class Rules(pulumi.CustomResource):
         Create a Rules resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesConditionArgs', 'RulesConditionArgsDict']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
         :param pulumi.Input[bool] enabled: Indicates if the rule is enabled or not.
         :param pulumi.Input[str] match: Indicates how conditions should be matched.
         :param pulumi.Input[str] name: Rule Name
@@ -282,9 +282,9 @@ class Rules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesActionArgs', 'RulesActionArgsDict']]]]] = None,
                  apps_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesConditionArgs', 'RulesConditionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -317,9 +317,9 @@ class Rules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesActionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesActionArgs', 'RulesActionArgsDict']]]]] = None,
             apps_id: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesConditionArgs', 'RulesConditionArgsDict']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             match: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -331,7 +331,7 @@ class Rules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesConditionArgs']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesConditionArgs', 'RulesConditionArgsDict']]]] conditions: An array of conditions that the user must meet in order for the rule to be applied.
         :param pulumi.Input[bool] enabled: Indicates if the rule is enabled or not.
         :param pulumi.Input[str] match: Indicates how conditions should be matched.
         :param pulumi.Input[str] name: Rule Name

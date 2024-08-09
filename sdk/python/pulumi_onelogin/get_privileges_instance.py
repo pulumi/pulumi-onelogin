@@ -73,7 +73,7 @@ class AwaitableGetPrivilegesInstanceResult(GetPrivilegesInstanceResult):
 def get_privileges_instance(description: Optional[str] = None,
                             id: Optional[str] = None,
                             name: Optional[str] = None,
-                            privilege: Optional[pulumi.InputType['GetPrivilegesInstancePrivilegeArgs']] = None,
+                            privilege: Optional[Union['GetPrivilegesInstancePrivilegeArgs', 'GetPrivilegesInstancePrivilegeArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivilegesInstanceResult:
     """
     Use this data source to access information about an existing resource.
@@ -97,7 +97,7 @@ def get_privileges_instance(description: Optional[str] = None,
 def get_privileges_instance_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                                    id: Optional[pulumi.Input[str]] = None,
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
-                                   privilege: Optional[pulumi.Input[Optional[pulumi.InputType['GetPrivilegesInstancePrivilegeArgs']]]] = None,
+                                   privilege: Optional[pulumi.Input[Optional[Union['GetPrivilegesInstancePrivilegeArgs', 'GetPrivilegesInstancePrivilegeArgsDict']]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivilegesInstanceResult]:
     """
     Use this data source to access information about an existing resource.

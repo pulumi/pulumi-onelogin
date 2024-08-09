@@ -128,7 +128,7 @@ class AwaitableGetV1AppsResult(GetV1AppsResult):
 
 
 def get_v1_apps(extension: Optional[bool] = None,
-                filters: Optional[Sequence[pulumi.InputType['GetV1AppsFilterArgs']]] = None,
+                filters: Optional[Sequence[Union['GetV1AppsFilterArgs', 'GetV1AppsFilterArgsDict']]] = None,
                 icon_url: Optional[str] = None,
                 login_id: Optional[int] = None,
                 name: Optional[str] = None,
@@ -168,7 +168,7 @@ def get_v1_apps(extension: Optional[bool] = None,
 
 @_utilities.lift_output_func(get_v1_apps)
 def get_v1_apps_output(extension: Optional[pulumi.Input[Optional[bool]]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetV1AppsFilterArgs']]]]] = None,
+                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetV1AppsFilterArgs', 'GetV1AppsFilterArgsDict']]]]] = None,
                        icon_url: Optional[pulumi.Input[Optional[str]]] = None,
                        login_id: Optional[pulumi.Input[Optional[int]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,

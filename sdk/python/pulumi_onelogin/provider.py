@@ -62,7 +62,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apikey_auth: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
                  __props__=None):
         """
         The provider type for the onelogin package. By default, resources use package-wide configuration
@@ -102,7 +102,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apikey_auth: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

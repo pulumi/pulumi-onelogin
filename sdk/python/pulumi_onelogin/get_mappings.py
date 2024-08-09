@@ -109,10 +109,10 @@ class AwaitableGetMappingsResult(GetMappingsResult):
             position=self.position)
 
 
-def get_mappings(actions: Optional[Sequence[pulumi.InputType['GetMappingsActionArgs']]] = None,
-                 conditions: Optional[Sequence[pulumi.InputType['GetMappingsConditionArgs']]] = None,
+def get_mappings(actions: Optional[Sequence[Union['GetMappingsActionArgs', 'GetMappingsActionArgsDict']]] = None,
+                 conditions: Optional[Sequence[Union['GetMappingsConditionArgs', 'GetMappingsConditionArgsDict']]] = None,
                  enabled: Optional[bool] = None,
-                 filters: Optional[Sequence[pulumi.InputType['GetMappingsFilterArgs']]] = None,
+                 filters: Optional[Sequence[Union['GetMappingsFilterArgs', 'GetMappingsFilterArgsDict']]] = None,
                  match: Optional[str] = None,
                  name: Optional[str] = None,
                  position: Optional[int] = None,
@@ -143,10 +143,10 @@ def get_mappings(actions: Optional[Sequence[pulumi.InputType['GetMappingsActionA
 
 
 @_utilities.lift_output_func(get_mappings)
-def get_mappings_output(actions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMappingsActionArgs']]]]] = None,
-                        conditions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMappingsConditionArgs']]]]] = None,
+def get_mappings_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['GetMappingsActionArgs', 'GetMappingsActionArgsDict']]]]] = None,
+                        conditions: Optional[pulumi.Input[Optional[Sequence[Union['GetMappingsConditionArgs', 'GetMappingsConditionArgsDict']]]]] = None,
                         enabled: Optional[pulumi.Input[Optional[bool]]] = None,
-                        filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMappingsFilterArgs']]]]] = None,
+                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetMappingsFilterArgs', 'GetMappingsFilterArgsDict']]]]] = None,
                         match: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         position: Optional[pulumi.Input[Optional[int]]] = None,

@@ -93,7 +93,7 @@ class AwaitableGetRolesResult(GetRolesResult):
 
 def get_roles(admins: Optional[Sequence[int]] = None,
               apps: Optional[Sequence[int]] = None,
-              filters: Optional[Sequence[pulumi.InputType['GetRolesFilterArgs']]] = None,
+              filters: Optional[Sequence[Union['GetRolesFilterArgs', 'GetRolesFilterArgsDict']]] = None,
               name: Optional[str] = None,
               users: Optional[Sequence[int]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
@@ -121,7 +121,7 @@ def get_roles(admins: Optional[Sequence[int]] = None,
 @_utilities.lift_output_func(get_roles)
 def get_roles_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                      apps: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
-                     filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRolesFilterArgs']]]]] = None,
+                     filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRolesFilterArgs', 'GetRolesFilterArgsDict']]]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:

@@ -101,7 +101,7 @@ def get_risk_rules_instance(description: Optional[str] = None,
                             filters: Optional[Sequence[str]] = None,
                             id: Optional[str] = None,
                             name: Optional[str] = None,
-                            source: Optional[pulumi.InputType['GetRiskRulesInstanceSourceArgs']] = None,
+                            source: Optional[Union['GetRiskRulesInstanceSourceArgs', 'GetRiskRulesInstanceSourceArgsDict']] = None,
                             target: Optional[str] = None,
                             type: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRiskRulesInstanceResult:
@@ -134,7 +134,7 @@ def get_risk_rules_instance_output(description: Optional[pulumi.Input[Optional[s
                                    filters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    id: Optional[pulumi.Input[str]] = None,
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
-                                   source: Optional[pulumi.Input[Optional[pulumi.InputType['GetRiskRulesInstanceSourceArgs']]]] = None,
+                                   source: Optional[pulumi.Input[Optional[Union['GetRiskRulesInstanceSourceArgs', 'GetRiskRulesInstanceSourceArgsDict']]]] = None,
                                    target: Optional[pulumi.Input[Optional[str]]] = None,
                                    type: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRiskRulesInstanceResult]:

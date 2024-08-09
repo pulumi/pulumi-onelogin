@@ -693,20 +693,20 @@ class App(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[int]] = None,
                  auth_method_description: Optional[pulumi.Input[str]] = None,
                  brand_id: Optional[pulumi.Input[int]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AppConfigurationArgs', 'AppConfigurationArgsDict']]] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
+                 enforcement_point: Optional[pulumi.Input[Union['AppEnforcementPointArgs', 'AppEnforcementPointArgsDict']]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
                  login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Union['AppParametersArgs', 'AppParametersArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
-                 provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
+                 provisioning: Optional[pulumi.Input[Union['AppProvisioningArgs', 'AppProvisioningArgsDict']]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
+                 sso: Optional[pulumi.Input[Union['AppSsoArgs', 'AppSsoArgsDict']]] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
@@ -718,20 +718,20 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Only apply configurations that are applicable to the type of app
+        :param pulumi.Input[Union['AppConfigurationArgs', 'AppConfigurationArgsDict']] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[int] connector_id: ID of the connector to base the app from.
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
-        :param pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']] enforcement_point: For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+        :param pulumi.Input[Union['AppEnforcementPointArgs', 'AppEnforcementPointArgsDict']] enforcement_point: For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
                with the app payload.
         :param pulumi.Input[str] icon_url: A link to the apps icon url
         :param pulumi.Input[str] name: The name of the app.
         :param pulumi.Input[str] notes: Freeform notes about the app.
         :param pulumi.Input[int] policy_id: The security policy assigned to the app.
-        :param pulumi.Input[pulumi.InputType['AppProvisioningArgs']] provisioning: Indicates if provisioning is enabled for this app.
+        :param pulumi.Input[Union['AppProvisioningArgs', 'AppProvisioningArgsDict']] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
-        :param pulumi.Input[pulumi.InputType['AppSsoArgs']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        :param pulumi.Input[Union['AppSsoArgs', 'AppSsoArgsDict']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
                are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
@@ -764,20 +764,20 @@ class App(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[int]] = None,
                  auth_method_description: Optional[pulumi.Input[str]] = None,
                  brand_id: Optional[pulumi.Input[int]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AppConfigurationArgs', 'AppConfigurationArgsDict']]] = None,
                  connector_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
+                 enforcement_point: Optional[pulumi.Input[Union['AppEnforcementPointArgs', 'AppEnforcementPointArgsDict']]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
                  login_config: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Union['AppParametersArgs', 'AppParametersArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[int]] = None,
-                 provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
+                 provisioning: Optional[pulumi.Input[Union['AppProvisioningArgs', 'AppProvisioningArgsDict']]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
+                 sso: Optional[pulumi.Input[Union['AppSsoArgs', 'AppSsoArgsDict']]] = None,
                  tab_id: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
@@ -827,20 +827,20 @@ class App(pulumi.CustomResource):
             auth_method: Optional[pulumi.Input[int]] = None,
             auth_method_description: Optional[pulumi.Input[str]] = None,
             brand_id: Optional[pulumi.Input[int]] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['AppConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['AppConfigurationArgs', 'AppConfigurationArgsDict']]] = None,
             connector_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            enforcement_point: Optional[pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']]] = None,
+            enforcement_point: Optional[pulumi.Input[Union['AppEnforcementPointArgs', 'AppEnforcementPointArgsDict']]] = None,
             icon_url: Optional[pulumi.Input[str]] = None,
             login_config: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[pulumi.InputType['AppParametersArgs']]] = None,
+            parameters: Optional[pulumi.Input[Union['AppParametersArgs', 'AppParametersArgsDict']]] = None,
             policy_id: Optional[pulumi.Input[int]] = None,
-            provisioning: Optional[pulumi.Input[pulumi.InputType['AppProvisioningArgs']]] = None,
+            provisioning: Optional[pulumi.Input[Union['AppProvisioningArgs', 'AppProvisioningArgsDict']]] = None,
             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-            sso: Optional[pulumi.Input[pulumi.InputType['AppSsoArgs']]] = None,
+            sso: Optional[pulumi.Input[Union['AppSsoArgs', 'AppSsoArgsDict']]] = None,
             tab_id: Optional[pulumi.Input[int]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             visible: Optional[pulumi.Input[bool]] = None) -> 'App':
@@ -854,20 +854,20 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_assumed_signin: Indicates whether or not administrators can access the app as a user that they have assumed control over.
         :param pulumi.Input[int] auth_method: An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
                WSFED - 8: OpenId Connect
-        :param pulumi.Input[pulumi.InputType['AppConfigurationArgs']] configuration: Only apply configurations that are applicable to the type of app
+        :param pulumi.Input[Union['AppConfigurationArgs', 'AppConfigurationArgsDict']] configuration: Only apply configurations that are applicable to the type of app
         :param pulumi.Input[int] connector_id: ID of the connector to base the app from.
         :param pulumi.Input[str] created_at: the date the app was created
         :param pulumi.Input[str] description: Freeform description of the app.
-        :param pulumi.Input[pulumi.InputType['AppEnforcementPointArgs']] enforcement_point: For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
+        :param pulumi.Input[Union['AppEnforcementPointArgs', 'AppEnforcementPointArgsDict']] enforcement_point: For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
                with the app payload.
         :param pulumi.Input[str] icon_url: A link to the apps icon url
         :param pulumi.Input[str] name: The name of the app.
         :param pulumi.Input[str] notes: Freeform notes about the app.
         :param pulumi.Input[int] policy_id: The security policy assigned to the app.
-        :param pulumi.Input[pulumi.InputType['AppProvisioningArgs']] provisioning: Indicates if provisioning is enabled for this app.
+        :param pulumi.Input[Union['AppProvisioningArgs', 'AppProvisioningArgsDict']] provisioning: Indicates if provisioning is enabled for this app.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
                provided.
-        :param pulumi.Input[pulumi.InputType['AppSsoArgs']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
+        :param pulumi.Input[Union['AppSsoArgs', 'AppSsoArgsDict']] sso: The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
                are read only.
         :param pulumi.Input[int] tab_id: ID of the OneLogin portal tab that the app is assigned to.
         :param pulumi.Input[str] updated_at: the date the app was last updated
