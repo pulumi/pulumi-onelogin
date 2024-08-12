@@ -40,7 +40,7 @@ public class Privileges extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Privileges(String name) {
+    public Privileges(java.lang.String name) {
         this(name, PrivilegesArgs.Empty);
     }
     /**
@@ -48,7 +48,7 @@ public class Privileges extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Privileges(String name, PrivilegesArgs args) {
+    public Privileges(java.lang.String name, PrivilegesArgs args) {
         this(name, args, null);
     }
     /**
@@ -57,15 +57,22 @@ public class Privileges extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Privileges(String name, PrivilegesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/privileges:Privileges", name, args == null ? PrivilegesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Privileges(java.lang.String name, PrivilegesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/privileges:Privileges", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Privileges(String name, Output<String> id, @Nullable PrivilegesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/privileges:Privileges", name, state, makeResourceOptions(options, id));
+    private Privileges(java.lang.String name, Output<java.lang.String> id, @Nullable PrivilegesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/privileges:Privileges", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PrivilegesArgs makeArgs(PrivilegesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivilegesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -81,7 +88,7 @@ public class Privileges extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Privileges get(String name, Output<String> id, @Nullable PrivilegesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Privileges get(java.lang.String name, Output<java.lang.String> id, @Nullable PrivilegesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Privileges(name, id, state, options);
     }
 }

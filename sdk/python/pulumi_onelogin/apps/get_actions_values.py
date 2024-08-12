@@ -93,7 +93,7 @@ class AwaitableGetActionsValuesResult(GetActionsValuesResult):
 
 def get_actions_values(actions_id: Optional[str] = None,
                        apps_id: Optional[str] = None,
-                       filters: Optional[Sequence[pulumi.InputType['GetActionsValuesFilterArgs']]] = None,
+                       filters: Optional[Sequence[Union['GetActionsValuesFilterArgs', 'GetActionsValuesFilterArgsDict']]] = None,
                        name: Optional[str] = None,
                        value: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActionsValuesResult:
@@ -121,7 +121,7 @@ def get_actions_values(actions_id: Optional[str] = None,
 @_utilities.lift_output_func(get_actions_values)
 def get_actions_values_output(actions_id: Optional[pulumi.Input[str]] = None,
                               apps_id: Optional[pulumi.Input[str]] = None,
-                              filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetActionsValuesFilterArgs']]]]] = None,
+                              filters: Optional[pulumi.Input[Optional[Sequence[Union['GetActionsValuesFilterArgs', 'GetActionsValuesFilterArgsDict']]]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               value: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActionsValuesResult]:

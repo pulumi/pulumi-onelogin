@@ -70,7 +70,7 @@ class AwaitableGetAuthServersInstanceResult(GetAuthServersInstanceResult):
             name=self.name)
 
 
-def get_auth_servers_instance(configuration: Optional[pulumi.InputType['GetAuthServersInstanceConfigurationArgs']] = None,
+def get_auth_servers_instance(configuration: Optional[Union['GetAuthServersInstanceConfigurationArgs', 'GetAuthServersInstanceConfigurationArgsDict']] = None,
                               description: Optional[str] = None,
                               id: Optional[str] = None,
                               name: Optional[str] = None,
@@ -94,7 +94,7 @@ def get_auth_servers_instance(configuration: Optional[pulumi.InputType['GetAuthS
 
 
 @_utilities.lift_output_func(get_auth_servers_instance)
-def get_auth_servers_instance_output(configuration: Optional[pulumi.Input[Optional[pulumi.InputType['GetAuthServersInstanceConfigurationArgs']]]] = None,
+def get_auth_servers_instance_output(configuration: Optional[pulumi.Input[Optional[Union['GetAuthServersInstanceConfigurationArgs', 'GetAuthServersInstanceConfigurationArgsDict']]]] = None,
                                      description: Optional[pulumi.Input[Optional[str]]] = None,
                                      id: Optional[pulumi.Input[str]] = None,
                                      name: Optional[pulumi.Input[Optional[str]]] = None,

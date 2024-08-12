@@ -221,7 +221,7 @@ class RiskRules(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RiskRulesSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['RiskRulesSourceArgs', 'RiskRulesSourceArgsDict']]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -231,7 +231,7 @@ class RiskRules(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: A list of IP addresses or country codes or names to evaluate against each event.
         :param pulumi.Input[str] name: The name of this rule
-        :param pulumi.Input[pulumi.InputType['RiskRulesSourceArgs']] source: Used for targeting custom rules based on a group of people, customers, accounts, or even a single user.
+        :param pulumi.Input[Union['RiskRulesSourceArgs', 'RiskRulesSourceArgsDict']] source: Used for targeting custom rules based on a group of people, customers, accounts, or even a single user.
         :param pulumi.Input[str] target: The target parameter that will be used when evaluating the rule against an incoming event.
         :param pulumi.Input[str] type: The type parameter specifies the type of rule that will be created.
         """
@@ -261,7 +261,7 @@ class RiskRules(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RiskRulesSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['RiskRulesSourceArgs', 'RiskRulesSourceArgsDict']]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -292,7 +292,7 @@ class RiskRules(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['RiskRulesSourceArgs']]] = None,
+            source: Optional[pulumi.Input[Union['RiskRulesSourceArgs', 'RiskRulesSourceArgsDict']]] = None,
             target: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'RiskRules':
         """
@@ -304,7 +304,7 @@ class RiskRules(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: A list of IP addresses or country codes or names to evaluate against each event.
         :param pulumi.Input[str] name: The name of this rule
-        :param pulumi.Input[pulumi.InputType['RiskRulesSourceArgs']] source: Used for targeting custom rules based on a group of people, customers, accounts, or even a single user.
+        :param pulumi.Input[Union['RiskRulesSourceArgs', 'RiskRulesSourceArgsDict']] source: Used for targeting custom rules based on a group of people, customers, accounts, or even a single user.
         :param pulumi.Input[str] target: The target parameter that will be used when evaluating the rule against an incoming event.
         :param pulumi.Input[str] type: The type parameter specifies the type of rule that will be created.
         """
