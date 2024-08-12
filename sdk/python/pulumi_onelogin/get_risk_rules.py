@@ -110,10 +110,10 @@ class AwaitableGetRiskRulesResult(GetRiskRulesResult):
 
 
 def get_risk_rules(description: Optional[str] = None,
-                   filter: Optional[Sequence[pulumi.InputType['GetRiskRulesFilterArgs']]] = None,
+                   filter: Optional[Sequence[Union['GetRiskRulesFilterArgs', 'GetRiskRulesFilterArgsDict']]] = None,
                    filters: Optional[Sequence[str]] = None,
                    name: Optional[str] = None,
-                   source: Optional[pulumi.InputType['GetRiskRulesSourceArgs']] = None,
+                   source: Optional[Union['GetRiskRulesSourceArgs', 'GetRiskRulesSourceArgsDict']] = None,
                    target: Optional[str] = None,
                    type: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRiskRulesResult:
@@ -144,10 +144,10 @@ def get_risk_rules(description: Optional[str] = None,
 
 @_utilities.lift_output_func(get_risk_rules)
 def get_risk_rules_output(description: Optional[pulumi.Input[Optional[str]]] = None,
-                          filter: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRiskRulesFilterArgs']]]]] = None,
+                          filter: Optional[pulumi.Input[Optional[Sequence[Union['GetRiskRulesFilterArgs', 'GetRiskRulesFilterArgsDict']]]]] = None,
                           filters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
-                          source: Optional[pulumi.Input[Optional[pulumi.InputType['GetRiskRulesSourceArgs']]]] = None,
+                          source: Optional[pulumi.Input[Optional[Union['GetRiskRulesSourceArgs', 'GetRiskRulesSourceArgsDict']]]] = None,
                           target: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRiskRulesResult]:

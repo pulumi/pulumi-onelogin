@@ -82,7 +82,7 @@ class AwaitableGetAppsResult(GetAppsResult):
             roles_id=self.roles_id)
 
 
-def get_apps(filters: Optional[Sequence[pulumi.InputType['GetAppsFilterArgs']]] = None,
+def get_apps(filters: Optional[Sequence[Union['GetAppsFilterArgs', 'GetAppsFilterArgsDict']]] = None,
              icon_url: Optional[str] = None,
              name: Optional[str] = None,
              roles_id: Optional[str] = None,
@@ -107,7 +107,7 @@ def get_apps(filters: Optional[Sequence[pulumi.InputType['GetAppsFilterArgs']]] 
 
 
 @_utilities.lift_output_func(get_apps)
-def get_apps_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAppsFilterArgs']]]]] = None,
+def get_apps_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAppsFilterArgs', 'GetAppsFilterArgsDict']]]]] = None,
                     icon_url: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     roles_id: Optional[pulumi.Input[str]] = None,

@@ -83,7 +83,7 @@ class AwaitableGetConditionsResult(GetConditionsResult):
 
 
 def get_conditions(apps_id: Optional[str] = None,
-                   filters: Optional[Sequence[pulumi.InputType['GetConditionsFilterArgs']]] = None,
+                   filters: Optional[Sequence[Union['GetConditionsFilterArgs', 'GetConditionsFilterArgsDict']]] = None,
                    name: Optional[str] = None,
                    value: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConditionsResult:
@@ -108,7 +108,7 @@ def get_conditions(apps_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_conditions)
 def get_conditions_output(apps_id: Optional[pulumi.Input[str]] = None,
-                          filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConditionsFilterArgs']]]]] = None,
+                          filters: Optional[pulumi.Input[Optional[Sequence[Union['GetConditionsFilterArgs', 'GetConditionsFilterArgsDict']]]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           value: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConditionsResult]:

@@ -83,9 +83,9 @@ class AwaitableGetPrivilegesResult(GetPrivilegesResult):
 
 
 def get_privileges(description: Optional[str] = None,
-                   filters: Optional[Sequence[pulumi.InputType['GetPrivilegesFilterArgs']]] = None,
+                   filters: Optional[Sequence[Union['GetPrivilegesFilterArgs', 'GetPrivilegesFilterArgsDict']]] = None,
                    name: Optional[str] = None,
-                   privilege: Optional[pulumi.InputType['GetPrivilegesPrivilegeArgs']] = None,
+                   privilege: Optional[Union['GetPrivilegesPrivilegeArgs', 'GetPrivilegesPrivilegeArgsDict']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivilegesResult:
     """
     Use this data source to access information about an existing resource.
@@ -108,9 +108,9 @@ def get_privileges(description: Optional[str] = None,
 
 @_utilities.lift_output_func(get_privileges)
 def get_privileges_output(description: Optional[pulumi.Input[Optional[str]]] = None,
-                          filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPrivilegesFilterArgs']]]]] = None,
+                          filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPrivilegesFilterArgs', 'GetPrivilegesFilterArgsDict']]]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
-                          privilege: Optional[pulumi.Input[Optional[pulumi.InputType['GetPrivilegesPrivilegeArgs']]]] = None,
+                          privilege: Optional[pulumi.Input[Optional[Union['GetPrivilegesPrivilegeArgs', 'GetPrivilegesPrivilegeArgsDict']]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivilegesResult]:
     """
     Use this data source to access information about an existing resource.

@@ -93,7 +93,7 @@ class AwaitableGetConditionsOperatorsResult(GetConditionsOperatorsResult):
 
 def get_conditions_operators(apps_id: Optional[str] = None,
                              conditions_id: Optional[str] = None,
-                             filters: Optional[Sequence[pulumi.InputType['GetConditionsOperatorsFilterArgs']]] = None,
+                             filters: Optional[Sequence[Union['GetConditionsOperatorsFilterArgs', 'GetConditionsOperatorsFilterArgsDict']]] = None,
                              name: Optional[str] = None,
                              value: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConditionsOperatorsResult:
@@ -121,7 +121,7 @@ def get_conditions_operators(apps_id: Optional[str] = None,
 @_utilities.lift_output_func(get_conditions_operators)
 def get_conditions_operators_output(apps_id: Optional[pulumi.Input[str]] = None,
                                     conditions_id: Optional[pulumi.Input[str]] = None,
-                                    filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConditionsOperatorsFilterArgs']]]]] = None,
+                                    filters: Optional[pulumi.Input[Optional[Sequence[Union['GetConditionsOperatorsFilterArgs', 'GetConditionsOperatorsFilterArgsDict']]]]] = None,
                                     name: Optional[pulumi.Input[Optional[str]]] = None,
                                     value: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConditionsOperatorsResult]:
