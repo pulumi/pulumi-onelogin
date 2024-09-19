@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getV1Apps(args: GetV1AppsArgs, opts?: pulumi.InvokeOptions): Promise<GetV1AppsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:users/getV1Apps:getV1Apps", {
         "extension": args.extension,
@@ -56,7 +55,18 @@ export interface GetV1AppsResult {
     readonly usersV1Id: string;
 }
 export function getV1AppsOutput(args: GetV1AppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV1AppsResult> {
-    return pulumi.output(args).apply((a: any) => getV1Apps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:users/getV1Apps:getV1Apps", {
+        "extension": args.extension,
+        "filters": args.filters,
+        "iconUrl": args.iconUrl,
+        "loginId": args.loginId,
+        "name": args.name,
+        "provisioningEnabled": args.provisioningEnabled,
+        "provisioningState": args.provisioningState,
+        "provisioningStatus": args.provisioningStatus,
+        "usersV1Id": args.usersV1Id,
+    }, opts);
 }
 
 /**

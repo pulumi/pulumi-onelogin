@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:apps/getUsers:getUsers", {
         "activatedAt": args.activatedAt,
@@ -140,7 +139,46 @@ export interface GetUsersResult {
     readonly userprincipalname: string;
 }
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:apps/getUsers:getUsers", {
+        "activatedAt": args.activatedAt,
+        "appsId": args.appsId,
+        "comment": args.comment,
+        "company": args.company,
+        "createdAt": args.createdAt,
+        "department": args.department,
+        "directoryId": args.directoryId,
+        "distinguishedName": args.distinguishedName,
+        "email": args.email,
+        "externalId": args.externalId,
+        "filters": args.filters,
+        "firstname": args.firstname,
+        "groupId": args.groupId,
+        "invalidLoginAttempts": args.invalidLoginAttempts,
+        "invitationSentAt": args.invitationSentAt,
+        "lastLogin": args.lastLogin,
+        "lastname": args.lastname,
+        "lockedUntil": args.lockedUntil,
+        "managerAdId": args.managerAdId,
+        "managerUserId": args.managerUserId,
+        "memberOf": args.memberOf,
+        "password": args.password,
+        "passwordAlgorithm": args.passwordAlgorithm,
+        "passwordChangedAt": args.passwordChangedAt,
+        "passwordConfirmation": args.passwordConfirmation,
+        "phone": args.phone,
+        "preferredLocaleCode": args.preferredLocaleCode,
+        "roleIds": args.roleIds,
+        "salt": args.salt,
+        "samaccountname": args.samaccountname,
+        "state": args.state,
+        "status": args.status,
+        "title": args.title,
+        "trustedIdpId": args.trustedIdpId,
+        "updatedAt": args.updatedAt,
+        "username": args.username,
+        "userprincipalname": args.userprincipalname,
+    }, opts);
 }
 
 /**

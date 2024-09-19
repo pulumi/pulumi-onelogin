@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:roles/getInstance:getInstance", {
         "admins": args.admins,
@@ -38,7 +37,14 @@ export interface GetInstanceResult {
     readonly users: number[];
 }
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:roles/getInstance:getInstance", {
+        "admins": args.admins,
+        "apps": args.apps,
+        "id": args.id,
+        "name": args.name,
+        "users": args.users,
+    }, opts);
 }
 
 /**

@@ -51,14 +51,20 @@ type GetV1AppsResult struct {
 
 func GetV1AppsOutput(ctx *pulumi.Context, args GetV1AppsOutputArgs, opts ...pulumi.InvokeOption) GetV1AppsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetV1AppsResult, error) {
+		ApplyT(func(v interface{}) (GetV1AppsResultOutput, error) {
 			args := v.(GetV1AppsArgs)
-			r, err := GetV1Apps(ctx, &args, opts...)
-			var s GetV1AppsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetV1AppsResult
+			secret, err := ctx.InvokePackageRaw("onelogin:users/getV1Apps:getV1Apps", args, &rv, "", opts...)
+			if err != nil {
+				return GetV1AppsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetV1AppsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetV1AppsResultOutput), nil
+			}
+			return output, nil
 		}).(GetV1AppsResultOutput)
 }
 

@@ -41,14 +41,20 @@ type LookupPrivilegesResult struct {
 
 func LookupPrivilegesOutput(ctx *pulumi.Context, args LookupPrivilegesOutputArgs, opts ...pulumi.InvokeOption) LookupPrivilegesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivilegesResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivilegesResultOutput, error) {
 			args := v.(LookupPrivilegesArgs)
-			r, err := LookupPrivileges(ctx, &args, opts...)
-			var s LookupPrivilegesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivilegesResult
+			secret, err := ctx.InvokePackageRaw("onelogin:index/getPrivileges:getPrivileges", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivilegesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivilegesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivilegesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivilegesResultOutput)
 }
 
