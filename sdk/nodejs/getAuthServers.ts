@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getAuthServers(args?: GetAuthServersArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthServersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getAuthServers:getAuthServers", {
         "configuration": args.configuration,
@@ -42,7 +41,14 @@ export interface GetAuthServersResult {
     readonly name: string;
 }
 export function getAuthServersOutput(args?: GetAuthServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersResult> {
-    return pulumi.output(args).apply((a: any) => getAuthServers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getAuthServers:getAuthServers", {
+        "configuration": args.configuration,
+        "description": args.description,
+        "filters": args.filters,
+        "name": args.name,
+    }, opts);
 }
 
 /**

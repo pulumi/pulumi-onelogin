@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getRiskRules(args?: GetRiskRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRiskRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getRiskRules:getRiskRules", {
         "description": args.description,
@@ -51,7 +50,17 @@ export interface GetRiskRulesResult {
     readonly type: string;
 }
 export function getRiskRulesOutput(args?: GetRiskRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRiskRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRiskRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getRiskRules:getRiskRules", {
+        "description": args.description,
+        "filter": args.filter,
+        "filters": args.filters,
+        "name": args.name,
+        "source": args.source,
+        "target": args.target,
+        "type": args.type,
+    }, opts);
 }
 
 /**

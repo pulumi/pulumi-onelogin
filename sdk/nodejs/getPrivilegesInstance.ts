@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getPrivilegesInstance(args: GetPrivilegesInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivilegesInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", {
         "description": args.description,
@@ -37,7 +36,13 @@ export interface GetPrivilegesInstanceResult {
     readonly privilege: outputs.GetPrivilegesInstancePrivilege;
 }
 export function getPrivilegesInstanceOutput(args: GetPrivilegesInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivilegesInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getPrivilegesInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", {
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+        "privilege": args.privilege,
+    }, opts);
 }
 
 /**

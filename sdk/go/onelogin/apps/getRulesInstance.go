@@ -47,14 +47,20 @@ type GetRulesInstanceResult struct {
 
 func GetRulesInstanceOutput(ctx *pulumi.Context, args GetRulesInstanceOutputArgs, opts ...pulumi.InvokeOption) GetRulesInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRulesInstanceResult, error) {
+		ApplyT(func(v interface{}) (GetRulesInstanceResultOutput, error) {
 			args := v.(GetRulesInstanceArgs)
-			r, err := GetRulesInstance(ctx, &args, opts...)
-			var s GetRulesInstanceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRulesInstanceResult
+			secret, err := ctx.InvokePackageRaw("onelogin:apps/getRulesInstance:getRulesInstance", args, &rv, "", opts...)
+			if err != nil {
+				return GetRulesInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRulesInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRulesInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(GetRulesInstanceResultOutput)
 }
 

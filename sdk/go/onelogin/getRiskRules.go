@@ -47,14 +47,20 @@ type LookupRiskRulesResult struct {
 
 func LookupRiskRulesOutput(ctx *pulumi.Context, args LookupRiskRulesOutputArgs, opts ...pulumi.InvokeOption) LookupRiskRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRiskRulesResult, error) {
+		ApplyT(func(v interface{}) (LookupRiskRulesResultOutput, error) {
 			args := v.(LookupRiskRulesArgs)
-			r, err := LookupRiskRules(ctx, &args, opts...)
-			var s LookupRiskRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRiskRulesResult
+			secret, err := ctx.InvokePackageRaw("onelogin:index/getRiskRules:getRiskRules", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRiskRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRiskRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRiskRulesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRiskRulesResultOutput)
 }
 

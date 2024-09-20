@@ -43,14 +43,20 @@ type GetConditionsOperatorsResult struct {
 
 func GetConditionsOperatorsOutput(ctx *pulumi.Context, args GetConditionsOperatorsOutputArgs, opts ...pulumi.InvokeOption) GetConditionsOperatorsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConditionsOperatorsResult, error) {
+		ApplyT(func(v interface{}) (GetConditionsOperatorsResultOutput, error) {
 			args := v.(GetConditionsOperatorsArgs)
-			r, err := GetConditionsOperators(ctx, &args, opts...)
-			var s GetConditionsOperatorsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetConditionsOperatorsResult
+			secret, err := ctx.InvokePackageRaw("onelogin:apps/getConditionsOperators:getConditionsOperators", args, &rv, "", opts...)
+			if err != nil {
+				return GetConditionsOperatorsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetConditionsOperatorsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetConditionsOperatorsResultOutput), nil
+			}
+			return output, nil
 		}).(GetConditionsOperatorsResultOutput)
 }
 

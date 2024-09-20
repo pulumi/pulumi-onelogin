@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getMappings(args?: GetMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetMappingsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getMappings:getMappings", {
         "actions": args.actions,
@@ -51,7 +50,17 @@ export interface GetMappingsResult {
     readonly position: number;
 }
 export function getMappingsOutput(args?: GetMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMappingsResult> {
-    return pulumi.output(args).apply((a: any) => getMappings(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getMappings:getMappings", {
+        "actions": args.actions,
+        "conditions": args.conditions,
+        "enabled": args.enabled,
+        "filters": args.filters,
+        "match": args.match,
+        "name": args.name,
+        "position": args.position,
+    }, opts);
 }
 
 /**

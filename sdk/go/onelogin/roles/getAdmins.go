@@ -107,14 +107,20 @@ type GetAdminsResult struct {
 
 func GetAdminsOutput(ctx *pulumi.Context, args GetAdminsOutputArgs, opts ...pulumi.InvokeOption) GetAdminsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAdminsResult, error) {
+		ApplyT(func(v interface{}) (GetAdminsResultOutput, error) {
 			args := v.(GetAdminsArgs)
-			r, err := GetAdmins(ctx, &args, opts...)
-			var s GetAdminsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAdminsResult
+			secret, err := ctx.InvokePackageRaw("onelogin:roles/getAdmins:getAdmins", args, &rv, "", opts...)
+			if err != nil {
+				return GetAdminsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAdminsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAdminsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAdminsResultOutput)
 }
 

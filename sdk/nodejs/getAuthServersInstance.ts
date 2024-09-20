@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getAuthServersInstance(args: GetAuthServersInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthServersInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getAuthServersInstance:getAuthServersInstance", {
         "configuration": args.configuration,
@@ -37,7 +36,13 @@ export interface GetAuthServersInstanceResult {
     readonly name: string;
 }
 export function getAuthServersInstanceOutput(args: GetAuthServersInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getAuthServersInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersInstance:getAuthServersInstance", {
+        "configuration": args.configuration,
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

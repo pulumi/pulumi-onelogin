@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getAuthServersScopes(args: GetAuthServersScopesArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthServersScopesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getAuthServersScopes:getAuthServersScopes", {
         "authServersId": args.authServersId,
@@ -41,7 +40,13 @@ export interface GetAuthServersScopesResult {
     readonly value: string;
 }
 export function getAuthServersScopesOutput(args: GetAuthServersScopesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersScopesResult> {
-    return pulumi.output(args).apply((a: any) => getAuthServersScopes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersScopes:getAuthServersScopes", {
+        "authServersId": args.authServersId,
+        "description": args.description,
+        "filters": args.filters,
+        "value": args.value,
+    }, opts);
 }
 
 /**
