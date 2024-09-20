@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getApps:getApps", {
         "allowAssumedSignin": args.allowAssumedSignin,
@@ -96,7 +95,32 @@ export interface GetAppsResult {
     readonly visible: boolean;
 }
 export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
-    return pulumi.output(args).apply((a: any) => getApps(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getApps:getApps", {
+        "allowAssumedSignin": args.allowAssumedSignin,
+        "authMethod": args.authMethod,
+        "authMethodDescription": args.authMethodDescription,
+        "brandId": args.brandId,
+        "configuration": args.configuration,
+        "connectorId": args.connectorId,
+        "createdAt": args.createdAt,
+        "description": args.description,
+        "enforcementPoint": args.enforcementPoint,
+        "filters": args.filters,
+        "iconUrl": args.iconUrl,
+        "loginConfig": args.loginConfig,
+        "name": args.name,
+        "notes": args.notes,
+        "parameters": args.parameters,
+        "policyId": args.policyId,
+        "provisioning": args.provisioning,
+        "roleIds": args.roleIds,
+        "sso": args.sso,
+        "tabId": args.tabId,
+        "updatedAt": args.updatedAt,
+        "visible": args.visible,
+    }, opts);
 }
 
 /**

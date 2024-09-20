@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:users/getDevices:getDevices", {
         "authFactorName": args.authFactorName,
@@ -50,7 +49,16 @@ export interface GetDevicesResult {
     readonly usersId: string;
 }
 export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
-    return pulumi.output(args).apply((a: any) => getDevices(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:users/getDevices:getDevices", {
+        "authFactorName": args.authFactorName,
+        "default": args.default,
+        "deviceId": args.deviceId,
+        "filters": args.filters,
+        "typeDisplayName": args.typeDisplayName,
+        "userDisplayName": args.userDisplayName,
+        "usersId": args.usersId,
+    }, opts);
 }
 
 /**

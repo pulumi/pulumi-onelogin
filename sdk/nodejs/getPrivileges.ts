@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 export function getPrivileges(args?: GetPrivilegesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivilegesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getPrivileges:getPrivileges", {
         "description": args.description,
@@ -42,7 +41,14 @@ export interface GetPrivilegesResult {
     readonly privilege: outputs.GetPrivilegesPrivilege;
 }
 export function getPrivilegesOutput(args?: GetPrivilegesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivilegesResult> {
-    return pulumi.output(args).apply((a: any) => getPrivileges(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getPrivileges:getPrivileges", {
+        "description": args.description,
+        "filters": args.filters,
+        "name": args.name,
+        "privilege": args.privilege,
+    }, opts);
 }
 
 /**

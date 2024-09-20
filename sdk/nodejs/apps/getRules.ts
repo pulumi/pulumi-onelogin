@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:apps/getRules:getRules", {
         "actions": args.actions,
@@ -53,7 +52,17 @@ export interface GetRulesResult {
     readonly position: number;
 }
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:apps/getRules:getRules", {
+        "actions": args.actions,
+        "appsId": args.appsId,
+        "conditions": args.conditions,
+        "enabled": args.enabled,
+        "filters": args.filters,
+        "match": args.match,
+        "name": args.name,
+        "position": args.position,
+    }, opts);
 }
 
 /**

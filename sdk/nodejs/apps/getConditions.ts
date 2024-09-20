@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getConditions(args: GetConditionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConditionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:apps/getConditions:getConditions", {
         "appsId": args.appsId,
@@ -41,7 +40,13 @@ export interface GetConditionsResult {
     readonly value: string;
 }
 export function getConditionsOutput(args: GetConditionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConditionsResult> {
-    return pulumi.output(args).apply((a: any) => getConditions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:apps/getConditions:getConditions", {
+        "appsId": args.appsId,
+        "filters": args.filters,
+        "name": args.name,
+        "value": args.value,
+    }, opts);
 }
 
 /**

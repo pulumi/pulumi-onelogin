@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:roles/getRoles:getRoles", {
         "admins": args.admins,
@@ -45,7 +44,15 @@ export interface GetRolesResult {
     readonly users: number[];
 }
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(args).apply((a: any) => getRoles(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:roles/getRoles:getRoles", {
+        "admins": args.admins,
+        "apps": args.apps,
+        "filters": args.filters,
+        "name": args.name,
+        "users": args.users,
+    }, opts);
 }
 
 /**

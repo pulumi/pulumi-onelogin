@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getAuthServersClaims(args: GetAuthServersClaimsArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthServersClaimsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:index/getAuthServersClaims:getAuthServersClaims", {
         "attributeTransformations": args.attributeTransformations,
@@ -59,7 +58,19 @@ export interface GetAuthServersClaimsResult {
     readonly values: string[];
 }
 export function getAuthServersClaimsOutput(args: GetAuthServersClaimsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersClaimsResult> {
-    return pulumi.output(args).apply((a: any) => getAuthServersClaims(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersClaims:getAuthServersClaims", {
+        "attributeTransformations": args.attributeTransformations,
+        "authServersId": args.authServersId,
+        "defaultValues": args.defaultValues,
+        "filters": args.filters,
+        "label": args.label,
+        "provisionedEntitlements": args.provisionedEntitlements,
+        "skipIfBlank": args.skipIfBlank,
+        "userAttributeMacros": args.userAttributeMacros,
+        "userAttributeMappings": args.userAttributeMappings,
+        "values": args.values,
+    }, opts);
 }
 
 /**
