@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -140,9 +145,6 @@ def get_devices(auth_factor_name: Optional[str] = None,
         type_display_name=pulumi.get(__ret__, 'type_display_name'),
         user_display_name=pulumi.get(__ret__, 'user_display_name'),
         users_id=pulumi.get(__ret__, 'users_id'))
-
-
-@_utilities.lift_output_func(get_devices)
 def get_devices_output(auth_factor_name: Optional[pulumi.Input[Optional[str]]] = None,
                        default: Optional[pulumi.Input[Optional[bool]]] = None,
                        device_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -154,4 +156,22 @@ def get_devices_output(auth_factor_name: Optional[pulumi.Input[Optional[str]]] =
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['authFactorName'] = auth_factor_name
+    __args__['default'] = default
+    __args__['deviceId'] = device_id
+    __args__['filters'] = filters
+    __args__['typeDisplayName'] = type_display_name
+    __args__['userDisplayName'] = user_display_name
+    __args__['usersId'] = users_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:users/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult)
+    return __ret__.apply(lambda __response__: GetDevicesResult(
+        auth_factor_name=pulumi.get(__response__, 'auth_factor_name'),
+        default=pulumi.get(__response__, 'default'),
+        device_id=pulumi.get(__response__, 'device_id'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        type_display_name=pulumi.get(__response__, 'type_display_name'),
+        user_display_name=pulumi.get(__response__, 'user_display_name'),
+        users_id=pulumi.get(__response__, 'users_id')))

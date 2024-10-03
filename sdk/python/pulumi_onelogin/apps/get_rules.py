@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -152,9 +157,6 @@ def get_rules(actions: Optional[Sequence[Union['GetRulesActionArgs', 'GetRulesAc
         match=pulumi.get(__ret__, 'match'),
         name=pulumi.get(__ret__, 'name'),
         position=pulumi.get(__ret__, 'position'))
-
-
-@_utilities.lift_output_func(get_rules)
 def get_rules_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['GetRulesActionArgs', 'GetRulesActionArgsDict']]]]] = None,
                      apps_id: Optional[pulumi.Input[str]] = None,
                      conditions: Optional[pulumi.Input[Optional[Sequence[Union['GetRulesConditionArgs', 'GetRulesConditionArgsDict']]]]] = None,
@@ -167,4 +169,24 @@ def get_rules_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['Get
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['actions'] = actions
+    __args__['appsId'] = apps_id
+    __args__['conditions'] = conditions
+    __args__['enabled'] = enabled
+    __args__['filters'] = filters
+    __args__['match'] = match
+    __args__['name'] = name
+    __args__['position'] = position
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:apps/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
+    return __ret__.apply(lambda __response__: GetRulesResult(
+        actions=pulumi.get(__response__, 'actions'),
+        apps_id=pulumi.get(__response__, 'apps_id'),
+        conditions=pulumi.get(__response__, 'conditions'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        match=pulumi.get(__response__, 'match'),
+        name=pulumi.get(__response__, 'name'),
+        position=pulumi.get(__response__, 'position')))

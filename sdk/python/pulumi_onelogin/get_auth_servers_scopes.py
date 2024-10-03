@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -104,9 +109,6 @@ def get_auth_servers_scopes(auth_servers_id: Optional[str] = None,
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         value=pulumi.get(__ret__, 'value'))
-
-
-@_utilities.lift_output_func(get_auth_servers_scopes)
 def get_auth_servers_scopes_output(auth_servers_id: Optional[pulumi.Input[str]] = None,
                                    description: Optional[pulumi.Input[Optional[str]]] = None,
                                    filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAuthServersScopesFilterArgs', 'GetAuthServersScopesFilterArgsDict']]]]] = None,
@@ -115,4 +117,16 @@ def get_auth_servers_scopes_output(auth_servers_id: Optional[pulumi.Input[str]] 
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['authServersId'] = auth_servers_id
+    __args__['description'] = description
+    __args__['filters'] = filters
+    __args__['value'] = value
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServersScopes:getAuthServersScopes', __args__, opts=opts, typ=GetAuthServersScopesResult)
+    return __ret__.apply(lambda __response__: GetAuthServersScopesResult(
+        auth_servers_id=pulumi.get(__response__, 'auth_servers_id'),
+        description=pulumi.get(__response__, 'description'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        value=pulumi.get(__response__, 'value')))

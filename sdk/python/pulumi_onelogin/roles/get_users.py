@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -500,9 +505,6 @@ def get_users(activated_at: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         username=pulumi.get(__ret__, 'username'),
         userprincipalname=pulumi.get(__ret__, 'userprincipalname'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(activated_at: Optional[pulumi.Input[Optional[str]]] = None,
                      comment: Optional[pulumi.Input[Optional[str]]] = None,
                      company: Optional[pulumi.Input[Optional[str]]] = None,
@@ -544,4 +546,82 @@ def get_users_output(activated_at: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['activatedAt'] = activated_at
+    __args__['comment'] = comment
+    __args__['company'] = company
+    __args__['createdAt'] = created_at
+    __args__['department'] = department
+    __args__['directoryId'] = directory_id
+    __args__['distinguishedName'] = distinguished_name
+    __args__['email'] = email
+    __args__['externalId'] = external_id
+    __args__['filters'] = filters
+    __args__['firstname'] = firstname
+    __args__['groupId'] = group_id
+    __args__['invalidLoginAttempts'] = invalid_login_attempts
+    __args__['invitationSentAt'] = invitation_sent_at
+    __args__['lastLogin'] = last_login
+    __args__['lastname'] = lastname
+    __args__['lockedUntil'] = locked_until
+    __args__['managerAdId'] = manager_ad_id
+    __args__['managerUserId'] = manager_user_id
+    __args__['memberOf'] = member_of
+    __args__['password'] = password
+    __args__['passwordAlgorithm'] = password_algorithm
+    __args__['passwordChangedAt'] = password_changed_at
+    __args__['passwordConfirmation'] = password_confirmation
+    __args__['phone'] = phone
+    __args__['preferredLocaleCode'] = preferred_locale_code
+    __args__['roleIds'] = role_ids
+    __args__['rolesId'] = roles_id
+    __args__['salt'] = salt
+    __args__['samaccountname'] = samaccountname
+    __args__['state'] = state
+    __args__['status'] = status
+    __args__['title'] = title
+    __args__['trustedIdpId'] = trusted_idp_id
+    __args__['updatedAt'] = updated_at
+    __args__['username'] = username
+    __args__['userprincipalname'] = userprincipalname
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:roles/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        activated_at=pulumi.get(__response__, 'activated_at'),
+        comment=pulumi.get(__response__, 'comment'),
+        company=pulumi.get(__response__, 'company'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        department=pulumi.get(__response__, 'department'),
+        directory_id=pulumi.get(__response__, 'directory_id'),
+        distinguished_name=pulumi.get(__response__, 'distinguished_name'),
+        email=pulumi.get(__response__, 'email'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        filters=pulumi.get(__response__, 'filters'),
+        firstname=pulumi.get(__response__, 'firstname'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        invalid_login_attempts=pulumi.get(__response__, 'invalid_login_attempts'),
+        invitation_sent_at=pulumi.get(__response__, 'invitation_sent_at'),
+        last_login=pulumi.get(__response__, 'last_login'),
+        lastname=pulumi.get(__response__, 'lastname'),
+        locked_until=pulumi.get(__response__, 'locked_until'),
+        manager_ad_id=pulumi.get(__response__, 'manager_ad_id'),
+        manager_user_id=pulumi.get(__response__, 'manager_user_id'),
+        member_of=pulumi.get(__response__, 'member_of'),
+        password=pulumi.get(__response__, 'password'),
+        password_algorithm=pulumi.get(__response__, 'password_algorithm'),
+        password_changed_at=pulumi.get(__response__, 'password_changed_at'),
+        password_confirmation=pulumi.get(__response__, 'password_confirmation'),
+        phone=pulumi.get(__response__, 'phone'),
+        preferred_locale_code=pulumi.get(__response__, 'preferred_locale_code'),
+        role_ids=pulumi.get(__response__, 'role_ids'),
+        roles_id=pulumi.get(__response__, 'roles_id'),
+        salt=pulumi.get(__response__, 'salt'),
+        samaccountname=pulumi.get(__response__, 'samaccountname'),
+        state=pulumi.get(__response__, 'state'),
+        status=pulumi.get(__response__, 'status'),
+        title=pulumi.get(__response__, 'title'),
+        trusted_idp_id=pulumi.get(__response__, 'trusted_idp_id'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        username=pulumi.get(__response__, 'username'),
+        userprincipalname=pulumi.get(__response__, 'userprincipalname')))
