@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -176,9 +181,6 @@ def get_auth_servers_claims(attribute_transformations: Optional[str] = None,
         user_attribute_macros=pulumi.get(__ret__, 'user_attribute_macros'),
         user_attribute_mappings=pulumi.get(__ret__, 'user_attribute_mappings'),
         values=pulumi.get(__ret__, 'values'))
-
-
-@_utilities.lift_output_func(get_auth_servers_claims)
 def get_auth_servers_claims_output(attribute_transformations: Optional[pulumi.Input[Optional[str]]] = None,
                                    auth_servers_id: Optional[pulumi.Input[str]] = None,
                                    default_values: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,4 +195,28 @@ def get_auth_servers_claims_output(attribute_transformations: Optional[pulumi.In
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['attributeTransformations'] = attribute_transformations
+    __args__['authServersId'] = auth_servers_id
+    __args__['defaultValues'] = default_values
+    __args__['filters'] = filters
+    __args__['label'] = label
+    __args__['provisionedEntitlements'] = provisioned_entitlements
+    __args__['skipIfBlank'] = skip_if_blank
+    __args__['userAttributeMacros'] = user_attribute_macros
+    __args__['userAttributeMappings'] = user_attribute_mappings
+    __args__['values'] = values
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServersClaims:getAuthServersClaims', __args__, opts=opts, typ=GetAuthServersClaimsResult)
+    return __ret__.apply(lambda __response__: GetAuthServersClaimsResult(
+        attribute_transformations=pulumi.get(__response__, 'attribute_transformations'),
+        auth_servers_id=pulumi.get(__response__, 'auth_servers_id'),
+        default_values=pulumi.get(__response__, 'default_values'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        provisioned_entitlements=pulumi.get(__response__, 'provisioned_entitlements'),
+        skip_if_blank=pulumi.get(__response__, 'skip_if_blank'),
+        user_attribute_macros=pulumi.get(__response__, 'user_attribute_macros'),
+        user_attribute_mappings=pulumi.get(__response__, 'user_attribute_mappings'),
+        values=pulumi.get(__response__, 'values')))

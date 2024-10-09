@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -140,9 +145,6 @@ def get_risk_rules(description: Optional[str] = None,
         source=pulumi.get(__ret__, 'source'),
         target=pulumi.get(__ret__, 'target'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_risk_rules)
 def get_risk_rules_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                           filter: Optional[pulumi.Input[Optional[Sequence[Union['GetRiskRulesFilterArgs', 'GetRiskRulesFilterArgsDict']]]]] = None,
                           filters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -154,4 +156,22 @@ def get_risk_rules_output(description: Optional[pulumi.Input[Optional[str]]] = N
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['filter'] = filter
+    __args__['filters'] = filters
+    __args__['name'] = name
+    __args__['source'] = source
+    __args__['target'] = target
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getRiskRules:getRiskRules', __args__, opts=opts, typ=GetRiskRulesResult)
+    return __ret__.apply(lambda __response__: GetRiskRulesResult(
+        description=pulumi.get(__response__, 'description'),
+        filter=pulumi.get(__response__, 'filter'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        source=pulumi.get(__response__, 'source'),
+        target=pulumi.get(__response__, 'target'),
+        type=pulumi.get(__response__, 'type')))

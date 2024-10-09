@@ -4,55 +4,147 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AppConfigurationArgs',
+    'AppConfigurationArgsDict',
     'AppEnforcementPointArgs',
+    'AppEnforcementPointArgsDict',
     'AppEnforcementPointResourceArgs',
+    'AppEnforcementPointResourceArgsDict',
     'AppEnforcementPointSessionExpiryFixedArgs',
+    'AppEnforcementPointSessionExpiryFixedArgsDict',
     'AppEnforcementPointSessionExpiryInactivityArgs',
+    'AppEnforcementPointSessionExpiryInactivityArgsDict',
     'AppParametersArgs',
+    'AppParametersArgsDict',
     'AppParametersGroupsArgs',
+    'AppParametersGroupsArgsDict',
     'AppProvisioningArgs',
+    'AppProvisioningArgsDict',
     'AppSsoArgs',
+    'AppSsoArgsDict',
     'AppSsoCertificateArgs',
+    'AppSsoCertificateArgsDict',
     'AuthServersConfigurationArgs',
+    'AuthServersConfigurationArgsDict',
     'PrivilegesPrivilegeArgs',
+    'PrivilegesPrivilegeArgsDict',
     'PrivilegesPrivilegeStatementArgs',
+    'PrivilegesPrivilegeStatementArgsDict',
     'ProviderEndpointArgs',
+    'ProviderEndpointArgsDict',
     'RiskRulesSourceArgs',
+    'RiskRulesSourceArgsDict',
     'GetAppsConfigurationArgs',
+    'GetAppsConfigurationArgsDict',
     'GetAppsEnforcementPointArgs',
+    'GetAppsEnforcementPointArgsDict',
     'GetAppsEnforcementPointResourceArgs',
+    'GetAppsEnforcementPointResourceArgsDict',
     'GetAppsEnforcementPointSessionExpiryFixedArgs',
+    'GetAppsEnforcementPointSessionExpiryFixedArgsDict',
     'GetAppsEnforcementPointSessionExpiryInactivityArgs',
+    'GetAppsEnforcementPointSessionExpiryInactivityArgsDict',
     'GetAppsFilterArgs',
+    'GetAppsFilterArgsDict',
     'GetAppsParametersArgs',
+    'GetAppsParametersArgsDict',
     'GetAppsParametersGroupsArgs',
+    'GetAppsParametersGroupsArgsDict',
     'GetAppsProvisioningArgs',
+    'GetAppsProvisioningArgsDict',
     'GetAppsSsoArgs',
+    'GetAppsSsoArgsDict',
     'GetAppsSsoCertificateArgs',
+    'GetAppsSsoCertificateArgsDict',
     'GetAuthServersClaimsFilterArgs',
+    'GetAuthServersClaimsFilterArgsDict',
     'GetAuthServersConfigurationArgs',
+    'GetAuthServersConfigurationArgsDict',
     'GetAuthServersFilterArgs',
+    'GetAuthServersFilterArgsDict',
     'GetAuthServersInstanceConfigurationArgs',
+    'GetAuthServersInstanceConfigurationArgsDict',
     'GetAuthServersScopesFilterArgs',
+    'GetAuthServersScopesFilterArgsDict',
     'GetMappingsActionArgs',
+    'GetMappingsActionArgsDict',
     'GetMappingsConditionArgs',
+    'GetMappingsConditionArgsDict',
     'GetMappingsFilterArgs',
+    'GetMappingsFilterArgsDict',
     'GetPrivilegesFilterArgs',
+    'GetPrivilegesFilterArgsDict',
     'GetPrivilegesInstancePrivilegeArgs',
+    'GetPrivilegesInstancePrivilegeArgsDict',
     'GetPrivilegesInstancePrivilegeStatementArgs',
+    'GetPrivilegesInstancePrivilegeStatementArgsDict',
     'GetPrivilegesPrivilegeArgs',
+    'GetPrivilegesPrivilegeArgsDict',
     'GetPrivilegesPrivilegeStatementArgs',
+    'GetPrivilegesPrivilegeStatementArgsDict',
     'GetRiskRulesFilterArgs',
+    'GetRiskRulesFilterArgsDict',
     'GetRiskRulesInstanceSourceArgs',
+    'GetRiskRulesInstanceSourceArgsDict',
     'GetRiskRulesSourceArgs',
+    'GetRiskRulesSourceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppConfigurationArgsDict(TypedDict):
+        access_token_expiration_minutes: NotRequired[pulumi.Input[int]]
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
+        login_url: NotRequired[pulumi.Input[str]]
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
+        oidc_api_version: NotRequired[pulumi.Input[str]]
+        oidc_application_type: NotRequired[pulumi.Input[int]]
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
+        oidc_encryption_key: NotRequired[pulumi.Input[str]]
+        """
+        OIDC Apps only
+        """
+        post_logout_redirect_uri: NotRequired[pulumi.Input[str]]
+        """
+        OIDC Apps only
+        """
+        redirect_uri: NotRequired[pulumi.Input[str]]
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
+        refresh_token_expiration_minutes: NotRequired[pulumi.Input[int]]
+        """
+        Number of minutes the refresh token will be valid for.
+        """
+        token_endpoint_auth_method: NotRequired[pulumi.Input[int]]
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
+elif False:
+    AppConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppConfigurationArgs:
@@ -210,6 +302,63 @@ class AppConfigurationArgs:
     def token_endpoint_auth_method(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "token_endpoint_auth_method", value)
 
+
+if not MYPY:
+    class AppEnforcementPointArgsDict(TypedDict):
+        case_sensitive: NotRequired[pulumi.Input[bool]]
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
+        conditions: NotRequired[pulumi.Input[str]]
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
+        context_root: NotRequired[pulumi.Input[str]]
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
+        landing_page: NotRequired[pulumi.Input[str]]
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
+        require_sitewide_authentication: NotRequired[pulumi.Input[bool]]
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppEnforcementPointResourceArgsDict']]]]
+        """
+        Array of resource objects
+        """
+        session_expiry_fixed: NotRequired[pulumi.Input['AppEnforcementPointSessionExpiryFixedArgsDict']]
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        session_expiry_inactivity: NotRequired[pulumi.Input['AppEnforcementPointSessionExpiryInactivityArgsDict']]
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Can only be set on create. Access Gateway Token.
+        """
+        use_target_host_header: NotRequired[pulumi.Input[bool]]
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
+        vhost: NotRequired[pulumi.Input[str]]
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
+elif False:
+    AppEnforcementPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppEnforcementPointArgs:
@@ -426,6 +575,19 @@ class AppEnforcementPointArgs:
         pulumi.set(self, "vhost", value)
 
 
+if not MYPY:
+    class AppEnforcementPointResourceArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[str]]
+        """
+        required if permission == "conditions"
+        """
+        is_path_regex: NotRequired[pulumi.Input[bool]]
+        path: NotRequired[pulumi.Input[str]]
+        permission: NotRequired[pulumi.Input[str]]
+        require_auth: NotRequired[pulumi.Input[bool]]
+elif False:
+    AppEnforcementPointResourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppEnforcementPointResourceArgs:
     def __init__(__self__, *,
@@ -497,6 +659,13 @@ class AppEnforcementPointResourceArgs:
         pulumi.set(self, "require_auth", value)
 
 
+if not MYPY:
+    class AppEnforcementPointSessionExpiryFixedArgsDict(TypedDict):
+        unit: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[int]]
+elif False:
+    AppEnforcementPointSessionExpiryFixedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppEnforcementPointSessionExpiryFixedArgs:
     def __init__(__self__, *,
@@ -525,6 +694,13 @@ class AppEnforcementPointSessionExpiryFixedArgs:
     def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AppEnforcementPointSessionExpiryInactivityArgsDict(TypedDict):
+        unit: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[int]]
+elif False:
+    AppEnforcementPointSessionExpiryInactivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppEnforcementPointSessionExpiryInactivityArgs:
@@ -555,6 +731,12 @@ class AppEnforcementPointSessionExpiryInactivityArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AppParametersArgsDict(TypedDict):
+        groups: NotRequired[pulumi.Input['AppParametersGroupsArgsDict']]
+elif False:
+    AppParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppParametersArgs:
     def __init__(__self__, *,
@@ -571,6 +753,20 @@ class AppParametersArgs:
     def groups(self, value: Optional[pulumi.Input['AppParametersGroupsArgs']]):
         pulumi.set(self, "groups", value)
 
+
+if not MYPY:
+    class AppParametersGroupsArgsDict(TypedDict):
+        attributes_transformations: NotRequired[pulumi.Input[str]]
+        default_values: NotRequired[pulumi.Input[str]]
+        id: NotRequired[pulumi.Input[int]]
+        label: NotRequired[pulumi.Input[str]]
+        provisioned_entitlements: NotRequired[pulumi.Input[bool]]
+        skip_if_blank: NotRequired[pulumi.Input[bool]]
+        user_attribute_macros: NotRequired[pulumi.Input[str]]
+        user_attribute_mappings: NotRequired[pulumi.Input[str]]
+        values: NotRequired[pulumi.Input[str]]
+elif False:
+    AppParametersGroupsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppParametersGroupsArgs:
@@ -685,6 +881,13 @@ class AppParametersGroupsArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class AppProvisioningArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        status: NotRequired[pulumi.Input[str]]
+elif False:
+    AppProvisioningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppProvisioningArgs:
     def __init__(__self__, *,
@@ -713,6 +916,35 @@ class AppProvisioningArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class AppSsoArgsDict(TypedDict):
+        acs_url: NotRequired[pulumi.Input[str]]
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
+        certificate: NotRequired[pulumi.Input['AppSsoCertificateArgsDict']]
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        OpenId Connet Client Secret
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
+        metadata_url: NotRequired[pulumi.Input[str]]
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
+elif False:
+    AppSsoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppSsoArgs:
@@ -817,6 +1049,14 @@ class AppSsoArgs:
         pulumi.set(self, "metadata_url", value)
 
 
+if not MYPY:
+    class AppSsoCertificateArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        name: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    AppSsoCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppSsoCertificateArgs:
     def __init__(__self__, *,
@@ -857,6 +1097,27 @@ class AppSsoCertificateArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AuthServersConfigurationArgsDict(TypedDict):
+        audiences: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
+        resource_identifier: pulumi.Input[str]
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
+        access_token_expiration_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
+        refresh_token_expiration_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
+elif False:
+    AuthServersConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthServersConfigurationArgs:
@@ -927,6 +1188,13 @@ class AuthServersConfigurationArgs:
         pulumi.set(self, "refresh_token_expiration_minutes", value)
 
 
+if not MYPY:
+    class PrivilegesPrivilegeArgsDict(TypedDict):
+        statements: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivilegesPrivilegeStatementArgsDict']]]]
+        version: NotRequired[pulumi.Input[str]]
+elif False:
+    PrivilegesPrivilegeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivilegesPrivilegeArgs:
     def __init__(__self__, *,
@@ -955,6 +1223,28 @@ class PrivilegesPrivilegeArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class PrivilegesPrivilegeStatementArgsDict(TypedDict):
+        actions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
+        effect: pulumi.Input[str]
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
+elif False:
+    PrivilegesPrivilegeStatementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivilegesPrivilegeStatementArgs:
@@ -1017,6 +1307,43 @@ class PrivilegesPrivilegeStatementArgs:
     def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "scopes", value)
 
+
+if not MYPY:
+    class ProviderEndpointArgsDict(TypedDict):
+        apps: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        apps_rules: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        auth_servers: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        privileges: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        risk_rules: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        roles: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        users: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+        users_v1: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
+        """
+elif False:
+    ProviderEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProviderEndpointArgs:
@@ -1153,6 +1480,19 @@ class ProviderEndpointArgs:
         pulumi.set(self, "users_v1", value)
 
 
+if not MYPY:
+    class RiskRulesSourceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A unique id that represents the source of the event.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the source
+        """
+elif False:
+    RiskRulesSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RiskRulesSourceArgs:
     def __init__(__self__, *,
@@ -1191,6 +1531,49 @@ class RiskRulesSourceArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetAppsConfigurationArgsDict(TypedDict):
+        access_token_expiration_minutes: int
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
+        login_url: str
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
+        oidc_api_version: str
+        oidc_application_type: int
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
+        oidc_encryption_key: str
+        """
+        OIDC Apps only
+        """
+        post_logout_redirect_uri: str
+        """
+        OIDC Apps only
+        """
+        redirect_uri: str
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
+        refresh_token_expiration_minutes: int
+        """
+        Number of minutes the refresh token will be valid for.
+        """
+        token_endpoint_auth_method: int
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
+elif False:
+    GetAppsConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsConfigurationArgs:
@@ -1339,6 +1722,63 @@ class GetAppsConfigurationArgs:
     def token_endpoint_auth_method(self, value: int):
         pulumi.set(self, "token_endpoint_auth_method", value)
 
+
+if not MYPY:
+    class GetAppsEnforcementPointArgsDict(TypedDict):
+        case_sensitive: bool
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
+        conditions: str
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
+        context_root: str
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
+        landing_page: str
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
+        permissions: str
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
+        require_sitewide_authentication: bool
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
+        resources: Sequence['GetAppsEnforcementPointResourceArgsDict']
+        """
+        Array of resource objects
+        """
+        session_expiry_fixed: 'GetAppsEnforcementPointSessionExpiryFixedArgsDict'
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        session_expiry_inactivity: 'GetAppsEnforcementPointSessionExpiryInactivityArgsDict'
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        target: str
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
+        token: str
+        """
+        Can only be set on create. Access Gateway Token.
+        """
+        use_target_host_header: bool
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
+        vhost: str
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
+elif False:
+    GetAppsEnforcementPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsEnforcementPointArgs:
@@ -1542,6 +1982,19 @@ class GetAppsEnforcementPointArgs:
         pulumi.set(self, "vhost", value)
 
 
+if not MYPY:
+    class GetAppsEnforcementPointResourceArgsDict(TypedDict):
+        conditions: str
+        """
+        required if permission == "conditions"
+        """
+        is_path_regex: bool
+        path: str
+        permission: str
+        require_auth: bool
+elif False:
+    GetAppsEnforcementPointResourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsEnforcementPointResourceArgs:
     def __init__(__self__, *,
@@ -1608,6 +2061,13 @@ class GetAppsEnforcementPointResourceArgs:
         pulumi.set(self, "require_auth", value)
 
 
+if not MYPY:
+    class GetAppsEnforcementPointSessionExpiryFixedArgsDict(TypedDict):
+        unit: int
+        value: int
+elif False:
+    GetAppsEnforcementPointSessionExpiryFixedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsEnforcementPointSessionExpiryFixedArgs:
     def __init__(__self__, *,
@@ -1634,6 +2094,13 @@ class GetAppsEnforcementPointSessionExpiryFixedArgs:
     def value(self, value: int):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetAppsEnforcementPointSessionExpiryInactivityArgsDict(TypedDict):
+        unit: int
+        value: int
+elif False:
+    GetAppsEnforcementPointSessionExpiryInactivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsEnforcementPointSessionExpiryInactivityArgs:
@@ -1662,6 +2129,13 @@ class GetAppsEnforcementPointSessionExpiryInactivityArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetAppsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetAppsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsFilterArgs:
     def __init__(__self__, *,
@@ -1689,6 +2163,12 @@ class GetAppsFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetAppsParametersArgsDict(TypedDict):
+        groups: 'GetAppsParametersGroupsArgsDict'
+elif False:
+    GetAppsParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsParametersArgs:
     def __init__(__self__, *,
@@ -1704,6 +2184,20 @@ class GetAppsParametersArgs:
     def groups(self, value: 'GetAppsParametersGroupsArgs'):
         pulumi.set(self, "groups", value)
 
+
+if not MYPY:
+    class GetAppsParametersGroupsArgsDict(TypedDict):
+        attributes_transformations: str
+        default_values: str
+        id: int
+        label: str
+        provisioned_entitlements: bool
+        skip_if_blank: bool
+        user_attribute_macros: str
+        user_attribute_mappings: str
+        values: str
+elif False:
+    GetAppsParametersGroupsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsParametersGroupsArgs:
@@ -1809,6 +2303,13 @@ class GetAppsParametersGroupsArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetAppsProvisioningArgsDict(TypedDict):
+        enabled: bool
+        status: str
+elif False:
+    GetAppsProvisioningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsProvisioningArgs:
     def __init__(__self__, *,
@@ -1835,6 +2336,35 @@ class GetAppsProvisioningArgs:
     def status(self, value: str):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class GetAppsSsoArgsDict(TypedDict):
+        acs_url: str
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
+        certificate: 'GetAppsSsoCertificateArgsDict'
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
+        client_id: str
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
+        client_secret: str
+        """
+        OpenId Connet Client Secret
+        """
+        issuer: str
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
+        metadata_url: str
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
+elif False:
+    GetAppsSsoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsSsoArgs:
@@ -1933,6 +2463,14 @@ class GetAppsSsoArgs:
         pulumi.set(self, "metadata_url", value)
 
 
+if not MYPY:
+    class GetAppsSsoCertificateArgsDict(TypedDict):
+        id: int
+        name: str
+        value: str
+elif False:
+    GetAppsSsoCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAppsSsoCertificateArgs:
     def __init__(__self__, *,
@@ -1971,6 +2509,13 @@ class GetAppsSsoCertificateArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetAuthServersClaimsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetAuthServersClaimsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAuthServersClaimsFilterArgs:
     def __init__(__self__, *,
@@ -1997,6 +2542,27 @@ class GetAuthServersClaimsFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetAuthServersConfigurationArgsDict(TypedDict):
+        access_token_expiration_minutes: int
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
+        audiences: Sequence[str]
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
+        refresh_token_expiration_minutes: int
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
+        resource_identifier: str
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
+elif False:
+    GetAuthServersConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAuthServersConfigurationArgs:
@@ -2065,6 +2631,13 @@ class GetAuthServersConfigurationArgs:
         pulumi.set(self, "resource_identifier", value)
 
 
+if not MYPY:
+    class GetAuthServersFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetAuthServersFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAuthServersFilterArgs:
     def __init__(__self__, *,
@@ -2091,6 +2664,27 @@ class GetAuthServersFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetAuthServersInstanceConfigurationArgsDict(TypedDict):
+        access_token_expiration_minutes: int
+        """
+        The number of minutes until access token expires. There is no maximum expiry limit.
+        """
+        audiences: Sequence[str]
+        """
+        List of API endpoints that will be returned in Access Tokens.
+        """
+        refresh_token_expiration_minutes: int
+        """
+        The number of minutes until refresh token expires. There is no maximum expiry limit.
+        """
+        resource_identifier: str
+        """
+        Unique identifier for the API that the Authorization Server will issue Access Tokens for.
+        """
+elif False:
+    GetAuthServersInstanceConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAuthServersInstanceConfigurationArgs:
@@ -2159,6 +2753,13 @@ class GetAuthServersInstanceConfigurationArgs:
         pulumi.set(self, "resource_identifier", value)
 
 
+if not MYPY:
+    class GetAuthServersScopesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetAuthServersScopesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAuthServersScopesFilterArgs:
     def __init__(__self__, *,
@@ -2185,6 +2786,19 @@ class GetAuthServersScopesFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetMappingsActionArgsDict(TypedDict):
+        action: str
+        """
+        The action to apply
+        """
+        values: Sequence[str]
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
+elif False:
+    GetMappingsActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetMappingsActionArgs:
@@ -2222,6 +2836,23 @@ class GetMappingsActionArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetMappingsConditionArgsDict(TypedDict):
+        operator: str
+        """
+        A valid operator for the selected condition source
+        """
+        source: str
+        """
+        source field to check.
+        """
+        value: str
+        """
+        A plain text string or valid value for the selected  condition source
+        """
+elif False:
+    GetMappingsConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetMappingsConditionArgs:
@@ -2275,6 +2906,13 @@ class GetMappingsConditionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetMappingsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetMappingsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetMappingsFilterArgs:
     def __init__(__self__, *,
@@ -2301,6 +2939,13 @@ class GetMappingsFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetPrivilegesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetPrivilegesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPrivilegesFilterArgs:
@@ -2329,6 +2974,13 @@ class GetPrivilegesFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetPrivilegesInstancePrivilegeArgsDict(TypedDict):
+        statements: Sequence['GetPrivilegesInstancePrivilegeStatementArgsDict']
+        version: str
+elif False:
+    GetPrivilegesInstancePrivilegeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPrivilegesInstancePrivilegeArgs:
     def __init__(__self__, *,
@@ -2355,6 +3007,28 @@ class GetPrivilegesInstancePrivilegeArgs:
     def version(self, value: str):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class GetPrivilegesInstancePrivilegeStatementArgsDict(TypedDict):
+        actions: Sequence[str]
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
+        effect: str
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
+        scopes: Sequence[str]
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
+elif False:
+    GetPrivilegesInstancePrivilegeStatementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPrivilegesInstancePrivilegeStatementArgs:
@@ -2418,6 +3092,13 @@ class GetPrivilegesInstancePrivilegeStatementArgs:
         pulumi.set(self, "scopes", value)
 
 
+if not MYPY:
+    class GetPrivilegesPrivilegeArgsDict(TypedDict):
+        statements: Sequence['GetPrivilegesPrivilegeStatementArgsDict']
+        version: str
+elif False:
+    GetPrivilegesPrivilegeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPrivilegesPrivilegeArgs:
     def __init__(__self__, *,
@@ -2444,6 +3125,28 @@ class GetPrivilegesPrivilegeArgs:
     def version(self, value: str):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class GetPrivilegesPrivilegeStatementArgsDict(TypedDict):
+        actions: Sequence[str]
+        """
+        An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
+        e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
+        """
+        effect: str
+        """
+        Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
+        """
+        scopes: Sequence[str]
+        """
+        Target the privileged action against specific resources with the scope.
+        The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
+        e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
+        The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
+        The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
+        """
+elif False:
+    GetPrivilegesPrivilegeStatementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPrivilegesPrivilegeStatementArgs:
@@ -2507,6 +3210,13 @@ class GetPrivilegesPrivilegeStatementArgs:
         pulumi.set(self, "scopes", value)
 
 
+if not MYPY:
+    class GetRiskRulesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetRiskRulesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRiskRulesFilterArgs:
     def __init__(__self__, *,
@@ -2533,6 +3243,19 @@ class GetRiskRulesFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetRiskRulesInstanceSourceArgsDict(TypedDict):
+        id: str
+        """
+        A unique id that represents the source of the event.
+        """
+        name: str
+        """
+        The name of the source
+        """
+elif False:
+    GetRiskRulesInstanceSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRiskRulesInstanceSourceArgs:
@@ -2570,6 +3293,19 @@ class GetRiskRulesInstanceSourceArgs:
     def name(self, value: str):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetRiskRulesSourceArgsDict(TypedDict):
+        id: str
+        """
+        A unique id that represents the source of the event.
+        """
+        name: str
+        """
+        The name of the source
+        """
+elif False:
+    GetRiskRulesSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRiskRulesSourceArgs:

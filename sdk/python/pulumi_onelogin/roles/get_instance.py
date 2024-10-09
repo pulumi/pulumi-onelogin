@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -101,9 +106,6 @@ def get_instance(admins: Optional[Sequence[int]] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_instance)
 def get_instance_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                         apps: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                         id: Optional[pulumi.Input[str]] = None,
@@ -113,4 +115,17 @@ def get_instance_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] 
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['admins'] = admins
+    __args__['apps'] = apps
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['users'] = users
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:roles/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    return __ret__.apply(lambda __response__: GetInstanceResult(
+        admins=pulumi.get(__response__, 'admins'),
+        apps=pulumi.get(__response__, 'apps'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        users=pulumi.get(__response__, 'users')))
