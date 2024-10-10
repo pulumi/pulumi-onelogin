@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -104,9 +109,6 @@ def get_auth_servers(configuration: Optional[Union['GetAuthServersConfigurationA
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_auth_servers)
 def get_auth_servers_output(configuration: Optional[pulumi.Input[Optional[Union['GetAuthServersConfigurationArgs', 'GetAuthServersConfigurationArgsDict']]]] = None,
                             description: Optional[pulumi.Input[Optional[str]]] = None,
                             filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAuthServersFilterArgs', 'GetAuthServersFilterArgsDict']]]]] = None,
@@ -115,4 +117,16 @@ def get_auth_servers_output(configuration: Optional[pulumi.Input[Optional[Union[
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['configuration'] = configuration
+    __args__['description'] = description
+    __args__['filters'] = filters
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServers:getAuthServers', __args__, opts=opts, typ=GetAuthServersResult)
+    return __ret__.apply(lambda __response__: GetAuthServersResult(
+        configuration=pulumi.get(__response__, 'configuration'),
+        description=pulumi.get(__response__, 'description'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

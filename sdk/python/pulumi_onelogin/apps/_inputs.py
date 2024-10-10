@@ -4,35 +4,77 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RulesActionArgs',
+    'RulesActionArgsDict',
     'RulesConditionArgs',
+    'RulesConditionArgsDict',
     'GetActionsFilterArgs',
+    'GetActionsFilterArgsDict',
     'GetActionsValuesFilterArgs',
+    'GetActionsValuesFilterArgsDict',
     'GetConditionsFilterArgs',
+    'GetConditionsFilterArgsDict',
     'GetConditionsOperatorsFilterArgs',
+    'GetConditionsOperatorsFilterArgsDict',
     'GetInstanceConfigurationArgs',
+    'GetInstanceConfigurationArgsDict',
     'GetInstanceEnforcementPointArgs',
+    'GetInstanceEnforcementPointArgsDict',
     'GetInstanceEnforcementPointResourceArgs',
+    'GetInstanceEnforcementPointResourceArgsDict',
     'GetInstanceEnforcementPointSessionExpiryFixedArgs',
+    'GetInstanceEnforcementPointSessionExpiryFixedArgsDict',
     'GetInstanceEnforcementPointSessionExpiryInactivityArgs',
+    'GetInstanceEnforcementPointSessionExpiryInactivityArgsDict',
     'GetInstanceParametersArgs',
+    'GetInstanceParametersArgsDict',
     'GetInstanceParametersGroupsArgs',
+    'GetInstanceParametersGroupsArgsDict',
     'GetInstanceProvisioningArgs',
+    'GetInstanceProvisioningArgsDict',
     'GetInstanceSsoArgs',
+    'GetInstanceSsoArgsDict',
     'GetInstanceSsoCertificateArgs',
+    'GetInstanceSsoCertificateArgsDict',
     'GetRulesActionArgs',
+    'GetRulesActionArgsDict',
     'GetRulesConditionArgs',
+    'GetRulesConditionArgsDict',
     'GetRulesFilterArgs',
+    'GetRulesFilterArgsDict',
     'GetRulesInstanceActionArgs',
+    'GetRulesInstanceActionArgsDict',
     'GetRulesInstanceConditionArgs',
+    'GetRulesInstanceConditionArgsDict',
     'GetUsersFilterArgs',
+    'GetUsersFilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RulesActionArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        The action to apply
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
+elif False:
+    RulesActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesActionArgs:
@@ -72,6 +114,23 @@ class RulesActionArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class RulesConditionArgsDict(TypedDict):
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        A valid operator for the selected condition source
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        source field to check.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A plain text string or valid value for the selected  condition source
+        """
+elif False:
+    RulesConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesConditionArgs:
@@ -128,6 +187,13 @@ class RulesConditionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetActionsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetActionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetActionsFilterArgs:
     def __init__(__self__, *,
@@ -154,6 +220,13 @@ class GetActionsFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetActionsValuesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetActionsValuesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetActionsValuesFilterArgs:
@@ -182,6 +255,13 @@ class GetActionsValuesFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetConditionsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetConditionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConditionsFilterArgs:
     def __init__(__self__, *,
@@ -209,6 +289,13 @@ class GetConditionsFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetConditionsOperatorsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetConditionsOperatorsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConditionsOperatorsFilterArgs:
     def __init__(__self__, *,
@@ -235,6 +322,49 @@ class GetConditionsOperatorsFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetInstanceConfigurationArgsDict(TypedDict):
+        access_token_expiration_minutes: int
+        """
+        OIDC Apps only Number of minutes the refresh token will be valid for.
+        """
+        login_url: str
+        """
+        OIDC Apps only The OpenId Connect Client Id. Note that client_secret is only returned after Creating an App.
+        """
+        oidc_api_version: str
+        oidc_application_type: int
+        """
+        OIDC Apps Only
+          - 0: Web
+          - 1: Native/Mobile
+        """
+        oidc_encryption_key: str
+        """
+        OIDC Apps only
+        """
+        post_logout_redirect_uri: str
+        """
+        OIDC Apps only
+        """
+        redirect_uri: str
+        """
+        OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
+        """
+        refresh_token_expiration_minutes: int
+        """
+        Number of minutes the refresh token will be valid for.
+        """
+        token_endpoint_auth_method: int
+        """
+        OIDC Apps only
+         - 0: Basic
+         - 1: POST
+         - 2: None / PKCE
+        """
+elif False:
+    GetInstanceConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceConfigurationArgs:
@@ -383,6 +513,63 @@ class GetInstanceConfigurationArgs:
     def token_endpoint_auth_method(self, value: int):
         pulumi.set(self, "token_endpoint_auth_method", value)
 
+
+if not MYPY:
+    class GetInstanceEnforcementPointArgsDict(TypedDict):
+        case_sensitive: bool
+        """
+        The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
+        """
+        conditions: str
+        """
+        If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
+        """
+        context_root: str
+        """
+        The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
+        """
+        landing_page: str
+        """
+        The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
+        """
+        permissions: str
+        """
+        Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
+        """
+        require_sitewide_authentication: bool
+        """
+        Require user authentication to access any resource protected by this enforcement point.
+        """
+        resources: Sequence['GetInstanceEnforcementPointResourceArgsDict']
+        """
+        Array of resource objects
+        """
+        session_expiry_fixed: 'GetInstanceEnforcementPointSessionExpiryFixedArgsDict'
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        session_expiry_inactivity: 'GetInstanceEnforcementPointSessionExpiryInactivityArgsDict'
+        """
+        unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
+        """
+        target: str
+        """
+        A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
+        """
+        token: str
+        """
+        Can only be set on create. Access Gateway Token.
+        """
+        use_target_host_header: bool
+        """
+        Use the target host header as opposed to the original gateway or upstream host header.
+        """
+        vhost: str
+        """
+        A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
+        """
+elif False:
+    GetInstanceEnforcementPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceEnforcementPointArgs:
@@ -586,6 +773,19 @@ class GetInstanceEnforcementPointArgs:
         pulumi.set(self, "vhost", value)
 
 
+if not MYPY:
+    class GetInstanceEnforcementPointResourceArgsDict(TypedDict):
+        conditions: str
+        """
+        required if permission == "conditions"
+        """
+        is_path_regex: bool
+        path: str
+        permission: str
+        require_auth: bool
+elif False:
+    GetInstanceEnforcementPointResourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceEnforcementPointResourceArgs:
     def __init__(__self__, *,
@@ -652,6 +852,13 @@ class GetInstanceEnforcementPointResourceArgs:
         pulumi.set(self, "require_auth", value)
 
 
+if not MYPY:
+    class GetInstanceEnforcementPointSessionExpiryFixedArgsDict(TypedDict):
+        unit: int
+        value: int
+elif False:
+    GetInstanceEnforcementPointSessionExpiryFixedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceEnforcementPointSessionExpiryFixedArgs:
     def __init__(__self__, *,
@@ -678,6 +885,13 @@ class GetInstanceEnforcementPointSessionExpiryFixedArgs:
     def value(self, value: int):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetInstanceEnforcementPointSessionExpiryInactivityArgsDict(TypedDict):
+        unit: int
+        value: int
+elif False:
+    GetInstanceEnforcementPointSessionExpiryInactivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceEnforcementPointSessionExpiryInactivityArgs:
@@ -706,6 +920,12 @@ class GetInstanceEnforcementPointSessionExpiryInactivityArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetInstanceParametersArgsDict(TypedDict):
+        groups: 'GetInstanceParametersGroupsArgsDict'
+elif False:
+    GetInstanceParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceParametersArgs:
     def __init__(__self__, *,
@@ -721,6 +941,20 @@ class GetInstanceParametersArgs:
     def groups(self, value: 'GetInstanceParametersGroupsArgs'):
         pulumi.set(self, "groups", value)
 
+
+if not MYPY:
+    class GetInstanceParametersGroupsArgsDict(TypedDict):
+        attributes_transformations: str
+        default_values: str
+        id: int
+        label: str
+        provisioned_entitlements: bool
+        skip_if_blank: bool
+        user_attribute_macros: str
+        user_attribute_mappings: str
+        values: str
+elif False:
+    GetInstanceParametersGroupsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceParametersGroupsArgs:
@@ -826,6 +1060,13 @@ class GetInstanceParametersGroupsArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetInstanceProvisioningArgsDict(TypedDict):
+        enabled: bool
+        status: str
+elif False:
+    GetInstanceProvisioningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceProvisioningArgs:
     def __init__(__self__, *,
@@ -852,6 +1093,35 @@ class GetInstanceProvisioningArgs:
     def status(self, value: str):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class GetInstanceSsoArgsDict(TypedDict):
+        acs_url: str
+        """
+        App Name.	This is only returned after Creating a SAML App.
+        """
+        certificate: 'GetInstanceSsoCertificateArgsDict'
+        """
+        The certificate used for signing.	This is only returned after Creating a SAML App.
+        """
+        client_id: str
+        """
+        The OpenId Connect Client Id. Note that client_secret is only returned after Creating an OIDC App.
+        """
+        client_secret: str
+        """
+        OpenId Connet Client Secret
+        """
+        issuer: str
+        """
+        Issuer of app.	This is only returned after Creating a SAML App.
+        """
+        metadata_url: str
+        """
+        ID of the apps underlying connector.	This is only returned after Creating a SAML App.
+        """
+elif False:
+    GetInstanceSsoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInstanceSsoArgs:
@@ -950,6 +1220,14 @@ class GetInstanceSsoArgs:
         pulumi.set(self, "metadata_url", value)
 
 
+if not MYPY:
+    class GetInstanceSsoCertificateArgsDict(TypedDict):
+        id: int
+        name: str
+        value: str
+elif False:
+    GetInstanceSsoCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInstanceSsoCertificateArgs:
     def __init__(__self__, *,
@@ -988,6 +1266,19 @@ class GetInstanceSsoCertificateArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetRulesActionArgsDict(TypedDict):
+        action: str
+        """
+        The action to apply
+        """
+        values: Sequence[str]
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
+elif False:
+    GetRulesActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRulesActionArgs:
     def __init__(__self__, *,
@@ -1024,6 +1315,23 @@ class GetRulesActionArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetRulesConditionArgsDict(TypedDict):
+        operator: str
+        """
+        A valid operator for the selected condition source
+        """
+        source: str
+        """
+        source field to check.
+        """
+        value: str
+        """
+        A plain text string or valid value for the selected  condition source
+        """
+elif False:
+    GetRulesConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRulesConditionArgs:
@@ -1077,6 +1385,13 @@ class GetRulesConditionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetRulesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetRulesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRulesFilterArgs:
     def __init__(__self__, *,
@@ -1103,6 +1418,19 @@ class GetRulesFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetRulesInstanceActionArgsDict(TypedDict):
+        action: str
+        """
+        The action to apply
+        """
+        values: Sequence[str]
+        """
+        Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
+        """
+elif False:
+    GetRulesInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRulesInstanceActionArgs:
@@ -1140,6 +1468,23 @@ class GetRulesInstanceActionArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetRulesInstanceConditionArgsDict(TypedDict):
+        operator: str
+        """
+        A valid operator for the selected condition source
+        """
+        source: str
+        """
+        source field to check.
+        """
+        value: str
+        """
+        A plain text string or valid value for the selected  condition source
+        """
+elif False:
+    GetRulesInstanceConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRulesInstanceConditionArgs:
@@ -1192,6 +1537,13 @@ class GetRulesInstanceConditionArgs:
     def value(self, value: str):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetUsersFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetUsersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersFilterArgs:
