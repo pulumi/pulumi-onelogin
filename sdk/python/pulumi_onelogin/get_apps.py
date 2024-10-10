@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -320,9 +325,6 @@ def get_apps(allow_assumed_signin: Optional[bool] = None,
         tab_id=pulumi.get(__ret__, 'tab_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         visible=pulumi.get(__ret__, 'visible'))
-
-
-@_utilities.lift_output_func(get_apps)
 def get_apps_output(allow_assumed_signin: Optional[pulumi.Input[Optional[bool]]] = None,
                     auth_method: Optional[pulumi.Input[Optional[int]]] = None,
                     auth_method_description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -349,4 +351,52 @@ def get_apps_output(allow_assumed_signin: Optional[pulumi.Input[Optional[bool]]]
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['allowAssumedSignin'] = allow_assumed_signin
+    __args__['authMethod'] = auth_method
+    __args__['authMethodDescription'] = auth_method_description
+    __args__['brandId'] = brand_id
+    __args__['configuration'] = configuration
+    __args__['connectorId'] = connector_id
+    __args__['createdAt'] = created_at
+    __args__['description'] = description
+    __args__['enforcementPoint'] = enforcement_point
+    __args__['filters'] = filters
+    __args__['iconUrl'] = icon_url
+    __args__['loginConfig'] = login_config
+    __args__['name'] = name
+    __args__['notes'] = notes
+    __args__['parameters'] = parameters
+    __args__['policyId'] = policy_id
+    __args__['provisioning'] = provisioning
+    __args__['roleIds'] = role_ids
+    __args__['sso'] = sso
+    __args__['tabId'] = tab_id
+    __args__['updatedAt'] = updated_at
+    __args__['visible'] = visible
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
+    return __ret__.apply(lambda __response__: GetAppsResult(
+        allow_assumed_signin=pulumi.get(__response__, 'allow_assumed_signin'),
+        auth_method=pulumi.get(__response__, 'auth_method'),
+        auth_method_description=pulumi.get(__response__, 'auth_method_description'),
+        brand_id=pulumi.get(__response__, 'brand_id'),
+        configuration=pulumi.get(__response__, 'configuration'),
+        connector_id=pulumi.get(__response__, 'connector_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        enforcement_point=pulumi.get(__response__, 'enforcement_point'),
+        filters=pulumi.get(__response__, 'filters'),
+        icon_url=pulumi.get(__response__, 'icon_url'),
+        id=pulumi.get(__response__, 'id'),
+        login_config=pulumi.get(__response__, 'login_config'),
+        name=pulumi.get(__response__, 'name'),
+        notes=pulumi.get(__response__, 'notes'),
+        parameters=pulumi.get(__response__, 'parameters'),
+        policy_id=pulumi.get(__response__, 'policy_id'),
+        provisioning=pulumi.get(__response__, 'provisioning'),
+        role_ids=pulumi.get(__response__, 'role_ids'),
+        sso=pulumi.get(__response__, 'sso'),
+        tab_id=pulumi.get(__response__, 'tab_id'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        visible=pulumi.get(__response__, 'visible')))

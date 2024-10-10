@@ -4,18 +4,37 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'GetAppsFilterArgs',
+    'GetAppsFilterArgsDict',
     'GetDevicesFilterArgs',
+    'GetDevicesFilterArgsDict',
     'GetUsersFilterArgs',
+    'GetUsersFilterArgsDict',
     'GetV1AppsFilterArgs',
+    'GetV1AppsFilterArgsDict',
     'GetV1FilterArgs',
+    'GetV1FilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class GetAppsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetAppsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAppsFilterArgs:
@@ -44,6 +63,13 @@ class GetAppsFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetDevicesFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetDevicesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetDevicesFilterArgs:
     def __init__(__self__, *,
@@ -70,6 +96,13 @@ class GetDevicesFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetUsersFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetUsersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetUsersFilterArgs:
@@ -98,6 +131,13 @@ class GetUsersFilterArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetV1AppsFilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetV1AppsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetV1AppsFilterArgs:
     def __init__(__self__, *,
@@ -124,6 +164,13 @@ class GetV1AppsFilterArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetV1FilterArgsDict(TypedDict):
+        name: str
+        values: Sequence[str]
+elif False:
+    GetV1FilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetV1FilterArgs:
