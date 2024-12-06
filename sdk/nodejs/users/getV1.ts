@@ -136,7 +136,7 @@ export interface GetV1Result {
     readonly username: string;
     readonly userprincipalname: string;
 }
-export function getV1Output(args?: GetV1OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV1Result> {
+export function getV1Output(args?: GetV1OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetV1Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:users/getV1:getV1", {

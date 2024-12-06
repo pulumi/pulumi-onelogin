@@ -178,7 +178,7 @@ def get_v1_apps_output(extension: Optional[pulumi.Input[Optional[bool]]] = None,
                        provisioning_state: Optional[pulumi.Input[Optional[str]]] = None,
                        provisioning_status: Optional[pulumi.Input[Optional[str]]] = None,
                        users_v1_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV1AppsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV1AppsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -192,7 +192,7 @@ def get_v1_apps_output(extension: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['provisioningState'] = provisioning_state
     __args__['provisioningStatus'] = provisioning_status
     __args__['usersV1Id'] = users_v1_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:users/getV1Apps:getV1Apps', __args__, opts=opts, typ=GetV1AppsResult)
     return __ret__.apply(lambda __response__: GetV1AppsResult(
         extension=pulumi.get(__response__, 'extension'),

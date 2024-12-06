@@ -49,7 +49,7 @@ export interface GetMappingsResult {
     readonly name: string;
     readonly position: number;
 }
-export function getMappingsOutput(args?: GetMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMappingsResult> {
+export function getMappingsOutput(args?: GetMappingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMappingsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getMappings:getMappings", {

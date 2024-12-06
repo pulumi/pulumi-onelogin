@@ -152,7 +152,7 @@ def get_risk_rules_output(description: Optional[pulumi.Input[Optional[str]]] = N
                           source: Optional[pulumi.Input[Optional[Union['GetRiskRulesSourceArgs', 'GetRiskRulesSourceArgsDict']]]] = None,
                           target: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRiskRulesResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRiskRulesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -164,7 +164,7 @@ def get_risk_rules_output(description: Optional[pulumi.Input[Optional[str]]] = N
     __args__['source'] = source
     __args__['target'] = target
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getRiskRules:getRiskRules', __args__, opts=opts, typ=GetRiskRulesResult)
     return __ret__.apply(lambda __response__: GetRiskRulesResult(
         description=pulumi.get(__response__, 'description'),

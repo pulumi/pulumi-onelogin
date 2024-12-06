@@ -126,7 +126,7 @@ def get_conditions_operators_output(apps_id: Optional[pulumi.Input[str]] = None,
                                     filters: Optional[pulumi.Input[Optional[Sequence[Union['GetConditionsOperatorsFilterArgs', 'GetConditionsOperatorsFilterArgsDict']]]]] = None,
                                     name: Optional[pulumi.Input[Optional[str]]] = None,
                                     value: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConditionsOperatorsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConditionsOperatorsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -136,7 +136,7 @@ def get_conditions_operators_output(apps_id: Optional[pulumi.Input[str]] = None,
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['value'] = value
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:apps/getConditionsOperators:getConditionsOperators', __args__, opts=opts, typ=GetConditionsOperatorsResult)
     return __ret__.apply(lambda __response__: GetConditionsOperatorsResult(
         apps_id=pulumi.get(__response__, 'apps_id'),
