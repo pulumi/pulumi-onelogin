@@ -42,7 +42,7 @@ export interface GetConditionsOperatorsResult {
     readonly name: string;
     readonly value: string;
 }
-export function getConditionsOperatorsOutput(args: GetConditionsOperatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConditionsOperatorsResult> {
+export function getConditionsOperatorsOutput(args: GetConditionsOperatorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConditionsOperatorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:apps/getConditionsOperators:getConditionsOperators", {
         "appsId": args.appsId,

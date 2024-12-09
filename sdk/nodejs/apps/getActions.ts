@@ -39,7 +39,7 @@ export interface GetActionsResult {
     readonly name: string;
     readonly value: string;
 }
-export function getActionsOutput(args: GetActionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActionsResult> {
+export function getActionsOutput(args: GetActionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:apps/getActions:getActions", {
         "appsId": args.appsId,

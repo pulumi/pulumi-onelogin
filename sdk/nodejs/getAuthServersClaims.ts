@@ -57,7 +57,7 @@ export interface GetAuthServersClaimsResult {
     readonly userAttributeMappings: string;
     readonly values: string[];
 }
-export function getAuthServersClaimsOutput(args: GetAuthServersClaimsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersClaimsResult> {
+export function getAuthServersClaimsOutput(args: GetAuthServersClaimsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthServersClaimsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersClaims:getAuthServersClaims", {
         "attributeTransformations": args.attributeTransformations,

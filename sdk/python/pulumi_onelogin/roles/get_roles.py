@@ -126,7 +126,7 @@ def get_roles_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] = N
                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRolesFilterArgs', 'GetRolesFilterArgsDict']]]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -136,7 +136,7 @@ def get_roles_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] = N
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['users'] = users
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:roles/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
     return __ret__.apply(lambda __response__: GetRolesResult(
         admins=pulumi.get(__response__, 'admins'),

@@ -347,7 +347,7 @@ def get_apps_output(allow_assumed_signin: Optional[pulumi.Input[Optional[bool]]]
                     tab_id: Optional[pulumi.Input[Optional[int]]] = None,
                     updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                     visible: Optional[pulumi.Input[Optional[bool]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -374,7 +374,7 @@ def get_apps_output(allow_assumed_signin: Optional[pulumi.Input[Optional[bool]]]
     __args__['tabId'] = tab_id
     __args__['updatedAt'] = updated_at
     __args__['visible'] = visible
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         allow_assumed_signin=pulumi.get(__response__, 'allow_assumed_signin'),
