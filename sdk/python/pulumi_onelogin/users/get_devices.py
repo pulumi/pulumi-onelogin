@@ -152,7 +152,7 @@ def get_devices_output(auth_factor_name: Optional[pulumi.Input[Optional[str]]] =
                        type_display_name: Optional[pulumi.Input[Optional[str]]] = None,
                        user_display_name: Optional[pulumi.Input[Optional[str]]] = None,
                        users_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDevicesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -164,7 +164,7 @@ def get_devices_output(auth_factor_name: Optional[pulumi.Input[Optional[str]]] =
     __args__['typeDisplayName'] = type_display_name
     __args__['userDisplayName'] = user_display_name
     __args__['usersId'] = users_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:users/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult)
     return __ret__.apply(lambda __response__: GetDevicesResult(
         auth_factor_name=pulumi.get(__response__, 'auth_factor_name'),

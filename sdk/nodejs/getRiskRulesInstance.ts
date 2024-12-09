@@ -44,7 +44,7 @@ export interface GetRiskRulesInstanceResult {
     readonly target: string;
     readonly type: string;
 }
-export function getRiskRulesInstanceOutput(args: GetRiskRulesInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRiskRulesInstanceResult> {
+export function getRiskRulesInstanceOutput(args: GetRiskRulesInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRiskRulesInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", {
         "description": args.description,
