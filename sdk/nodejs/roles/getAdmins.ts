@@ -138,7 +138,7 @@ export interface GetAdminsResult {
     readonly username: string;
     readonly userprincipalname: string;
 }
-export function getAdminsOutput(args: GetAdminsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminsResult> {
+export function getAdminsOutput(args: GetAdminsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdminsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:roles/getAdmins:getAdmins", {
         "activatedAt": args.activatedAt,

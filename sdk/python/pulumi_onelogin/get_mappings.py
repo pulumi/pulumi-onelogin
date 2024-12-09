@@ -152,7 +152,7 @@ def get_mappings_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['
                         match: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         position: Optional[pulumi.Input[Optional[int]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMappingsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMappingsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -164,7 +164,7 @@ def get_mappings_output(actions: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__['match'] = match
     __args__['name'] = name
     __args__['position'] = position
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult)
     return __ret__.apply(lambda __response__: GetMappingsResult(
         actions=pulumi.get(__response__, 'actions'),

@@ -51,7 +51,7 @@ export interface GetRulesResult {
     readonly name: string;
     readonly position: number;
 }
-export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:apps/getRules:getRules", {
         "actions": args.actions,

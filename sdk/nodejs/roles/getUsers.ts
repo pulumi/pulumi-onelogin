@@ -138,7 +138,7 @@ export interface GetUsersResult {
     readonly username: string;
     readonly userprincipalname: string;
 }
-export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:roles/getUsers:getUsers", {
         "activatedAt": args.activatedAt,

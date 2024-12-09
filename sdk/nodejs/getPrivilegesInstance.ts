@@ -35,7 +35,7 @@ export interface GetPrivilegesInstanceResult {
     readonly name: string;
     readonly privilege: outputs.GetPrivilegesInstancePrivilege;
 }
-export function getPrivilegesInstanceOutput(args: GetPrivilegesInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivilegesInstanceResult> {
+export function getPrivilegesInstanceOutput(args: GetPrivilegesInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivilegesInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", {
         "description": args.description,

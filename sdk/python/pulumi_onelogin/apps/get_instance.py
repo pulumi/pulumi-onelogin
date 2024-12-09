@@ -334,7 +334,7 @@ def get_instance_output(allow_assumed_signin: Optional[pulumi.Input[Optional[boo
                         tab_id: Optional[pulumi.Input[Optional[int]]] = None,
                         updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                         visible: Optional[pulumi.Input[Optional[bool]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -361,7 +361,7 @@ def get_instance_output(allow_assumed_signin: Optional[pulumi.Input[Optional[boo
     __args__['tabId'] = tab_id
     __args__['updatedAt'] = updated_at
     __args__['visible'] = visible
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:apps/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         allow_assumed_signin=pulumi.get(__response__, 'allow_assumed_signin'),

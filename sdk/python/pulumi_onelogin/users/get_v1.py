@@ -529,7 +529,7 @@ def get_v1_output(activated_at: Optional[pulumi.Input[Optional[str]]] = None,
                   updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                   username: Optional[pulumi.Input[Optional[str]]] = None,
                   userprincipalname: Optional[pulumi.Input[Optional[str]]] = None,
-                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV1Result]:
+                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV1Result]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -570,7 +570,7 @@ def get_v1_output(activated_at: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['updatedAt'] = updated_at
     __args__['username'] = username
     __args__['userprincipalname'] = userprincipalname
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:users/getV1:getV1', __args__, opts=opts, typ=GetV1Result)
     return __ret__.apply(lambda __response__: GetV1Result(
         activated_at=pulumi.get(__response__, 'activated_at'),

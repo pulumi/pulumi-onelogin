@@ -39,7 +39,7 @@ export interface GetAppsResult {
     readonly name: string;
     readonly rolesId: string;
 }
-export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
+export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:roles/getApps:getApps", {
         "filters": args.filters,
