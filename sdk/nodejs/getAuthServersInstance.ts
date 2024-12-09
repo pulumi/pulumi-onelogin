@@ -35,7 +35,7 @@ export interface GetAuthServersInstanceResult {
     readonly id: string;
     readonly name: string;
 }
-export function getAuthServersInstanceOutput(args: GetAuthServersInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersInstanceResult> {
+export function getAuthServersInstanceOutput(args: GetAuthServersInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthServersInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersInstance:getAuthServersInstance", {
         "configuration": args.configuration,

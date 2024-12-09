@@ -48,7 +48,7 @@ export interface GetDevicesResult {
     readonly userDisplayName: string;
     readonly usersId: string;
 }
-export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
+export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDevicesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:users/getDevices:getDevices", {
         "authFactorName": args.authFactorName,

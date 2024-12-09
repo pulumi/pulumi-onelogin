@@ -54,7 +54,7 @@ export interface GetV1AppsResult {
     readonly provisioningStatus: string;
     readonly usersV1Id: string;
 }
-export function getV1AppsOutput(args: GetV1AppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV1AppsResult> {
+export function getV1AppsOutput(args: GetV1AppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetV1AppsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:users/getV1Apps:getV1Apps", {
         "extension": args.extension,

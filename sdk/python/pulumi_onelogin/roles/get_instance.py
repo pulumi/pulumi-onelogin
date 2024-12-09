@@ -111,7 +111,7 @@ def get_instance_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] 
                         id: Optional[pulumi.Input[str]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         users: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -121,7 +121,7 @@ def get_instance_output(admins: Optional[pulumi.Input[Optional[Sequence[int]]]] 
     __args__['id'] = id
     __args__['name'] = name
     __args__['users'] = users
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:roles/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         admins=pulumi.get(__response__, 'admins'),

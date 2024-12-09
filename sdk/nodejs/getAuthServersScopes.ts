@@ -39,7 +39,7 @@ export interface GetAuthServersScopesResult {
     readonly id: string;
     readonly value: string;
 }
-export function getAuthServersScopesOutput(args: GetAuthServersScopesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersScopesResult> {
+export function getAuthServersScopesOutput(args: GetAuthServersScopesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthServersScopesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getAuthServersScopes:getAuthServersScopes", {
         "authServersId": args.authServersId,

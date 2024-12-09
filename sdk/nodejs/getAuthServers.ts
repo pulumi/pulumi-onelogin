@@ -40,7 +40,7 @@ export interface GetAuthServersResult {
     readonly id: string;
     readonly name: string;
 }
-export function getAuthServersOutput(args?: GetAuthServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthServersResult> {
+export function getAuthServersOutput(args?: GetAuthServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthServersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getAuthServers:getAuthServers", {

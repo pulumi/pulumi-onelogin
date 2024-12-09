@@ -40,7 +40,7 @@ export interface GetPrivilegesResult {
     readonly name: string;
     readonly privilege: outputs.GetPrivilegesPrivilege;
 }
-export function getPrivilegesOutput(args?: GetPrivilegesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivilegesResult> {
+export function getPrivilegesOutput(args?: GetPrivilegesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivilegesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getPrivileges:getPrivileges", {

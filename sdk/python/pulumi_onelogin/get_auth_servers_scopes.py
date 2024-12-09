@@ -113,7 +113,7 @@ def get_auth_servers_scopes_output(auth_servers_id: Optional[pulumi.Input[str]] 
                                    description: Optional[pulumi.Input[Optional[str]]] = None,
                                    filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAuthServersScopesFilterArgs', 'GetAuthServersScopesFilterArgsDict']]]]] = None,
                                    value: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthServersScopesResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthServersScopesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -122,7 +122,7 @@ def get_auth_servers_scopes_output(auth_servers_id: Optional[pulumi.Input[str]] 
     __args__['description'] = description
     __args__['filters'] = filters
     __args__['value'] = value
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServersScopes:getAuthServersScopes', __args__, opts=opts, typ=GetAuthServersScopesResult)
     return __ret__.apply(lambda __response__: GetAuthServersScopesResult(
         auth_servers_id=pulumi.get(__response__, 'auth_servers_id'),

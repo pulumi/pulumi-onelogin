@@ -49,7 +49,7 @@ export interface GetRiskRulesResult {
     readonly target: string;
     readonly type: string;
 }
-export function getRiskRulesOutput(args?: GetRiskRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRiskRulesResult> {
+export function getRiskRulesOutput(args?: GetRiskRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRiskRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:index/getRiskRules:getRiskRules", {

@@ -126,7 +126,7 @@ def get_actions_values_output(actions_id: Optional[pulumi.Input[str]] = None,
                               filters: Optional[pulumi.Input[Optional[Sequence[Union['GetActionsValuesFilterArgs', 'GetActionsValuesFilterArgsDict']]]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               value: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActionsValuesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionsValuesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -136,7 +136,7 @@ def get_actions_values_output(actions_id: Optional[pulumi.Input[str]] = None,
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['value'] = value
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:apps/getActionsValues:getActionsValues', __args__, opts=opts, typ=GetActionsValuesResult)
     return __ret__.apply(lambda __response__: GetActionsValuesResult(
         actions_id=pulumi.get(__response__, 'actions_id'),

@@ -43,7 +43,7 @@ export interface GetRolesResult {
     readonly name: string;
     readonly users: number[];
 }
-export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRolesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:roles/getRoles:getRoles", {
