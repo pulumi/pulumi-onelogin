@@ -89,7 +89,7 @@ export interface GetInstanceResult {
     readonly updatedAt: string;
     readonly visible: boolean;
 }
-export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:apps/getInstance:getInstance", {
         "allowAssumedSignin": args.allowAssumedSignin,

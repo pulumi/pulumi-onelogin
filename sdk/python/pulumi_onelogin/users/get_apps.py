@@ -178,7 +178,7 @@ def get_apps_output(extension: Optional[pulumi.Input[Optional[bool]]] = None,
                     provisioning_state: Optional[pulumi.Input[Optional[str]]] = None,
                     provisioning_status: Optional[pulumi.Input[Optional[str]]] = None,
                     users_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -192,7 +192,7 @@ def get_apps_output(extension: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['provisioningState'] = provisioning_state
     __args__['provisioningStatus'] = provisioning_status
     __args__['usersId'] = users_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:users/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         extension=pulumi.get(__response__, 'extension'),

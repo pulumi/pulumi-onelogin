@@ -191,7 +191,7 @@ def get_auth_servers_claims_output(attribute_transformations: Optional[pulumi.In
                                    user_attribute_macros: Optional[pulumi.Input[Optional[str]]] = None,
                                    user_attribute_mappings: Optional[pulumi.Input[Optional[str]]] = None,
                                    values: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthServersClaimsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthServersClaimsResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -206,7 +206,7 @@ def get_auth_servers_claims_output(attribute_transformations: Optional[pulumi.In
     __args__['userAttributeMacros'] = user_attribute_macros
     __args__['userAttributeMappings'] = user_attribute_mappings
     __args__['values'] = values
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServersClaims:getAuthServersClaims', __args__, opts=opts, typ=GetAuthServersClaimsResult)
     return __ret__.apply(lambda __response__: GetAuthServersClaimsResult(
         attribute_transformations=pulumi.get(__response__, 'attribute_transformations'),

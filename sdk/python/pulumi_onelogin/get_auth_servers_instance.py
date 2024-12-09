@@ -100,7 +100,7 @@ def get_auth_servers_instance_output(configuration: Optional[pulumi.Input[Option
                                      description: Optional[pulumi.Input[Optional[str]]] = None,
                                      id: Optional[pulumi.Input[str]] = None,
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthServersInstanceResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthServersInstanceResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -109,7 +109,7 @@ def get_auth_servers_instance_output(configuration: Optional[pulumi.Input[Option
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getAuthServersInstance:getAuthServersInstance', __args__, opts=opts, typ=GetAuthServersInstanceResult)
     return __ret__.apply(lambda __response__: GetAuthServersInstanceResult(
         configuration=pulumi.get(__response__, 'configuration'),

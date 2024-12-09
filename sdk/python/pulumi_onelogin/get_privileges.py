@@ -113,7 +113,7 @@ def get_privileges_output(description: Optional[pulumi.Input[Optional[str]]] = N
                           filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPrivilegesFilterArgs', 'GetPrivilegesFilterArgsDict']]]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           privilege: Optional[pulumi.Input[Optional[Union['GetPrivilegesPrivilegeArgs', 'GetPrivilegesPrivilegeArgsDict']]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivilegesResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivilegesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -122,7 +122,7 @@ def get_privileges_output(description: Optional[pulumi.Input[Optional[str]]] = N
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['privilege'] = privilege
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('onelogin:index/getPrivileges:getPrivileges', __args__, opts=opts, typ=GetPrivilegesResult)
     return __ret__.apply(lambda __response__: GetPrivilegesResult(
         description=pulumi.get(__response__, 'description'),
