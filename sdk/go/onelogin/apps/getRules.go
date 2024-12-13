@@ -48,21 +48,11 @@ type LookupRulesResult struct {
 }
 
 func LookupRulesOutput(ctx *pulumi.Context, args LookupRulesOutputArgs, opts ...pulumi.InvokeOption) LookupRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRulesResultOutput, error) {
 			args := v.(LookupRulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRulesResult
-			secret, err := ctx.InvokePackageRaw("onelogin:apps/getRules:getRules", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:apps/getRules:getRules", args, LookupRulesResultOutput{}, options).(LookupRulesResultOutput), nil
 		}).(LookupRulesResultOutput)
 }
 

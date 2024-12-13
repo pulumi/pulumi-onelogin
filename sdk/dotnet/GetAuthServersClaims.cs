@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin
 
         public static Output<GetAuthServersClaimsResult> Invoke(GetAuthServersClaimsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthServersClaimsResult>("onelogin:index/getAuthServersClaims:getAuthServersClaims", args ?? new GetAuthServersClaimsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAuthServersClaimsResult> Invoke(GetAuthServersClaimsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthServersClaimsResult>("onelogin:index/getAuthServersClaims:getAuthServersClaims", args ?? new GetAuthServersClaimsInvokeArgs(), options.WithDefaults());
     }
 
 

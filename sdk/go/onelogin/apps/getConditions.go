@@ -40,21 +40,11 @@ type GetConditionsResult struct {
 }
 
 func GetConditionsOutput(ctx *pulumi.Context, args GetConditionsOutputArgs, opts ...pulumi.InvokeOption) GetConditionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetConditionsResultOutput, error) {
 			args := v.(GetConditionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetConditionsResult
-			secret, err := ctx.InvokePackageRaw("onelogin:apps/getConditions:getConditions", args, &rv, "", opts...)
-			if err != nil {
-				return GetConditionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetConditionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetConditionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:apps/getConditions:getConditions", args, GetConditionsResultOutput{}, options).(GetConditionsResultOutput), nil
 		}).(GetConditionsResultOutput)
 }
 

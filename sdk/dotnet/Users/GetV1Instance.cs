@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Users
 
         public static Output<GetV1InstanceResult> Invoke(GetV1InstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetV1InstanceResult>("onelogin:users/getV1Instance:getV1Instance", args ?? new GetV1InstanceInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetV1InstanceResult> Invoke(GetV1InstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetV1InstanceResult>("onelogin:users/getV1Instance:getV1Instance", args ?? new GetV1InstanceInvokeArgs(), options.WithDefaults());
     }
 
 
