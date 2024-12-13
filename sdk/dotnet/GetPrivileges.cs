@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin
 
         public static Output<GetPrivilegesResult> Invoke(GetPrivilegesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivilegesResult>("onelogin:index/getPrivileges:getPrivileges", args ?? new GetPrivilegesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetPrivilegesResult> Invoke(GetPrivilegesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivilegesResult>("onelogin:index/getPrivileges:getPrivileges", args ?? new GetPrivilegesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Roles
 
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("onelogin:roles/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("onelogin:roles/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

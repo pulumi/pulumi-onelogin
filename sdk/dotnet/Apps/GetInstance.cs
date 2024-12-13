@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Apps
 
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("onelogin:apps/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("onelogin:apps/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

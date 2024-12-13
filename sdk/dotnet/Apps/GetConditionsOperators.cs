@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Apps
 
         public static Output<GetConditionsOperatorsResult> Invoke(GetConditionsOperatorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConditionsOperatorsResult>("onelogin:apps/getConditionsOperators:getConditionsOperators", args ?? new GetConditionsOperatorsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetConditionsOperatorsResult> Invoke(GetConditionsOperatorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConditionsOperatorsResult>("onelogin:apps/getConditionsOperators:getConditionsOperators", args ?? new GetConditionsOperatorsInvokeArgs(), options.WithDefaults());
     }
 
 

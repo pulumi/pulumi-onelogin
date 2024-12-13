@@ -44,21 +44,11 @@ type GetRiskRulesInstanceResult struct {
 }
 
 func GetRiskRulesInstanceOutput(ctx *pulumi.Context, args GetRiskRulesInstanceOutputArgs, opts ...pulumi.InvokeOption) GetRiskRulesInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRiskRulesInstanceResultOutput, error) {
 			args := v.(GetRiskRulesInstanceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRiskRulesInstanceResult
-			secret, err := ctx.InvokePackageRaw("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", args, &rv, "", opts...)
-			if err != nil {
-				return GetRiskRulesInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRiskRulesInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRiskRulesInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", args, GetRiskRulesInstanceResultOutput{}, options).(GetRiskRulesInstanceResultOutput), nil
 		}).(GetRiskRulesInstanceResultOutput)
 }
 

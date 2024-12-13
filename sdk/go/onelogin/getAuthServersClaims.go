@@ -52,21 +52,11 @@ type GetAuthServersClaimsResult struct {
 }
 
 func GetAuthServersClaimsOutput(ctx *pulumi.Context, args GetAuthServersClaimsOutputArgs, opts ...pulumi.InvokeOption) GetAuthServersClaimsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAuthServersClaimsResultOutput, error) {
 			args := v.(GetAuthServersClaimsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAuthServersClaimsResult
-			secret, err := ctx.InvokePackageRaw("onelogin:index/getAuthServersClaims:getAuthServersClaims", args, &rv, "", opts...)
-			if err != nil {
-				return GetAuthServersClaimsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAuthServersClaimsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAuthServersClaimsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:index/getAuthServersClaims:getAuthServersClaims", args, GetAuthServersClaimsResultOutput{}, options).(GetAuthServersClaimsResultOutput), nil
 		}).(GetAuthServersClaimsResultOutput)
 }
 

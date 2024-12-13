@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.apps.inputs.GetActionsArgs;
 import com.pulumi.onelogin.apps.inputs.GetActionsPlainArgs;
@@ -44,6 +45,9 @@ public final class AppsFunctions {
     public static Output<GetActionsResult> getActions(GetActionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getActions:getActions", TypeShape.of(GetActionsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetActionsResult> getActions(GetActionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getActions:getActions", TypeShape.of(GetActionsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetActionsResult> getActionsPlain(GetActionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:apps/getActions:getActions", TypeShape.of(GetActionsResult.class), args, Utilities.withVersion(options));
     }
@@ -54,6 +58,9 @@ public final class AppsFunctions {
         return getActionsValuesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetActionsValuesResult> getActionsValues(GetActionsValuesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getActionsValues:getActionsValues", TypeShape.of(GetActionsValuesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetActionsValuesResult> getActionsValues(GetActionsValuesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getActionsValues:getActionsValues", TypeShape.of(GetActionsValuesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetActionsValuesResult> getActionsValuesPlain(GetActionsValuesPlainArgs args, InvokeOptions options) {
@@ -68,6 +75,9 @@ public final class AppsFunctions {
     public static Output<GetConditionsResult> getConditions(GetConditionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getConditions:getConditions", TypeShape.of(GetConditionsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetConditionsResult> getConditions(GetConditionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getConditions:getConditions", TypeShape.of(GetConditionsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetConditionsResult> getConditionsPlain(GetConditionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:apps/getConditions:getConditions", TypeShape.of(GetConditionsResult.class), args, Utilities.withVersion(options));
     }
@@ -78,6 +88,9 @@ public final class AppsFunctions {
         return getConditionsOperatorsPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetConditionsOperatorsResult> getConditionsOperators(GetConditionsOperatorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getConditionsOperators:getConditionsOperators", TypeShape.of(GetConditionsOperatorsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetConditionsOperatorsResult> getConditionsOperators(GetConditionsOperatorsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getConditionsOperators:getConditionsOperators", TypeShape.of(GetConditionsOperatorsResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetConditionsOperatorsResult> getConditionsOperatorsPlain(GetConditionsOperatorsPlainArgs args, InvokeOptions options) {
@@ -92,6 +105,9 @@ public final class AppsFunctions {
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:apps/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
@@ -102,6 +118,9 @@ public final class AppsFunctions {
         return getRulesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -116,6 +135,9 @@ public final class AppsFunctions {
     public static Output<GetRulesInstanceResult> getRulesInstance(GetRulesInstanceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getRulesInstance:getRulesInstance", TypeShape.of(GetRulesInstanceResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetRulesInstanceResult> getRulesInstance(GetRulesInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getRulesInstance:getRulesInstance", TypeShape.of(GetRulesInstanceResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetRulesInstanceResult> getRulesInstancePlain(GetRulesInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:apps/getRulesInstance:getRulesInstance", TypeShape.of(GetRulesInstanceResult.class), args, Utilities.withVersion(options));
     }
@@ -126,6 +148,9 @@ public final class AppsFunctions {
         return getUsersPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:apps/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:apps/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

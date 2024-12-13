@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Apps
 
         public static Output<GetActionsValuesResult> Invoke(GetActionsValuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetActionsValuesResult>("onelogin:apps/getActionsValues:getActionsValues", args ?? new GetActionsValuesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetActionsValuesResult> Invoke(GetActionsValuesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetActionsValuesResult>("onelogin:apps/getActionsValues:getActionsValues", args ?? new GetActionsValuesInvokeArgs(), options.WithDefaults());
     }
 
 

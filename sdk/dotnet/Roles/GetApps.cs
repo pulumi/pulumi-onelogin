@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Roles
 
         public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("onelogin:roles/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("onelogin:roles/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
     }
 
 

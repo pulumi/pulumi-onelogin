@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Users
 
         public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("onelogin:users/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("onelogin:users/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
     }
 
 

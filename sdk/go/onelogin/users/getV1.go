@@ -104,21 +104,11 @@ type LookupV1Result struct {
 }
 
 func LookupV1Output(ctx *pulumi.Context, args LookupV1OutputArgs, opts ...pulumi.InvokeOption) LookupV1ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupV1ResultOutput, error) {
 			args := v.(LookupV1Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupV1Result
-			secret, err := ctx.InvokePackageRaw("onelogin:users/getV1:getV1", args, &rv, "", opts...)
-			if err != nil {
-				return LookupV1ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupV1ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupV1ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:users/getV1:getV1", args, LookupV1ResultOutput{}, options).(LookupV1ResultOutput), nil
 		}).(LookupV1ResultOutput)
 }
 
