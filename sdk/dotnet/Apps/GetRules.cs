@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Apps
 
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("onelogin:apps/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("onelogin:apps/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 

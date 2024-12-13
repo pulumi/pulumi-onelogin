@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin.Roles
 
         public static Output<GetAdminsResult> Invoke(GetAdminsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdminsResult>("onelogin:roles/getAdmins:getAdmins", args ?? new GetAdminsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAdminsResult> Invoke(GetAdminsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdminsResult>("onelogin:roles/getAdmins:getAdmins", args ?? new GetAdminsInvokeArgs(), options.WithDefaults());
     }
 
 

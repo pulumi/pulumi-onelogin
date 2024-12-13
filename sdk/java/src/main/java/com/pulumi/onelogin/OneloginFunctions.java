@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.GetAppsArgs;
 import com.pulumi.onelogin.inputs.GetAppsPlainArgs;
@@ -56,6 +57,9 @@ public final class OneloginFunctions {
     public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
@@ -74,6 +78,9 @@ public final class OneloginFunctions {
     public static Output<GetAuthServersResult> getAuthServers(GetAuthServersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getAuthServers:getAuthServers", TypeShape.of(GetAuthServersResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAuthServersResult> getAuthServers(GetAuthServersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getAuthServers:getAuthServers", TypeShape.of(GetAuthServersResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAuthServersResult> getAuthServersPlain(GetAuthServersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getAuthServers:getAuthServers", TypeShape.of(GetAuthServersResult.class), args, Utilities.withVersion(options));
     }
@@ -84,6 +91,9 @@ public final class OneloginFunctions {
         return getAuthServersClaimsPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetAuthServersClaimsResult> getAuthServersClaims(GetAuthServersClaimsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getAuthServersClaims:getAuthServersClaims", TypeShape.of(GetAuthServersClaimsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAuthServersClaimsResult> getAuthServersClaims(GetAuthServersClaimsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getAuthServersClaims:getAuthServersClaims", TypeShape.of(GetAuthServersClaimsResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetAuthServersClaimsResult> getAuthServersClaimsPlain(GetAuthServersClaimsPlainArgs args, InvokeOptions options) {
@@ -98,6 +108,9 @@ public final class OneloginFunctions {
     public static Output<GetAuthServersInstanceResult> getAuthServersInstance(GetAuthServersInstanceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getAuthServersInstance:getAuthServersInstance", TypeShape.of(GetAuthServersInstanceResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAuthServersInstanceResult> getAuthServersInstance(GetAuthServersInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getAuthServersInstance:getAuthServersInstance", TypeShape.of(GetAuthServersInstanceResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAuthServersInstanceResult> getAuthServersInstancePlain(GetAuthServersInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getAuthServersInstance:getAuthServersInstance", TypeShape.of(GetAuthServersInstanceResult.class), args, Utilities.withVersion(options));
     }
@@ -108,6 +121,9 @@ public final class OneloginFunctions {
         return getAuthServersScopesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetAuthServersScopesResult> getAuthServersScopes(GetAuthServersScopesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getAuthServersScopes:getAuthServersScopes", TypeShape.of(GetAuthServersScopesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAuthServersScopesResult> getAuthServersScopes(GetAuthServersScopesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getAuthServersScopes:getAuthServersScopes", TypeShape.of(GetAuthServersScopesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetAuthServersScopesResult> getAuthServersScopesPlain(GetAuthServersScopesPlainArgs args, InvokeOptions options) {
@@ -128,6 +144,9 @@ public final class OneloginFunctions {
     public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetMappingsResult> getMappingsPlain(GetMappingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
     }
@@ -146,6 +165,9 @@ public final class OneloginFunctions {
     public static Output<GetPrivilegesResult> getPrivileges(GetPrivilegesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getPrivileges:getPrivileges", TypeShape.of(GetPrivilegesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetPrivilegesResult> getPrivileges(GetPrivilegesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getPrivileges:getPrivileges", TypeShape.of(GetPrivilegesResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetPrivilegesResult> getPrivilegesPlain(GetPrivilegesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getPrivileges:getPrivileges", TypeShape.of(GetPrivilegesResult.class), args, Utilities.withVersion(options));
     }
@@ -156,6 +178,9 @@ public final class OneloginFunctions {
         return getPrivilegesInstancePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetPrivilegesInstanceResult> getPrivilegesInstance(GetPrivilegesInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", TypeShape.of(GetPrivilegesInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPrivilegesInstanceResult> getPrivilegesInstance(GetPrivilegesInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", TypeShape.of(GetPrivilegesInstanceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetPrivilegesInstanceResult> getPrivilegesInstancePlain(GetPrivilegesInstancePlainArgs args, InvokeOptions options) {
@@ -176,6 +201,9 @@ public final class OneloginFunctions {
     public static Output<GetRiskRulesResult> getRiskRules(GetRiskRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getRiskRules:getRiskRules", TypeShape.of(GetRiskRulesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetRiskRulesResult> getRiskRules(GetRiskRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getRiskRules:getRiskRules", TypeShape.of(GetRiskRulesResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetRiskRulesResult> getRiskRulesPlain(GetRiskRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getRiskRules:getRiskRules", TypeShape.of(GetRiskRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -186,6 +214,9 @@ public final class OneloginFunctions {
         return getRiskRulesInstancePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetRiskRulesInstanceResult> getRiskRulesInstance(GetRiskRulesInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", TypeShape.of(GetRiskRulesInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRiskRulesInstanceResult> getRiskRulesInstance(GetRiskRulesInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", TypeShape.of(GetRiskRulesInstanceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetRiskRulesInstanceResult> getRiskRulesInstancePlain(GetRiskRulesInstancePlainArgs args, InvokeOptions options) {

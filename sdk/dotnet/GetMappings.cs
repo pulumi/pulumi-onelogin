@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin
 
         public static Output<GetMappingsResult> Invoke(GetMappingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMappingsResult>("onelogin:index/getMappings:getMappings", args ?? new GetMappingsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMappingsResult> Invoke(GetMappingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMappingsResult>("onelogin:index/getMappings:getMappings", args ?? new GetMappingsInvokeArgs(), options.WithDefaults());
     }
 
 

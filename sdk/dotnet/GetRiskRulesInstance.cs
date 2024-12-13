@@ -16,6 +16,9 @@ namespace Pulumi.Onelogin
 
         public static Output<GetRiskRulesInstanceResult> Invoke(GetRiskRulesInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRiskRulesInstanceResult>("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", args ?? new GetRiskRulesInstanceInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRiskRulesInstanceResult> Invoke(GetRiskRulesInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRiskRulesInstanceResult>("onelogin:index/getRiskRulesInstance:getRiskRulesInstance", args ?? new GetRiskRulesInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

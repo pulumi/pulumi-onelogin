@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.users.inputs.GetAppsArgs;
 import com.pulumi.onelogin.users.inputs.GetAppsPlainArgs;
@@ -41,6 +42,9 @@ public final class UsersFunctions {
     public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:users/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
@@ -53,6 +57,9 @@ public final class UsersFunctions {
     public static Output<GetDevicesResult> getDevices(GetDevicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetDevicesResult> getDevices(GetDevicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:users/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
@@ -63,6 +70,9 @@ public final class UsersFunctions {
         return getInstancePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
@@ -83,6 +93,9 @@ public final class UsersFunctions {
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:users/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
@@ -101,6 +114,9 @@ public final class UsersFunctions {
     public static Output<GetV1Result> getV1(GetV1Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getV1:getV1", TypeShape.of(GetV1Result.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetV1Result> getV1(GetV1Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getV1:getV1", TypeShape.of(GetV1Result.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetV1Result> getV1Plain(GetV1PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:users/getV1:getV1", TypeShape.of(GetV1Result.class), args, Utilities.withVersion(options));
     }
@@ -113,6 +129,9 @@ public final class UsersFunctions {
     public static Output<GetV1AppsResult> getV1Apps(GetV1AppsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getV1Apps:getV1Apps", TypeShape.of(GetV1AppsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetV1AppsResult> getV1Apps(GetV1AppsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getV1Apps:getV1Apps", TypeShape.of(GetV1AppsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetV1AppsResult> getV1AppsPlain(GetV1AppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:users/getV1Apps:getV1Apps", TypeShape.of(GetV1AppsResult.class), args, Utilities.withVersion(options));
     }
@@ -123,6 +142,9 @@ public final class UsersFunctions {
         return getV1InstancePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetV1InstanceResult> getV1Instance(GetV1InstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getV1Instance:getV1Instance", TypeShape.of(GetV1InstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetV1InstanceResult> getV1Instance(GetV1InstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:users/getV1Instance:getV1Instance", TypeShape.of(GetV1InstanceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetV1InstanceResult> getV1InstancePlain(GetV1InstancePlainArgs args, InvokeOptions options) {

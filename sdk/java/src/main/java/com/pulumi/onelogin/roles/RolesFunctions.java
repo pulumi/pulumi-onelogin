@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.roles.inputs.GetAdminsArgs;
 import com.pulumi.onelogin.roles.inputs.GetAdminsPlainArgs;
@@ -35,6 +36,9 @@ public final class RolesFunctions {
     public static Output<GetAdminsResult> getAdmins(GetAdminsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:roles/getAdmins:getAdmins", TypeShape.of(GetAdminsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAdminsResult> getAdmins(GetAdminsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getAdmins:getAdmins", TypeShape.of(GetAdminsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAdminsResult> getAdminsPlain(GetAdminsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:roles/getAdmins:getAdmins", TypeShape.of(GetAdminsResult.class), args, Utilities.withVersion(options));
     }
@@ -47,6 +51,9 @@ public final class RolesFunctions {
     public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:roles/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:roles/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
@@ -57,6 +64,9 @@ public final class RolesFunctions {
         return getInstancePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:roles/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
@@ -77,6 +87,9 @@ public final class RolesFunctions {
     public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:roles/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:roles/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
@@ -87,6 +100,9 @@ public final class RolesFunctions {
         return getUsersPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:roles/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:roles/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

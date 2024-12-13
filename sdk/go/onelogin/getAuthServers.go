@@ -40,21 +40,11 @@ type LookupAuthServersResult struct {
 }
 
 func LookupAuthServersOutput(ctx *pulumi.Context, args LookupAuthServersOutputArgs, opts ...pulumi.InvokeOption) LookupAuthServersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAuthServersResultOutput, error) {
 			args := v.(LookupAuthServersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAuthServersResult
-			secret, err := ctx.InvokePackageRaw("onelogin:index/getAuthServers:getAuthServers", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAuthServersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAuthServersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAuthServersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:index/getAuthServers:getAuthServers", args, LookupAuthServersResultOutput{}, options).(LookupAuthServersResultOutput), nil
 		}).(LookupAuthServersResultOutput)
 }
 

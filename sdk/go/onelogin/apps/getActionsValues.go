@@ -42,21 +42,11 @@ type GetActionsValuesResult struct {
 }
 
 func GetActionsValuesOutput(ctx *pulumi.Context, args GetActionsValuesOutputArgs, opts ...pulumi.InvokeOption) GetActionsValuesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetActionsValuesResultOutput, error) {
 			args := v.(GetActionsValuesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetActionsValuesResult
-			secret, err := ctx.InvokePackageRaw("onelogin:apps/getActionsValues:getActionsValues", args, &rv, "", opts...)
-			if err != nil {
-				return GetActionsValuesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetActionsValuesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetActionsValuesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:apps/getActionsValues:getActionsValues", args, GetActionsValuesResultOutput{}, options).(GetActionsValuesResultOutput), nil
 		}).(GetActionsValuesResultOutput)
 }
 

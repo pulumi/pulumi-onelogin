@@ -38,21 +38,11 @@ type GetPrivilegesInstanceResult struct {
 }
 
 func GetPrivilegesInstanceOutput(ctx *pulumi.Context, args GetPrivilegesInstanceOutputArgs, opts ...pulumi.InvokeOption) GetPrivilegesInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPrivilegesInstanceResultOutput, error) {
 			args := v.(GetPrivilegesInstanceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPrivilegesInstanceResult
-			secret, err := ctx.InvokePackageRaw("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", args, &rv, "", opts...)
-			if err != nil {
-				return GetPrivilegesInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPrivilegesInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPrivilegesInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:index/getPrivilegesInstance:getPrivilegesInstance", args, GetPrivilegesInstanceResultOutput{}, options).(GetPrivilegesInstanceResultOutput), nil
 		}).(GetPrivilegesInstanceResultOutput)
 }
 

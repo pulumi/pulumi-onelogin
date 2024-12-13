@@ -102,21 +102,11 @@ type GetInstanceResult struct {
 }
 
 func GetInstanceOutput(ctx *pulumi.Context, args GetInstanceOutputArgs, opts ...pulumi.InvokeOption) GetInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceResultOutput, error) {
 			args := v.(GetInstanceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInstanceResult
-			secret, err := ctx.InvokePackageRaw("onelogin:users/getInstance:getInstance", args, &rv, "", opts...)
-			if err != nil {
-				return GetInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("onelogin:users/getInstance:getInstance", args, GetInstanceResultOutput{}, options).(GetInstanceResultOutput), nil
 		}).(GetInstanceResultOutput)
 }
 
