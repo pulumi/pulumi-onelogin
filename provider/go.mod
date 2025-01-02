@@ -6,7 +6,7 @@ toolchain go1.22.7
 
 require (
 	github.com/onelogin/terraform-provider-onelogin v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.1-0.20241227183153-755062423851
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
 )
 
@@ -128,7 +128,7 @@ require (
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
-	github.com/zclconf/go-cty v1.14.2 // indirect
+	github.com/zclconf/go-cty v1.14.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/mod v0.18.0 // indirect
