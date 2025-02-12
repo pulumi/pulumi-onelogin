@@ -1,4 +1,0 @@
-[submodule "upstream"]
-	path = upstream
-	url = https://github.com/onelogin/terraform-provider-onelogin.git
-        ignore = dirty
