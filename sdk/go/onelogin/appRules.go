@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules
 type AppRules struct {
 	pulumi.CustomResourceState
 

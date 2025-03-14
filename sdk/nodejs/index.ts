@@ -77,11 +77,13 @@ utilities.lazyLoad(exports, ["UserMappings"], () => require("./userMappings"));
 
 
 // Export sub-modules:
+import * as apps from "./apps";
 import * as config from "./config";
 import * as types from "./types";
 import * as users from "./users";
 
 export {
+    apps,
     config,
     types,
     users,

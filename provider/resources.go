@@ -91,6 +91,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "onelogin_app.md",
 				},
 			},
+			"onelogin_app_rules": {
+				Tok: makeResource("apps", "Rules"),
+			},
 			"onelogin_users": {
 				Tok: makeResource(mainMod, "User"),
 				Docs: &tfbridge.DocInfo{

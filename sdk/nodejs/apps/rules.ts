@@ -2,16 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as utilities from "./utilities";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as utilities from "../utilities";
 
-/**
- * @deprecated onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules
- */
-export class AppRules extends pulumi.CustomResource {
+export class Rules extends pulumi.CustomResource {
     /**
-     * Get an existing AppRules resource's state with the given name, ID, and optional extra
+     * Get an existing Rules resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -19,49 +16,45 @@ export class AppRules extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppRulesState, opts?: pulumi.CustomResourceOptions): AppRules {
-        pulumi.log.warn("AppRules is deprecated: onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules")
-        return new AppRules(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RulesState, opts?: pulumi.CustomResourceOptions): Rules {
+        return new Rules(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'onelogin:index/appRules:AppRules';
+    public static readonly __pulumiType = 'onelogin:apps/rules:Rules';
 
     /**
-     * Returns true if the given object is an instance of AppRules.  This is designed to work even
+     * Returns true if the given object is an instance of Rules.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AppRules {
+    public static isInstance(obj: any): obj is Rules {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AppRules.__pulumiType;
+        return obj['__pulumiType'] === Rules.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<outputs.AppRulesAction[] | undefined>;
+    public readonly actions!: pulumi.Output<outputs.apps.RulesAction[] | undefined>;
     public readonly appId!: pulumi.Output<string>;
-    public readonly conditions!: pulumi.Output<outputs.AppRulesCondition[] | undefined>;
+    public readonly conditions!: pulumi.Output<outputs.apps.RulesCondition[] | undefined>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly match!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly position!: pulumi.Output<number>;
 
     /**
-     * Create a AppRules resource with the given unique name, arguments, and options.
+     * Create a Rules resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules */
-    constructor(name: string, args: AppRulesArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules */
-    constructor(name: string, argsOrState?: AppRulesArgs | AppRulesState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("AppRules is deprecated: onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules")
+    constructor(name: string, args: RulesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: RulesArgs | RulesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AppRulesState | undefined;
+            const state = argsOrState as RulesState | undefined;
             resourceInputs["actions"] = state ? state.actions : undefined;
             resourceInputs["appId"] = state ? state.appId : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
@@ -70,7 +63,7 @@ export class AppRules extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
         } else {
-            const args = argsOrState as AppRulesArgs | undefined;
+            const args = argsOrState as RulesArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
@@ -86,17 +79,19 @@ export class AppRules extends pulumi.CustomResource {
             resourceInputs["position"] = args ? args.position : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppRules.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "onelogin:index/appRules:AppRules" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Rules.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering AppRules resources.
+ * Input properties used for looking up and filtering Rules resources.
  */
-export interface AppRulesState {
-    actions?: pulumi.Input<pulumi.Input<inputs.AppRulesAction>[]>;
+export interface RulesState {
+    actions?: pulumi.Input<pulumi.Input<inputs.apps.RulesAction>[]>;
     appId?: pulumi.Input<string>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.AppRulesCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.apps.RulesCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -104,12 +99,12 @@ export interface AppRulesState {
 }
 
 /**
- * The set of arguments for constructing a AppRules resource.
+ * The set of arguments for constructing a Rules resource.
  */
-export interface AppRulesArgs {
-    actions?: pulumi.Input<pulumi.Input<inputs.AppRulesAction>[]>;
+export interface RulesArgs {
+    actions?: pulumi.Input<pulumi.Input<inputs.apps.RulesAction>[]>;
     appId: pulumi.Input<string>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.AppRulesCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.apps.RulesCondition>[]>;
     enabled?: pulumi.Input<boolean>;
     match: pulumi.Input<string>;
     name?: pulumi.Input<string>;

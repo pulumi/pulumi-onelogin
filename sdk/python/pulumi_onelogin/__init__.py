@@ -24,17 +24,28 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_onelogin.apps as __apps
+    apps = __apps
     import pulumi_onelogin.config as __config
     config = __config
     import pulumi_onelogin.users as __users
     users = __users
 else:
+    apps = _utilities.lazy_import('pulumi_onelogin.apps')
     config = _utilities.lazy_import('pulumi_onelogin.config')
     users = _utilities.lazy_import('pulumi_onelogin.users')
 
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "onelogin",
+  "mod": "apps/rules",
+  "fqn": "pulumi_onelogin.apps",
+  "classes": {
+   "onelogin:apps/rules:Rules": "Rules"
+  }
+ },
  {
   "pkg": "onelogin",
   "mod": "index/app",

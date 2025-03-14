@@ -68,6 +68,46 @@
         ]
     },
     "types": {
+        "onelogin:apps/RulesAction:RulesAction": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "expression": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "values"
+            ]
+        },
+        "onelogin:apps/RulesCondition:RulesCondition": {
+            "properties": {
+                "operator": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "source",
+                "value"
+            ]
+        },
         "onelogin:index/AppParameters:AppParameters": {
             "properties": {
                 "attributesTransformations": {
@@ -538,6 +578,114 @@
         ]
     },
     "resources": {
+        "onelogin:apps/rules:Rules": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:apps/RulesAction:RulesAction"
+                    }
+                },
+                "appId": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:apps/RulesCondition:RulesCondition"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "match": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "appId",
+                "match",
+                "name",
+                "position"
+            ],
+            "inputProperties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:apps/RulesAction:RulesAction"
+                    }
+                },
+                "appId": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/onelogin:apps/RulesCondition:RulesCondition"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "match": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "appId",
+                "match"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Rules resources.\n",
+                "properties": {
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:apps/RulesAction:RulesAction"
+                        }
+                    },
+                    "appId": {
+                        "type": "string"
+                    },
+                    "conditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/onelogin:apps/RulesCondition:RulesCondition"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "match": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "onelogin:index/appRules:AppRules"
+                }
+            ]
+        },
         "onelogin:index/app:App": {
             "properties": {
                 "allowAssumedSignin": {
@@ -830,7 +978,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules"
         },
         "onelogin:index/authServers:AuthServers": {
             "properties": {

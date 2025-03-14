@@ -102,5 +102,19 @@ export interface UserMappingsCondition {
     source: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
+export namespace apps {
+    export interface RulesAction {
+        action: pulumi.Input<string>;
+        expression?: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RulesCondition {
+        operator: pulumi.Input<string>;
+        source: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+}
+
 export namespace users {
 }

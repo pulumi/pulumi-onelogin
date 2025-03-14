@@ -103,6 +103,21 @@ export interface UserMappingsCondition {
     value: string;
 }
 
+export namespace apps {
+    export interface RulesAction {
+        action: string;
+        expression?: string;
+        values: string[];
+    }
+
+    export interface RulesCondition {
+        operator: string;
+        source: string;
+        value: string;
+    }
+
+}
+
 export namespace users {
     export interface GetUsersUser {
         /**

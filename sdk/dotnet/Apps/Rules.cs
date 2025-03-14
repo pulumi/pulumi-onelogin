@@ -7,20 +7,19 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Onelogin
+namespace Pulumi.Onelogin.Apps
 {
-    [Obsolete(@"onelogin.index/apprules.AppRules has been deprecated in favor of onelogin.apps/rules.Rules")]
-    [OneloginResourceType("onelogin:index/appRules:AppRules")]
-    public partial class AppRules : global::Pulumi.CustomResource
+    [OneloginResourceType("onelogin:apps/rules:Rules")]
+    public partial class Rules : global::Pulumi.CustomResource
     {
         [Output("actions")]
-        public Output<ImmutableArray<Outputs.AppRulesAction>> Actions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesAction>> Actions { get; private set; } = null!;
 
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
         [Output("conditions")]
-        public Output<ImmutableArray<Outputs.AppRulesCondition>> Conditions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesCondition>> Conditions { get; private set; } = null!;
 
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -36,19 +35,19 @@ namespace Pulumi.Onelogin
 
 
         /// <summary>
-        /// Create a AppRules resource with the given unique name, arguments, and options.
+        /// Create a Rules resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AppRules(string name, AppRulesArgs args, CustomResourceOptions? options = null)
-            : base("onelogin:index/appRules:AppRules", name, args ?? new AppRulesArgs(), MakeResourceOptions(options, ""))
+        public Rules(string name, RulesArgs args, CustomResourceOptions? options = null)
+            : base("onelogin:apps/rules:Rules", name, args ?? new RulesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private AppRules(string name, Input<string> id, AppRulesState? state = null, CustomResourceOptions? options = null)
-            : base("onelogin:index/appRules:AppRules", name, state, MakeResourceOptions(options, id))
+        private Rules(string name, Input<string> id, RulesState? state = null, CustomResourceOptions? options = null)
+            : base("onelogin:apps/rules:Rules", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -57,6 +56,10 @@ namespace Pulumi.Onelogin
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "onelogin:index/appRules:AppRules" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -64,7 +67,7 @@ namespace Pulumi.Onelogin
             return merged;
         }
         /// <summary>
-        /// Get an existing AppRules resource's state with the given name, ID, and optional extra
+        /// Get an existing Rules resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -72,19 +75,19 @@ namespace Pulumi.Onelogin
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static AppRules Get(string name, Input<string> id, AppRulesState? state = null, CustomResourceOptions? options = null)
+        public static Rules Get(string name, Input<string> id, RulesState? state = null, CustomResourceOptions? options = null)
         {
-            return new AppRules(name, id, state, options);
+            return new Rules(name, id, state, options);
         }
     }
 
-    public sealed class AppRulesArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
-        private InputList<Inputs.AppRulesActionArgs>? _actions;
-        public InputList<Inputs.AppRulesActionArgs> Actions
+        private InputList<Inputs.RulesActionArgs>? _actions;
+        public InputList<Inputs.RulesActionArgs> Actions
         {
-            get => _actions ?? (_actions = new InputList<Inputs.AppRulesActionArgs>());
+            get => _actions ?? (_actions = new InputList<Inputs.RulesActionArgs>());
             set => _actions = value;
         }
 
@@ -92,10 +95,10 @@ namespace Pulumi.Onelogin
         public Input<string> AppId { get; set; } = null!;
 
         [Input("conditions")]
-        private InputList<Inputs.AppRulesConditionArgs>? _conditions;
-        public InputList<Inputs.AppRulesConditionArgs> Conditions
+        private InputList<Inputs.RulesConditionArgs>? _conditions;
+        public InputList<Inputs.RulesConditionArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Inputs.AppRulesConditionArgs>());
+            get => _conditions ?? (_conditions = new InputList<Inputs.RulesConditionArgs>());
             set => _conditions = value;
         }
 
@@ -111,19 +114,19 @@ namespace Pulumi.Onelogin
         [Input("position")]
         public Input<int>? Position { get; set; }
 
-        public AppRulesArgs()
+        public RulesArgs()
         {
         }
-        public static new AppRulesArgs Empty => new AppRulesArgs();
+        public static new RulesArgs Empty => new RulesArgs();
     }
 
-    public sealed class AppRulesState : global::Pulumi.ResourceArgs
+    public sealed class RulesState : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
-        private InputList<Inputs.AppRulesActionGetArgs>? _actions;
-        public InputList<Inputs.AppRulesActionGetArgs> Actions
+        private InputList<Inputs.RulesActionGetArgs>? _actions;
+        public InputList<Inputs.RulesActionGetArgs> Actions
         {
-            get => _actions ?? (_actions = new InputList<Inputs.AppRulesActionGetArgs>());
+            get => _actions ?? (_actions = new InputList<Inputs.RulesActionGetArgs>());
             set => _actions = value;
         }
 
@@ -131,10 +134,10 @@ namespace Pulumi.Onelogin
         public Input<string>? AppId { get; set; }
 
         [Input("conditions")]
-        private InputList<Inputs.AppRulesConditionGetArgs>? _conditions;
-        public InputList<Inputs.AppRulesConditionGetArgs> Conditions
+        private InputList<Inputs.RulesConditionGetArgs>? _conditions;
+        public InputList<Inputs.RulesConditionGetArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Inputs.AppRulesConditionGetArgs>());
+            get => _conditions ?? (_conditions = new InputList<Inputs.RulesConditionGetArgs>());
             set => _conditions = value;
         }
 
@@ -150,9 +153,9 @@ namespace Pulumi.Onelogin
         [Input("position")]
         public Input<int>? Position { get; set; }
 
-        public AppRulesState()
+        public RulesState()
         {
         }
-        public static new AppRulesState Empty => new AppRulesState();
+        public static new RulesState Empty => new RulesState();
     }
 }

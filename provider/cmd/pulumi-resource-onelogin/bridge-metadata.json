@@ -5,7 +5,14 @@
                 "current": "onelogin:index/appRoleAttachments:AppRoleAttachments"
             },
             "onelogin_app_rules": {
-                "current": "onelogin:index/appRules:AppRules",
+                "current": "onelogin:apps/rules:Rules",
+                "past": [
+                    {
+                        "name": "onelogin:index/appRules:AppRules",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "actions": {
                         "maxItemsOne": false,
@@ -171,6 +178,11 @@
     },
     "auto-settings": {
         "resources": {
+            "onelogin_app_rules": {
+                "aliases": [
+                    "onelogin:index/appRules:AppRules"
+                ]
+            },
             "onelogin_apps": {
                 "maxItemsOneOverrides": {
                     "parameters": true
