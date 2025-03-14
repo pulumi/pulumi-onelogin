@@ -7,19 +7,18 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Onelogin
+namespace Pulumi.Onelogin.Users
 {
-    [Obsolete(@"onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser")]
     public static class GetUser
     {
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("onelogin:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("onelogin:users/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("onelogin:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("onelogin:users/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("onelogin:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("onelogin:users/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 

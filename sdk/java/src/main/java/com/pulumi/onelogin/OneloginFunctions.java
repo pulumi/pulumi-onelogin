@@ -15,24 +15,73 @@ import com.pulumi.onelogin.outputs.GetUserResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class OneloginFunctions {
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static Output<GetUserResult> getUser() {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static CompletableFuture<GetUserResult> getUserPlain() {
         return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
         return getUserPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("onelogin:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser
+     * 
+     */
+    @Deprecated /* onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("onelogin:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }

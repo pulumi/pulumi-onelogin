@@ -2,14 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as utilities from "./utilities";
+import * as utilities from "../utilities";
 
-/** @deprecated onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-    pulumi.log.warn("getUser is deprecated: onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("onelogin:index/getUser:getUser", {
+    return pulumi.runtime.invoke("onelogin:users/getUser:getUser", {
         "externalId": args.externalId,
         "userId": args.userId,
         "username": args.username,
@@ -57,12 +55,10 @@ export interface GetUserResult {
     readonly username: string;
     readonly userprincipalname: string;
 }
-/** @deprecated onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
-    pulumi.log.warn("getUser is deprecated: onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("onelogin:index/getUser:getUser", {
+    return pulumi.runtime.invokeOutput("onelogin:users/getUser:getUser", {
         "externalId": args.externalId,
         "userId": args.userId,
         "username": args.username,

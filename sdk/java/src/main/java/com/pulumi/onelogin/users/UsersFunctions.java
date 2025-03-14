@@ -9,12 +9,36 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.onelogin.Utilities;
+import com.pulumi.onelogin.users.inputs.GetUserArgs;
+import com.pulumi.onelogin.users.inputs.GetUserPlainArgs;
 import com.pulumi.onelogin.users.inputs.GetUsersArgs;
 import com.pulumi.onelogin.users.inputs.GetUsersPlainArgs;
+import com.pulumi.onelogin.users.outputs.GetUserResult;
 import com.pulumi.onelogin.users.outputs.GetUsersResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class UsersFunctions {
+    public static Output<GetUserResult> getUser() {
+        return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetUserResult> getUserPlain() {
+        return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetUserResult> getUser(GetUserArgs args) {
+        return getUser(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
+        return getUserPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("onelogin:users/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("onelogin:users/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetUsersResult> getUsers() {
         return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
     }

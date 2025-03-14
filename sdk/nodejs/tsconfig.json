@@ -33,6 +33,7 @@
         "types/output.ts",
         "user.ts",
         "userMappings.ts",
+        "users/getUser.ts",
         "users/getUsers.ts",
         "users/index.ts",
         "utilities.ts"

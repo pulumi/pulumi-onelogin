@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from . import _utilities
+from .. import _utilities
 
 __all__ = [
     'GetUserResult',
@@ -20,8 +20,6 @@ __all__ = [
     'get_user',
     'get_user_output',
 ]
-
-warnings.warn("""onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser""", DeprecationWarning)
 
 @pulumi.output_type
 class GetUserResult:
@@ -265,13 +263,12 @@ def get_user(external_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("""get_user is deprecated: onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser""")
     __args__ = dict()
     __args__['externalId'] = external_id
     __args__['userId'] = user_id
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('onelogin:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
+    __ret__ = pulumi.runtime.invoke('onelogin:users/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
         comment=pulumi.get(__ret__, 'comment'),
@@ -305,13 +302,12 @@ def get_user_output(external_id: Optional[pulumi.Input[Optional[int]]] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("""get_user is deprecated: onelogin.index/getuser.getUser has been deprecated in favor of onelogin.users/getuser.getUser""")
     __args__ = dict()
     __args__['externalId'] = external_id
     __args__['userId'] = user_id
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('onelogin:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    __ret__ = pulumi.runtime.invoke_output('onelogin:users/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         comment=pulumi.get(__response__, 'comment'),
         company=pulumi.get(__response__, 'company'),
