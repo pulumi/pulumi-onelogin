@@ -10,55 +10,27 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.onelogin.AppArgs;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.AppState;
-import com.pulumi.onelogin.outputs.AppConfiguration;
-import com.pulumi.onelogin.outputs.AppEnforcementPoint;
 import com.pulumi.onelogin.outputs.AppParameters;
-import com.pulumi.onelogin.outputs.AppProvisioning;
-import com.pulumi.onelogin.outputs.AppSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:index/app:App")
 public class App extends com.pulumi.resources.CustomResource {
-    /**
-     * Indicates whether or not administrators can access the app as a user that they have assumed control over.
-     * 
-     */
     @Export(name="allowAssumedSignin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowAssumedSignin;
 
-    /**
-     * @return Indicates whether or not administrators can access the app as a user that they have assumed control over.
-     * 
-     */
     public Output<Optional<Boolean>> allowAssumedSignin() {
         return Codegen.optional(this.allowAssumedSignin);
     }
-    /**
-     * An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
-     * WSFED - 8: OpenId Connect
-     * 
-     */
     @Export(name="authMethod", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> authMethod;
+    private Output<Integer> authMethod;
 
-    /**
-     * @return An ID indicating the type of app: - 0: Password - 1: OpenId - 2: SAML - 3: API - 4: Google - 6: Forms Based App - 7:
-     * WSFED - 8: OpenId Connect
-     * 
-     */
-    public Output<Optional<Integer>> authMethod() {
-        return Codegen.optional(this.authMethod);
-    }
-    @Export(name="authMethodDescription", refs={String.class}, tree="[0]")
-    private Output<String> authMethodDescription;
-
-    public Output<String> authMethodDescription() {
-        return this.authMethodDescription;
+    public Output<Integer> authMethod() {
+        return this.authMethod;
     }
     @Export(name="brandId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> brandId;
@@ -66,123 +38,39 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> brandId() {
         return Codegen.optional(this.brandId);
     }
-    /**
-     * Only apply configurations that are applicable to the type of app
-     * 
-     */
-    @Export(name="configuration", refs={AppConfiguration.class}, tree="[0]")
-    private Output<AppConfiguration> configuration;
-
-    /**
-     * @return Only apply configurations that are applicable to the type of app
-     * 
-     */
-    public Output<AppConfiguration> configuration() {
-        return this.configuration;
-    }
-    /**
-     * ID of the connector to base the app from.
-     * 
-     */
     @Export(name="connectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectorId;
 
-    /**
-     * @return ID of the connector to base the app from.
-     * 
-     */
     public Output<Integer> connectorId() {
         return this.connectorId;
     }
-    /**
-     * the date the app was created
-     * 
-     */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
-    /**
-     * @return the date the app was created
-     * 
-     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    /**
-     * Freeform description of the app.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return Freeform description of the app.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-     * with the app payload.
-     * 
-     */
-    @Export(name="enforcementPoint", refs={AppEnforcementPoint.class}, tree="[0]")
-    private Output</* @Nullable */ AppEnforcementPoint> enforcementPoint;
-
-    /**
-     * @return For apps that connect to a OneLogin Access Enforcement Point the following enforcement_point object will be included
-     * with the app payload.
-     * 
-     */
-    public Output<Optional<AppEnforcementPoint>> enforcementPoint() {
-        return Codegen.optional(this.enforcementPoint);
-    }
-    /**
-     * A link to the apps icon url
-     * 
-     */
     @Export(name="iconUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> iconUrl;
+    private Output<String> iconUrl;
 
-    /**
-     * @return A link to the apps icon url
-     * 
-     */
-    public Output<Optional<String>> iconUrl() {
-        return Codegen.optional(this.iconUrl);
+    public Output<String> iconUrl() {
+        return this.iconUrl;
     }
-    @Export(name="loginConfig", refs={Integer.class}, tree="[0]")
-    private Output<Integer> loginConfig;
-
-    public Output<Integer> loginConfig() {
-        return this.loginConfig;
-    }
-    /**
-     * The name of the app.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The name of the app.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Freeform notes about the app.
-     * 
-     */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
-    /**
-     * @return Freeform notes about the app.
-     * 
-     */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
@@ -192,105 +80,33 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<AppParameters> parameters() {
         return this.parameters;
     }
-    /**
-     * The security policy assigned to the app.
-     * 
-     */
     @Export(name="policyId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> policyId;
+    private Output<Integer> policyId;
 
-    /**
-     * @return The security policy assigned to the app.
-     * 
-     */
-    public Output<Optional<Integer>> policyId() {
-        return Codegen.optional(this.policyId);
+    public Output<Integer> policyId() {
+        return this.policyId;
     }
-    /**
-     * Indicates if provisioning is enabled for this app.
-     * 
-     */
-    @Export(name="provisioning", refs={AppProvisioning.class}, tree="[0]")
-    private Output</* @Nullable */ AppProvisioning> provisioning;
+    @Export(name="provisioning", refs={Map.class,String.class,Boolean.class}, tree="[0,1,2]")
+    private Output<Map<String,Boolean>> provisioning;
 
-    /**
-     * @return Indicates if provisioning is enabled for this app.
-     * 
-     */
-    public Output<Optional<AppProvisioning>> provisioning() {
-        return Codegen.optional(this.provisioning);
+    public Output<Map<String,Boolean>> provisioning() {
+        return this.provisioning;
     }
-    /**
-     * List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
-     * provided.
-     * 
-     */
-    @Export(name="roleIds", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<Integer>> roleIds;
-
-    /**
-     * @return List of Role IDs that are assigned to the app. On App Create or Update the entire array is replaced with the values
-     * provided.
-     * 
-     */
-    public Output<Optional<List<Integer>>> roleIds() {
-        return Codegen.optional(this.roleIds);
-    }
-    /**
-     * The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
-     * are read only.
-     * 
-     */
-    @Export(name="sso", refs={AppSso.class}, tree="[0]")
-    private Output<AppSso> sso;
-
-    /**
-     * @return The attributes included in the sso section are determined by the type of app. All of the attributes of the `sso` object
-     * are read only.
-     * 
-     */
-    public Output<AppSso> sso() {
-        return this.sso;
-    }
-    /**
-     * ID of the OneLogin portal tab that the app is assigned to.
-     * 
-     */
     @Export(name="tabId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> tabId;
+    private Output<Integer> tabId;
 
-    /**
-     * @return ID of the OneLogin portal tab that the app is assigned to.
-     * 
-     */
-    public Output<Optional<Integer>> tabId() {
-        return Codegen.optional(this.tabId);
+    public Output<Integer> tabId() {
+        return this.tabId;
     }
-    /**
-     * the date the app was last updated
-     * 
-     */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
-    /**
-     * @return the date the app was last updated
-     * 
-     */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
-    /**
-     * Indicates if the app is visible in the OneLogin portal.
-     * 
-     */
     @Export(name="visible", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> visible;
 
-    /**
-     * @return Indicates if the app is visible in the OneLogin portal.
-     * 
-     */
     public Output<Optional<Boolean>> visible() {
         return Codegen.optional(this.visible);
     }

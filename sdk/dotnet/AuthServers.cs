@@ -12,21 +12,12 @@ namespace Pulumi.Onelogin
     [OneloginResourceType("onelogin:index/authServers:AuthServers")]
     public partial class AuthServers : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Authorization server configuration
-        /// </summary>
         [Output("configuration")]
         public Output<Outputs.AuthServersConfiguration> Configuration { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of what the API does.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the API.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -76,21 +67,12 @@ namespace Pulumi.Onelogin
 
     public sealed class AuthServersArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Authorization server configuration
-        /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.AuthServersConfigurationArgs> Configuration { get; set; } = null!;
 
-        /// <summary>
-        /// Description of what the API does.
-        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the API.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -102,21 +84,12 @@ namespace Pulumi.Onelogin
 
     public sealed class AuthServersState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Authorization server configuration
-        /// </summary>
         [Input("configuration")]
         public Input<Inputs.AuthServersConfigurationGetArgs>? Configuration { get; set; }
 
-        /// <summary>
-        /// Description of what the API does.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name of the API.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

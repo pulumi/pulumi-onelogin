@@ -37,6 +37,8 @@ export class Privileges extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly privilege!: pulumi.Output<outputs.PrivilegesPrivilege>;
+    public readonly roleIds!: pulumi.Output<number[] | undefined>;
+    public readonly userIds!: pulumi.Output<number[] | undefined>;
 
     /**
      * Create a Privileges resource with the given unique name, arguments, and options.
@@ -54,6 +56,8 @@ export class Privileges extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privilege"] = state ? state.privilege : undefined;
+            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as PrivilegesArgs | undefined;
             if ((!args || args.privilege === undefined) && !opts.urn) {
@@ -62,6 +66,8 @@ export class Privileges extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["privilege"] = args ? args.privilege : undefined;
+            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["userIds"] = args ? args.userIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Privileges.__pulumiType, name, resourceInputs, opts);
@@ -75,6 +81,8 @@ export interface PrivilegesState {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     privilege?: pulumi.Input<inputs.PrivilegesPrivilege>;
+    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 /**
@@ -84,4 +92,6 @@ export interface PrivilegesArgs {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     privilege: pulumi.Input<inputs.PrivilegesPrivilege>;
+    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

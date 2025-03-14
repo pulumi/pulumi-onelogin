@@ -11,12 +11,15 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-func GetApikeyAuth(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:apikeyAuth")
+func GetClientId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:clientId")
 }
-func GetContentType(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:contentType")
+func GetClientSecret(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:clientSecret")
 }
-func GetEndpoints(ctx *pulumi.Context) string {
-	return config.Get(ctx, "onelogin:endpoints")
+func GetRegion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:region")
+}
+func GetUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "onelogin:url")
 }

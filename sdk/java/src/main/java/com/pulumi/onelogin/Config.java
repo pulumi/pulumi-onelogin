@@ -3,23 +3,23 @@
 
 package com.pulumi.onelogin;
 
-import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.onelogin.config.inputs.Endpoints;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("onelogin");
-    public String apikeyAuth() {
-        return Codegen.stringProp("apikeyAuth").config(config).require();
+    public String clientId() {
+        return Codegen.stringProp("clientId").config(config).require();
     }
-    public Optional<String> contentType() {
-        return Codegen.stringProp("contentType").config(config).get();
+    public String clientSecret() {
+        return Codegen.stringProp("clientSecret").config(config).require();
     }
-    public Optional<List<Endpoints>> endpoints() {
-        return Codegen.objectProp("endpoints", TypeShape.<List<Endpoints>>builder(List.class).addParameter(Endpoints.class).build()).config(config).get();
+    public Optional<String> region() {
+        return Codegen.stringProp("region").config(config).get();
+    }
+    public Optional<String> url() {
+        return Codegen.stringProp("url").config(config).get();
     }
 }

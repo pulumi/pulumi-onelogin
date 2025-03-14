@@ -1,0 +1,170 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: corymhall <43035978+corymhall@users.noreply.github.com>
+Date: Fri, 14 Mar 2025 13:03:39 -0400
+Subject: [PATCH] Upgrade terraform-plugin-log
+
+pulumi-onelogin has dependencies that require a higher version of
+terraform-plugin-log
+
+diff --git a/go.mod b/go.mod
+index c3f51ac..db57270 100644
+--- a/go.mod
++++ b/go.mod
+@@ -5,11 +5,11 @@ go 1.12
+ require (
+ 	github.com/dcaponi/gopherbadger v2.2.1+incompatible // indirect
+ 	github.com/fatih/color v1.18.0 // indirect
+-	github.com/hashicorp/terraform-plugin-log v0.2.1
++	github.com/hashicorp/terraform-plugin-log v0.9.0
+ 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.4.3
+ 	github.com/mattn/go-colorable v0.1.14 // indirect
+ 	github.com/onelogin/onelogin-go-sdk v1.1.20
+-	github.com/stretchr/testify v1.7.0
++	github.com/stretchr/testify v1.7.2
+ 	golang.org/x/image v0.24.0 // indirect
+ 	golang.org/x/sys v0.30.0 // indirect
+ )
+diff --git a/go.sum b/go.sum
+index 60069d5..5c0e1b1 100644
+--- a/go.sum
++++ b/go.sum
+@@ -82,6 +82,7 @@ github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5Kwzbycv
+ github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
+ github.com/fatih/color v1.12.0 h1:mRhaKNwANqRgUBGKmnI5ZxEk7QXmjQeCcuYFMX2bfcc=
+ github.com/fatih/color v1.12.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
++github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
+ github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=
+ github.com/fatih/color v1.18.0/go.mod h1:4FelSpRwEGDpQ12mAdzqdOukCy4u8WUtOY6lkT/6HfU=
+ github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568 h1:BHsljHzVlRcyQhjrss6TZTdY2VfCqZPbv5k3iBFa2ZQ=
+@@ -143,6 +144,7 @@ github.com/google/go-cmp v0.4.1/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
+ github.com/google/go-cmp v0.5.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
+ github.com/google/go-cmp v0.5.2 h1:X2ev0eStA3AbceY54o37/0PQ/UWqKEiiO2dKL5OPaFM=
+ github.com/google/go-cmp v0.5.2/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
++github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+ github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
+ github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+ github.com/google/martian v2.1.0+incompatible h1:/CP5g8u/VJHijgedC/Legn3BAbAaWPgecwXBIDzw5no=
+@@ -178,6 +180,7 @@ github.com/hashicorp/go-hclog v0.14.1/go.mod h1:whpDNt7SSdeAju8AWKIWsul05p54N/39
+ github.com/hashicorp/go-hclog v0.15.0/go.mod h1:whpDNt7SSdeAju8AWKIWsul05p54N/39EeqMAyrmvFQ=
+ github.com/hashicorp/go-hclog v1.0.0 h1:bkKf0BeBXcSYa7f5Fyi9gMuQ8gNsxeiNpZjR6VxNZeo=
+ github.com/hashicorp/go-hclog v1.0.0/go.mod h1:whpDNt7SSdeAju8AWKIWsul05p54N/39EeqMAyrmvFQ=
++github.com/hashicorp/go-hclog v1.5.0/go.mod h1:W4Qnvbt70Wk/zYJryRzDRU/4r0kIg0PVHBcfoyhpF5M=
+ github.com/hashicorp/go-multierror v1.0.0 h1:iVjPR7a6H0tWELX5NxNe7bYopibicUzc7uPribsnS6o=
+ github.com/hashicorp/go-multierror v1.0.0/go.mod h1:dHtQlpGsu+cZNNAkkCN/P3hoUDHhCYQXV3UM06sGGrk=
+ github.com/hashicorp/go-plugin v1.3.0/go.mod h1:F9eH4LrE/ZsRdbwhfjs9k9HoDUwAHnYtXdgmf1AVNs0=
+@@ -205,6 +208,8 @@ github.com/hashicorp/terraform-plugin-go v0.2.1 h1:EW/R8bB2Zbkjmugzsy1d27yS8/045
+ github.com/hashicorp/terraform-plugin-go v0.2.1/go.mod h1:10V6F3taeDWVAoLlkmArKttR3IULlRWFAGtQIQTIDr4=
+ github.com/hashicorp/terraform-plugin-log v0.2.1 h1:hl0G6ctSx7DRTE62VNsPWrq7d+JWy1kjk9ApOFrCq3I=
+ github.com/hashicorp/terraform-plugin-log v0.2.1/go.mod h1:RW/n0x4dyITmenuirZ1ViPQGP5JQdPTZ4Wwc0rLKi94=
++github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9TFvymaRGZED3FCV0=
++github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
+ github.com/hashicorp/terraform-plugin-sdk/v2 v2.4.3 h1:DGnxpIYRHXQZb2TOlQ1OCEYxoRQrAcbLIcYm8kvbFuU=
+ github.com/hashicorp/terraform-plugin-sdk/v2 v2.4.3/go.mod h1:5wrrTcxbSaQXamCDbHZTHk6yTF9OEZaOvQ9fvLXBE3o=
+ github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
+@@ -243,6 +248,8 @@ github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaO
+ github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
+ github.com/mattn/go-colorable v0.1.8 h1:c1ghPdyEDarC70ftn0y+A/Ee++9zz8ljHG1b13eJ0s8=
+ github.com/mattn/go-colorable v0.1.8/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
++github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
++github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb520KVy5xxl4=
+ github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
+ github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHPsaIE=
+ github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+@@ -254,6 +261,7 @@ github.com/mattn/go-isatty v0.0.11/go.mod h1:PhnuNfih5lzO57/f3n+odYbM4JtupLOxQOA
+ github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
+ github.com/mattn/go-isatty v0.0.13 h1:qdl+GuBjcsKKDco5BsxPJlId98mSWNKqYA+Co0SC1yA=
+ github.com/mattn/go-isatty v0.0.13/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
++github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
+ github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
+ github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+ github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+@@ -311,6 +319,7 @@ github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81P
+ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
+ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
++github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
+ github.com/ulikunitz/xz v0.5.5/go.mod h1:2bypXElzHzzJZwzH67Y6wb67pO62Rzfn7BSiF4ABRW8=
+ github.com/ulikunitz/xz v0.5.8 h1:ERv8V6GKqVi23rgu5cj9pVfVzJbOqAY2Ntl88O6c2nQ=
+ github.com/ulikunitz/xz v0.5.8/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
+@@ -482,6 +491,9 @@ golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7w
+ golang.org/x/sys v0.0.0-20210608053332-aa57babbf139 h1:C+AwYEtBp/VQwoLntUmQ/yx3MS9vmZaKNdw5eOpoQe8=
+ golang.org/x/sys v0.0.0-20210608053332-aa57babbf139/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
++golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
++golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
++golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+@@ -664,6 +676,7 @@ gopkg.in/yaml.v2 v2.2.8 h1:obN1ZagJSUGI0Ek/LBmuj4SNLPfIny3KsKFopxRdj10=
+ gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
+ gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=
+ gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
++gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+ honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
+ honnef.co/go/tools v0.0.0-20190106161140-3f1c8253044a/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
+ honnef.co/go/tools v0.0.0-20190418001031-e561f6794a2a/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
+diff --git a/onelogin/resource_onelogin_app_rules.go b/onelogin/resource_onelogin_app_rules.go
+index 253b69a..acc5f3e 100644
+--- a/onelogin/resource_onelogin_app_rules.go
++++ b/onelogin/resource_onelogin_app_rules.go
+@@ -57,10 +57,10 @@ func appRuleCreate(ctx context.Context, d *schema.ResourceData, m interface{}) d
+ 	client := m.(*client.APIClient)
+ 	err := client.Services.AppRulesV2.Create(&appRule)
+ 	if err != nil {
+-		tflog.Error(ctx, "[ERROR] There was a problem creating the app rule! %v", err)
++		tflog.Error(ctx, fmt.Sprintf("[ERROR] There was a problem creating the app rule! %v", err))
+ 		return diag.FromErr(err)
+ 	}
+-	tflog.Info(ctx, "[CREATED] Created app rule with", *(appRule.ID))
++	tflog.Info(ctx, fmt.Sprintf("[CREATED] Created app rule with: %d", *(appRule.ID)))
+ 
+ 	d.SetId(fmt.Sprintf("%d", *(appRule.ID)))
+ 	return appRuleRead(ctx, d, m)
+@@ -74,14 +74,14 @@ func appRuleRead(ctx context.Context, d *schema.ResourceData, m interface{}) dia
+ 	appID, _ := strconv.Atoi(d.Get("app_id").(string))
+ 	app, err := client.Services.AppRulesV2.GetOne(int32(appID), int32(id))
+ 	if err != nil {
+-		tflog.Error(ctx, "[ERROR] There was a problem reading the app rule!", err)
++		tflog.Error(ctx, fmt.Sprintf("[ERROR] There was a problem reading the app rule!: %v", err))
+ 		return diag.FromErr(err)
+ 	}
+ 	if app == nil {
+ 		d.SetId("")
+ 		return nil
+ 	}
+-	tflog.Info(ctx, "[READ] Reading app rule with %d", *(app.ID))
++	tflog.Info(ctx, fmt.Sprintf("[READ] Reading app rule with %d", *(app.ID)))
+ 
+ 	d.Set("name", app.Name)
+ 	d.Set("match", app.Match)
+@@ -111,14 +111,14 @@ func appRuleUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) d
+ 
+ 	err := client.Services.AppRulesV2.Update(&appRule)
+ 	if err != nil {
+-		tflog.Error(ctx, "[ERROR] There was a problem updating the app rule!", err)
++		tflog.Error(ctx, fmt.Sprintf("[ERROR] There was a problem updating the app rule!: %v", err))
+ 		return diag.FromErr(err)
+ 	}
+ 	if appRule.ID == nil { // app must be deleted in api so remove from tf state
+ 		d.SetId("")
+ 		return nil
+ 	}
+-	tflog.Info(ctx, "[UPDATED] Updated app rule with %d", *(appRule.ID))
++	tflog.Info(ctx, fmt.Sprintf("[UPDATED] Updated app rule with %d", *(appRule.ID)))
+ 	d.SetId(fmt.Sprintf("%d", *(appRule.ID)))
+ 	return appRuleRead(ctx, d, m)
+ }
+@@ -132,10 +132,10 @@ func appRuleDelete(ctx context.Context, d *schema.ResourceData, m interface{}) d
+ 
+ 	err := client.Services.AppRulesV2.Destroy(int32(appID), int32(id))
+ 	if err != nil {
+-		tflog.Error(ctx, "[ERROR] There was a problem deleting the app rule!", err)
++		tflog.Error(ctx, fmt.Sprintf("[ERROR] There was a problem deleting the app rule!: %v", err))
+ 		return diag.FromErr(err)
+ 	} else {
+-		tflog.Info(ctx, "[DELETED] Deleted app rule with %d", id)
++		tflog.Info(ctx, fmt.Sprintf("[DELETED] Deleted app rule with %d", id))
+ 		d.SetId("")
+ 	}
+ 

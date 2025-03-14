@@ -14,14 +14,10 @@ import (
 type Role struct {
 	pulumi.CustomResourceState
 
-	// A list of user IDs to assign as role administrators.
 	Admins pulumi.IntArrayOutput `pulumi:"admins"`
-	// A list of app IDs that will be assigned to the role.
-	Apps pulumi.IntArrayOutput `pulumi:"apps"`
-	// The name of the role.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of user IDs to assign to the role.
-	Users pulumi.IntArrayOutput `pulumi:"users"`
+	Apps   pulumi.IntArrayOutput `pulumi:"apps"`
+	Name   pulumi.StringOutput   `pulumi:"name"`
+	Users  pulumi.IntArrayOutput `pulumi:"users"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -54,25 +50,17 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// A list of user IDs to assign as role administrators.
-	Admins []int `pulumi:"admins"`
-	// A list of app IDs that will be assigned to the role.
-	Apps []int `pulumi:"apps"`
-	// The name of the role.
-	Name *string `pulumi:"name"`
-	// A list of user IDs to assign to the role.
-	Users []int `pulumi:"users"`
+	Admins []int   `pulumi:"admins"`
+	Apps   []int   `pulumi:"apps"`
+	Name   *string `pulumi:"name"`
+	Users  []int   `pulumi:"users"`
 }
 
 type RoleState struct {
-	// A list of user IDs to assign as role administrators.
 	Admins pulumi.IntArrayInput
-	// A list of app IDs that will be assigned to the role.
-	Apps pulumi.IntArrayInput
-	// The name of the role.
-	Name pulumi.StringPtrInput
-	// A list of user IDs to assign to the role.
-	Users pulumi.IntArrayInput
+	Apps   pulumi.IntArrayInput
+	Name   pulumi.StringPtrInput
+	Users  pulumi.IntArrayInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -80,26 +68,18 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// A list of user IDs to assign as role administrators.
-	Admins []int `pulumi:"admins"`
-	// A list of app IDs that will be assigned to the role.
-	Apps []int `pulumi:"apps"`
-	// The name of the role.
-	Name *string `pulumi:"name"`
-	// A list of user IDs to assign to the role.
-	Users []int `pulumi:"users"`
+	Admins []int   `pulumi:"admins"`
+	Apps   []int   `pulumi:"apps"`
+	Name   *string `pulumi:"name"`
+	Users  []int   `pulumi:"users"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// A list of user IDs to assign as role administrators.
 	Admins pulumi.IntArrayInput
-	// A list of app IDs that will be assigned to the role.
-	Apps pulumi.IntArrayInput
-	// The name of the role.
-	Name pulumi.StringPtrInput
-	// A list of user IDs to assign to the role.
-	Users pulumi.IntArrayInput
+	Apps   pulumi.IntArrayInput
+	Name   pulumi.StringPtrInput
+	Users  pulumi.IntArrayInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {
@@ -189,22 +169,18 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
-// A list of user IDs to assign as role administrators.
 func (o RoleOutput) Admins() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.IntArrayOutput { return v.Admins }).(pulumi.IntArrayOutput)
 }
 
-// A list of app IDs that will be assigned to the role.
 func (o RoleOutput) Apps() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.IntArrayOutput { return v.Apps }).(pulumi.IntArrayOutput)
 }
 
-// The name of the role.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of user IDs to assign to the role.
 func (o RoleOutput) Users() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.IntArrayOutput { return v.Users }).(pulumi.IntArrayOutput)
 }

@@ -13,11 +13,12 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
-from . import outputs
 
-apikeyAuth: Optional[str]
+clientId: Optional[str]
 
-contentType: Optional[str]
+clientSecret: Optional[str]
 
-endpoints: Optional[str]
+region: Optional[str]
+
+url: Optional[str]
 

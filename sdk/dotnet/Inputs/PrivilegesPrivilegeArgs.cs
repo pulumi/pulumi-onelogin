@@ -12,7 +12,7 @@ namespace Pulumi.Onelogin.Inputs
 
     public sealed class PrivilegesPrivilegeArgs : global::Pulumi.ResourceArgs
     {
-        [Input("statements")]
+        [Input("statements", required: true)]
         private InputList<Inputs.PrivilegesPrivilegeStatementArgs>? _statements;
         public InputList<Inputs.PrivilegesPrivilegeStatementArgs> Statements
         {

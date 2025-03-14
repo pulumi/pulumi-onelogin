@@ -15,105 +15,112 @@ else:
 from .. import _utilities
 
 __all__ = [
-    'GetAppsFilterResult',
-    'GetDevicesFilterResult',
-    'GetUsersFilterResult',
-    'GetV1AppsFilterResult',
-    'GetV1FilterResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
-class GetAppsFilterResult(dict):
+class GetUsersUserResult(dict):
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+                 directory_id: int,
+                 email: str,
+                 external_id: int,
+                 firstname: str,
+                 id: int,
+                 last_login: str,
+                 lastname: str,
+                 samaccountname: str,
+                 username: str):
+        """
+        :param int directory_id: directory_id
+        :param str email: email
+        :param int external_id: external_id
+        :param str firstname: firstname
+        :param int id: id
+        :param str last_login: last_login
+        :param str lastname: lastname
+        :param str samaccountname: samaccountname
+        :param str username: username
+        """
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "firstname", firstname)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_login", last_login)
+        pulumi.set(__self__, "lastname", lastname)
+        pulumi.set(__self__, "samaccountname", samaccountname)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> int:
+        """
+        directory_id
+        """
+        return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
+    def email(self) -> str:
+        """
+        email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> int:
+        """
+        external_id
+        """
+        return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class GetDevicesFilterResult(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+    def firstname(self) -> str:
+        """
+        firstname
+        """
+        return pulumi.get(self, "firstname")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
+    def id(self) -> int:
+        """
+        id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastLogin")
+    def last_login(self) -> str:
+        """
+        last_login
+        """
+        return pulumi.get(self, "last_login")
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class GetUsersFilterResult(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
+    def lastname(self) -> str:
+        """
+        lastname
+        """
+        return pulumi.get(self, "lastname")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
+    def samaccountname(self) -> str:
+        """
+        samaccountname
+        """
+        return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class GetV1AppsFilterResult(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class GetV1FilterResult(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
+    def username(self) -> str:
+        """
+        username
+        """
+        return pulumi.get(self, "username")
 
 

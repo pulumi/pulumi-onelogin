@@ -32,65 +32,33 @@ namespace Pulumi.Onelogin
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("onelogin");
 
-        private static readonly __Value<string?> _apikeyAuth = new __Value<string?>(() => __config.Get("apikeyAuth"));
-        public static string? ApikeyAuth
+        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
+        public static string? ClientId
         {
-            get => _apikeyAuth.Get();
-            set => _apikeyAuth.Set(value);
+            get => _clientId.Get();
+            set => _clientId.Set(value);
         }
 
-        private static readonly __Value<string?> _contentType = new __Value<string?>(() => __config.Get("contentType"));
-        public static string? ContentType
+        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
+        public static string? ClientSecret
         {
-            get => _contentType.Get();
-            set => _contentType.Set(value);
+            get => _clientSecret.Get();
+            set => _clientSecret.Set(value);
         }
 
-        private static readonly __Value<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>> _endpoints = new __Value<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>>(() => __config.GetObject<ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints>>("endpoints"));
-        public static ImmutableArray<Pulumi.Onelogin.Config.Types.Endpoints> Endpoints
+        private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region"));
+        public static string? Region
         {
-            get => _endpoints.Get();
-            set => _endpoints.Set(value);
+            get => _region.Get();
+            set => _region.Set(value);
         }
 
-        public static class Types
+        private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url"));
+        public static string? Url
         {
-
-             public class Endpoints
-             {
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? Apps { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? AppsRules { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? AuthServers { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? Privileges { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? RiskRules { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? Roles { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? Users { get; set; } = null!;
-            /// <summary>
-            /// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-            /// </summary>
-                public string? UsersV1 { get; set; } = null!;
-            }
+            get => _url.Get();
+            set => _url.Set(value);
         }
+
     }
 }

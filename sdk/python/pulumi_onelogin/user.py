@@ -19,123 +19,61 @@ __all__ = ['UserArgs', 'User']
 @pulumi.input_type
 class UserArgs:
     def __init__(__self__, *,
-                 activated_at: Optional[pulumi.Input[str]] = None,
+                 email: pulumi.Input[str],
+                 username: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[int]] = None,
                  distinguished_name: Optional[pulumi.Input[str]] = None,
-                 email: Optional[pulumi.Input[str]] = None,
-                 external_id: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[int]] = None,
                  firstname: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 invalid_login_attempts: Optional[pulumi.Input[int]] = None,
-                 invitation_sent_at: Optional[pulumi.Input[str]] = None,
-                 last_login: Optional[pulumi.Input[str]] = None,
                  lastname: Optional[pulumi.Input[str]] = None,
-                 locked_until: Optional[pulumi.Input[str]] = None,
-                 manager_ad_id: Optional[pulumi.Input[str]] = None,
-                 manager_user_id: Optional[pulumi.Input[str]] = None,
+                 manager_ad_id: Optional[pulumi.Input[int]] = None,
+                 manager_user_id: Optional[pulumi.Input[int]] = None,
                  member_of: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 password_algorithm: Optional[pulumi.Input[str]] = None,
-                 password_changed_at: Optional[pulumi.Input[str]] = None,
-                 password_confirmation: Optional[pulumi.Input[str]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
-                 preferred_locale_code: Optional[pulumi.Input[str]] = None,
-                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 salt: Optional[pulumi.Input[str]] = None,
                  samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trusted_idp_id: Optional[pulumi.Input[int]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
-                 username: Optional[pulumi.Input[str]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[str] comment: Free text related to the user.
-        :param pulumi.Input[str] company: The user's company.
-        :param pulumi.Input[str] department: The user's department.
-        :param pulumi.Input[int] directory_id: The ID of the OneLogin Directory of the user.
-        :param pulumi.Input[str] distinguished_name: The distinguished name of the user.
-        :param pulumi.Input[str] email: A valid email for the user.
-        :param pulumi.Input[str] external_id: The ID of the user in an external directory.
-        :param pulumi.Input[str] firstname: The user's first name.
-        :param pulumi.Input[int] group_id: The ID of the Group in OneLogin that the user is assigned to.
-        :param pulumi.Input[str] lastname: The user's last name.
-        :param pulumi.Input[str] manager_ad_id: The ID of the user's manager in Active Directory.
-        :param pulumi.Input[str] manager_user_id: The OneLogin User ID for the user's manager.
-        :param pulumi.Input[str] member_of: The user's directory membership.
-        :param pulumi.Input[str] password: The password to set for a user.
-        :param pulumi.Input[str] password_algorithm: Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-               SHA-256-encoding it
-        :param pulumi.Input[str] password_confirmation: Required if the password is being set.
-        :param pulumi.Input[str] phone: The E.164 format phone number for a user.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
-        :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
-        :param pulumi.Input[str] title: The user's job title.
-        :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
-        :param pulumi.Input[str] username: A username for the user.
-        :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
-        if activated_at is not None:
-            pulumi.set(__self__, "activated_at", activated_at)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "username", username)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if company is not None:
             pulumi.set(__self__, "company", company)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if department is not None:
             pulumi.set(__self__, "department", department)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if distinguished_name is not None:
             pulumi.set(__self__, "distinguished_name", distinguished_name)
-        if email is not None:
-            pulumi.set(__self__, "email", email)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
         if firstname is not None:
             pulumi.set(__self__, "firstname", firstname)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
-        if invalid_login_attempts is not None:
-            pulumi.set(__self__, "invalid_login_attempts", invalid_login_attempts)
-        if invitation_sent_at is not None:
-            pulumi.set(__self__, "invitation_sent_at", invitation_sent_at)
-        if last_login is not None:
-            pulumi.set(__self__, "last_login", last_login)
         if lastname is not None:
             pulumi.set(__self__, "lastname", lastname)
-        if locked_until is not None:
-            pulumi.set(__self__, "locked_until", locked_until)
         if manager_ad_id is not None:
             pulumi.set(__self__, "manager_ad_id", manager_ad_id)
         if manager_user_id is not None:
             pulumi.set(__self__, "manager_user_id", manager_user_id)
         if member_of is not None:
             pulumi.set(__self__, "member_of", member_of)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if password_algorithm is not None:
-            pulumi.set(__self__, "password_algorithm", password_algorithm)
-        if password_changed_at is not None:
-            pulumi.set(__self__, "password_changed_at", password_changed_at)
-        if password_confirmation is not None:
-            pulumi.set(__self__, "password_confirmation", password_confirmation)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
-        if preferred_locale_code is not None:
-            pulumi.set(__self__, "preferred_locale_code", preferred_locale_code)
-        if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
-        if salt is not None:
-            pulumi.set(__self__, "salt", salt)
         if samaccountname is not None:
             pulumi.set(__self__, "samaccountname", samaccountname)
         if state is not None:
@@ -146,28 +84,30 @@ class UserArgs:
             pulumi.set(__self__, "title", title)
         if trusted_idp_id is not None:
             pulumi.set(__self__, "trusted_idp_id", trusted_idp_id)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
         if userprincipalname is not None:
             pulumi.set(__self__, "userprincipalname", userprincipalname)
 
     @property
-    @pulumi.getter(name="activatedAt")
-    def activated_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "activated_at")
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "email")
 
-    @activated_at.setter
-    def activated_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "activated_at", value)
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Free text related to the user.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -177,9 +117,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's company.
-        """
         return pulumi.get(self, "company")
 
     @company.setter
@@ -187,20 +124,17 @@ class UserArgs:
         pulumi.set(self, "company", value)
 
     @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "created_at")
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "custom_attributes")
 
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "created_at", value)
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
 
     @property
     @pulumi.getter
     def department(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's department.
-        """
         return pulumi.get(self, "department")
 
     @department.setter
@@ -210,9 +144,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the OneLogin Directory of the user.
-        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -222,9 +153,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The distinguished name of the user.
-        """
         return pulumi.get(self, "distinguished_name")
 
     @distinguished_name.setter
@@ -232,35 +160,17 @@ class UserArgs:
         pulumi.set(self, "distinguished_name", value)
 
     @property
-    @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        A valid email for the user.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
-
-    @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the user in an external directory.
-        """
+    def external_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[str]]):
+    def external_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "external_id", value)
 
     @property
     @pulumi.getter
     def firstname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's first name.
-        """
         return pulumi.get(self, "firstname")
 
     @firstname.setter
@@ -270,9 +180,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the Group in OneLogin that the user is assigned to.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -280,38 +187,8 @@ class UserArgs:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="invalidLoginAttempts")
-    def invalid_login_attempts(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "invalid_login_attempts")
-
-    @invalid_login_attempts.setter
-    def invalid_login_attempts(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "invalid_login_attempts", value)
-
-    @property
-    @pulumi.getter(name="invitationSentAt")
-    def invitation_sent_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "invitation_sent_at")
-
-    @invitation_sent_at.setter
-    def invitation_sent_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "invitation_sent_at", value)
-
-    @property
-    @pulumi.getter(name="lastLogin")
-    def last_login(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_login")
-
-    @last_login.setter
-    def last_login(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_login", value)
-
-    @property
     @pulumi.getter
     def lastname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's last name.
-        """
         return pulumi.get(self, "lastname")
 
     @lastname.setter
@@ -319,44 +196,26 @@ class UserArgs:
         pulumi.set(self, "lastname", value)
 
     @property
-    @pulumi.getter(name="lockedUntil")
-    def locked_until(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "locked_until")
-
-    @locked_until.setter
-    def locked_until(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locked_until", value)
-
-    @property
     @pulumi.getter(name="managerAdId")
-    def manager_ad_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the user's manager in Active Directory.
-        """
+    def manager_ad_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "manager_ad_id")
 
     @manager_ad_id.setter
-    def manager_ad_id(self, value: Optional[pulumi.Input[str]]):
+    def manager_ad_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "manager_ad_id", value)
 
     @property
     @pulumi.getter(name="managerUserId")
-    def manager_user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The OneLogin User ID for the user's manager.
-        """
+    def manager_user_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "manager_user_id")
 
     @manager_user_id.setter
-    def manager_user_id(self, value: Optional[pulumi.Input[str]]):
+    def manager_user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "manager_user_id", value)
 
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's directory membership.
-        """
         return pulumi.get(self, "member_of")
 
     @member_of.setter
@@ -365,56 +224,7 @@ class UserArgs:
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password to set for a user.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="passwordAlgorithm")
-    def password_algorithm(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-        SHA-256-encoding it
-        """
-        return pulumi.get(self, "password_algorithm")
-
-    @password_algorithm.setter
-    def password_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_algorithm", value)
-
-    @property
-    @pulumi.getter(name="passwordChangedAt")
-    def password_changed_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "password_changed_at")
-
-    @password_changed_at.setter
-    def password_changed_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_changed_at", value)
-
-    @property
-    @pulumi.getter(name="passwordConfirmation")
-    def password_confirmation(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required if the password is being set.
-        """
-        return pulumi.get(self, "password_confirmation")
-
-    @password_confirmation.setter
-    def password_confirmation(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_confirmation", value)
-
-    @property
-    @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The E.164 format phone number for a user.
-        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -422,44 +232,8 @@ class UserArgs:
         pulumi.set(self, "phone", value)
 
     @property
-    @pulumi.getter(name="preferredLocaleCode")
-    def preferred_locale_code(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "preferred_locale_code")
-
-    @preferred_locale_code.setter
-    def preferred_locale_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_locale_code", value)
-
-    @property
-    @pulumi.getter(name="roleIds")
-    def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
-        """
-        A list of OneLogin Role IDs of the user
-        """
-        return pulumi.get(self, "role_ids")
-
-    @role_ids.setter
-    def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
-        pulumi.set(self, "role_ids", value)
-
-    @property
-    @pulumi.getter
-    def salt(self) -> Optional[pulumi.Input[str]]:
-        """
-        The salt value used with the password_algorithm.
-        """
-        return pulumi.get(self, "salt")
-
-    @salt.setter
-    def salt(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "salt", value)
-
-    @property
     @pulumi.getter
     def samaccountname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's Active Directory username.
-        """
         return pulumi.get(self, "samaccountname")
 
     @samaccountname.setter
@@ -487,9 +261,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's job title.
-        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -499,9 +270,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the OneLogin Trusted IDP of the user.
-        """
         return pulumi.get(self, "trusted_idp_id")
 
     @trusted_idp_id.setter
@@ -509,32 +277,8 @@ class UserArgs:
         pulumi.set(self, "trusted_idp_id", value)
 
     @property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "updated_at", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        A username for the user.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
-
-    @property
     @pulumi.getter
     def userprincipalname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The principle name of the user.
-        """
         return pulumi.get(self, "userprincipalname")
 
     @userprincipalname.setter
@@ -545,77 +289,37 @@ class UserArgs:
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 activated_at: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[int]] = None,
                  distinguished_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 external_id: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[int]] = None,
                  firstname: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 invalid_login_attempts: Optional[pulumi.Input[int]] = None,
-                 invitation_sent_at: Optional[pulumi.Input[str]] = None,
-                 last_login: Optional[pulumi.Input[str]] = None,
                  lastname: Optional[pulumi.Input[str]] = None,
-                 locked_until: Optional[pulumi.Input[str]] = None,
-                 manager_ad_id: Optional[pulumi.Input[str]] = None,
-                 manager_user_id: Optional[pulumi.Input[str]] = None,
+                 manager_ad_id: Optional[pulumi.Input[int]] = None,
+                 manager_user_id: Optional[pulumi.Input[int]] = None,
                  member_of: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 password_algorithm: Optional[pulumi.Input[str]] = None,
-                 password_changed_at: Optional[pulumi.Input[str]] = None,
-                 password_confirmation: Optional[pulumi.Input[str]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
-                 preferred_locale_code: Optional[pulumi.Input[str]] = None,
-                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 salt: Optional[pulumi.Input[str]] = None,
                  samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trusted_idp_id: Optional[pulumi.Input[int]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[str] comment: Free text related to the user.
-        :param pulumi.Input[str] company: The user's company.
-        :param pulumi.Input[str] department: The user's department.
-        :param pulumi.Input[int] directory_id: The ID of the OneLogin Directory of the user.
-        :param pulumi.Input[str] distinguished_name: The distinguished name of the user.
-        :param pulumi.Input[str] email: A valid email for the user.
-        :param pulumi.Input[str] external_id: The ID of the user in an external directory.
-        :param pulumi.Input[str] firstname: The user's first name.
-        :param pulumi.Input[int] group_id: The ID of the Group in OneLogin that the user is assigned to.
-        :param pulumi.Input[str] lastname: The user's last name.
-        :param pulumi.Input[str] manager_ad_id: The ID of the user's manager in Active Directory.
-        :param pulumi.Input[str] manager_user_id: The OneLogin User ID for the user's manager.
-        :param pulumi.Input[str] member_of: The user's directory membership.
-        :param pulumi.Input[str] password: The password to set for a user.
-        :param pulumi.Input[str] password_algorithm: Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-               SHA-256-encoding it
-        :param pulumi.Input[str] password_confirmation: Required if the password is being set.
-        :param pulumi.Input[str] phone: The E.164 format phone number for a user.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
-        :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
-        :param pulumi.Input[str] title: The user's job title.
-        :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
-        :param pulumi.Input[str] username: A username for the user.
-        :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
-        if activated_at is not None:
-            pulumi.set(__self__, "activated_at", activated_at)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if company is not None:
             pulumi.set(__self__, "company", company)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if department is not None:
             pulumi.set(__self__, "department", department)
         if directory_id is not None:
@@ -630,38 +334,16 @@ class _UserState:
             pulumi.set(__self__, "firstname", firstname)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
-        if invalid_login_attempts is not None:
-            pulumi.set(__self__, "invalid_login_attempts", invalid_login_attempts)
-        if invitation_sent_at is not None:
-            pulumi.set(__self__, "invitation_sent_at", invitation_sent_at)
-        if last_login is not None:
-            pulumi.set(__self__, "last_login", last_login)
         if lastname is not None:
             pulumi.set(__self__, "lastname", lastname)
-        if locked_until is not None:
-            pulumi.set(__self__, "locked_until", locked_until)
         if manager_ad_id is not None:
             pulumi.set(__self__, "manager_ad_id", manager_ad_id)
         if manager_user_id is not None:
             pulumi.set(__self__, "manager_user_id", manager_user_id)
         if member_of is not None:
             pulumi.set(__self__, "member_of", member_of)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if password_algorithm is not None:
-            pulumi.set(__self__, "password_algorithm", password_algorithm)
-        if password_changed_at is not None:
-            pulumi.set(__self__, "password_changed_at", password_changed_at)
-        if password_confirmation is not None:
-            pulumi.set(__self__, "password_confirmation", password_confirmation)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
-        if preferred_locale_code is not None:
-            pulumi.set(__self__, "preferred_locale_code", preferred_locale_code)
-        if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
-        if salt is not None:
-            pulumi.set(__self__, "salt", salt)
         if samaccountname is not None:
             pulumi.set(__self__, "samaccountname", samaccountname)
         if state is not None:
@@ -672,28 +354,14 @@ class _UserState:
             pulumi.set(__self__, "title", title)
         if trusted_idp_id is not None:
             pulumi.set(__self__, "trusted_idp_id", trusted_idp_id)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if username is not None:
             pulumi.set(__self__, "username", username)
         if userprincipalname is not None:
             pulumi.set(__self__, "userprincipalname", userprincipalname)
 
     @property
-    @pulumi.getter(name="activatedAt")
-    def activated_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "activated_at")
-
-    @activated_at.setter
-    def activated_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "activated_at", value)
-
-    @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Free text related to the user.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -703,9 +371,6 @@ class _UserState:
     @property
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's company.
-        """
         return pulumi.get(self, "company")
 
     @company.setter
@@ -713,20 +378,17 @@ class _UserState:
         pulumi.set(self, "company", value)
 
     @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "created_at")
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "custom_attributes")
 
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "created_at", value)
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
 
     @property
     @pulumi.getter
     def department(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's department.
-        """
         return pulumi.get(self, "department")
 
     @department.setter
@@ -736,9 +398,6 @@ class _UserState:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the OneLogin Directory of the user.
-        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -748,9 +407,6 @@ class _UserState:
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The distinguished name of the user.
-        """
         return pulumi.get(self, "distinguished_name")
 
     @distinguished_name.setter
@@ -760,9 +416,6 @@ class _UserState:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        A valid email for the user.
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -771,22 +424,16 @@ class _UserState:
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the user in an external directory.
-        """
+    def external_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[str]]):
+    def external_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "external_id", value)
 
     @property
     @pulumi.getter
     def firstname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's first name.
-        """
         return pulumi.get(self, "firstname")
 
     @firstname.setter
@@ -796,9 +443,6 @@ class _UserState:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the Group in OneLogin that the user is assigned to.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -806,38 +450,8 @@ class _UserState:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="invalidLoginAttempts")
-    def invalid_login_attempts(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "invalid_login_attempts")
-
-    @invalid_login_attempts.setter
-    def invalid_login_attempts(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "invalid_login_attempts", value)
-
-    @property
-    @pulumi.getter(name="invitationSentAt")
-    def invitation_sent_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "invitation_sent_at")
-
-    @invitation_sent_at.setter
-    def invitation_sent_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "invitation_sent_at", value)
-
-    @property
-    @pulumi.getter(name="lastLogin")
-    def last_login(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_login")
-
-    @last_login.setter
-    def last_login(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_login", value)
-
-    @property
     @pulumi.getter
     def lastname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's last name.
-        """
         return pulumi.get(self, "lastname")
 
     @lastname.setter
@@ -845,44 +459,26 @@ class _UserState:
         pulumi.set(self, "lastname", value)
 
     @property
-    @pulumi.getter(name="lockedUntil")
-    def locked_until(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "locked_until")
-
-    @locked_until.setter
-    def locked_until(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locked_until", value)
-
-    @property
     @pulumi.getter(name="managerAdId")
-    def manager_ad_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the user's manager in Active Directory.
-        """
+    def manager_ad_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "manager_ad_id")
 
     @manager_ad_id.setter
-    def manager_ad_id(self, value: Optional[pulumi.Input[str]]):
+    def manager_ad_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "manager_ad_id", value)
 
     @property
     @pulumi.getter(name="managerUserId")
-    def manager_user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The OneLogin User ID for the user's manager.
-        """
+    def manager_user_id(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "manager_user_id")
 
     @manager_user_id.setter
-    def manager_user_id(self, value: Optional[pulumi.Input[str]]):
+    def manager_user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "manager_user_id", value)
 
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's directory membership.
-        """
         return pulumi.get(self, "member_of")
 
     @member_of.setter
@@ -891,56 +487,7 @@ class _UserState:
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password to set for a user.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="passwordAlgorithm")
-    def password_algorithm(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-        SHA-256-encoding it
-        """
-        return pulumi.get(self, "password_algorithm")
-
-    @password_algorithm.setter
-    def password_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_algorithm", value)
-
-    @property
-    @pulumi.getter(name="passwordChangedAt")
-    def password_changed_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "password_changed_at")
-
-    @password_changed_at.setter
-    def password_changed_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_changed_at", value)
-
-    @property
-    @pulumi.getter(name="passwordConfirmation")
-    def password_confirmation(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required if the password is being set.
-        """
-        return pulumi.get(self, "password_confirmation")
-
-    @password_confirmation.setter
-    def password_confirmation(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password_confirmation", value)
-
-    @property
-    @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The E.164 format phone number for a user.
-        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -948,44 +495,8 @@ class _UserState:
         pulumi.set(self, "phone", value)
 
     @property
-    @pulumi.getter(name="preferredLocaleCode")
-    def preferred_locale_code(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "preferred_locale_code")
-
-    @preferred_locale_code.setter
-    def preferred_locale_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_locale_code", value)
-
-    @property
-    @pulumi.getter(name="roleIds")
-    def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
-        """
-        A list of OneLogin Role IDs of the user
-        """
-        return pulumi.get(self, "role_ids")
-
-    @role_ids.setter
-    def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
-        pulumi.set(self, "role_ids", value)
-
-    @property
-    @pulumi.getter
-    def salt(self) -> Optional[pulumi.Input[str]]:
-        """
-        The salt value used with the password_algorithm.
-        """
-        return pulumi.get(self, "salt")
-
-    @salt.setter
-    def salt(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "salt", value)
-
-    @property
     @pulumi.getter
     def samaccountname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's Active Directory username.
-        """
         return pulumi.get(self, "samaccountname")
 
     @samaccountname.setter
@@ -1013,9 +524,6 @@ class _UserState:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user's job title.
-        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -1025,9 +533,6 @@ class _UserState:
     @property
     @pulumi.getter(name="trustedIdpId")
     def trusted_idp_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the OneLogin Trusted IDP of the user.
-        """
         return pulumi.get(self, "trusted_idp_id")
 
     @trusted_idp_id.setter
@@ -1035,20 +540,8 @@ class _UserState:
         pulumi.set(self, "trusted_idp_id", value)
 
     @property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "updated_at", value)
-
-    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        A username for the user.
-        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -1058,9 +551,6 @@ class _UserState:
     @property
     @pulumi.getter
     def userprincipalname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The principle name of the user.
-        """
         return pulumi.get(self, "userprincipalname")
 
     @userprincipalname.setter
@@ -1073,39 +563,26 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activated_at: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[int]] = None,
                  distinguished_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 external_id: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[int]] = None,
                  firstname: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 invalid_login_attempts: Optional[pulumi.Input[int]] = None,
-                 invitation_sent_at: Optional[pulumi.Input[str]] = None,
-                 last_login: Optional[pulumi.Input[str]] = None,
                  lastname: Optional[pulumi.Input[str]] = None,
-                 locked_until: Optional[pulumi.Input[str]] = None,
-                 manager_ad_id: Optional[pulumi.Input[str]] = None,
-                 manager_user_id: Optional[pulumi.Input[str]] = None,
+                 manager_ad_id: Optional[pulumi.Input[int]] = None,
+                 manager_user_id: Optional[pulumi.Input[int]] = None,
                  member_of: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 password_algorithm: Optional[pulumi.Input[str]] = None,
-                 password_changed_at: Optional[pulumi.Input[str]] = None,
-                 password_confirmation: Optional[pulumi.Input[str]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
-                 preferred_locale_code: Optional[pulumi.Input[str]] = None,
-                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 salt: Optional[pulumi.Input[str]] = None,
                  samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trusted_idp_id: Optional[pulumi.Input[int]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1113,37 +590,12 @@ class User(pulumi.CustomResource):
         Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Free text related to the user.
-        :param pulumi.Input[str] company: The user's company.
-        :param pulumi.Input[str] department: The user's department.
-        :param pulumi.Input[int] directory_id: The ID of the OneLogin Directory of the user.
-        :param pulumi.Input[str] distinguished_name: The distinguished name of the user.
-        :param pulumi.Input[str] email: A valid email for the user.
-        :param pulumi.Input[str] external_id: The ID of the user in an external directory.
-        :param pulumi.Input[str] firstname: The user's first name.
-        :param pulumi.Input[int] group_id: The ID of the Group in OneLogin that the user is assigned to.
-        :param pulumi.Input[str] lastname: The user's last name.
-        :param pulumi.Input[str] manager_ad_id: The ID of the user's manager in Active Directory.
-        :param pulumi.Input[str] manager_user_id: The OneLogin User ID for the user's manager.
-        :param pulumi.Input[str] member_of: The user's directory membership.
-        :param pulumi.Input[str] password: The password to set for a user.
-        :param pulumi.Input[str] password_algorithm: Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-               SHA-256-encoding it
-        :param pulumi.Input[str] password_confirmation: Required if the password is being set.
-        :param pulumi.Input[str] phone: The E.164 format phone number for a user.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
-        :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
-        :param pulumi.Input[str] title: The user's job title.
-        :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
-        :param pulumi.Input[str] username: A username for the user.
-        :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[UserArgs] = None,
+                 args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a User resource with the given unique name, props, and options.
@@ -1162,39 +614,26 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activated_at: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[int]] = None,
                  distinguished_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
-                 external_id: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[int]] = None,
                  firstname: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 invalid_login_attempts: Optional[pulumi.Input[int]] = None,
-                 invitation_sent_at: Optional[pulumi.Input[str]] = None,
-                 last_login: Optional[pulumi.Input[str]] = None,
                  lastname: Optional[pulumi.Input[str]] = None,
-                 locked_until: Optional[pulumi.Input[str]] = None,
-                 manager_ad_id: Optional[pulumi.Input[str]] = None,
-                 manager_user_id: Optional[pulumi.Input[str]] = None,
+                 manager_ad_id: Optional[pulumi.Input[int]] = None,
+                 manager_user_id: Optional[pulumi.Input[int]] = None,
                  member_of: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 password_algorithm: Optional[pulumi.Input[str]] = None,
-                 password_changed_at: Optional[pulumi.Input[str]] = None,
-                 password_confirmation: Optional[pulumi.Input[str]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
-                 preferred_locale_code: Optional[pulumi.Input[str]] = None,
-                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 salt: Optional[pulumi.Input[str]] = None,
                  samaccountname: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trusted_idp_id: Optional[pulumi.Input[int]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  userprincipalname: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1206,39 +645,30 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserArgs.__new__(UserArgs)
 
-            __props__.__dict__["activated_at"] = activated_at
             __props__.__dict__["comment"] = comment
             __props__.__dict__["company"] = company
-            __props__.__dict__["created_at"] = created_at
+            __props__.__dict__["custom_attributes"] = custom_attributes
             __props__.__dict__["department"] = department
             __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["distinguished_name"] = distinguished_name
+            if email is None and not opts.urn:
+                raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["firstname"] = firstname
             __props__.__dict__["group_id"] = group_id
-            __props__.__dict__["invalid_login_attempts"] = invalid_login_attempts
-            __props__.__dict__["invitation_sent_at"] = invitation_sent_at
-            __props__.__dict__["last_login"] = last_login
             __props__.__dict__["lastname"] = lastname
-            __props__.__dict__["locked_until"] = locked_until
             __props__.__dict__["manager_ad_id"] = manager_ad_id
             __props__.__dict__["manager_user_id"] = manager_user_id
             __props__.__dict__["member_of"] = member_of
-            __props__.__dict__["password"] = password
-            __props__.__dict__["password_algorithm"] = password_algorithm
-            __props__.__dict__["password_changed_at"] = password_changed_at
-            __props__.__dict__["password_confirmation"] = password_confirmation
             __props__.__dict__["phone"] = phone
-            __props__.__dict__["preferred_locale_code"] = preferred_locale_code
-            __props__.__dict__["role_ids"] = role_ids
-            __props__.__dict__["salt"] = salt
             __props__.__dict__["samaccountname"] = samaccountname
             __props__.__dict__["state"] = state
             __props__.__dict__["status"] = status
             __props__.__dict__["title"] = title
             __props__.__dict__["trusted_idp_id"] = trusted_idp_id
-            __props__.__dict__["updated_at"] = updated_at
+            if username is None and not opts.urn:
+                raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["userprincipalname"] = userprincipalname
         super(User, __self__).__init__(
@@ -1251,39 +681,26 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activated_at: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             company: Optional[pulumi.Input[str]] = None,
-            created_at: Optional[pulumi.Input[str]] = None,
+            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             department: Optional[pulumi.Input[str]] = None,
             directory_id: Optional[pulumi.Input[int]] = None,
             distinguished_name: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
-            external_id: Optional[pulumi.Input[str]] = None,
+            external_id: Optional[pulumi.Input[int]] = None,
             firstname: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[int]] = None,
-            invalid_login_attempts: Optional[pulumi.Input[int]] = None,
-            invitation_sent_at: Optional[pulumi.Input[str]] = None,
-            last_login: Optional[pulumi.Input[str]] = None,
             lastname: Optional[pulumi.Input[str]] = None,
-            locked_until: Optional[pulumi.Input[str]] = None,
-            manager_ad_id: Optional[pulumi.Input[str]] = None,
-            manager_user_id: Optional[pulumi.Input[str]] = None,
+            manager_ad_id: Optional[pulumi.Input[int]] = None,
+            manager_user_id: Optional[pulumi.Input[int]] = None,
             member_of: Optional[pulumi.Input[str]] = None,
-            password: Optional[pulumi.Input[str]] = None,
-            password_algorithm: Optional[pulumi.Input[str]] = None,
-            password_changed_at: Optional[pulumi.Input[str]] = None,
-            password_confirmation: Optional[pulumi.Input[str]] = None,
             phone: Optional[pulumi.Input[str]] = None,
-            preferred_locale_code: Optional[pulumi.Input[str]] = None,
-            role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-            salt: Optional[pulumi.Input[str]] = None,
             samaccountname: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[int]] = None,
             title: Optional[pulumi.Input[str]] = None,
             trusted_idp_id: Optional[pulumi.Input[int]] = None,
-            updated_at: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
             userprincipalname: Optional[pulumi.Input[str]] = None) -> 'User':
         """
@@ -1293,40 +710,14 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Free text related to the user.
-        :param pulumi.Input[str] company: The user's company.
-        :param pulumi.Input[str] department: The user's department.
-        :param pulumi.Input[int] directory_id: The ID of the OneLogin Directory of the user.
-        :param pulumi.Input[str] distinguished_name: The distinguished name of the user.
-        :param pulumi.Input[str] email: A valid email for the user.
-        :param pulumi.Input[str] external_id: The ID of the user in an external directory.
-        :param pulumi.Input[str] firstname: The user's first name.
-        :param pulumi.Input[int] group_id: The ID of the Group in OneLogin that the user is assigned to.
-        :param pulumi.Input[str] lastname: The user's last name.
-        :param pulumi.Input[str] manager_ad_id: The ID of the user's manager in Active Directory.
-        :param pulumi.Input[str] manager_user_id: The OneLogin User ID for the user's manager.
-        :param pulumi.Input[str] member_of: The user's directory membership.
-        :param pulumi.Input[str] password: The password to set for a user.
-        :param pulumi.Input[str] password_algorithm: Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-               SHA-256-encoding it
-        :param pulumi.Input[str] password_confirmation: Required if the password is being set.
-        :param pulumi.Input[str] phone: The E.164 format phone number for a user.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] role_ids: A list of OneLogin Role IDs of the user
-        :param pulumi.Input[str] salt: The salt value used with the password_algorithm.
-        :param pulumi.Input[str] samaccountname: The user's Active Directory username.
-        :param pulumi.Input[str] title: The user's job title.
-        :param pulumi.Input[int] trusted_idp_id: The ID of the OneLogin Trusted IDP of the user.
-        :param pulumi.Input[str] username: A username for the user.
-        :param pulumi.Input[str] userprincipalname: The principle name of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _UserState.__new__(_UserState)
 
-        __props__.__dict__["activated_at"] = activated_at
         __props__.__dict__["comment"] = comment
         __props__.__dict__["company"] = company
-        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["custom_attributes"] = custom_attributes
         __props__.__dict__["department"] = department
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["distinguished_name"] = distinguished_name
@@ -1334,277 +725,127 @@ class User(pulumi.CustomResource):
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["firstname"] = firstname
         __props__.__dict__["group_id"] = group_id
-        __props__.__dict__["invalid_login_attempts"] = invalid_login_attempts
-        __props__.__dict__["invitation_sent_at"] = invitation_sent_at
-        __props__.__dict__["last_login"] = last_login
         __props__.__dict__["lastname"] = lastname
-        __props__.__dict__["locked_until"] = locked_until
         __props__.__dict__["manager_ad_id"] = manager_ad_id
         __props__.__dict__["manager_user_id"] = manager_user_id
         __props__.__dict__["member_of"] = member_of
-        __props__.__dict__["password"] = password
-        __props__.__dict__["password_algorithm"] = password_algorithm
-        __props__.__dict__["password_changed_at"] = password_changed_at
-        __props__.__dict__["password_confirmation"] = password_confirmation
         __props__.__dict__["phone"] = phone
-        __props__.__dict__["preferred_locale_code"] = preferred_locale_code
-        __props__.__dict__["role_ids"] = role_ids
-        __props__.__dict__["salt"] = salt
         __props__.__dict__["samaccountname"] = samaccountname
         __props__.__dict__["state"] = state
         __props__.__dict__["status"] = status
         __props__.__dict__["title"] = title
         __props__.__dict__["trusted_idp_id"] = trusted_idp_id
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["username"] = username
         __props__.__dict__["userprincipalname"] = userprincipalname
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="activatedAt")
-    def activated_at(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "activated_at")
-
-    @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
-        """
-        Free text related to the user.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def company(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's company.
-        """
         return pulumi.get(self, "company")
 
     @property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "created_at")
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        return pulumi.get(self, "custom_attributes")
 
     @property
     @pulumi.getter
     def department(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's department.
-        """
         return pulumi.get(self, "department")
 
     @property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> pulumi.Output[Optional[int]]:
-        """
-        The ID of the OneLogin Directory of the user.
-        """
+    def directory_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="distinguishedName")
     def distinguished_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The distinguished name of the user.
-        """
         return pulumi.get(self, "distinguished_name")
 
     @property
     @pulumi.getter
-    def email(self) -> pulumi.Output[Optional[str]]:
-        """
-        A valid email for the user.
-        """
+    def email(self) -> pulumi.Output[str]:
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the user in an external directory.
-        """
+    def external_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def firstname(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's first name.
-        """
         return pulumi.get(self, "firstname")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Output[Optional[int]]:
-        """
-        The ID of the Group in OneLogin that the user is assigned to.
-        """
+    def group_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "group_id")
-
-    @property
-    @pulumi.getter(name="invalidLoginAttempts")
-    def invalid_login_attempts(self) -> pulumi.Output[Optional[int]]:
-        return pulumi.get(self, "invalid_login_attempts")
-
-    @property
-    @pulumi.getter(name="invitationSentAt")
-    def invitation_sent_at(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "invitation_sent_at")
-
-    @property
-    @pulumi.getter(name="lastLogin")
-    def last_login(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "last_login")
 
     @property
     @pulumi.getter
     def lastname(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's last name.
-        """
         return pulumi.get(self, "lastname")
 
     @property
-    @pulumi.getter(name="lockedUntil")
-    def locked_until(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "locked_until")
-
-    @property
     @pulumi.getter(name="managerAdId")
-    def manager_ad_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the user's manager in Active Directory.
-        """
+    def manager_ad_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "manager_ad_id")
 
     @property
     @pulumi.getter(name="managerUserId")
-    def manager_user_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The OneLogin User ID for the user's manager.
-        """
+    def manager_user_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "manager_user_id")
 
     @property
     @pulumi.getter(name="memberOf")
     def member_of(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's directory membership.
-        """
         return pulumi.get(self, "member_of")
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output[Optional[str]]:
-        """
-        The password to set for a user.
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="passwordAlgorithm")
-    def password_algorithm(self) -> pulumi.Output[Optional[str]]:
-        """
-        Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-        SHA-256-encoding it
-        """
-        return pulumi.get(self, "password_algorithm")
-
-    @property
-    @pulumi.getter(name="passwordChangedAt")
-    def password_changed_at(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "password_changed_at")
-
-    @property
-    @pulumi.getter(name="passwordConfirmation")
-    def password_confirmation(self) -> pulumi.Output[Optional[str]]:
-        """
-        Required if the password is being set.
-        """
-        return pulumi.get(self, "password_confirmation")
-
-    @property
-    @pulumi.getter
     def phone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The E.164 format phone number for a user.
-        """
         return pulumi.get(self, "phone")
-
-    @property
-    @pulumi.getter(name="preferredLocaleCode")
-    def preferred_locale_code(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "preferred_locale_code")
-
-    @property
-    @pulumi.getter(name="roleIds")
-    def role_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
-        """
-        A list of OneLogin Role IDs of the user
-        """
-        return pulumi.get(self, "role_ids")
-
-    @property
-    @pulumi.getter
-    def salt(self) -> pulumi.Output[Optional[str]]:
-        """
-        The salt value used with the password_algorithm.
-        """
-        return pulumi.get(self, "salt")
 
     @property
     @pulumi.getter
     def samaccountname(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's Active Directory username.
-        """
         return pulumi.get(self, "samaccountname")
 
     @property
     @pulumi.getter
-    def state(self) -> pulumi.Output[Optional[int]]:
+    def state(self) -> pulumi.Output[int]:
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[int]]:
+    def status(self) -> pulumi.Output[int]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user's job title.
-        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="trustedIdpId")
-    def trusted_idp_id(self) -> pulumi.Output[Optional[int]]:
-        """
-        The ID of the OneLogin Trusted IDP of the user.
-        """
+    def trusted_idp_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "trusted_idp_id")
 
     @property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "updated_at")
-
-    @property
     @pulumi.getter
-    def username(self) -> pulumi.Output[Optional[str]]:
-        """
-        A username for the user.
-        """
+    def username(self) -> pulumi.Output[str]:
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def userprincipalname(self) -> pulumi.Output[Optional[str]]:
-        """
-        The principle name of the user.
-        """
         return pulumi.get(self, "userprincipalname")
 

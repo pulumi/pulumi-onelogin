@@ -16,47 +16,23 @@ public final class AuthServersState extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthServersState Empty = new AuthServersState();
 
-    /**
-     * Authorization server configuration
-     * 
-     */
     @Import(name="configuration")
     private @Nullable Output<AuthServersConfigurationArgs> configuration;
 
-    /**
-     * @return Authorization server configuration
-     * 
-     */
     public Optional<Output<AuthServersConfigurationArgs>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
-    /**
-     * Description of what the API does.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return Description of what the API does.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Name of the API.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the API.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -87,65 +63,29 @@ public final class AuthServersState extends com.pulumi.resources.ResourceArgs {
             $ = new AuthServersState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param configuration Authorization server configuration
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(@Nullable Output<AuthServersConfigurationArgs> configuration) {
             $.configuration = configuration;
             return this;
         }
 
-        /**
-         * @param configuration Authorization server configuration
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(AuthServersConfigurationArgs configuration) {
             return configuration(Output.of(configuration));
         }
 
-        /**
-         * @param description Description of what the API does.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description Description of what the API does.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param name Name of the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

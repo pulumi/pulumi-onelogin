@@ -13,525 +13,178 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetAppsFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
+type GetUsersUser struct {
+	// directory_id
+	DirectoryId int `pulumi:"directoryId"`
+	// email
+	Email string `pulumi:"email"`
+	// external_id
+	ExternalId int `pulumi:"externalId"`
+	// firstname
+	Firstname string `pulumi:"firstname"`
+	// id
+	Id int `pulumi:"id"`
+	// last_login
+	LastLogin string `pulumi:"lastLogin"`
+	// lastname
+	Lastname string `pulumi:"lastname"`
+	// samaccountname
+	Samaccountname string `pulumi:"samaccountname"`
+	// username
+	Username string `pulumi:"username"`
 }
 
-// GetAppsFilterInput is an input type that accepts GetAppsFilterArgs and GetAppsFilterOutput values.
-// You can construct a concrete instance of `GetAppsFilterInput` via:
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//	GetAppsFilterArgs{...}
-type GetAppsFilterInput interface {
+//	GetUsersUserArgs{...}
+type GetUsersUserInput interface {
 	pulumi.Input
 
-	ToGetAppsFilterOutput() GetAppsFilterOutput
-	ToGetAppsFilterOutputWithContext(context.Context) GetAppsFilterOutput
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
 }
 
-type GetAppsFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
+type GetUsersUserArgs struct {
+	// directory_id
+	DirectoryId pulumi.IntInput `pulumi:"directoryId"`
+	// email
+	Email pulumi.StringInput `pulumi:"email"`
+	// external_id
+	ExternalId pulumi.IntInput `pulumi:"externalId"`
+	// firstname
+	Firstname pulumi.StringInput `pulumi:"firstname"`
+	// id
+	Id pulumi.IntInput `pulumi:"id"`
+	// last_login
+	LastLogin pulumi.StringInput `pulumi:"lastLogin"`
+	// lastname
+	Lastname pulumi.StringInput `pulumi:"lastname"`
+	// samaccountname
+	Samaccountname pulumi.StringInput `pulumi:"samaccountname"`
+	// username
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
-func (GetAppsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsFilter)(nil)).Elem()
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
 }
 
-func (i GetAppsFilterArgs) ToGetAppsFilterOutput() GetAppsFilterOutput {
-	return i.ToGetAppsFilterOutputWithContext(context.Background())
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
 }
 
-func (i GetAppsFilterArgs) ToGetAppsFilterOutputWithContext(ctx context.Context) GetAppsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterOutput)
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
 }
 
-// GetAppsFilterArrayInput is an input type that accepts GetAppsFilterArray and GetAppsFilterArrayOutput values.
-// You can construct a concrete instance of `GetAppsFilterArrayInput` via:
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//	GetAppsFilterArray{ GetAppsFilterArgs{...} }
-type GetAppsFilterArrayInput interface {
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
 	pulumi.Input
 
-	ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput
-	ToGetAppsFilterArrayOutputWithContext(context.Context) GetAppsFilterArrayOutput
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
 }
 
-type GetAppsFilterArray []GetAppsFilterInput
+type GetUsersUserArray []GetUsersUserInput
 
-func (GetAppsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsFilter)(nil)).Elem()
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
 }
 
-func (i GetAppsFilterArray) ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput {
-	return i.ToGetAppsFilterArrayOutputWithContext(context.Background())
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
 }
 
-func (i GetAppsFilterArray) ToGetAppsFilterArrayOutputWithContext(ctx context.Context) GetAppsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterArrayOutput)
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-type GetAppsFilterOutput struct{ *pulumi.OutputState }
+type GetUsersUserOutput struct{ *pulumi.OutputState }
 
-func (GetAppsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsFilter)(nil)).Elem()
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
 }
 
-func (o GetAppsFilterOutput) ToGetAppsFilterOutput() GetAppsFilterOutput {
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
 	return o
 }
 
-func (o GetAppsFilterOutput) ToGetAppsFilterOutputWithContext(ctx context.Context) GetAppsFilterOutput {
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
 	return o
 }
 
-func (o GetAppsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsFilter) string { return v.Name }).(pulumi.StringOutput)
+// directory_id
+func (o GetUsersUserOutput) DirectoryId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUsersUser) int { return v.DirectoryId }).(pulumi.IntOutput)
 }
 
-func (o GetAppsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+// email
+func (o GetUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
-type GetAppsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsFilter)(nil)).Elem()
+// external_id
+func (o GetUsersUserOutput) ExternalId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUsersUser) int { return v.ExternalId }).(pulumi.IntOutput)
 }
 
-func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput {
+// firstname
+func (o GetUsersUserOutput) Firstname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Firstname }).(pulumi.StringOutput)
+}
+
+// id
+func (o GetUsersUserOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUsersUser) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// last_login
+func (o GetUsersUserOutput) LastLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.LastLogin }).(pulumi.StringOutput)
+}
+
+// lastname
+func (o GetUsersUserOutput) Lastname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Lastname }).(pulumi.StringOutput)
+}
+
+// samaccountname
+func (o GetUsersUserOutput) Samaccountname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Samaccountname }).(pulumi.StringOutput)
+}
+
+// username
+func (o GetUsersUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
 	return o
 }
 
-func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutputWithContext(ctx context.Context) GetAppsFilterArrayOutput {
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
 	return o
 }
 
-func (o GetAppsFilterArrayOutput) Index(i pulumi.IntInput) GetAppsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsFilter {
-		return vs[0].([]GetAppsFilter)[vs[1].(int)]
-	}).(GetAppsFilterOutput)
-}
-
-type GetDevicesFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetDevicesFilterInput is an input type that accepts GetDevicesFilterArgs and GetDevicesFilterOutput values.
-// You can construct a concrete instance of `GetDevicesFilterInput` via:
-//
-//	GetDevicesFilterArgs{...}
-type GetDevicesFilterInput interface {
-	pulumi.Input
-
-	ToGetDevicesFilterOutput() GetDevicesFilterOutput
-	ToGetDevicesFilterOutputWithContext(context.Context) GetDevicesFilterOutput
-}
-
-type GetDevicesFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetDevicesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDevicesFilter)(nil)).Elem()
-}
-
-func (i GetDevicesFilterArgs) ToGetDevicesFilterOutput() GetDevicesFilterOutput {
-	return i.ToGetDevicesFilterOutputWithContext(context.Background())
-}
-
-func (i GetDevicesFilterArgs) ToGetDevicesFilterOutputWithContext(ctx context.Context) GetDevicesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesFilterOutput)
-}
-
-// GetDevicesFilterArrayInput is an input type that accepts GetDevicesFilterArray and GetDevicesFilterArrayOutput values.
-// You can construct a concrete instance of `GetDevicesFilterArrayInput` via:
-//
-//	GetDevicesFilterArray{ GetDevicesFilterArgs{...} }
-type GetDevicesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput
-	ToGetDevicesFilterArrayOutputWithContext(context.Context) GetDevicesFilterArrayOutput
-}
-
-type GetDevicesFilterArray []GetDevicesFilterInput
-
-func (GetDevicesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDevicesFilter)(nil)).Elem()
-}
-
-func (i GetDevicesFilterArray) ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput {
-	return i.ToGetDevicesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetDevicesFilterArray) ToGetDevicesFilterArrayOutputWithContext(ctx context.Context) GetDevicesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesFilterArrayOutput)
-}
-
-type GetDevicesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetDevicesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDevicesFilter)(nil)).Elem()
-}
-
-func (o GetDevicesFilterOutput) ToGetDevicesFilterOutput() GetDevicesFilterOutput {
-	return o
-}
-
-func (o GetDevicesFilterOutput) ToGetDevicesFilterOutputWithContext(ctx context.Context) GetDevicesFilterOutput {
-	return o
-}
-
-func (o GetDevicesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDevicesFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetDevicesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDevicesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetDevicesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDevicesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDevicesFilter)(nil)).Elem()
-}
-
-func (o GetDevicesFilterArrayOutput) ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput {
-	return o
-}
-
-func (o GetDevicesFilterArrayOutput) ToGetDevicesFilterArrayOutputWithContext(ctx context.Context) GetDevicesFilterArrayOutput {
-	return o
-}
-
-func (o GetDevicesFilterArrayOutput) Index(i pulumi.IntInput) GetDevicesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesFilter {
-		return vs[0].([]GetDevicesFilter)[vs[1].(int)]
-	}).(GetDevicesFilterOutput)
-}
-
-type GetUsersFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetUsersFilterInput is an input type that accepts GetUsersFilterArgs and GetUsersFilterOutput values.
-// You can construct a concrete instance of `GetUsersFilterInput` via:
-//
-//	GetUsersFilterArgs{...}
-type GetUsersFilterInput interface {
-	pulumi.Input
-
-	ToGetUsersFilterOutput() GetUsersFilterOutput
-	ToGetUsersFilterOutputWithContext(context.Context) GetUsersFilterOutput
-}
-
-type GetUsersFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetUsersFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
-}
-
-func (i GetUsersFilterArgs) ToGetUsersFilterOutput() GetUsersFilterOutput {
-	return i.ToGetUsersFilterOutputWithContext(context.Background())
-}
-
-func (i GetUsersFilterArgs) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterOutput)
-}
-
-// GetUsersFilterArrayInput is an input type that accepts GetUsersFilterArray and GetUsersFilterArrayOutput values.
-// You can construct a concrete instance of `GetUsersFilterArrayInput` via:
-//
-//	GetUsersFilterArray{ GetUsersFilterArgs{...} }
-type GetUsersFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput
-	ToGetUsersFilterArrayOutputWithContext(context.Context) GetUsersFilterArrayOutput
-}
-
-type GetUsersFilterArray []GetUsersFilterInput
-
-func (GetUsersFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
-}
-
-func (i GetUsersFilterArray) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
-	return i.ToGetUsersFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetUsersFilterArray) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUsersFilterArrayOutput)
-}
-
-type GetUsersFilterOutput struct{ *pulumi.OutputState }
-
-func (GetUsersFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUsersFilter)(nil)).Elem()
-}
-
-func (o GetUsersFilterOutput) ToGetUsersFilterOutput() GetUsersFilterOutput {
-	return o
-}
-
-func (o GetUsersFilterOutput) ToGetUsersFilterOutputWithContext(ctx context.Context) GetUsersFilterOutput {
-	return o
-}
-
-func (o GetUsersFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetUsersFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetUsersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetUsersFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUsersFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUsersFilter)(nil)).Elem()
-}
-
-func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutput() GetUsersFilterArrayOutput {
-	return o
-}
-
-func (o GetUsersFilterArrayOutput) ToGetUsersFilterArrayOutputWithContext(ctx context.Context) GetUsersFilterArrayOutput {
-	return o
-}
-
-func (o GetUsersFilterArrayOutput) Index(i pulumi.IntInput) GetUsersFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersFilter {
-		return vs[0].([]GetUsersFilter)[vs[1].(int)]
-	}).(GetUsersFilterOutput)
-}
-
-type GetV1AppsFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetV1AppsFilterInput is an input type that accepts GetV1AppsFilterArgs and GetV1AppsFilterOutput values.
-// You can construct a concrete instance of `GetV1AppsFilterInput` via:
-//
-//	GetV1AppsFilterArgs{...}
-type GetV1AppsFilterInput interface {
-	pulumi.Input
-
-	ToGetV1AppsFilterOutput() GetV1AppsFilterOutput
-	ToGetV1AppsFilterOutputWithContext(context.Context) GetV1AppsFilterOutput
-}
-
-type GetV1AppsFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetV1AppsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetV1AppsFilter)(nil)).Elem()
-}
-
-func (i GetV1AppsFilterArgs) ToGetV1AppsFilterOutput() GetV1AppsFilterOutput {
-	return i.ToGetV1AppsFilterOutputWithContext(context.Background())
-}
-
-func (i GetV1AppsFilterArgs) ToGetV1AppsFilterOutputWithContext(ctx context.Context) GetV1AppsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetV1AppsFilterOutput)
-}
-
-// GetV1AppsFilterArrayInput is an input type that accepts GetV1AppsFilterArray and GetV1AppsFilterArrayOutput values.
-// You can construct a concrete instance of `GetV1AppsFilterArrayInput` via:
-//
-//	GetV1AppsFilterArray{ GetV1AppsFilterArgs{...} }
-type GetV1AppsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput
-	ToGetV1AppsFilterArrayOutputWithContext(context.Context) GetV1AppsFilterArrayOutput
-}
-
-type GetV1AppsFilterArray []GetV1AppsFilterInput
-
-func (GetV1AppsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetV1AppsFilter)(nil)).Elem()
-}
-
-func (i GetV1AppsFilterArray) ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput {
-	return i.ToGetV1AppsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetV1AppsFilterArray) ToGetV1AppsFilterArrayOutputWithContext(ctx context.Context) GetV1AppsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetV1AppsFilterArrayOutput)
-}
-
-type GetV1AppsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetV1AppsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetV1AppsFilter)(nil)).Elem()
-}
-
-func (o GetV1AppsFilterOutput) ToGetV1AppsFilterOutput() GetV1AppsFilterOutput {
-	return o
-}
-
-func (o GetV1AppsFilterOutput) ToGetV1AppsFilterOutputWithContext(ctx context.Context) GetV1AppsFilterOutput {
-	return o
-}
-
-func (o GetV1AppsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetV1AppsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetV1AppsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetV1AppsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetV1AppsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetV1AppsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetV1AppsFilter)(nil)).Elem()
-}
-
-func (o GetV1AppsFilterArrayOutput) ToGetV1AppsFilterArrayOutput() GetV1AppsFilterArrayOutput {
-	return o
-}
-
-func (o GetV1AppsFilterArrayOutput) ToGetV1AppsFilterArrayOutputWithContext(ctx context.Context) GetV1AppsFilterArrayOutput {
-	return o
-}
-
-func (o GetV1AppsFilterArrayOutput) Index(i pulumi.IntInput) GetV1AppsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV1AppsFilter {
-		return vs[0].([]GetV1AppsFilter)[vs[1].(int)]
-	}).(GetV1AppsFilterOutput)
-}
-
-type GetV1Filter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetV1FilterInput is an input type that accepts GetV1FilterArgs and GetV1FilterOutput values.
-// You can construct a concrete instance of `GetV1FilterInput` via:
-//
-//	GetV1FilterArgs{...}
-type GetV1FilterInput interface {
-	pulumi.Input
-
-	ToGetV1FilterOutput() GetV1FilterOutput
-	ToGetV1FilterOutputWithContext(context.Context) GetV1FilterOutput
-}
-
-type GetV1FilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetV1FilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetV1Filter)(nil)).Elem()
-}
-
-func (i GetV1FilterArgs) ToGetV1FilterOutput() GetV1FilterOutput {
-	return i.ToGetV1FilterOutputWithContext(context.Background())
-}
-
-func (i GetV1FilterArgs) ToGetV1FilterOutputWithContext(ctx context.Context) GetV1FilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetV1FilterOutput)
-}
-
-// GetV1FilterArrayInput is an input type that accepts GetV1FilterArray and GetV1FilterArrayOutput values.
-// You can construct a concrete instance of `GetV1FilterArrayInput` via:
-//
-//	GetV1FilterArray{ GetV1FilterArgs{...} }
-type GetV1FilterArrayInput interface {
-	pulumi.Input
-
-	ToGetV1FilterArrayOutput() GetV1FilterArrayOutput
-	ToGetV1FilterArrayOutputWithContext(context.Context) GetV1FilterArrayOutput
-}
-
-type GetV1FilterArray []GetV1FilterInput
-
-func (GetV1FilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetV1Filter)(nil)).Elem()
-}
-
-func (i GetV1FilterArray) ToGetV1FilterArrayOutput() GetV1FilterArrayOutput {
-	return i.ToGetV1FilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetV1FilterArray) ToGetV1FilterArrayOutputWithContext(ctx context.Context) GetV1FilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetV1FilterArrayOutput)
-}
-
-type GetV1FilterOutput struct{ *pulumi.OutputState }
-
-func (GetV1FilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetV1Filter)(nil)).Elem()
-}
-
-func (o GetV1FilterOutput) ToGetV1FilterOutput() GetV1FilterOutput {
-	return o
-}
-
-func (o GetV1FilterOutput) ToGetV1FilterOutputWithContext(ctx context.Context) GetV1FilterOutput {
-	return o
-}
-
-func (o GetV1FilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetV1Filter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetV1FilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetV1Filter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetV1FilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetV1FilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetV1Filter)(nil)).Elem()
-}
-
-func (o GetV1FilterArrayOutput) ToGetV1FilterArrayOutput() GetV1FilterArrayOutput {
-	return o
-}
-
-func (o GetV1FilterArrayOutput) ToGetV1FilterArrayOutputWithContext(ctx context.Context) GetV1FilterArrayOutput {
-	return o
-}
-
-func (o GetV1FilterArrayOutput) Index(i pulumi.IntInput) GetV1FilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV1Filter {
-		return vs[0].([]GetV1Filter)[vs[1].(int)]
-	}).(GetV1FilterOutput)
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterInput)(nil)).Elem(), GetAppsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterArrayInput)(nil)).Elem(), GetAppsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesFilterInput)(nil)).Elem(), GetDevicesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesFilterArrayInput)(nil)).Elem(), GetDevicesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterInput)(nil)).Elem(), GetUsersFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersFilterArrayInput)(nil)).Elem(), GetUsersFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetV1AppsFilterInput)(nil)).Elem(), GetV1AppsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetV1AppsFilterArrayInput)(nil)).Elem(), GetV1AppsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetV1FilterInput)(nil)).Elem(), GetV1FilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetV1FilterArrayInput)(nil)).Elem(), GetV1FilterArray{})
-	pulumi.RegisterOutputType(GetAppsFilterOutput{})
-	pulumi.RegisterOutputType(GetAppsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetDevicesFilterOutput{})
-	pulumi.RegisterOutputType(GetDevicesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetUsersFilterOutput{})
-	pulumi.RegisterOutputType(GetUsersFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetV1AppsFilterOutput{})
-	pulumi.RegisterOutputType(GetV1AppsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetV1FilterOutput{})
-	pulumi.RegisterOutputType(GetV1FilterArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

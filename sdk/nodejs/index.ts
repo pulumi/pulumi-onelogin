@@ -10,60 +10,30 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { AppRoleAttachmentsArgs, AppRoleAttachmentsState } from "./appRoleAttachments";
+export type AppRoleAttachments = import("./appRoleAttachments").AppRoleAttachments;
+export const AppRoleAttachments: typeof import("./appRoleAttachments").AppRoleAttachments = null as any;
+utilities.lazyLoad(exports, ["AppRoleAttachments"], () => require("./appRoleAttachments"));
+
+export { AppRulesArgs, AppRulesState } from "./appRules";
+export type AppRules = import("./appRules").AppRules;
+export const AppRules: typeof import("./appRules").AppRules = null as any;
+utilities.lazyLoad(exports, ["AppRules"], () => require("./appRules"));
+
 export { AuthServersArgs, AuthServersState } from "./authServers";
 export type AuthServers = import("./authServers").AuthServers;
 export const AuthServers: typeof import("./authServers").AuthServers = null as any;
 utilities.lazyLoad(exports, ["AuthServers"], () => require("./authServers"));
 
-export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
-export const getApps: typeof import("./getApps").getApps = null as any;
-export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
-utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
-export { GetAuthServersArgs, GetAuthServersResult, GetAuthServersOutputArgs } from "./getAuthServers";
-export const getAuthServers: typeof import("./getAuthServers").getAuthServers = null as any;
-export const getAuthServersOutput: typeof import("./getAuthServers").getAuthServersOutput = null as any;
-utilities.lazyLoad(exports, ["getAuthServers","getAuthServersOutput"], () => require("./getAuthServers"));
-
-export { GetAuthServersClaimsArgs, GetAuthServersClaimsResult, GetAuthServersClaimsOutputArgs } from "./getAuthServersClaims";
-export const getAuthServersClaims: typeof import("./getAuthServersClaims").getAuthServersClaims = null as any;
-export const getAuthServersClaimsOutput: typeof import("./getAuthServersClaims").getAuthServersClaimsOutput = null as any;
-utilities.lazyLoad(exports, ["getAuthServersClaims","getAuthServersClaimsOutput"], () => require("./getAuthServersClaims"));
-
-export { GetAuthServersInstanceArgs, GetAuthServersInstanceResult, GetAuthServersInstanceOutputArgs } from "./getAuthServersInstance";
-export const getAuthServersInstance: typeof import("./getAuthServersInstance").getAuthServersInstance = null as any;
-export const getAuthServersInstanceOutput: typeof import("./getAuthServersInstance").getAuthServersInstanceOutput = null as any;
-utilities.lazyLoad(exports, ["getAuthServersInstance","getAuthServersInstanceOutput"], () => require("./getAuthServersInstance"));
-
-export { GetAuthServersScopesArgs, GetAuthServersScopesResult, GetAuthServersScopesOutputArgs } from "./getAuthServersScopes";
-export const getAuthServersScopes: typeof import("./getAuthServersScopes").getAuthServersScopes = null as any;
-export const getAuthServersScopesOutput: typeof import("./getAuthServersScopes").getAuthServersScopesOutput = null as any;
-utilities.lazyLoad(exports, ["getAuthServersScopes","getAuthServersScopesOutput"], () => require("./getAuthServersScopes"));
-
-export { GetMappingsArgs, GetMappingsResult, GetMappingsOutputArgs } from "./getMappings";
-export const getMappings: typeof import("./getMappings").getMappings = null as any;
-export const getMappingsOutput: typeof import("./getMappings").getMappingsOutput = null as any;
-utilities.lazyLoad(exports, ["getMappings","getMappingsOutput"], () => require("./getMappings"));
-
-export { GetPrivilegesArgs, GetPrivilegesResult, GetPrivilegesOutputArgs } from "./getPrivileges";
-export const getPrivileges: typeof import("./getPrivileges").getPrivileges = null as any;
-export const getPrivilegesOutput: typeof import("./getPrivileges").getPrivilegesOutput = null as any;
-utilities.lazyLoad(exports, ["getPrivileges","getPrivilegesOutput"], () => require("./getPrivileges"));
-
-export { GetPrivilegesInstanceArgs, GetPrivilegesInstanceResult, GetPrivilegesInstanceOutputArgs } from "./getPrivilegesInstance";
-export const getPrivilegesInstance: typeof import("./getPrivilegesInstance").getPrivilegesInstance = null as any;
-export const getPrivilegesInstanceOutput: typeof import("./getPrivilegesInstance").getPrivilegesInstanceOutput = null as any;
-utilities.lazyLoad(exports, ["getPrivilegesInstance","getPrivilegesInstanceOutput"], () => require("./getPrivilegesInstance"));
-
-export { GetRiskRulesArgs, GetRiskRulesResult, GetRiskRulesOutputArgs } from "./getRiskRules";
-export const getRiskRules: typeof import("./getRiskRules").getRiskRules = null as any;
-export const getRiskRulesOutput: typeof import("./getRiskRules").getRiskRulesOutput = null as any;
-utilities.lazyLoad(exports, ["getRiskRules","getRiskRulesOutput"], () => require("./getRiskRules"));
-
-export { GetRiskRulesInstanceArgs, GetRiskRulesInstanceResult, GetRiskRulesInstanceOutputArgs } from "./getRiskRulesInstance";
-export const getRiskRulesInstance: typeof import("./getRiskRulesInstance").getRiskRulesInstance = null as any;
-export const getRiskRulesInstanceOutput: typeof import("./getRiskRulesInstance").getRiskRulesInstanceOutput = null as any;
-utilities.lazyLoad(exports, ["getRiskRulesInstance","getRiskRulesInstanceOutput"], () => require("./getRiskRulesInstance"));
+export { OidcAppsArgs, OidcAppsState } from "./oidcApps";
+export type OidcApps = import("./oidcApps").OidcApps;
+export const OidcApps: typeof import("./oidcApps").OidcApps = null as any;
+utilities.lazyLoad(exports, ["OidcApps"], () => require("./oidcApps"));
 
 export { PrivilegesArgs, PrivilegesState } from "./privileges";
 export type Privileges = import("./privileges").Privileges;
@@ -75,33 +45,44 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { RiskRulesArgs, RiskRulesState } from "./riskRules";
-export type RiskRules = import("./riskRules").RiskRules;
-export const RiskRules: typeof import("./riskRules").RiskRules = null as any;
-utilities.lazyLoad(exports, ["RiskRules"], () => require("./riskRules"));
-
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { SamlAppsArgs, SamlAppsState } from "./samlApps";
+export type SamlApps = import("./samlApps").SamlApps;
+export const SamlApps: typeof import("./samlApps").SamlApps = null as any;
+utilities.lazyLoad(exports, ["SamlApps"], () => require("./samlApps"));
+
+export { SmarthookEnvironmentVariablesArgs, SmarthookEnvironmentVariablesState } from "./smarthookEnvironmentVariables";
+export type SmarthookEnvironmentVariables = import("./smarthookEnvironmentVariables").SmarthookEnvironmentVariables;
+export const SmarthookEnvironmentVariables: typeof import("./smarthookEnvironmentVariables").SmarthookEnvironmentVariables = null as any;
+utilities.lazyLoad(exports, ["SmarthookEnvironmentVariables"], () => require("./smarthookEnvironmentVariables"));
+
+export { SmarthooksArgs, SmarthooksState } from "./smarthooks";
+export type Smarthooks = import("./smarthooks").Smarthooks;
+export const Smarthooks: typeof import("./smarthooks").Smarthooks = null as any;
+utilities.lazyLoad(exports, ["Smarthooks"], () => require("./smarthooks"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserMappingsArgs, UserMappingsState } from "./userMappings";
+export type UserMappings = import("./userMappings").UserMappings;
+export const UserMappings: typeof import("./userMappings").UserMappings = null as any;
+utilities.lazyLoad(exports, ["UserMappings"], () => require("./userMappings"));
+
 
 // Export sub-modules:
-import * as apps from "./apps";
 import * as config from "./config";
-import * as roles from "./roles";
 import * as types from "./types";
 import * as users from "./users";
 
 export {
-    apps,
     config,
-    roles,
     types,
     users,
 };
@@ -112,27 +93,45 @@ const _module = {
         switch (type) {
             case "onelogin:index/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "onelogin:index/appRoleAttachments:AppRoleAttachments":
+                return new AppRoleAttachments(name, <any>undefined, { urn })
+            case "onelogin:index/appRules:AppRules":
+                return new AppRules(name, <any>undefined, { urn })
             case "onelogin:index/authServers:AuthServers":
                 return new AuthServers(name, <any>undefined, { urn })
+            case "onelogin:index/oidcApps:OidcApps":
+                return new OidcApps(name, <any>undefined, { urn })
             case "onelogin:index/privileges:Privileges":
                 return new Privileges(name, <any>undefined, { urn })
-            case "onelogin:index/riskRules:RiskRules":
-                return new RiskRules(name, <any>undefined, { urn })
             case "onelogin:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "onelogin:index/samlApps:SamlApps":
+                return new SamlApps(name, <any>undefined, { urn })
+            case "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables":
+                return new SmarthookEnvironmentVariables(name, <any>undefined, { urn })
+            case "onelogin:index/smarthooks:Smarthooks":
+                return new Smarthooks(name, <any>undefined, { urn })
             case "onelogin:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "onelogin:index/userMappings:UserMappings":
+                return new UserMappings(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachments", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/appRules", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/authServers", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/oidcApps", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/riskRules", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/samlApps", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/smarthookEnvironmentVariables", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/smarthooks", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/userMappings", _module)
 pulumi.runtime.registerResourcePackage("onelogin", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

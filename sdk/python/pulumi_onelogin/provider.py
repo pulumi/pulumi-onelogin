@@ -13,51 +13,61 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
 
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 apikey_auth: pulumi.Input[str],
-                 content_type: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None):
+                 client_id: pulumi.Input[str],
+                 client_secret: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "apikey_auth", apikey_auth)
-        if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
-        if endpoints is not None:
-            pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @property
-    @pulumi.getter(name="apikeyAuth")
-    def apikey_auth(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apikey_auth")
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
 
-    @apikey_auth.setter
-    def apikey_auth(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apikey_auth", value)
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
 
     @property
-    @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "content_type")
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_secret")
 
-    @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "content_type", value)
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]:
-        return pulumi.get(self, "endpoints")
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
 
-    @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]):
-        pulumi.set(self, "endpoints", value)
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -65,9 +75,10 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apikey_auth: Optional[pulumi.Input[str]] = None,
-                 content_type: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the onelogin package. By default, resources use package-wide configuration
@@ -105,9 +116,10 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apikey_auth: Optional[pulumi.Input[str]] = None,
-                 content_type: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -117,11 +129,14 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if apikey_auth is None and not opts.urn:
-                raise TypeError("Missing required property 'apikey_auth'")
-            __props__.__dict__["apikey_auth"] = apikey_auth
-            __props__.__dict__["content_type"] = content_type
-            __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
+            if client_id is None and not opts.urn:
+                raise TypeError("Missing required property 'client_id'")
+            __props__.__dict__["client_id"] = client_id
+            if client_secret is None and not opts.urn:
+                raise TypeError("Missing required property 'client_secret'")
+            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["region"] = region
+            __props__.__dict__["url"] = url
         super(Provider, __self__).__init__(
             'onelogin',
             resource_name,
@@ -129,12 +144,22 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     @property
-    @pulumi.getter(name="apikeyAuth")
-    def apikey_auth(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "apikey_auth")
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "client_id")
 
     @property
-    @pulumi.getter(name="contentType")
-    def content_type(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "content_type")
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "url")
 

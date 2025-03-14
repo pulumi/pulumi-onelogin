@@ -13,12 +13,57 @@ namespace Pulumi.Onelogin.Outputs
     [OutputType]
     public sealed class AppParameters
     {
-        public readonly Outputs.AppParametersGroups? Groups;
+        public readonly string? AttributesTransformations;
+        public readonly string? DefaultValues;
+        public readonly bool? IncludeInSamlAssertion;
+        public readonly string? Label;
+        public readonly int? ParamId;
+        public readonly string ParamKeyName;
+        public readonly bool? ProvisionedEntitlements;
+        public readonly bool? SafeEntitlementsEnabled;
+        public readonly bool? SkipIfBlank;
+        public readonly string? UserAttributeMacros;
+        public readonly string? UserAttributeMappings;
+        public readonly string? Values;
 
         [OutputConstructor]
-        private AppParameters(Outputs.AppParametersGroups? groups)
+        private AppParameters(
+            string? attributesTransformations,
+
+            string? defaultValues,
+
+            bool? includeInSamlAssertion,
+
+            string? label,
+
+            int? paramId,
+
+            string paramKeyName,
+
+            bool? provisionedEntitlements,
+
+            bool? safeEntitlementsEnabled,
+
+            bool? skipIfBlank,
+
+            string? userAttributeMacros,
+
+            string? userAttributeMappings,
+
+            string? values)
         {
-            Groups = groups;
+            AttributesTransformations = attributesTransformations;
+            DefaultValues = defaultValues;
+            IncludeInSamlAssertion = includeInSamlAssertion;
+            Label = label;
+            ParamId = paramId;
+            ParamKeyName = paramKeyName;
+            ProvisionedEntitlements = provisionedEntitlements;
+            SafeEntitlementsEnabled = safeEntitlementsEnabled;
+            SkipIfBlank = skipIfBlank;
+            UserAttributeMacros = userAttributeMacros;
+            UserAttributeMappings = userAttributeMappings;
+            Values = values;
         }
     }
 }

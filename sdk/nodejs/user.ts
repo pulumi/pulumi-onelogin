@@ -32,113 +32,27 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
-    public readonly activatedAt!: pulumi.Output<string | undefined>;
-    /**
-     * Free text related to the user.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * The user's company.
-     */
     public readonly company!: pulumi.Output<string | undefined>;
-    public readonly createdAt!: pulumi.Output<string | undefined>;
-    /**
-     * The user's department.
-     */
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly department!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the OneLogin Directory of the user.
-     */
-    public readonly directoryId!: pulumi.Output<number | undefined>;
-    /**
-     * The distinguished name of the user.
-     */
+    public readonly directoryId!: pulumi.Output<number>;
     public readonly distinguishedName!: pulumi.Output<string | undefined>;
-    /**
-     * A valid email for the user.
-     */
-    public readonly email!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the user in an external directory.
-     */
-    public readonly externalId!: pulumi.Output<string | undefined>;
-    /**
-     * The user's first name.
-     */
+    public readonly email!: pulumi.Output<string>;
+    public readonly externalId!: pulumi.Output<number>;
     public readonly firstname!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the Group in OneLogin that the user is assigned to.
-     */
-    public readonly groupId!: pulumi.Output<number | undefined>;
-    public readonly invalidLoginAttempts!: pulumi.Output<number | undefined>;
-    public readonly invitationSentAt!: pulumi.Output<string | undefined>;
-    public readonly lastLogin!: pulumi.Output<string | undefined>;
-    /**
-     * The user's last name.
-     */
+    public readonly groupId!: pulumi.Output<number>;
     public readonly lastname!: pulumi.Output<string | undefined>;
-    public readonly lockedUntil!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the user's manager in Active Directory.
-     */
-    public readonly managerAdId!: pulumi.Output<string | undefined>;
-    /**
-     * The OneLogin User ID for the user's manager.
-     */
-    public readonly managerUserId!: pulumi.Output<string | undefined>;
-    /**
-     * The user's directory membership.
-     */
+    public readonly managerAdId!: pulumi.Output<number>;
+    public readonly managerUserId!: pulumi.Output<number>;
     public readonly memberOf!: pulumi.Output<string | undefined>;
-    /**
-     * The password to set for a user.
-     */
-    public readonly password!: pulumi.Output<string | undefined>;
-    /**
-     * Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-     * SHA-256-encoding it
-     */
-    public readonly passwordAlgorithm!: pulumi.Output<string | undefined>;
-    public readonly passwordChangedAt!: pulumi.Output<string | undefined>;
-    /**
-     * Required if the password is being set.
-     */
-    public readonly passwordConfirmation!: pulumi.Output<string | undefined>;
-    /**
-     * The E.164 format phone number for a user.
-     */
     public readonly phone!: pulumi.Output<string | undefined>;
-    public readonly preferredLocaleCode!: pulumi.Output<string | undefined>;
-    /**
-     * A list of OneLogin Role IDs of the user
-     */
-    public readonly roleIds!: pulumi.Output<number[] | undefined>;
-    /**
-     * The salt value used with the password_algorithm.
-     */
-    public readonly salt!: pulumi.Output<string | undefined>;
-    /**
-     * The user's Active Directory username.
-     */
     public readonly samaccountname!: pulumi.Output<string | undefined>;
-    public readonly state!: pulumi.Output<number | undefined>;
-    public readonly status!: pulumi.Output<number | undefined>;
-    /**
-     * The user's job title.
-     */
+    public readonly state!: pulumi.Output<number>;
+    public readonly status!: pulumi.Output<number>;
     public readonly title!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the OneLogin Trusted IDP of the user.
-     */
-    public readonly trustedIdpId!: pulumi.Output<number | undefined>;
-    public readonly updatedAt!: pulumi.Output<string | undefined>;
-    /**
-     * A username for the user.
-     */
-    public readonly username!: pulumi.Output<string | undefined>;
-    /**
-     * The principle name of the user.
-     */
+    public readonly trustedIdpId!: pulumi.Output<number>;
+    public readonly username!: pulumi.Output<string>;
     public readonly userprincipalname!: pulumi.Output<string | undefined>;
 
     /**
@@ -148,16 +62,15 @@ export class User extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: UserArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["activatedAt"] = state ? state.activatedAt : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["company"] = state ? state.company : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
             resourceInputs["department"] = state ? state.department : undefined;
             resourceInputs["directoryId"] = state ? state.directoryId : undefined;
             resourceInputs["distinguishedName"] = state ? state.distinguishedName : undefined;
@@ -165,36 +78,29 @@ export class User extends pulumi.CustomResource {
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["firstname"] = state ? state.firstname : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["invalidLoginAttempts"] = state ? state.invalidLoginAttempts : undefined;
-            resourceInputs["invitationSentAt"] = state ? state.invitationSentAt : undefined;
-            resourceInputs["lastLogin"] = state ? state.lastLogin : undefined;
             resourceInputs["lastname"] = state ? state.lastname : undefined;
-            resourceInputs["lockedUntil"] = state ? state.lockedUntil : undefined;
             resourceInputs["managerAdId"] = state ? state.managerAdId : undefined;
             resourceInputs["managerUserId"] = state ? state.managerUserId : undefined;
             resourceInputs["memberOf"] = state ? state.memberOf : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordAlgorithm"] = state ? state.passwordAlgorithm : undefined;
-            resourceInputs["passwordChangedAt"] = state ? state.passwordChangedAt : undefined;
-            resourceInputs["passwordConfirmation"] = state ? state.passwordConfirmation : undefined;
             resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["preferredLocaleCode"] = state ? state.preferredLocaleCode : undefined;
-            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
-            resourceInputs["salt"] = state ? state.salt : undefined;
             resourceInputs["samaccountname"] = state ? state.samaccountname : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["trustedIdpId"] = state ? state.trustedIdpId : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
             resourceInputs["userprincipalname"] = state ? state.userprincipalname : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            resourceInputs["activatedAt"] = args ? args.activatedAt : undefined;
+            if ((!args || args.email === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'email'");
+            }
+            if ((!args || args.username === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'username'");
+            }
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["company"] = args ? args.company : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
             resourceInputs["department"] = args ? args.department : undefined;
             resourceInputs["directoryId"] = args ? args.directoryId : undefined;
             resourceInputs["distinguishedName"] = args ? args.distinguishedName : undefined;
@@ -202,28 +108,16 @@ export class User extends pulumi.CustomResource {
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["firstname"] = args ? args.firstname : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["invalidLoginAttempts"] = args ? args.invalidLoginAttempts : undefined;
-            resourceInputs["invitationSentAt"] = args ? args.invitationSentAt : undefined;
-            resourceInputs["lastLogin"] = args ? args.lastLogin : undefined;
             resourceInputs["lastname"] = args ? args.lastname : undefined;
-            resourceInputs["lockedUntil"] = args ? args.lockedUntil : undefined;
             resourceInputs["managerAdId"] = args ? args.managerAdId : undefined;
             resourceInputs["managerUserId"] = args ? args.managerUserId : undefined;
             resourceInputs["memberOf"] = args ? args.memberOf : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["passwordAlgorithm"] = args ? args.passwordAlgorithm : undefined;
-            resourceInputs["passwordChangedAt"] = args ? args.passwordChangedAt : undefined;
-            resourceInputs["passwordConfirmation"] = args ? args.passwordConfirmation : undefined;
             resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["preferredLocaleCode"] = args ? args.preferredLocaleCode : undefined;
-            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
-            resourceInputs["salt"] = args ? args.salt : undefined;
             resourceInputs["samaccountname"] = args ? args.samaccountname : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["trustedIdpId"] = args ? args.trustedIdpId : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["userprincipalname"] = args ? args.userprincipalname : undefined;
         }
@@ -236,113 +130,27 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    activatedAt?: pulumi.Input<string>;
-    /**
-     * Free text related to the user.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The user's company.
-     */
     company?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    /**
-     * The user's department.
-     */
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     department?: pulumi.Input<string>;
-    /**
-     * The ID of the OneLogin Directory of the user.
-     */
     directoryId?: pulumi.Input<number>;
-    /**
-     * The distinguished name of the user.
-     */
     distinguishedName?: pulumi.Input<string>;
-    /**
-     * A valid email for the user.
-     */
     email?: pulumi.Input<string>;
-    /**
-     * The ID of the user in an external directory.
-     */
-    externalId?: pulumi.Input<string>;
-    /**
-     * The user's first name.
-     */
+    externalId?: pulumi.Input<number>;
     firstname?: pulumi.Input<string>;
-    /**
-     * The ID of the Group in OneLogin that the user is assigned to.
-     */
     groupId?: pulumi.Input<number>;
-    invalidLoginAttempts?: pulumi.Input<number>;
-    invitationSentAt?: pulumi.Input<string>;
-    lastLogin?: pulumi.Input<string>;
-    /**
-     * The user's last name.
-     */
     lastname?: pulumi.Input<string>;
-    lockedUntil?: pulumi.Input<string>;
-    /**
-     * The ID of the user's manager in Active Directory.
-     */
-    managerAdId?: pulumi.Input<string>;
-    /**
-     * The OneLogin User ID for the user's manager.
-     */
-    managerUserId?: pulumi.Input<string>;
-    /**
-     * The user's directory membership.
-     */
+    managerAdId?: pulumi.Input<number>;
+    managerUserId?: pulumi.Input<number>;
     memberOf?: pulumi.Input<string>;
-    /**
-     * The password to set for a user.
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-     * SHA-256-encoding it
-     */
-    passwordAlgorithm?: pulumi.Input<string>;
-    passwordChangedAt?: pulumi.Input<string>;
-    /**
-     * Required if the password is being set.
-     */
-    passwordConfirmation?: pulumi.Input<string>;
-    /**
-     * The E.164 format phone number for a user.
-     */
     phone?: pulumi.Input<string>;
-    preferredLocaleCode?: pulumi.Input<string>;
-    /**
-     * A list of OneLogin Role IDs of the user
-     */
-    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The salt value used with the password_algorithm.
-     */
-    salt?: pulumi.Input<string>;
-    /**
-     * The user's Active Directory username.
-     */
     samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
-    /**
-     * The user's job title.
-     */
     title?: pulumi.Input<string>;
-    /**
-     * The ID of the OneLogin Trusted IDP of the user.
-     */
     trustedIdpId?: pulumi.Input<number>;
-    updatedAt?: pulumi.Input<string>;
-    /**
-     * A username for the user.
-     */
     username?: pulumi.Input<string>;
-    /**
-     * The principle name of the user.
-     */
     userprincipalname?: pulumi.Input<string>;
 }
 
@@ -350,112 +158,26 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    activatedAt?: pulumi.Input<string>;
-    /**
-     * Free text related to the user.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The user's company.
-     */
     company?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    /**
-     * The user's department.
-     */
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     department?: pulumi.Input<string>;
-    /**
-     * The ID of the OneLogin Directory of the user.
-     */
     directoryId?: pulumi.Input<number>;
-    /**
-     * The distinguished name of the user.
-     */
     distinguishedName?: pulumi.Input<string>;
-    /**
-     * A valid email for the user.
-     */
-    email?: pulumi.Input<string>;
-    /**
-     * The ID of the user in an external directory.
-     */
-    externalId?: pulumi.Input<string>;
-    /**
-     * The user's first name.
-     */
+    email: pulumi.Input<string>;
+    externalId?: pulumi.Input<number>;
     firstname?: pulumi.Input<string>;
-    /**
-     * The ID of the Group in OneLogin that the user is assigned to.
-     */
     groupId?: pulumi.Input<number>;
-    invalidLoginAttempts?: pulumi.Input<number>;
-    invitationSentAt?: pulumi.Input<string>;
-    lastLogin?: pulumi.Input<string>;
-    /**
-     * The user's last name.
-     */
     lastname?: pulumi.Input<string>;
-    lockedUntil?: pulumi.Input<string>;
-    /**
-     * The ID of the user's manager in Active Directory.
-     */
-    managerAdId?: pulumi.Input<string>;
-    /**
-     * The OneLogin User ID for the user's manager.
-     */
-    managerUserId?: pulumi.Input<string>;
-    /**
-     * The user's directory membership.
-     */
+    managerAdId?: pulumi.Input<number>;
+    managerUserId?: pulumi.Input<number>;
     memberOf?: pulumi.Input<string>;
-    /**
-     * The password to set for a user.
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * Use this when importing a password that's already hashed. Prepend the salt value to the cleartext password value before
-     * SHA-256-encoding it
-     */
-    passwordAlgorithm?: pulumi.Input<string>;
-    passwordChangedAt?: pulumi.Input<string>;
-    /**
-     * Required if the password is being set.
-     */
-    passwordConfirmation?: pulumi.Input<string>;
-    /**
-     * The E.164 format phone number for a user.
-     */
     phone?: pulumi.Input<string>;
-    preferredLocaleCode?: pulumi.Input<string>;
-    /**
-     * A list of OneLogin Role IDs of the user
-     */
-    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The salt value used with the password_algorithm.
-     */
-    salt?: pulumi.Input<string>;
-    /**
-     * The user's Active Directory username.
-     */
     samaccountname?: pulumi.Input<string>;
     state?: pulumi.Input<number>;
     status?: pulumi.Input<number>;
-    /**
-     * The user's job title.
-     */
     title?: pulumi.Input<string>;
-    /**
-     * The ID of the OneLogin Trusted IDP of the user.
-     */
     trustedIdpId?: pulumi.Input<number>;
-    updatedAt?: pulumi.Input<string>;
-    /**
-     * A username for the user.
-     */
-    username?: pulumi.Input<string>;
-    /**
-     * The principle name of the user.
-     */
+    username: pulumi.Input<string>;
     userprincipalname?: pulumi.Input<string>;
 }

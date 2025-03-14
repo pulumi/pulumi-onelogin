@@ -18,11 +18,17 @@ namespace Pulumi.Onelogin
     [OneloginResourceType("pulumi:providers:onelogin")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
-        [Output("apikeyAuth")]
-        public Output<string> ApikeyAuth { get; private set; } = null!;
+        [Output("clientId")]
+        public Output<string> ClientId { get; private set; } = null!;
 
-        [Output("contentType")]
-        public Output<string?> ContentType { get; private set; } = null!;
+        [Output("clientSecret")]
+        public Output<string> ClientSecret { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        [Output("url")]
+        public Output<string?> Url { get; private set; } = null!;
 
 
         /// <summary>
@@ -52,19 +58,17 @@ namespace Pulumi.Onelogin
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apikeyAuth", required: true)]
-        public Input<string> ApikeyAuth { get; set; } = null!;
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
-        [Input("contentType")]
-        public Input<string>? ContentType { get; set; }
+        [Input("clientSecret", required: true)]
+        public Input<string> ClientSecret { get; set; } = null!;
 
-        [Input("endpoints", json: true)]
-        private InputList<Inputs.ProviderEndpointArgs>? _endpoints;
-        public InputList<Inputs.ProviderEndpointArgs> Endpoints
-        {
-            get => _endpoints ?? (_endpoints = new InputList<Inputs.ProviderEndpointArgs>());
-            set => _endpoints = value;
-        }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public ProviderArgs()
         {

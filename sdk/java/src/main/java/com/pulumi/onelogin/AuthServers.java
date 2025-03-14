@@ -16,45 +16,21 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:index/authServers:AuthServers")
 public class AuthServers extends com.pulumi.resources.CustomResource {
-    /**
-     * Authorization server configuration
-     * 
-     */
     @Export(name="configuration", refs={AuthServersConfiguration.class}, tree="[0]")
     private Output<AuthServersConfiguration> configuration;
 
-    /**
-     * @return Authorization server configuration
-     * 
-     */
     public Output<AuthServersConfiguration> configuration() {
         return this.configuration;
     }
-    /**
-     * Description of what the API does.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
-    /**
-     * @return Description of what the API does.
-     * 
-     */
     public Output<String> description() {
         return this.description;
     }
-    /**
-     * Name of the API.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Name of the API.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }

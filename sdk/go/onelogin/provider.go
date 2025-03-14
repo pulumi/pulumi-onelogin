@@ -19,8 +19,10 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	ApikeyAuth  pulumi.StringOutput    `pulumi:"apikeyAuth"`
-	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
+	ClientId     pulumi.StringOutput    `pulumi:"clientId"`
+	ClientSecret pulumi.StringOutput    `pulumi:"clientSecret"`
+	Region       pulumi.StringPtrOutput `pulumi:"region"`
+	Url          pulumi.StringPtrOutput `pulumi:"url"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -30,8 +32,11 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApikeyAuth == nil {
-		return nil, errors.New("invalid value for required argument 'ApikeyAuth'")
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ClientSecret'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
@@ -43,16 +48,18 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ApikeyAuth  string             `pulumi:"apikeyAuth"`
-	ContentType *string            `pulumi:"contentType"`
-	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
+	ClientId     string  `pulumi:"clientId"`
+	ClientSecret string  `pulumi:"clientSecret"`
+	Region       *string `pulumi:"region"`
+	Url          *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ApikeyAuth  pulumi.StringInput
-	ContentType pulumi.StringPtrInput
-	Endpoints   ProviderEndpointArrayInput
+	ClientId     pulumi.StringInput
+	ClientSecret pulumi.StringInput
+	Region       pulumi.StringPtrInput
+	Url          pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -92,12 +99,20 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-func (o ProviderOutput) ApikeyAuth() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApikeyAuth }).(pulumi.StringOutput)
+func (o ProviderOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-func (o ProviderOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+func (o ProviderOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o ProviderOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 func init() {

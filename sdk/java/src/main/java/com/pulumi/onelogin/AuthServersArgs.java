@@ -17,47 +17,23 @@ public final class AuthServersArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthServersArgs Empty = new AuthServersArgs();
 
-    /**
-     * Authorization server configuration
-     * 
-     */
     @Import(name="configuration", required=true)
     private Output<AuthServersConfigurationArgs> configuration;
 
-    /**
-     * @return Authorization server configuration
-     * 
-     */
     public Output<AuthServersConfigurationArgs> configuration() {
         return this.configuration;
     }
 
-    /**
-     * Description of what the API does.
-     * 
-     */
     @Import(name="description", required=true)
     private Output<String> description;
 
-    /**
-     * @return Description of what the API does.
-     * 
-     */
     public Output<String> description() {
         return this.description;
     }
 
-    /**
-     * Name of the API.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the API.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -88,65 +64,29 @@ public final class AuthServersArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AuthServersArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param configuration Authorization server configuration
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(Output<AuthServersConfigurationArgs> configuration) {
             $.configuration = configuration;
             return this;
         }
 
-        /**
-         * @param configuration Authorization server configuration
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(AuthServersConfigurationArgs configuration) {
             return configuration(Output.of(configuration));
         }
 
-        /**
-         * @param description Description of what the API does.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description Description of what the API does.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param name Name of the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

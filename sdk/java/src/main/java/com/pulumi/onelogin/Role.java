@@ -18,59 +18,27 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="onelogin:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
-    /**
-     * A list of user IDs to assign as role administrators.
-     * 
-     */
     @Export(name="admins", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> admins;
 
-    /**
-     * @return A list of user IDs to assign as role administrators.
-     * 
-     */
     public Output<Optional<List<Integer>>> admins() {
         return Codegen.optional(this.admins);
     }
-    /**
-     * A list of app IDs that will be assigned to the role.
-     * 
-     */
     @Export(name="apps", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> apps;
 
-    /**
-     * @return A list of app IDs that will be assigned to the role.
-     * 
-     */
     public Output<Optional<List<Integer>>> apps() {
         return Codegen.optional(this.apps);
     }
-    /**
-     * The name of the role.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The name of the role.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * A list of user IDs to assign to the role.
-     * 
-     */
     @Export(name="users", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> users;
 
-    /**
-     * @return A list of user IDs to assign to the role.
-     * 
-     */
     public Output<Optional<List<Integer>>> users() {
         return Codegen.optional(this.users);
     }

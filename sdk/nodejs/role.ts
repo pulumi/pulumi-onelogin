@@ -32,21 +32,9 @@ export class Role extends pulumi.CustomResource {
         return obj['__pulumiType'] === Role.__pulumiType;
     }
 
-    /**
-     * A list of user IDs to assign as role administrators.
-     */
     public readonly admins!: pulumi.Output<number[] | undefined>;
-    /**
-     * A list of app IDs that will be assigned to the role.
-     */
     public readonly apps!: pulumi.Output<number[] | undefined>;
-    /**
-     * The name of the role.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * A list of user IDs to assign to the role.
-     */
     public readonly users!: pulumi.Output<number[] | undefined>;
 
     /**
@@ -82,21 +70,9 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
-    /**
-     * A list of user IDs to assign as role administrators.
-     */
     admins?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * A list of app IDs that will be assigned to the role.
-     */
     apps?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The name of the role.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * A list of user IDs to assign to the role.
-     */
     users?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
@@ -104,20 +80,8 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
-    /**
-     * A list of user IDs to assign as role administrators.
-     */
     admins?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * A list of app IDs that will be assigned to the role.
-     */
     apps?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The name of the role.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * A list of user IDs to assign to the role.
-     */
     users?: pulumi.Input<pulumi.Input<number>[]>;
 }

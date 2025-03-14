@@ -18,6 +18,8 @@ type Privileges struct {
 	Description pulumi.StringPtrOutput    `pulumi:"description"`
 	Name        pulumi.StringOutput       `pulumi:"name"`
 	Privilege   PrivilegesPrivilegeOutput `pulumi:"privilege"`
+	RoleIds     pulumi.IntArrayOutput     `pulumi:"roleIds"`
+	UserIds     pulumi.IntArrayOutput     `pulumi:"userIds"`
 }
 
 // NewPrivileges registers a new resource with the given unique name, arguments, and options.
@@ -56,12 +58,16 @@ type privilegesState struct {
 	Description *string              `pulumi:"description"`
 	Name        *string              `pulumi:"name"`
 	Privilege   *PrivilegesPrivilege `pulumi:"privilege"`
+	RoleIds     []int                `pulumi:"roleIds"`
+	UserIds     []int                `pulumi:"userIds"`
 }
 
 type PrivilegesState struct {
 	Description pulumi.StringPtrInput
 	Name        pulumi.StringPtrInput
 	Privilege   PrivilegesPrivilegePtrInput
+	RoleIds     pulumi.IntArrayInput
+	UserIds     pulumi.IntArrayInput
 }
 
 func (PrivilegesState) ElementType() reflect.Type {
@@ -72,6 +78,8 @@ type privilegesArgs struct {
 	Description *string             `pulumi:"description"`
 	Name        *string             `pulumi:"name"`
 	Privilege   PrivilegesPrivilege `pulumi:"privilege"`
+	RoleIds     []int               `pulumi:"roleIds"`
+	UserIds     []int               `pulumi:"userIds"`
 }
 
 // The set of arguments for constructing a Privileges resource.
@@ -79,6 +87,8 @@ type PrivilegesArgs struct {
 	Description pulumi.StringPtrInput
 	Name        pulumi.StringPtrInput
 	Privilege   PrivilegesPrivilegeInput
+	RoleIds     pulumi.IntArrayInput
+	UserIds     pulumi.IntArrayInput
 }
 
 func (PrivilegesArgs) ElementType() reflect.Type {
@@ -178,6 +188,14 @@ func (o PrivilegesOutput) Name() pulumi.StringOutput {
 
 func (o PrivilegesOutput) Privilege() PrivilegesPrivilegeOutput {
 	return o.ApplyT(func(v *Privileges) PrivilegesPrivilegeOutput { return v.Privilege }).(PrivilegesPrivilegeOutput)
+}
+
+func (o PrivilegesOutput) RoleIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Privileges) pulumi.IntArrayOutput { return v.RoleIds }).(pulumi.IntArrayOutput)
+}
+
+func (o PrivilegesOutput) UserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Privileges) pulumi.IntArrayOutput { return v.UserIds }).(pulumi.IntArrayOutput)
 }
 
 type PrivilegesArrayOutput struct{ *pulumi.OutputState }

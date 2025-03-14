@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthServersConfiguration {
-    /**
-     * @return The number of minutes until access token expires. There is no maximum expiry limit.
-     * 
-     */
     private @Nullable Integer accessTokenExpirationMinutes;
-    /**
-     * @return List of API endpoints that will be returned in Access Tokens.
-     * 
-     */
     private List<String> audiences;
-    /**
-     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
-     * 
-     */
     private @Nullable Integer refreshTokenExpirationMinutes;
-    /**
-     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-     * 
-     */
     private String resourceIdentifier;
 
     private AuthServersConfiguration() {}
-    /**
-     * @return The number of minutes until access token expires. There is no maximum expiry limit.
-     * 
-     */
     public Optional<Integer> accessTokenExpirationMinutes() {
         return Optional.ofNullable(this.accessTokenExpirationMinutes);
     }
-    /**
-     * @return List of API endpoints that will be returned in Access Tokens.
-     * 
-     */
     public List<String> audiences() {
         return this.audiences;
     }
-    /**
-     * @return The number of minutes until refresh token expires. There is no maximum expiry limit.
-     * 
-     */
     public Optional<Integer> refreshTokenExpirationMinutes() {
         return Optional.ofNullable(this.refreshTokenExpirationMinutes);
     }
-    /**
-     * @return Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-     * 
-     */
     public String resourceIdentifier() {
         return this.resourceIdentifier;
     }

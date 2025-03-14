@@ -11,7 +11,9 @@ import com.pulumi.onelogin.PrivilegesArgs;
 import com.pulumi.onelogin.Utilities;
 import com.pulumi.onelogin.inputs.PrivilegesState;
 import com.pulumi.onelogin.outputs.PrivilegesPrivilege;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -34,6 +36,18 @@ public class Privileges extends com.pulumi.resources.CustomResource {
 
     public Output<PrivilegesPrivilege> privilege() {
         return this.privilege;
+    }
+    @Export(name="roleIds", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> roleIds;
+
+    public Output<Optional<List<Integer>>> roleIds() {
+        return Codegen.optional(this.roleIds);
+    }
+    @Export(name="userIds", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> userIds;
+
+    public Output<Optional<List<Integer>>> userIds() {
+        return Codegen.optional(this.userIds);
     }
 
     /**

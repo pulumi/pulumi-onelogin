@@ -4,18 +4,65 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.onelogin.outputs.AppParametersGroups;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AppParameters {
-    private @Nullable AppParametersGroups groups;
+    private @Nullable String attributesTransformations;
+    private @Nullable String defaultValues;
+    private @Nullable Boolean includeInSamlAssertion;
+    private @Nullable String label;
+    private @Nullable Integer paramId;
+    private String paramKeyName;
+    private @Nullable Boolean provisionedEntitlements;
+    private @Nullable Boolean safeEntitlementsEnabled;
+    private @Nullable Boolean skipIfBlank;
+    private @Nullable String userAttributeMacros;
+    private @Nullable String userAttributeMappings;
+    private @Nullable String values;
 
     private AppParameters() {}
-    public Optional<AppParametersGroups> groups() {
-        return Optional.ofNullable(this.groups);
+    public Optional<String> attributesTransformations() {
+        return Optional.ofNullable(this.attributesTransformations);
+    }
+    public Optional<String> defaultValues() {
+        return Optional.ofNullable(this.defaultValues);
+    }
+    public Optional<Boolean> includeInSamlAssertion() {
+        return Optional.ofNullable(this.includeInSamlAssertion);
+    }
+    public Optional<String> label() {
+        return Optional.ofNullable(this.label);
+    }
+    public Optional<Integer> paramId() {
+        return Optional.ofNullable(this.paramId);
+    }
+    public String paramKeyName() {
+        return this.paramKeyName;
+    }
+    public Optional<Boolean> provisionedEntitlements() {
+        return Optional.ofNullable(this.provisionedEntitlements);
+    }
+    public Optional<Boolean> safeEntitlementsEnabled() {
+        return Optional.ofNullable(this.safeEntitlementsEnabled);
+    }
+    public Optional<Boolean> skipIfBlank() {
+        return Optional.ofNullable(this.skipIfBlank);
+    }
+    public Optional<String> userAttributeMacros() {
+        return Optional.ofNullable(this.userAttributeMacros);
+    }
+    public Optional<String> userAttributeMappings() {
+        return Optional.ofNullable(this.userAttributeMappings);
+    }
+    public Optional<String> values() {
+        return Optional.ofNullable(this.values);
     }
 
     public static Builder builder() {
@@ -27,22 +74,123 @@ public final class AppParameters {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable AppParametersGroups groups;
+        private @Nullable String attributesTransformations;
+        private @Nullable String defaultValues;
+        private @Nullable Boolean includeInSamlAssertion;
+        private @Nullable String label;
+        private @Nullable Integer paramId;
+        private String paramKeyName;
+        private @Nullable Boolean provisionedEntitlements;
+        private @Nullable Boolean safeEntitlementsEnabled;
+        private @Nullable Boolean skipIfBlank;
+        private @Nullable String userAttributeMacros;
+        private @Nullable String userAttributeMappings;
+        private @Nullable String values;
         public Builder() {}
         public Builder(AppParameters defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.groups = defaults.groups;
+    	      this.attributesTransformations = defaults.attributesTransformations;
+    	      this.defaultValues = defaults.defaultValues;
+    	      this.includeInSamlAssertion = defaults.includeInSamlAssertion;
+    	      this.label = defaults.label;
+    	      this.paramId = defaults.paramId;
+    	      this.paramKeyName = defaults.paramKeyName;
+    	      this.provisionedEntitlements = defaults.provisionedEntitlements;
+    	      this.safeEntitlementsEnabled = defaults.safeEntitlementsEnabled;
+    	      this.skipIfBlank = defaults.skipIfBlank;
+    	      this.userAttributeMacros = defaults.userAttributeMacros;
+    	      this.userAttributeMappings = defaults.userAttributeMappings;
+    	      this.values = defaults.values;
         }
 
         @CustomType.Setter
-        public Builder groups(@Nullable AppParametersGroups groups) {
+        public Builder attributesTransformations(@Nullable String attributesTransformations) {
 
-            this.groups = groups;
+            this.attributesTransformations = attributesTransformations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultValues(@Nullable String defaultValues) {
+
+            this.defaultValues = defaultValues;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeInSamlAssertion(@Nullable Boolean includeInSamlAssertion) {
+
+            this.includeInSamlAssertion = includeInSamlAssertion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder label(@Nullable String label) {
+
+            this.label = label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paramId(@Nullable Integer paramId) {
+
+            this.paramId = paramId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paramKeyName(String paramKeyName) {
+            if (paramKeyName == null) {
+              throw new MissingRequiredPropertyException("AppParameters", "paramKeyName");
+            }
+            this.paramKeyName = paramKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedEntitlements(@Nullable Boolean provisionedEntitlements) {
+
+            this.provisionedEntitlements = provisionedEntitlements;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder safeEntitlementsEnabled(@Nullable Boolean safeEntitlementsEnabled) {
+
+            this.safeEntitlementsEnabled = safeEntitlementsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipIfBlank(@Nullable Boolean skipIfBlank) {
+
+            this.skipIfBlank = skipIfBlank;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder userAttributeMacros(@Nullable String userAttributeMacros) {
+
+            this.userAttributeMacros = userAttributeMacros;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder userAttributeMappings(@Nullable String userAttributeMappings) {
+
+            this.userAttributeMappings = userAttributeMappings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder values(@Nullable String values) {
+
+            this.values = values;
             return this;
         }
         public AppParameters build() {
             final var _resultValue = new AppParameters();
-            _resultValue.groups = groups;
+            _resultValue.attributesTransformations = attributesTransformations;
+            _resultValue.defaultValues = defaultValues;
+            _resultValue.includeInSamlAssertion = includeInSamlAssertion;
+            _resultValue.label = label;
+            _resultValue.paramId = paramId;
+            _resultValue.paramKeyName = paramKeyName;
+            _resultValue.provisionedEntitlements = provisionedEntitlements;
+            _resultValue.safeEntitlementsEnabled = safeEntitlementsEnabled;
+            _resultValue.skipIfBlank = skipIfBlank;
+            _resultValue.userAttributeMacros = userAttributeMacros;
+            _resultValue.userAttributeMappings = userAttributeMappings;
+            _resultValue.values = values;
             return _resultValue;
         }
     }

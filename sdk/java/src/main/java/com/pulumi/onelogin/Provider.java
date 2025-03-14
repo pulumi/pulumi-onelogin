@@ -22,17 +22,29 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:onelogin")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="apikeyAuth", refs={String.class}, tree="[0]")
-    private Output<String> apikeyAuth;
+    @Export(name="clientId", refs={String.class}, tree="[0]")
+    private Output<String> clientId;
 
-    public Output<String> apikeyAuth() {
-        return this.apikeyAuth;
+    public Output<String> clientId() {
+        return this.clientId;
     }
-    @Export(name="contentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> contentType;
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
+    private Output<String> clientSecret;
 
-    public Output<Optional<String>> contentType() {
-        return Codegen.optional(this.contentType);
+    public Output<String> clientSecret() {
+        return this.clientSecret;
+    }
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
+    }
+    @Export(name="url", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> url;
+
+    public Output<Optional<String>> url() {
+        return Codegen.optional(this.url);
     }
 
     /**

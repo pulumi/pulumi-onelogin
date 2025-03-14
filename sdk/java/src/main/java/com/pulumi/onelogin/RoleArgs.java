@@ -17,62 +17,30 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RoleArgs Empty = new RoleArgs();
 
-    /**
-     * A list of user IDs to assign as role administrators.
-     * 
-     */
     @Import(name="admins")
     private @Nullable Output<List<Integer>> admins;
 
-    /**
-     * @return A list of user IDs to assign as role administrators.
-     * 
-     */
     public Optional<Output<List<Integer>>> admins() {
         return Optional.ofNullable(this.admins);
     }
 
-    /**
-     * A list of app IDs that will be assigned to the role.
-     * 
-     */
     @Import(name="apps")
     private @Nullable Output<List<Integer>> apps;
 
-    /**
-     * @return A list of app IDs that will be assigned to the role.
-     * 
-     */
     public Optional<Output<List<Integer>>> apps() {
         return Optional.ofNullable(this.apps);
     }
 
-    /**
-     * The name of the role.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the role.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * A list of user IDs to assign to the role.
-     * 
-     */
     @Import(name="users")
     private @Nullable Output<List<Integer>> users;
 
-    /**
-     * @return A list of user IDs to assign to the role.
-     * 
-     */
     public Optional<Output<List<Integer>>> users() {
         return Optional.ofNullable(this.users);
     }
@@ -104,116 +72,50 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RoleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param admins A list of user IDs to assign as role administrators.
-         * 
-         * @return builder
-         * 
-         */
         public Builder admins(@Nullable Output<List<Integer>> admins) {
             $.admins = admins;
             return this;
         }
 
-        /**
-         * @param admins A list of user IDs to assign as role administrators.
-         * 
-         * @return builder
-         * 
-         */
         public Builder admins(List<Integer> admins) {
             return admins(Output.of(admins));
         }
 
-        /**
-         * @param admins A list of user IDs to assign as role administrators.
-         * 
-         * @return builder
-         * 
-         */
         public Builder admins(Integer... admins) {
             return admins(List.of(admins));
         }
 
-        /**
-         * @param apps A list of app IDs that will be assigned to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder apps(@Nullable Output<List<Integer>> apps) {
             $.apps = apps;
             return this;
         }
 
-        /**
-         * @param apps A list of app IDs that will be assigned to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder apps(List<Integer> apps) {
             return apps(Output.of(apps));
         }
 
-        /**
-         * @param apps A list of app IDs that will be assigned to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder apps(Integer... apps) {
             return apps(List.of(apps));
         }
 
-        /**
-         * @param name The name of the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param users A list of user IDs to assign to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(@Nullable Output<List<Integer>> users) {
             $.users = users;
             return this;
         }
 
-        /**
-         * @param users A list of user IDs to assign to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(List<Integer> users) {
             return users(Output.of(users));
         }
 
-        /**
-         * @param users A list of user IDs to assign to the role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(Integer... users) {
             return users(List.of(users));
         }

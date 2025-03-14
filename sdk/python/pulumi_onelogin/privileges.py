@@ -23,7 +23,9 @@ class PrivilegesArgs:
     def __init__(__self__, *,
                  privilege: pulumi.Input['PrivilegesPrivilegeArgs'],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Privileges resource.
         """
@@ -32,6 +34,10 @@ class PrivilegesArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if role_ids is not None:
+            pulumi.set(__self__, "role_ids", role_ids)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
 
     @property
     @pulumi.getter
@@ -60,13 +66,33 @@ class PrivilegesArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="roleIds")
+    def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "role_ids")
+
+    @role_ids.setter
+    def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "role_ids", value)
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "user_ids")
+
+    @user_ids.setter
+    def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "user_ids", value)
+
 
 @pulumi.input_type
 class _PrivilegesState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 privilege: Optional[pulumi.Input['PrivilegesPrivilegeArgs']] = None):
+                 privilege: Optional[pulumi.Input['PrivilegesPrivilegeArgs']] = None,
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering Privileges resources.
         """
@@ -76,6 +102,10 @@ class _PrivilegesState:
             pulumi.set(__self__, "name", name)
         if privilege is not None:
             pulumi.set(__self__, "privilege", privilege)
+        if role_ids is not None:
+            pulumi.set(__self__, "role_ids", role_ids)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
 
     @property
     @pulumi.getter
@@ -104,6 +134,24 @@ class _PrivilegesState:
     def privilege(self, value: Optional[pulumi.Input['PrivilegesPrivilegeArgs']]):
         pulumi.set(self, "privilege", value)
 
+    @property
+    @pulumi.getter(name="roleIds")
+    def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "role_ids")
+
+    @role_ids.setter
+    def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "role_ids", value)
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "user_ids")
+
+    @user_ids.setter
+    def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "user_ids", value)
+
 
 class Privileges(pulumi.CustomResource):
     @overload
@@ -113,6 +161,8 @@ class Privileges(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None,
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
         Create a Privileges resource with the given unique name, props, and options.
@@ -145,6 +195,8 @@ class Privileges(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None,
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -159,6 +211,8 @@ class Privileges(pulumi.CustomResource):
             if privilege is None and not opts.urn:
                 raise TypeError("Missing required property 'privilege'")
             __props__.__dict__["privilege"] = privilege
+            __props__.__dict__["role_ids"] = role_ids
+            __props__.__dict__["user_ids"] = user_ids
         super(Privileges, __self__).__init__(
             'onelogin:index/privileges:Privileges',
             resource_name,
@@ -171,7 +225,9 @@ class Privileges(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None) -> 'Privileges':
+            privilege: Optional[pulumi.Input[Union['PrivilegesPrivilegeArgs', 'PrivilegesPrivilegeArgsDict']]] = None,
+            role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'Privileges':
         """
         Get an existing Privileges resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -187,6 +243,8 @@ class Privileges(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["privilege"] = privilege
+        __props__.__dict__["role_ids"] = role_ids
+        __props__.__dict__["user_ids"] = user_ids
         return Privileges(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -203,4 +261,14 @@ class Privileges(pulumi.CustomResource):
     @pulumi.getter
     def privilege(self) -> pulumi.Output['outputs.PrivilegesPrivilege']:
         return pulumi.get(self, "privilege")
+
+    @property
+    @pulumi.getter(name="roleIds")
+    def role_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        return pulumi.get(self, "role_ids")
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        return pulumi.get(self, "user_ids")
 

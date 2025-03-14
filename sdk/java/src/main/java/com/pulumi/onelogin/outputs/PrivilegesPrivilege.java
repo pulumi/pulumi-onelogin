@@ -4,6 +4,7 @@
 package com.pulumi.onelogin.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.outputs.PrivilegesPrivilegeStatement;
 import java.lang.String;
 import java.util.List;
@@ -13,12 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PrivilegesPrivilege {
-    private @Nullable List<PrivilegesPrivilegeStatement> statements;
+    private List<PrivilegesPrivilegeStatement> statements;
     private @Nullable String version;
 
     private PrivilegesPrivilege() {}
     public List<PrivilegesPrivilegeStatement> statements() {
-        return this.statements == null ? List.of() : this.statements;
+        return this.statements;
     }
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
@@ -33,7 +34,7 @@ public final class PrivilegesPrivilege {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<PrivilegesPrivilegeStatement> statements;
+        private List<PrivilegesPrivilegeStatement> statements;
         private @Nullable String version;
         public Builder() {}
         public Builder(PrivilegesPrivilege defaults) {
@@ -43,8 +44,10 @@ public final class PrivilegesPrivilege {
         }
 
         @CustomType.Setter
-        public Builder statements(@Nullable List<PrivilegesPrivilegeStatement> statements) {
-
+        public Builder statements(List<PrivilegesPrivilegeStatement> statements) {
+            if (statements == null) {
+              throw new MissingRequiredPropertyException("PrivilegesPrivilege", "statements");
+            }
             this.statements = statements;
             return this;
         }

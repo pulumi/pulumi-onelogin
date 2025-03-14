@@ -22,13 +22,11 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	onelogin "github.com/onelogin/terraform-provider-onelogin/shim"
-
+	onelogin "github.com/onelogin/terraform-provider-onelogin/onelogin"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-onelogin/provider/pkg/version"
 )
@@ -71,8 +69,7 @@ func makeResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 
-	provider, err := onelogin.Provider()
-	contract.AssertNoErrorf(err, "Failed to create provider")
+	provider := onelogin.Provider()
 	p := shimv2.NewProvider(provider)
 
 	// Create a Pulumi provider mapping
@@ -105,10 +102,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"onelogin_mappings":   {Tok: makeDataSource(mainMod, "getMappings")},
-			"onelogin_privileges": {Tok: makeDataSource(mainMod, "getPrivileges")},
-			"onelogin_roles":      {Tok: makeDataSource("roles", "getRoles")},
-			"onelogin_users":      {Tok: makeDataSource("users", "getUsers")},
+			"onelogin_users": {Tok: makeDataSource("users", "getUsers")},
+			"onelogin_user":  {Tok: makeDataSource("users", "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

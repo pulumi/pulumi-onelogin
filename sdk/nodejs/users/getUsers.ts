@@ -10,42 +10,13 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("onelogin:users/getUsers:getUsers", {
-        "activatedAt": args.activatedAt,
-        "comment": args.comment,
-        "company": args.company,
-        "createdAt": args.createdAt,
-        "department": args.department,
         "directoryId": args.directoryId,
-        "distinguishedName": args.distinguishedName,
-        "email": args.email,
         "externalId": args.externalId,
-        "filters": args.filters,
         "firstname": args.firstname,
-        "groupId": args.groupId,
-        "invalidLoginAttempts": args.invalidLoginAttempts,
-        "invitationSentAt": args.invitationSentAt,
-        "lastLogin": args.lastLogin,
         "lastname": args.lastname,
-        "lockedUntil": args.lockedUntil,
-        "managerAdId": args.managerAdId,
-        "managerUserId": args.managerUserId,
-        "memberOf": args.memberOf,
-        "password": args.password,
-        "passwordAlgorithm": args.passwordAlgorithm,
-        "passwordChangedAt": args.passwordChangedAt,
-        "passwordConfirmation": args.passwordConfirmation,
-        "phone": args.phone,
-        "preferredLocaleCode": args.preferredLocaleCode,
-        "roleIds": args.roleIds,
-        "salt": args.salt,
         "samaccountname": args.samaccountname,
-        "state": args.state,
-        "status": args.status,
-        "title": args.title,
-        "trustedIdpId": args.trustedIdpId,
-        "updatedAt": args.updatedAt,
+        "userId": args.userId,
         "username": args.username,
-        "userprincipalname": args.userprincipalname,
     }, opts);
 }
 
@@ -53,129 +24,44 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
-    activatedAt?: string;
-    comment?: string;
-    company?: string;
-    createdAt?: string;
-    department?: string;
     directoryId?: number;
-    distinguishedName?: string;
-    email?: string;
-    externalId?: string;
-    filters?: inputs.users.GetUsersFilter[];
+    externalId?: number;
     firstname?: string;
-    groupId?: number;
-    invalidLoginAttempts?: number;
-    invitationSentAt?: string;
-    lastLogin?: string;
     lastname?: string;
-    lockedUntil?: string;
-    managerAdId?: string;
-    managerUserId?: string;
-    memberOf?: string;
-    password?: string;
-    passwordAlgorithm?: string;
-    passwordChangedAt?: string;
-    passwordConfirmation?: string;
-    phone?: string;
-    preferredLocaleCode?: string;
-    roleIds?: number[];
-    salt?: string;
     samaccountname?: string;
-    state?: number;
-    status?: number;
-    title?: string;
-    trustedIdpId?: number;
-    updatedAt?: string;
+    userId?: string;
     username?: string;
-    userprincipalname?: string;
 }
 
 /**
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
-    readonly activatedAt: string;
-    readonly comment: string;
-    readonly company: string;
-    readonly createdAt: string;
-    readonly department: string;
-    readonly directoryId: number;
-    readonly distinguishedName: string;
-    readonly email: string;
-    readonly externalId: string;
-    readonly filters?: outputs.users.GetUsersFilter[];
-    readonly firstname: string;
-    readonly groupId: number;
+    readonly directoryId?: number;
+    readonly externalId?: number;
+    readonly firstname?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly invalidLoginAttempts: number;
-    readonly invitationSentAt: string;
-    readonly lastLogin: string;
-    readonly lastname: string;
-    readonly lockedUntil: string;
-    readonly managerAdId: string;
-    readonly managerUserId: string;
-    readonly memberOf: string;
-    readonly password: string;
-    readonly passwordAlgorithm: string;
-    readonly passwordChangedAt: string;
-    readonly passwordConfirmation: string;
-    readonly phone: string;
-    readonly preferredLocaleCode: string;
-    readonly roleIds: number[];
-    readonly salt: string;
-    readonly samaccountname: string;
-    readonly state: number;
-    readonly status: number;
-    readonly title: string;
-    readonly trustedIdpId: number;
-    readonly updatedAt: string;
-    readonly username: string;
-    readonly userprincipalname: string;
+    readonly ids: string[];
+    readonly lastname?: string;
+    readonly samaccountname?: string;
+    readonly userId?: string;
+    readonly username?: string;
+    readonly users: outputs.users.GetUsersUser[];
 }
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("onelogin:users/getUsers:getUsers", {
-        "activatedAt": args.activatedAt,
-        "comment": args.comment,
-        "company": args.company,
-        "createdAt": args.createdAt,
-        "department": args.department,
         "directoryId": args.directoryId,
-        "distinguishedName": args.distinguishedName,
-        "email": args.email,
         "externalId": args.externalId,
-        "filters": args.filters,
         "firstname": args.firstname,
-        "groupId": args.groupId,
-        "invalidLoginAttempts": args.invalidLoginAttempts,
-        "invitationSentAt": args.invitationSentAt,
-        "lastLogin": args.lastLogin,
         "lastname": args.lastname,
-        "lockedUntil": args.lockedUntil,
-        "managerAdId": args.managerAdId,
-        "managerUserId": args.managerUserId,
-        "memberOf": args.memberOf,
-        "password": args.password,
-        "passwordAlgorithm": args.passwordAlgorithm,
-        "passwordChangedAt": args.passwordChangedAt,
-        "passwordConfirmation": args.passwordConfirmation,
-        "phone": args.phone,
-        "preferredLocaleCode": args.preferredLocaleCode,
-        "roleIds": args.roleIds,
-        "salt": args.salt,
         "samaccountname": args.samaccountname,
-        "state": args.state,
-        "status": args.status,
-        "title": args.title,
-        "trustedIdpId": args.trustedIdpId,
-        "updatedAt": args.updatedAt,
+        "userId": args.userId,
         "username": args.username,
-        "userprincipalname": args.userprincipalname,
     }, opts);
 }
 
@@ -183,40 +69,11 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
-    activatedAt?: pulumi.Input<string>;
-    comment?: pulumi.Input<string>;
-    company?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    department?: pulumi.Input<string>;
     directoryId?: pulumi.Input<number>;
-    distinguishedName?: pulumi.Input<string>;
-    email?: pulumi.Input<string>;
-    externalId?: pulumi.Input<string>;
-    filters?: pulumi.Input<pulumi.Input<inputs.users.GetUsersFilterArgs>[]>;
+    externalId?: pulumi.Input<number>;
     firstname?: pulumi.Input<string>;
-    groupId?: pulumi.Input<number>;
-    invalidLoginAttempts?: pulumi.Input<number>;
-    invitationSentAt?: pulumi.Input<string>;
-    lastLogin?: pulumi.Input<string>;
     lastname?: pulumi.Input<string>;
-    lockedUntil?: pulumi.Input<string>;
-    managerAdId?: pulumi.Input<string>;
-    managerUserId?: pulumi.Input<string>;
-    memberOf?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    passwordAlgorithm?: pulumi.Input<string>;
-    passwordChangedAt?: pulumi.Input<string>;
-    passwordConfirmation?: pulumi.Input<string>;
-    phone?: pulumi.Input<string>;
-    preferredLocaleCode?: pulumi.Input<string>;
-    roleIds?: pulumi.Input<pulumi.Input<number>[]>;
-    salt?: pulumi.Input<string>;
     samaccountname?: pulumi.Input<string>;
-    state?: pulumi.Input<number>;
-    status?: pulumi.Input<number>;
-    title?: pulumi.Input<string>;
-    trustedIdpId?: pulumi.Input<number>;
-    updatedAt?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
-    userprincipalname?: pulumi.Input<string>;
 }

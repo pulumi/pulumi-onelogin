@@ -13,7 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
-from . import outputs
 
 import types
 
@@ -22,14 +21,18 @@ __config__ = pulumi.Config('onelogin')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def apikey_auth(self) -> Optional[str]:
-        return __config__.get('apikeyAuth')
+    def client_id(self) -> Optional[str]:
+        return __config__.get('clientId')
 
     @property
-    def content_type(self) -> Optional[str]:
-        return __config__.get('contentType')
+    def client_secret(self) -> Optional[str]:
+        return __config__.get('clientSecret')
 
     @property
-    def endpoints(self) -> Optional[str]:
-        return __config__.get('endpoints')
+    def region(self) -> Optional[str]:
+        return __config__.get('region')
+
+    @property
+    def url(self) -> Optional[str]:
+        return __config__.get('url')
 

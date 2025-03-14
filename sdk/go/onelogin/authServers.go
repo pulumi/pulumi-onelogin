@@ -15,12 +15,9 @@ import (
 type AuthServers struct {
 	pulumi.CustomResourceState
 
-	// Authorization server configuration
 	Configuration AuthServersConfigurationOutput `pulumi:"configuration"`
-	// Description of what the API does.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Name of the API.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Description   pulumi.StringOutput            `pulumi:"description"`
+	Name          pulumi.StringOutput            `pulumi:"name"`
 }
 
 // NewAuthServers registers a new resource with the given unique name, arguments, and options.
@@ -59,21 +56,15 @@ func GetAuthServers(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthServers resources.
 type authServersState struct {
-	// Authorization server configuration
 	Configuration *AuthServersConfiguration `pulumi:"configuration"`
-	// Description of what the API does.
-	Description *string `pulumi:"description"`
-	// Name of the API.
-	Name *string `pulumi:"name"`
+	Description   *string                   `pulumi:"description"`
+	Name          *string                   `pulumi:"name"`
 }
 
 type AuthServersState struct {
-	// Authorization server configuration
 	Configuration AuthServersConfigurationPtrInput
-	// Description of what the API does.
-	Description pulumi.StringPtrInput
-	// Name of the API.
-	Name pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
 }
 
 func (AuthServersState) ElementType() reflect.Type {
@@ -81,22 +72,16 @@ func (AuthServersState) ElementType() reflect.Type {
 }
 
 type authServersArgs struct {
-	// Authorization server configuration
 	Configuration AuthServersConfiguration `pulumi:"configuration"`
-	// Description of what the API does.
-	Description string `pulumi:"description"`
-	// Name of the API.
-	Name *string `pulumi:"name"`
+	Description   string                   `pulumi:"description"`
+	Name          *string                  `pulumi:"name"`
 }
 
 // The set of arguments for constructing a AuthServers resource.
 type AuthServersArgs struct {
-	// Authorization server configuration
 	Configuration AuthServersConfigurationInput
-	// Description of what the API does.
-	Description pulumi.StringInput
-	// Name of the API.
-	Name pulumi.StringPtrInput
+	Description   pulumi.StringInput
+	Name          pulumi.StringPtrInput
 }
 
 func (AuthServersArgs) ElementType() reflect.Type {
@@ -186,17 +171,14 @@ func (o AuthServersOutput) ToAuthServersOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// Authorization server configuration
 func (o AuthServersOutput) Configuration() AuthServersConfigurationOutput {
 	return o.ApplyT(func(v *AuthServers) AuthServersConfigurationOutput { return v.Configuration }).(AuthServersConfigurationOutput)
 }
 
-// Description of what the API does.
 func (o AuthServersOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthServers) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the API.
 func (o AuthServersOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthServers) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

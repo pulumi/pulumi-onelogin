@@ -12,27 +12,15 @@ namespace Pulumi.Onelogin
     [OneloginResourceType("onelogin:index/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// A list of user IDs to assign as role administrators.
-        /// </summary>
         [Output("admins")]
         public Output<ImmutableArray<int>> Admins { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of app IDs that will be assigned to the role.
-        /// </summary>
         [Output("apps")]
         public Output<ImmutableArray<int>> Apps { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the role.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of user IDs to assign to the role.
-        /// </summary>
         [Output("users")]
         public Output<ImmutableArray<int>> Users { get; private set; } = null!;
 
@@ -84,10 +72,6 @@ namespace Pulumi.Onelogin
     {
         [Input("admins")]
         private InputList<int>? _admins;
-
-        /// <summary>
-        /// A list of user IDs to assign as role administrators.
-        /// </summary>
         public InputList<int> Admins
         {
             get => _admins ?? (_admins = new InputList<int>());
@@ -96,28 +80,17 @@ namespace Pulumi.Onelogin
 
         [Input("apps")]
         private InputList<int>? _apps;
-
-        /// <summary>
-        /// A list of app IDs that will be assigned to the role.
-        /// </summary>
         public InputList<int> Apps
         {
             get => _apps ?? (_apps = new InputList<int>());
             set => _apps = value;
         }
 
-        /// <summary>
-        /// The name of the role.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("users")]
         private InputList<int>? _users;
-
-        /// <summary>
-        /// A list of user IDs to assign to the role.
-        /// </summary>
         public InputList<int> Users
         {
             get => _users ?? (_users = new InputList<int>());
@@ -134,10 +107,6 @@ namespace Pulumi.Onelogin
     {
         [Input("admins")]
         private InputList<int>? _admins;
-
-        /// <summary>
-        /// A list of user IDs to assign as role administrators.
-        /// </summary>
         public InputList<int> Admins
         {
             get => _admins ?? (_admins = new InputList<int>());
@@ -146,28 +115,17 @@ namespace Pulumi.Onelogin
 
         [Input("apps")]
         private InputList<int>? _apps;
-
-        /// <summary>
-        /// A list of app IDs that will be assigned to the role.
-        /// </summary>
         public InputList<int> Apps
         {
             get => _apps ?? (_apps = new InputList<int>());
             set => _apps = value;
         }
 
-        /// <summary>
-        /// The name of the role.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("users")]
         private InputList<int>? _users;
-
-        /// <summary>
-        /// A list of user IDs to assign to the role.
-        /// </summary>
         public InputList<int> Users
         {
             get => _users ?? (_users = new InputList<int>());

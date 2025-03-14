@@ -6,9 +6,7 @@ package com.pulumi.onelogin;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.onelogin.inputs.ProviderEndpointArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,33 +16,41 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
 
-    @Import(name="apikeyAuth", required=true)
-    private Output<String> apikeyAuth;
+    @Import(name="clientId", required=true)
+    private Output<String> clientId;
 
-    public Output<String> apikeyAuth() {
-        return this.apikeyAuth;
+    public Output<String> clientId() {
+        return this.clientId;
     }
 
-    @Import(name="contentType")
-    private @Nullable Output<String> contentType;
+    @Import(name="clientSecret", required=true)
+    private Output<String> clientSecret;
 
-    public Optional<Output<String>> contentType() {
-        return Optional.ofNullable(this.contentType);
+    public Output<String> clientSecret() {
+        return this.clientSecret;
     }
 
-    @Import(name="endpoints", json=true)
-    private @Nullable Output<List<ProviderEndpointArgs>> endpoints;
+    @Import(name="region")
+    private @Nullable Output<String> region;
 
-    public Optional<Output<List<ProviderEndpointArgs>>> endpoints() {
-        return Optional.ofNullable(this.endpoints);
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
-        this.apikeyAuth = $.apikeyAuth;
-        this.contentType = $.contentType;
-        this.endpoints = $.endpoints;
+        this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
+        this.region = $.region;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -65,40 +71,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder apikeyAuth(Output<String> apikeyAuth) {
-            $.apikeyAuth = apikeyAuth;
+        public Builder clientId(Output<String> clientId) {
+            $.clientId = clientId;
             return this;
         }
 
-        public Builder apikeyAuth(String apikeyAuth) {
-            return apikeyAuth(Output.of(apikeyAuth));
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
-        public Builder contentType(@Nullable Output<String> contentType) {
-            $.contentType = contentType;
+        public Builder clientSecret(Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
             return this;
         }
 
-        public Builder contentType(String contentType) {
-            return contentType(Output.of(contentType));
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
-        public Builder endpoints(@Nullable Output<List<ProviderEndpointArgs>> endpoints) {
-            $.endpoints = endpoints;
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
             return this;
         }
 
-        public Builder endpoints(List<ProviderEndpointArgs> endpoints) {
-            return endpoints(Output.of(endpoints));
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
-        public Builder endpoints(ProviderEndpointArgs... endpoints) {
-            return endpoints(List.of(endpoints));
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public ProviderArgs build() {
-            if ($.apikeyAuth == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "apikeyAuth");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "clientSecret");
             }
             return $;
         }

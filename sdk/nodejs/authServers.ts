@@ -34,17 +34,8 @@ export class AuthServers extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthServers.__pulumiType;
     }
 
-    /**
-     * Authorization server configuration
-     */
     public readonly configuration!: pulumi.Output<outputs.AuthServersConfiguration>;
-    /**
-     * Description of what the API does.
-     */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * Name of the API.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -84,17 +75,8 @@ export class AuthServers extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthServers resources.
  */
 export interface AuthServersState {
-    /**
-     * Authorization server configuration
-     */
     configuration?: pulumi.Input<inputs.AuthServersConfiguration>;
-    /**
-     * Description of what the API does.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Name of the API.
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -102,16 +84,7 @@ export interface AuthServersState {
  * The set of arguments for constructing a AuthServers resource.
  */
 export interface AuthServersArgs {
-    /**
-     * Authorization server configuration
-     */
     configuration: pulumi.Input<inputs.AuthServersConfiguration>;
-    /**
-     * Description of what the API does.
-     */
     description: pulumi.Input<string>;
-    /**
-     * Name of the API.
-     */
     name?: pulumi.Input<string>;
 }

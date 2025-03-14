@@ -13,1097 +13,19 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type AppConfiguration struct {
-	// OIDC Apps only Number of minutes the refresh token will be valid for.
-	AccessTokenExpirationMinutes *int `pulumi:"accessTokenExpirationMinutes"`
-	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-	LoginUrl       *string `pulumi:"loginUrl"`
-	OidcApiVersion *string `pulumi:"oidcApiVersion"`
-	// OIDC Apps Only
-	//   - 0: Web
-	//   - 1: Native/Mobile
-	OidcApplicationType *int `pulumi:"oidcApplicationType"`
-	// OIDC Apps only
-	OidcEncryptionKey *string `pulumi:"oidcEncryptionKey"`
-	// OIDC Apps only
-	PostLogoutRedirectUri *string `pulumi:"postLogoutRedirectUri"`
-	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-	RedirectUri *string `pulumi:"redirectUri"`
-	// Number of minutes the refresh token will be valid for.
-	RefreshTokenExpirationMinutes *int `pulumi:"refreshTokenExpirationMinutes"`
-	// OIDC Apps only
-	//  - 0: Basic
-	//  - 1: POST
-	//  - 2: None / PKCE
-	TokenEndpointAuthMethod *int `pulumi:"tokenEndpointAuthMethod"`
-}
-
-// AppConfigurationInput is an input type that accepts AppConfigurationArgs and AppConfigurationOutput values.
-// You can construct a concrete instance of `AppConfigurationInput` via:
-//
-//	AppConfigurationArgs{...}
-type AppConfigurationInput interface {
-	pulumi.Input
-
-	ToAppConfigurationOutput() AppConfigurationOutput
-	ToAppConfigurationOutputWithContext(context.Context) AppConfigurationOutput
-}
-
-type AppConfigurationArgs struct {
-	// OIDC Apps only Number of minutes the refresh token will be valid for.
-	AccessTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"accessTokenExpirationMinutes"`
-	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-	LoginUrl       pulumi.StringPtrInput `pulumi:"loginUrl"`
-	OidcApiVersion pulumi.StringPtrInput `pulumi:"oidcApiVersion"`
-	// OIDC Apps Only
-	//   - 0: Web
-	//   - 1: Native/Mobile
-	OidcApplicationType pulumi.IntPtrInput `pulumi:"oidcApplicationType"`
-	// OIDC Apps only
-	OidcEncryptionKey pulumi.StringPtrInput `pulumi:"oidcEncryptionKey"`
-	// OIDC Apps only
-	PostLogoutRedirectUri pulumi.StringPtrInput `pulumi:"postLogoutRedirectUri"`
-	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
-	// Number of minutes the refresh token will be valid for.
-	RefreshTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"refreshTokenExpirationMinutes"`
-	// OIDC Apps only
-	//  - 0: Basic
-	//  - 1: POST
-	//  - 2: None / PKCE
-	TokenEndpointAuthMethod pulumi.IntPtrInput `pulumi:"tokenEndpointAuthMethod"`
-}
-
-func (AppConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppConfiguration)(nil)).Elem()
-}
-
-func (i AppConfigurationArgs) ToAppConfigurationOutput() AppConfigurationOutput {
-	return i.ToAppConfigurationOutputWithContext(context.Background())
-}
-
-func (i AppConfigurationArgs) ToAppConfigurationOutputWithContext(ctx context.Context) AppConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppConfigurationOutput)
-}
-
-func (i AppConfigurationArgs) ToAppConfigurationPtrOutput() AppConfigurationPtrOutput {
-	return i.ToAppConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i AppConfigurationArgs) ToAppConfigurationPtrOutputWithContext(ctx context.Context) AppConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppConfigurationOutput).ToAppConfigurationPtrOutputWithContext(ctx)
-}
-
-// AppConfigurationPtrInput is an input type that accepts AppConfigurationArgs, AppConfigurationPtr and AppConfigurationPtrOutput values.
-// You can construct a concrete instance of `AppConfigurationPtrInput` via:
-//
-//	        AppConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToAppConfigurationPtrOutput() AppConfigurationPtrOutput
-	ToAppConfigurationPtrOutputWithContext(context.Context) AppConfigurationPtrOutput
-}
-
-type appConfigurationPtrType AppConfigurationArgs
-
-func AppConfigurationPtr(v *AppConfigurationArgs) AppConfigurationPtrInput {
-	return (*appConfigurationPtrType)(v)
-}
-
-func (*appConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppConfiguration)(nil)).Elem()
-}
-
-func (i *appConfigurationPtrType) ToAppConfigurationPtrOutput() AppConfigurationPtrOutput {
-	return i.ToAppConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *appConfigurationPtrType) ToAppConfigurationPtrOutputWithContext(ctx context.Context) AppConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppConfigurationPtrOutput)
-}
-
-type AppConfigurationOutput struct{ *pulumi.OutputState }
-
-func (AppConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppConfiguration)(nil)).Elem()
-}
-
-func (o AppConfigurationOutput) ToAppConfigurationOutput() AppConfigurationOutput {
-	return o
-}
-
-func (o AppConfigurationOutput) ToAppConfigurationOutputWithContext(ctx context.Context) AppConfigurationOutput {
-	return o
-}
-
-func (o AppConfigurationOutput) ToAppConfigurationPtrOutput() AppConfigurationPtrOutput {
-	return o.ToAppConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o AppConfigurationOutput) ToAppConfigurationPtrOutputWithContext(ctx context.Context) AppConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConfiguration) *AppConfiguration {
-		return &v
-	}).(AppConfigurationPtrOutput)
-}
-
-// OIDC Apps only Number of minutes the refresh token will be valid for.
-func (o AppConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-func (o AppConfigurationOutput) LoginUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *string { return v.LoginUrl }).(pulumi.StringPtrOutput)
-}
-
-func (o AppConfigurationOutput) OidcApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *string { return v.OidcApiVersion }).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps Only
-//   - 0: Web
-//   - 1: Native/Mobile
-func (o AppConfigurationOutput) OidcApplicationType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *int { return v.OidcApplicationType }).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-func (o AppConfigurationOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *string { return v.OidcEncryptionKey }).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only
-func (o AppConfigurationOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *string { return v.PostLogoutRedirectUri }).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-func (o AppConfigurationOutput) RedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
-}
-
-// Number of minutes the refresh token will be valid for.
-func (o AppConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-//   - 0: Basic
-//   - 1: POST
-//   - 2: None / PKCE
-func (o AppConfigurationOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppConfiguration) *int { return v.TokenEndpointAuthMethod }).(pulumi.IntPtrOutput)
-}
-
-type AppConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (AppConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppConfiguration)(nil)).Elem()
-}
-
-func (o AppConfigurationPtrOutput) ToAppConfigurationPtrOutput() AppConfigurationPtrOutput {
-	return o
-}
-
-func (o AppConfigurationPtrOutput) ToAppConfigurationPtrOutputWithContext(ctx context.Context) AppConfigurationPtrOutput {
-	return o
-}
-
-func (o AppConfigurationPtrOutput) Elem() AppConfigurationOutput {
-	return o.ApplyT(func(v *AppConfiguration) AppConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret AppConfiguration
-		return ret
-	}).(AppConfigurationOutput)
-}
-
-// OIDC Apps only Number of minutes the refresh token will be valid for.
-func (o AppConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AccessTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-func (o AppConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LoginUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AppConfigurationPtrOutput) OidcApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OidcApiVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps Only
-//   - 0: Web
-//   - 1: Native/Mobile
-func (o AppConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.OidcApplicationType
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-func (o AppConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OidcEncryptionKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only
-func (o AppConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostLogoutRedirectUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-func (o AppConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedirectUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of minutes the refresh token will be valid for.
-func (o AppConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-//   - 0: Basic
-//   - 1: POST
-//   - 2: None / PKCE
-func (o AppConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TokenEndpointAuthMethod
-	}).(pulumi.IntPtrOutput)
-}
-
-type AppEnforcementPoint struct {
-	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-	CaseSensitive *bool `pulumi:"caseSensitive"`
-	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-	Conditions *string `pulumi:"conditions"`
-	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-	ContextRoot *string `pulumi:"contextRoot"`
-	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-	LandingPage *string `pulumi:"landingPage"`
-	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-	Permissions *string `pulumi:"permissions"`
-	// Require user authentication to access any resource protected by this enforcement point.
-	RequireSitewideAuthentication *bool `pulumi:"requireSitewideAuthentication"`
-	// Array of resource objects
-	Resources []AppEnforcementPointResource `pulumi:"resources"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryFixed *AppEnforcementPointSessionExpiryFixed `pulumi:"sessionExpiryFixed"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryInactivity *AppEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
-	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-	Target *string `pulumi:"target"`
-	// Can only be set on create. Access Gateway Token.
-	Token *string `pulumi:"token"`
-	// Use the target host header as opposed to the original gateway or upstream host header.
-	UseTargetHostHeader *bool `pulumi:"useTargetHostHeader"`
-	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-	Vhost *string `pulumi:"vhost"`
-}
-
-// AppEnforcementPointInput is an input type that accepts AppEnforcementPointArgs and AppEnforcementPointOutput values.
-// You can construct a concrete instance of `AppEnforcementPointInput` via:
-//
-//	AppEnforcementPointArgs{...}
-type AppEnforcementPointInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointOutput() AppEnforcementPointOutput
-	ToAppEnforcementPointOutputWithContext(context.Context) AppEnforcementPointOutput
-}
-
-type AppEnforcementPointArgs struct {
-	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
-	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-	Conditions pulumi.StringPtrInput `pulumi:"conditions"`
-	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-	ContextRoot pulumi.StringPtrInput `pulumi:"contextRoot"`
-	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-	LandingPage pulumi.StringPtrInput `pulumi:"landingPage"`
-	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
-	// Require user authentication to access any resource protected by this enforcement point.
-	RequireSitewideAuthentication pulumi.BoolPtrInput `pulumi:"requireSitewideAuthentication"`
-	// Array of resource objects
-	Resources AppEnforcementPointResourceArrayInput `pulumi:"resources"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryFixed AppEnforcementPointSessionExpiryFixedPtrInput `pulumi:"sessionExpiryFixed"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryInactivity AppEnforcementPointSessionExpiryInactivityPtrInput `pulumi:"sessionExpiryInactivity"`
-	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	// Can only be set on create. Access Gateway Token.
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	// Use the target host header as opposed to the original gateway or upstream host header.
-	UseTargetHostHeader pulumi.BoolPtrInput `pulumi:"useTargetHostHeader"`
-	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-	Vhost pulumi.StringPtrInput `pulumi:"vhost"`
-}
-
-func (AppEnforcementPointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPoint)(nil)).Elem()
-}
-
-func (i AppEnforcementPointArgs) ToAppEnforcementPointOutput() AppEnforcementPointOutput {
-	return i.ToAppEnforcementPointOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointArgs) ToAppEnforcementPointOutputWithContext(ctx context.Context) AppEnforcementPointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointOutput)
-}
-
-func (i AppEnforcementPointArgs) ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput {
-	return i.ToAppEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointArgs) ToAppEnforcementPointPtrOutputWithContext(ctx context.Context) AppEnforcementPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointOutput).ToAppEnforcementPointPtrOutputWithContext(ctx)
-}
-
-// AppEnforcementPointPtrInput is an input type that accepts AppEnforcementPointArgs, AppEnforcementPointPtr and AppEnforcementPointPtrOutput values.
-// You can construct a concrete instance of `AppEnforcementPointPtrInput` via:
-//
-//	        AppEnforcementPointArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppEnforcementPointPtrInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput
-	ToAppEnforcementPointPtrOutputWithContext(context.Context) AppEnforcementPointPtrOutput
-}
-
-type appEnforcementPointPtrType AppEnforcementPointArgs
-
-func AppEnforcementPointPtr(v *AppEnforcementPointArgs) AppEnforcementPointPtrInput {
-	return (*appEnforcementPointPtrType)(v)
-}
-
-func (*appEnforcementPointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPoint)(nil)).Elem()
-}
-
-func (i *appEnforcementPointPtrType) ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput {
-	return i.ToAppEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (i *appEnforcementPointPtrType) ToAppEnforcementPointPtrOutputWithContext(ctx context.Context) AppEnforcementPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointPtrOutput)
-}
-
-type AppEnforcementPointOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPoint)(nil)).Elem()
-}
-
-func (o AppEnforcementPointOutput) ToAppEnforcementPointOutput() AppEnforcementPointOutput {
-	return o
-}
-
-func (o AppEnforcementPointOutput) ToAppEnforcementPointOutputWithContext(ctx context.Context) AppEnforcementPointOutput {
-	return o
-}
-
-func (o AppEnforcementPointOutput) ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput {
-	return o.ToAppEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (o AppEnforcementPointOutput) ToAppEnforcementPointPtrOutputWithContext(ctx context.Context) AppEnforcementPointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEnforcementPoint) *AppEnforcementPoint {
-		return &v
-	}).(AppEnforcementPointPtrOutput)
-}
-
-// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-func (o AppEnforcementPointOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
-}
-
-// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-func (o AppEnforcementPointOutput) Conditions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Conditions }).(pulumi.StringPtrOutput)
-}
-
-// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-func (o AppEnforcementPointOutput) ContextRoot() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.ContextRoot }).(pulumi.StringPtrOutput)
-}
-
-// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-func (o AppEnforcementPointOutput) LandingPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.LandingPage }).(pulumi.StringPtrOutput)
-}
-
-// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-func (o AppEnforcementPointOutput) Permissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Permissions }).(pulumi.StringPtrOutput)
-}
-
-// Require user authentication to access any resource protected by this enforcement point.
-func (o AppEnforcementPointOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.RequireSitewideAuthentication }).(pulumi.BoolPtrOutput)
-}
-
-// Array of resource objects
-func (o AppEnforcementPointOutput) Resources() AppEnforcementPointResourceArrayOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) []AppEnforcementPointResource { return v.Resources }).(AppEnforcementPointResourceArrayOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o AppEnforcementPointOutput) SessionExpiryFixed() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *AppEnforcementPointSessionExpiryFixed { return v.SessionExpiryFixed }).(AppEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o AppEnforcementPointOutput) SessionExpiryInactivity() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *AppEnforcementPointSessionExpiryInactivity {
-		return v.SessionExpiryInactivity
-	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-func (o AppEnforcementPointOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// Can only be set on create. Access Gateway Token.
-func (o AppEnforcementPointOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Token }).(pulumi.StringPtrOutput)
-}
-
-// Use the target host header as opposed to the original gateway or upstream host header.
-func (o AppEnforcementPointOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *bool { return v.UseTargetHostHeader }).(pulumi.BoolPtrOutput)
-}
-
-// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-func (o AppEnforcementPointOutput) Vhost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPoint) *string { return v.Vhost }).(pulumi.StringPtrOutput)
-}
-
-type AppEnforcementPointPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPoint)(nil)).Elem()
-}
-
-func (o AppEnforcementPointPtrOutput) ToAppEnforcementPointPtrOutput() AppEnforcementPointPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointPtrOutput) ToAppEnforcementPointPtrOutputWithContext(ctx context.Context) AppEnforcementPointPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointPtrOutput) Elem() AppEnforcementPointOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) AppEnforcementPoint {
-		if v != nil {
-			return *v
-		}
-		var ret AppEnforcementPoint
-		return ret
-	}).(AppEnforcementPointOutput)
-}
-
-// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-func (o AppEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CaseSensitive
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-func (o AppEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(pulumi.StringPtrOutput)
-}
-
-// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-func (o AppEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContextRoot
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-func (o AppEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LandingPage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-func (o AppEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Permissions
-	}).(pulumi.StringPtrOutput)
-}
-
-// Require user authentication to access any resource protected by this enforcement point.
-func (o AppEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RequireSitewideAuthentication
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Array of resource objects
-func (o AppEnforcementPointPtrOutput) Resources() AppEnforcementPointResourceArrayOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) []AppEnforcementPointResource {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(AppEnforcementPointResourceArrayOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o AppEnforcementPointPtrOutput) SessionExpiryFixed() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *AppEnforcementPointSessionExpiryFixed {
-		if v == nil {
-			return nil
-		}
-		return v.SessionExpiryFixed
-	}).(AppEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o AppEnforcementPointPtrOutput) SessionExpiryInactivity() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *AppEnforcementPointSessionExpiryInactivity {
-		if v == nil {
-			return nil
-		}
-		return v.SessionExpiryInactivity
-	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-func (o AppEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-// Can only be set on create. Access Gateway Token.
-func (o AppEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
-// Use the target host header as opposed to the original gateway or upstream host header.
-func (o AppEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseTargetHostHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-func (o AppEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vhost
-	}).(pulumi.StringPtrOutput)
-}
-
-type AppEnforcementPointResource struct {
-	// required if permission == "conditions"
-	Conditions  *string `pulumi:"conditions"`
-	IsPathRegex *bool   `pulumi:"isPathRegex"`
-	Path        *string `pulumi:"path"`
-	Permission  *string `pulumi:"permission"`
-	RequireAuth *bool   `pulumi:"requireAuth"`
-}
-
-// AppEnforcementPointResourceInput is an input type that accepts AppEnforcementPointResourceArgs and AppEnforcementPointResourceOutput values.
-// You can construct a concrete instance of `AppEnforcementPointResourceInput` via:
-//
-//	AppEnforcementPointResourceArgs{...}
-type AppEnforcementPointResourceInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointResourceOutput() AppEnforcementPointResourceOutput
-	ToAppEnforcementPointResourceOutputWithContext(context.Context) AppEnforcementPointResourceOutput
-}
-
-type AppEnforcementPointResourceArgs struct {
-	// required if permission == "conditions"
-	Conditions  pulumi.StringPtrInput `pulumi:"conditions"`
-	IsPathRegex pulumi.BoolPtrInput   `pulumi:"isPathRegex"`
-	Path        pulumi.StringPtrInput `pulumi:"path"`
-	Permission  pulumi.StringPtrInput `pulumi:"permission"`
-	RequireAuth pulumi.BoolPtrInput   `pulumi:"requireAuth"`
-}
-
-func (AppEnforcementPointResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointResource)(nil)).Elem()
-}
-
-func (i AppEnforcementPointResourceArgs) ToAppEnforcementPointResourceOutput() AppEnforcementPointResourceOutput {
-	return i.ToAppEnforcementPointResourceOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointResourceArgs) ToAppEnforcementPointResourceOutputWithContext(ctx context.Context) AppEnforcementPointResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointResourceOutput)
-}
-
-// AppEnforcementPointResourceArrayInput is an input type that accepts AppEnforcementPointResourceArray and AppEnforcementPointResourceArrayOutput values.
-// You can construct a concrete instance of `AppEnforcementPointResourceArrayInput` via:
-//
-//	AppEnforcementPointResourceArray{ AppEnforcementPointResourceArgs{...} }
-type AppEnforcementPointResourceArrayInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointResourceArrayOutput() AppEnforcementPointResourceArrayOutput
-	ToAppEnforcementPointResourceArrayOutputWithContext(context.Context) AppEnforcementPointResourceArrayOutput
-}
-
-type AppEnforcementPointResourceArray []AppEnforcementPointResourceInput
-
-func (AppEnforcementPointResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppEnforcementPointResource)(nil)).Elem()
-}
-
-func (i AppEnforcementPointResourceArray) ToAppEnforcementPointResourceArrayOutput() AppEnforcementPointResourceArrayOutput {
-	return i.ToAppEnforcementPointResourceArrayOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointResourceArray) ToAppEnforcementPointResourceArrayOutputWithContext(ctx context.Context) AppEnforcementPointResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointResourceArrayOutput)
-}
-
-type AppEnforcementPointResourceOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointResource)(nil)).Elem()
-}
-
-func (o AppEnforcementPointResourceOutput) ToAppEnforcementPointResourceOutput() AppEnforcementPointResourceOutput {
-	return o
-}
-
-func (o AppEnforcementPointResourceOutput) ToAppEnforcementPointResourceOutputWithContext(ctx context.Context) AppEnforcementPointResourceOutput {
-	return o
-}
-
-// required if permission == "conditions"
-func (o AppEnforcementPointResourceOutput) Conditions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointResource) *string { return v.Conditions }).(pulumi.StringPtrOutput)
-}
-
-func (o AppEnforcementPointResourceOutput) IsPathRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointResource) *bool { return v.IsPathRegex }).(pulumi.BoolPtrOutput)
-}
-
-func (o AppEnforcementPointResourceOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointResource) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-func (o AppEnforcementPointResourceOutput) Permission() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointResource) *string { return v.Permission }).(pulumi.StringPtrOutput)
-}
-
-func (o AppEnforcementPointResourceOutput) RequireAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointResource) *bool { return v.RequireAuth }).(pulumi.BoolPtrOutput)
-}
-
-type AppEnforcementPointResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppEnforcementPointResource)(nil)).Elem()
-}
-
-func (o AppEnforcementPointResourceArrayOutput) ToAppEnforcementPointResourceArrayOutput() AppEnforcementPointResourceArrayOutput {
-	return o
-}
-
-func (o AppEnforcementPointResourceArrayOutput) ToAppEnforcementPointResourceArrayOutputWithContext(ctx context.Context) AppEnforcementPointResourceArrayOutput {
-	return o
-}
-
-func (o AppEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) AppEnforcementPointResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEnforcementPointResource {
-		return vs[0].([]AppEnforcementPointResource)[vs[1].(int)]
-	}).(AppEnforcementPointResourceOutput)
-}
-
-type AppEnforcementPointSessionExpiryFixed struct {
-	Unit  *int `pulumi:"unit"`
-	Value *int `pulumi:"value"`
-}
-
-// AppEnforcementPointSessionExpiryFixedInput is an input type that accepts AppEnforcementPointSessionExpiryFixedArgs and AppEnforcementPointSessionExpiryFixedOutput values.
-// You can construct a concrete instance of `AppEnforcementPointSessionExpiryFixedInput` via:
-//
-//	AppEnforcementPointSessionExpiryFixedArgs{...}
-type AppEnforcementPointSessionExpiryFixedInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointSessionExpiryFixedOutput() AppEnforcementPointSessionExpiryFixedOutput
-	ToAppEnforcementPointSessionExpiryFixedOutputWithContext(context.Context) AppEnforcementPointSessionExpiryFixedOutput
-}
-
-type AppEnforcementPointSessionExpiryFixedArgs struct {
-	Unit  pulumi.IntPtrInput `pulumi:"unit"`
-	Value pulumi.IntPtrInput `pulumi:"value"`
-}
-
-func (AppEnforcementPointSessionExpiryFixedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedOutput() AppEnforcementPointSessionExpiryFixedOutput {
-	return i.ToAppEnforcementPointSessionExpiryFixedOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryFixedOutput)
-}
-
-func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return i.ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointSessionExpiryFixedArgs) ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryFixedOutput).ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx)
-}
-
-// AppEnforcementPointSessionExpiryFixedPtrInput is an input type that accepts AppEnforcementPointSessionExpiryFixedArgs, AppEnforcementPointSessionExpiryFixedPtr and AppEnforcementPointSessionExpiryFixedPtrOutput values.
-// You can construct a concrete instance of `AppEnforcementPointSessionExpiryFixedPtrInput` via:
-//
-//	        AppEnforcementPointSessionExpiryFixedArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppEnforcementPointSessionExpiryFixedPtrInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput
-	ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput
-}
-
-type appEnforcementPointSessionExpiryFixedPtrType AppEnforcementPointSessionExpiryFixedArgs
-
-func AppEnforcementPointSessionExpiryFixedPtr(v *AppEnforcementPointSessionExpiryFixedArgs) AppEnforcementPointSessionExpiryFixedPtrInput {
-	return (*appEnforcementPointSessionExpiryFixedPtrType)(v)
-}
-
-func (*appEnforcementPointSessionExpiryFixedPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (i *appEnforcementPointSessionExpiryFixedPtrType) ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return i.ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (i *appEnforcementPointSessionExpiryFixedPtrType) ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-type AppEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) ToAppEnforcementPointSessionExpiryFixedOutput() AppEnforcementPointSessionExpiryFixedOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) ToAppEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEnforcementPointSessionExpiryFixed) *AppEnforcementPointSessionExpiryFixed {
-		return &v
-	}).(AppEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointSessionExpiryFixed) *int { return v.Unit }).(pulumi.IntPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryFixedOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointSessionExpiryFixed) *int { return v.Value }).(pulumi.IntPtrOutput)
-}
-
-type AppEnforcementPointSessionExpiryFixedPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointSessionExpiryFixedPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (o AppEnforcementPointSessionExpiryFixedPtrOutput) ToAppEnforcementPointSessionExpiryFixedPtrOutput() AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryFixedPtrOutput) ToAppEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryFixedPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryFixedPtrOutput) Elem() AppEnforcementPointSessionExpiryFixedOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryFixed) AppEnforcementPointSessionExpiryFixed {
-		if v != nil {
-			return *v
-		}
-		var ret AppEnforcementPointSessionExpiryFixed
-		return ret
-	}).(AppEnforcementPointSessionExpiryFixedOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryFixedPtrOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryFixed) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Unit
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryFixedPtrOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryFixed) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.IntPtrOutput)
-}
-
-type AppEnforcementPointSessionExpiryInactivity struct {
-	Unit  *int `pulumi:"unit"`
-	Value *int `pulumi:"value"`
-}
-
-// AppEnforcementPointSessionExpiryInactivityInput is an input type that accepts AppEnforcementPointSessionExpiryInactivityArgs and AppEnforcementPointSessionExpiryInactivityOutput values.
-// You can construct a concrete instance of `AppEnforcementPointSessionExpiryInactivityInput` via:
-//
-//	AppEnforcementPointSessionExpiryInactivityArgs{...}
-type AppEnforcementPointSessionExpiryInactivityInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointSessionExpiryInactivityOutput() AppEnforcementPointSessionExpiryInactivityOutput
-	ToAppEnforcementPointSessionExpiryInactivityOutputWithContext(context.Context) AppEnforcementPointSessionExpiryInactivityOutput
-}
-
-type AppEnforcementPointSessionExpiryInactivityArgs struct {
-	Unit  pulumi.IntPtrInput `pulumi:"unit"`
-	Value pulumi.IntPtrInput `pulumi:"value"`
-}
-
-func (AppEnforcementPointSessionExpiryInactivityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSessionExpiryInactivityOutput() AppEnforcementPointSessionExpiryInactivityOutput {
-	return i.ToAppEnforcementPointSessionExpiryInactivityOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryInactivityOutput)
-}
-
-func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return i.ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (i AppEnforcementPointSessionExpiryInactivityArgs) ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryInactivityOutput).ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx)
-}
-
-// AppEnforcementPointSessionExpiryInactivityPtrInput is an input type that accepts AppEnforcementPointSessionExpiryInactivityArgs, AppEnforcementPointSessionExpiryInactivityPtr and AppEnforcementPointSessionExpiryInactivityPtrOutput values.
-// You can construct a concrete instance of `AppEnforcementPointSessionExpiryInactivityPtrInput` via:
-//
-//	        AppEnforcementPointSessionExpiryInactivityArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppEnforcementPointSessionExpiryInactivityPtrInput interface {
-	pulumi.Input
-
-	ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput
-	ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput
-}
-
-type appEnforcementPointSessionExpiryInactivityPtrType AppEnforcementPointSessionExpiryInactivityArgs
-
-func AppEnforcementPointSessionExpiryInactivityPtr(v *AppEnforcementPointSessionExpiryInactivityArgs) AppEnforcementPointSessionExpiryInactivityPtrInput {
-	return (*appEnforcementPointSessionExpiryInactivityPtrType)(v)
-}
-
-func (*appEnforcementPointSessionExpiryInactivityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (i *appEnforcementPointSessionExpiryInactivityPtrType) ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return i.ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (i *appEnforcementPointSessionExpiryInactivityPtrType) ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-type AppEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) ToAppEnforcementPointSessionExpiryInactivityOutput() AppEnforcementPointSessionExpiryInactivityOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) ToAppEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEnforcementPointSessionExpiryInactivity) *AppEnforcementPointSessionExpiryInactivity {
-		return &v
-	}).(AppEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointSessionExpiryInactivity) *int { return v.Unit }).(pulumi.IntPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppEnforcementPointSessionExpiryInactivity) *int { return v.Value }).(pulumi.IntPtrOutput)
-}
-
-type AppEnforcementPointSessionExpiryInactivityPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEnforcementPointSessionExpiryInactivityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) ToAppEnforcementPointSessionExpiryInactivityPtrOutput() AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) ToAppEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) AppEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) Elem() AppEnforcementPointSessionExpiryInactivityOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryInactivity) AppEnforcementPointSessionExpiryInactivity {
-		if v != nil {
-			return *v
-		}
-		var ret AppEnforcementPointSessionExpiryInactivity
-		return ret
-	}).(AppEnforcementPointSessionExpiryInactivityOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryInactivity) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Unit
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o AppEnforcementPointSessionExpiryInactivityPtrOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppEnforcementPointSessionExpiryInactivity) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.IntPtrOutput)
-}
-
 type AppParameters struct {
-	Groups *AppParametersGroups `pulumi:"groups"`
+	AttributesTransformations *string `pulumi:"attributesTransformations"`
+	DefaultValues             *string `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    *bool   `pulumi:"includeInSamlAssertion"`
+	Label                     *string `pulumi:"label"`
+	ParamId                   *int    `pulumi:"paramId"`
+	ParamKeyName              string  `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   *bool   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   *bool   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               *bool   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       *string `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     *string `pulumi:"userAttributeMappings"`
+	Values                    *string `pulumi:"values"`
 }
 
 // AppParametersInput is an input type that accepts AppParametersArgs and AppParametersOutput values.
@@ -1118,7 +40,18 @@ type AppParametersInput interface {
 }
 
 type AppParametersArgs struct {
-	Groups AppParametersGroupsPtrInput `pulumi:"groups"`
+	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
+	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    pulumi.BoolPtrInput   `pulumi:"includeInSamlAssertion"`
+	Label                     pulumi.StringPtrInput `pulumi:"label"`
+	ParamId                   pulumi.IntPtrInput    `pulumi:"paramId"`
+	ParamKeyName              pulumi.StringInput    `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   pulumi.BoolPtrInput   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   pulumi.BoolPtrInput   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               pulumi.BoolPtrInput   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
+	Values                    pulumi.StringPtrInput `pulumi:"values"`
 }
 
 func (AppParametersArgs) ElementType() reflect.Type {
@@ -1198,8 +131,52 @@ func (o AppParametersOutput) ToAppParametersPtrOutputWithContext(ctx context.Con
 	}).(AppParametersPtrOutput)
 }
 
-func (o AppParametersOutput) Groups() AppParametersGroupsPtrOutput {
-	return o.ApplyT(func(v AppParameters) *AppParametersGroups { return v.Groups }).(AppParametersGroupsPtrOutput)
+func (o AppParametersOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppParameters) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppParametersOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppParameters) *int { return v.ParamId }).(pulumi.IntPtrOutput)
+}
+
+func (o AppParametersOutput) ParamKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AppParameters) string { return v.ParamKeyName }).(pulumi.StringOutput)
+}
+
+func (o AppParametersOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppParameters) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppParametersOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppParameters) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppParametersOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppParameters) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppParametersOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppParameters) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
 type AppParametersPtrOutput struct{ *pulumi.OutputState }
@@ -1226,189 +203,8 @@ func (o AppParametersPtrOutput) Elem() AppParametersOutput {
 	}).(AppParametersOutput)
 }
 
-func (o AppParametersPtrOutput) Groups() AppParametersGroupsPtrOutput {
-	return o.ApplyT(func(v *AppParameters) *AppParametersGroups {
-		if v == nil {
-			return nil
-		}
-		return v.Groups
-	}).(AppParametersGroupsPtrOutput)
-}
-
-type AppParametersGroups struct {
-	AttributesTransformations *string `pulumi:"attributesTransformations"`
-	DefaultValues             *string `pulumi:"defaultValues"`
-	Id                        *int    `pulumi:"id"`
-	Label                     *string `pulumi:"label"`
-	ProvisionedEntitlements   *bool   `pulumi:"provisionedEntitlements"`
-	SkipIfBlank               *bool   `pulumi:"skipIfBlank"`
-	UserAttributeMacros       *string `pulumi:"userAttributeMacros"`
-	UserAttributeMappings     *string `pulumi:"userAttributeMappings"`
-	Values                    *string `pulumi:"values"`
-}
-
-// AppParametersGroupsInput is an input type that accepts AppParametersGroupsArgs and AppParametersGroupsOutput values.
-// You can construct a concrete instance of `AppParametersGroupsInput` via:
-//
-//	AppParametersGroupsArgs{...}
-type AppParametersGroupsInput interface {
-	pulumi.Input
-
-	ToAppParametersGroupsOutput() AppParametersGroupsOutput
-	ToAppParametersGroupsOutputWithContext(context.Context) AppParametersGroupsOutput
-}
-
-type AppParametersGroupsArgs struct {
-	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
-	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
-	Id                        pulumi.IntPtrInput    `pulumi:"id"`
-	Label                     pulumi.StringPtrInput `pulumi:"label"`
-	ProvisionedEntitlements   pulumi.BoolPtrInput   `pulumi:"provisionedEntitlements"`
-	SkipIfBlank               pulumi.BoolPtrInput   `pulumi:"skipIfBlank"`
-	UserAttributeMacros       pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
-	UserAttributeMappings     pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
-	Values                    pulumi.StringPtrInput `pulumi:"values"`
-}
-
-func (AppParametersGroupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppParametersGroups)(nil)).Elem()
-}
-
-func (i AppParametersGroupsArgs) ToAppParametersGroupsOutput() AppParametersGroupsOutput {
-	return i.ToAppParametersGroupsOutputWithContext(context.Background())
-}
-
-func (i AppParametersGroupsArgs) ToAppParametersGroupsOutputWithContext(ctx context.Context) AppParametersGroupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppParametersGroupsOutput)
-}
-
-func (i AppParametersGroupsArgs) ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput {
-	return i.ToAppParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i AppParametersGroupsArgs) ToAppParametersGroupsPtrOutputWithContext(ctx context.Context) AppParametersGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppParametersGroupsOutput).ToAppParametersGroupsPtrOutputWithContext(ctx)
-}
-
-// AppParametersGroupsPtrInput is an input type that accepts AppParametersGroupsArgs, AppParametersGroupsPtr and AppParametersGroupsPtrOutput values.
-// You can construct a concrete instance of `AppParametersGroupsPtrInput` via:
-//
-//	        AppParametersGroupsArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppParametersGroupsPtrInput interface {
-	pulumi.Input
-
-	ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput
-	ToAppParametersGroupsPtrOutputWithContext(context.Context) AppParametersGroupsPtrOutput
-}
-
-type appParametersGroupsPtrType AppParametersGroupsArgs
-
-func AppParametersGroupsPtr(v *AppParametersGroupsArgs) AppParametersGroupsPtrInput {
-	return (*appParametersGroupsPtrType)(v)
-}
-
-func (*appParametersGroupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppParametersGroups)(nil)).Elem()
-}
-
-func (i *appParametersGroupsPtrType) ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput {
-	return i.ToAppParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i *appParametersGroupsPtrType) ToAppParametersGroupsPtrOutputWithContext(ctx context.Context) AppParametersGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppParametersGroupsPtrOutput)
-}
-
-type AppParametersGroupsOutput struct{ *pulumi.OutputState }
-
-func (AppParametersGroupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppParametersGroups)(nil)).Elem()
-}
-
-func (o AppParametersGroupsOutput) ToAppParametersGroupsOutput() AppParametersGroupsOutput {
-	return o
-}
-
-func (o AppParametersGroupsOutput) ToAppParametersGroupsOutputWithContext(ctx context.Context) AppParametersGroupsOutput {
-	return o
-}
-
-func (o AppParametersGroupsOutput) ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput {
-	return o.ToAppParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (o AppParametersGroupsOutput) ToAppParametersGroupsPtrOutputWithContext(ctx context.Context) AppParametersGroupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppParametersGroups) *AppParametersGroups {
-		return &v
-	}).(AppParametersGroupsPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *int { return v.Id }).(pulumi.IntPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
-}
-
-func (o AppParametersGroupsOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppParametersGroups) *string { return v.Values }).(pulumi.StringPtrOutput)
-}
-
-type AppParametersGroupsPtrOutput struct{ *pulumi.OutputState }
-
-func (AppParametersGroupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppParametersGroups)(nil)).Elem()
-}
-
-func (o AppParametersGroupsPtrOutput) ToAppParametersGroupsPtrOutput() AppParametersGroupsPtrOutput {
-	return o
-}
-
-func (o AppParametersGroupsPtrOutput) ToAppParametersGroupsPtrOutputWithContext(ctx context.Context) AppParametersGroupsPtrOutput {
-	return o
-}
-
-func (o AppParametersGroupsPtrOutput) Elem() AppParametersGroupsOutput {
-	return o.ApplyT(func(v *AppParametersGroups) AppParametersGroups {
-		if v != nil {
-			return *v
-		}
-		var ret AppParametersGroups
-		return ret
-	}).(AppParametersGroupsOutput)
-}
-
-func (o AppParametersGroupsPtrOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1416,8 +212,8 @@ func (o AppParametersGroupsPtrOutput) AttributesTransformations() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1425,17 +221,17 @@ func (o AppParametersGroupsPtrOutput) DefaultValues() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *int {
+func (o AppParametersPtrOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.Id
-	}).(pulumi.IntPtrOutput)
+		return v.IncludeInSamlAssertion
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1443,8 +239,26 @@ func (o AppParametersGroupsPtrOutput) Label() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *bool {
+func (o AppParametersPtrOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ParamId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AppParametersPtrOutput) ParamKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ParamKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppParametersPtrOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1452,8 +266,17 @@ func (o AppParametersGroupsPtrOutput) ProvisionedEntitlements() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *bool {
+func (o AppParametersPtrOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SafeEntitlementsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AppParametersPtrOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1461,8 +284,8 @@ func (o AppParametersGroupsPtrOutput) SkipIfBlank() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1470,8 +293,8 @@ func (o AppParametersGroupsPtrOutput) UserAttributeMacros() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1479,8 +302,8 @@ func (o AppParametersGroupsPtrOutput) UserAttributeMappings() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o AppParametersGroupsPtrOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppParametersGroups) *string {
+func (o AppParametersPtrOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppParameters) *string {
 		if v == nil {
 			return nil
 		}
@@ -1488,558 +311,223 @@ func (o AppParametersGroupsPtrOutput) Values() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type AppProvisioning struct {
-	Enabled *bool   `pulumi:"enabled"`
-	Status  *string `pulumi:"status"`
+type AppRulesAction struct {
+	Action     string   `pulumi:"action"`
+	Expression *string  `pulumi:"expression"`
+	Values     []string `pulumi:"values"`
 }
 
-// AppProvisioningInput is an input type that accepts AppProvisioningArgs and AppProvisioningOutput values.
-// You can construct a concrete instance of `AppProvisioningInput` via:
+// AppRulesActionInput is an input type that accepts AppRulesActionArgs and AppRulesActionOutput values.
+// You can construct a concrete instance of `AppRulesActionInput` via:
 //
-//	AppProvisioningArgs{...}
-type AppProvisioningInput interface {
+//	AppRulesActionArgs{...}
+type AppRulesActionInput interface {
 	pulumi.Input
 
-	ToAppProvisioningOutput() AppProvisioningOutput
-	ToAppProvisioningOutputWithContext(context.Context) AppProvisioningOutput
+	ToAppRulesActionOutput() AppRulesActionOutput
+	ToAppRulesActionOutputWithContext(context.Context) AppRulesActionOutput
 }
 
-type AppProvisioningArgs struct {
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Status  pulumi.StringPtrInput `pulumi:"status"`
+type AppRulesActionArgs struct {
+	Action     pulumi.StringInput      `pulumi:"action"`
+	Expression pulumi.StringPtrInput   `pulumi:"expression"`
+	Values     pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (AppProvisioningArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProvisioning)(nil)).Elem()
+func (AppRulesActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRulesAction)(nil)).Elem()
 }
 
-func (i AppProvisioningArgs) ToAppProvisioningOutput() AppProvisioningOutput {
-	return i.ToAppProvisioningOutputWithContext(context.Background())
+func (i AppRulesActionArgs) ToAppRulesActionOutput() AppRulesActionOutput {
+	return i.ToAppRulesActionOutputWithContext(context.Background())
 }
 
-func (i AppProvisioningArgs) ToAppProvisioningOutputWithContext(ctx context.Context) AppProvisioningOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningOutput)
+func (i AppRulesActionArgs) ToAppRulesActionOutputWithContext(ctx context.Context) AppRulesActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRulesActionOutput)
 }
 
-func (i AppProvisioningArgs) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
-	return i.ToAppProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i AppProvisioningArgs) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningOutput).ToAppProvisioningPtrOutputWithContext(ctx)
-}
-
-// AppProvisioningPtrInput is an input type that accepts AppProvisioningArgs, AppProvisioningPtr and AppProvisioningPtrOutput values.
-// You can construct a concrete instance of `AppProvisioningPtrInput` via:
+// AppRulesActionArrayInput is an input type that accepts AppRulesActionArray and AppRulesActionArrayOutput values.
+// You can construct a concrete instance of `AppRulesActionArrayInput` via:
 //
-//	        AppProvisioningArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppProvisioningPtrInput interface {
+//	AppRulesActionArray{ AppRulesActionArgs{...} }
+type AppRulesActionArrayInput interface {
 	pulumi.Input
 
-	ToAppProvisioningPtrOutput() AppProvisioningPtrOutput
-	ToAppProvisioningPtrOutputWithContext(context.Context) AppProvisioningPtrOutput
+	ToAppRulesActionArrayOutput() AppRulesActionArrayOutput
+	ToAppRulesActionArrayOutputWithContext(context.Context) AppRulesActionArrayOutput
 }
 
-type appProvisioningPtrType AppProvisioningArgs
+type AppRulesActionArray []AppRulesActionInput
 
-func AppProvisioningPtr(v *AppProvisioningArgs) AppProvisioningPtrInput {
-	return (*appProvisioningPtrType)(v)
+func (AppRulesActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRulesAction)(nil)).Elem()
 }
 
-func (*appProvisioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppProvisioning)(nil)).Elem()
+func (i AppRulesActionArray) ToAppRulesActionArrayOutput() AppRulesActionArrayOutput {
+	return i.ToAppRulesActionArrayOutputWithContext(context.Background())
 }
 
-func (i *appProvisioningPtrType) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
-	return i.ToAppProvisioningPtrOutputWithContext(context.Background())
+func (i AppRulesActionArray) ToAppRulesActionArrayOutputWithContext(ctx context.Context) AppRulesActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRulesActionArrayOutput)
 }
 
-func (i *appProvisioningPtrType) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppProvisioningPtrOutput)
+type AppRulesActionOutput struct{ *pulumi.OutputState }
+
+func (AppRulesActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRulesAction)(nil)).Elem()
 }
 
-type AppProvisioningOutput struct{ *pulumi.OutputState }
-
-func (AppProvisioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProvisioning)(nil)).Elem()
-}
-
-func (o AppProvisioningOutput) ToAppProvisioningOutput() AppProvisioningOutput {
+func (o AppRulesActionOutput) ToAppRulesActionOutput() AppRulesActionOutput {
 	return o
 }
 
-func (o AppProvisioningOutput) ToAppProvisioningOutputWithContext(ctx context.Context) AppProvisioningOutput {
+func (o AppRulesActionOutput) ToAppRulesActionOutputWithContext(ctx context.Context) AppRulesActionOutput {
 	return o
 }
 
-func (o AppProvisioningOutput) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
-	return o.ToAppProvisioningPtrOutputWithContext(context.Background())
+func (o AppRulesActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRulesAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o AppProvisioningOutput) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProvisioning) *AppProvisioning {
-		return &v
-	}).(AppProvisioningPtrOutput)
+func (o AppRulesActionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppRulesAction) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-func (o AppProvisioningOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AppProvisioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o AppRulesActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppRulesAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-func (o AppProvisioningOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppProvisioning) *string { return v.Status }).(pulumi.StringPtrOutput)
+type AppRulesActionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppRulesActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRulesAction)(nil)).Elem()
 }
 
-type AppProvisioningPtrOutput struct{ *pulumi.OutputState }
-
-func (AppProvisioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppProvisioning)(nil)).Elem()
-}
-
-func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutput() AppProvisioningPtrOutput {
+func (o AppRulesActionArrayOutput) ToAppRulesActionArrayOutput() AppRulesActionArrayOutput {
 	return o
 }
 
-func (o AppProvisioningPtrOutput) ToAppProvisioningPtrOutputWithContext(ctx context.Context) AppProvisioningPtrOutput {
+func (o AppRulesActionArrayOutput) ToAppRulesActionArrayOutputWithContext(ctx context.Context) AppRulesActionArrayOutput {
 	return o
 }
 
-func (o AppProvisioningPtrOutput) Elem() AppProvisioningOutput {
-	return o.ApplyT(func(v *AppProvisioning) AppProvisioning {
-		if v != nil {
-			return *v
-		}
-		var ret AppProvisioning
-		return ret
-	}).(AppProvisioningOutput)
+func (o AppRulesActionArrayOutput) Index(i pulumi.IntInput) AppRulesActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRulesAction {
+		return vs[0].([]AppRulesAction)[vs[1].(int)]
+	}).(AppRulesActionOutput)
 }
 
-func (o AppProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppProvisioning) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
+type AppRulesCondition struct {
+	Operator string `pulumi:"operator"`
+	Source   string `pulumi:"source"`
+	Value    string `pulumi:"value"`
 }
 
-func (o AppProvisioningPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppProvisioning) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type AppSso struct {
-	// App Name.	This is only returned after Creating a SAML App.
-	AcsUrl *string `pulumi:"acsUrl"`
-	// The certificate used for signing.	This is only returned after Creating a SAML App.
-	Certificate *AppSsoCertificate `pulumi:"certificate"`
-	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-	ClientId *string `pulumi:"clientId"`
-	// OpenId Connet Client Secret
-	ClientSecret *string `pulumi:"clientSecret"`
-	// Issuer of app.	This is only returned after Creating a SAML App.
-	Issuer *string `pulumi:"issuer"`
-	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-	MetadataUrl *string `pulumi:"metadataUrl"`
-}
-
-// AppSsoInput is an input type that accepts AppSsoArgs and AppSsoOutput values.
-// You can construct a concrete instance of `AppSsoInput` via:
+// AppRulesConditionInput is an input type that accepts AppRulesConditionArgs and AppRulesConditionOutput values.
+// You can construct a concrete instance of `AppRulesConditionInput` via:
 //
-//	AppSsoArgs{...}
-type AppSsoInput interface {
+//	AppRulesConditionArgs{...}
+type AppRulesConditionInput interface {
 	pulumi.Input
 
-	ToAppSsoOutput() AppSsoOutput
-	ToAppSsoOutputWithContext(context.Context) AppSsoOutput
+	ToAppRulesConditionOutput() AppRulesConditionOutput
+	ToAppRulesConditionOutputWithContext(context.Context) AppRulesConditionOutput
 }
 
-type AppSsoArgs struct {
-	// App Name.	This is only returned after Creating a SAML App.
-	AcsUrl pulumi.StringPtrInput `pulumi:"acsUrl"`
-	// The certificate used for signing.	This is only returned after Creating a SAML App.
-	Certificate AppSsoCertificatePtrInput `pulumi:"certificate"`
-	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// OpenId Connet Client Secret
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Issuer of app.	This is only returned after Creating a SAML App.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-	MetadataUrl pulumi.StringPtrInput `pulumi:"metadataUrl"`
+type AppRulesConditionArgs struct {
+	Operator pulumi.StringInput `pulumi:"operator"`
+	Source   pulumi.StringInput `pulumi:"source"`
+	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (AppSsoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSso)(nil)).Elem()
+func (AppRulesConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRulesCondition)(nil)).Elem()
 }
 
-func (i AppSsoArgs) ToAppSsoOutput() AppSsoOutput {
-	return i.ToAppSsoOutputWithContext(context.Background())
+func (i AppRulesConditionArgs) ToAppRulesConditionOutput() AppRulesConditionOutput {
+	return i.ToAppRulesConditionOutputWithContext(context.Background())
 }
 
-func (i AppSsoArgs) ToAppSsoOutputWithContext(ctx context.Context) AppSsoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoOutput)
+func (i AppRulesConditionArgs) ToAppRulesConditionOutputWithContext(ctx context.Context) AppRulesConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRulesConditionOutput)
 }
 
-func (i AppSsoArgs) ToAppSsoPtrOutput() AppSsoPtrOutput {
-	return i.ToAppSsoPtrOutputWithContext(context.Background())
-}
-
-func (i AppSsoArgs) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoOutput).ToAppSsoPtrOutputWithContext(ctx)
-}
-
-// AppSsoPtrInput is an input type that accepts AppSsoArgs, AppSsoPtr and AppSsoPtrOutput values.
-// You can construct a concrete instance of `AppSsoPtrInput` via:
+// AppRulesConditionArrayInput is an input type that accepts AppRulesConditionArray and AppRulesConditionArrayOutput values.
+// You can construct a concrete instance of `AppRulesConditionArrayInput` via:
 //
-//	        AppSsoArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppSsoPtrInput interface {
+//	AppRulesConditionArray{ AppRulesConditionArgs{...} }
+type AppRulesConditionArrayInput interface {
 	pulumi.Input
 
-	ToAppSsoPtrOutput() AppSsoPtrOutput
-	ToAppSsoPtrOutputWithContext(context.Context) AppSsoPtrOutput
+	ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput
+	ToAppRulesConditionArrayOutputWithContext(context.Context) AppRulesConditionArrayOutput
 }
 
-type appSsoPtrType AppSsoArgs
+type AppRulesConditionArray []AppRulesConditionInput
 
-func AppSsoPtr(v *AppSsoArgs) AppSsoPtrInput {
-	return (*appSsoPtrType)(v)
+func (AppRulesConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRulesCondition)(nil)).Elem()
 }
 
-func (*appSsoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppSso)(nil)).Elem()
+func (i AppRulesConditionArray) ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput {
+	return i.ToAppRulesConditionArrayOutputWithContext(context.Background())
 }
 
-func (i *appSsoPtrType) ToAppSsoPtrOutput() AppSsoPtrOutput {
-	return i.ToAppSsoPtrOutputWithContext(context.Background())
+func (i AppRulesConditionArray) ToAppRulesConditionArrayOutputWithContext(ctx context.Context) AppRulesConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppRulesConditionArrayOutput)
 }
 
-func (i *appSsoPtrType) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoPtrOutput)
+type AppRulesConditionOutput struct{ *pulumi.OutputState }
+
+func (AppRulesConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppRulesCondition)(nil)).Elem()
 }
 
-type AppSsoOutput struct{ *pulumi.OutputState }
-
-func (AppSsoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSso)(nil)).Elem()
-}
-
-func (o AppSsoOutput) ToAppSsoOutput() AppSsoOutput {
+func (o AppRulesConditionOutput) ToAppRulesConditionOutput() AppRulesConditionOutput {
 	return o
 }
 
-func (o AppSsoOutput) ToAppSsoOutputWithContext(ctx context.Context) AppSsoOutput {
+func (o AppRulesConditionOutput) ToAppRulesConditionOutputWithContext(ctx context.Context) AppRulesConditionOutput {
 	return o
 }
 
-func (o AppSsoOutput) ToAppSsoPtrOutput() AppSsoPtrOutput {
-	return o.ToAppSsoPtrOutputWithContext(context.Background())
+func (o AppRulesConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRulesCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o AppSsoOutput) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSso) *AppSso {
-		return &v
-	}).(AppSsoPtrOutput)
+func (o AppRulesConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRulesCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// App Name.	This is only returned after Creating a SAML App.
-func (o AppSsoOutput) AcsUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSso) *string { return v.AcsUrl }).(pulumi.StringPtrOutput)
+func (o AppRulesConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AppRulesCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The certificate used for signing.	This is only returned after Creating a SAML App.
-func (o AppSsoOutput) Certificate() AppSsoCertificatePtrOutput {
-	return o.ApplyT(func(v AppSso) *AppSsoCertificate { return v.Certificate }).(AppSsoCertificatePtrOutput)
+type AppRulesConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AppRulesConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppRulesCondition)(nil)).Elem()
 }
 
-// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-func (o AppSsoOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSso) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// OpenId Connet Client Secret
-func (o AppSsoOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSso) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
-}
-
-// Issuer of app.	This is only returned after Creating a SAML App.
-func (o AppSsoOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSso) *string { return v.Issuer }).(pulumi.StringPtrOutput)
-}
-
-// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-func (o AppSsoOutput) MetadataUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSso) *string { return v.MetadataUrl }).(pulumi.StringPtrOutput)
-}
-
-type AppSsoPtrOutput struct{ *pulumi.OutputState }
-
-func (AppSsoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppSso)(nil)).Elem()
-}
-
-func (o AppSsoPtrOutput) ToAppSsoPtrOutput() AppSsoPtrOutput {
+func (o AppRulesConditionArrayOutput) ToAppRulesConditionArrayOutput() AppRulesConditionArrayOutput {
 	return o
 }
 
-func (o AppSsoPtrOutput) ToAppSsoPtrOutputWithContext(ctx context.Context) AppSsoPtrOutput {
+func (o AppRulesConditionArrayOutput) ToAppRulesConditionArrayOutputWithContext(ctx context.Context) AppRulesConditionArrayOutput {
 	return o
 }
 
-func (o AppSsoPtrOutput) Elem() AppSsoOutput {
-	return o.ApplyT(func(v *AppSso) AppSso {
-		if v != nil {
-			return *v
-		}
-		var ret AppSso
-		return ret
-	}).(AppSsoOutput)
-}
-
-// App Name.	This is only returned after Creating a SAML App.
-func (o AppSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSso) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcsUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The certificate used for signing.	This is only returned after Creating a SAML App.
-func (o AppSsoPtrOutput) Certificate() AppSsoCertificatePtrOutput {
-	return o.ApplyT(func(v *AppSso) *AppSsoCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.Certificate
-	}).(AppSsoCertificatePtrOutput)
-}
-
-// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-func (o AppSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSso) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenId Connet Client Secret
-func (o AppSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSso) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Issuer of app.	This is only returned after Creating a SAML App.
-func (o AppSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSso) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Issuer
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-func (o AppSsoPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSso) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MetadataUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type AppSsoCertificate struct {
-	Id    *int    `pulumi:"id"`
-	Name  *string `pulumi:"name"`
-	Value *string `pulumi:"value"`
-}
-
-// AppSsoCertificateInput is an input type that accepts AppSsoCertificateArgs and AppSsoCertificateOutput values.
-// You can construct a concrete instance of `AppSsoCertificateInput` via:
-//
-//	AppSsoCertificateArgs{...}
-type AppSsoCertificateInput interface {
-	pulumi.Input
-
-	ToAppSsoCertificateOutput() AppSsoCertificateOutput
-	ToAppSsoCertificateOutputWithContext(context.Context) AppSsoCertificateOutput
-}
-
-type AppSsoCertificateArgs struct {
-	Id    pulumi.IntPtrInput    `pulumi:"id"`
-	Name  pulumi.StringPtrInput `pulumi:"name"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (AppSsoCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSsoCertificate)(nil)).Elem()
-}
-
-func (i AppSsoCertificateArgs) ToAppSsoCertificateOutput() AppSsoCertificateOutput {
-	return i.ToAppSsoCertificateOutputWithContext(context.Background())
-}
-
-func (i AppSsoCertificateArgs) ToAppSsoCertificateOutputWithContext(ctx context.Context) AppSsoCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoCertificateOutput)
-}
-
-func (i AppSsoCertificateArgs) ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput {
-	return i.ToAppSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i AppSsoCertificateArgs) ToAppSsoCertificatePtrOutputWithContext(ctx context.Context) AppSsoCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoCertificateOutput).ToAppSsoCertificatePtrOutputWithContext(ctx)
-}
-
-// AppSsoCertificatePtrInput is an input type that accepts AppSsoCertificateArgs, AppSsoCertificatePtr and AppSsoCertificatePtrOutput values.
-// You can construct a concrete instance of `AppSsoCertificatePtrInput` via:
-//
-//	        AppSsoCertificateArgs{...}
-//
-//	or:
-//
-//	        nil
-type AppSsoCertificatePtrInput interface {
-	pulumi.Input
-
-	ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput
-	ToAppSsoCertificatePtrOutputWithContext(context.Context) AppSsoCertificatePtrOutput
-}
-
-type appSsoCertificatePtrType AppSsoCertificateArgs
-
-func AppSsoCertificatePtr(v *AppSsoCertificateArgs) AppSsoCertificatePtrInput {
-	return (*appSsoCertificatePtrType)(v)
-}
-
-func (*appSsoCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppSsoCertificate)(nil)).Elem()
-}
-
-func (i *appSsoCertificatePtrType) ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput {
-	return i.ToAppSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *appSsoCertificatePtrType) ToAppSsoCertificatePtrOutputWithContext(ctx context.Context) AppSsoCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppSsoCertificatePtrOutput)
-}
-
-type AppSsoCertificateOutput struct{ *pulumi.OutputState }
-
-func (AppSsoCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppSsoCertificate)(nil)).Elem()
-}
-
-func (o AppSsoCertificateOutput) ToAppSsoCertificateOutput() AppSsoCertificateOutput {
-	return o
-}
-
-func (o AppSsoCertificateOutput) ToAppSsoCertificateOutputWithContext(ctx context.Context) AppSsoCertificateOutput {
-	return o
-}
-
-func (o AppSsoCertificateOutput) ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput {
-	return o.ToAppSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o AppSsoCertificateOutput) ToAppSsoCertificatePtrOutputWithContext(ctx context.Context) AppSsoCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSsoCertificate) *AppSsoCertificate {
-		return &v
-	}).(AppSsoCertificatePtrOutput)
-}
-
-func (o AppSsoCertificateOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AppSsoCertificate) *int { return v.Id }).(pulumi.IntPtrOutput)
-}
-
-func (o AppSsoCertificateOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSsoCertificate) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o AppSsoCertificateOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppSsoCertificate) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type AppSsoCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (AppSsoCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppSsoCertificate)(nil)).Elem()
-}
-
-func (o AppSsoCertificatePtrOutput) ToAppSsoCertificatePtrOutput() AppSsoCertificatePtrOutput {
-	return o
-}
-
-func (o AppSsoCertificatePtrOutput) ToAppSsoCertificatePtrOutputWithContext(ctx context.Context) AppSsoCertificatePtrOutput {
-	return o
-}
-
-func (o AppSsoCertificatePtrOutput) Elem() AppSsoCertificateOutput {
-	return o.ApplyT(func(v *AppSsoCertificate) AppSsoCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret AppSsoCertificate
-		return ret
-	}).(AppSsoCertificateOutput)
-}
-
-func (o AppSsoCertificatePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppSsoCertificate) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o AppSsoCertificatePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSsoCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AppSsoCertificatePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppSsoCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o AppRulesConditionArrayOutput) Index(i pulumi.IntInput) AppRulesConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRulesCondition {
+		return vs[0].([]AppRulesCondition)[vs[1].(int)]
+	}).(AppRulesConditionOutput)
 }
 
 type AuthServersConfiguration struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes *int `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences []string `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes *int `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier string `pulumi:"resourceIdentifier"`
+	AccessTokenExpirationMinutes  *int     `pulumi:"accessTokenExpirationMinutes"`
+	Audiences                     []string `pulumi:"audiences"`
+	RefreshTokenExpirationMinutes *int     `pulumi:"refreshTokenExpirationMinutes"`
+	ResourceIdentifier            string   `pulumi:"resourceIdentifier"`
 }
 
 // AuthServersConfigurationInput is an input type that accepts AuthServersConfigurationArgs and AuthServersConfigurationOutput values.
@@ -2054,14 +542,10 @@ type AuthServersConfigurationInput interface {
 }
 
 type AuthServersConfigurationArgs struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes pulumi.IntPtrInput `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
+	AccessTokenExpirationMinutes  pulumi.IntPtrInput      `pulumi:"accessTokenExpirationMinutes"`
+	Audiences                     pulumi.StringArrayInput `pulumi:"audiences"`
+	RefreshTokenExpirationMinutes pulumi.IntPtrInput      `pulumi:"refreshTokenExpirationMinutes"`
+	ResourceIdentifier            pulumi.StringInput      `pulumi:"resourceIdentifier"`
 }
 
 func (AuthServersConfigurationArgs) ElementType() reflect.Type {
@@ -2141,22 +625,18 @@ func (o AuthServersConfigurationOutput) ToAuthServersConfigurationPtrOutputWithC
 	}).(AuthServersConfigurationPtrOutput)
 }
 
-// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) *int { return v.AccessTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
-// List of API endpoints that will be returned in Access Tokens.
 func (o AuthServersConfigurationOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) *int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntPtrOutput)
 }
 
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o AuthServersConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthServersConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
 }
@@ -2185,7 +665,6 @@ func (o AuthServersConfigurationPtrOutput) Elem() AuthServersConfigurationOutput
 	}).(AuthServersConfigurationOutput)
 }
 
-// The number of minutes until access token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *int {
 		if v == nil {
@@ -2195,7 +674,6 @@ func (o AuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// List of API endpoints that will be returned in Access Tokens.
 func (o AuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) []string {
 		if v == nil {
@@ -2205,7 +683,6 @@ func (o AuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
 func (o AuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *int {
 		if v == nil {
@@ -2215,7 +692,6 @@ func (o AuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
 func (o AuthServersConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthServersConfiguration) *string {
 		if v == nil {
@@ -2223,6 +699,166 @@ func (o AuthServersConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtr
 		}
 		return &v.ResourceIdentifier
 	}).(pulumi.StringPtrOutput)
+}
+
+type OidcAppsParameter struct {
+	AttributesTransformations *string `pulumi:"attributesTransformations"`
+	DefaultValues             *string `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    *bool   `pulumi:"includeInSamlAssertion"`
+	Label                     *string `pulumi:"label"`
+	ParamId                   *int    `pulumi:"paramId"`
+	ParamKeyName              string  `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   *bool   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   *bool   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               *bool   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       *string `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     *string `pulumi:"userAttributeMappings"`
+	Values                    *string `pulumi:"values"`
+}
+
+// OidcAppsParameterInput is an input type that accepts OidcAppsParameterArgs and OidcAppsParameterOutput values.
+// You can construct a concrete instance of `OidcAppsParameterInput` via:
+//
+//	OidcAppsParameterArgs{...}
+type OidcAppsParameterInput interface {
+	pulumi.Input
+
+	ToOidcAppsParameterOutput() OidcAppsParameterOutput
+	ToOidcAppsParameterOutputWithContext(context.Context) OidcAppsParameterOutput
+}
+
+type OidcAppsParameterArgs struct {
+	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
+	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    pulumi.BoolPtrInput   `pulumi:"includeInSamlAssertion"`
+	Label                     pulumi.StringPtrInput `pulumi:"label"`
+	ParamId                   pulumi.IntPtrInput    `pulumi:"paramId"`
+	ParamKeyName              pulumi.StringInput    `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   pulumi.BoolPtrInput   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   pulumi.BoolPtrInput   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               pulumi.BoolPtrInput   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
+	Values                    pulumi.StringPtrInput `pulumi:"values"`
+}
+
+func (OidcAppsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcAppsParameter)(nil)).Elem()
+}
+
+func (i OidcAppsParameterArgs) ToOidcAppsParameterOutput() OidcAppsParameterOutput {
+	return i.ToOidcAppsParameterOutputWithContext(context.Background())
+}
+
+func (i OidcAppsParameterArgs) ToOidcAppsParameterOutputWithContext(ctx context.Context) OidcAppsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcAppsParameterOutput)
+}
+
+// OidcAppsParameterArrayInput is an input type that accepts OidcAppsParameterArray and OidcAppsParameterArrayOutput values.
+// You can construct a concrete instance of `OidcAppsParameterArrayInput` via:
+//
+//	OidcAppsParameterArray{ OidcAppsParameterArgs{...} }
+type OidcAppsParameterArrayInput interface {
+	pulumi.Input
+
+	ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput
+	ToOidcAppsParameterArrayOutputWithContext(context.Context) OidcAppsParameterArrayOutput
+}
+
+type OidcAppsParameterArray []OidcAppsParameterInput
+
+func (OidcAppsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OidcAppsParameter)(nil)).Elem()
+}
+
+func (i OidcAppsParameterArray) ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput {
+	return i.ToOidcAppsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i OidcAppsParameterArray) ToOidcAppsParameterArrayOutputWithContext(ctx context.Context) OidcAppsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcAppsParameterArrayOutput)
+}
+
+type OidcAppsParameterOutput struct{ *pulumi.OutputState }
+
+func (OidcAppsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcAppsParameter)(nil)).Elem()
+}
+
+func (o OidcAppsParameterOutput) ToOidcAppsParameterOutput() OidcAppsParameterOutput {
+	return o
+}
+
+func (o OidcAppsParameterOutput) ToOidcAppsParameterOutputWithContext(ctx context.Context) OidcAppsParameterOutput {
+	return o
+}
+
+func (o OidcAppsParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) ParamKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v OidcAppsParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
+}
+
+func (o OidcAppsParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
+}
+
+func (o OidcAppsParameterOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcAppsParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+type OidcAppsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (OidcAppsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OidcAppsParameter)(nil)).Elem()
+}
+
+func (o OidcAppsParameterArrayOutput) ToOidcAppsParameterArrayOutput() OidcAppsParameterArrayOutput {
+	return o
+}
+
+func (o OidcAppsParameterArrayOutput) ToOidcAppsParameterArrayOutputWithContext(ctx context.Context) OidcAppsParameterArrayOutput {
+	return o
+}
+
+func (o OidcAppsParameterArrayOutput) Index(i pulumi.IntInput) OidcAppsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OidcAppsParameter {
+		return vs[0].([]OidcAppsParameter)[vs[1].(int)]
+	}).(OidcAppsParameterOutput)
 }
 
 type PrivilegesPrivilege struct {
@@ -2374,17 +1010,9 @@ func (o PrivilegesPrivilegePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type PrivilegesPrivilegeStatement struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions []string `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect string `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes []string `pulumi:"scopes"`
+	Effect  string   `pulumi:"effect"`
+	Scopes  []string `pulumi:"scopes"`
 }
 
 // PrivilegesPrivilegeStatementInput is an input type that accepts PrivilegesPrivilegeStatementArgs and PrivilegesPrivilegeStatementOutput values.
@@ -2399,17 +1027,9 @@ type PrivilegesPrivilegeStatementInput interface {
 }
 
 type PrivilegesPrivilegeStatementArgs struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	Effect  pulumi.StringInput      `pulumi:"effect"`
+	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (PrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
@@ -2463,22 +1083,14 @@ func (o PrivilegesPrivilegeStatementOutput) ToPrivilegesPrivilegeStatementOutput
 	return o
 }
 
-// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
 func (o PrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
 func (o PrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// Target the privileged action against specific resources with the scope.
-// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
 func (o PrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -2503,4684 +1115,631 @@ func (o PrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) Privil
 	}).(PrivilegesPrivilegeStatementOutput)
 }
 
-type ProviderEndpoint struct {
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Apps *string `pulumi:"apps"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	AppsRules *string `pulumi:"appsRules"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	AuthServers *string `pulumi:"authServers"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Privileges *string `pulumi:"privileges"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	RiskRules *string `pulumi:"riskRules"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Roles *string `pulumi:"roles"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Users *string `pulumi:"users"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	UsersV1 *string `pulumi:"usersV1"`
+type SamlAppsParameter struct {
+	AttributesTransformations *string `pulumi:"attributesTransformations"`
+	DefaultValues             *string `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    *bool   `pulumi:"includeInSamlAssertion"`
+	Label                     *string `pulumi:"label"`
+	ParamId                   *int    `pulumi:"paramId"`
+	ParamKeyName              string  `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   *bool   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   *bool   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               *bool   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       *string `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     *string `pulumi:"userAttributeMappings"`
+	Values                    *string `pulumi:"values"`
 }
 
-// ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
-// You can construct a concrete instance of `ProviderEndpointInput` via:
+// SamlAppsParameterInput is an input type that accepts SamlAppsParameterArgs and SamlAppsParameterOutput values.
+// You can construct a concrete instance of `SamlAppsParameterInput` via:
 //
-//	ProviderEndpointArgs{...}
-type ProviderEndpointInput interface {
+//	SamlAppsParameterArgs{...}
+type SamlAppsParameterInput interface {
 	pulumi.Input
 
-	ToProviderEndpointOutput() ProviderEndpointOutput
-	ToProviderEndpointOutputWithContext(context.Context) ProviderEndpointOutput
+	ToSamlAppsParameterOutput() SamlAppsParameterOutput
+	ToSamlAppsParameterOutputWithContext(context.Context) SamlAppsParameterOutput
 }
 
-type ProviderEndpointArgs struct {
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Apps pulumi.StringPtrInput `pulumi:"apps"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	AppsRules pulumi.StringPtrInput `pulumi:"appsRules"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	AuthServers pulumi.StringPtrInput `pulumi:"authServers"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Privileges pulumi.StringPtrInput `pulumi:"privileges"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	RiskRules pulumi.StringPtrInput `pulumi:"riskRules"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Roles pulumi.StringPtrInput `pulumi:"roles"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	Users pulumi.StringPtrInput `pulumi:"users"`
-	// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-	UsersV1 pulumi.StringPtrInput `pulumi:"usersV1"`
+type SamlAppsParameterArgs struct {
+	AttributesTransformations pulumi.StringPtrInput `pulumi:"attributesTransformations"`
+	DefaultValues             pulumi.StringPtrInput `pulumi:"defaultValues"`
+	IncludeInSamlAssertion    pulumi.BoolPtrInput   `pulumi:"includeInSamlAssertion"`
+	Label                     pulumi.StringPtrInput `pulumi:"label"`
+	ParamId                   pulumi.IntPtrInput    `pulumi:"paramId"`
+	ParamKeyName              pulumi.StringInput    `pulumi:"paramKeyName"`
+	ProvisionedEntitlements   pulumi.BoolPtrInput   `pulumi:"provisionedEntitlements"`
+	SafeEntitlementsEnabled   pulumi.BoolPtrInput   `pulumi:"safeEntitlementsEnabled"`
+	SkipIfBlank               pulumi.BoolPtrInput   `pulumi:"skipIfBlank"`
+	UserAttributeMacros       pulumi.StringPtrInput `pulumi:"userAttributeMacros"`
+	UserAttributeMappings     pulumi.StringPtrInput `pulumi:"userAttributeMappings"`
+	Values                    pulumi.StringPtrInput `pulumi:"values"`
 }
 
-func (ProviderEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProviderEndpoint)(nil)).Elem()
+func (SamlAppsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlAppsParameter)(nil)).Elem()
 }
 
-func (i ProviderEndpointArgs) ToProviderEndpointOutput() ProviderEndpointOutput {
-	return i.ToProviderEndpointOutputWithContext(context.Background())
+func (i SamlAppsParameterArgs) ToSamlAppsParameterOutput() SamlAppsParameterOutput {
+	return i.ToSamlAppsParameterOutputWithContext(context.Background())
 }
 
-func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointOutput)
+func (i SamlAppsParameterArgs) ToSamlAppsParameterOutputWithContext(ctx context.Context) SamlAppsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlAppsParameterOutput)
 }
 
-// ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
-// You can construct a concrete instance of `ProviderEndpointArrayInput` via:
+// SamlAppsParameterArrayInput is an input type that accepts SamlAppsParameterArray and SamlAppsParameterArrayOutput values.
+// You can construct a concrete instance of `SamlAppsParameterArrayInput` via:
 //
-//	ProviderEndpointArray{ ProviderEndpointArgs{...} }
-type ProviderEndpointArrayInput interface {
+//	SamlAppsParameterArray{ SamlAppsParameterArgs{...} }
+type SamlAppsParameterArrayInput interface {
 	pulumi.Input
 
-	ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput
-	ToProviderEndpointArrayOutputWithContext(context.Context) ProviderEndpointArrayOutput
+	ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput
+	ToSamlAppsParameterArrayOutputWithContext(context.Context) SamlAppsParameterArrayOutput
 }
 
-type ProviderEndpointArray []ProviderEndpointInput
+type SamlAppsParameterArray []SamlAppsParameterInput
 
-func (ProviderEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProviderEndpoint)(nil)).Elem()
+func (SamlAppsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SamlAppsParameter)(nil)).Elem()
 }
 
-func (i ProviderEndpointArray) ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput {
-	return i.ToProviderEndpointArrayOutputWithContext(context.Background())
+func (i SamlAppsParameterArray) ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput {
+	return i.ToSamlAppsParameterArrayOutputWithContext(context.Background())
 }
 
-func (i ProviderEndpointArray) ToProviderEndpointArrayOutputWithContext(ctx context.Context) ProviderEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointArrayOutput)
+func (i SamlAppsParameterArray) ToSamlAppsParameterArrayOutputWithContext(ctx context.Context) SamlAppsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlAppsParameterArrayOutput)
 }
 
-type ProviderEndpointOutput struct{ *pulumi.OutputState }
+type SamlAppsParameterOutput struct{ *pulumi.OutputState }
 
-func (ProviderEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProviderEndpoint)(nil)).Elem()
+func (SamlAppsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlAppsParameter)(nil)).Elem()
 }
 
-func (o ProviderEndpointOutput) ToProviderEndpointOutput() ProviderEndpointOutput {
+func (o SamlAppsParameterOutput) ToSamlAppsParameterOutput() SamlAppsParameterOutput {
 	return o
 }
 
-func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
+func (o SamlAppsParameterOutput) ToSamlAppsParameterOutputWithContext(ctx context.Context) SamlAppsParameterOutput {
 	return o
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) Apps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apps }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) AttributesTransformations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.AttributesTransformations }).(pulumi.StringPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) AppsRules() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.AppsRules }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) DefaultValues() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.DefaultValues }).(pulumi.StringPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) AuthServers() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.AuthServers }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) IncludeInSamlAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.IncludeInSamlAssertion }).(pulumi.BoolPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) Privileges() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Privileges }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) RiskRules() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.RiskRules }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) ParamId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *int { return v.ParamId }).(pulumi.IntPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) Roles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Roles }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) ParamKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlAppsParameter) string { return v.ParamKeyName }).(pulumi.StringOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) Users() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Users }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.ProvisionedEntitlements }).(pulumi.BoolPtrOutput)
 }
 
-// Use this to override the resource endpoint URL (the default one or the one constructed from the `region`).
-func (o ProviderEndpointOutput) UsersV1() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.UsersV1 }).(pulumi.StringPtrOutput)
+func (o SamlAppsParameterOutput) SafeEntitlementsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.SafeEntitlementsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-type ProviderEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (ProviderEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProviderEndpoint)(nil)).Elem()
-}
-
-func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutput() ProviderEndpointArrayOutput {
-	return o
-}
-
-func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutputWithContext(ctx context.Context) ProviderEndpointArrayOutput {
-	return o
-}
-
-func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
-		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
-	}).(ProviderEndpointOutput)
-}
-
-type RiskRulesSource struct {
-	// A unique id that represents the source of the event.
-	Id *string `pulumi:"id"`
-	// The name of the source
-	Name *string `pulumi:"name"`
-}
-
-// RiskRulesSourceInput is an input type that accepts RiskRulesSourceArgs and RiskRulesSourceOutput values.
-// You can construct a concrete instance of `RiskRulesSourceInput` via:
-//
-//	RiskRulesSourceArgs{...}
-type RiskRulesSourceInput interface {
-	pulumi.Input
-
-	ToRiskRulesSourceOutput() RiskRulesSourceOutput
-	ToRiskRulesSourceOutputWithContext(context.Context) RiskRulesSourceOutput
-}
-
-type RiskRulesSourceArgs struct {
-	// A unique id that represents the source of the event.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the source
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (RiskRulesSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RiskRulesSource)(nil)).Elem()
-}
-
-func (i RiskRulesSourceArgs) ToRiskRulesSourceOutput() RiskRulesSourceOutput {
-	return i.ToRiskRulesSourceOutputWithContext(context.Background())
-}
-
-func (i RiskRulesSourceArgs) ToRiskRulesSourceOutputWithContext(ctx context.Context) RiskRulesSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesSourceOutput)
-}
-
-func (i RiskRulesSourceArgs) ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput {
-	return i.ToRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (i RiskRulesSourceArgs) ToRiskRulesSourcePtrOutputWithContext(ctx context.Context) RiskRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesSourceOutput).ToRiskRulesSourcePtrOutputWithContext(ctx)
-}
-
-// RiskRulesSourcePtrInput is an input type that accepts RiskRulesSourceArgs, RiskRulesSourcePtr and RiskRulesSourcePtrOutput values.
-// You can construct a concrete instance of `RiskRulesSourcePtrInput` via:
-//
-//	        RiskRulesSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type RiskRulesSourcePtrInput interface {
-	pulumi.Input
-
-	ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput
-	ToRiskRulesSourcePtrOutputWithContext(context.Context) RiskRulesSourcePtrOutput
-}
-
-type riskRulesSourcePtrType RiskRulesSourceArgs
-
-func RiskRulesSourcePtr(v *RiskRulesSourceArgs) RiskRulesSourcePtrInput {
-	return (*riskRulesSourcePtrType)(v)
-}
-
-func (*riskRulesSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RiskRulesSource)(nil)).Elem()
-}
-
-func (i *riskRulesSourcePtrType) ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput {
-	return i.ToRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *riskRulesSourcePtrType) ToRiskRulesSourcePtrOutputWithContext(ctx context.Context) RiskRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RiskRulesSourcePtrOutput)
-}
-
-type RiskRulesSourceOutput struct{ *pulumi.OutputState }
-
-func (RiskRulesSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RiskRulesSource)(nil)).Elem()
-}
-
-func (o RiskRulesSourceOutput) ToRiskRulesSourceOutput() RiskRulesSourceOutput {
-	return o
-}
-
-func (o RiskRulesSourceOutput) ToRiskRulesSourceOutputWithContext(ctx context.Context) RiskRulesSourceOutput {
-	return o
-}
-
-func (o RiskRulesSourceOutput) ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput {
-	return o.ToRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (o RiskRulesSourceOutput) ToRiskRulesSourcePtrOutputWithContext(ctx context.Context) RiskRulesSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RiskRulesSource) *RiskRulesSource {
-		return &v
-	}).(RiskRulesSourcePtrOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o RiskRulesSourceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RiskRulesSource) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The name of the source
-func (o RiskRulesSourceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RiskRulesSource) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type RiskRulesSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (RiskRulesSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RiskRulesSource)(nil)).Elem()
-}
-
-func (o RiskRulesSourcePtrOutput) ToRiskRulesSourcePtrOutput() RiskRulesSourcePtrOutput {
-	return o
-}
-
-func (o RiskRulesSourcePtrOutput) ToRiskRulesSourcePtrOutputWithContext(ctx context.Context) RiskRulesSourcePtrOutput {
-	return o
-}
-
-func (o RiskRulesSourcePtrOutput) Elem() RiskRulesSourceOutput {
-	return o.ApplyT(func(v *RiskRulesSource) RiskRulesSource {
-		if v != nil {
-			return *v
-		}
-		var ret RiskRulesSource
-		return ret
-	}).(RiskRulesSourceOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o RiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RiskRulesSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the source
-func (o RiskRulesSourcePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RiskRulesSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsConfiguration struct {
-	// OIDC Apps only Number of minutes the refresh token will be valid for.
-	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
-	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-	LoginUrl       string `pulumi:"loginUrl"`
-	OidcApiVersion string `pulumi:"oidcApiVersion"`
-	// OIDC Apps Only
-	//   - 0: Web
-	//   - 1: Native/Mobile
-	OidcApplicationType int `pulumi:"oidcApplicationType"`
-	// OIDC Apps only
-	OidcEncryptionKey string `pulumi:"oidcEncryptionKey"`
-	// OIDC Apps only
-	PostLogoutRedirectUri string `pulumi:"postLogoutRedirectUri"`
-	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-	RedirectUri string `pulumi:"redirectUri"`
-	// Number of minutes the refresh token will be valid for.
-	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
-	// OIDC Apps only
-	//  - 0: Basic
-	//  - 1: POST
-	//  - 2: None / PKCE
-	TokenEndpointAuthMethod int `pulumi:"tokenEndpointAuthMethod"`
-}
-
-// GetAppsConfigurationInput is an input type that accepts GetAppsConfigurationArgs and GetAppsConfigurationOutput values.
-// You can construct a concrete instance of `GetAppsConfigurationInput` via:
-//
-//	GetAppsConfigurationArgs{...}
-type GetAppsConfigurationInput interface {
-	pulumi.Input
-
-	ToGetAppsConfigurationOutput() GetAppsConfigurationOutput
-	ToGetAppsConfigurationOutputWithContext(context.Context) GetAppsConfigurationOutput
-}
-
-type GetAppsConfigurationArgs struct {
-	// OIDC Apps only Number of minutes the refresh token will be valid for.
-	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
-	// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-	LoginUrl       pulumi.StringInput `pulumi:"loginUrl"`
-	OidcApiVersion pulumi.StringInput `pulumi:"oidcApiVersion"`
-	// OIDC Apps Only
-	//   - 0: Web
-	//   - 1: Native/Mobile
-	OidcApplicationType pulumi.IntInput `pulumi:"oidcApplicationType"`
-	// OIDC Apps only
-	OidcEncryptionKey pulumi.StringInput `pulumi:"oidcEncryptionKey"`
-	// OIDC Apps only
-	PostLogoutRedirectUri pulumi.StringInput `pulumi:"postLogoutRedirectUri"`
-	// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
-	// Number of minutes the refresh token will be valid for.
-	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
-	// OIDC Apps only
-	//  - 0: Basic
-	//  - 1: POST
-	//  - 2: None / PKCE
-	TokenEndpointAuthMethod pulumi.IntInput `pulumi:"tokenEndpointAuthMethod"`
-}
-
-func (GetAppsConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsConfiguration)(nil)).Elem()
-}
-
-func (i GetAppsConfigurationArgs) ToGetAppsConfigurationOutput() GetAppsConfigurationOutput {
-	return i.ToGetAppsConfigurationOutputWithContext(context.Background())
-}
-
-func (i GetAppsConfigurationArgs) ToGetAppsConfigurationOutputWithContext(ctx context.Context) GetAppsConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsConfigurationOutput)
-}
-
-func (i GetAppsConfigurationArgs) ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput {
-	return i.ToGetAppsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsConfigurationArgs) ToGetAppsConfigurationPtrOutputWithContext(ctx context.Context) GetAppsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsConfigurationOutput).ToGetAppsConfigurationPtrOutputWithContext(ctx)
-}
-
-// GetAppsConfigurationPtrInput is an input type that accepts GetAppsConfigurationArgs, GetAppsConfigurationPtr and GetAppsConfigurationPtrOutput values.
-// You can construct a concrete instance of `GetAppsConfigurationPtrInput` via:
-//
-//	        GetAppsConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput
-	ToGetAppsConfigurationPtrOutputWithContext(context.Context) GetAppsConfigurationPtrOutput
-}
-
-type getAppsConfigurationPtrType GetAppsConfigurationArgs
-
-func GetAppsConfigurationPtr(v *GetAppsConfigurationArgs) GetAppsConfigurationPtrInput {
-	return (*getAppsConfigurationPtrType)(v)
-}
-
-func (*getAppsConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsConfiguration)(nil)).Elem()
-}
-
-func (i *getAppsConfigurationPtrType) ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput {
-	return i.ToGetAppsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsConfigurationPtrType) ToGetAppsConfigurationPtrOutputWithContext(ctx context.Context) GetAppsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsConfigurationPtrOutput)
-}
-
-type GetAppsConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GetAppsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsConfiguration)(nil)).Elem()
-}
-
-func (o GetAppsConfigurationOutput) ToGetAppsConfigurationOutput() GetAppsConfigurationOutput {
-	return o
-}
-
-func (o GetAppsConfigurationOutput) ToGetAppsConfigurationOutputWithContext(ctx context.Context) GetAppsConfigurationOutput {
-	return o
-}
-
-func (o GetAppsConfigurationOutput) ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput {
-	return o.ToGetAppsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsConfigurationOutput) ToGetAppsConfigurationPtrOutputWithContext(ctx context.Context) GetAppsConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsConfiguration) *GetAppsConfiguration {
-		return &v
-	}).(GetAppsConfigurationPtrOutput)
-}
-
-// OIDC Apps only Number of minutes the refresh token will be valid for.
-func (o GetAppsConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-func (o GetAppsConfigurationOutput) LoginUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) string { return v.LoginUrl }).(pulumi.StringOutput)
-}
-
-func (o GetAppsConfigurationOutput) OidcApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) string { return v.OidcApiVersion }).(pulumi.StringOutput)
-}
-
-// OIDC Apps Only
-//   - 0: Web
-//   - 1: Native/Mobile
-func (o GetAppsConfigurationOutput) OidcApplicationType() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) int { return v.OidcApplicationType }).(pulumi.IntOutput)
-}
-
-// OIDC Apps only
-func (o GetAppsConfigurationOutput) OidcEncryptionKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) string { return v.OidcEncryptionKey }).(pulumi.StringOutput)
-}
-
-// OIDC Apps only
-func (o GetAppsConfigurationOutput) PostLogoutRedirectUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) string { return v.PostLogoutRedirectUri }).(pulumi.StringOutput)
-}
-
-// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-func (o GetAppsConfigurationOutput) RedirectUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) string { return v.RedirectUri }).(pulumi.StringOutput)
-}
-
-// Number of minutes the refresh token will be valid for.
-func (o GetAppsConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// OIDC Apps only
-//   - 0: Basic
-//   - 1: POST
-//   - 2: None / PKCE
-func (o GetAppsConfigurationOutput) TokenEndpointAuthMethod() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsConfiguration) int { return v.TokenEndpointAuthMethod }).(pulumi.IntOutput)
-}
-
-type GetAppsConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsConfiguration)(nil)).Elem()
-}
-
-func (o GetAppsConfigurationPtrOutput) ToGetAppsConfigurationPtrOutput() GetAppsConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAppsConfigurationPtrOutput) ToGetAppsConfigurationPtrOutputWithContext(ctx context.Context) GetAppsConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAppsConfigurationPtrOutput) Elem() GetAppsConfigurationOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) GetAppsConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsConfiguration
-		return ret
-	}).(GetAppsConfigurationOutput)
-}
-
-// OIDC Apps only Number of minutes the refresh token will be valid for.
-func (o GetAppsConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an App.
-func (o GetAppsConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LoginUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsConfigurationPtrOutput) OidcApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcApiVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps Only
-//   - 0: Web
-//   - 1: Native/Mobile
-func (o GetAppsConfigurationPtrOutput) OidcApplicationType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcApplicationType
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-func (o GetAppsConfigurationPtrOutput) OidcEncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcEncryptionKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only
-func (o GetAppsConfigurationPtrOutput) PostLogoutRedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PostLogoutRedirectUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// OIDC Apps only Comma or newline separated list of valid redirect uris for the OpenId Connect Authorization Code flow.
-func (o GetAppsConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RedirectUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of minutes the refresh token will be valid for.
-func (o GetAppsConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RefreshTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// OIDC Apps only
-//   - 0: Basic
-//   - 1: POST
-//   - 2: None / PKCE
-func (o GetAppsConfigurationPtrOutput) TokenEndpointAuthMethod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.TokenEndpointAuthMethod
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppsEnforcementPoint struct {
-	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-	CaseSensitive bool `pulumi:"caseSensitive"`
-	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-	Conditions string `pulumi:"conditions"`
-	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-	ContextRoot string `pulumi:"contextRoot"`
-	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-	LandingPage string `pulumi:"landingPage"`
-	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-	Permissions string `pulumi:"permissions"`
-	// Require user authentication to access any resource protected by this enforcement point.
-	RequireSitewideAuthentication bool `pulumi:"requireSitewideAuthentication"`
-	// Array of resource objects
-	Resources []GetAppsEnforcementPointResource `pulumi:"resources"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryFixed GetAppsEnforcementPointSessionExpiryFixed `pulumi:"sessionExpiryFixed"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryInactivity GetAppsEnforcementPointSessionExpiryInactivity `pulumi:"sessionExpiryInactivity"`
-	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-	Target string `pulumi:"target"`
-	// Can only be set on create. Access Gateway Token.
-	Token string `pulumi:"token"`
-	// Use the target host header as opposed to the original gateway or upstream host header.
-	UseTargetHostHeader bool `pulumi:"useTargetHostHeader"`
-	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-	Vhost string `pulumi:"vhost"`
-}
-
-// GetAppsEnforcementPointInput is an input type that accepts GetAppsEnforcementPointArgs and GetAppsEnforcementPointOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointInput` via:
-//
-//	GetAppsEnforcementPointArgs{...}
-type GetAppsEnforcementPointInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointOutput() GetAppsEnforcementPointOutput
-	ToGetAppsEnforcementPointOutputWithContext(context.Context) GetAppsEnforcementPointOutput
-}
-
-type GetAppsEnforcementPointArgs struct {
-	// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
-	// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-	Conditions pulumi.StringInput `pulumi:"conditions"`
-	// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-	ContextRoot pulumi.StringInput `pulumi:"contextRoot"`
-	// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-	LandingPage pulumi.StringInput `pulumi:"landingPage"`
-	// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-	Permissions pulumi.StringInput `pulumi:"permissions"`
-	// Require user authentication to access any resource protected by this enforcement point.
-	RequireSitewideAuthentication pulumi.BoolInput `pulumi:"requireSitewideAuthentication"`
-	// Array of resource objects
-	Resources GetAppsEnforcementPointResourceArrayInput `pulumi:"resources"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryFixed GetAppsEnforcementPointSessionExpiryFixedInput `pulumi:"sessionExpiryFixed"`
-	// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-	SessionExpiryInactivity GetAppsEnforcementPointSessionExpiryInactivityInput `pulumi:"sessionExpiryInactivity"`
-	// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-	Target pulumi.StringInput `pulumi:"target"`
-	// Can only be set on create. Access Gateway Token.
-	Token pulumi.StringInput `pulumi:"token"`
-	// Use the target host header as opposed to the original gateway or upstream host header.
-	UseTargetHostHeader pulumi.BoolInput `pulumi:"useTargetHostHeader"`
-	// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-	Vhost pulumi.StringInput `pulumi:"vhost"`
-}
-
-func (GetAppsEnforcementPointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPoint)(nil)).Elem()
-}
-
-func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointOutput() GetAppsEnforcementPointOutput {
-	return i.ToGetAppsEnforcementPointOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointOutputWithContext(ctx context.Context) GetAppsEnforcementPointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointOutput)
-}
-
-func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput {
-	return i.ToGetAppsEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointArgs) ToGetAppsEnforcementPointPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointOutput).ToGetAppsEnforcementPointPtrOutputWithContext(ctx)
-}
-
-// GetAppsEnforcementPointPtrInput is an input type that accepts GetAppsEnforcementPointArgs, GetAppsEnforcementPointPtr and GetAppsEnforcementPointPtrOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointPtrInput` via:
-//
-//	        GetAppsEnforcementPointArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsEnforcementPointPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput
-	ToGetAppsEnforcementPointPtrOutputWithContext(context.Context) GetAppsEnforcementPointPtrOutput
-}
-
-type getAppsEnforcementPointPtrType GetAppsEnforcementPointArgs
-
-func GetAppsEnforcementPointPtr(v *GetAppsEnforcementPointArgs) GetAppsEnforcementPointPtrInput {
-	return (*getAppsEnforcementPointPtrType)(v)
-}
-
-func (*getAppsEnforcementPointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPoint)(nil)).Elem()
-}
-
-func (i *getAppsEnforcementPointPtrType) ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput {
-	return i.ToGetAppsEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsEnforcementPointPtrType) ToGetAppsEnforcementPointPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointPtrOutput)
-}
-
-type GetAppsEnforcementPointOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPoint)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointOutput() GetAppsEnforcementPointOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointOutputWithContext(ctx context.Context) GetAppsEnforcementPointOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput {
-	return o.ToGetAppsEnforcementPointPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsEnforcementPointOutput) ToGetAppsEnforcementPointPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsEnforcementPoint) *GetAppsEnforcementPoint {
-		return &v
-	}).(GetAppsEnforcementPointPtrOutput)
-}
-
-// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-func (o GetAppsEnforcementPointOutput) CaseSensitive() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
-}
-
-// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-func (o GetAppsEnforcementPointOutput) Conditions() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Conditions }).(pulumi.StringOutput)
-}
-
-// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-func (o GetAppsEnforcementPointOutput) ContextRoot() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.ContextRoot }).(pulumi.StringOutput)
-}
-
-// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-func (o GetAppsEnforcementPointOutput) LandingPage() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.LandingPage }).(pulumi.StringOutput)
-}
-
-// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-func (o GetAppsEnforcementPointOutput) Permissions() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Permissions }).(pulumi.StringOutput)
-}
-
-// Require user authentication to access any resource protected by this enforcement point.
-func (o GetAppsEnforcementPointOutput) RequireSitewideAuthentication() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.RequireSitewideAuthentication }).(pulumi.BoolOutput)
-}
-
-// Array of resource objects
-func (o GetAppsEnforcementPointOutput) Resources() GetAppsEnforcementPointResourceArrayOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) []GetAppsEnforcementPointResource { return v.Resources }).(GetAppsEnforcementPointResourceArrayOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o GetAppsEnforcementPointOutput) SessionExpiryFixed() GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) GetAppsEnforcementPointSessionExpiryFixed { return v.SessionExpiryFixed }).(GetAppsEnforcementPointSessionExpiryFixedOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o GetAppsEnforcementPointOutput) SessionExpiryInactivity() GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) GetAppsEnforcementPointSessionExpiryInactivity {
-		return v.SessionExpiryInactivity
-	}).(GetAppsEnforcementPointSessionExpiryInactivityOutput)
-}
-
-// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-func (o GetAppsEnforcementPointOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Target }).(pulumi.StringOutput)
-}
-
-// Can only be set on create. Access Gateway Token.
-func (o GetAppsEnforcementPointOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Token }).(pulumi.StringOutput)
-}
-
-// Use the target host header as opposed to the original gateway or upstream host header.
-func (o GetAppsEnforcementPointOutput) UseTargetHostHeader() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) bool { return v.UseTargetHostHeader }).(pulumi.BoolOutput)
-}
-
-// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-func (o GetAppsEnforcementPointOutput) Vhost() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPoint) string { return v.Vhost }).(pulumi.StringOutput)
-}
-
-type GetAppsEnforcementPointPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPoint)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointPtrOutput) ToGetAppsEnforcementPointPtrOutput() GetAppsEnforcementPointPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointPtrOutput) ToGetAppsEnforcementPointPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointPtrOutput) Elem() GetAppsEnforcementPointOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) GetAppsEnforcementPoint {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsEnforcementPoint
-		return ret
-	}).(GetAppsEnforcementPointOutput)
-}
-
-// The URL path evaluation is case insensitive by default. Resources hosted on web servers such as Apache, NGINX and Java EE are case sensitive paths. Web servers such as Microsoft IIS are not case-sensitive.
-func (o GetAppsEnforcementPointPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CaseSensitive
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If access is conditional, the conditions that must evaluate to true to allow access to a resource. For example, to require the user must be authenticated and have either the role Admin or User
-func (o GetAppsEnforcementPointPtrOutput) Conditions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Conditions
-	}).(pulumi.StringPtrOutput)
-}
-
-// The root path to the application, often the name of the application. Can be any name, path or just a slash (“/”). The context root uniquely identifies the application within the enforcement point.
-func (o GetAppsEnforcementPointPtrOutput) ContextRoot() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ContextRoot
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location within the context root to which the browser will be redirected for IdP-initiated single sign-on. For example, the landing page might be an index page in the context root such as index.html or default.aspx. The landing page cannot begin with a slash and must use valid URL characters.
-func (o GetAppsEnforcementPointPtrOutput) LandingPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LandingPage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specify to always `allow`, `deny` access to resources, of if access is `conditional`.
-func (o GetAppsEnforcementPointPtrOutput) Permissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Permissions
-	}).(pulumi.StringPtrOutput)
-}
-
-// Require user authentication to access any resource protected by this enforcement point.
-func (o GetAppsEnforcementPointPtrOutput) RequireSitewideAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RequireSitewideAuthentication
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Array of resource objects
-func (o GetAppsEnforcementPointPtrOutput) Resources() GetAppsEnforcementPointResourceArrayOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) []GetAppsEnforcementPointResource {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(GetAppsEnforcementPointResourceArrayOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o GetAppsEnforcementPointPtrOutput) SessionExpiryFixed() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *GetAppsEnforcementPointSessionExpiryFixed {
-		if v == nil {
-			return nil
-		}
-		return &v.SessionExpiryFixed
-	}).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-// unit: - 0 = Seconds - 1 = Minutes - 2 = Hours value: - When Unit = 0 or 1 value must be 0-60 - When Unit = 2 value must be 0-24
-func (o GetAppsEnforcementPointPtrOutput) SessionExpiryInactivity() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *GetAppsEnforcementPointSessionExpiryInactivity {
-		if v == nil {
-			return nil
-		}
-		return &v.SessionExpiryInactivity
-	}).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-// A fully-qualified URL to the internal application including scheme, authority and path. The target host authority must be an IP address, not a hostname.
-func (o GetAppsEnforcementPointPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-// Can only be set on create. Access Gateway Token.
-func (o GetAppsEnforcementPointPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
-// Use the target host header as opposed to the original gateway or upstream host header.
-func (o GetAppsEnforcementPointPtrOutput) UseTargetHostHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseTargetHostHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A comma-delimited list of one or more virtual hosts that map to applications assigned to the enforcement point. A VHOST may be a host name or an IP address. VHOST distinguish between applications that are at the same context root.
-func (o GetAppsEnforcementPointPtrOutput) Vhost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Vhost
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsEnforcementPointResource struct {
-	// required if permission == "conditions"
-	Conditions  string `pulumi:"conditions"`
-	IsPathRegex bool   `pulumi:"isPathRegex"`
-	Path        string `pulumi:"path"`
-	Permission  string `pulumi:"permission"`
-	RequireAuth bool   `pulumi:"requireAuth"`
-}
-
-// GetAppsEnforcementPointResourceInput is an input type that accepts GetAppsEnforcementPointResourceArgs and GetAppsEnforcementPointResourceOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointResourceInput` via:
-//
-//	GetAppsEnforcementPointResourceArgs{...}
-type GetAppsEnforcementPointResourceInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointResourceOutput() GetAppsEnforcementPointResourceOutput
-	ToGetAppsEnforcementPointResourceOutputWithContext(context.Context) GetAppsEnforcementPointResourceOutput
-}
-
-type GetAppsEnforcementPointResourceArgs struct {
-	// required if permission == "conditions"
-	Conditions  pulumi.StringInput `pulumi:"conditions"`
-	IsPathRegex pulumi.BoolInput   `pulumi:"isPathRegex"`
-	Path        pulumi.StringInput `pulumi:"path"`
-	Permission  pulumi.StringInput `pulumi:"permission"`
-	RequireAuth pulumi.BoolInput   `pulumi:"requireAuth"`
-}
-
-func (GetAppsEnforcementPointResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointResource)(nil)).Elem()
-}
-
-func (i GetAppsEnforcementPointResourceArgs) ToGetAppsEnforcementPointResourceOutput() GetAppsEnforcementPointResourceOutput {
-	return i.ToGetAppsEnforcementPointResourceOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointResourceArgs) ToGetAppsEnforcementPointResourceOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointResourceOutput)
-}
-
-// GetAppsEnforcementPointResourceArrayInput is an input type that accepts GetAppsEnforcementPointResourceArray and GetAppsEnforcementPointResourceArrayOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointResourceArrayInput` via:
-//
-//	GetAppsEnforcementPointResourceArray{ GetAppsEnforcementPointResourceArgs{...} }
-type GetAppsEnforcementPointResourceArrayInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointResourceArrayOutput() GetAppsEnforcementPointResourceArrayOutput
-	ToGetAppsEnforcementPointResourceArrayOutputWithContext(context.Context) GetAppsEnforcementPointResourceArrayOutput
-}
-
-type GetAppsEnforcementPointResourceArray []GetAppsEnforcementPointResourceInput
-
-func (GetAppsEnforcementPointResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsEnforcementPointResource)(nil)).Elem()
-}
-
-func (i GetAppsEnforcementPointResourceArray) ToGetAppsEnforcementPointResourceArrayOutput() GetAppsEnforcementPointResourceArrayOutput {
-	return i.ToGetAppsEnforcementPointResourceArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointResourceArray) ToGetAppsEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointResourceArrayOutput)
-}
-
-type GetAppsEnforcementPointResourceOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointResource)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointResourceOutput) ToGetAppsEnforcementPointResourceOutput() GetAppsEnforcementPointResourceOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointResourceOutput) ToGetAppsEnforcementPointResourceOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceOutput {
-	return o
-}
-
-// required if permission == "conditions"
-func (o GetAppsEnforcementPointResourceOutput) Conditions() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointResource) string { return v.Conditions }).(pulumi.StringOutput)
-}
-
-func (o GetAppsEnforcementPointResourceOutput) IsPathRegex() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointResource) bool { return v.IsPathRegex }).(pulumi.BoolOutput)
-}
-
-func (o GetAppsEnforcementPointResourceOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointResource) string { return v.Path }).(pulumi.StringOutput)
-}
-
-func (o GetAppsEnforcementPointResourceOutput) Permission() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointResource) string { return v.Permission }).(pulumi.StringOutput)
-}
-
-func (o GetAppsEnforcementPointResourceOutput) RequireAuth() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointResource) bool { return v.RequireAuth }).(pulumi.BoolOutput)
-}
-
-type GetAppsEnforcementPointResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsEnforcementPointResource)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointResourceArrayOutput) ToGetAppsEnforcementPointResourceArrayOutput() GetAppsEnforcementPointResourceArrayOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointResourceArrayOutput) ToGetAppsEnforcementPointResourceArrayOutputWithContext(ctx context.Context) GetAppsEnforcementPointResourceArrayOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointResourceArrayOutput) Index(i pulumi.IntInput) GetAppsEnforcementPointResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsEnforcementPointResource {
-		return vs[0].([]GetAppsEnforcementPointResource)[vs[1].(int)]
-	}).(GetAppsEnforcementPointResourceOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryFixed struct {
-	Unit  int `pulumi:"unit"`
-	Value int `pulumi:"value"`
-}
-
-// GetAppsEnforcementPointSessionExpiryFixedInput is an input type that accepts GetAppsEnforcementPointSessionExpiryFixedArgs and GetAppsEnforcementPointSessionExpiryFixedOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointSessionExpiryFixedInput` via:
-//
-//	GetAppsEnforcementPointSessionExpiryFixedArgs{...}
-type GetAppsEnforcementPointSessionExpiryFixedInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointSessionExpiryFixedOutput() GetAppsEnforcementPointSessionExpiryFixedOutput
-	ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(context.Context) GetAppsEnforcementPointSessionExpiryFixedOutput
-}
-
-type GetAppsEnforcementPointSessionExpiryFixedArgs struct {
-	Unit  pulumi.IntInput `pulumi:"unit"`
-	Value pulumi.IntInput `pulumi:"value"`
-}
-
-func (GetAppsEnforcementPointSessionExpiryFixedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedOutput() GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryFixedOutput)
-}
-
-func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointSessionExpiryFixedArgs) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryFixedOutput).ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx)
-}
-
-// GetAppsEnforcementPointSessionExpiryFixedPtrInput is an input type that accepts GetAppsEnforcementPointSessionExpiryFixedArgs, GetAppsEnforcementPointSessionExpiryFixedPtr and GetAppsEnforcementPointSessionExpiryFixedPtrOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointSessionExpiryFixedPtrInput` via:
-//
-//	        GetAppsEnforcementPointSessionExpiryFixedArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsEnforcementPointSessionExpiryFixedPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput
-	ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput
-}
-
-type getAppsEnforcementPointSessionExpiryFixedPtrType GetAppsEnforcementPointSessionExpiryFixedArgs
-
-func GetAppsEnforcementPointSessionExpiryFixedPtr(v *GetAppsEnforcementPointSessionExpiryFixedArgs) GetAppsEnforcementPointSessionExpiryFixedPtrInput {
-	return (*getAppsEnforcementPointSessionExpiryFixedPtrType)(v)
-}
-
-func (*getAppsEnforcementPointSessionExpiryFixedPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (i *getAppsEnforcementPointSessionExpiryFixedPtrType) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsEnforcementPointSessionExpiryFixedPtrType) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryFixedOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointSessionExpiryFixedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToGetAppsEnforcementPointSessionExpiryFixedOutput() GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToGetAppsEnforcementPointSessionExpiryFixedOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsEnforcementPointSessionExpiryFixed) *GetAppsEnforcementPointSessionExpiryFixed {
-		return &v
-	}).(GetAppsEnforcementPointSessionExpiryFixedPtrOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) Unit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryFixed) int { return v.Unit }).(pulumi.IntOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedOutput) Value() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryFixed) int { return v.Value }).(pulumi.IntOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryFixedPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPointSessionExpiryFixed)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutput() GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) ToGetAppsEnforcementPointSessionExpiryFixedPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryFixedPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) Elem() GetAppsEnforcementPointSessionExpiryFixedOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryFixed) GetAppsEnforcementPointSessionExpiryFixed {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsEnforcementPointSessionExpiryFixed
-		return ret
-	}).(GetAppsEnforcementPointSessionExpiryFixedOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryFixed) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Unit
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryFixedPtrOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryFixed) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryInactivity struct {
-	Unit  int `pulumi:"unit"`
-	Value int `pulumi:"value"`
-}
-
-// GetAppsEnforcementPointSessionExpiryInactivityInput is an input type that accepts GetAppsEnforcementPointSessionExpiryInactivityArgs and GetAppsEnforcementPointSessionExpiryInactivityOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointSessionExpiryInactivityInput` via:
-//
-//	GetAppsEnforcementPointSessionExpiryInactivityArgs{...}
-type GetAppsEnforcementPointSessionExpiryInactivityInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointSessionExpiryInactivityOutput() GetAppsEnforcementPointSessionExpiryInactivityOutput
-	ToGetAppsEnforcementPointSessionExpiryInactivityOutputWithContext(context.Context) GetAppsEnforcementPointSessionExpiryInactivityOutput
-}
-
-type GetAppsEnforcementPointSessionExpiryInactivityArgs struct {
-	Unit  pulumi.IntInput `pulumi:"unit"`
-	Value pulumi.IntInput `pulumi:"value"`
-}
-
-func (GetAppsEnforcementPointSessionExpiryInactivityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcementPointSessionExpiryInactivityOutput() GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryInactivityOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryInactivityOutput)
-}
-
-func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsEnforcementPointSessionExpiryInactivityArgs) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryInactivityOutput).ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx)
-}
-
-// GetAppsEnforcementPointSessionExpiryInactivityPtrInput is an input type that accepts GetAppsEnforcementPointSessionExpiryInactivityArgs, GetAppsEnforcementPointSessionExpiryInactivityPtr and GetAppsEnforcementPointSessionExpiryInactivityPtrOutput values.
-// You can construct a concrete instance of `GetAppsEnforcementPointSessionExpiryInactivityPtrInput` via:
-//
-//	        GetAppsEnforcementPointSessionExpiryInactivityArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsEnforcementPointSessionExpiryInactivityPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput
-	ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput
-}
-
-type getAppsEnforcementPointSessionExpiryInactivityPtrType GetAppsEnforcementPointSessionExpiryInactivityArgs
-
-func GetAppsEnforcementPointSessionExpiryInactivityPtr(v *GetAppsEnforcementPointSessionExpiryInactivityArgs) GetAppsEnforcementPointSessionExpiryInactivityPtrInput {
-	return (*getAppsEnforcementPointSessionExpiryInactivityPtrType)(v)
-}
-
-func (*getAppsEnforcementPointSessionExpiryInactivityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (i *getAppsEnforcementPointSessionExpiryInactivityPtrType) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return i.ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsEnforcementPointSessionExpiryInactivityPtrType) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryInactivityOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointSessionExpiryInactivityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToGetAppsEnforcementPointSessionExpiryInactivityOutput() GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToGetAppsEnforcementPointSessionExpiryInactivityOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsEnforcementPointSessionExpiryInactivity) *GetAppsEnforcementPointSessionExpiryInactivity {
-		return &v
-	}).(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) Unit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryInactivity) int { return v.Unit }).(pulumi.IntOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityOutput) Value() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsEnforcementPointSessionExpiryInactivity) int { return v.Value }).(pulumi.IntOutput)
-}
-
-type GetAppsEnforcementPointSessionExpiryInactivityPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsEnforcementPointSessionExpiryInactivity)(nil)).Elem()
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutput() GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) ToGetAppsEnforcementPointSessionExpiryInactivityPtrOutputWithContext(ctx context.Context) GetAppsEnforcementPointSessionExpiryInactivityPtrOutput {
-	return o
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) Elem() GetAppsEnforcementPointSessionExpiryInactivityOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryInactivity) GetAppsEnforcementPointSessionExpiryInactivity {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsEnforcementPointSessionExpiryInactivity
-		return ret
-	}).(GetAppsEnforcementPointSessionExpiryInactivityOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) Unit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryInactivity) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Unit
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetAppsEnforcementPointSessionExpiryInactivityPtrOutput) Value() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsEnforcementPointSessionExpiryInactivity) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppsFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetAppsFilterInput is an input type that accepts GetAppsFilterArgs and GetAppsFilterOutput values.
-// You can construct a concrete instance of `GetAppsFilterInput` via:
-//
-//	GetAppsFilterArgs{...}
-type GetAppsFilterInput interface {
-	pulumi.Input
-
-	ToGetAppsFilterOutput() GetAppsFilterOutput
-	ToGetAppsFilterOutputWithContext(context.Context) GetAppsFilterOutput
-}
-
-type GetAppsFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetAppsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsFilter)(nil)).Elem()
-}
-
-func (i GetAppsFilterArgs) ToGetAppsFilterOutput() GetAppsFilterOutput {
-	return i.ToGetAppsFilterOutputWithContext(context.Background())
-}
-
-func (i GetAppsFilterArgs) ToGetAppsFilterOutputWithContext(ctx context.Context) GetAppsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterOutput)
-}
-
-// GetAppsFilterArrayInput is an input type that accepts GetAppsFilterArray and GetAppsFilterArrayOutput values.
-// You can construct a concrete instance of `GetAppsFilterArrayInput` via:
-//
-//	GetAppsFilterArray{ GetAppsFilterArgs{...} }
-type GetAppsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput
-	ToGetAppsFilterArrayOutputWithContext(context.Context) GetAppsFilterArrayOutput
-}
-
-type GetAppsFilterArray []GetAppsFilterInput
-
-func (GetAppsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsFilter)(nil)).Elem()
-}
-
-func (i GetAppsFilterArray) ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput {
-	return i.ToGetAppsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppsFilterArray) ToGetAppsFilterArrayOutputWithContext(ctx context.Context) GetAppsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsFilterArrayOutput)
-}
-
-type GetAppsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetAppsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsFilter)(nil)).Elem()
-}
-
-func (o GetAppsFilterOutput) ToGetAppsFilterOutput() GetAppsFilterOutput {
-	return o
-}
-
-func (o GetAppsFilterOutput) ToGetAppsFilterOutputWithContext(ctx context.Context) GetAppsFilterOutput {
-	return o
-}
-
-func (o GetAppsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAppsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetAppsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsFilter)(nil)).Elem()
-}
-
-func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutput() GetAppsFilterArrayOutput {
-	return o
-}
-
-func (o GetAppsFilterArrayOutput) ToGetAppsFilterArrayOutputWithContext(ctx context.Context) GetAppsFilterArrayOutput {
-	return o
-}
-
-func (o GetAppsFilterArrayOutput) Index(i pulumi.IntInput) GetAppsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsFilter {
-		return vs[0].([]GetAppsFilter)[vs[1].(int)]
-	}).(GetAppsFilterOutput)
-}
-
-type GetAppsParameters struct {
-	Groups GetAppsParametersGroups `pulumi:"groups"`
-}
-
-// GetAppsParametersInput is an input type that accepts GetAppsParametersArgs and GetAppsParametersOutput values.
-// You can construct a concrete instance of `GetAppsParametersInput` via:
-//
-//	GetAppsParametersArgs{...}
-type GetAppsParametersInput interface {
-	pulumi.Input
-
-	ToGetAppsParametersOutput() GetAppsParametersOutput
-	ToGetAppsParametersOutputWithContext(context.Context) GetAppsParametersOutput
-}
-
-type GetAppsParametersArgs struct {
-	Groups GetAppsParametersGroupsInput `pulumi:"groups"`
-}
-
-func (GetAppsParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsParameters)(nil)).Elem()
-}
-
-func (i GetAppsParametersArgs) ToGetAppsParametersOutput() GetAppsParametersOutput {
-	return i.ToGetAppsParametersOutputWithContext(context.Background())
-}
-
-func (i GetAppsParametersArgs) ToGetAppsParametersOutputWithContext(ctx context.Context) GetAppsParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersOutput)
-}
-
-func (i GetAppsParametersArgs) ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput {
-	return i.ToGetAppsParametersPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsParametersArgs) ToGetAppsParametersPtrOutputWithContext(ctx context.Context) GetAppsParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersOutput).ToGetAppsParametersPtrOutputWithContext(ctx)
-}
-
-// GetAppsParametersPtrInput is an input type that accepts GetAppsParametersArgs, GetAppsParametersPtr and GetAppsParametersPtrOutput values.
-// You can construct a concrete instance of `GetAppsParametersPtrInput` via:
-//
-//	        GetAppsParametersArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsParametersPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput
-	ToGetAppsParametersPtrOutputWithContext(context.Context) GetAppsParametersPtrOutput
-}
-
-type getAppsParametersPtrType GetAppsParametersArgs
-
-func GetAppsParametersPtr(v *GetAppsParametersArgs) GetAppsParametersPtrInput {
-	return (*getAppsParametersPtrType)(v)
-}
-
-func (*getAppsParametersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsParameters)(nil)).Elem()
-}
-
-func (i *getAppsParametersPtrType) ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput {
-	return i.ToGetAppsParametersPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsParametersPtrType) ToGetAppsParametersPtrOutputWithContext(ctx context.Context) GetAppsParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersPtrOutput)
-}
-
-type GetAppsParametersOutput struct{ *pulumi.OutputState }
-
-func (GetAppsParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsParameters)(nil)).Elem()
-}
-
-func (o GetAppsParametersOutput) ToGetAppsParametersOutput() GetAppsParametersOutput {
-	return o
-}
-
-func (o GetAppsParametersOutput) ToGetAppsParametersOutputWithContext(ctx context.Context) GetAppsParametersOutput {
-	return o
-}
-
-func (o GetAppsParametersOutput) ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput {
-	return o.ToGetAppsParametersPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsParametersOutput) ToGetAppsParametersPtrOutputWithContext(ctx context.Context) GetAppsParametersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsParameters) *GetAppsParameters {
-		return &v
-	}).(GetAppsParametersPtrOutput)
-}
-
-func (o GetAppsParametersOutput) Groups() GetAppsParametersGroupsOutput {
-	return o.ApplyT(func(v GetAppsParameters) GetAppsParametersGroups { return v.Groups }).(GetAppsParametersGroupsOutput)
-}
-
-type GetAppsParametersPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsParametersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsParameters)(nil)).Elem()
-}
-
-func (o GetAppsParametersPtrOutput) ToGetAppsParametersPtrOutput() GetAppsParametersPtrOutput {
-	return o
-}
-
-func (o GetAppsParametersPtrOutput) ToGetAppsParametersPtrOutputWithContext(ctx context.Context) GetAppsParametersPtrOutput {
-	return o
-}
-
-func (o GetAppsParametersPtrOutput) Elem() GetAppsParametersOutput {
-	return o.ApplyT(func(v *GetAppsParameters) GetAppsParameters {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsParameters
-		return ret
-	}).(GetAppsParametersOutput)
-}
-
-func (o GetAppsParametersPtrOutput) Groups() GetAppsParametersGroupsPtrOutput {
-	return o.ApplyT(func(v *GetAppsParameters) *GetAppsParametersGroups {
-		if v == nil {
-			return nil
-		}
-		return &v.Groups
-	}).(GetAppsParametersGroupsPtrOutput)
-}
-
-type GetAppsParametersGroups struct {
-	AttributesTransformations string `pulumi:"attributesTransformations"`
-	DefaultValues             string `pulumi:"defaultValues"`
-	Id                        int    `pulumi:"id"`
-	Label                     string `pulumi:"label"`
-	ProvisionedEntitlements   bool   `pulumi:"provisionedEntitlements"`
-	SkipIfBlank               bool   `pulumi:"skipIfBlank"`
-	UserAttributeMacros       string `pulumi:"userAttributeMacros"`
-	UserAttributeMappings     string `pulumi:"userAttributeMappings"`
-	Values                    string `pulumi:"values"`
-}
-
-// GetAppsParametersGroupsInput is an input type that accepts GetAppsParametersGroupsArgs and GetAppsParametersGroupsOutput values.
-// You can construct a concrete instance of `GetAppsParametersGroupsInput` via:
-//
-//	GetAppsParametersGroupsArgs{...}
-type GetAppsParametersGroupsInput interface {
-	pulumi.Input
-
-	ToGetAppsParametersGroupsOutput() GetAppsParametersGroupsOutput
-	ToGetAppsParametersGroupsOutputWithContext(context.Context) GetAppsParametersGroupsOutput
-}
-
-type GetAppsParametersGroupsArgs struct {
-	AttributesTransformations pulumi.StringInput `pulumi:"attributesTransformations"`
-	DefaultValues             pulumi.StringInput `pulumi:"defaultValues"`
-	Id                        pulumi.IntInput    `pulumi:"id"`
-	Label                     pulumi.StringInput `pulumi:"label"`
-	ProvisionedEntitlements   pulumi.BoolInput   `pulumi:"provisionedEntitlements"`
-	SkipIfBlank               pulumi.BoolInput   `pulumi:"skipIfBlank"`
-	UserAttributeMacros       pulumi.StringInput `pulumi:"userAttributeMacros"`
-	UserAttributeMappings     pulumi.StringInput `pulumi:"userAttributeMappings"`
-	Values                    pulumi.StringInput `pulumi:"values"`
-}
-
-func (GetAppsParametersGroupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsParametersGroups)(nil)).Elem()
-}
-
-func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsOutput() GetAppsParametersGroupsOutput {
-	return i.ToGetAppsParametersGroupsOutputWithContext(context.Background())
-}
-
-func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsOutputWithContext(ctx context.Context) GetAppsParametersGroupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersGroupsOutput)
-}
-
-func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput {
-	return i.ToGetAppsParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsParametersGroupsArgs) ToGetAppsParametersGroupsPtrOutputWithContext(ctx context.Context) GetAppsParametersGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersGroupsOutput).ToGetAppsParametersGroupsPtrOutputWithContext(ctx)
-}
-
-// GetAppsParametersGroupsPtrInput is an input type that accepts GetAppsParametersGroupsArgs, GetAppsParametersGroupsPtr and GetAppsParametersGroupsPtrOutput values.
-// You can construct a concrete instance of `GetAppsParametersGroupsPtrInput` via:
-//
-//	        GetAppsParametersGroupsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsParametersGroupsPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput
-	ToGetAppsParametersGroupsPtrOutputWithContext(context.Context) GetAppsParametersGroupsPtrOutput
-}
-
-type getAppsParametersGroupsPtrType GetAppsParametersGroupsArgs
-
-func GetAppsParametersGroupsPtr(v *GetAppsParametersGroupsArgs) GetAppsParametersGroupsPtrInput {
-	return (*getAppsParametersGroupsPtrType)(v)
-}
-
-func (*getAppsParametersGroupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsParametersGroups)(nil)).Elem()
-}
-
-func (i *getAppsParametersGroupsPtrType) ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput {
-	return i.ToGetAppsParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsParametersGroupsPtrType) ToGetAppsParametersGroupsPtrOutputWithContext(ctx context.Context) GetAppsParametersGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsParametersGroupsPtrOutput)
-}
-
-type GetAppsParametersGroupsOutput struct{ *pulumi.OutputState }
-
-func (GetAppsParametersGroupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsParametersGroups)(nil)).Elem()
-}
-
-func (o GetAppsParametersGroupsOutput) ToGetAppsParametersGroupsOutput() GetAppsParametersGroupsOutput {
-	return o
-}
-
-func (o GetAppsParametersGroupsOutput) ToGetAppsParametersGroupsOutputWithContext(ctx context.Context) GetAppsParametersGroupsOutput {
-	return o
-}
-
-func (o GetAppsParametersGroupsOutput) ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput {
-	return o.ToGetAppsParametersGroupsPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsParametersGroupsOutput) ToGetAppsParametersGroupsPtrOutputWithContext(ctx context.Context) GetAppsParametersGroupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsParametersGroups) *GetAppsParametersGroups {
-		return &v
-	}).(GetAppsParametersGroupsPtrOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) AttributesTransformations() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.AttributesTransformations }).(pulumi.StringOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) DefaultValues() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.DefaultValues }).(pulumi.StringOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) int { return v.Id }).(pulumi.IntOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.Label }).(pulumi.StringOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) ProvisionedEntitlements() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) bool { return v.ProvisionedEntitlements }).(pulumi.BoolOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) SkipIfBlank() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) bool { return v.SkipIfBlank }).(pulumi.BoolOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) UserAttributeMacros() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.UserAttributeMacros }).(pulumi.StringOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) UserAttributeMappings() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.UserAttributeMappings }).(pulumi.StringOutput)
-}
-
-func (o GetAppsParametersGroupsOutput) Values() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsParametersGroups) string { return v.Values }).(pulumi.StringOutput)
-}
-
-type GetAppsParametersGroupsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsParametersGroupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsParametersGroups)(nil)).Elem()
-}
-
-func (o GetAppsParametersGroupsPtrOutput) ToGetAppsParametersGroupsPtrOutput() GetAppsParametersGroupsPtrOutput {
-	return o
-}
-
-func (o GetAppsParametersGroupsPtrOutput) ToGetAppsParametersGroupsPtrOutputWithContext(ctx context.Context) GetAppsParametersGroupsPtrOutput {
-	return o
-}
-
-func (o GetAppsParametersGroupsPtrOutput) Elem() GetAppsParametersGroupsOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) GetAppsParametersGroups {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsParametersGroups
-		return ret
-	}).(GetAppsParametersGroupsOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) AttributesTransformations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AttributesTransformations
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) DefaultValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultValues
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Label
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) ProvisionedEntitlements() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvisionedEntitlements
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) SkipIfBlank() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SkipIfBlank
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) UserAttributeMacros() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserAttributeMacros
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) UserAttributeMappings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserAttributeMappings
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsParametersGroupsPtrOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsParametersGroups) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Values
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsProvisioning struct {
-	Enabled bool   `pulumi:"enabled"`
-	Status  string `pulumi:"status"`
-}
-
-// GetAppsProvisioningInput is an input type that accepts GetAppsProvisioningArgs and GetAppsProvisioningOutput values.
-// You can construct a concrete instance of `GetAppsProvisioningInput` via:
-//
-//	GetAppsProvisioningArgs{...}
-type GetAppsProvisioningInput interface {
-	pulumi.Input
-
-	ToGetAppsProvisioningOutput() GetAppsProvisioningOutput
-	ToGetAppsProvisioningOutputWithContext(context.Context) GetAppsProvisioningOutput
-}
-
-type GetAppsProvisioningArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Status  pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetAppsProvisioningArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsProvisioning)(nil)).Elem()
-}
-
-func (i GetAppsProvisioningArgs) ToGetAppsProvisioningOutput() GetAppsProvisioningOutput {
-	return i.ToGetAppsProvisioningOutputWithContext(context.Background())
-}
-
-func (i GetAppsProvisioningArgs) ToGetAppsProvisioningOutputWithContext(ctx context.Context) GetAppsProvisioningOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsProvisioningOutput)
-}
-
-func (i GetAppsProvisioningArgs) ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput {
-	return i.ToGetAppsProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsProvisioningArgs) ToGetAppsProvisioningPtrOutputWithContext(ctx context.Context) GetAppsProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsProvisioningOutput).ToGetAppsProvisioningPtrOutputWithContext(ctx)
-}
-
-// GetAppsProvisioningPtrInput is an input type that accepts GetAppsProvisioningArgs, GetAppsProvisioningPtr and GetAppsProvisioningPtrOutput values.
-// You can construct a concrete instance of `GetAppsProvisioningPtrInput` via:
-//
-//	        GetAppsProvisioningArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsProvisioningPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput
-	ToGetAppsProvisioningPtrOutputWithContext(context.Context) GetAppsProvisioningPtrOutput
-}
-
-type getAppsProvisioningPtrType GetAppsProvisioningArgs
-
-func GetAppsProvisioningPtr(v *GetAppsProvisioningArgs) GetAppsProvisioningPtrInput {
-	return (*getAppsProvisioningPtrType)(v)
-}
-
-func (*getAppsProvisioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsProvisioning)(nil)).Elem()
-}
-
-func (i *getAppsProvisioningPtrType) ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput {
-	return i.ToGetAppsProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsProvisioningPtrType) ToGetAppsProvisioningPtrOutputWithContext(ctx context.Context) GetAppsProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsProvisioningPtrOutput)
-}
-
-type GetAppsProvisioningOutput struct{ *pulumi.OutputState }
-
-func (GetAppsProvisioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsProvisioning)(nil)).Elem()
-}
-
-func (o GetAppsProvisioningOutput) ToGetAppsProvisioningOutput() GetAppsProvisioningOutput {
-	return o
-}
-
-func (o GetAppsProvisioningOutput) ToGetAppsProvisioningOutputWithContext(ctx context.Context) GetAppsProvisioningOutput {
-	return o
-}
-
-func (o GetAppsProvisioningOutput) ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput {
-	return o.ToGetAppsProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsProvisioningOutput) ToGetAppsProvisioningPtrOutputWithContext(ctx context.Context) GetAppsProvisioningPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsProvisioning) *GetAppsProvisioning {
-		return &v
-	}).(GetAppsProvisioningPtrOutput)
-}
-
-func (o GetAppsProvisioningOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppsProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o GetAppsProvisioningOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsProvisioning) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetAppsProvisioningPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsProvisioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsProvisioning)(nil)).Elem()
-}
-
-func (o GetAppsProvisioningPtrOutput) ToGetAppsProvisioningPtrOutput() GetAppsProvisioningPtrOutput {
-	return o
-}
-
-func (o GetAppsProvisioningPtrOutput) ToGetAppsProvisioningPtrOutputWithContext(ctx context.Context) GetAppsProvisioningPtrOutput {
-	return o
-}
-
-func (o GetAppsProvisioningPtrOutput) Elem() GetAppsProvisioningOutput {
-	return o.ApplyT(func(v *GetAppsProvisioning) GetAppsProvisioning {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsProvisioning
-		return ret
-	}).(GetAppsProvisioningOutput)
-}
-
-func (o GetAppsProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppsProvisioning) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetAppsProvisioningPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsProvisioning) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsSso struct {
-	// App Name.	This is only returned after Creating a SAML App.
-	AcsUrl string `pulumi:"acsUrl"`
-	// The certificate used for signing.	This is only returned after Creating a SAML App.
-	Certificate GetAppsSsoCertificate `pulumi:"certificate"`
-	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-	ClientId string `pulumi:"clientId"`
-	// OpenId Connet Client Secret
-	ClientSecret string `pulumi:"clientSecret"`
-	// Issuer of app.	This is only returned after Creating a SAML App.
-	Issuer string `pulumi:"issuer"`
-	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-	MetadataUrl string `pulumi:"metadataUrl"`
-}
-
-// GetAppsSsoInput is an input type that accepts GetAppsSsoArgs and GetAppsSsoOutput values.
-// You can construct a concrete instance of `GetAppsSsoInput` via:
-//
-//	GetAppsSsoArgs{...}
-type GetAppsSsoInput interface {
-	pulumi.Input
-
-	ToGetAppsSsoOutput() GetAppsSsoOutput
-	ToGetAppsSsoOutputWithContext(context.Context) GetAppsSsoOutput
-}
-
-type GetAppsSsoArgs struct {
-	// App Name.	This is only returned after Creating a SAML App.
-	AcsUrl pulumi.StringInput `pulumi:"acsUrl"`
-	// The certificate used for signing.	This is only returned after Creating a SAML App.
-	Certificate GetAppsSsoCertificateInput `pulumi:"certificate"`
-	// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// OpenId Connet Client Secret
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// Issuer of app.	This is only returned after Creating a SAML App.
-	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-	MetadataUrl pulumi.StringInput `pulumi:"metadataUrl"`
-}
-
-func (GetAppsSsoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsSso)(nil)).Elem()
-}
-
-func (i GetAppsSsoArgs) ToGetAppsSsoOutput() GetAppsSsoOutput {
-	return i.ToGetAppsSsoOutputWithContext(context.Background())
-}
-
-func (i GetAppsSsoArgs) ToGetAppsSsoOutputWithContext(ctx context.Context) GetAppsSsoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoOutput)
-}
-
-func (i GetAppsSsoArgs) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
-	return i.ToGetAppsSsoPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsSsoArgs) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) GetAppsSsoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoOutput).ToGetAppsSsoPtrOutputWithContext(ctx)
-}
-
-// GetAppsSsoPtrInput is an input type that accepts GetAppsSsoArgs, GetAppsSsoPtr and GetAppsSsoPtrOutput values.
-// You can construct a concrete instance of `GetAppsSsoPtrInput` via:
-//
-//	        GetAppsSsoArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsSsoPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput
-	ToGetAppsSsoPtrOutputWithContext(context.Context) GetAppsSsoPtrOutput
-}
-
-type getAppsSsoPtrType GetAppsSsoArgs
-
-func GetAppsSsoPtr(v *GetAppsSsoArgs) GetAppsSsoPtrInput {
-	return (*getAppsSsoPtrType)(v)
-}
-
-func (*getAppsSsoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsSso)(nil)).Elem()
-}
-
-func (i *getAppsSsoPtrType) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
-	return i.ToGetAppsSsoPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsSsoPtrType) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) GetAppsSsoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoPtrOutput)
-}
-
-type GetAppsSsoOutput struct{ *pulumi.OutputState }
-
-func (GetAppsSsoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsSso)(nil)).Elem()
-}
-
-func (o GetAppsSsoOutput) ToGetAppsSsoOutput() GetAppsSsoOutput {
-	return o
-}
-
-func (o GetAppsSsoOutput) ToGetAppsSsoOutputWithContext(ctx context.Context) GetAppsSsoOutput {
-	return o
-}
-
-func (o GetAppsSsoOutput) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
-	return o.ToGetAppsSsoPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsSsoOutput) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) GetAppsSsoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsSso) *GetAppsSso {
-		return &v
-	}).(GetAppsSsoPtrOutput)
-}
-
-// App Name.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoOutput) AcsUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSso) string { return v.AcsUrl }).(pulumi.StringOutput)
-}
-
-// The certificate used for signing.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoOutput) Certificate() GetAppsSsoCertificateOutput {
-	return o.ApplyT(func(v GetAppsSso) GetAppsSsoCertificate { return v.Certificate }).(GetAppsSsoCertificateOutput)
-}
-
-// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-func (o GetAppsSsoOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSso) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// OpenId Connet Client Secret
-func (o GetAppsSsoOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSso) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// Issuer of app.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoOutput) Issuer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSso) string { return v.Issuer }).(pulumi.StringOutput)
-}
-
-// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoOutput) MetadataUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSso) string { return v.MetadataUrl }).(pulumi.StringOutput)
-}
-
-type GetAppsSsoPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsSsoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsSso)(nil)).Elem()
-}
-
-func (o GetAppsSsoPtrOutput) ToGetAppsSsoPtrOutput() GetAppsSsoPtrOutput {
-	return o
-}
-
-func (o GetAppsSsoPtrOutput) ToGetAppsSsoPtrOutputWithContext(ctx context.Context) GetAppsSsoPtrOutput {
-	return o
-}
-
-func (o GetAppsSsoPtrOutput) Elem() GetAppsSsoOutput {
-	return o.ApplyT(func(v *GetAppsSso) GetAppsSso {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsSso
-		return ret
-	}).(GetAppsSsoOutput)
-}
-
-// App Name.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoPtrOutput) AcsUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AcsUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The certificate used for signing.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoPtrOutput) Certificate() GetAppsSsoCertificatePtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *GetAppsSsoCertificate {
-		if v == nil {
-			return nil
-		}
-		return &v.Certificate
-	}).(GetAppsSsoCertificatePtrOutput)
-}
-
-// The OpenId Connect Client Id. Note that clientSecret is only returned after Creating an OIDC App.
-func (o GetAppsSsoPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenId Connet Client Secret
-func (o GetAppsSsoPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Issuer of app.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Issuer
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the apps underlying connector.	This is only returned after Creating a SAML App.
-func (o GetAppsSsoPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSso) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MetadataUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsSsoCertificate struct {
-	Id    int    `pulumi:"id"`
-	Name  string `pulumi:"name"`
-	Value string `pulumi:"value"`
-}
-
-// GetAppsSsoCertificateInput is an input type that accepts GetAppsSsoCertificateArgs and GetAppsSsoCertificateOutput values.
-// You can construct a concrete instance of `GetAppsSsoCertificateInput` via:
-//
-//	GetAppsSsoCertificateArgs{...}
-type GetAppsSsoCertificateInput interface {
-	pulumi.Input
-
-	ToGetAppsSsoCertificateOutput() GetAppsSsoCertificateOutput
-	ToGetAppsSsoCertificateOutputWithContext(context.Context) GetAppsSsoCertificateOutput
-}
-
-type GetAppsSsoCertificateArgs struct {
-	Id    pulumi.IntInput    `pulumi:"id"`
-	Name  pulumi.StringInput `pulumi:"name"`
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetAppsSsoCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsSsoCertificate)(nil)).Elem()
-}
-
-func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificateOutput() GetAppsSsoCertificateOutput {
-	return i.ToGetAppsSsoCertificateOutputWithContext(context.Background())
-}
-
-func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificateOutputWithContext(ctx context.Context) GetAppsSsoCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoCertificateOutput)
-}
-
-func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput {
-	return i.ToGetAppsSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsSsoCertificateArgs) ToGetAppsSsoCertificatePtrOutputWithContext(ctx context.Context) GetAppsSsoCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoCertificateOutput).ToGetAppsSsoCertificatePtrOutputWithContext(ctx)
-}
-
-// GetAppsSsoCertificatePtrInput is an input type that accepts GetAppsSsoCertificateArgs, GetAppsSsoCertificatePtr and GetAppsSsoCertificatePtrOutput values.
-// You can construct a concrete instance of `GetAppsSsoCertificatePtrInput` via:
-//
-//	        GetAppsSsoCertificateArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsSsoCertificatePtrInput interface {
-	pulumi.Input
-
-	ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput
-	ToGetAppsSsoCertificatePtrOutputWithContext(context.Context) GetAppsSsoCertificatePtrOutput
-}
-
-type getAppsSsoCertificatePtrType GetAppsSsoCertificateArgs
-
-func GetAppsSsoCertificatePtr(v *GetAppsSsoCertificateArgs) GetAppsSsoCertificatePtrInput {
-	return (*getAppsSsoCertificatePtrType)(v)
-}
-
-func (*getAppsSsoCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsSsoCertificate)(nil)).Elem()
-}
-
-func (i *getAppsSsoCertificatePtrType) ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput {
-	return i.ToGetAppsSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsSsoCertificatePtrType) ToGetAppsSsoCertificatePtrOutputWithContext(ctx context.Context) GetAppsSsoCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsSsoCertificatePtrOutput)
-}
-
-type GetAppsSsoCertificateOutput struct{ *pulumi.OutputState }
-
-func (GetAppsSsoCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsSsoCertificate)(nil)).Elem()
-}
-
-func (o GetAppsSsoCertificateOutput) ToGetAppsSsoCertificateOutput() GetAppsSsoCertificateOutput {
-	return o
-}
-
-func (o GetAppsSsoCertificateOutput) ToGetAppsSsoCertificateOutputWithContext(ctx context.Context) GetAppsSsoCertificateOutput {
-	return o
-}
-
-func (o GetAppsSsoCertificateOutput) ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput {
-	return o.ToGetAppsSsoCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsSsoCertificateOutput) ToGetAppsSsoCertificatePtrOutputWithContext(ctx context.Context) GetAppsSsoCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsSsoCertificate) *GetAppsSsoCertificate {
-		return &v
-	}).(GetAppsSsoCertificatePtrOutput)
-}
-
-func (o GetAppsSsoCertificateOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppsSsoCertificate) int { return v.Id }).(pulumi.IntOutput)
-}
-
-func (o GetAppsSsoCertificateOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSsoCertificate) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAppsSsoCertificateOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsSsoCertificate) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetAppsSsoCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsSsoCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsSsoCertificate)(nil)).Elem()
-}
-
-func (o GetAppsSsoCertificatePtrOutput) ToGetAppsSsoCertificatePtrOutput() GetAppsSsoCertificatePtrOutput {
-	return o
-}
-
-func (o GetAppsSsoCertificatePtrOutput) ToGetAppsSsoCertificatePtrOutputWithContext(ctx context.Context) GetAppsSsoCertificatePtrOutput {
-	return o
-}
-
-func (o GetAppsSsoCertificatePtrOutput) Elem() GetAppsSsoCertificateOutput {
-	return o.ApplyT(func(v *GetAppsSsoCertificate) GetAppsSsoCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsSsoCertificate
-		return ret
-	}).(GetAppsSsoCertificateOutput)
-}
-
-func (o GetAppsSsoCertificatePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppsSsoCertificate) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetAppsSsoCertificatePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSsoCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsSsoCertificatePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsSsoCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAuthServersClaimsFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetAuthServersClaimsFilterInput is an input type that accepts GetAuthServersClaimsFilterArgs and GetAuthServersClaimsFilterOutput values.
-// You can construct a concrete instance of `GetAuthServersClaimsFilterInput` via:
-//
-//	GetAuthServersClaimsFilterArgs{...}
-type GetAuthServersClaimsFilterInput interface {
-	pulumi.Input
-
-	ToGetAuthServersClaimsFilterOutput() GetAuthServersClaimsFilterOutput
-	ToGetAuthServersClaimsFilterOutputWithContext(context.Context) GetAuthServersClaimsFilterOutput
-}
-
-type GetAuthServersClaimsFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetAuthServersClaimsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersClaimsFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersClaimsFilterArgs) ToGetAuthServersClaimsFilterOutput() GetAuthServersClaimsFilterOutput {
-	return i.ToGetAuthServersClaimsFilterOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersClaimsFilterArgs) ToGetAuthServersClaimsFilterOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersClaimsFilterOutput)
-}
-
-// GetAuthServersClaimsFilterArrayInput is an input type that accepts GetAuthServersClaimsFilterArray and GetAuthServersClaimsFilterArrayOutput values.
-// You can construct a concrete instance of `GetAuthServersClaimsFilterArrayInput` via:
-//
-//	GetAuthServersClaimsFilterArray{ GetAuthServersClaimsFilterArgs{...} }
-type GetAuthServersClaimsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetAuthServersClaimsFilterArrayOutput() GetAuthServersClaimsFilterArrayOutput
-	ToGetAuthServersClaimsFilterArrayOutputWithContext(context.Context) GetAuthServersClaimsFilterArrayOutput
-}
-
-type GetAuthServersClaimsFilterArray []GetAuthServersClaimsFilterInput
-
-func (GetAuthServersClaimsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersClaimsFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersClaimsFilterArray) ToGetAuthServersClaimsFilterArrayOutput() GetAuthServersClaimsFilterArrayOutput {
-	return i.ToGetAuthServersClaimsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersClaimsFilterArray) ToGetAuthServersClaimsFilterArrayOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersClaimsFilterArrayOutput)
-}
-
-type GetAuthServersClaimsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersClaimsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersClaimsFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersClaimsFilterOutput) ToGetAuthServersClaimsFilterOutput() GetAuthServersClaimsFilterOutput {
-	return o
-}
-
-func (o GetAuthServersClaimsFilterOutput) ToGetAuthServersClaimsFilterOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterOutput {
-	return o
-}
-
-func (o GetAuthServersClaimsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAuthServersClaimsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAuthServersClaimsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAuthServersClaimsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetAuthServersClaimsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersClaimsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersClaimsFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersClaimsFilterArrayOutput) ToGetAuthServersClaimsFilterArrayOutput() GetAuthServersClaimsFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersClaimsFilterArrayOutput) ToGetAuthServersClaimsFilterArrayOutputWithContext(ctx context.Context) GetAuthServersClaimsFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersClaimsFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersClaimsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthServersClaimsFilter {
-		return vs[0].([]GetAuthServersClaimsFilter)[vs[1].(int)]
-	}).(GetAuthServersClaimsFilterOutput)
-}
-
-type GetAuthServersConfiguration struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences []string `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier string `pulumi:"resourceIdentifier"`
-}
-
-// GetAuthServersConfigurationInput is an input type that accepts GetAuthServersConfigurationArgs and GetAuthServersConfigurationOutput values.
-// You can construct a concrete instance of `GetAuthServersConfigurationInput` via:
-//
-//	GetAuthServersConfigurationArgs{...}
-type GetAuthServersConfigurationInput interface {
-	pulumi.Input
-
-	ToGetAuthServersConfigurationOutput() GetAuthServersConfigurationOutput
-	ToGetAuthServersConfigurationOutputWithContext(context.Context) GetAuthServersConfigurationOutput
+func (o SamlAppsParameterOutput) SkipIfBlank() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *bool { return v.SkipIfBlank }).(pulumi.BoolPtrOutput)
 }
 
-type GetAuthServersConfigurationArgs struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
-}
-
-func (GetAuthServersConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersConfiguration)(nil)).Elem()
-}
-
-func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationOutput() GetAuthServersConfigurationOutput {
-	return i.ToGetAuthServersConfigurationOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationOutputWithContext(ctx context.Context) GetAuthServersConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersConfigurationOutput)
-}
-
-func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput {
-	return i.ToGetAuthServersConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersConfigurationArgs) ToGetAuthServersConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersConfigurationOutput).ToGetAuthServersConfigurationPtrOutputWithContext(ctx)
-}
-
-// GetAuthServersConfigurationPtrInput is an input type that accepts GetAuthServersConfigurationArgs, GetAuthServersConfigurationPtr and GetAuthServersConfigurationPtrOutput values.
-// You can construct a concrete instance of `GetAuthServersConfigurationPtrInput` via:
-//
-//	        GetAuthServersConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAuthServersConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput
-	ToGetAuthServersConfigurationPtrOutputWithContext(context.Context) GetAuthServersConfigurationPtrOutput
-}
-
-type getAuthServersConfigurationPtrType GetAuthServersConfigurationArgs
-
-func GetAuthServersConfigurationPtr(v *GetAuthServersConfigurationArgs) GetAuthServersConfigurationPtrInput {
-	return (*getAuthServersConfigurationPtrType)(v)
-}
-
-func (*getAuthServersConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAuthServersConfiguration)(nil)).Elem()
-}
-
-func (i *getAuthServersConfigurationPtrType) ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput {
-	return i.ToGetAuthServersConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAuthServersConfigurationPtrType) ToGetAuthServersConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersConfigurationPtrOutput)
-}
-
-type GetAuthServersConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersConfiguration)(nil)).Elem()
-}
-
-func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationOutput() GetAuthServersConfigurationOutput {
-	return o
-}
-
-func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationOutputWithContext(ctx context.Context) GetAuthServersConfigurationOutput {
-	return o
-}
-
-func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput {
-	return o.ToGetAuthServersConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAuthServersConfigurationOutput) ToGetAuthServersConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAuthServersConfiguration) *GetAuthServersConfiguration {
-		return &v
-	}).(GetAuthServersConfigurationPtrOutput)
-}
-
-// The number of minutes until access token expires. There is no maximum expiry limit.
-func (o GetAuthServersConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAuthServersConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// List of API endpoints that will be returned in Access Tokens.
-func (o GetAuthServersConfigurationOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAuthServersConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
-func (o GetAuthServersConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAuthServersConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o GetAuthServersConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAuthServersConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
-}
-
-type GetAuthServersConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAuthServersConfiguration)(nil)).Elem()
-}
-
-func (o GetAuthServersConfigurationPtrOutput) ToGetAuthServersConfigurationPtrOutput() GetAuthServersConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAuthServersConfigurationPtrOutput) ToGetAuthServersConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAuthServersConfigurationPtrOutput) Elem() GetAuthServersConfigurationOutput {
-	return o.ApplyT(func(v *GetAuthServersConfiguration) GetAuthServersConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret GetAuthServersConfiguration
-		return ret
-	}).(GetAuthServersConfigurationOutput)
-}
-
-// The number of minutes until access token expires. There is no maximum expiry limit.
-func (o GetAuthServersConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// List of API endpoints that will be returned in Access Tokens.
-func (o GetAuthServersConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAuthServersConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Audiences
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
-func (o GetAuthServersConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RefreshTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o GetAuthServersConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAuthServersFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetAuthServersFilterInput is an input type that accepts GetAuthServersFilterArgs and GetAuthServersFilterOutput values.
-// You can construct a concrete instance of `GetAuthServersFilterInput` via:
-//
-//	GetAuthServersFilterArgs{...}
-type GetAuthServersFilterInput interface {
-	pulumi.Input
-
-	ToGetAuthServersFilterOutput() GetAuthServersFilterOutput
-	ToGetAuthServersFilterOutputWithContext(context.Context) GetAuthServersFilterOutput
-}
-
-type GetAuthServersFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetAuthServersFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersFilterArgs) ToGetAuthServersFilterOutput() GetAuthServersFilterOutput {
-	return i.ToGetAuthServersFilterOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersFilterArgs) ToGetAuthServersFilterOutputWithContext(ctx context.Context) GetAuthServersFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersFilterOutput)
-}
-
-// GetAuthServersFilterArrayInput is an input type that accepts GetAuthServersFilterArray and GetAuthServersFilterArrayOutput values.
-// You can construct a concrete instance of `GetAuthServersFilterArrayInput` via:
-//
-//	GetAuthServersFilterArray{ GetAuthServersFilterArgs{...} }
-type GetAuthServersFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetAuthServersFilterArrayOutput() GetAuthServersFilterArrayOutput
-	ToGetAuthServersFilterArrayOutputWithContext(context.Context) GetAuthServersFilterArrayOutput
-}
-
-type GetAuthServersFilterArray []GetAuthServersFilterInput
-
-func (GetAuthServersFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersFilterArray) ToGetAuthServersFilterArrayOutput() GetAuthServersFilterArrayOutput {
-	return i.ToGetAuthServersFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersFilterArray) ToGetAuthServersFilterArrayOutputWithContext(ctx context.Context) GetAuthServersFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersFilterArrayOutput)
-}
-
-type GetAuthServersFilterOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersFilterOutput) ToGetAuthServersFilterOutput() GetAuthServersFilterOutput {
-	return o
-}
-
-func (o GetAuthServersFilterOutput) ToGetAuthServersFilterOutputWithContext(ctx context.Context) GetAuthServersFilterOutput {
-	return o
-}
-
-func (o GetAuthServersFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAuthServersFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAuthServersFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAuthServersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetAuthServersFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersFilterArrayOutput) ToGetAuthServersFilterArrayOutput() GetAuthServersFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersFilterArrayOutput) ToGetAuthServersFilterArrayOutputWithContext(ctx context.Context) GetAuthServersFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthServersFilter {
-		return vs[0].([]GetAuthServersFilter)[vs[1].(int)]
-	}).(GetAuthServersFilterOutput)
-}
-
-type GetAuthServersInstanceConfiguration struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes int `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences []string `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes int `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier string `pulumi:"resourceIdentifier"`
-}
-
-// GetAuthServersInstanceConfigurationInput is an input type that accepts GetAuthServersInstanceConfigurationArgs and GetAuthServersInstanceConfigurationOutput values.
-// You can construct a concrete instance of `GetAuthServersInstanceConfigurationInput` via:
-//
-//	GetAuthServersInstanceConfigurationArgs{...}
-type GetAuthServersInstanceConfigurationInput interface {
-	pulumi.Input
-
-	ToGetAuthServersInstanceConfigurationOutput() GetAuthServersInstanceConfigurationOutput
-	ToGetAuthServersInstanceConfigurationOutputWithContext(context.Context) GetAuthServersInstanceConfigurationOutput
-}
-
-type GetAuthServersInstanceConfigurationArgs struct {
-	// The number of minutes until access token expires. There is no maximum expiry limit.
-	AccessTokenExpirationMinutes pulumi.IntInput `pulumi:"accessTokenExpirationMinutes"`
-	// List of API endpoints that will be returned in Access Tokens.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The number of minutes until refresh token expires. There is no maximum expiry limit.
-	RefreshTokenExpirationMinutes pulumi.IntInput `pulumi:"refreshTokenExpirationMinutes"`
-	// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-	ResourceIdentifier pulumi.StringInput `pulumi:"resourceIdentifier"`
-}
-
-func (GetAuthServersInstanceConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersInstanceConfiguration)(nil)).Elem()
-}
-
-func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigurationOutput() GetAuthServersInstanceConfigurationOutput {
-	return i.ToGetAuthServersInstanceConfigurationOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigurationOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersInstanceConfigurationOutput)
-}
-
-func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput {
-	return i.ToGetAuthServersInstanceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersInstanceConfigurationArgs) ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersInstanceConfigurationOutput).ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx)
-}
-
-// GetAuthServersInstanceConfigurationPtrInput is an input type that accepts GetAuthServersInstanceConfigurationArgs, GetAuthServersInstanceConfigurationPtr and GetAuthServersInstanceConfigurationPtrOutput values.
-// You can construct a concrete instance of `GetAuthServersInstanceConfigurationPtrInput` via:
-//
-//	        GetAuthServersInstanceConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAuthServersInstanceConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput
-	ToGetAuthServersInstanceConfigurationPtrOutputWithContext(context.Context) GetAuthServersInstanceConfigurationPtrOutput
-}
-
-type getAuthServersInstanceConfigurationPtrType GetAuthServersInstanceConfigurationArgs
-
-func GetAuthServersInstanceConfigurationPtr(v *GetAuthServersInstanceConfigurationArgs) GetAuthServersInstanceConfigurationPtrInput {
-	return (*getAuthServersInstanceConfigurationPtrType)(v)
-}
-
-func (*getAuthServersInstanceConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAuthServersInstanceConfiguration)(nil)).Elem()
-}
-
-func (i *getAuthServersInstanceConfigurationPtrType) ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput {
-	return i.ToGetAuthServersInstanceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAuthServersInstanceConfigurationPtrType) ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersInstanceConfigurationPtrOutput)
-}
-
-type GetAuthServersInstanceConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersInstanceConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersInstanceConfiguration)(nil)).Elem()
-}
-
-func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfigurationOutput() GetAuthServersInstanceConfigurationOutput {
-	return o
-}
-
-func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfigurationOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationOutput {
-	return o
-}
-
-func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput {
-	return o.ToGetAuthServersInstanceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAuthServersInstanceConfigurationOutput) ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAuthServersInstanceConfiguration) *GetAuthServersInstanceConfiguration {
-		return &v
-	}).(GetAuthServersInstanceConfigurationPtrOutput)
-}
-
-// The number of minutes until access token expires. There is no maximum expiry limit.
-func (o GetAuthServersInstanceConfigurationOutput) AccessTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) int { return v.AccessTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// List of API endpoints that will be returned in Access Tokens.
-func (o GetAuthServersInstanceConfigurationOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
-func (o GetAuthServersInstanceConfigurationOutput) RefreshTokenExpirationMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) int { return v.RefreshTokenExpirationMinutes }).(pulumi.IntOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o GetAuthServersInstanceConfigurationOutput) ResourceIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAuthServersInstanceConfiguration) string { return v.ResourceIdentifier }).(pulumi.StringOutput)
-}
-
-type GetAuthServersInstanceConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersInstanceConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAuthServersInstanceConfiguration)(nil)).Elem()
-}
-
-func (o GetAuthServersInstanceConfigurationPtrOutput) ToGetAuthServersInstanceConfigurationPtrOutput() GetAuthServersInstanceConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAuthServersInstanceConfigurationPtrOutput) ToGetAuthServersInstanceConfigurationPtrOutputWithContext(ctx context.Context) GetAuthServersInstanceConfigurationPtrOutput {
-	return o
-}
-
-func (o GetAuthServersInstanceConfigurationPtrOutput) Elem() GetAuthServersInstanceConfigurationOutput {
-	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) GetAuthServersInstanceConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret GetAuthServersInstanceConfiguration
-		return ret
-	}).(GetAuthServersInstanceConfigurationOutput)
-}
-
-// The number of minutes until access token expires. There is no maximum expiry limit.
-func (o GetAuthServersInstanceConfigurationPtrOutput) AccessTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// List of API endpoints that will be returned in Access Tokens.
-func (o GetAuthServersInstanceConfigurationPtrOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Audiences
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of minutes until refresh token expires. There is no maximum expiry limit.
-func (o GetAuthServersInstanceConfigurationPtrOutput) RefreshTokenExpirationMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RefreshTokenExpirationMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Unique identifier for the API that the Authorization Server will issue Access Tokens for.
-func (o GetAuthServersInstanceConfigurationPtrOutput) ResourceIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAuthServersInstanceConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAuthServersScopesFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetAuthServersScopesFilterInput is an input type that accepts GetAuthServersScopesFilterArgs and GetAuthServersScopesFilterOutput values.
-// You can construct a concrete instance of `GetAuthServersScopesFilterInput` via:
-//
-//	GetAuthServersScopesFilterArgs{...}
-type GetAuthServersScopesFilterInput interface {
-	pulumi.Input
-
-	ToGetAuthServersScopesFilterOutput() GetAuthServersScopesFilterOutput
-	ToGetAuthServersScopesFilterOutputWithContext(context.Context) GetAuthServersScopesFilterOutput
-}
-
-type GetAuthServersScopesFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetAuthServersScopesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersScopesFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersScopesFilterArgs) ToGetAuthServersScopesFilterOutput() GetAuthServersScopesFilterOutput {
-	return i.ToGetAuthServersScopesFilterOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersScopesFilterArgs) ToGetAuthServersScopesFilterOutputWithContext(ctx context.Context) GetAuthServersScopesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersScopesFilterOutput)
-}
-
-// GetAuthServersScopesFilterArrayInput is an input type that accepts GetAuthServersScopesFilterArray and GetAuthServersScopesFilterArrayOutput values.
-// You can construct a concrete instance of `GetAuthServersScopesFilterArrayInput` via:
-//
-//	GetAuthServersScopesFilterArray{ GetAuthServersScopesFilterArgs{...} }
-type GetAuthServersScopesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetAuthServersScopesFilterArrayOutput() GetAuthServersScopesFilterArrayOutput
-	ToGetAuthServersScopesFilterArrayOutputWithContext(context.Context) GetAuthServersScopesFilterArrayOutput
-}
-
-type GetAuthServersScopesFilterArray []GetAuthServersScopesFilterInput
-
-func (GetAuthServersScopesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersScopesFilter)(nil)).Elem()
-}
-
-func (i GetAuthServersScopesFilterArray) ToGetAuthServersScopesFilterArrayOutput() GetAuthServersScopesFilterArrayOutput {
-	return i.ToGetAuthServersScopesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetAuthServersScopesFilterArray) ToGetAuthServersScopesFilterArrayOutputWithContext(ctx context.Context) GetAuthServersScopesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAuthServersScopesFilterArrayOutput)
-}
-
-type GetAuthServersScopesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersScopesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAuthServersScopesFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersScopesFilterOutput) ToGetAuthServersScopesFilterOutput() GetAuthServersScopesFilterOutput {
-	return o
-}
-
-func (o GetAuthServersScopesFilterOutput) ToGetAuthServersScopesFilterOutputWithContext(ctx context.Context) GetAuthServersScopesFilterOutput {
-	return o
-}
-
-func (o GetAuthServersScopesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAuthServersScopesFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetAuthServersScopesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAuthServersScopesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetAuthServersScopesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAuthServersScopesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAuthServersScopesFilter)(nil)).Elem()
-}
-
-func (o GetAuthServersScopesFilterArrayOutput) ToGetAuthServersScopesFilterArrayOutput() GetAuthServersScopesFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersScopesFilterArrayOutput) ToGetAuthServersScopesFilterArrayOutputWithContext(ctx context.Context) GetAuthServersScopesFilterArrayOutput {
-	return o
-}
-
-func (o GetAuthServersScopesFilterArrayOutput) Index(i pulumi.IntInput) GetAuthServersScopesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthServersScopesFilter {
-		return vs[0].([]GetAuthServersScopesFilter)[vs[1].(int)]
-	}).(GetAuthServersScopesFilterOutput)
-}
-
-type GetMappingsAction struct {
-	// The action to apply
-	Action string `pulumi:"action"`
-	// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
-	Values []string `pulumi:"values"`
-}
-
-// GetMappingsActionInput is an input type that accepts GetMappingsActionArgs and GetMappingsActionOutput values.
-// You can construct a concrete instance of `GetMappingsActionInput` via:
-//
-//	GetMappingsActionArgs{...}
-type GetMappingsActionInput interface {
-	pulumi.Input
-
-	ToGetMappingsActionOutput() GetMappingsActionOutput
-	ToGetMappingsActionOutputWithContext(context.Context) GetMappingsActionOutput
-}
-
-type GetMappingsActionArgs struct {
-	// The action to apply
-	Action pulumi.StringInput `pulumi:"action"`
-	// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetMappingsActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsAction)(nil)).Elem()
-}
-
-func (i GetMappingsActionArgs) ToGetMappingsActionOutput() GetMappingsActionOutput {
-	return i.ToGetMappingsActionOutputWithContext(context.Background())
-}
-
-func (i GetMappingsActionArgs) ToGetMappingsActionOutputWithContext(ctx context.Context) GetMappingsActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionOutput)
-}
-
-// GetMappingsActionArrayInput is an input type that accepts GetMappingsActionArray and GetMappingsActionArrayOutput values.
-// You can construct a concrete instance of `GetMappingsActionArrayInput` via:
-//
-//	GetMappingsActionArray{ GetMappingsActionArgs{...} }
-type GetMappingsActionArrayInput interface {
-	pulumi.Input
-
-	ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput
-	ToGetMappingsActionArrayOutputWithContext(context.Context) GetMappingsActionArrayOutput
-}
-
-type GetMappingsActionArray []GetMappingsActionInput
-
-func (GetMappingsActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsAction)(nil)).Elem()
-}
-
-func (i GetMappingsActionArray) ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput {
-	return i.ToGetMappingsActionArrayOutputWithContext(context.Background())
-}
-
-func (i GetMappingsActionArray) ToGetMappingsActionArrayOutputWithContext(ctx context.Context) GetMappingsActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsActionArrayOutput)
-}
-
-type GetMappingsActionOutput struct{ *pulumi.OutputState }
-
-func (GetMappingsActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsAction)(nil)).Elem()
-}
-
-func (o GetMappingsActionOutput) ToGetMappingsActionOutput() GetMappingsActionOutput {
-	return o
-}
-
-func (o GetMappingsActionOutput) ToGetMappingsActionOutputWithContext(ctx context.Context) GetMappingsActionOutput {
-	return o
+func (o SamlAppsParameterOutput) UserAttributeMacros() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.UserAttributeMacros }).(pulumi.StringPtrOutput)
 }
 
-// The action to apply
-func (o GetMappingsActionOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMappingsAction) string { return v.Action }).(pulumi.StringOutput)
+func (o SamlAppsParameterOutput) UserAttributeMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.UserAttributeMappings }).(pulumi.StringPtrOutput)
 }
 
-// Only applicable to provisioned and set_* actions. Items in the array will be a plain text string or valid value for the selected action.
-func (o GetMappingsActionOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetMappingsAction) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o SamlAppsParameterOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlAppsParameter) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
-type GetMappingsActionArrayOutput struct{ *pulumi.OutputState }
+type SamlAppsParameterArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMappingsActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsAction)(nil)).Elem()
+func (SamlAppsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SamlAppsParameter)(nil)).Elem()
 }
 
-func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutput() GetMappingsActionArrayOutput {
+func (o SamlAppsParameterArrayOutput) ToSamlAppsParameterArrayOutput() SamlAppsParameterArrayOutput {
 	return o
 }
 
-func (o GetMappingsActionArrayOutput) ToGetMappingsActionArrayOutputWithContext(ctx context.Context) GetMappingsActionArrayOutput {
+func (o SamlAppsParameterArrayOutput) ToSamlAppsParameterArrayOutputWithContext(ctx context.Context) SamlAppsParameterArrayOutput {
 	return o
 }
 
-func (o GetMappingsActionArrayOutput) Index(i pulumi.IntInput) GetMappingsActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsAction {
-		return vs[0].([]GetMappingsAction)[vs[1].(int)]
-	}).(GetMappingsActionOutput)
+func (o SamlAppsParameterArrayOutput) Index(i pulumi.IntInput) SamlAppsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SamlAppsParameter {
+		return vs[0].([]SamlAppsParameter)[vs[1].(int)]
+	}).(SamlAppsParameterOutput)
 }
 
-type GetMappingsCondition struct {
-	// A valid operator for the selected condition source
+type SmarthooksCondition struct {
 	Operator string `pulumi:"operator"`
-	// source field to check.
-	Source string `pulumi:"source"`
-	// A plain text string or valid value for the selected  condition source
-	Value string `pulumi:"value"`
+	Source   string `pulumi:"source"`
+	Value    string `pulumi:"value"`
 }
 
-// GetMappingsConditionInput is an input type that accepts GetMappingsConditionArgs and GetMappingsConditionOutput values.
-// You can construct a concrete instance of `GetMappingsConditionInput` via:
+// SmarthooksConditionInput is an input type that accepts SmarthooksConditionArgs and SmarthooksConditionOutput values.
+// You can construct a concrete instance of `SmarthooksConditionInput` via:
 //
-//	GetMappingsConditionArgs{...}
-type GetMappingsConditionInput interface {
+//	SmarthooksConditionArgs{...}
+type SmarthooksConditionInput interface {
 	pulumi.Input
 
-	ToGetMappingsConditionOutput() GetMappingsConditionOutput
-	ToGetMappingsConditionOutputWithContext(context.Context) GetMappingsConditionOutput
+	ToSmarthooksConditionOutput() SmarthooksConditionOutput
+	ToSmarthooksConditionOutputWithContext(context.Context) SmarthooksConditionOutput
 }
 
-type GetMappingsConditionArgs struct {
-	// A valid operator for the selected condition source
+type SmarthooksConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// source field to check.
-	Source pulumi.StringInput `pulumi:"source"`
-	// A plain text string or valid value for the selected  condition source
-	Value pulumi.StringInput `pulumi:"value"`
+	Source   pulumi.StringInput `pulumi:"source"`
+	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetMappingsConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsCondition)(nil)).Elem()
+func (SmarthooksConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmarthooksCondition)(nil)).Elem()
 }
 
-func (i GetMappingsConditionArgs) ToGetMappingsConditionOutput() GetMappingsConditionOutput {
-	return i.ToGetMappingsConditionOutputWithContext(context.Background())
+func (i SmarthooksConditionArgs) ToSmarthooksConditionOutput() SmarthooksConditionOutput {
+	return i.ToSmarthooksConditionOutputWithContext(context.Background())
 }
 
-func (i GetMappingsConditionArgs) ToGetMappingsConditionOutputWithContext(ctx context.Context) GetMappingsConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionOutput)
+func (i SmarthooksConditionArgs) ToSmarthooksConditionOutputWithContext(ctx context.Context) SmarthooksConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksConditionOutput)
 }
 
-// GetMappingsConditionArrayInput is an input type that accepts GetMappingsConditionArray and GetMappingsConditionArrayOutput values.
-// You can construct a concrete instance of `GetMappingsConditionArrayInput` via:
+// SmarthooksConditionArrayInput is an input type that accepts SmarthooksConditionArray and SmarthooksConditionArrayOutput values.
+// You can construct a concrete instance of `SmarthooksConditionArrayInput` via:
 //
-//	GetMappingsConditionArray{ GetMappingsConditionArgs{...} }
-type GetMappingsConditionArrayInput interface {
+//	SmarthooksConditionArray{ SmarthooksConditionArgs{...} }
+type SmarthooksConditionArrayInput interface {
 	pulumi.Input
 
-	ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput
-	ToGetMappingsConditionArrayOutputWithContext(context.Context) GetMappingsConditionArrayOutput
+	ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput
+	ToSmarthooksConditionArrayOutputWithContext(context.Context) SmarthooksConditionArrayOutput
 }
 
-type GetMappingsConditionArray []GetMappingsConditionInput
+type SmarthooksConditionArray []SmarthooksConditionInput
 
-func (GetMappingsConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsCondition)(nil)).Elem()
+func (SmarthooksConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmarthooksCondition)(nil)).Elem()
 }
 
-func (i GetMappingsConditionArray) ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput {
-	return i.ToGetMappingsConditionArrayOutputWithContext(context.Background())
+func (i SmarthooksConditionArray) ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput {
+	return i.ToSmarthooksConditionArrayOutputWithContext(context.Background())
 }
 
-func (i GetMappingsConditionArray) ToGetMappingsConditionArrayOutputWithContext(ctx context.Context) GetMappingsConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsConditionArrayOutput)
+func (i SmarthooksConditionArray) ToSmarthooksConditionArrayOutputWithContext(ctx context.Context) SmarthooksConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksConditionArrayOutput)
 }
 
-type GetMappingsConditionOutput struct{ *pulumi.OutputState }
+type SmarthooksConditionOutput struct{ *pulumi.OutputState }
 
-func (GetMappingsConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsCondition)(nil)).Elem()
+func (SmarthooksConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmarthooksCondition)(nil)).Elem()
 }
 
-func (o GetMappingsConditionOutput) ToGetMappingsConditionOutput() GetMappingsConditionOutput {
+func (o SmarthooksConditionOutput) ToSmarthooksConditionOutput() SmarthooksConditionOutput {
 	return o
 }
 
-func (o GetMappingsConditionOutput) ToGetMappingsConditionOutputWithContext(ctx context.Context) GetMappingsConditionOutput {
+func (o SmarthooksConditionOutput) ToSmarthooksConditionOutputWithContext(ctx context.Context) SmarthooksConditionOutput {
 	return o
 }
 
-// A valid operator for the selected condition source
-func (o GetMappingsConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMappingsCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o SmarthooksConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SmarthooksCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// source field to check.
-func (o GetMappingsConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMappingsCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o SmarthooksConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v SmarthooksCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// A plain text string or valid value for the selected  condition source
-func (o GetMappingsConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMappingsCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o SmarthooksConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SmarthooksCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetMappingsConditionArrayOutput struct{ *pulumi.OutputState }
+type SmarthooksConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMappingsConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsCondition)(nil)).Elem()
+func (SmarthooksConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmarthooksCondition)(nil)).Elem()
 }
 
-func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutput() GetMappingsConditionArrayOutput {
+func (o SmarthooksConditionArrayOutput) ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput {
 	return o
 }
 
-func (o GetMappingsConditionArrayOutput) ToGetMappingsConditionArrayOutputWithContext(ctx context.Context) GetMappingsConditionArrayOutput {
+func (o SmarthooksConditionArrayOutput) ToSmarthooksConditionArrayOutputWithContext(ctx context.Context) SmarthooksConditionArrayOutput {
 	return o
 }
 
-func (o GetMappingsConditionArrayOutput) Index(i pulumi.IntInput) GetMappingsConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsCondition {
-		return vs[0].([]GetMappingsCondition)[vs[1].(int)]
-	}).(GetMappingsConditionOutput)
+func (o SmarthooksConditionArrayOutput) Index(i pulumi.IntInput) SmarthooksConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmarthooksCondition {
+		return vs[0].([]SmarthooksCondition)[vs[1].(int)]
+	}).(SmarthooksConditionOutput)
 }
 
-type GetMappingsFilter struct {
-	Name   string   `pulumi:"name"`
+type SmarthooksOption struct {
+	LocationEnabled      *bool `pulumi:"locationEnabled"`
+	MfaDeviceInfoEnabled *bool `pulumi:"mfaDeviceInfoEnabled"`
+	RiskEnabled          *bool `pulumi:"riskEnabled"`
+}
+
+// SmarthooksOptionInput is an input type that accepts SmarthooksOptionArgs and SmarthooksOptionOutput values.
+// You can construct a concrete instance of `SmarthooksOptionInput` via:
+//
+//	SmarthooksOptionArgs{...}
+type SmarthooksOptionInput interface {
+	pulumi.Input
+
+	ToSmarthooksOptionOutput() SmarthooksOptionOutput
+	ToSmarthooksOptionOutputWithContext(context.Context) SmarthooksOptionOutput
+}
+
+type SmarthooksOptionArgs struct {
+	LocationEnabled      pulumi.BoolPtrInput `pulumi:"locationEnabled"`
+	MfaDeviceInfoEnabled pulumi.BoolPtrInput `pulumi:"mfaDeviceInfoEnabled"`
+	RiskEnabled          pulumi.BoolPtrInput `pulumi:"riskEnabled"`
+}
+
+func (SmarthooksOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmarthooksOption)(nil)).Elem()
+}
+
+func (i SmarthooksOptionArgs) ToSmarthooksOptionOutput() SmarthooksOptionOutput {
+	return i.ToSmarthooksOptionOutputWithContext(context.Background())
+}
+
+func (i SmarthooksOptionArgs) ToSmarthooksOptionOutputWithContext(ctx context.Context) SmarthooksOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksOptionOutput)
+}
+
+// SmarthooksOptionArrayInput is an input type that accepts SmarthooksOptionArray and SmarthooksOptionArrayOutput values.
+// You can construct a concrete instance of `SmarthooksOptionArrayInput` via:
+//
+//	SmarthooksOptionArray{ SmarthooksOptionArgs{...} }
+type SmarthooksOptionArrayInput interface {
+	pulumi.Input
+
+	ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput
+	ToSmarthooksOptionArrayOutputWithContext(context.Context) SmarthooksOptionArrayOutput
+}
+
+type SmarthooksOptionArray []SmarthooksOptionInput
+
+func (SmarthooksOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmarthooksOption)(nil)).Elem()
+}
+
+func (i SmarthooksOptionArray) ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput {
+	return i.ToSmarthooksOptionArrayOutputWithContext(context.Background())
+}
+
+func (i SmarthooksOptionArray) ToSmarthooksOptionArrayOutputWithContext(ctx context.Context) SmarthooksOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksOptionArrayOutput)
+}
+
+type SmarthooksOptionOutput struct{ *pulumi.OutputState }
+
+func (SmarthooksOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmarthooksOption)(nil)).Elem()
+}
+
+func (o SmarthooksOptionOutput) ToSmarthooksOptionOutput() SmarthooksOptionOutput {
+	return o
+}
+
+func (o SmarthooksOptionOutput) ToSmarthooksOptionOutputWithContext(ctx context.Context) SmarthooksOptionOutput {
+	return o
+}
+
+func (o SmarthooksOptionOutput) LocationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmarthooksOption) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SmarthooksOptionOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmarthooksOption) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SmarthooksOptionOutput) RiskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmarthooksOption) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SmarthooksOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (SmarthooksOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmarthooksOption)(nil)).Elem()
+}
+
+func (o SmarthooksOptionArrayOutput) ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput {
+	return o
+}
+
+func (o SmarthooksOptionArrayOutput) ToSmarthooksOptionArrayOutputWithContext(ctx context.Context) SmarthooksOptionArrayOutput {
+	return o
+}
+
+func (o SmarthooksOptionArrayOutput) Index(i pulumi.IntInput) SmarthooksOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmarthooksOption {
+		return vs[0].([]SmarthooksOption)[vs[1].(int)]
+	}).(SmarthooksOptionOutput)
+}
+
+type UserMappingsAction struct {
+	Action string   `pulumi:"action"`
 	Values []string `pulumi:"values"`
 }
 
-// GetMappingsFilterInput is an input type that accepts GetMappingsFilterArgs and GetMappingsFilterOutput values.
-// You can construct a concrete instance of `GetMappingsFilterInput` via:
+// UserMappingsActionInput is an input type that accepts UserMappingsActionArgs and UserMappingsActionOutput values.
+// You can construct a concrete instance of `UserMappingsActionInput` via:
 //
-//	GetMappingsFilterArgs{...}
-type GetMappingsFilterInput interface {
+//	UserMappingsActionArgs{...}
+type UserMappingsActionInput interface {
 	pulumi.Input
 
-	ToGetMappingsFilterOutput() GetMappingsFilterOutput
-	ToGetMappingsFilterOutputWithContext(context.Context) GetMappingsFilterOutput
+	ToUserMappingsActionOutput() UserMappingsActionOutput
+	ToUserMappingsActionOutputWithContext(context.Context) UserMappingsActionOutput
 }
 
-type GetMappingsFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
+type UserMappingsActionArgs struct {
+	Action pulumi.StringInput      `pulumi:"action"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (GetMappingsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsFilter)(nil)).Elem()
+func (UserMappingsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingsAction)(nil)).Elem()
 }
 
-func (i GetMappingsFilterArgs) ToGetMappingsFilterOutput() GetMappingsFilterOutput {
-	return i.ToGetMappingsFilterOutputWithContext(context.Background())
+func (i UserMappingsActionArgs) ToUserMappingsActionOutput() UserMappingsActionOutput {
+	return i.ToUserMappingsActionOutputWithContext(context.Background())
 }
 
-func (i GetMappingsFilterArgs) ToGetMappingsFilterOutputWithContext(ctx context.Context) GetMappingsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterOutput)
+func (i UserMappingsActionArgs) ToUserMappingsActionOutputWithContext(ctx context.Context) UserMappingsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsActionOutput)
 }
 
-// GetMappingsFilterArrayInput is an input type that accepts GetMappingsFilterArray and GetMappingsFilterArrayOutput values.
-// You can construct a concrete instance of `GetMappingsFilterArrayInput` via:
+// UserMappingsActionArrayInput is an input type that accepts UserMappingsActionArray and UserMappingsActionArrayOutput values.
+// You can construct a concrete instance of `UserMappingsActionArrayInput` via:
 //
-//	GetMappingsFilterArray{ GetMappingsFilterArgs{...} }
-type GetMappingsFilterArrayInput interface {
+//	UserMappingsActionArray{ UserMappingsActionArgs{...} }
+type UserMappingsActionArrayInput interface {
 	pulumi.Input
 
-	ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput
-	ToGetMappingsFilterArrayOutputWithContext(context.Context) GetMappingsFilterArrayOutput
+	ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput
+	ToUserMappingsActionArrayOutputWithContext(context.Context) UserMappingsActionArrayOutput
 }
 
-type GetMappingsFilterArray []GetMappingsFilterInput
+type UserMappingsActionArray []UserMappingsActionInput
 
-func (GetMappingsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsFilter)(nil)).Elem()
+func (UserMappingsActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingsAction)(nil)).Elem()
 }
 
-func (i GetMappingsFilterArray) ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput {
-	return i.ToGetMappingsFilterArrayOutputWithContext(context.Background())
+func (i UserMappingsActionArray) ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput {
+	return i.ToUserMappingsActionArrayOutputWithContext(context.Background())
 }
 
-func (i GetMappingsFilterArray) ToGetMappingsFilterArrayOutputWithContext(ctx context.Context) GetMappingsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsFilterArrayOutput)
+func (i UserMappingsActionArray) ToUserMappingsActionArrayOutputWithContext(ctx context.Context) UserMappingsActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsActionArrayOutput)
 }
 
-type GetMappingsFilterOutput struct{ *pulumi.OutputState }
+type UserMappingsActionOutput struct{ *pulumi.OutputState }
 
-func (GetMappingsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMappingsFilter)(nil)).Elem()
+func (UserMappingsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingsAction)(nil)).Elem()
 }
 
-func (o GetMappingsFilterOutput) ToGetMappingsFilterOutput() GetMappingsFilterOutput {
+func (o UserMappingsActionOutput) ToUserMappingsActionOutput() UserMappingsActionOutput {
 	return o
 }
 
-func (o GetMappingsFilterOutput) ToGetMappingsFilterOutputWithContext(ctx context.Context) GetMappingsFilterOutput {
+func (o UserMappingsActionOutput) ToUserMappingsActionOutputWithContext(ctx context.Context) UserMappingsActionOutput {
 	return o
 }
 
-func (o GetMappingsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMappingsFilter) string { return v.Name }).(pulumi.StringOutput)
+func (o UserMappingsActionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingsAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o GetMappingsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetMappingsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o UserMappingsActionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserMappingsAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetMappingsFilterArrayOutput struct{ *pulumi.OutputState }
+type UserMappingsActionArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMappingsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMappingsFilter)(nil)).Elem()
+func (UserMappingsActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingsAction)(nil)).Elem()
 }
 
-func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutput() GetMappingsFilterArrayOutput {
+func (o UserMappingsActionArrayOutput) ToUserMappingsActionArrayOutput() UserMappingsActionArrayOutput {
 	return o
 }
 
-func (o GetMappingsFilterArrayOutput) ToGetMappingsFilterArrayOutputWithContext(ctx context.Context) GetMappingsFilterArrayOutput {
+func (o UserMappingsActionArrayOutput) ToUserMappingsActionArrayOutputWithContext(ctx context.Context) UserMappingsActionArrayOutput {
 	return o
 }
 
-func (o GetMappingsFilterArrayOutput) Index(i pulumi.IntInput) GetMappingsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsFilter {
-		return vs[0].([]GetMappingsFilter)[vs[1].(int)]
-	}).(GetMappingsFilterOutput)
+func (o UserMappingsActionArrayOutput) Index(i pulumi.IntInput) UserMappingsActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingsAction {
+		return vs[0].([]UserMappingsAction)[vs[1].(int)]
+	}).(UserMappingsActionOutput)
 }
 
-type GetPrivilegesFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
+type UserMappingsCondition struct {
+	Operator string `pulumi:"operator"`
+	Source   string `pulumi:"source"`
+	Value    string `pulumi:"value"`
 }
 
-// GetPrivilegesFilterInput is an input type that accepts GetPrivilegesFilterArgs and GetPrivilegesFilterOutput values.
-// You can construct a concrete instance of `GetPrivilegesFilterInput` via:
+// UserMappingsConditionInput is an input type that accepts UserMappingsConditionArgs and UserMappingsConditionOutput values.
+// You can construct a concrete instance of `UserMappingsConditionInput` via:
 //
-//	GetPrivilegesFilterArgs{...}
-type GetPrivilegesFilterInput interface {
+//	UserMappingsConditionArgs{...}
+type UserMappingsConditionInput interface {
 	pulumi.Input
 
-	ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput
-	ToGetPrivilegesFilterOutputWithContext(context.Context) GetPrivilegesFilterOutput
+	ToUserMappingsConditionOutput() UserMappingsConditionOutput
+	ToUserMappingsConditionOutputWithContext(context.Context) UserMappingsConditionOutput
 }
 
-type GetPrivilegesFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
+type UserMappingsConditionArgs struct {
+	Operator pulumi.StringInput `pulumi:"operator"`
+	Source   pulumi.StringInput `pulumi:"source"`
+	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetPrivilegesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesFilter)(nil)).Elem()
+func (UserMappingsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingsCondition)(nil)).Elem()
 }
 
-func (i GetPrivilegesFilterArgs) ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput {
-	return i.ToGetPrivilegesFilterOutputWithContext(context.Background())
+func (i UserMappingsConditionArgs) ToUserMappingsConditionOutput() UserMappingsConditionOutput {
+	return i.ToUserMappingsConditionOutputWithContext(context.Background())
 }
 
-func (i GetPrivilegesFilterArgs) ToGetPrivilegesFilterOutputWithContext(ctx context.Context) GetPrivilegesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterOutput)
+func (i UserMappingsConditionArgs) ToUserMappingsConditionOutputWithContext(ctx context.Context) UserMappingsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsConditionOutput)
 }
 
-// GetPrivilegesFilterArrayInput is an input type that accepts GetPrivilegesFilterArray and GetPrivilegesFilterArrayOutput values.
-// You can construct a concrete instance of `GetPrivilegesFilterArrayInput` via:
+// UserMappingsConditionArrayInput is an input type that accepts UserMappingsConditionArray and UserMappingsConditionArrayOutput values.
+// You can construct a concrete instance of `UserMappingsConditionArrayInput` via:
 //
-//	GetPrivilegesFilterArray{ GetPrivilegesFilterArgs{...} }
-type GetPrivilegesFilterArrayInput interface {
+//	UserMappingsConditionArray{ UserMappingsConditionArgs{...} }
+type UserMappingsConditionArrayInput interface {
 	pulumi.Input
 
-	ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput
-	ToGetPrivilegesFilterArrayOutputWithContext(context.Context) GetPrivilegesFilterArrayOutput
+	ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput
+	ToUserMappingsConditionArrayOutputWithContext(context.Context) UserMappingsConditionArrayOutput
 }
 
-type GetPrivilegesFilterArray []GetPrivilegesFilterInput
+type UserMappingsConditionArray []UserMappingsConditionInput
 
-func (GetPrivilegesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesFilter)(nil)).Elem()
+func (UserMappingsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingsCondition)(nil)).Elem()
 }
 
-func (i GetPrivilegesFilterArray) ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput {
-	return i.ToGetPrivilegesFilterArrayOutputWithContext(context.Background())
+func (i UserMappingsConditionArray) ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput {
+	return i.ToUserMappingsConditionArrayOutputWithContext(context.Background())
 }
 
-func (i GetPrivilegesFilterArray) ToGetPrivilegesFilterArrayOutputWithContext(ctx context.Context) GetPrivilegesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesFilterArrayOutput)
+func (i UserMappingsConditionArray) ToUserMappingsConditionArrayOutputWithContext(ctx context.Context) UserMappingsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserMappingsConditionArrayOutput)
 }
 
-type GetPrivilegesFilterOutput struct{ *pulumi.OutputState }
+type UserMappingsConditionOutput struct{ *pulumi.OutputState }
 
-func (GetPrivilegesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesFilter)(nil)).Elem()
+func (UserMappingsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserMappingsCondition)(nil)).Elem()
 }
 
-func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutput() GetPrivilegesFilterOutput {
+func (o UserMappingsConditionOutput) ToUserMappingsConditionOutput() UserMappingsConditionOutput {
 	return o
 }
 
-func (o GetPrivilegesFilterOutput) ToGetPrivilegesFilterOutputWithContext(ctx context.Context) GetPrivilegesFilterOutput {
+func (o UserMappingsConditionOutput) ToUserMappingsConditionOutputWithContext(ctx context.Context) UserMappingsConditionOutput {
 	return o
 }
 
-func (o GetPrivilegesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesFilter) string { return v.Name }).(pulumi.StringOutput)
+func (o UserMappingsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingsCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o GetPrivilegesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o UserMappingsConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingsCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-type GetPrivilegesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesFilter)(nil)).Elem()
+func (o UserMappingsConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v UserMappingsCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutput() GetPrivilegesFilterArrayOutput {
+type UserMappingsConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (UserMappingsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserMappingsCondition)(nil)).Elem()
+}
+
+func (o UserMappingsConditionArrayOutput) ToUserMappingsConditionArrayOutput() UserMappingsConditionArrayOutput {
 	return o
 }
 
-func (o GetPrivilegesFilterArrayOutput) ToGetPrivilegesFilterArrayOutputWithContext(ctx context.Context) GetPrivilegesFilterArrayOutput {
+func (o UserMappingsConditionArrayOutput) ToUserMappingsConditionArrayOutputWithContext(ctx context.Context) UserMappingsConditionArrayOutput {
 	return o
 }
 
-func (o GetPrivilegesFilterArrayOutput) Index(i pulumi.IntInput) GetPrivilegesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivilegesFilter {
-		return vs[0].([]GetPrivilegesFilter)[vs[1].(int)]
-	}).(GetPrivilegesFilterOutput)
-}
-
-type GetPrivilegesInstancePrivilege struct {
-	Statements []GetPrivilegesInstancePrivilegeStatement `pulumi:"statements"`
-	Version    string                                    `pulumi:"version"`
-}
-
-// GetPrivilegesInstancePrivilegeInput is an input type that accepts GetPrivilegesInstancePrivilegeArgs and GetPrivilegesInstancePrivilegeOutput values.
-// You can construct a concrete instance of `GetPrivilegesInstancePrivilegeInput` via:
-//
-//	GetPrivilegesInstancePrivilegeArgs{...}
-type GetPrivilegesInstancePrivilegeInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesInstancePrivilegeOutput() GetPrivilegesInstancePrivilegeOutput
-	ToGetPrivilegesInstancePrivilegeOutputWithContext(context.Context) GetPrivilegesInstancePrivilegeOutput
-}
-
-type GetPrivilegesInstancePrivilegeArgs struct {
-	Statements GetPrivilegesInstancePrivilegeStatementArrayInput `pulumi:"statements"`
-	Version    pulumi.StringInput                                `pulumi:"version"`
-}
-
-func (GetPrivilegesInstancePrivilegeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesInstancePrivilege)(nil)).Elem()
-}
-
-func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegeOutput() GetPrivilegesInstancePrivilegeOutput {
-	return i.ToGetPrivilegesInstancePrivilegeOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegeOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeOutput)
-}
-
-func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput {
-	return i.ToGetPrivilegesInstancePrivilegePtrOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesInstancePrivilegeArgs) ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeOutput).ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx)
-}
-
-// GetPrivilegesInstancePrivilegePtrInput is an input type that accepts GetPrivilegesInstancePrivilegeArgs, GetPrivilegesInstancePrivilegePtr and GetPrivilegesInstancePrivilegePtrOutput values.
-// You can construct a concrete instance of `GetPrivilegesInstancePrivilegePtrInput` via:
-//
-//	        GetPrivilegesInstancePrivilegeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetPrivilegesInstancePrivilegePtrInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput
-	ToGetPrivilegesInstancePrivilegePtrOutputWithContext(context.Context) GetPrivilegesInstancePrivilegePtrOutput
-}
-
-type getPrivilegesInstancePrivilegePtrType GetPrivilegesInstancePrivilegeArgs
-
-func GetPrivilegesInstancePrivilegePtr(v *GetPrivilegesInstancePrivilegeArgs) GetPrivilegesInstancePrivilegePtrInput {
-	return (*getPrivilegesInstancePrivilegePtrType)(v)
-}
-
-func (*getPrivilegesInstancePrivilegePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPrivilegesInstancePrivilege)(nil)).Elem()
-}
-
-func (i *getPrivilegesInstancePrivilegePtrType) ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput {
-	return i.ToGetPrivilegesInstancePrivilegePtrOutputWithContext(context.Background())
-}
-
-func (i *getPrivilegesInstancePrivilegePtrType) ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegePtrOutput)
-}
-
-type GetPrivilegesInstancePrivilegeOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesInstancePrivilegeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesInstancePrivilege)(nil)).Elem()
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) ToGetPrivilegesInstancePrivilegeOutput() GetPrivilegesInstancePrivilegeOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) ToGetPrivilegesInstancePrivilegeOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput {
-	return o.ToGetPrivilegesInstancePrivilegePtrOutputWithContext(context.Background())
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrivilegesInstancePrivilege) *GetPrivilegesInstancePrivilege {
-		return &v
-	}).(GetPrivilegesInstancePrivilegePtrOutput)
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) Statements() GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesInstancePrivilege) []GetPrivilegesInstancePrivilegeStatement { return v.Statements }).(GetPrivilegesInstancePrivilegeStatementArrayOutput)
-}
-
-func (o GetPrivilegesInstancePrivilegeOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesInstancePrivilege) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type GetPrivilegesInstancePrivilegePtrOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesInstancePrivilegePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPrivilegesInstancePrivilege)(nil)).Elem()
-}
-
-func (o GetPrivilegesInstancePrivilegePtrOutput) ToGetPrivilegesInstancePrivilegePtrOutput() GetPrivilegesInstancePrivilegePtrOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegePtrOutput) ToGetPrivilegesInstancePrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegePtrOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegePtrOutput) Elem() GetPrivilegesInstancePrivilegeOutput {
-	return o.ApplyT(func(v *GetPrivilegesInstancePrivilege) GetPrivilegesInstancePrivilege {
-		if v != nil {
-			return *v
-		}
-		var ret GetPrivilegesInstancePrivilege
-		return ret
-	}).(GetPrivilegesInstancePrivilegeOutput)
-}
-
-func (o GetPrivilegesInstancePrivilegePtrOutput) Statements() GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v *GetPrivilegesInstancePrivilege) []GetPrivilegesInstancePrivilegeStatement {
-		if v == nil {
-			return nil
-		}
-		return v.Statements
-	}).(GetPrivilegesInstancePrivilegeStatementArrayOutput)
-}
-
-func (o GetPrivilegesInstancePrivilegePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetPrivilegesInstancePrivilege) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetPrivilegesInstancePrivilegeStatement struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-	Actions []string `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect string `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetPrivilegesInstancePrivilegeStatementInput is an input type that accepts GetPrivilegesInstancePrivilegeStatementArgs and GetPrivilegesInstancePrivilegeStatementOutput values.
-// You can construct a concrete instance of `GetPrivilegesInstancePrivilegeStatementInput` via:
-//
-//	GetPrivilegesInstancePrivilegeStatementArgs{...}
-type GetPrivilegesInstancePrivilegeStatementInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesInstancePrivilegeStatementOutput() GetPrivilegesInstancePrivilegeStatementOutput
-	ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(context.Context) GetPrivilegesInstancePrivilegeStatementOutput
-}
-
-type GetPrivilegesInstancePrivilegeStatementArgs struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetPrivilegesInstancePrivilegeStatementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesInstancePrivilegeStatement)(nil)).Elem()
-}
-
-func (i GetPrivilegesInstancePrivilegeStatementArgs) ToGetPrivilegesInstancePrivilegeStatementOutput() GetPrivilegesInstancePrivilegeStatementOutput {
-	return i.ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesInstancePrivilegeStatementArgs) ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeStatementOutput)
-}
-
-// GetPrivilegesInstancePrivilegeStatementArrayInput is an input type that accepts GetPrivilegesInstancePrivilegeStatementArray and GetPrivilegesInstancePrivilegeStatementArrayOutput values.
-// You can construct a concrete instance of `GetPrivilegesInstancePrivilegeStatementArrayInput` via:
-//
-//	GetPrivilegesInstancePrivilegeStatementArray{ GetPrivilegesInstancePrivilegeStatementArgs{...} }
-type GetPrivilegesInstancePrivilegeStatementArrayInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesInstancePrivilegeStatementArrayOutput() GetPrivilegesInstancePrivilegeStatementArrayOutput
-	ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(context.Context) GetPrivilegesInstancePrivilegeStatementArrayOutput
-}
-
-type GetPrivilegesInstancePrivilegeStatementArray []GetPrivilegesInstancePrivilegeStatementInput
-
-func (GetPrivilegesInstancePrivilegeStatementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesInstancePrivilegeStatement)(nil)).Elem()
-}
-
-func (i GetPrivilegesInstancePrivilegeStatementArray) ToGetPrivilegesInstancePrivilegeStatementArrayOutput() GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return i.ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesInstancePrivilegeStatementArray) ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesInstancePrivilegeStatementArrayOutput)
-}
-
-type GetPrivilegesInstancePrivilegeStatementOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesInstancePrivilegeStatementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesInstancePrivilegeStatement)(nil)).Elem()
-}
-
-func (o GetPrivilegesInstancePrivilegeStatementOutput) ToGetPrivilegesInstancePrivilegeStatementOutput() GetPrivilegesInstancePrivilegeStatementOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegeStatementOutput) ToGetPrivilegesInstancePrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementOutput {
-	return o
-}
-
-// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-func (o GetPrivilegesInstancePrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-func (o GetPrivilegesInstancePrivilegeStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
-}
-
-// Target the privileged action against specific resources with the scope.
-// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-func (o GetPrivilegesInstancePrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesInstancePrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
-}
-
-type GetPrivilegesInstancePrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesInstancePrivilegeStatementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesInstancePrivilegeStatement)(nil)).Elem()
-}
-
-func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) ToGetPrivilegesInstancePrivilegeStatementArrayOutput() GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) ToGetPrivilegesInstancePrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesInstancePrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o GetPrivilegesInstancePrivilegeStatementArrayOutput) Index(i pulumi.IntInput) GetPrivilegesInstancePrivilegeStatementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivilegesInstancePrivilegeStatement {
-		return vs[0].([]GetPrivilegesInstancePrivilegeStatement)[vs[1].(int)]
-	}).(GetPrivilegesInstancePrivilegeStatementOutput)
-}
-
-type GetPrivilegesPrivilege struct {
-	Statements []GetPrivilegesPrivilegeStatement `pulumi:"statements"`
-	Version    string                            `pulumi:"version"`
-}
-
-// GetPrivilegesPrivilegeInput is an input type that accepts GetPrivilegesPrivilegeArgs and GetPrivilegesPrivilegeOutput values.
-// You can construct a concrete instance of `GetPrivilegesPrivilegeInput` via:
-//
-//	GetPrivilegesPrivilegeArgs{...}
-type GetPrivilegesPrivilegeInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput
-	ToGetPrivilegesPrivilegeOutputWithContext(context.Context) GetPrivilegesPrivilegeOutput
-}
-
-type GetPrivilegesPrivilegeArgs struct {
-	Statements GetPrivilegesPrivilegeStatementArrayInput `pulumi:"statements"`
-	Version    pulumi.StringInput                        `pulumi:"version"`
-}
-
-func (GetPrivilegesPrivilegeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesPrivilege)(nil)).Elem()
-}
-
-func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput {
-	return i.ToGetPrivilegesPrivilegeOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegeOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeOutput)
-}
-
-func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
-	return i.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesPrivilegeArgs) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeOutput).ToGetPrivilegesPrivilegePtrOutputWithContext(ctx)
-}
-
-// GetPrivilegesPrivilegePtrInput is an input type that accepts GetPrivilegesPrivilegeArgs, GetPrivilegesPrivilegePtr and GetPrivilegesPrivilegePtrOutput values.
-// You can construct a concrete instance of `GetPrivilegesPrivilegePtrInput` via:
-//
-//	        GetPrivilegesPrivilegeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetPrivilegesPrivilegePtrInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput
-	ToGetPrivilegesPrivilegePtrOutputWithContext(context.Context) GetPrivilegesPrivilegePtrOutput
-}
-
-type getPrivilegesPrivilegePtrType GetPrivilegesPrivilegeArgs
-
-func GetPrivilegesPrivilegePtr(v *GetPrivilegesPrivilegeArgs) GetPrivilegesPrivilegePtrInput {
-	return (*getPrivilegesPrivilegePtrType)(v)
-}
-
-func (*getPrivilegesPrivilegePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPrivilegesPrivilege)(nil)).Elem()
-}
-
-func (i *getPrivilegesPrivilegePtrType) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
-	return i.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
-}
-
-func (i *getPrivilegesPrivilegePtrType) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegePtrOutput)
-}
-
-type GetPrivilegesPrivilegeOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesPrivilegeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesPrivilege)(nil)).Elem()
-}
-
-func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegeOutput() GetPrivilegesPrivilegeOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegeOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
-	return o.ToGetPrivilegesPrivilegePtrOutputWithContext(context.Background())
-}
-
-func (o GetPrivilegesPrivilegeOutput) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrivilegesPrivilege) *GetPrivilegesPrivilege {
-		return &v
-	}).(GetPrivilegesPrivilegePtrOutput)
-}
-
-func (o GetPrivilegesPrivilegeOutput) Statements() GetPrivilegesPrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesPrivilege) []GetPrivilegesPrivilegeStatement { return v.Statements }).(GetPrivilegesPrivilegeStatementArrayOutput)
-}
-
-func (o GetPrivilegesPrivilegeOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesPrivilege) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type GetPrivilegesPrivilegePtrOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesPrivilegePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPrivilegesPrivilege)(nil)).Elem()
-}
-
-func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutput() GetPrivilegesPrivilegePtrOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegePtrOutput) ToGetPrivilegesPrivilegePtrOutputWithContext(ctx context.Context) GetPrivilegesPrivilegePtrOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegePtrOutput) Elem() GetPrivilegesPrivilegeOutput {
-	return o.ApplyT(func(v *GetPrivilegesPrivilege) GetPrivilegesPrivilege {
-		if v != nil {
-			return *v
-		}
-		var ret GetPrivilegesPrivilege
-		return ret
-	}).(GetPrivilegesPrivilegeOutput)
-}
-
-func (o GetPrivilegesPrivilegePtrOutput) Statements() GetPrivilegesPrivilegeStatementArrayOutput {
-	return o.ApplyT(func(v *GetPrivilegesPrivilege) []GetPrivilegesPrivilegeStatement {
-		if v == nil {
-			return nil
-		}
-		return v.Statements
-	}).(GetPrivilegesPrivilegeStatementArrayOutput)
-}
-
-func (o GetPrivilegesPrivilegePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetPrivilegesPrivilege) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetPrivilegesPrivilegeStatement struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-	Actions []string `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect string `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes []string `pulumi:"scopes"`
-}
-
-// GetPrivilegesPrivilegeStatementInput is an input type that accepts GetPrivilegesPrivilegeStatementArgs and GetPrivilegesPrivilegeStatementOutput values.
-// You can construct a concrete instance of `GetPrivilegesPrivilegeStatementInput` via:
-//
-//	GetPrivilegesPrivilegeStatementArgs{...}
-type GetPrivilegesPrivilegeStatementInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput
-	ToGetPrivilegesPrivilegeStatementOutputWithContext(context.Context) GetPrivilegesPrivilegeStatementOutput
-}
-
-type GetPrivilegesPrivilegeStatementArgs struct {
-	// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-	// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// Target the privileged action against specific resources with the scope.
-	// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-	// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-	// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-	// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-}
-
-func (GetPrivilegesPrivilegeStatementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesPrivilegeStatement)(nil)).Elem()
-}
-
-func (i GetPrivilegesPrivilegeStatementArgs) ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput {
-	return i.ToGetPrivilegesPrivilegeStatementOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesPrivilegeStatementArgs) ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementOutput)
-}
-
-// GetPrivilegesPrivilegeStatementArrayInput is an input type that accepts GetPrivilegesPrivilegeStatementArray and GetPrivilegesPrivilegeStatementArrayOutput values.
-// You can construct a concrete instance of `GetPrivilegesPrivilegeStatementArrayInput` via:
-//
-//	GetPrivilegesPrivilegeStatementArray{ GetPrivilegesPrivilegeStatementArgs{...} }
-type GetPrivilegesPrivilegeStatementArrayInput interface {
-	pulumi.Input
-
-	ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput
-	ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(context.Context) GetPrivilegesPrivilegeStatementArrayOutput
-}
-
-type GetPrivilegesPrivilegeStatementArray []GetPrivilegesPrivilegeStatementInput
-
-func (GetPrivilegesPrivilegeStatementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesPrivilegeStatement)(nil)).Elem()
-}
-
-func (i GetPrivilegesPrivilegeStatementArray) ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput {
-	return i.ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(context.Background())
-}
-
-func (i GetPrivilegesPrivilegeStatementArray) ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPrivilegesPrivilegeStatementArrayOutput)
-}
-
-type GetPrivilegesPrivilegeStatementOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesPrivilegeStatementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPrivilegesPrivilegeStatement)(nil)).Elem()
-}
-
-func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatementOutput() GetPrivilegesPrivilegeStatementOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegeStatementOutput) ToGetPrivilegesPrivilegeStatementOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementOutput {
-	return o
-}
-
-// An array of strings that represent actions within OneLogin. Actions are prefixed with the class of object they are related to and followed by a specific action for the given class.
-// e.g. users:List, where the class is users and the specific action is List. Don’t mix classes within an Action array. To create a privilege that includes multiple different classes, create multiple statements. A wildcard * that includes all actions is supported. Use wildcards to create a Super User privilege.
-func (o GetPrivilegesPrivilegeStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-// Set to “Allow.” By default, all actions are denied, this Statement allows the listed actions to be executed.
-func (o GetPrivilegesPrivilegeStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) string { return v.Effect }).(pulumi.StringOutput)
-}
-
-// Target the privileged action against specific resources with the scope.
-// The scope pattern is the class of object used by the Action, followed by an ID that represents a resource in OneLogin.
-// e.g. apps/1234, where apps is the class and 1234 is the ID of an app.
-// The wildcard * is supported and indicates that all resources of the class type declared, in the Action, are in scope.
-// The Action and Scope classes must match. However, there is an exception, a scope of roles/{role_id} can be combined with Actions on the user or app class. The exception allows you to target groups of users or apps with specific actions.
-func (o GetPrivilegesPrivilegeStatementOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPrivilegesPrivilegeStatement) []string { return v.Scopes }).(pulumi.StringArrayOutput)
-}
-
-type GetPrivilegesPrivilegeStatementArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPrivilegesPrivilegeStatementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPrivilegesPrivilegeStatement)(nil)).Elem()
-}
-
-func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStatementArrayOutput() GetPrivilegesPrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegeStatementArrayOutput) ToGetPrivilegesPrivilegeStatementArrayOutputWithContext(ctx context.Context) GetPrivilegesPrivilegeStatementArrayOutput {
-	return o
-}
-
-func (o GetPrivilegesPrivilegeStatementArrayOutput) Index(i pulumi.IntInput) GetPrivilegesPrivilegeStatementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivilegesPrivilegeStatement {
-		return vs[0].([]GetPrivilegesPrivilegeStatement)[vs[1].(int)]
-	}).(GetPrivilegesPrivilegeStatementOutput)
-}
-
-type GetRiskRulesFilter struct {
-	Name   string   `pulumi:"name"`
-	Values []string `pulumi:"values"`
-}
-
-// GetRiskRulesFilterInput is an input type that accepts GetRiskRulesFilterArgs and GetRiskRulesFilterOutput values.
-// You can construct a concrete instance of `GetRiskRulesFilterInput` via:
-//
-//	GetRiskRulesFilterArgs{...}
-type GetRiskRulesFilterInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesFilterOutput() GetRiskRulesFilterOutput
-	ToGetRiskRulesFilterOutputWithContext(context.Context) GetRiskRulesFilterOutput
-}
-
-type GetRiskRulesFilterArgs struct {
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetRiskRulesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesFilter)(nil)).Elem()
-}
-
-func (i GetRiskRulesFilterArgs) ToGetRiskRulesFilterOutput() GetRiskRulesFilterOutput {
-	return i.ToGetRiskRulesFilterOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesFilterArgs) ToGetRiskRulesFilterOutputWithContext(ctx context.Context) GetRiskRulesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesFilterOutput)
-}
-
-// GetRiskRulesFilterArrayInput is an input type that accepts GetRiskRulesFilterArray and GetRiskRulesFilterArrayOutput values.
-// You can construct a concrete instance of `GetRiskRulesFilterArrayInput` via:
-//
-//	GetRiskRulesFilterArray{ GetRiskRulesFilterArgs{...} }
-type GetRiskRulesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesFilterArrayOutput() GetRiskRulesFilterArrayOutput
-	ToGetRiskRulesFilterArrayOutputWithContext(context.Context) GetRiskRulesFilterArrayOutput
-}
-
-type GetRiskRulesFilterArray []GetRiskRulesFilterInput
-
-func (GetRiskRulesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRiskRulesFilter)(nil)).Elem()
-}
-
-func (i GetRiskRulesFilterArray) ToGetRiskRulesFilterArrayOutput() GetRiskRulesFilterArrayOutput {
-	return i.ToGetRiskRulesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesFilterArray) ToGetRiskRulesFilterArrayOutputWithContext(ctx context.Context) GetRiskRulesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesFilterArrayOutput)
-}
-
-type GetRiskRulesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesFilter)(nil)).Elem()
-}
-
-func (o GetRiskRulesFilterOutput) ToGetRiskRulesFilterOutput() GetRiskRulesFilterOutput {
-	return o
-}
-
-func (o GetRiskRulesFilterOutput) ToGetRiskRulesFilterOutputWithContext(ctx context.Context) GetRiskRulesFilterOutput {
-	return o
-}
-
-func (o GetRiskRulesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRiskRulesFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetRiskRulesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRiskRulesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetRiskRulesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRiskRulesFilter)(nil)).Elem()
-}
-
-func (o GetRiskRulesFilterArrayOutput) ToGetRiskRulesFilterArrayOutput() GetRiskRulesFilterArrayOutput {
-	return o
-}
-
-func (o GetRiskRulesFilterArrayOutput) ToGetRiskRulesFilterArrayOutputWithContext(ctx context.Context) GetRiskRulesFilterArrayOutput {
-	return o
-}
-
-func (o GetRiskRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRiskRulesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRiskRulesFilter {
-		return vs[0].([]GetRiskRulesFilter)[vs[1].(int)]
-	}).(GetRiskRulesFilterOutput)
-}
-
-type GetRiskRulesInstanceSource struct {
-	// A unique id that represents the source of the event.
-	Id string `pulumi:"id"`
-	// The name of the source
-	Name string `pulumi:"name"`
-}
-
-// GetRiskRulesInstanceSourceInput is an input type that accepts GetRiskRulesInstanceSourceArgs and GetRiskRulesInstanceSourceOutput values.
-// You can construct a concrete instance of `GetRiskRulesInstanceSourceInput` via:
-//
-//	GetRiskRulesInstanceSourceArgs{...}
-type GetRiskRulesInstanceSourceInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesInstanceSourceOutput() GetRiskRulesInstanceSourceOutput
-	ToGetRiskRulesInstanceSourceOutputWithContext(context.Context) GetRiskRulesInstanceSourceOutput
-}
-
-type GetRiskRulesInstanceSourceArgs struct {
-	// A unique id that represents the source of the event.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the source
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetRiskRulesInstanceSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesInstanceSource)(nil)).Elem()
-}
-
-func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourceOutput() GetRiskRulesInstanceSourceOutput {
-	return i.ToGetRiskRulesInstanceSourceOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourceOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesInstanceSourceOutput)
-}
-
-func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput {
-	return i.ToGetRiskRulesInstanceSourcePtrOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesInstanceSourceArgs) ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesInstanceSourceOutput).ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx)
-}
-
-// GetRiskRulesInstanceSourcePtrInput is an input type that accepts GetRiskRulesInstanceSourceArgs, GetRiskRulesInstanceSourcePtr and GetRiskRulesInstanceSourcePtrOutput values.
-// You can construct a concrete instance of `GetRiskRulesInstanceSourcePtrInput` via:
-//
-//	        GetRiskRulesInstanceSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetRiskRulesInstanceSourcePtrInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput
-	ToGetRiskRulesInstanceSourcePtrOutputWithContext(context.Context) GetRiskRulesInstanceSourcePtrOutput
-}
-
-type getRiskRulesInstanceSourcePtrType GetRiskRulesInstanceSourceArgs
-
-func GetRiskRulesInstanceSourcePtr(v *GetRiskRulesInstanceSourceArgs) GetRiskRulesInstanceSourcePtrInput {
-	return (*getRiskRulesInstanceSourcePtrType)(v)
-}
-
-func (*getRiskRulesInstanceSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetRiskRulesInstanceSource)(nil)).Elem()
-}
-
-func (i *getRiskRulesInstanceSourcePtrType) ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput {
-	return i.ToGetRiskRulesInstanceSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *getRiskRulesInstanceSourcePtrType) ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesInstanceSourcePtrOutput)
-}
-
-type GetRiskRulesInstanceSourceOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesInstanceSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesInstanceSource)(nil)).Elem()
-}
-
-func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourceOutput() GetRiskRulesInstanceSourceOutput {
-	return o
-}
-
-func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourceOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourceOutput {
-	return o
-}
-
-func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput {
-	return o.ToGetRiskRulesInstanceSourcePtrOutputWithContext(context.Background())
-}
-
-func (o GetRiskRulesInstanceSourceOutput) ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRiskRulesInstanceSource) *GetRiskRulesInstanceSource {
-		return &v
-	}).(GetRiskRulesInstanceSourcePtrOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o GetRiskRulesInstanceSourceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRiskRulesInstanceSource) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the source
-func (o GetRiskRulesInstanceSourceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRiskRulesInstanceSource) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetRiskRulesInstanceSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesInstanceSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetRiskRulesInstanceSource)(nil)).Elem()
-}
-
-func (o GetRiskRulesInstanceSourcePtrOutput) ToGetRiskRulesInstanceSourcePtrOutput() GetRiskRulesInstanceSourcePtrOutput {
-	return o
-}
-
-func (o GetRiskRulesInstanceSourcePtrOutput) ToGetRiskRulesInstanceSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesInstanceSourcePtrOutput {
-	return o
-}
-
-func (o GetRiskRulesInstanceSourcePtrOutput) Elem() GetRiskRulesInstanceSourceOutput {
-	return o.ApplyT(func(v *GetRiskRulesInstanceSource) GetRiskRulesInstanceSource {
-		if v != nil {
-			return *v
-		}
-		var ret GetRiskRulesInstanceSource
-		return ret
-	}).(GetRiskRulesInstanceSourceOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o GetRiskRulesInstanceSourcePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetRiskRulesInstanceSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the source
-func (o GetRiskRulesInstanceSourcePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetRiskRulesInstanceSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetRiskRulesSource struct {
-	// A unique id that represents the source of the event.
-	Id string `pulumi:"id"`
-	// The name of the source
-	Name string `pulumi:"name"`
-}
-
-// GetRiskRulesSourceInput is an input type that accepts GetRiskRulesSourceArgs and GetRiskRulesSourceOutput values.
-// You can construct a concrete instance of `GetRiskRulesSourceInput` via:
-//
-//	GetRiskRulesSourceArgs{...}
-type GetRiskRulesSourceInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesSourceOutput() GetRiskRulesSourceOutput
-	ToGetRiskRulesSourceOutputWithContext(context.Context) GetRiskRulesSourceOutput
-}
-
-type GetRiskRulesSourceArgs struct {
-	// A unique id that represents the source of the event.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the source
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetRiskRulesSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesSource)(nil)).Elem()
-}
-
-func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourceOutput() GetRiskRulesSourceOutput {
-	return i.ToGetRiskRulesSourceOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourceOutputWithContext(ctx context.Context) GetRiskRulesSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesSourceOutput)
-}
-
-func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput {
-	return i.ToGetRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (i GetRiskRulesSourceArgs) ToGetRiskRulesSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesSourceOutput).ToGetRiskRulesSourcePtrOutputWithContext(ctx)
-}
-
-// GetRiskRulesSourcePtrInput is an input type that accepts GetRiskRulesSourceArgs, GetRiskRulesSourcePtr and GetRiskRulesSourcePtrOutput values.
-// You can construct a concrete instance of `GetRiskRulesSourcePtrInput` via:
-//
-//	        GetRiskRulesSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetRiskRulesSourcePtrInput interface {
-	pulumi.Input
-
-	ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput
-	ToGetRiskRulesSourcePtrOutputWithContext(context.Context) GetRiskRulesSourcePtrOutput
-}
-
-type getRiskRulesSourcePtrType GetRiskRulesSourceArgs
-
-func GetRiskRulesSourcePtr(v *GetRiskRulesSourceArgs) GetRiskRulesSourcePtrInput {
-	return (*getRiskRulesSourcePtrType)(v)
-}
-
-func (*getRiskRulesSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetRiskRulesSource)(nil)).Elem()
-}
-
-func (i *getRiskRulesSourcePtrType) ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput {
-	return i.ToGetRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *getRiskRulesSourcePtrType) ToGetRiskRulesSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRiskRulesSourcePtrOutput)
-}
-
-type GetRiskRulesSourceOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRiskRulesSource)(nil)).Elem()
-}
-
-func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourceOutput() GetRiskRulesSourceOutput {
-	return o
-}
-
-func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourceOutputWithContext(ctx context.Context) GetRiskRulesSourceOutput {
-	return o
-}
-
-func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput {
-	return o.ToGetRiskRulesSourcePtrOutputWithContext(context.Background())
-}
-
-func (o GetRiskRulesSourceOutput) ToGetRiskRulesSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRiskRulesSource) *GetRiskRulesSource {
-		return &v
-	}).(GetRiskRulesSourcePtrOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o GetRiskRulesSourceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRiskRulesSource) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the source
-func (o GetRiskRulesSourceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRiskRulesSource) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetRiskRulesSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (GetRiskRulesSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetRiskRulesSource)(nil)).Elem()
-}
-
-func (o GetRiskRulesSourcePtrOutput) ToGetRiskRulesSourcePtrOutput() GetRiskRulesSourcePtrOutput {
-	return o
-}
-
-func (o GetRiskRulesSourcePtrOutput) ToGetRiskRulesSourcePtrOutputWithContext(ctx context.Context) GetRiskRulesSourcePtrOutput {
-	return o
-}
-
-func (o GetRiskRulesSourcePtrOutput) Elem() GetRiskRulesSourceOutput {
-	return o.ApplyT(func(v *GetRiskRulesSource) GetRiskRulesSource {
-		if v != nil {
-			return *v
-		}
-		var ret GetRiskRulesSource
-		return ret
-	}).(GetRiskRulesSourceOutput)
-}
-
-// A unique id that represents the source of the event.
-func (o GetRiskRulesSourcePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetRiskRulesSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the source
-func (o GetRiskRulesSourcePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetRiskRulesSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
+func (o UserMappingsConditionArrayOutput) Index(i pulumi.IntInput) UserMappingsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserMappingsCondition {
+		return vs[0].([]UserMappingsCondition)[vs[1].(int)]
+	}).(UserMappingsConditionOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AppConfigurationInput)(nil)).Elem(), AppConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppConfigurationPtrInput)(nil)).Elem(), AppConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointInput)(nil)).Elem(), AppEnforcementPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointPtrInput)(nil)).Elem(), AppEnforcementPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointResourceInput)(nil)).Elem(), AppEnforcementPointResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointResourceArrayInput)(nil)).Elem(), AppEnforcementPointResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointSessionExpiryFixedInput)(nil)).Elem(), AppEnforcementPointSessionExpiryFixedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointSessionExpiryFixedPtrInput)(nil)).Elem(), AppEnforcementPointSessionExpiryFixedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointSessionExpiryInactivityInput)(nil)).Elem(), AppEnforcementPointSessionExpiryInactivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEnforcementPointSessionExpiryInactivityPtrInput)(nil)).Elem(), AppEnforcementPointSessionExpiryInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppParametersInput)(nil)).Elem(), AppParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppParametersPtrInput)(nil)).Elem(), AppParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppParametersGroupsInput)(nil)).Elem(), AppParametersGroupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppParametersGroupsPtrInput)(nil)).Elem(), AppParametersGroupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppProvisioningInput)(nil)).Elem(), AppProvisioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppProvisioningPtrInput)(nil)).Elem(), AppProvisioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppSsoInput)(nil)).Elem(), AppSsoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppSsoPtrInput)(nil)).Elem(), AppSsoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppSsoCertificateInput)(nil)).Elem(), AppSsoCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppSsoCertificatePtrInput)(nil)).Elem(), AppSsoCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppRulesActionInput)(nil)).Elem(), AppRulesActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppRulesActionArrayInput)(nil)).Elem(), AppRulesActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppRulesConditionInput)(nil)).Elem(), AppRulesConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppRulesConditionArrayInput)(nil)).Elem(), AppRulesConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthServersConfigurationInput)(nil)).Elem(), AuthServersConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthServersConfigurationPtrInput)(nil)).Elem(), AuthServersConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcAppsParameterInput)(nil)).Elem(), OidcAppsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcAppsParameterArrayInput)(nil)).Elem(), OidcAppsParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegesPrivilegeInput)(nil)).Elem(), PrivilegesPrivilegeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegesPrivilegePtrInput)(nil)).Elem(), PrivilegesPrivilegeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegesPrivilegeStatementInput)(nil)).Elem(), PrivilegesPrivilegeStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegesPrivilegeStatementArrayInput)(nil)).Elem(), PrivilegesPrivilegeStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RiskRulesSourceInput)(nil)).Elem(), RiskRulesSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RiskRulesSourcePtrInput)(nil)).Elem(), RiskRulesSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsConfigurationInput)(nil)).Elem(), GetAppsConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsConfigurationPtrInput)(nil)).Elem(), GetAppsConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointInput)(nil)).Elem(), GetAppsEnforcementPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointPtrInput)(nil)).Elem(), GetAppsEnforcementPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointResourceInput)(nil)).Elem(), GetAppsEnforcementPointResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointResourceArrayInput)(nil)).Elem(), GetAppsEnforcementPointResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryFixedInput)(nil)).Elem(), GetAppsEnforcementPointSessionExpiryFixedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryFixedPtrInput)(nil)).Elem(), GetAppsEnforcementPointSessionExpiryFixedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryInactivityInput)(nil)).Elem(), GetAppsEnforcementPointSessionExpiryInactivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsEnforcementPointSessionExpiryInactivityPtrInput)(nil)).Elem(), GetAppsEnforcementPointSessionExpiryInactivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterInput)(nil)).Elem(), GetAppsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsFilterArrayInput)(nil)).Elem(), GetAppsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsParametersInput)(nil)).Elem(), GetAppsParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsParametersPtrInput)(nil)).Elem(), GetAppsParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsParametersGroupsInput)(nil)).Elem(), GetAppsParametersGroupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsParametersGroupsPtrInput)(nil)).Elem(), GetAppsParametersGroupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsProvisioningInput)(nil)).Elem(), GetAppsProvisioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsProvisioningPtrInput)(nil)).Elem(), GetAppsProvisioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsSsoInput)(nil)).Elem(), GetAppsSsoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsSsoPtrInput)(nil)).Elem(), GetAppsSsoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsSsoCertificateInput)(nil)).Elem(), GetAppsSsoCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsSsoCertificatePtrInput)(nil)).Elem(), GetAppsSsoCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersClaimsFilterInput)(nil)).Elem(), GetAuthServersClaimsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersClaimsFilterArrayInput)(nil)).Elem(), GetAuthServersClaimsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersConfigurationInput)(nil)).Elem(), GetAuthServersConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersConfigurationPtrInput)(nil)).Elem(), GetAuthServersConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersFilterInput)(nil)).Elem(), GetAuthServersFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersFilterArrayInput)(nil)).Elem(), GetAuthServersFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersInstanceConfigurationInput)(nil)).Elem(), GetAuthServersInstanceConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersInstanceConfigurationPtrInput)(nil)).Elem(), GetAuthServersInstanceConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersScopesFilterInput)(nil)).Elem(), GetAuthServersScopesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthServersScopesFilterArrayInput)(nil)).Elem(), GetAuthServersScopesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsActionInput)(nil)).Elem(), GetMappingsActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsActionArrayInput)(nil)).Elem(), GetMappingsActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsConditionInput)(nil)).Elem(), GetMappingsConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsConditionArrayInput)(nil)).Elem(), GetMappingsConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsFilterInput)(nil)).Elem(), GetMappingsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsFilterArrayInput)(nil)).Elem(), GetMappingsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesFilterInput)(nil)).Elem(), GetPrivilegesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesFilterArrayInput)(nil)).Elem(), GetPrivilegesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesInstancePrivilegeInput)(nil)).Elem(), GetPrivilegesInstancePrivilegeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesInstancePrivilegePtrInput)(nil)).Elem(), GetPrivilegesInstancePrivilegeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesInstancePrivilegeStatementInput)(nil)).Elem(), GetPrivilegesInstancePrivilegeStatementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesInstancePrivilegeStatementArrayInput)(nil)).Elem(), GetPrivilegesInstancePrivilegeStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeInput)(nil)).Elem(), GetPrivilegesPrivilegeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegePtrInput)(nil)).Elem(), GetPrivilegesPrivilegeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeStatementInput)(nil)).Elem(), GetPrivilegesPrivilegeStatementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivilegesPrivilegeStatementArrayInput)(nil)).Elem(), GetPrivilegesPrivilegeStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesFilterInput)(nil)).Elem(), GetRiskRulesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesFilterArrayInput)(nil)).Elem(), GetRiskRulesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesInstanceSourceInput)(nil)).Elem(), GetRiskRulesInstanceSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesInstanceSourcePtrInput)(nil)).Elem(), GetRiskRulesInstanceSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesSourceInput)(nil)).Elem(), GetRiskRulesSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRiskRulesSourcePtrInput)(nil)).Elem(), GetRiskRulesSourceArgs{})
-	pulumi.RegisterOutputType(AppConfigurationOutput{})
-	pulumi.RegisterOutputType(AppConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointPtrOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointResourceOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointResourceArrayOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointSessionExpiryFixedOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointSessionExpiryFixedPtrOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointSessionExpiryInactivityOutput{})
-	pulumi.RegisterOutputType(AppEnforcementPointSessionExpiryInactivityPtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppsParameterInput)(nil)).Elem(), SamlAppsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppsParameterArrayInput)(nil)).Elem(), SamlAppsParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksConditionInput)(nil)).Elem(), SmarthooksConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksConditionArrayInput)(nil)).Elem(), SmarthooksConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksOptionInput)(nil)).Elem(), SmarthooksOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksOptionArrayInput)(nil)).Elem(), SmarthooksOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsActionInput)(nil)).Elem(), UserMappingsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsActionArrayInput)(nil)).Elem(), UserMappingsActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsConditionInput)(nil)).Elem(), UserMappingsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsConditionArrayInput)(nil)).Elem(), UserMappingsConditionArray{})
 	pulumi.RegisterOutputType(AppParametersOutput{})
 	pulumi.RegisterOutputType(AppParametersPtrOutput{})
-	pulumi.RegisterOutputType(AppParametersGroupsOutput{})
-	pulumi.RegisterOutputType(AppParametersGroupsPtrOutput{})
-	pulumi.RegisterOutputType(AppProvisioningOutput{})
-	pulumi.RegisterOutputType(AppProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(AppSsoOutput{})
-	pulumi.RegisterOutputType(AppSsoPtrOutput{})
-	pulumi.RegisterOutputType(AppSsoCertificateOutput{})
-	pulumi.RegisterOutputType(AppSsoCertificatePtrOutput{})
+	pulumi.RegisterOutputType(AppRulesActionOutput{})
+	pulumi.RegisterOutputType(AppRulesActionArrayOutput{})
+	pulumi.RegisterOutputType(AppRulesConditionOutput{})
+	pulumi.RegisterOutputType(AppRulesConditionArrayOutput{})
 	pulumi.RegisterOutputType(AuthServersConfigurationOutput{})
 	pulumi.RegisterOutputType(AuthServersConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OidcAppsParameterOutput{})
+	pulumi.RegisterOutputType(OidcAppsParameterArrayOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegePtrOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementOutput{})
 	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementArrayOutput{})
-	pulumi.RegisterOutputType(ProviderEndpointOutput{})
-	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
-	pulumi.RegisterOutputType(RiskRulesSourceOutput{})
-	pulumi.RegisterOutputType(RiskRulesSourcePtrOutput{})
-	pulumi.RegisterOutputType(GetAppsConfigurationOutput{})
-	pulumi.RegisterOutputType(GetAppsConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointResourceOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointResourceArrayOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointSessionExpiryFixedOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointSessionExpiryFixedPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointSessionExpiryInactivityOutput{})
-	pulumi.RegisterOutputType(GetAppsEnforcementPointSessionExpiryInactivityPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsFilterOutput{})
-	pulumi.RegisterOutputType(GetAppsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetAppsParametersOutput{})
-	pulumi.RegisterOutputType(GetAppsParametersPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsParametersGroupsOutput{})
-	pulumi.RegisterOutputType(GetAppsParametersGroupsPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsProvisioningOutput{})
-	pulumi.RegisterOutputType(GetAppsProvisioningPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsSsoOutput{})
-	pulumi.RegisterOutputType(GetAppsSsoPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsSsoCertificateOutput{})
-	pulumi.RegisterOutputType(GetAppsSsoCertificatePtrOutput{})
-	pulumi.RegisterOutputType(GetAuthServersClaimsFilterOutput{})
-	pulumi.RegisterOutputType(GetAuthServersClaimsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetAuthServersConfigurationOutput{})
-	pulumi.RegisterOutputType(GetAuthServersConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(GetAuthServersFilterOutput{})
-	pulumi.RegisterOutputType(GetAuthServersFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetAuthServersInstanceConfigurationOutput{})
-	pulumi.RegisterOutputType(GetAuthServersInstanceConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(GetAuthServersScopesFilterOutput{})
-	pulumi.RegisterOutputType(GetAuthServersScopesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetMappingsActionOutput{})
-	pulumi.RegisterOutputType(GetMappingsActionArrayOutput{})
-	pulumi.RegisterOutputType(GetMappingsConditionOutput{})
-	pulumi.RegisterOutputType(GetMappingsConditionArrayOutput{})
-	pulumi.RegisterOutputType(GetMappingsFilterOutput{})
-	pulumi.RegisterOutputType(GetMappingsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesFilterOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesInstancePrivilegeOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesInstancePrivilegePtrOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesInstancePrivilegeStatementOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesInstancePrivilegeStatementArrayOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesPrivilegeOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesPrivilegePtrOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesPrivilegeStatementOutput{})
-	pulumi.RegisterOutputType(GetPrivilegesPrivilegeStatementArrayOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesFilterOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesInstanceSourceOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesInstanceSourcePtrOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesSourceOutput{})
-	pulumi.RegisterOutputType(GetRiskRulesSourcePtrOutput{})
+	pulumi.RegisterOutputType(SamlAppsParameterOutput{})
+	pulumi.RegisterOutputType(SamlAppsParameterArrayOutput{})
+	pulumi.RegisterOutputType(SmarthooksConditionOutput{})
+	pulumi.RegisterOutputType(SmarthooksConditionArrayOutput{})
+	pulumi.RegisterOutputType(SmarthooksOptionOutput{})
+	pulumi.RegisterOutputType(SmarthooksOptionArrayOutput{})
+	pulumi.RegisterOutputType(UserMappingsActionOutput{})
+	pulumi.RegisterOutputType(UserMappingsActionArrayOutput{})
+	pulumi.RegisterOutputType(UserMappingsConditionOutput{})
+	pulumi.RegisterOutputType(UserMappingsConditionArrayOutput{})
 }

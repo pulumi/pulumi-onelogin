@@ -21,6 +21,12 @@ namespace Pulumi.Onelogin
         [Output("privilege")]
         public Output<Outputs.PrivilegesPrivilege> Privilege { get; private set; } = null!;
 
+        [Output("roleIds")]
+        public Output<ImmutableArray<int>> RoleIds { get; private set; } = null!;
+
+        [Output("userIds")]
+        public Output<ImmutableArray<int>> UserIds { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Privileges resource with the given unique name, arguments, and options.
@@ -76,6 +82,22 @@ namespace Pulumi.Onelogin
         [Input("privilege", required: true)]
         public Input<Inputs.PrivilegesPrivilegeArgs> Privilege { get; set; } = null!;
 
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
+        public InputList<int> RoleIds
+        {
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
+        }
+
+        [Input("userIds")]
+        private InputList<int>? _userIds;
+        public InputList<int> UserIds
+        {
+            get => _userIds ?? (_userIds = new InputList<int>());
+            set => _userIds = value;
+        }
+
         public PrivilegesArgs()
         {
         }
@@ -92,6 +114,22 @@ namespace Pulumi.Onelogin
 
         [Input("privilege")]
         public Input<Inputs.PrivilegesPrivilegeGetArgs>? Privilege { get; set; }
+
+        [Input("roleIds")]
+        private InputList<int>? _roleIds;
+        public InputList<int> RoleIds
+        {
+            get => _roleIds ?? (_roleIds = new InputList<int>());
+            set => _roleIds = value;
+        }
+
+        [Input("userIds")]
+        private InputList<int>? _userIds;
+        public InputList<int> UserIds
+        {
+            get => _userIds ?? (_userIds = new InputList<int>());
+            set => _userIds = value;
+        }
 
         public PrivilegesState()
         {

@@ -5,6 +5,7 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.PrivilegesPrivilegeStatementArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,11 +18,11 @@ public final class PrivilegesPrivilegeArgs extends com.pulumi.resources.Resource
 
     public static final PrivilegesPrivilegeArgs Empty = new PrivilegesPrivilegeArgs();
 
-    @Import(name="statements")
-    private @Nullable Output<List<PrivilegesPrivilegeStatementArgs>> statements;
+    @Import(name="statements", required=true)
+    private Output<List<PrivilegesPrivilegeStatementArgs>> statements;
 
-    public Optional<Output<List<PrivilegesPrivilegeStatementArgs>>> statements() {
-        return Optional.ofNullable(this.statements);
+    public Output<List<PrivilegesPrivilegeStatementArgs>> statements() {
+        return this.statements;
     }
 
     @Import(name="version")
@@ -56,7 +57,7 @@ public final class PrivilegesPrivilegeArgs extends com.pulumi.resources.Resource
             $ = new PrivilegesPrivilegeArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder statements(@Nullable Output<List<PrivilegesPrivilegeStatementArgs>> statements) {
+        public Builder statements(Output<List<PrivilegesPrivilegeStatementArgs>> statements) {
             $.statements = statements;
             return this;
         }
@@ -79,6 +80,9 @@ public final class PrivilegesPrivilegeArgs extends com.pulumi.resources.Resource
         }
 
         public PrivilegesPrivilegeArgs build() {
+            if ($.statements == null) {
+                throw new MissingRequiredPropertyException("PrivilegesPrivilegeArgs", "statements");
+            }
             return $;
         }
     }

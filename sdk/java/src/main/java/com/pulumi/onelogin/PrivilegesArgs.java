@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.onelogin.inputs.PrivilegesPrivilegeArgs;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,12 +40,28 @@ public final class PrivilegesArgs extends com.pulumi.resources.ResourceArgs {
         return this.privilege;
     }
 
+    @Import(name="roleIds")
+    private @Nullable Output<List<Integer>> roleIds;
+
+    public Optional<Output<List<Integer>>> roleIds() {
+        return Optional.ofNullable(this.roleIds);
+    }
+
+    @Import(name="userIds")
+    private @Nullable Output<List<Integer>> userIds;
+
+    public Optional<Output<List<Integer>>> userIds() {
+        return Optional.ofNullable(this.userIds);
+    }
+
     private PrivilegesArgs() {}
 
     private PrivilegesArgs(PrivilegesArgs $) {
         this.description = $.description;
         this.name = $.name;
         this.privilege = $.privilege;
+        this.roleIds = $.roleIds;
+        this.userIds = $.userIds;
     }
 
     public static Builder builder() {
@@ -89,6 +107,32 @@ public final class PrivilegesArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder privilege(PrivilegesPrivilegeArgs privilege) {
             return privilege(Output.of(privilege));
+        }
+
+        public Builder roleIds(@Nullable Output<List<Integer>> roleIds) {
+            $.roleIds = roleIds;
+            return this;
+        }
+
+        public Builder roleIds(List<Integer> roleIds) {
+            return roleIds(Output.of(roleIds));
+        }
+
+        public Builder roleIds(Integer... roleIds) {
+            return roleIds(List.of(roleIds));
+        }
+
+        public Builder userIds(@Nullable Output<List<Integer>> userIds) {
+            $.userIds = userIds;
+            return this;
+        }
+
+        public Builder userIds(List<Integer> userIds) {
+            return userIds(Output.of(userIds));
+        }
+
+        public Builder userIds(Integer... userIds) {
+            return userIds(List.of(userIds));
         }
 
         public PrivilegesArgs build() {
