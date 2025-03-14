@@ -15,20 +15,10 @@ export type AppRoleAttachments = import("./appRoleAttachments").AppRoleAttachmen
 export const AppRoleAttachments: typeof import("./appRoleAttachments").AppRoleAttachments = null as any;
 utilities.lazyLoad(exports, ["AppRoleAttachments"], () => require("./appRoleAttachments"));
 
-export { AppRulesArgs, AppRulesState } from "./appRules";
-export type AppRules = import("./appRules").AppRules;
-export const AppRules: typeof import("./appRules").AppRules = null as any;
-utilities.lazyLoad(exports, ["AppRules"], () => require("./appRules"));
-
 export { AuthServersArgs, AuthServersState } from "./authServers";
 export type AuthServers = import("./authServers").AuthServers;
 export const AuthServers: typeof import("./authServers").AuthServers = null as any;
 utilities.lazyLoad(exports, ["AuthServers"], () => require("./authServers"));
-
-export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
-export const getUser: typeof import("./getUser").getUser = null as any;
-export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
-utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
 export { OidcAppsArgs, OidcAppsState } from "./oidcApps";
 export type OidcApps = import("./oidcApps").OidcApps;
@@ -97,8 +87,6 @@ const _module = {
                 return new App(name, <any>undefined, { urn })
             case "onelogin:index/appRoleAttachments:AppRoleAttachments":
                 return new AppRoleAttachments(name, <any>undefined, { urn })
-            case "onelogin:index/appRules:AppRules":
-                return new AppRules(name, <any>undefined, { urn })
             case "onelogin:index/authServers:AuthServers":
                 return new AuthServers(name, <any>undefined, { urn })
             case "onelogin:index/oidcApps:OidcApps":
@@ -124,7 +112,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("onelogin", "index/app", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/appRoleAttachments", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/appRules", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/authServers", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/oidcApps", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)

@@ -17,10 +17,6 @@ from . import _utilities
 __all__ = [
     'AppParametersArgs',
     'AppParametersArgsDict',
-    'AppRulesActionArgs',
-    'AppRulesActionArgsDict',
-    'AppRulesConditionArgs',
-    'AppRulesConditionArgsDict',
     'AuthServersConfigurationArgs',
     'AuthServersConfigurationArgsDict',
     'OidcAppsParameterArgs',
@@ -206,99 +202,6 @@ class AppParametersArgs:
     @values.setter
     def values(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "values", value)
-
-
-if not MYPY:
-    class AppRulesActionArgsDict(TypedDict):
-        action: pulumi.Input[str]
-        values: pulumi.Input[Sequence[pulumi.Input[str]]]
-        expression: NotRequired[pulumi.Input[str]]
-elif False:
-    AppRulesActionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class AppRulesActionArgs:
-    def __init__(__self__, *,
-                 action: pulumi.Input[str],
-                 values: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 expression: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "values", values)
-        if expression is not None:
-            pulumi.set(__self__, "expression", expression)
-
-    @property
-    @pulumi.getter
-    def action(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "action")
-
-    @action.setter
-    def action(self, value: pulumi.Input[str]):
-        pulumi.set(self, "action", value)
-
-    @property
-    @pulumi.getter
-    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "values", value)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "expression")
-
-    @expression.setter
-    def expression(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expression", value)
-
-
-if not MYPY:
-    class AppRulesConditionArgsDict(TypedDict):
-        operator: pulumi.Input[str]
-        source: pulumi.Input[str]
-        value: pulumi.Input[str]
-elif False:
-    AppRulesConditionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class AppRulesConditionArgs:
-    def __init__(__self__, *,
-                 operator: pulumi.Input[str],
-                 source: pulumi.Input[str],
-                 value: pulumi.Input[str]):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "operator")
-
-    @operator.setter
-    def operator(self, value: pulumi.Input[str]):
-        pulumi.set(self, "operator", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:

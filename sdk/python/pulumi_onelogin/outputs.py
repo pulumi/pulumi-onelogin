@@ -17,8 +17,6 @@ from . import outputs
 
 __all__ = [
     'AppParameters',
-    'AppRulesAction',
-    'AppRulesCondition',
     'AuthServersConfiguration',
     'OidcAppsParameter',
     'PrivilegesPrivilege',
@@ -163,59 +161,6 @@ class AppParameters(dict):
     @pulumi.getter
     def values(self) -> Optional[str]:
         return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class AppRulesAction(dict):
-    def __init__(__self__, *,
-                 action: str,
-                 values: Sequence[str],
-                 expression: Optional[str] = None):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "values", values)
-        if expression is not None:
-            pulumi.set(__self__, "expression", expression)
-
-    @property
-    @pulumi.getter
-    def action(self) -> str:
-        return pulumi.get(self, "action")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        return pulumi.get(self, "values")
-
-    @property
-    @pulumi.getter
-    def expression(self) -> Optional[str]:
-        return pulumi.get(self, "expression")
-
-
-@pulumi.output_type
-class AppRulesCondition(dict):
-    def __init__(__self__, *,
-                 operator: str,
-                 source: str,
-                 value: str):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> str:
-        return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def source(self) -> str:
-        return pulumi.get(self, "source")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

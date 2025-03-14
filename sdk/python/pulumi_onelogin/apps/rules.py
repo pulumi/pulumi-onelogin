@@ -268,8 +268,6 @@ class Rules(pulumi.CustomResource):
             __props__.__dict__["match"] = match
             __props__.__dict__["name"] = name
             __props__.__dict__["position"] = position
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="onelogin:index/appRules:AppRules")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Rules, __self__).__init__(
             'onelogin:apps/rules:Rules',
             resource_name,

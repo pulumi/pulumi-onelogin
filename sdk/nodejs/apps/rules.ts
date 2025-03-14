@@ -79,8 +79,6 @@ export class Rules extends pulumi.CustomResource {
             resourceInputs["position"] = args ? args.position : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "onelogin:index/appRules:AppRules" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Rules.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -7,9 +7,7 @@ import typing
 # Export this package's modules as members:
 from .app import *
 from .app_role_attachments import *
-from .app_rules import *
 from .auth_servers import *
-from .get_user import *
 from .oidc_apps import *
 from .privileges import *
 from .provider import *
@@ -60,14 +58,6 @@ _utilities.register(
   "fqn": "pulumi_onelogin",
   "classes": {
    "onelogin:index/appRoleAttachments:AppRoleAttachments": "AppRoleAttachments"
-  }
- },
- {
-  "pkg": "onelogin",
-  "mod": "index/appRules",
-  "fqn": "pulumi_onelogin",
-  "classes": {
-   "onelogin:index/appRules:AppRules": "AppRules"
   }
  },
  {

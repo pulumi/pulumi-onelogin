@@ -6,13 +6,6 @@
             },
             "onelogin_app_rules": {
                 "current": "onelogin:apps/rules:Rules",
-                "past": [
-                    {
-                        "name": "onelogin:index/appRules:AppRules",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "fields": {
                     "actions": {
                         "maxItemsOne": false,
@@ -154,14 +147,7 @@
         },
         "datasources": {
             "onelogin_user": {
-                "current": "onelogin:users/getUser:getUser",
-                "past": [
-                    {
-                        "name": "onelogin:index/getUser:getUser",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ]
+                "current": "onelogin:users/getUser:getUser"
             },
             "onelogin_users": {
                 "current": "onelogin:users/getUsers:getUsers",
@@ -178,11 +164,6 @@
     },
     "auto-settings": {
         "resources": {
-            "onelogin_app_rules": {
-                "aliases": [
-                    "onelogin:index/appRules:AppRules"
-                ]
-            },
             "onelogin_apps": {
                 "maxItemsOneOverrides": {
                     "parameters": true
@@ -192,13 +173,6 @@
                 "maxItemsOneOverrides": {
                     "privilege": true
                 }
-            }
-        },
-        "datasources": {
-            "onelogin_user": {
-                "renames": [
-                    "onelogin:index/getUser:getUser"
-                ]
             }
         }
     },

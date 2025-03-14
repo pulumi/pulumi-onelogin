@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &App{}
 	case "onelogin:index/appRoleAttachments:AppRoleAttachments":
 		r = &AppRoleAttachments{}
-	case "onelogin:index/appRules:AppRules":
-		r = &AppRules{}
 	case "onelogin:index/authServers:AuthServers":
 		r = &AuthServers{}
 	case "onelogin:index/oidcApps:OidcApps":
@@ -84,11 +82,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"onelogin",
 		"index/appRoleAttachments",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"onelogin",
-		"index/appRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

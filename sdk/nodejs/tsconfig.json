@@ -15,13 +15,11 @@
     "files": [
         "app.ts",
         "appRoleAttachments.ts",
-        "appRules.ts",
         "apps/index.ts",
         "apps/rules.ts",
         "authServers.ts",
         "config/index.ts",
         "config/vars.ts",
-        "getUser.ts",
         "index.ts",
         "oidcApps.ts",
         "privileges.ts",

@@ -20,18 +20,6 @@ export interface AppParameters {
     values: string;
 }
 
-export interface AppRulesAction {
-    action: string;
-    expression?: string;
-    values: string[];
-}
-
-export interface AppRulesCondition {
-    operator: string;
-    source: string;
-    value: string;
-}
-
 export interface AuthServersConfiguration {
     accessTokenExpirationMinutes: number;
     audiences: string[];

@@ -20,18 +20,6 @@ export interface AppParameters {
     values?: pulumi.Input<string>;
 }
 
-export interface AppRulesAction {
-    action: pulumi.Input<string>;
-    expression?: pulumi.Input<string>;
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface AppRulesCondition {
-    operator: pulumi.Input<string>;
-    source: pulumi.Input<string>;
-    value: pulumi.Input<string>;
-}
-
 export interface AuthServersConfiguration {
     accessTokenExpirationMinutes?: pulumi.Input<number>;
     audiences: pulumi.Input<pulumi.Input<string>[]>;

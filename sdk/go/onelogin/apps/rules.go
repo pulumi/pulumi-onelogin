@@ -37,12 +37,6 @@ func NewRules(ctx *pulumi.Context,
 	if args.Match == nil {
 		return nil, errors.New("invalid value for required argument 'Match'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("onelogin:index/appRules:AppRules"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Rules
 	err := ctx.RegisterResource("onelogin:apps/rules:Rules", name, args, &resource, opts...)
