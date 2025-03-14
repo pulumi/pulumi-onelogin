@@ -6,8 +6,8 @@ package com.pulumi.onelogin;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.onelogin.inputs.SmarthooksConditionArgs;
-import com.pulumi.onelogin.inputs.SmarthooksOptionArgs;
+import com.pulumi.onelogin.inputs.SmartHookConditionArgs;
+import com.pulumi.onelogin.inputs.SmartHookOptionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,14 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
+public final class SmartHookArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SmarthooksArgs Empty = new SmarthooksArgs();
+    public static final SmartHookArgs Empty = new SmartHookArgs();
 
     @Import(name="conditions")
-    private @Nullable Output<List<SmarthooksConditionArgs>> conditions;
+    private @Nullable Output<List<SmartHookConditionArgs>> conditions;
 
-    public Optional<Output<List<SmarthooksConditionArgs>>> conditions() {
+    public Optional<Output<List<SmartHookConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
@@ -58,9 +58,9 @@ public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="options")
-    private @Nullable Output<List<SmarthooksOptionArgs>> options;
+    private @Nullable Output<List<SmartHookOptionArgs>> options;
 
-    public Optional<Output<List<SmarthooksOptionArgs>>> options() {
+    public Optional<Output<List<SmartHookOptionArgs>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -99,9 +99,9 @@ public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
         return this.type;
     }
 
-    private SmarthooksArgs() {}
+    private SmartHookArgs() {}
 
-    private SmarthooksArgs(SmarthooksArgs $) {
+    private SmartHookArgs(SmartHookArgs $) {
         this.conditions = $.conditions;
         this.contextVersion = $.contextVersion;
         this.disabled = $.disabled;
@@ -118,31 +118,31 @@ public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SmarthooksArgs defaults) {
+    public static Builder builder(SmartHookArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SmarthooksArgs $;
+        private SmartHookArgs $;
 
         public Builder() {
-            $ = new SmarthooksArgs();
+            $ = new SmartHookArgs();
         }
 
-        public Builder(SmarthooksArgs defaults) {
-            $ = new SmarthooksArgs(Objects.requireNonNull(defaults));
+        public Builder(SmartHookArgs defaults) {
+            $ = new SmartHookArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder conditions(@Nullable Output<List<SmarthooksConditionArgs>> conditions) {
+        public Builder conditions(@Nullable Output<List<SmartHookConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
-        public Builder conditions(List<SmarthooksConditionArgs> conditions) {
+        public Builder conditions(List<SmartHookConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
-        public Builder conditions(SmarthooksConditionArgs... conditions) {
+        public Builder conditions(SmartHookConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }
 
@@ -186,16 +186,16 @@ public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
             return function(Output.of(function));
         }
 
-        public Builder options(@Nullable Output<List<SmarthooksOptionArgs>> options) {
+        public Builder options(@Nullable Output<List<SmartHookOptionArgs>> options) {
             $.options = options;
             return this;
         }
 
-        public Builder options(List<SmarthooksOptionArgs> options) {
+        public Builder options(List<SmartHookOptionArgs> options) {
             return options(Output.of(options));
         }
 
-        public Builder options(SmarthooksOptionArgs... options) {
+        public Builder options(SmartHookOptionArgs... options) {
             return options(List.of(options));
         }
 
@@ -244,30 +244,30 @@ public final class SmarthooksArgs extends com.pulumi.resources.ResourceArgs {
             return type(Output.of(type));
         }
 
-        public SmarthooksArgs build() {
+        public SmartHookArgs build() {
             if ($.disabled == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "disabled");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "disabled");
             }
             if ($.envVars == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "envVars");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "envVars");
             }
             if ($.function == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "function");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "function");
             }
             if ($.packages == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "packages");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "packages");
             }
             if ($.retries == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "retries");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "retries");
             }
             if ($.runtime == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "runtime");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "runtime");
             }
             if ($.timeout == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "timeout");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "timeout");
             }
             if ($.type == null) {
-                throw new MissingRequiredPropertyException("SmarthooksArgs", "type");
+                throw new MissingRequiredPropertyException("SmartHookArgs", "type");
             }
             return $;
         }

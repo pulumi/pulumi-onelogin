@@ -11,14 +11,14 @@ namespace Pulumi.Onelogin.Outputs
 {
 
     [OutputType]
-    public sealed class SmarthooksOption
+    public sealed class SmartHookOption
     {
         public readonly bool? LocationEnabled;
         public readonly bool? MfaDeviceInfoEnabled;
         public readonly bool? RiskEnabled;
 
         [OutputConstructor]
-        private SmarthooksOption(
+        private SmartHookOption(
             bool? locationEnabled,
 
             bool? mfaDeviceInfoEnabled,

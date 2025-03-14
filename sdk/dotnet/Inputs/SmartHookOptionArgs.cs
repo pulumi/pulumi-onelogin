@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Onelogin.Inputs
 {
 
-    public sealed class SmarthooksOptionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class SmartHookOptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("locationEnabled")]
         public Input<bool>? LocationEnabled { get; set; }
@@ -21,9 +21,9 @@ namespace Pulumi.Onelogin.Inputs
         [Input("riskEnabled")]
         public Input<bool>? RiskEnabled { get; set; }
 
-        public SmarthooksOptionGetArgs()
+        public SmartHookOptionArgs()
         {
         }
-        public static new SmarthooksOptionGetArgs Empty => new SmarthooksOptionGetArgs();
+        public static new SmartHookOptionArgs Empty => new SmartHookOptionArgs();
     }
 }

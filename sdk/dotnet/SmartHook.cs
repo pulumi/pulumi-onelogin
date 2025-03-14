@@ -9,11 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Onelogin
 {
-    [OneloginResourceType("onelogin:index/smarthooks:Smarthooks")]
-    public partial class Smarthooks : global::Pulumi.CustomResource
+    [OneloginResourceType("onelogin:index/smartHook:SmartHook")]
+    public partial class SmartHook : global::Pulumi.CustomResource
     {
         [Output("conditions")]
-        public Output<ImmutableArray<Outputs.SmarthooksCondition>> Conditions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SmartHookCondition>> Conditions { get; private set; } = null!;
 
         [Output("contextVersion")]
         public Output<string> ContextVersion { get; private set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.Onelogin
         public Output<string> Function { get; private set; } = null!;
 
         [Output("options")]
-        public Output<ImmutableArray<Outputs.SmarthooksOption>> Options { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SmartHookOption>> Options { get; private set; } = null!;
 
         [Output("packages")]
         public Output<ImmutableDictionary<string, string>> Packages { get; private set; } = null!;
@@ -56,19 +56,19 @@ namespace Pulumi.Onelogin
 
 
         /// <summary>
-        /// Create a Smarthooks resource with the given unique name, arguments, and options.
+        /// Create a SmartHook resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Smarthooks(string name, SmarthooksArgs args, CustomResourceOptions? options = null)
-            : base("onelogin:index/smarthooks:Smarthooks", name, args ?? new SmarthooksArgs(), MakeResourceOptions(options, ""))
+        public SmartHook(string name, SmartHookArgs args, CustomResourceOptions? options = null)
+            : base("onelogin:index/smartHook:SmartHook", name, args ?? new SmartHookArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Smarthooks(string name, Input<string> id, SmarthooksState? state = null, CustomResourceOptions? options = null)
-            : base("onelogin:index/smarthooks:Smarthooks", name, state, MakeResourceOptions(options, id))
+        private SmartHook(string name, Input<string> id, SmartHookState? state = null, CustomResourceOptions? options = null)
+            : base("onelogin:index/smartHook:SmartHook", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -84,7 +84,7 @@ namespace Pulumi.Onelogin
             return merged;
         }
         /// <summary>
-        /// Get an existing Smarthooks resource's state with the given name, ID, and optional extra
+        /// Get an existing SmartHook resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -92,19 +92,19 @@ namespace Pulumi.Onelogin
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Smarthooks Get(string name, Input<string> id, SmarthooksState? state = null, CustomResourceOptions? options = null)
+        public static SmartHook Get(string name, Input<string> id, SmartHookState? state = null, CustomResourceOptions? options = null)
         {
-            return new Smarthooks(name, id, state, options);
+            return new SmartHook(name, id, state, options);
         }
     }
 
-    public sealed class SmarthooksArgs : global::Pulumi.ResourceArgs
+    public sealed class SmartHookArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
-        private InputList<Inputs.SmarthooksConditionArgs>? _conditions;
-        public InputList<Inputs.SmarthooksConditionArgs> Conditions
+        private InputList<Inputs.SmartHookConditionArgs>? _conditions;
+        public InputList<Inputs.SmartHookConditionArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Inputs.SmarthooksConditionArgs>());
+            get => _conditions ?? (_conditions = new InputList<Inputs.SmartHookConditionArgs>());
             set => _conditions = value;
         }
 
@@ -126,10 +126,10 @@ namespace Pulumi.Onelogin
         public Input<string> Function { get; set; } = null!;
 
         [Input("options")]
-        private InputList<Inputs.SmarthooksOptionArgs>? _options;
-        public InputList<Inputs.SmarthooksOptionArgs> Options
+        private InputList<Inputs.SmartHookOptionArgs>? _options;
+        public InputList<Inputs.SmartHookOptionArgs> Options
         {
-            get => _options ?? (_options = new InputList<Inputs.SmarthooksOptionArgs>());
+            get => _options ?? (_options = new InputList<Inputs.SmartHookOptionArgs>());
             set => _options = value;
         }
 
@@ -153,19 +153,19 @@ namespace Pulumi.Onelogin
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        public SmarthooksArgs()
+        public SmartHookArgs()
         {
         }
-        public static new SmarthooksArgs Empty => new SmarthooksArgs();
+        public static new SmartHookArgs Empty => new SmartHookArgs();
     }
 
-    public sealed class SmarthooksState : global::Pulumi.ResourceArgs
+    public sealed class SmartHookState : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
-        private InputList<Inputs.SmarthooksConditionGetArgs>? _conditions;
-        public InputList<Inputs.SmarthooksConditionGetArgs> Conditions
+        private InputList<Inputs.SmartHookConditionGetArgs>? _conditions;
+        public InputList<Inputs.SmartHookConditionGetArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Inputs.SmarthooksConditionGetArgs>());
+            get => _conditions ?? (_conditions = new InputList<Inputs.SmartHookConditionGetArgs>());
             set => _conditions = value;
         }
 
@@ -190,10 +190,10 @@ namespace Pulumi.Onelogin
         public Input<string>? Function { get; set; }
 
         [Input("options")]
-        private InputList<Inputs.SmarthooksOptionGetArgs>? _options;
-        public InputList<Inputs.SmarthooksOptionGetArgs> Options
+        private InputList<Inputs.SmartHookOptionGetArgs>? _options;
+        public InputList<Inputs.SmartHookOptionGetArgs> Options
         {
-            get => _options ?? (_options = new InputList<Inputs.SmarthooksOptionGetArgs>());
+            get => _options ?? (_options = new InputList<Inputs.SmartHookOptionGetArgs>());
             set => _options = value;
         }
 
@@ -223,9 +223,9 @@ namespace Pulumi.Onelogin
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
-        public SmarthooksState()
+        public SmartHookState()
         {
         }
-        public static new SmarthooksState Empty => new SmarthooksState();
+        public static new SmartHookState Empty => new SmartHookState();
     }
 }

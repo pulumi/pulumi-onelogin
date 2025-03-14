@@ -15,8 +15,8 @@ from .privileges import *
 from .provider import *
 from .role import *
 from .saml_apps import *
+from .smart_hook import *
 from .smarthook_environment_variables import *
-from .smarthooks import *
 from .user import *
 from .user_mappings import *
 from ._inputs import *
@@ -101,18 +101,18 @@ _utilities.register(
  },
  {
   "pkg": "onelogin",
-  "mod": "index/smarthookEnvironmentVariables",
+  "mod": "index/smartHook",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables": "SmarthookEnvironmentVariables"
+   "onelogin:index/smartHook:SmartHook": "SmartHook"
   }
  },
  {
   "pkg": "onelogin",
-  "mod": "index/smarthooks",
+  "mod": "index/smarthookEnvironmentVariables",
   "fqn": "pulumi_onelogin",
   "classes": {
-   "onelogin:index/smarthooks:Smarthooks": "Smarthooks"
+   "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables": "SmarthookEnvironmentVariables"
   }
  },
  {

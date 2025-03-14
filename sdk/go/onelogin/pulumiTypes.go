@@ -1275,216 +1275,216 @@ func (o SamlAppsParameterArrayOutput) Index(i pulumi.IntInput) SamlAppsParameter
 	}).(SamlAppsParameterOutput)
 }
 
-type SmarthooksCondition struct {
+type SmartHookCondition struct {
 	Operator string `pulumi:"operator"`
 	Source   string `pulumi:"source"`
 	Value    string `pulumi:"value"`
 }
 
-// SmarthooksConditionInput is an input type that accepts SmarthooksConditionArgs and SmarthooksConditionOutput values.
-// You can construct a concrete instance of `SmarthooksConditionInput` via:
+// SmartHookConditionInput is an input type that accepts SmartHookConditionArgs and SmartHookConditionOutput values.
+// You can construct a concrete instance of `SmartHookConditionInput` via:
 //
-//	SmarthooksConditionArgs{...}
-type SmarthooksConditionInput interface {
+//	SmartHookConditionArgs{...}
+type SmartHookConditionInput interface {
 	pulumi.Input
 
-	ToSmarthooksConditionOutput() SmarthooksConditionOutput
-	ToSmarthooksConditionOutputWithContext(context.Context) SmarthooksConditionOutput
+	ToSmartHookConditionOutput() SmartHookConditionOutput
+	ToSmartHookConditionOutputWithContext(context.Context) SmartHookConditionOutput
 }
 
-type SmarthooksConditionArgs struct {
+type SmartHookConditionArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	Source   pulumi.StringInput `pulumi:"source"`
 	Value    pulumi.StringInput `pulumi:"value"`
 }
 
-func (SmarthooksConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmarthooksCondition)(nil)).Elem()
+func (SmartHookConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
 }
 
-func (i SmarthooksConditionArgs) ToSmarthooksConditionOutput() SmarthooksConditionOutput {
-	return i.ToSmarthooksConditionOutputWithContext(context.Background())
+func (i SmartHookConditionArgs) ToSmartHookConditionOutput() SmartHookConditionOutput {
+	return i.ToSmartHookConditionOutputWithContext(context.Background())
 }
 
-func (i SmarthooksConditionArgs) ToSmarthooksConditionOutputWithContext(ctx context.Context) SmarthooksConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksConditionOutput)
+func (i SmartHookConditionArgs) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionOutput)
 }
 
-// SmarthooksConditionArrayInput is an input type that accepts SmarthooksConditionArray and SmarthooksConditionArrayOutput values.
-// You can construct a concrete instance of `SmarthooksConditionArrayInput` via:
+// SmartHookConditionArrayInput is an input type that accepts SmartHookConditionArray and SmartHookConditionArrayOutput values.
+// You can construct a concrete instance of `SmartHookConditionArrayInput` via:
 //
-//	SmarthooksConditionArray{ SmarthooksConditionArgs{...} }
-type SmarthooksConditionArrayInput interface {
+//	SmartHookConditionArray{ SmartHookConditionArgs{...} }
+type SmartHookConditionArrayInput interface {
 	pulumi.Input
 
-	ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput
-	ToSmarthooksConditionArrayOutputWithContext(context.Context) SmarthooksConditionArrayOutput
+	ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput
+	ToSmartHookConditionArrayOutputWithContext(context.Context) SmartHookConditionArrayOutput
 }
 
-type SmarthooksConditionArray []SmarthooksConditionInput
+type SmartHookConditionArray []SmartHookConditionInput
 
-func (SmarthooksConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmarthooksCondition)(nil)).Elem()
+func (SmartHookConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
 }
 
-func (i SmarthooksConditionArray) ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput {
-	return i.ToSmarthooksConditionArrayOutputWithContext(context.Background())
+func (i SmartHookConditionArray) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
+	return i.ToSmartHookConditionArrayOutputWithContext(context.Background())
 }
 
-func (i SmarthooksConditionArray) ToSmarthooksConditionArrayOutputWithContext(ctx context.Context) SmarthooksConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksConditionArrayOutput)
+func (i SmartHookConditionArray) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookConditionArrayOutput)
 }
 
-type SmarthooksConditionOutput struct{ *pulumi.OutputState }
+type SmartHookConditionOutput struct{ *pulumi.OutputState }
 
-func (SmarthooksConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmarthooksCondition)(nil)).Elem()
+func (SmartHookConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookCondition)(nil)).Elem()
 }
 
-func (o SmarthooksConditionOutput) ToSmarthooksConditionOutput() SmarthooksConditionOutput {
+func (o SmartHookConditionOutput) ToSmartHookConditionOutput() SmartHookConditionOutput {
 	return o
 }
 
-func (o SmarthooksConditionOutput) ToSmarthooksConditionOutputWithContext(ctx context.Context) SmarthooksConditionOutput {
+func (o SmartHookConditionOutput) ToSmartHookConditionOutputWithContext(ctx context.Context) SmartHookConditionOutput {
 	return o
 }
 
-func (o SmarthooksConditionOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v SmarthooksCondition) string { return v.Operator }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-func (o SmarthooksConditionOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v SmarthooksCondition) string { return v.Source }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Source }).(pulumi.StringOutput)
 }
 
-func (o SmarthooksConditionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SmarthooksCondition) string { return v.Value }).(pulumi.StringOutput)
+func (o SmartHookConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartHookCondition) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type SmarthooksConditionArrayOutput struct{ *pulumi.OutputState }
+type SmartHookConditionArrayOutput struct{ *pulumi.OutputState }
 
-func (SmarthooksConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmarthooksCondition)(nil)).Elem()
+func (SmartHookConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookCondition)(nil)).Elem()
 }
 
-func (o SmarthooksConditionArrayOutput) ToSmarthooksConditionArrayOutput() SmarthooksConditionArrayOutput {
+func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutput() SmartHookConditionArrayOutput {
 	return o
 }
 
-func (o SmarthooksConditionArrayOutput) ToSmarthooksConditionArrayOutputWithContext(ctx context.Context) SmarthooksConditionArrayOutput {
+func (o SmartHookConditionArrayOutput) ToSmartHookConditionArrayOutputWithContext(ctx context.Context) SmartHookConditionArrayOutput {
 	return o
 }
 
-func (o SmarthooksConditionArrayOutput) Index(i pulumi.IntInput) SmarthooksConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmarthooksCondition {
-		return vs[0].([]SmarthooksCondition)[vs[1].(int)]
-	}).(SmarthooksConditionOutput)
+func (o SmartHookConditionArrayOutput) Index(i pulumi.IntInput) SmartHookConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHookCondition {
+		return vs[0].([]SmartHookCondition)[vs[1].(int)]
+	}).(SmartHookConditionOutput)
 }
 
-type SmarthooksOption struct {
+type SmartHookOption struct {
 	LocationEnabled      *bool `pulumi:"locationEnabled"`
 	MfaDeviceInfoEnabled *bool `pulumi:"mfaDeviceInfoEnabled"`
 	RiskEnabled          *bool `pulumi:"riskEnabled"`
 }
 
-// SmarthooksOptionInput is an input type that accepts SmarthooksOptionArgs and SmarthooksOptionOutput values.
-// You can construct a concrete instance of `SmarthooksOptionInput` via:
+// SmartHookOptionInput is an input type that accepts SmartHookOptionArgs and SmartHookOptionOutput values.
+// You can construct a concrete instance of `SmartHookOptionInput` via:
 //
-//	SmarthooksOptionArgs{...}
-type SmarthooksOptionInput interface {
+//	SmartHookOptionArgs{...}
+type SmartHookOptionInput interface {
 	pulumi.Input
 
-	ToSmarthooksOptionOutput() SmarthooksOptionOutput
-	ToSmarthooksOptionOutputWithContext(context.Context) SmarthooksOptionOutput
+	ToSmartHookOptionOutput() SmartHookOptionOutput
+	ToSmartHookOptionOutputWithContext(context.Context) SmartHookOptionOutput
 }
 
-type SmarthooksOptionArgs struct {
+type SmartHookOptionArgs struct {
 	LocationEnabled      pulumi.BoolPtrInput `pulumi:"locationEnabled"`
 	MfaDeviceInfoEnabled pulumi.BoolPtrInput `pulumi:"mfaDeviceInfoEnabled"`
 	RiskEnabled          pulumi.BoolPtrInput `pulumi:"riskEnabled"`
 }
 
-func (SmarthooksOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmarthooksOption)(nil)).Elem()
+func (SmartHookOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookOption)(nil)).Elem()
 }
 
-func (i SmarthooksOptionArgs) ToSmarthooksOptionOutput() SmarthooksOptionOutput {
-	return i.ToSmarthooksOptionOutputWithContext(context.Background())
+func (i SmartHookOptionArgs) ToSmartHookOptionOutput() SmartHookOptionOutput {
+	return i.ToSmartHookOptionOutputWithContext(context.Background())
 }
 
-func (i SmarthooksOptionArgs) ToSmarthooksOptionOutputWithContext(ctx context.Context) SmarthooksOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksOptionOutput)
+func (i SmartHookOptionArgs) ToSmartHookOptionOutputWithContext(ctx context.Context) SmartHookOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionOutput)
 }
 
-// SmarthooksOptionArrayInput is an input type that accepts SmarthooksOptionArray and SmarthooksOptionArrayOutput values.
-// You can construct a concrete instance of `SmarthooksOptionArrayInput` via:
+// SmartHookOptionArrayInput is an input type that accepts SmartHookOptionArray and SmartHookOptionArrayOutput values.
+// You can construct a concrete instance of `SmartHookOptionArrayInput` via:
 //
-//	SmarthooksOptionArray{ SmarthooksOptionArgs{...} }
-type SmarthooksOptionArrayInput interface {
+//	SmartHookOptionArray{ SmartHookOptionArgs{...} }
+type SmartHookOptionArrayInput interface {
 	pulumi.Input
 
-	ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput
-	ToSmarthooksOptionArrayOutputWithContext(context.Context) SmarthooksOptionArrayOutput
+	ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput
+	ToSmartHookOptionArrayOutputWithContext(context.Context) SmartHookOptionArrayOutput
 }
 
-type SmarthooksOptionArray []SmarthooksOptionInput
+type SmartHookOptionArray []SmartHookOptionInput
 
-func (SmarthooksOptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmarthooksOption)(nil)).Elem()
+func (SmartHookOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookOption)(nil)).Elem()
 }
 
-func (i SmarthooksOptionArray) ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput {
-	return i.ToSmarthooksOptionArrayOutputWithContext(context.Background())
+func (i SmartHookOptionArray) ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput {
+	return i.ToSmartHookOptionArrayOutputWithContext(context.Background())
 }
 
-func (i SmarthooksOptionArray) ToSmarthooksOptionArrayOutputWithContext(ctx context.Context) SmarthooksOptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmarthooksOptionArrayOutput)
+func (i SmartHookOptionArray) ToSmartHookOptionArrayOutputWithContext(ctx context.Context) SmartHookOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartHookOptionArrayOutput)
 }
 
-type SmarthooksOptionOutput struct{ *pulumi.OutputState }
+type SmartHookOptionOutput struct{ *pulumi.OutputState }
 
-func (SmarthooksOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmarthooksOption)(nil)).Elem()
+func (SmartHookOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartHookOption)(nil)).Elem()
 }
 
-func (o SmarthooksOptionOutput) ToSmarthooksOptionOutput() SmarthooksOptionOutput {
+func (o SmartHookOptionOutput) ToSmartHookOptionOutput() SmartHookOptionOutput {
 	return o
 }
 
-func (o SmarthooksOptionOutput) ToSmarthooksOptionOutputWithContext(ctx context.Context) SmarthooksOptionOutput {
+func (o SmartHookOptionOutput) ToSmartHookOptionOutputWithContext(ctx context.Context) SmartHookOptionOutput {
 	return o
 }
 
-func (o SmarthooksOptionOutput) LocationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmarthooksOption) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
+func (o SmartHookOptionOutput) LocationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOption) *bool { return v.LocationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o SmarthooksOptionOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmarthooksOption) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
+func (o SmartHookOptionOutput) MfaDeviceInfoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOption) *bool { return v.MfaDeviceInfoEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o SmarthooksOptionOutput) RiskEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SmarthooksOption) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
+func (o SmartHookOptionOutput) RiskEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmartHookOption) *bool { return v.RiskEnabled }).(pulumi.BoolPtrOutput)
 }
 
-type SmarthooksOptionArrayOutput struct{ *pulumi.OutputState }
+type SmartHookOptionArrayOutput struct{ *pulumi.OutputState }
 
-func (SmarthooksOptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmarthooksOption)(nil)).Elem()
+func (SmartHookOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SmartHookOption)(nil)).Elem()
 }
 
-func (o SmarthooksOptionArrayOutput) ToSmarthooksOptionArrayOutput() SmarthooksOptionArrayOutput {
+func (o SmartHookOptionArrayOutput) ToSmartHookOptionArrayOutput() SmartHookOptionArrayOutput {
 	return o
 }
 
-func (o SmarthooksOptionArrayOutput) ToSmarthooksOptionArrayOutputWithContext(ctx context.Context) SmarthooksOptionArrayOutput {
+func (o SmartHookOptionArrayOutput) ToSmartHookOptionArrayOutputWithContext(ctx context.Context) SmartHookOptionArrayOutput {
 	return o
 }
 
-func (o SmarthooksOptionArrayOutput) Index(i pulumi.IntInput) SmarthooksOptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmarthooksOption {
-		return vs[0].([]SmarthooksOption)[vs[1].(int)]
-	}).(SmarthooksOptionOutput)
+func (o SmartHookOptionArrayOutput) Index(i pulumi.IntInput) SmartHookOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartHookOption {
+		return vs[0].([]SmartHookOption)[vs[1].(int)]
+	}).(SmartHookOptionOutput)
 }
 
 type UserMappingsAction struct {
@@ -1710,10 +1710,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivilegesPrivilegeStatementArrayInput)(nil)).Elem(), PrivilegesPrivilegeStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppsParameterInput)(nil)).Elem(), SamlAppsParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlAppsParameterArrayInput)(nil)).Elem(), SamlAppsParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksConditionInput)(nil)).Elem(), SmarthooksConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksConditionArrayInput)(nil)).Elem(), SmarthooksConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksOptionInput)(nil)).Elem(), SmarthooksOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SmarthooksOptionArrayInput)(nil)).Elem(), SmarthooksOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookConditionInput)(nil)).Elem(), SmartHookConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookConditionArrayInput)(nil)).Elem(), SmartHookConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookOptionInput)(nil)).Elem(), SmartHookOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartHookOptionArrayInput)(nil)).Elem(), SmartHookOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsActionInput)(nil)).Elem(), UserMappingsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsActionArrayInput)(nil)).Elem(), UserMappingsActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserMappingsConditionInput)(nil)).Elem(), UserMappingsConditionArgs{})
@@ -1734,10 +1734,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivilegesPrivilegeStatementArrayOutput{})
 	pulumi.RegisterOutputType(SamlAppsParameterOutput{})
 	pulumi.RegisterOutputType(SamlAppsParameterArrayOutput{})
-	pulumi.RegisterOutputType(SmarthooksConditionOutput{})
-	pulumi.RegisterOutputType(SmarthooksConditionArrayOutput{})
-	pulumi.RegisterOutputType(SmarthooksOptionOutput{})
-	pulumi.RegisterOutputType(SmarthooksOptionArrayOutput{})
+	pulumi.RegisterOutputType(SmartHookConditionOutput{})
+	pulumi.RegisterOutputType(SmartHookConditionArrayOutput{})
+	pulumi.RegisterOutputType(SmartHookOptionOutput{})
+	pulumi.RegisterOutputType(SmartHookOptionArrayOutput{})
 	pulumi.RegisterOutputType(UserMappingsActionOutput{})
 	pulumi.RegisterOutputType(UserMappingsActionArrayOutput{})
 	pulumi.RegisterOutputType(UserMappingsConditionOutput{})

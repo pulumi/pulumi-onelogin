@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SmarthooksOptionArgs extends com.pulumi.resources.ResourceArgs {
+public final class SmartHookOptionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SmarthooksOptionArgs Empty = new SmarthooksOptionArgs();
+    public static final SmartHookOptionArgs Empty = new SmartHookOptionArgs();
 
     @Import(name="locationEnabled")
     private @Nullable Output<Boolean> locationEnabled;
@@ -36,9 +36,9 @@ public final class SmarthooksOptionArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.riskEnabled);
     }
 
-    private SmarthooksOptionArgs() {}
+    private SmartHookOptionArgs() {}
 
-    private SmarthooksOptionArgs(SmarthooksOptionArgs $) {
+    private SmartHookOptionArgs(SmartHookOptionArgs $) {
         this.locationEnabled = $.locationEnabled;
         this.mfaDeviceInfoEnabled = $.mfaDeviceInfoEnabled;
         this.riskEnabled = $.riskEnabled;
@@ -47,19 +47,19 @@ public final class SmarthooksOptionArgs extends com.pulumi.resources.ResourceArg
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SmarthooksOptionArgs defaults) {
+    public static Builder builder(SmartHookOptionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SmarthooksOptionArgs $;
+        private SmartHookOptionArgs $;
 
         public Builder() {
-            $ = new SmarthooksOptionArgs();
+            $ = new SmartHookOptionArgs();
         }
 
-        public Builder(SmarthooksOptionArgs defaults) {
-            $ = new SmarthooksOptionArgs(Objects.requireNonNull(defaults));
+        public Builder(SmartHookOptionArgs defaults) {
+            $ = new SmartHookOptionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder locationEnabled(@Nullable Output<Boolean> locationEnabled) {
@@ -89,7 +89,7 @@ public final class SmarthooksOptionArgs extends com.pulumi.resources.ResourceArg
             return riskEnabled(Output.of(riskEnabled));
         }
 
-        public SmarthooksOptionArgs build() {
+        public SmartHookOptionArgs build() {
             return $;
         }
     }

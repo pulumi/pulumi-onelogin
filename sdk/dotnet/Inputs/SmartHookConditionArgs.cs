@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Onelogin.Inputs
 {
 
-    public sealed class SmarthooksConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class SmartHookConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;
@@ -21,9 +21,9 @@ namespace Pulumi.Onelogin.Inputs
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
-        public SmarthooksConditionArgs()
+        public SmartHookConditionArgs()
         {
         }
-        public static new SmarthooksConditionArgs Empty => new SmarthooksConditionArgs();
+        public static new SmartHookConditionArgs Empty => new SmartHookConditionArgs();
     }
 }

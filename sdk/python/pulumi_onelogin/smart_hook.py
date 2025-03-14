@@ -16,10 +16,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SmarthooksArgs', 'Smarthooks']
+__all__ = ['SmartHookArgs', 'SmartHook']
 
 @pulumi.input_type
-class SmarthooksArgs:
+class SmartHookArgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool],
                  env_vars: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -29,11 +29,11 @@ class SmarthooksArgs:
                  runtime: pulumi.Input[str],
                  timeout: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]] = None,
                  context_version: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]] = None):
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]] = None):
         """
-        The set of arguments for constructing a Smarthooks resource.
+        The set of arguments for constructing a SmartHook resource.
         """
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "env_vars", env_vars)
@@ -124,11 +124,11 @@ class SmarthooksArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -142,24 +142,24 @@ class SmarthooksArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]]:
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]]):
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]):
         pulumi.set(self, "options", value)
 
 
 @pulumi.input_type
-class _SmarthooksState:
+class _SmartHookState:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]] = None,
                  context_version: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -168,7 +168,7 @@ class _SmarthooksState:
                  type: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Smarthooks resources.
+        Input properties used for looking up and filtering SmartHook resources.
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -201,11 +201,11 @@ class _SmarthooksState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]]:
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksConditionArgs']]]]):
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -255,11 +255,11 @@ class _SmarthooksState:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]]:
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmarthooksOptionArgs']]]]):
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SmartHookOptionArgs']]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -326,17 +326,17 @@ class _SmarthooksState:
         pulumi.set(self, "updated_at", value)
 
 
-class Smarthooks(pulumi.CustomResource):
+class SmartHook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksConditionArgs', 'SmarthooksConditionArgsDict']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookConditionArgs', 'SmartHookConditionArgsDict']]]]] = None,
                  context_version: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksOptionArgs', 'SmarthooksOptionArgsDict']]]]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookOptionArgs', 'SmartHookOptionArgsDict']]]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -344,7 +344,7 @@ class Smarthooks(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Smarthooks resource with the given unique name, props, and options.
+        Create a SmartHook resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -352,17 +352,17 @@ class Smarthooks(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SmarthooksArgs,
+                 args: SmartHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Smarthooks resource with the given unique name, props, and options.
+        Create a SmartHook resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param SmarthooksArgs args: The arguments to use to populate this resource's properties.
+        :param SmartHookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SmarthooksArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SmartHookArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -371,12 +371,12 @@ class Smarthooks(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksConditionArgs', 'SmarthooksConditionArgsDict']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookConditionArgs', 'SmartHookConditionArgsDict']]]]] = None,
                  context_version: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  function: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksOptionArgs', 'SmarthooksOptionArgsDict']]]]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookOptionArgs', 'SmartHookOptionArgsDict']]]]] = None,
                  packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
@@ -389,7 +389,7 @@ class Smarthooks(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SmarthooksArgs.__new__(SmarthooksArgs)
+            __props__ = SmartHookArgs.__new__(SmartHookArgs)
 
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["context_version"] = context_version
@@ -421,8 +421,8 @@ class Smarthooks(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
-        super(Smarthooks, __self__).__init__(
-            'onelogin:index/smarthooks:Smarthooks',
+        super(SmartHook, __self__).__init__(
+            'onelogin:index/smartHook:SmartHook',
             resource_name,
             __props__,
             opts)
@@ -431,22 +431,22 @@ class Smarthooks(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksConditionArgs', 'SmarthooksConditionArgsDict']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookConditionArgs', 'SmartHookConditionArgsDict']]]]] = None,
             context_version: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             function: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmarthooksOptionArgs', 'SmarthooksOptionArgsDict']]]]] = None,
+            options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SmartHookOptionArgs', 'SmartHookOptionArgsDict']]]]] = None,
             packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retries: Optional[pulumi.Input[int]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            updated_at: Optional[pulumi.Input[str]] = None) -> 'Smarthooks':
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'SmartHook':
         """
-        Get an existing Smarthooks resource's state with the given name, id, and optional extra
+        Get an existing SmartHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -455,7 +455,7 @@ class Smarthooks(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SmarthooksState.__new__(_SmarthooksState)
+        __props__ = _SmartHookState.__new__(_SmartHookState)
 
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["context_version"] = context_version
@@ -471,11 +471,11 @@ class Smarthooks(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
-        return Smarthooks(resource_name, opts=opts, __props__=__props__)
+        return SmartHook(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.SmarthooksCondition']]]:
+    def conditions(self) -> pulumi.Output[Optional[Sequence['outputs.SmartHookCondition']]]:
         return pulumi.get(self, "conditions")
 
     @property
@@ -505,7 +505,7 @@ class Smarthooks(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Optional[Sequence['outputs.SmarthooksOption']]]:
+    def options(self) -> pulumi.Output[Optional[Sequence['outputs.SmartHookOption']]]:
         return pulumi.get(self, "options")
 
     @property

@@ -7,11 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.onelogin.SmarthooksArgs;
+import com.pulumi.onelogin.SmartHookArgs;
 import com.pulumi.onelogin.Utilities;
-import com.pulumi.onelogin.inputs.SmarthooksState;
-import com.pulumi.onelogin.outputs.SmarthooksCondition;
-import com.pulumi.onelogin.outputs.SmarthooksOption;
+import com.pulumi.onelogin.inputs.SmartHookState;
+import com.pulumi.onelogin.outputs.SmartHookCondition;
+import com.pulumi.onelogin.outputs.SmartHookOption;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,12 +20,12 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-@ResourceType(type="onelogin:index/smarthooks:Smarthooks")
-public class Smarthooks extends com.pulumi.resources.CustomResource {
-    @Export(name="conditions", refs={List.class,SmarthooksCondition.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SmarthooksCondition>> conditions;
+@ResourceType(type="onelogin:index/smartHook:SmartHook")
+public class SmartHook extends com.pulumi.resources.CustomResource {
+    @Export(name="conditions", refs={List.class,SmartHookCondition.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SmartHookCondition>> conditions;
 
-    public Output<Optional<List<SmarthooksCondition>>> conditions() {
+    public Output<Optional<List<SmartHookCondition>>> conditions() {
         return Codegen.optional(this.conditions);
     }
     @Export(name="contextVersion", refs={String.class}, tree="[0]")
@@ -58,10 +58,10 @@ public class Smarthooks extends com.pulumi.resources.CustomResource {
     public Output<String> function() {
         return this.function;
     }
-    @Export(name="options", refs={List.class,SmarthooksOption.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SmarthooksOption>> options;
+    @Export(name="options", refs={List.class,SmartHookOption.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SmartHookOption>> options;
 
-    public Output<Optional<List<SmarthooksOption>>> options() {
+    public Output<Optional<List<SmartHookOption>>> options() {
         return Codegen.optional(this.options);
     }
     @Export(name="packages", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -111,15 +111,15 @@ public class Smarthooks extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Smarthooks(java.lang.String name) {
-        this(name, SmarthooksArgs.Empty);
+    public SmartHook(java.lang.String name) {
+        this(name, SmartHookArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Smarthooks(java.lang.String name, SmarthooksArgs args) {
+    public SmartHook(java.lang.String name, SmartHookArgs args) {
         this(name, args, null);
     }
     /**
@@ -128,19 +128,19 @@ public class Smarthooks extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Smarthooks(java.lang.String name, SmarthooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/smarthooks:Smarthooks", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public SmartHook(java.lang.String name, SmartHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/smartHook:SmartHook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Smarthooks(java.lang.String name, Output<java.lang.String> id, @Nullable SmarthooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("onelogin:index/smarthooks:Smarthooks", name, state, makeResourceOptions(options, id), false);
+    private SmartHook(java.lang.String name, Output<java.lang.String> id, @Nullable SmartHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("onelogin:index/smartHook:SmartHook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static SmarthooksArgs makeArgs(SmarthooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static SmartHookArgs makeArgs(SmartHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? SmarthooksArgs.Empty : args;
+        return args == null ? SmartHookArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -159,7 +159,7 @@ public class Smarthooks extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Smarthooks get(java.lang.String name, Output<java.lang.String> id, @Nullable SmarthooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Smarthooks(name, id, state, options);
+    public static SmartHook get(java.lang.String name, Output<java.lang.String> id, @Nullable SmartHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new SmartHook(name, id, state, options);
     }
 }

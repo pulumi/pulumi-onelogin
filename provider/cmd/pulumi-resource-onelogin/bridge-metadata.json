@@ -110,7 +110,7 @@
                 "current": "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables"
             },
             "onelogin_smarthooks": {
-                "current": "onelogin:index/smarthooks:Smarthooks",
+                "current": "onelogin:index/smartHook:SmartHook",
                 "fields": {
                     "conditions": {
                         "maxItemsOne": false

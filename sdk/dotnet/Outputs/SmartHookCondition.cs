@@ -11,14 +11,14 @@ namespace Pulumi.Onelogin.Outputs
 {
 
     [OutputType]
-    public sealed class SmarthooksCondition
+    public sealed class SmartHookCondition
     {
         public readonly string Operator;
         public readonly string Source;
         public readonly string Value;
 
         [OutputConstructor]
-        private SmarthooksCondition(
+        private SmartHookCondition(
             string @operator,
 
             string source,

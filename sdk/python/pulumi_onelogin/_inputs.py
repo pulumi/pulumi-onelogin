@@ -31,10 +31,10 @@ __all__ = [
     'PrivilegesPrivilegeStatementArgsDict',
     'SamlAppsParameterArgs',
     'SamlAppsParameterArgsDict',
-    'SmarthooksConditionArgs',
-    'SmarthooksConditionArgsDict',
-    'SmarthooksOptionArgs',
-    'SmarthooksOptionArgsDict',
+    'SmartHookConditionArgs',
+    'SmartHookConditionArgsDict',
+    'SmartHookOptionArgs',
+    'SmartHookOptionArgsDict',
     'UserMappingsActionArgs',
     'UserMappingsActionArgsDict',
     'UserMappingsConditionArgs',
@@ -773,15 +773,15 @@ class SamlAppsParameterArgs:
 
 
 if not MYPY:
-    class SmarthooksConditionArgsDict(TypedDict):
+    class SmartHookConditionArgsDict(TypedDict):
         operator: pulumi.Input[str]
         source: pulumi.Input[str]
         value: pulumi.Input[str]
 elif False:
-    SmarthooksConditionArgsDict: TypeAlias = Mapping[str, Any]
+    SmartHookConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class SmarthooksConditionArgs:
+class SmartHookConditionArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  source: pulumi.Input[str],
@@ -819,15 +819,15 @@ class SmarthooksConditionArgs:
 
 
 if not MYPY:
-    class SmarthooksOptionArgsDict(TypedDict):
+    class SmartHookOptionArgsDict(TypedDict):
         location_enabled: NotRequired[pulumi.Input[bool]]
         mfa_device_info_enabled: NotRequired[pulumi.Input[bool]]
         risk_enabled: NotRequired[pulumi.Input[bool]]
 elif False:
-    SmarthooksOptionArgsDict: TypeAlias = Mapping[str, Any]
+    SmartHookOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class SmarthooksOptionArgs:
+class SmartHookOptionArgs:
     def __init__(__self__, *,
                  location_enabled: Optional[pulumi.Input[bool]] = None,
                  mfa_device_info_enabled: Optional[pulumi.Input[bool]] = None,

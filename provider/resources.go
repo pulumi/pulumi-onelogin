@@ -100,6 +100,9 @@ func Provider() tfbridge.ProviderInfo {
 			"onelogin_roles": {
 				Tok: makeResource(mainMod, "Role"),
 			},
+			"onelogin_smarthooks": {
+				Tok: makeResource(mainMod, "SmartHook"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"onelogin_users": {Tok: makeDataSource("users", "getUsers")},

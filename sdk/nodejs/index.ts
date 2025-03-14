@@ -55,15 +55,15 @@ export type SamlApps = import("./samlApps").SamlApps;
 export const SamlApps: typeof import("./samlApps").SamlApps = null as any;
 utilities.lazyLoad(exports, ["SamlApps"], () => require("./samlApps"));
 
+export { SmartHookArgs, SmartHookState } from "./smartHook";
+export type SmartHook = import("./smartHook").SmartHook;
+export const SmartHook: typeof import("./smartHook").SmartHook = null as any;
+utilities.lazyLoad(exports, ["SmartHook"], () => require("./smartHook"));
+
 export { SmarthookEnvironmentVariablesArgs, SmarthookEnvironmentVariablesState } from "./smarthookEnvironmentVariables";
 export type SmarthookEnvironmentVariables = import("./smarthookEnvironmentVariables").SmarthookEnvironmentVariables;
 export const SmarthookEnvironmentVariables: typeof import("./smarthookEnvironmentVariables").SmarthookEnvironmentVariables = null as any;
 utilities.lazyLoad(exports, ["SmarthookEnvironmentVariables"], () => require("./smarthookEnvironmentVariables"));
-
-export { SmarthooksArgs, SmarthooksState } from "./smarthooks";
-export type Smarthooks = import("./smarthooks").Smarthooks;
-export const Smarthooks: typeof import("./smarthooks").Smarthooks = null as any;
-utilities.lazyLoad(exports, ["Smarthooks"], () => require("./smarthooks"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
@@ -107,10 +107,10 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "onelogin:index/samlApps:SamlApps":
                 return new SamlApps(name, <any>undefined, { urn })
+            case "onelogin:index/smartHook:SmartHook":
+                return new SmartHook(name, <any>undefined, { urn })
             case "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables":
                 return new SmarthookEnvironmentVariables(name, <any>undefined, { urn })
-            case "onelogin:index/smarthooks:Smarthooks":
-                return new Smarthooks(name, <any>undefined, { urn })
             case "onelogin:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "onelogin:index/userMappings:UserMappings":
@@ -128,8 +128,8 @@ pulumi.runtime.registerResourceModule("onelogin", "index/oidcApps", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/privileges", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/role", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/samlApps", _module)
+pulumi.runtime.registerResourceModule("onelogin", "index/smartHook", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/smarthookEnvironmentVariables", _module)
-pulumi.runtime.registerResourceModule("onelogin", "index/smarthooks", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/user", _module)
 pulumi.runtime.registerResourceModule("onelogin", "index/userMappings", _module)
 pulumi.runtime.registerResourcePackage("onelogin", {

@@ -80,13 +80,13 @@ export interface SamlAppsParameter {
     values: string;
 }
 
-export interface SmarthooksCondition {
+export interface SmartHookCondition {
     operator: string;
     source: string;
     value: string;
 }
 
-export interface SmarthooksOption {
+export interface SmartHookOption {
     locationEnabled?: boolean;
     mfaDeviceInfoEnabled?: boolean;
     riskEnabled?: boolean;

@@ -5,8 +5,8 @@ package com.pulumi.onelogin.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.onelogin.inputs.SmarthooksConditionArgs;
-import com.pulumi.onelogin.inputs.SmarthooksOptionArgs;
+import com.pulumi.onelogin.inputs.SmartHookConditionArgs;
+import com.pulumi.onelogin.inputs.SmartHookOptionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,14 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
+public final class SmartHookState extends com.pulumi.resources.ResourceArgs {
 
-    public static final SmarthooksState Empty = new SmarthooksState();
+    public static final SmartHookState Empty = new SmartHookState();
 
     @Import(name="conditions")
-    private @Nullable Output<List<SmarthooksConditionArgs>> conditions;
+    private @Nullable Output<List<SmartHookConditionArgs>> conditions;
 
-    public Optional<Output<List<SmarthooksConditionArgs>>> conditions() {
+    public Optional<Output<List<SmartHookConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
@@ -64,9 +64,9 @@ public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="options")
-    private @Nullable Output<List<SmarthooksOptionArgs>> options;
+    private @Nullable Output<List<SmartHookOptionArgs>> options;
 
-    public Optional<Output<List<SmarthooksOptionArgs>>> options() {
+    public Optional<Output<List<SmartHookOptionArgs>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -119,9 +119,9 @@ public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updatedAt);
     }
 
-    private SmarthooksState() {}
+    private SmartHookState() {}
 
-    private SmarthooksState(SmarthooksState $) {
+    private SmartHookState(SmartHookState $) {
         this.conditions = $.conditions;
         this.contextVersion = $.contextVersion;
         this.createdAt = $.createdAt;
@@ -141,31 +141,31 @@ public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SmarthooksState defaults) {
+    public static Builder builder(SmartHookState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SmarthooksState $;
+        private SmartHookState $;
 
         public Builder() {
-            $ = new SmarthooksState();
+            $ = new SmartHookState();
         }
 
-        public Builder(SmarthooksState defaults) {
-            $ = new SmarthooksState(Objects.requireNonNull(defaults));
+        public Builder(SmartHookState defaults) {
+            $ = new SmartHookState(Objects.requireNonNull(defaults));
         }
 
-        public Builder conditions(@Nullable Output<List<SmarthooksConditionArgs>> conditions) {
+        public Builder conditions(@Nullable Output<List<SmartHookConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
-        public Builder conditions(List<SmarthooksConditionArgs> conditions) {
+        public Builder conditions(List<SmartHookConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
-        public Builder conditions(SmarthooksConditionArgs... conditions) {
+        public Builder conditions(SmartHookConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }
 
@@ -218,16 +218,16 @@ public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
             return function(Output.of(function));
         }
 
-        public Builder options(@Nullable Output<List<SmarthooksOptionArgs>> options) {
+        public Builder options(@Nullable Output<List<SmartHookOptionArgs>> options) {
             $.options = options;
             return this;
         }
 
-        public Builder options(List<SmarthooksOptionArgs> options) {
+        public Builder options(List<SmartHookOptionArgs> options) {
             return options(Output.of(options));
         }
 
-        public Builder options(SmarthooksOptionArgs... options) {
+        public Builder options(SmartHookOptionArgs... options) {
             return options(List.of(options));
         }
 
@@ -294,7 +294,7 @@ public final class SmarthooksState extends com.pulumi.resources.ResourceArgs {
             return updatedAt(Output.of(updatedAt));
         }
 
-        public SmarthooksState build() {
+        public SmartHookState build() {
             return $;
         }
     }

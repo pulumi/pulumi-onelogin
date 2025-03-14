@@ -80,13 +80,13 @@ export interface SamlAppsParameter {
     values?: pulumi.Input<string>;
 }
 
-export interface SmarthooksCondition {
+export interface SmartHookCondition {
     operator: pulumi.Input<string>;
     source: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
 
-export interface SmarthooksOption {
+export interface SmartHookOption {
     locationEnabled?: pulumi.Input<boolean>;
     mfaDeviceInfoEnabled?: pulumi.Input<boolean>;
     riskEnabled?: pulumi.Input<boolean>;

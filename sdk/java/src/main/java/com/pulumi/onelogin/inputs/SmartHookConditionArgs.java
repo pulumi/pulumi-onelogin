@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class SmarthooksConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class SmartHookConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SmarthooksConditionArgs Empty = new SmarthooksConditionArgs();
+    public static final SmartHookConditionArgs Empty = new SmartHookConditionArgs();
 
     @Import(name="operator", required=true)
     private Output<String> operator;
@@ -35,9 +35,9 @@ public final class SmarthooksConditionArgs extends com.pulumi.resources.Resource
         return this.value;
     }
 
-    private SmarthooksConditionArgs() {}
+    private SmartHookConditionArgs() {}
 
-    private SmarthooksConditionArgs(SmarthooksConditionArgs $) {
+    private SmartHookConditionArgs(SmartHookConditionArgs $) {
         this.operator = $.operator;
         this.source = $.source;
         this.value = $.value;
@@ -46,19 +46,19 @@ public final class SmarthooksConditionArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SmarthooksConditionArgs defaults) {
+    public static Builder builder(SmartHookConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SmarthooksConditionArgs $;
+        private SmartHookConditionArgs $;
 
         public Builder() {
-            $ = new SmarthooksConditionArgs();
+            $ = new SmartHookConditionArgs();
         }
 
-        public Builder(SmarthooksConditionArgs defaults) {
-            $ = new SmarthooksConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(SmartHookConditionArgs defaults) {
+            $ = new SmartHookConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder operator(Output<String> operator) {
@@ -88,15 +88,15 @@ public final class SmarthooksConditionArgs extends com.pulumi.resources.Resource
             return value(Output.of(value));
         }
 
-        public SmarthooksConditionArgs build() {
+        public SmartHookConditionArgs build() {
             if ($.operator == null) {
-                throw new MissingRequiredPropertyException("SmarthooksConditionArgs", "operator");
+                throw new MissingRequiredPropertyException("SmartHookConditionArgs", "operator");
             }
             if ($.source == null) {
-                throw new MissingRequiredPropertyException("SmarthooksConditionArgs", "source");
+                throw new MissingRequiredPropertyException("SmartHookConditionArgs", "source");
             }
             if ($.value == null) {
-                throw new MissingRequiredPropertyException("SmarthooksConditionArgs", "value");
+                throw new MissingRequiredPropertyException("SmartHookConditionArgs", "value");
             }
             return $;
         }

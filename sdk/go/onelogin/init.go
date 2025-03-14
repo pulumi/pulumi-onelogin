@@ -37,10 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "onelogin:index/samlApps:SamlApps":
 		r = &SamlApps{}
+	case "onelogin:index/smartHook:SmartHook":
+		r = &SmartHook{}
 	case "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables":
 		r = &SmarthookEnvironmentVariables{}
-	case "onelogin:index/smarthooks:Smarthooks":
-		r = &Smarthooks{}
 	case "onelogin:index/user:User":
 		r = &User{}
 	case "onelogin:index/userMappings:UserMappings":
@@ -118,12 +118,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/smarthookEnvironmentVariables",
+		"index/smartHook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"onelogin",
-		"index/smarthooks",
+		"index/smarthookEnvironmentVariables",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

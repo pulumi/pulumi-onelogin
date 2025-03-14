@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class SmarthooksOption {
+public final class SmartHookOption {
     private @Nullable Boolean locationEnabled;
     private @Nullable Boolean mfaDeviceInfoEnabled;
     private @Nullable Boolean riskEnabled;
 
-    private SmarthooksOption() {}
+    private SmartHookOption() {}
     public Optional<Boolean> locationEnabled() {
         return Optional.ofNullable(this.locationEnabled);
     }
@@ -30,7 +30,7 @@ public final class SmarthooksOption {
         return new Builder();
     }
 
-    public static Builder builder(SmarthooksOption defaults) {
+    public static Builder builder(SmartHookOption defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class SmarthooksOption {
         private @Nullable Boolean mfaDeviceInfoEnabled;
         private @Nullable Boolean riskEnabled;
         public Builder() {}
-        public Builder(SmarthooksOption defaults) {
+        public Builder(SmartHookOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.locationEnabled = defaults.locationEnabled;
     	      this.mfaDeviceInfoEnabled = defaults.mfaDeviceInfoEnabled;
@@ -64,8 +64,8 @@ public final class SmarthooksOption {
             this.riskEnabled = riskEnabled;
             return this;
         }
-        public SmarthooksOption build() {
-            final var _resultValue = new SmarthooksOption();
+        public SmartHookOption build() {
+            final var _resultValue = new SmartHookOption();
             _resultValue.locationEnabled = locationEnabled;
             _resultValue.mfaDeviceInfoEnabled = mfaDeviceInfoEnabled;
             _resultValue.riskEnabled = riskEnabled;

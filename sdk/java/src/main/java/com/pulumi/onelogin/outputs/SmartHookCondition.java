@@ -9,12 +9,12 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class SmarthooksCondition {
+public final class SmartHookCondition {
     private String operator;
     private String source;
     private String value;
 
-    private SmarthooksCondition() {}
+    private SmartHookCondition() {}
     public String operator() {
         return this.operator;
     }
@@ -29,7 +29,7 @@ public final class SmarthooksCondition {
         return new Builder();
     }
 
-    public static Builder builder(SmarthooksCondition defaults) {
+    public static Builder builder(SmartHookCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -38,7 +38,7 @@ public final class SmarthooksCondition {
         private String source;
         private String value;
         public Builder() {}
-        public Builder(SmarthooksCondition defaults) {
+        public Builder(SmartHookCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operator = defaults.operator;
     	      this.source = defaults.source;
@@ -48,7 +48,7 @@ public final class SmarthooksCondition {
         @CustomType.Setter
         public Builder operator(String operator) {
             if (operator == null) {
-              throw new MissingRequiredPropertyException("SmarthooksCondition", "operator");
+              throw new MissingRequiredPropertyException("SmartHookCondition", "operator");
             }
             this.operator = operator;
             return this;
@@ -56,7 +56,7 @@ public final class SmarthooksCondition {
         @CustomType.Setter
         public Builder source(String source) {
             if (source == null) {
-              throw new MissingRequiredPropertyException("SmarthooksCondition", "source");
+              throw new MissingRequiredPropertyException("SmartHookCondition", "source");
             }
             this.source = source;
             return this;
@@ -64,13 +64,13 @@ public final class SmarthooksCondition {
         @CustomType.Setter
         public Builder value(String value) {
             if (value == null) {
-              throw new MissingRequiredPropertyException("SmarthooksCondition", "value");
+              throw new MissingRequiredPropertyException("SmartHookCondition", "value");
             }
             this.value = value;
             return this;
         }
-        public SmarthooksCondition build() {
-            final var _resultValue = new SmarthooksCondition();
+        public SmartHookCondition build() {
+            final var _resultValue = new SmartHookCondition();
             _resultValue.operator = operator;
             _resultValue.source = source;
             _resultValue.value = value;

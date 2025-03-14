@@ -370,7 +370,7 @@
                 }
             }
         },
-        "onelogin:index/SmarthooksCondition:SmarthooksCondition": {
+        "onelogin:index/SmartHookCondition:SmartHookCondition": {
             "properties": {
                 "operator": {
                     "type": "string"
@@ -389,7 +389,7 @@
                 "value"
             ]
         },
-        "onelogin:index/SmarthooksOption:SmarthooksOption": {
+        "onelogin:index/SmartHookOption:SmartHookOption": {
             "properties": {
                 "locationEnabled": {
                     "type": "boolean"
@@ -1441,63 +1441,12 @@
                 "type": "object"
             }
         },
-        "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables": {
-            "properties": {
-                "createdAt": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "createdAt",
-                "name",
-                "updatedAt",
-                "value"
-            ],
-            "inputProperties": {
-                "name": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "requiredInputs": [
-                "value"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SmarthookEnvironmentVariables resources.\n",
-                "properties": {
-                    "createdAt": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "type": "string"
-                    },
-                    "value": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "onelogin:index/smarthooks:Smarthooks": {
+        "onelogin:index/smartHook:SmartHook": {
             "properties": {
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmarthooksCondition:SmarthooksCondition"
+                        "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                     }
                 },
                 "contextVersion": {
@@ -1521,7 +1470,7 @@
                 "options": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmarthooksOption:SmarthooksOption"
+                        "$ref": "#/types/onelogin:index/SmartHookOption:SmartHookOption"
                     }
                 },
                 "packages": {
@@ -1567,7 +1516,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmarthooksCondition:SmarthooksCondition"
+                        "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                     }
                 },
                 "contextVersion": {
@@ -1588,7 +1537,7 @@
                 "options": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/onelogin:index/SmarthooksOption:SmarthooksOption"
+                        "$ref": "#/types/onelogin:index/SmartHookOption:SmartHookOption"
                     }
                 },
                 "packages": {
@@ -1621,12 +1570,12 @@
                 "type"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Smarthooks resources.\n",
+                "description": "Input properties used for looking up and filtering SmartHook resources.\n",
                 "properties": {
                     "conditions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/SmarthooksCondition:SmarthooksCondition"
+                            "$ref": "#/types/onelogin:index/SmartHookCondition:SmartHookCondition"
                         }
                     },
                     "contextVersion": {
@@ -1650,7 +1599,7 @@
                     "options": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/onelogin:index/SmarthooksOption:SmarthooksOption"
+                            "$ref": "#/types/onelogin:index/SmartHookOption:SmartHookOption"
                         }
                     },
                     "packages": {
@@ -1675,6 +1624,57 @@
                         "type": "string"
                     },
                     "updatedAt": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "onelogin:index/smarthookEnvironmentVariables:SmarthookEnvironmentVariables": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "updatedAt",
+                "value"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SmarthookEnvironmentVariables resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "value": {
                         "type": "string"
                     }
                 },
