@@ -10,7 +10,7 @@ r[![Actions Status](https://github.com/pulumi/pulumi-onelogin/workflows/master/b
 
 >[!NOTE] As of v0.6.9, this provider is DEPRECATED and will no longer be maintained by Pulumi.
 > We recommend using the [Local Provider](https://www.pulumi.com/blog/any-terraform-provider/) version of this package,
-> which can be generated from the RKE Terraform provider as follows:
+> which can be generated from the OneLogin Terraform provider as follows:
 > `pulumi package add terraform-provider registry.opentofu.org/onelogin/onelogin <version>`
 > and follow the instructions.
 
